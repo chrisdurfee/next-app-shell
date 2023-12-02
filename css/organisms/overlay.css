@@ -8,8 +8,8 @@
     flex-direction: column;
     background-color: #FFF;
     z-index: 10;
-    -webkit-animation: pullUpTransparent .2s ease-in-out;
-    animation: pullUpTransparent .2s ease-in-out;
+    -webkit-animation: fadeIn .2s ease-in-out;
+    animation: fadeIn .2s ease-in-out;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     will-change: transform, opacity;

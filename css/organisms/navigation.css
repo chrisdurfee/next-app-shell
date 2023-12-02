@@ -57,7 +57,7 @@
 .navigation li.option{
 	position: relative;
 	width: auto;
-	height: 40px;
+	height: 44px;
 	line-height: 40px;
 	text-align: left;
 	font-size: 18px;
@@ -74,7 +74,7 @@
 .navigation li.option a,
 .navigation li.option > div{
 	display: block;
-    height: 40px;
+    height: 44px;
 	text-transform: none;
 }
 .navigation li.option,
@@ -111,7 +111,7 @@
 .navigation li.option .icon,
 .navigation li.option .label{
 	position: relative;
-	height: 40px;
+	height: 44px;
 	line-height: 40px;
 	float: left;
 	z-index: 5;
@@ -125,7 +125,7 @@
 	background-image: url(../../images/group-icon.svg);
 }
 .navigation li.option .icon.blank{
-	background-image: url(../../images/blank-icon.svg);
+	background-image: url(../../images/group-icon.svg);
 }
 .navigation li.option .label{
 	width: auto;
@@ -152,17 +152,17 @@
 	background: none;
 }
 .drawer .navigation li.option{
-	height: 32px;
-	line-height: 32px;
+	height: 40px;
+	line-height: 40px;
 }
 .drawer .navigation li.option a,
 .drawer .navigation li.option > div{
-    height: 32px;
+    height: 40px;
 }
 .drawer .navigation li.option .icon,
 .drawer .navigation li.option .label{
-	height: 32px;
-	line-height: 32px;
+	height: 40px;
+	line-height: 40px;
 }
 .drawer .navigation li.option .label{
 	margin-left: 16px;

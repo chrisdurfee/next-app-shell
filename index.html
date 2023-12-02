@@ -42,13 +42,12 @@
 
 			/* this will store the app object that will be used
 			to controll the app and user interface */
-			var app,
-			loader = scriptLoader;
+			let app;
 
 			const loaderContainer = document.getElementById('loader-container'),
 			progress = document.getElementById('progress'),
 			progressLabel = document.getElementById('progress-label');
-			loader.progress.callBack = loader.showProgress(progress, progressLabel, function()
+			scriptLoader.progress.callBack = scriptLoader.showProgress(progress, progressLabel, () =>
 			{
 				base.animate.hide(loaderContainer, 'complete', 600);
 
