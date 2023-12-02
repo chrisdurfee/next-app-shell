@@ -1,0 +1,470 @@
+/* Atoms - base styles for all HTML elements */
+* {
+    box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+}
+/* ---------------- BASIC HTML ELEMENTS ---------------- */
+a:not([class]),
+a:not([id]) {
+    font-size: .75em;
+    font-weight: 700;
+}
+a:hover{
+    text-decoration: none;
+}
+hr {
+    border-style: solid;
+}
+/* ---------------- ICONS ---------------- */
+i {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: 'liga';
+}
+
+/* ---------------- BUTTONS ---------------- */
+button,
+.bttn {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: inherit;
+    font-size: .875em;
+    font-weight: 600;
+    white-space: nowrap;
+    line-height: 1.8;
+    padding: .4em 1.2em;
+    border-width: 0;
+    border-style: solid;
+    border-radius: 2.5em;
+    transition: all .2s;
+	cursor: pointer;
+
+    /* variables for pressed pseudo element */
+    --pressed-top: 50%;
+    --pressed-left: 50%;
+}
+button i:not(:only-child) {
+    margin-right: 8px;
+}
+button i,
+button i + span {
+    vertical-align: middle;
+    pointer-events: none;
+}
+.outlined-bttn {
+    padding: calc(.4em - 1px) calc(1.2em - 1px);
+    border-width: 1px;
+}
+@supports (top: var(--pressed-top)) {
+    button::before,
+    .bttn::before {
+        content: "";
+        position: absolute;
+        top: var(--pressed-top);
+        left: var(--pressed-left);
+        z-index: -1;
+        transform: translate(-50%, -50%) scale(0);
+        width: 200%;
+        padding-bottom: 200%;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    button:focus::before,
+    .bttn:focus::before,
+    button:active::before,
+    .bttn:active::before {
+        animation: ripple 1s .1s ease;
+    }
+
+    @keyframes ripple {
+        0% {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2.2);
+        }
+    }
+}
+
+/* icon buttons - no text */
+.icon-bttn {
+    font-size: 24px;
+    padding: 5px;
+    display: inline-block;
+}
+.icon-bttn i {
+    display: block;
+}
+
+button.unstyled {
+    background-color: transparent;
+    color: inherit;
+    line-height: 1;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+button.unstyled::before {
+    display: none;
+}
+
+
+/* ---------------- FORMS ---------------- */
+
+fieldset {
+    padding: 1em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
+}
+fieldset legend {
+    padding: .5em;
+}
+/* Default filled input */
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: 1.125;
+    padding: .75em 1em;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+	background: transparent;
+}
+input.filled,
+select.filled,
+textarea.filled {
+    border-width: 0 0 1px 0;
+    border-radius: 4px 4px 0 0;
+}
+label {
+    display: block;
+    max-width: 20em;
+    margin-bottom: 2em;
+}
+label input,
+label select,
+label textarea {
+    display: block;
+    width: 100%;
+}
+label .label-text {
+    display: block;
+    margin-bottom: .5em;
+}
+
+::-webkit-input-placeholder {color: #B3B9C2;}
+::-moz-placeholder {color: #B3B9C2;}
+:-moz-placeholder {color: #B3B9C2;}
+:-ms-input-placeholder {color: #B3B9C2;}
+::placeholder {color: #B3B9C2;}
+
+/* Floating outline input */
+.floating :placeholder-shown::-webkit-input-placeholder {opacity: 0;}
+.floating :placeholder-shown::-moz-placeholder {opacity: 0;}
+.floating :placeholder-shown:-moz-placeholder {opacity: 0;}
+.floating :placeholder-shown:-ms-input-placeholder {opacity: 1;}
+.floating :placeholder-shown::placeholder {opacity: 0;}
+.floating :focus::-webkit-input-placeholder {opacity: 1;}
+.floating :focus::-moz-placeholder {opacity: 1;}
+.floating :focus:-moz-placeholder {opacity: 1;}
+.floating :focus:-ms-input-placeholder {opacity: 1;}
+.floating :focus::placeholder {opacity: 1;}
+
+.floating {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    padding-top: 1em;
+    margin-bottom: 1em;
+}
+.floating input,
+.floating select,
+.floating textarea {
+    border-width: 1px;
+    border-radius: 4px;
+}
+.floating input[placeholder] + .label-text,
+.floating textarea[placeholder] + .label-text {
+    position: absolute;
+    top: 0;
+    left: .5em;
+    line-height: 1;
+    padding: 4px 6px;
+    margin: 0;
+    opacity: 1;
+    transform: translateY(0) scale(.9);
+    pointer-events: none;
+    transform-origin: left top;
+    transition: all .2s;
+}
+.floating input:placeholder-shown:not(:focus) + .label-text,
+.floating textarea:placeholder-shown:not(:focus) + .label-text {
+	opacity: .8;
+	transform: translateY(1.5em) scale(1);
+}
+
+/* Radio and check label - focus ring */
+label input[type="checkbox"],
+label input[type="radio"] {
+    display: inline-block;
+    vertical-align: middle;
+    width: 1em;
+    height: 1em;
+    padding: 0;
+    margin: 0;
+    border-width: 2px;
+    border-radius: 2px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: .8em;
+	cursor: pointer;
+}
+label input[type="radio"] {
+    background-size: 1em;
+    border-radius: 50%;
+}
+label input[type="checkbox"] + span,
+label input[type="radio"] + span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    margin-left: 1em;
+}
+.check-label,
+.radio-label,
+.switch-label {
+    position: relative;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    padding: .75em;
+	cursor: pointer;
+}
+.check-label input,
+.radio-label input,
+.switch-label input {
+    position: relative;
+    z-index: 1;
+}
+.check-label input + span::before,
+.radio-label input + span::before,
+.switch-label input + span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all .2s;
+}
+.check-label:hover input + span::before,
+.radio-label:hover input + span::before,
+.switch-label:hover input + span::before {
+    opacity: .5;
+}
+.check-label input:active + span::before,
+.radio-label input:active + span::before,
+.switch-label input:active + span::before {
+    opacity: .75;
+}
+.check-label input:focus + span::before,
+.radio-label input:focus + span::before,
+.switch-label input:focus + span::before {
+    opacity: 1;
+}
+.switch-label input[type="checkbox"] {
+    width: 2.125em;
+    height: .875em;
+    border-radius: 1em;
+    z-index: 0;
+}
+.switch-label input[type="checkbox"] + span::before {
+    z-index: 1;
+}
+.switch-label input[type="checkbox"] + span::after {
+    content: "";
+    position: absolute;
+    top: .6em;
+    left: .6em;
+    z-index: 2;
+    width: 1.25em;
+    height: 1.25em;
+    border-radius: 50%;
+    transition: all .2s;
+}
+.switch-label input[type="checkbox"]:checked + span::before {
+    transform: translateX(1.2em);
+}
+.switch-label input[type="checkbox"]:checked + span::after {
+    transform: translateX(1.2em);
+}
+
+/* tags, badges and dots */
+.filter {
+    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    padding: .5em 1.5em;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3em;
+    transition: all .2s;
+}
+.filter i.cancel {
+    font-size: 0px;
+    vertical-align: middle;
+    transition: all .2s;
+    overflow: hidden;
+}
+.filter:hover {
+    padding-right: 1em;
+}
+.filter:hover i.cancel {
+    font-size: 13px;
+}
+.filter button {
+	transition: all .2s;
+	width: 0;
+	height: 0;
+	margin: 0;
+}
+.filter:hover button,
+.filter:active button {
+	width: 30px;
+    height: 30px;
+    margin: -.5em -1em -.5em 0.5em;
+}
+.filter button:focus,
+.filter button:active{
+    background: transparent;
+	box-shadow: none;
+}
+.badge {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: .75em;
+    font-weight: 600;
+    line-height: 1.7;
+    padding: 0 8px;
+    border-radius: 4px;
+    letter-spacing: .007em;
+}
+.dot {
+    display: inline-block;
+    vertical-align: middle;
+    width: .5em;
+    height: .5em;
+    border-radius: 50%;
+}
+
+/* Tooltip */
+.tooltip-parent {
+    position: relative;
+    overflow: hidden;
+}
+.card.tooltip-parent {
+    padding: 40px;
+}
+.tooltip-parent:hover {
+    overflow: visible;
+}
+.tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+	text-align: center;
+    min-width: 12.5em;
+    padding: 1em;
+    border-radius: 4px;
+    opacity: 0;
+    z-index: 10;
+	box-shadow: 0px 8px 12px rgba(34, 54, 84, 0.1), 0px 6px 8px rgba(34, 54, 84, 0.08), 0px -6px 8px rgba(34, 54, 84, 0.02);
+}
+.card.tooltip-parent .tooltip {
+    bottom: calc(100% - 8px);
+}
+.tooltip.multiline{
+	text-align: left;
+}
+.tooltip-parent:hover .tooltip {
+    opacity: 1;
+}
+.tooltip::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+/* template tests */
+.grid-container{
+	display: grid;
+  	grid-gap: 20px;
+	grid-template-columns: auto auto auto auto auto auto;
+	margin: 20px;
+}
+.panel{
+	background: #F2F5F9;
+	height: 180px;
+}
+.grid-container .panel:first-child{
+	grid-column: 1 / span 6;
+}
+.grid-container .panel:nth-child(2){
+	grid-column: span 3;
+}
+.grid-container .panel:nth-child(3){
+	grid-column: span 3;
+}
+.grid-container .panel:nth-child(4),
+.grid-container .panel:nth-child(5),
+.grid-container .panel:nth-child(6){
+	grid-column: span 2;
+}

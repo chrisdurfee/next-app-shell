@@ -1,0 +1,45 @@
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    z-index: 10;
+    -webkit-animation: pullUpTransparent .2s ease-in-out;
+    animation: pullUpTransparent .2s ease-in-out;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    overflow: hidden;
+}
+.overlay.inline{
+    position: relative;
+    animation: none;
+    will-change: unset;
+}
+.overlay header h1{
+    padding-left: 64px;
+}
+.overlay .back{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 15px 20px;
+    z-index: 15;
+}
+.overlay .body{
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+@media (max-width: 1300px)
+{
+    .overlay{
+        flex-direction: column;
+    }
+}

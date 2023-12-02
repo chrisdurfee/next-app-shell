@@ -1,0 +1,115 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+}
+.loader-progress{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #FFF;
+	z-index: 100;
+	opacity: 1;
+	pointer-events: none;
+}
+.loader-progress.complete{
+	-webkit-transition: opacity .6s;
+	transition: opacity .6s;
+	opacity: 0;
+}
+.loader-progress .progress{
+	position: absolute;
+	width: 0;
+	height: 4px;
+	background: #2C90EE;
+	-webkit-transition: all .5s;
+	transition: all .5s;
+	top: 0;
+	left: 0;
+	margin: auto;
+	opacity: 1;
+	z-index: 70;
+	-webkit-transform-origin: right;
+	transform-origin: right;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	will-change: transform;
+}
+.loader-progress.complete .progress{
+	-webkit-transition: all .6s;
+	transition: all .6s;
+	-webkit-transform: scale(0, 1);
+	-webkit-transition-delay: .1s;
+	transform: scale(0, 1);
+	transition-delay: .1s;
+}
+.loader-container .progress .wipe{
+	display: none;
+	position: absolute;
+	width: 200px;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	-webkit-transform: scale(0, 1);
+	transform: scale(0, 1);
+	-webkit-transition: all .6s;
+	-webkit-transform-origin: left;
+	transition: all .6s;
+	transform-origin: left;
+
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	will-change: transform;
+}
+.loader-progress.complete .progress .wipe{
+	-webkit-transform: scale(1, 1);
+	transform: scale(1, 1);
+}
+.loader-progress.complete .progress .wipe:first-child{
+	background-color: #C8C8C8;
+	transition-delay: 0s;
+	transition-duration: .2s;
+	z-index: 1;
+}
+.loader-progress.complete .progress .wipe:nth-child(2){
+	background-color: #464646;
+	transition-delay: .2s;
+	transition-duration: .2s;
+	z-index: 2;
+	display: none;
+}
+.loader-progress.complete .progress .wipe:last-child{
+	background-color: #F1F1F1;
+	transition-delay: .2s;
+	transition-duration: .3s;
+	z-index: 3;
+}
+.progress-label{
+	display: none;
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	text-align: center;
+	line-height: 90px;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-radius: 50%;
+	margin: auto;
+	font-size: 20px;
+	font-weight: 100;
+	letter-spacing: 2px;
+	z-index: 75;
+	-webkit-transition: all .5s .5s ease-out;
+	transition: all .5s .5s ease-out;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	will-change: transform, opacity;
+}
+.loader-progress.complete .progress-label{
+	opacity: 0;
+}
