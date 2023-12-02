@@ -1,8 +1,8 @@
 "use strict";
 
-var ButtonGroup = base.Component.extend(
+const ButtonGroup = base.Component.extend(
 {
-    render: function()
+    render()
     {
         return {
             className: 'button-group',
@@ -10,7 +10,7 @@ var ButtonGroup = base.Component.extend(
             [
                 {
                     tag: 'p',
-                    onState: ['performance', function(ele, state)
+                    onState: ['performance', (ele, state) =>
                     {
                         switch(state)
                         {
@@ -30,23 +30,23 @@ var ButtonGroup = base.Component.extend(
         }
     },
 
-    addButton: function(label, value)
+    addButton(label, value)
     {
-        var self = this;
+        let self = this;
         return Button({
             className: 'gray-bttn',
             text: label,
             onState: ['performance', {
                 'selected': value
             }],
-            click: function()
+            click()
             {
                 self.state.set('performance', value);
             }
         });
     },
 
-    setupStates: function()
+    setupStates()
     {
         return {
             performance: 'fair'

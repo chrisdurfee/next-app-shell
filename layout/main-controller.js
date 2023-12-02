@@ -6,7 +6,7 @@
  * This will setup the main app controller.
  * @class
  */
-var MainController = base.Class.extend(
+const MainController = base.Class.extend(
 {
 	/**
 	 * @param {array} modules
@@ -23,7 +23,7 @@ var MainController = base.Class.extend(
 	 */
 	links: [],
 
-	constructor: function()
+	constructor()
 	{
 		/**
 		 * @member {object} router
@@ -36,7 +36,7 @@ var MainController = base.Class.extend(
 		this.appShell = null;
 	},
 
-	setupPush: function(serviceWorker)
+	setupPush(serviceWorker)
 	{
 		this.serviceWorker = serviceWorker;
 		this.push = new Push(this.pushPublicKey, serviceWorker);
@@ -46,7 +46,7 @@ var MainController = base.Class.extend(
 	 * This will get the router settings.
 	 * @return {object}
 	 */
-	getRouterSettings: function()
+	getRouterSettings()
 	{
 		return Configs.router;
 	},
@@ -55,12 +55,12 @@ var MainController = base.Class.extend(
 	 * This will setup the router.
 	 * @protected
 	 */
-	setupRouter: function()
+	setupRouter()
 	{
-		var settings = this.getRouterSettings(),
+		let settings = this.getRouterSettings(),
 		baseUrl = settings.baseUrl;
 
-		var router = this.router = base.router;
+		let router = this.router = base.router;
 		router.setup(baseUrl, settings.title);
 
 		/* this will modify the base tag to ref from
@@ -68,11 +68,11 @@ var MainController = base.Class.extend(
 		this.updateBaseTag(baseUrl);
 	},
 
-	updateBaseTag: function(url)
+	updateBaseTag(url)
 	{
 		/* this will modify the base tag to ref from
 		the base url for all xhr */
-		var ele = document.getElementsByTagName('base');
+		let ele = document.getElementsByTagName('base');
 		if(ele.length)
 		{
 			ele[0].href = url;
@@ -83,29 +83,29 @@ var MainController = base.Class.extend(
 	 * This will setup the app modules.
 	 *
 	 */
-	setupModules: function()
+	setupModules()
 	{
-		var modules = this.modules = AppModules || [];
+		let modules = this.modules = AppModules || [];
 		if(!modules || modules.length < 1)
 		{
 			return;
 		}
 
-		for(var i = 0, length = modules.length; i < length; i++)
+		for(let i = 0, length = modules.length; i < length; i++)
 		{
-			var module = modules[i];
+			let module = modules[i];
 			if(!module)
 			{
 				continue;
 			}
 
-			var routes = module.getRoutes();
+			let routes = module.getRoutes();
 			if(routes)
 			{
 				this.routes = this.routes.concat(routes);
 			}
 
-			var links = module.getLinks();
+			let links = module.getLinks();
 			if(links)
 			{
 				this.links = this.links.concat(links);
@@ -119,7 +119,7 @@ var MainController = base.Class.extend(
 	 *
 	 * @return {array}
 	 */
-	getRoutes: function()
+	getRoutes()
 	{
 		return this.routes;
 	},
@@ -130,7 +130,7 @@ var MainController = base.Class.extend(
 	 *
 	 * @return {array}
 	 */
-	getNavOptions: function()
+	getNavOptions()
 	{
 		return this.links;
 	},
@@ -142,7 +142,7 @@ var MainController = base.Class.extend(
 	 * @param {object} [data]
 	 * @param {bool} [replace=false]
 	 */
-	navigate: function(uri, data, replace)
+	navigate(uri, data, replace)
 	{
 		this.router.navigate(uri, data, replace);
 	},
@@ -150,10 +150,10 @@ var MainController = base.Class.extend(
 	/**
 	 * This will setup the app shell.
 	 */
-	setupAppShell: function()
+	setupAppShell()
 	{
-		var options = this.getNavOptions();
-		var main = this.appShell = new AppShell(
+		let options = this.getNavOptions();
+		let main = this.appShell = new AppShell(
 		{
 			options: options,
 			routes: this.getRoutes()
@@ -166,12 +166,12 @@ var MainController = base.Class.extend(
 	 *
 	 * @return {object}
 	 */
-	getMainBody: function()
+	getMainBody()
 	{
 		return this.appShell.getBodyPanel();
 	},
 
-	setup: function()
+	setup()
 	{
 		this.setupRouter();
 		this.setupModules();

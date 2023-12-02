@@ -1,8 +1,8 @@
 "use strict";
 
-var FullPage = BasicPage.extend(
+const FullPage = BasicPage.extend(
 {
-	render: function()
+	render()
 	{
 		return MainSection(
 		{
@@ -15,7 +15,7 @@ var FullPage = BasicPage.extend(
 		});
 	},
 
-	addBody: function()
+	addBody()
 	{
 		return [
 			{

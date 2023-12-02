@@ -1,6 +1,6 @@
 "use strict";
 
-var AsideBsideTemplate = Template.extend(function(props)
+const AsideBsideTemplate = Template.extend((props) =>
 {
 	return {
 		className: 'body aside-container bside-container',

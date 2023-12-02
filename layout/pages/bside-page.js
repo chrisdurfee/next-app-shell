@@ -1,8 +1,8 @@
 "use strict";
 
-var BsidePage = BasicPage.extend(
+const BsidePage = BasicPage.extend(
 {
-	render: function()
+	render()
 	{
 		return MainSection(
 		{
@@ -15,7 +15,7 @@ var BsidePage = BasicPage.extend(
 		});
 	},
 
-	addBody: function()
+	addBody()
 	{
 		return [
 			{

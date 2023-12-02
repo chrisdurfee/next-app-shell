@@ -1,6 +1,6 @@
 "use strict";
 
-var add = function(src, defer)
+const add = (src, defer) =>
 {
 	scriptLoader.add({src: src, defer: defer});
 };

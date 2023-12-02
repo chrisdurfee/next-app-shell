@@ -1,6 +1,6 @@
 "use strict";
 
-var FullTemplate = Template.extend(function(props)
+const FullTemplate = Template.extend((props) =>
 {
 	return {
 		className: 'body full-container ' + props.className,

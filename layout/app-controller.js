@@ -7,7 +7,7 @@
  * the app settings.
  * @class
  */
-var AppController = MainController.extend(
+const AppController = MainController.extend(
 {
 
 });

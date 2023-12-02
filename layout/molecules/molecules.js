@@ -1,6 +1,6 @@
 "use strict";
 
-var Nav = Tag.extend(function(props)
+const Nav = Tag.extend((props) =>
 {
 	return {
 		tag: 'nav',
@@ -12,7 +12,7 @@ var Nav = Tag.extend(function(props)
 	};
 });
 
-var MessageLabel = Tag.extend(function(props)
+const MessageLabel = Tag.extend((props) =>
 {
 	return {
 		className: 'message-label',
@@ -31,7 +31,7 @@ var MessageLabel = Tag.extend(function(props)
 });
 
 /* labels */
-var Label = Tag.extend(function(props)
+const Label = Tag.extend((props) =>
 {
 	return {
 		tag: 'label',
@@ -47,7 +47,7 @@ var Label = Tag.extend(function(props)
 	};
 });
 
-var FloatingLabel = Tag.extend(function(props)
+const FloatingLabel = Tag.extend((props) =>
 {
 	return {
 		tag: 'label',
@@ -65,7 +65,7 @@ var FloatingLabel = Tag.extend(function(props)
 });
 
 /* controls */
-var Checkbox = Tag.extend(function(props)
+const Checkbox = Tag.extend((props) =>
 {
 	return {
 		tag: 'label',
@@ -86,7 +86,7 @@ var Checkbox = Tag.extend(function(props)
 	};
 });
 
-var Radio = Tag.extend(function(props)
+const Radio = Tag.extend((props) =>
 {
 	return {
 		tag: 'label',
@@ -107,7 +107,7 @@ var Radio = Tag.extend(function(props)
 	};
 });
 
-var Switch = Checkbox.extend(function(props)
+const Switch = Checkbox.extend((props) =>
 {
 	return {
 		className: 'switch-label',
@@ -126,7 +126,7 @@ var Switch = Checkbox.extend(function(props)
 	};
 });
 
-var GridContainer = Tag.extend(function(props)
+const GridContainer = Tag.extend((props) =>
 {
 	return {
 		className: 'grid-container',

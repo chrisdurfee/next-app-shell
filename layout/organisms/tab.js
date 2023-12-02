@@ -6,26 +6,26 @@
  * This will create a tab link component.
  * @class
  */
-var TabLink = base.Component.extend(
+const TabLink = base.Component.extend(
 {
 	/**
 	 * This will configure the link active class.
 	 *
 	 * @protected
 	 */
-	onCreated: function()
+	onCreated()
 	{
 		this.selectedClass = this.activeClass || 'selected';
 	},
 
-	render: function()
+	render()
 	{
-		var href = this.href,
+		let href = this.href,
 		text = this.label;
 
-		var watchers = this.setupWatchers(href, text);
+		let watchers = this.setupWatchers(href, text);
 
-		var onState = {};
+		let onState = {};
 		onState[this.selectedClass] = true;
 
 		return {
@@ -50,7 +50,7 @@ var TabLink = base.Component.extend(
 	 * @param {string} string
 	 * @return {(string|null)}
 	 */
-	getString: function(string)
+	getString(string)
 	{
 		return typeof string !== 'object'? string : null;
 	},
@@ -63,13 +63,13 @@ var TabLink = base.Component.extend(
 	 * @param {string} text
 	 * @return {array}
 	 */
-	setupWatchers: function(href, text)
+	setupWatchers(href, text)
 	{
-		var self = this,
+		let self = this,
 		exact = (this.exact !== false),
 		data = base.router.data;
 
-		var watchers = [];
+		let watchers = [];
 
 		if(href && typeof href === 'object')
 		{
@@ -91,27 +91,27 @@ var TabLink = base.Component.extend(
 		return watchers;
 	},
 
-	setupStates: function()
+	setupStates()
 	{
 		return {
 			selected: false
 		};
 	},
 
-	update: function(selected)
+	update(selected)
 	{
 		this.state.set('selected', selected);
 	}
 });
 
-var TabNavigation = base.Component.extend(
+const TabNavigation = base.Component.extend(
 {
-	onCreated: function()
+	onCreated()
 	{
 		this.links = [];
 	},
 
-	render: function()
+	render()
 	{
 		return {
 			tag: 'nav',
@@ -121,28 +121,28 @@ var TabNavigation = base.Component.extend(
 				tag: 'ul',
 				watch: {
 					value: ['[[path]]', base.router.data],
-					callBack: base.bind(this, this.updateLinks)
+					callBack: this.updateLinks.bind(this)
 				},
 				children: this.addLinks()
 			}
 		};
 	},
 
-	afterSetup: function()
+	afterSetup()
 	{
-		var path = base.router.data.get('path');
+		let path = base.router.data.get('path');
 		this.updateLinks(null, path);
 	},
 
-	updateLinks: function(ele, value)
+	updateLinks(ele, value)
 	{
-		var check = false,
+		let check = false,
 		links = this.links,
 		firstLink = null;
 
-		for(var i = 0, length = links.length; i < length; i++)
+		for(let i = 0, length = links.length; i < length; i++)
 		{
-			var link = links[i];
+			let link = links[i];
 			if(link.rendered === false)
 			{
 				continue;
@@ -171,26 +171,26 @@ var TabNavigation = base.Component.extend(
 		}
 	},
 
-	updateLink: function(link, selected)
+	updateLink(link, selected)
 	{
 		link.update(selected);
 	},
 
-	addLinks: function()
+	addLinks()
 	{
-		var links = [],
+		let links = [],
 		options = this.options || [];
 
-		for(var i = 0, length = options.length; i < length; i++)
+		for(let i = 0, length = options.length; i < length; i++)
 		{
-			var link = this.addLink(options[i]);
+			let link = this.addLink(options[i]);
 			this.links.push(link);
 			links.push(link);
 		}
 		return links;
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
 		return new TabLink({
 			label: option.label,
@@ -206,9 +206,9 @@ var TabNavigation = base.Component.extend(
  * to tab panels.
  * @class
  */
-var Tab = base.Component.extend(
+const Tab = base.Component.extend(
 {
-	render: function()
+	render()
 	{
 		return {
             className: 'tab-panel',
@@ -226,13 +226,13 @@ var Tab = base.Component.extend(
         };
 	},
 
-    addGroup: function()
+    addGroup()
     {
-		var option,
+		let option,
 		switches = [];
 
-		var options = this.options;
-		for(var i = 0, length = options.length; i < length; i++)
+		let options = this.options;
+		for(let i = 0, length = options.length; i < length; i++)
 		{
             option = options[i];
 			switches.push(

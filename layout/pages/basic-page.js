@@ -7,7 +7,7 @@
  * to all child modules.
  * @class
  */
-var BasicPage = base.Component.extend(
+const BasicPage = base.Component.extend(
 {
 	/**
 	 * This will be called every time the route
@@ -15,7 +15,7 @@ var BasicPage = base.Component.extend(
 	 *
 	 * @param {object} params
 	 */
-	update: function(params)
+	update(params)
 	{
 
 	}

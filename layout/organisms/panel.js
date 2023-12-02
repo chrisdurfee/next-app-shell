@@ -1,8 +1,8 @@
 "use strict";
 
-var Panel = base.Component.extend(
+const Panel = base.Component.extend(
 {
-	render: function()
+	render()
 	{
 		return {
             className: 'panel-container',

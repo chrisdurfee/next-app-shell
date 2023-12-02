@@ -6,7 +6,7 @@
      * Set any common dependencies that are shared between
      * pages.
      */
-    var common = [
+    let common = [
         'layout/modules/example-module/css/pages/example-page.css'
     ];
 
@@ -15,7 +15,7 @@
      * the common depends to the module routes to use when
      * adding local dependencies.
      */
-    var routes = new ModuleRoutes(common);
+    let routes = new ModuleRoutes(common);
 
     /**
      * This will create the example module and add it to the
@@ -40,7 +40,7 @@
                 depends: [
                     'layout/organisms/button-group.js'
                 ],
-                callBack: function()
+                callBack()
                 {
                     return new ExamplePage();
                 }

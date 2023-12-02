@@ -8,7 +8,7 @@
      * @param {object} props
      * @return {object}
      */
-    var BackButton = Tag.extend(function(props)
+    const BackButton = Tag.extend((props) =>
     {
         return {
             className: 'back',
@@ -22,16 +22,16 @@
         };
     });
 
-    var Overlay = base.Component.extend(
+    const Overlay = base.Component.extend(
     {
-        beforeSetup: function()
+        beforeSetup()
         {
             this.persist = false;
         },
 
-        render: function()
+        render()
         {
-            var referralPath = this.getReferralPath();
+            let referralPath = this.getReferralPath();
 
             return {
                 className: this.getOverlayType(),
@@ -52,9 +52,9 @@
          * This will get the referral path if set by a route.
          * @return {string|null}
          */
-        getReferralPath: function()
+        getReferralPath()
         {
-            var route = this.route;
+            let route = this.route;
             if(!route)
             {
                 return null;
@@ -66,7 +66,7 @@
         /**
          * This will get the overlay className.
          */
-        getOverlayType: function()
+        getOverlayType()
         {
             return 'overlay ' + (this.type || '');
         },
@@ -75,7 +75,7 @@
          * This can be overriden to return routes.
          * @return {array|null}
          */
-        getRoutes: function()
+        getRoutes()
         {
             return null;
         },
@@ -84,24 +84,24 @@
          * This will setup the overlay states.
          * @return {object}
          */
-        setupStates: function()
+        setupStates()
         {
             return {
                 loading: false
             };
         },
 
-        addLoading: function()
+        addLoading()
         {
             this.state.set('loading', true);
         },
 
-        removeLoading: function()
+        removeLoading()
         {
             this.state.set('loading', false);
         },
 
-        addBody: function()
+        addBody()
         {
             return {
                 className: 'body fadeIn',
@@ -109,7 +109,7 @@
             };
         },
 
-        getBodyContents: function()
+        getBodyContents()
         {
             return this.children || null;
         }

@@ -1,6 +1,6 @@
 "use strict";
 
-var Tag = Atom.extend(function(props)
+const Tag = Atom.extend((props) =>
 {
 	return {
 		className: props.className || null,
@@ -14,7 +14,7 @@ var Tag = Atom.extend(function(props)
 	};
 });
 
-var Video = Tag.extend(function(props)
+const Video = Tag.extend((props) =>
 {
 	return {
 		tag: 'video',
@@ -25,9 +25,9 @@ var Video = Tag.extend(function(props)
 	};
 });
 
-var Img = Tag.extend(function(props)
+const Img = Tag.extend((props) =>
 {
-	var draggable = (props.draggable === true)? true : false;
+	let draggable = (props.draggable === true)? true : false;
 
 	return {
 		tag: 'img',
@@ -39,7 +39,7 @@ var Img = Tag.extend(function(props)
 	};
 });
 
-var Button = Tag.extend(function(props)
+const Button = Tag.extend((props) =>
 {
 	return {
 		tag: 'button',
@@ -48,7 +48,7 @@ var Button = Tag.extend(function(props)
 	};
 });
 
-var MainSection = Tag.extend(function(props)
+const MainSection = Tag.extend((props) =>
 {
 	return {
 		tag: 'section',
@@ -57,51 +57,49 @@ var MainSection = Tag.extend(function(props)
 	};
 });
 
-var Header = Tag.extend(
+const Header = Tag.extend(
 {
 	tag: 'header'
 });
 
-var H1 = Tag.extend(
+const H1 = Tag.extend(
 {
 	tag: 'h1'
 });
 
-var H2 = Tag.extend(
+const H2 = Tag.extend(
 {
 	tag: 'h2'
 });
 
-var Span = Tag.extend(function(props)
+const Span = Tag.extend((props) =>
 {
 	return {
 		tag: 'span'
 	};
 });
 
-var Br = function()
+const Br = () =>
 {
 	return {
 		tag: 'br'
 	};
 };
 
-var Strong = Tag.extend(
+const Strong = Tag.extend(
 {
 	tag: 'strong'
 });
 
-var Ul = Tag.extend(
+const Ul = Tag.extend(
 {
 	tag: 'ul'
 });
 
 /* icons */
 /* icon font: https://material.io/resources/icons/?style=baseline */
-var Icon = Tag.extend(function(icon)
+const Icon = Tag.extend((icon) =>
 {
-	var icon = icon;
-
 	return {
 		tag: 'i',
 		className: icon,
@@ -111,67 +109,67 @@ var Icon = Tag.extend(function(icon)
 
 /* Extended buttons */
 
-var GrayButton = Button.extend(function(props)
+const GrayButton = Button.extend((props) =>
 {
-	var className = props.className;
+	let className = props.className;
 	className = (className) ? 'gray-bttn ' + className : 'gray-bttn';
 	return {
 		className: className
 	};
 });
 
-var OutlineButton = Button.extend(function(props)
+const OutlineButton = Button.extend((props) =>
 {
-	var className = props.className;
+	let className = props.className;
 	className = (className) ? 'outlined-bttn ' + className : 'outlined-bttn';
 	return {
 		className: className
 	};
 });
 
-var TextButton = Button.extend(function(props)
+const TextButton = Button.extend((props) =>
 {
-	var className = props.className;
+	let className = props.className;
 	className = (className) ? 'text-bttn ' + className : 'text-bttn';
 	return {
 		className: className
 	};
 });
 
-var IconButton = Button.extend(function(props)
+const IconButton = Button.extend((props) =>
 {
-	var icon = props.icon;
+	let icon = props.icon;
 	return {
 		className: icon + '-icon icon-bttn outlined-bttn',
 		children: Icon(icon)
 	};
 });
 
-var ToggleButton = IconButton({
+const ToggleButton = IconButton({
 	icon: 'more_vert'
 });
 
-var BackButton = IconButton({
+const BackButton = IconButton({
 	icon: 'arrow_back'
 });
 
-var CloseButton = IconButton({
+let CloseButton = IconButton({
 	icon: 'close'
 });
 
-var Message = Tag.extend(function(props)
+let Message = Tag.extend((props) =>
 {
 	return {
 		className: 'message ' + props.className
 	};
 });
 
-var P = Tag.extend(
+const P = Tag.extend(
 {
 	tag: 'p'
 });
 
-var A = Tag.extend(function(props)
+const A = Tag.extend((props) =>
 {
 	return {
 		tag: 'a',
@@ -180,24 +178,24 @@ var A = Tag.extend(function(props)
 	};
 });
 
-var Form = Tag.extend(function(props)
+const Form = Tag.extend((props) =>
 {
 	return {
 		tag: 'form'
 	};
 });
 
-var Fieldset = Tag.extend(
+const Fieldset = Tag.extend(
 {
 	tag: 'fieldset'
 });
 
-var Legend = Tag.extend(
+const Legend = Tag.extend(
 {
 	tag: 'legend'
 });
 
-var FormEle = Tag.extend(function(props)
+const FormEle = Tag.extend((props) =>
 {
 	return {
 		autofocus: props.autofocus || null,
@@ -213,7 +211,7 @@ var FormEle = Tag.extend(function(props)
 	};
 });
 
-var Input = FormEle.extend(function(props)
+const Input = FormEle.extend((props) =>
 {
 	return {
 		tag: 'input',
@@ -224,12 +222,12 @@ var Input = FormEle.extend(function(props)
 	};
 });
 
-var DefaultSelect = FormEle.extend(function(props)
+const DefaultSelect = FormEle.extend((props) =>
 {
 	return {
 		tag: 'select',
 		onblur: props.onblur || null,
-		onCreated: function(ele)
+		onCreated(ele)
 		{
 			if(props.options)
 			{
@@ -239,7 +237,7 @@ var DefaultSelect = FormEle.extend(function(props)
 	};
 });
 
-var TelInput = Input.extend(function(props)
+const TelInput = Input.extend((props) =>
 {
 	return {
 		type: 'tel',
@@ -247,9 +245,9 @@ var TelInput = Input.extend(function(props)
 		label: 'Phone',
 		required: true,
 		pattern: '[0-9]{3}-[0-9]{3}-[0-9]{4}',
-		keyup: function(e)
+		keyup(e)
 		{
-			var target = e.target || e.srcElement,
+			let target = e.target || e.srcElement,
 			pattern = /(\d{0,3})(\d{0,3})(\d{0,4})/,
 			patternNumber = /\D/g,
 			x = target.value.replace(patternNumber, '').match(pattern);
@@ -259,7 +257,7 @@ var TelInput = Input.extend(function(props)
 	};
 });
 
-var Textarea = FormEle.extend(function(props)
+const Textarea = FormEle.extend((props) =>
 {
 	return {
 		tag: 'textarea'
@@ -267,7 +265,7 @@ var Textarea = FormEle.extend(function(props)
 });
 
 /* submit button */
-var Submit = Button.extend(function(props)
+const Submit = Button.extend((props) =>
 {
 	return {
 		type: 'submit'
@@ -276,9 +274,9 @@ var Submit = Button.extend(function(props)
 
 /* template tests */
 
-var GridPanel = Tag.extend(function(props)
+const GridPanel = Tag.extend((props) =>
 {
-	var span = (props.span)? 'span-' + props.span : '';
+	let span = (props.span)? 'span-' + props.span : '';
 
 	return {
 		className: 'panel ' + span

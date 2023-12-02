@@ -1,8 +1,8 @@
 "use strict";
 
-var AppShell = base.Component.extend(
+const AppShell = base.Component.extend(
 {
-	render: function()
+	render()
 	{
 		return {
 			className: 'app-container',
@@ -20,12 +20,12 @@ var AppShell = base.Component.extend(
 		};
 	},
 
-	getBodyPanel: function()
+	getBodyPanel()
 	{
 		return this.mainBody;
 	},
 
-	addNotice: function(props)
+	addNotice(props)
 	{
 		this.notices.addNotice(props);
 	}

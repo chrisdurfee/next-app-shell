@@ -6,11 +6,11 @@
  * @param {function} fn
  * @param {bool} capture
  */
-var addEvent = function(event, obj, fn, capture)
+const addEvent = (event, obj, fn, capture) =>
 {
     if (typeof window.addEventListener === 'function')
     {
-        addEvent = function(event, obj, fn, capture)
+        addEvent = (event, obj, fn, capture) =>
         {
             capture = capture || false;
             obj.addEventListener(event, fn, capture);
@@ -18,7 +18,7 @@ var addEvent = function(event, obj, fn, capture)
     }
     else
     {
-        addEvent = function(event, obj, fn, capture)
+        addEvent = (event, obj, fn, capture) =>
         {
             obj.attachEvent('on' + event, fn);
         };
@@ -32,7 +32,7 @@ var addEvent = function(event, obj, fn, capture)
  *
  * @param {object} script
  */
-var Script = function(script)
+const Script = (script) =>
 {
     return {
         src: script.src || '',
@@ -44,7 +44,7 @@ var Script = function(script)
     };
 };
 
-var ScriptLoader = global.ScriptLoader =
+let ScriptLoader = global.ScriptLoader =
 {
     /**
      * @param {array} scripts
@@ -67,7 +67,7 @@ var ScriptLoader = global.ScriptLoader =
      * This will setup the script loader events
      * and return itself.
      */
-    setup: function()
+    setup()
     {
         this.addEvent();
         return this;
@@ -80,9 +80,9 @@ var ScriptLoader = global.ScriptLoader =
      * @param {number} index
      * @return {object} self
      */
-    add: function(scriptObj, index)
+    add(scriptObj, index)
     {
-        var script = Script(scriptObj),
+        let script = Script(scriptObj),
         scripts = this.scripts;
 
         /* we want to check if the script is to be
@@ -127,7 +127,7 @@ var ScriptLoader = global.ScriptLoader =
      * @param {object} progressLabel
      * @param {function} loadedCallBack
      */
-    showProgress: function(progressBar, progressLabel, loadedCallBack)
+    showProgress(progressBar, progressLabel, loadedCallBack)
     {
         return function(percent)
         {
@@ -147,12 +147,12 @@ var ScriptLoader = global.ScriptLoader =
     /**
      * This will update the progress.
      */
-    updateProgress: function()
+    updateProgress()
     {
-        var progress = this.progress;
-        var percent = Math.floor(progress.loaded / progress.pending * 100);
+        let progress = this.progress;
+        let percent = Math.floor(progress.loaded / progress.pending * 100);
 
-        var callBack = this.progress.callBack;
+        let callBack = this.progress.callBack;
         if(typeof callBack === 'function')
         {
             callBack(percent);
@@ -173,12 +173,12 @@ var ScriptLoader = global.ScriptLoader =
      * @param {string} src
      * @return {object} self
      */
-    remove: function(src)
+    remove(src)
     {
-        var scripts = this.scripts;
-        for(var i = 0; i < scripts.length; i++)
+        let scripts = this.scripts;
+        for(let i = 0; i < scripts.length; i++)
         {
-            var obj = scripts[i];
+            let obj = scripts[i];
             if(obj.src === src)
             {
                 this.scripts.splice(i, 1);
@@ -194,18 +194,18 @@ var ScriptLoader = global.ScriptLoader =
      * @param {object} obj
      * @return {object} self
      */
-    createScript: function(obj)
+    createScript(obj)
     {
         if(obj && typeof obj === 'object')
         {
-            var d = document;
-            var s = d.createElement('script');
+            let d = document;
+            let s = d.createElement('script');
 
             s.async = (obj.async === true);
             s.defer = (obj.defer === true);
 
-            var self = this;
-            s.onload = function()
+            let self = this;
+            s.onload = () =>
             {
                 self.progress.loaded++;
                 self.updateProgress();
@@ -219,7 +219,7 @@ var ScriptLoader = global.ScriptLoader =
 
             s.src = obj.src;
 
-            var node = d.getElementsByTagName('head')[0];
+            let node = d.getElementsByTagName('head')[0];
             node.appendChild(s);
         }
 
@@ -229,20 +229,20 @@ var ScriptLoader = global.ScriptLoader =
     /**
      * This will load the scripts.
      */
-    loadScripts: function()
+    loadScripts()
     {
-        var scripts = this.scripts;
-        for(var i = 0, maxLength = scripts.length; i < maxLength; i++)
+        let scripts = this.scripts;
+        for(let i = 0, maxLength = scripts.length; i < maxLength; i++)
         {
-            var obj = scripts[i];
+            let obj = scripts[i];
             this.createScript(obj);
         }
     },
 
-    addEvent: function()
+    addEvent()
     {
-        var self = this;
-        addEvent('load', window, function()
+        let self = this;
+        addEvent('load', window, () =>
         {
             self.pageLoaded = true;
             self.loadScripts();

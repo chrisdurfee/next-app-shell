@@ -1,6 +1,6 @@
 "use strict";
 
-var AppModules = [];
+let AppModules = [];
 
 /**
  * This will create a route object.
@@ -8,7 +8,7 @@ var AppModules = [];
  * @param {function} component
  * @param {string} [title]
  */
-var addRoute = function(uri, component, title)
+const addRoute = (uri, component, title) =>
 {
 	return {
 		uri: uri,
@@ -23,7 +23,7 @@ var addRoute = function(uri, component, title)
  *
  * This will help create local module routes.
  */
-var ModuleRoutes = base.Class.extend(
+const ModuleRoutes = base.Class.extend(
 {
 	/**
 	 *
@@ -40,7 +40,7 @@ var ModuleRoutes = base.Class.extend(
 	 *
 	 * @param {array} deps
 	 */
-	depends: function(deps)
+	depends(deps)
     {
         return this.common.concat(deps);
     },
@@ -52,7 +52,7 @@ var ModuleRoutes = base.Class.extend(
 	 * @param {string} [title]
 	 * @param {bool} [persist]
 	 */
-	add: function(uri, component, title, persist)
+	add(uri, component, title, persist)
 	{
 		persist = (persist !== false);
 
@@ -71,19 +71,19 @@ var ModuleRoutes = base.Class.extend(
 	 * @param {string} [title]
 	 * @param {bool} [persist]
 	 */
-	load: function(uri, loader, title, persist)
+	load(uri, loader, title, persist)
 	{
-		var depends = loader.depends || [];
+		let depends = loader.depends || [];
 		if(this.common)
 		{
 			depends = this.depends(depends);
 		}
 
-		var callBack = loader.callBack;
+		let callBack = loader.callBack;
 		if(typeof callBack === 'string')
 		{
-			var component;
-			callBack = function()
+			let component;
+			callBack = () =>
 			{
 				return component || (component = new window[loader.callBack]());
 			};
@@ -109,7 +109,7 @@ var ModuleRoutes = base.Class.extend(
  * to all child modules.
  * @class
  */
-var Module = base.Class.extend(
+const Module = base.Class.extend(
 {
 	/**
 	 * @param {string} title
@@ -136,7 +136,7 @@ var Module = base.Class.extend(
 
 		this.title = settings.title;
 
-		var routes = settings.routes;
+		let routes = settings.routes;
 		this.convertLoaderRoutes(routes);
 		this.routes = routes;
 
@@ -148,16 +148,16 @@ var Module = base.Class.extend(
 	 *
 	 * @param {array} routes
 	 */
-	convertLoaderRoutes: function(routes)
+	convertLoaderRoutes(routes)
 	{
 		if(!routes)
 		{
 			return;
 		}
 
-		for(var i = 0, length = routes.length; i < length; i++)
+		for(let i = 0, length = routes.length; i < length; i++)
 		{
-			var route = routes[i];
+			let route = routes[i];
 			if(route && route.component.src)
 			{
 				route.component = new Loader(route.component);
@@ -170,7 +170,7 @@ var Module = base.Class.extend(
 	 *
 	 * @return {array}
 	 */
-	getRoutes: function()
+	getRoutes()
 	{
 		return this.routes;
 	},
@@ -180,15 +180,15 @@ var Module = base.Class.extend(
 	 *
 	 * @return {array}
 	 */
-	getLinks: function()
+	getLinks()
 	{
 		return this.links;
 	}
 });
 
-Module.create = function(settings)
+Module.create = (settings) =>
 {
-	var module = new Module(settings);
+	let module = new Module(settings);
 	AppModules.push(module);
 	return module;
 };

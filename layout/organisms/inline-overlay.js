@@ -2,9 +2,9 @@
 {
     "use strict";
 
-    var InlineOverlay = Overlay.extend(
+    const InlineOverlay = Overlay.extend(
     {
-        getOverlayType: function()
+        getOverlayType()
         {
             return 'overlay inline ' + this.type;
         }

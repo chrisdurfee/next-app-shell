@@ -1,6 +1,6 @@
 "use strict";
 
-var Template = Atom.extend(
+const Template = Atom.extend(
 {
 	tag: 'section'
 });

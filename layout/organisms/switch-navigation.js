@@ -6,26 +6,26 @@
  * This will create a tab link component.
  * @class
  */
-var SwitchLink = base.Component.extend(
+const SwitchLink = base.Component.extend(
 {
 	/**
 	 * This will configure the link active class.
 	 *
 	 * @protected
 	 */
-	onCreated: function()
+	onCreated()
 	{
 		this.selectedClass = this.activeClass || 'selected';
 	},
 
-	render: function()
+	render()
 	{
-		var href = this.href,
+		let href = this.href,
 		text = this.text;
 
-		var watchers = this.setupWatchers(href, text);
+		let watchers = this.setupWatchers(href, text);
 
-		var onState = {};
+		let onState = {};
 		onState[this.selectedClass] = true;
 
 		return {
@@ -50,7 +50,7 @@ var SwitchLink = base.Component.extend(
 	 * @param {string} string
 	 * @return {(string|null)}
 	 */
-	getString: function(string)
+	getString(string)
 	{
 		return typeof string !== 'object'? string : null;
 	},
@@ -63,9 +63,9 @@ var SwitchLink = base.Component.extend(
 	 * @param {string} text
 	 * @return {array}
 	 */
-	setupWatchers: function(href, text)
+	setupWatchers(href, text)
 	{
-		var watchers = [];
+		let watchers = [];
 
 		if(href && typeof href === 'object')
 		{
@@ -87,19 +87,19 @@ var SwitchLink = base.Component.extend(
 		return watchers;
 	},
 
-	setupStates: function()
+	setupStates()
 	{
 		return {
 			selected: false
 		};
 	},
 
-	getPathname: function()
+	getPathname()
 	{
 		this.link.pathname;
 	},
 
-	update: function(selected)
+	update(selected)
 	{
 		this.state.set('selected', selected);
 	}
@@ -112,16 +112,16 @@ var SwitchLink = base.Component.extend(
  * @class
  * @augments SwitchLink
  */
-var SwitchALink = SwitchLink.extend(
+const SwitchALink = SwitchLink.extend(
 {
-	render: function()
+	render()
 	{
-		var href = this.href,
+		let href = this.href,
 		text = this.text;
 
-		var watchers = this.setupWatchers(href, text);
+		let watchers = this.setupWatchers(href, text);
 
-		var onState = {};
+		let onState = {};
 		onState[this.selectedClass] = true;
 
 		return {
@@ -135,32 +135,32 @@ var SwitchALink = SwitchLink.extend(
 		};
 	},
 
-	afterSetup: function()
+	afterSetup()
 	{
 		this.link = this.panel;
 	},
 
-	getPathname: function()
+	getPathname()
 	{
 		this.link.pathname;
 	}
 });
 
-var SwitchNavigation = base.Component.extend(
+const SwitchNavigation = base.Component.extend(
 {
-	onCreated: function()
+	onCreated()
 	{
         this.data = base.router.data;
 		this.reset();
 	},
 
-	reset: function()
+	reset()
 	{
 		this.links = [];
 		this.hasSetup = false;
 	},
 
-	render: function()
+	render()
 	{
 		return {
 			tag: 'nav',
@@ -171,19 +171,19 @@ var SwitchNavigation = base.Component.extend(
                 watch:
                 {
 					value: ['[[path]]', this.data],
-					callBack: base.bind(this, this.updateLinks)
+					callBack: this.updateLinks.bind(this)
 				},
 				children: this.addLinks()
 			}
 		};
 	},
 
-	beforeDestroy: function()
+	beforeDestroy()
 	{
 		this.reset();
 	},
 
-	updateLinks: function(ele, value)
+	updateLinks(ele, value)
 	{
 		if(this.hasSetup === false)
 		{
@@ -191,13 +191,13 @@ var SwitchNavigation = base.Component.extend(
 			return;
 		}
 
-		var check = false,
+		let check = false,
 		links = this.links,
 		firstLink = null;
 
-		for(var i = 0, length = links.length; i < length; i++)
+		for(let i = 0, length = links.length; i < length; i++)
 		{
-			var link = links[i];
+			let link = links[i];
 			if(link.rendered === false)
 			{
 				continue;
@@ -226,26 +226,26 @@ var SwitchNavigation = base.Component.extend(
 		}
 	},
 
-	updateLink: function(link, selected)
+	updateLink(link, selected)
 	{
 		link.update(selected);
 	},
 
-	addLinks: function()
+	addLinks()
 	{
-		var links = [],
+		let links = [],
 		options = this.options || [];
 
-		for(var i = 0, length = options.length; i < length; i++)
+		for(let i = 0, length = options.length; i < length; i++)
 		{
-			var link = this.addLink(options[i]);
+			let link = this.addLink(options[i]);
 			this.links.push(link);
 			links.push(link);
 		}
 		return links;
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
 		return new SwitchLink(
         {

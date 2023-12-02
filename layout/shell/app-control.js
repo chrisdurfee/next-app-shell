@@ -1,13 +1,13 @@
 "use strict";
 
-var AppControl = base.Component.extend(
+const AppControl = base.Component.extend(
 {
-    onCreated: function()
+    onCreated()
     {
         this.timer = null;
     },
 
-	render: function()
+	render()
 	{
 		return {
 			className: 'app-nav-container',
@@ -16,7 +16,7 @@ var AppControl = base.Component.extend(
                     ignoreHover: true
                 }]
             ],
-            mouseleave: base.bind(this, this.removeIgnore),
+            mouseleave: this.removeIgnore.bind(this),
 			primary: new MainNavigation({
                 options: this.options,
                 parent: this
@@ -24,11 +24,11 @@ var AppControl = base.Component.extend(
 		};
     },
 
-    removeIgnore: function()
+    removeIgnore()
     {
         window.clearTimeout(this.timer);
 
-        var state = this.state;
+        let state = this.state;
         this.timer = window.setTimeout(function()
         {
             state.set({
@@ -37,7 +37,7 @@ var AppControl = base.Component.extend(
         }, 400);
     },
 
-	setupStates: function()
+	setupStates()
 	{
 		this.stateTargetId = 'app-control';
 

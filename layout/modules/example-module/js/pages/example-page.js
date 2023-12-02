@@ -6,9 +6,9 @@
  * This will create a example page.
  * @class
  */
-var ExamplePage = BasicPage.extend(
+const ExamplePage = BasicPage.extend(
 {
-	render: function()
+	render()
 	{
 		return MainSection(
 		{
@@ -21,7 +21,7 @@ var ExamplePage = BasicPage.extend(
 		});
 	},
 
-	addBody: function()
+	addBody()
 	{
 		return [
 			{

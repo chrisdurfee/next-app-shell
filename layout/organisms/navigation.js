@@ -9,11 +9,11 @@
 	 * nested navigations.
 	 * @class
 	 */
-	var NavButtonLink = base.Component.extend(
+	const NavButtonLink = base.Component.extend(
 	{
-		render: function()
+		render()
 		{
-			var self = this,
+			let self = this,
 			state = this.state;
 
 			return {
@@ -25,12 +25,12 @@
 						active: true
 					}]
 				],
-				click: function()
+				click()
 				{
-					var value = !state.get('active');
+					let value = !state.get('active');
 					state.set('active', value);
 
-					var active = null;
+					let active = null;
 					if(value)
 					{
 						active = self;
@@ -45,7 +45,7 @@
 			};
 		},
 
-		setupStates: function()
+		setupStates()
 		{
 			return {
 				selected: false,
@@ -53,7 +53,7 @@
 			};
 		},
 
-		update: function(selected)
+		update(selected)
 		{
 			this.state.set({
 				selected: selected,
@@ -68,9 +68,9 @@
 	 * This will setup a navigation link.
 	 * @class
 	 */
-	var MainLink = base.Component.extend(
+	const MainLink = base.Component.extend(
 	{
-		render: function()
+		render()
 		{
 			return {
 				tag: 'li',
@@ -80,9 +80,9 @@
 			};
 		},
 
-		addLink: function()
+		addLink()
 		{
-			var link,
+			let link,
 			children = [
 				(!this.icon)? null : Span({
 					className: 'icon ' + this.icon
@@ -114,12 +114,12 @@
 			return this.cache('link', link);
 		},
 
-		isSelected: function()
+		isSelected()
 		{
 			return this.link.state.get('selected');
 		},
 
-		update: function(selected)
+		update(selected)
 		{
 			this.link.update(selected);
 		}
@@ -130,7 +130,7 @@
 	 * @params {object} props
 	 * @return {object}
 	 */
-	var NavigationGroup = Atom.extend(function(props)
+	const NavigationGroup = Atom.extend((props) =>
 	{
 		return Ul({
 			className: 'navigation-group',
@@ -147,9 +147,9 @@
 	 * This will create a navigation component.
 	 * @class
 	 */
-	var Navigation = base.Component.extend(
+	const Navigation = base.Component.extend(
 	{
-		render: function()
+		render()
 		{
 			return {
 				tag: 'nav',
@@ -162,17 +162,17 @@
 			};
 		},
 
-		addSubs: function()
+		addSubs()
 		{
 			return null;
 		},
 
-		addLinks: function(options)
+		addLinks(options)
 		{
-			var links = [];
-			var option;
+			let links = [];
+			let option;
 
-			for(var i = 0, length = options.length; i < length; i++)
+			for(let i = 0, length = options.length; i < length; i++)
 			{
 				option = options[i];
 				if(!option.group)
@@ -187,9 +187,9 @@
 			return links;
 		},
 
-		addGroup: function(option)
+		addGroup(option)
 		{
-			var childLinks = this.addLinks(option.options);
+			let childLinks = this.addLinks(option.options);
 
 			return NavigationGroup({
 				text: option.group,
@@ -197,7 +197,7 @@
 			});
 		},
 
-		addLink: function(option)
+		addLink(option)
 		{
 			return new MainLink(option);
 		}
@@ -215,15 +215,15 @@
 	 * @class
 	 * @augments Navigation
 	 */
-	var InlineNavigation = Navigation.extend(
+	const InlineNavigation = Navigation.extend(
 	{
-		onCreated: function()
+		onCreated()
 		{
 			this.subs = [];
 			this.links = [];
 		},
 
-		setupSubNav: function(link)
+		setupSubNav(link)
 		{
 			return new SubNavigation(
 			{
@@ -232,23 +232,23 @@
 			});
 		},
 
-		addSubNav: function(link)
+		addSubNav(link)
 		{
-			var sub = this.setupSubNav(link);
+			let sub = this.setupSubNav(link);
 			link.sub = sub;
 
 			this.subs.push(sub);
 			return sub;
 		},
 
-		addLink: function(option)
+		addLink(option)
 		{
-			var link = new MainLink(option);
+			let link = new MainLink(option);
 			this.links.push(link);
 
 			if(link.options)
 			{
-				var sub = this.addSubNav(link);
+				let sub = this.addSubNav(link);
 				link = {
 					className: 'child-group',
 					link: link,
@@ -268,11 +268,11 @@
 	 * @class
 	 * @augments InlineNavigation
 	 */
-	var SubNavigation = InlineNavigation.extend(
+	const SubNavigation = InlineNavigation.extend(
 	{
-		render: function()
+		render()
 		{
-			var className = this.mainClassName || '';
+			let className = this.mainClassName || '';
 
 			return {
 				tag: 'nav',
@@ -286,14 +286,14 @@
 					link: {
 						watch: {
 							value: ['[[path]]', base.router.data],
-							callBack: base.bind(this, this.updateLinks)
+							callBack: this.updateLinks.bind(this)
 						}
 					}
 				}
 			};
 		},
 
-		onState: function()
+		onState()
 		{
 			return [
 				['selected', {
@@ -305,7 +305,7 @@
 			];
 		},
 
-		setupStates: function()
+		setupStates()
 		{
 			return {
 				remotes: [
@@ -318,32 +318,32 @@
 			};
 		},
 
-		isSelected: function()
+		isSelected()
 		{
 			return this.state.get('selected');
 		},
 
-		afterSetup: function()
+		afterSetup()
 		{
-			var path = base.router.data.get('path');
+			let path = base.router.data.get('path');
 			this.updateLinks(null, path);
 		},
 
-		updateLinks: function(ele, value)
+		updateLinks(ele, value)
 		{
-			var check = false,
+			let check = false,
 			links = this.links,
 			firstLink = null;
 
-			for(var i = 0, length = links.length; i < length; i++)
+			for(let i = 0, length = links.length; i < length; i++)
 			{
-				var link = links[i];
+				let link = links[i];
 				if(link.rendered === false)
 				{
 					continue;
 				}
 
-				var path = link.link.panel.pathname;
+				let path = link.link.panel.pathname;
 				if(!path)
 				{
 					if(link.isSelected())
@@ -363,7 +363,7 @@
 			this.updateParentLink(check);
 		},
 
-		updateParentLink: function(selected)
+		updateParentLink(selected)
 		{
 			this.parentLink.update(selected);
 		}
@@ -374,7 +374,7 @@
 	 *
 	 * @param {object} e
 	 */
-	var ignorHover = function(e)
+	const ignorHover = (e) =>
 	{
 		base.state.set('app-control', 'ignoreHover', true);
 	};
@@ -386,24 +386,24 @@
 	 * @param {object} active
 	 * @return {boolean}
 	 */
-	var isActive = function(buttons, active)
+	const isActive = (buttons, active) =>
 	{
 		if(!buttons.length)
 		{
 			return false;
 		}
 
-		var check = false;
-		for(var i = 0, length = buttons.length; i < length; i++)
+		let check = false;
+		for(let i = 0, length = buttons.length; i < length; i++)
 		{
-			var link = buttons[i],
+			let link = buttons[i],
 			sub = link.sub,
 			button = link.link;
 
-			var sub = link.sub;
+			sub = link.sub;
 			if(sub.buttons.length)
 			{
-				var result = isActive(sub.buttons, active);
+				let result = isActive(sub.buttons, active);
 				if(result)
 				{
 					check = true;
@@ -428,34 +428,34 @@
 	 * @class
 	 * @augments InlineNavigation
 	 */
-	var PrimaryNavigation = InlineNavigation.extend(
+	const PrimaryNavigation = InlineNavigation.extend(
 	{
-		beforeSetup: function()
+		beforeSetup()
 		{
 			this.buttons = [];
 		},
 
-		afterSetup: function()
+		afterSetup()
 		{
-			var subs = this.subs;
+			let subs = this.subs;
 			if(!subs.length)
 			{
 				return false;
 			}
 
-			for(var i = 0, length = subs.length; i < length; i++)
+			for(let i = 0, length = subs.length; i < length; i++)
 			{
-				var sub = subs[i];
+				let sub = subs[i];
 				this.appNav.appendChild(sub.panel);
 			}
 		},
 
-		addSubs: function()
+		addSubs()
 		{
 			return this.subs;
 		},
 
-		setupSubNav: function(link)
+		setupSubNav(link)
 		{
 			return new PrimarySubNavigation(
 			{
@@ -466,21 +466,21 @@
 			});
 		},
 
-		checkButtons: function(active)
+		checkButtons(active)
 		{
 			isActive(this.buttons, active);
 		},
 
-		addLink: function(option)
+		addLink(option)
 		{
 			option.callBack = ignorHover;
 
 			if(option.options)
 			{
-				option.checkCallBack = base.bind(this, this.checkButtons);
+				option.checkCallBack = this.checkButtons.bind(this);
 			}
 
-			var link = new MainLink(option);
+			let link = new MainLink(option);
 			this.links.push(link);
 
 			if(link.options)
@@ -501,11 +501,11 @@
 	 * @class
 	 * @augments SubNavigation
 	 */
-	var PrimarySubNavigation = SubNavigation.extend(
+	const PrimarySubNavigation = SubNavigation.extend(
 	{
-		beforeSetup: function()
+		beforeSetup()
 		{
-			var className;
+			let className;
 			switch(this.depth)
 			{
 				case 1:
@@ -522,27 +522,27 @@
 			this.buttons = [];
 		},
 
-		afterSetup: function()
+		afterSetup()
 		{
-			var subs = this.subs;
+			let subs = this.subs;
 			if(!subs.length)
 			{
 				return false;
 			}
 
-			for(var i = 0, length = subs.length; i < length; i++)
+			for(let i = 0, length = subs.length; i < length; i++)
 			{
-				var sub = subs[i];
+				let sub = subs[i];
 				this.appNav.appendChild(sub.panel);
 			}
 		},
 
-		addSubs: function()
+		addSubs()
 		{
 			return this.subs;
 		},
 
-		setupSubNav: function(link)
+		setupSubNav(link)
 		{
 			return new PrimarySubNavigation(
 			{
@@ -553,21 +553,21 @@
 			});
 		},
 
-		checkButtons: function(active)
+		checkButtons(active)
 		{
 			isActive(this.buttons, active);
 		},
 
-		addLink: function(option)
+		addLink(option)
 		{
 			option.callBack = ignorHover;
 
 			if(option.options)
 			{
-				option.checkCallBack = base.bind(this, this.checkButtons);
+				option.checkCallBack = this.checkButtons.bind(this);
 			}
 
-			var link = new MainLink(option);
+			let link = new MainLink(option);
 			this.links.push(link);
 			if(link.options)
 			{

@@ -1,8 +1,8 @@
 "use strict";
 
-var MainNavigation = base.Component.extend(
+const MainNavigation = base.Component.extend(
 {
-	render: function()
+	render()
 	{
 		return {
 			className: 'main-navigation nav-container',
@@ -17,7 +17,7 @@ var MainNavigation = base.Component.extend(
 		};
 	},
 
-	addLogo: function()
+	addLogo()
 	{
 		return A(
 		{
@@ -26,7 +26,7 @@ var MainNavigation = base.Component.extend(
 		});
 	},
 
-	addPrimaryNav: function()
+	addPrimaryNav()
 	{
 		return new PrimaryNavigation(
 		{

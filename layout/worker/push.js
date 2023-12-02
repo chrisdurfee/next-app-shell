@@ -1,13 +1,13 @@
 "use strict";
 
-var urlB64ToUint8Array = function(base64String)
+const urlB64ToUint8Array = (base64String) =>
 {
-	var padding = '='.repeat((4 - base64String.length % 4) % 4);
-	var base64 = (base64String + padding)
+	let padding = '='.repeat((4 - base64String.length % 4) % 4);
+	let base64 = (base64String + padding)
 	.replace(/\-/g, '+')
 	.replace(/_/g, '/');
 
-	var rawData = window.atob(base64),
+	let rawData = window.atob(base64),
 	outputArray = new Uint8Array(rawData.length);
 
 	for (let i = 0; i < rawData.length; ++i)
@@ -17,9 +17,9 @@ var urlB64ToUint8Array = function(base64String)
 	return outputArray;
 };
 
-var Push = base.Class.extend(
+const Push = base.Class.extend(
 {
-	constructor: function(publicKey, serviceWorker)
+	constructor(publicKey, serviceWorker)
 	{
 		this.publicKey = publicKey;
 		this.serviceWorker = serviceWorker;
@@ -30,29 +30,29 @@ var Push = base.Class.extend(
 		}
 	},
 
-	setupState: function(supported)
+	setupState(supported)
 	{
-		var target = this.state = base.state.add('push');
+		let target = this.state = base.state.add('push');
 		target.addAction('supported', supported);
 		target.addAction('subscribed', false);
 	},
 
-	supported: function()
+	supported()
 	{
-		var supported = ('PushManager' in window);
+		let supported = ('PushManager' in window);
 		this.setupState(supported);
 
 		return supported;
 	},
 
-	getSubscription: function()
+	getSubscription()
 	{
-		var self = this,
+		let self = this,
 		state = this.state;
 		this.serviceWorker.pushManager.getSubscription()
 		.then(function(subscription)
 		{
-			var subscribed = !(subscription === null);
+			let subscribed = !(subscription === null);
 			if(!subscribed)
 			{
 				self.subscribe();
@@ -63,9 +63,9 @@ var Push = base.Class.extend(
 		});
 	},
 
-	subscribe: function()
+	subscribe()
 	{
-		var self = this,
+		let self = this,
 		state = this.state,
 		publicKey = urlB64ToUint8Array(this.publicKey);
 
@@ -84,7 +84,7 @@ var Push = base.Class.extend(
 		});
 	},
 
-	updateSubscription: function(subscription)
+	updateSubscription(subscription)
 	{
 
 	}

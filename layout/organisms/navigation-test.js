@@ -1,10 +1,10 @@
 "use strict";
 
-var NavButtonLink = base.Component.extend(
+const NavButtonLink = base.Component.extend(
 {
-	render: function()
+	render()
 	{
-		var state = this.state;
+		let state = this.state;
 
 		return {
 			onState: [
@@ -15,7 +15,7 @@ var NavButtonLink = base.Component.extend(
 					active: true
 				}]
 			],
-			click: function()
+			click()
 			{
 				state.set('active', !state.get('active'));
 			},
@@ -23,7 +23,7 @@ var NavButtonLink = base.Component.extend(
 		};
 	},
 
-	setupStates: function()
+	setupStates()
 	{
 		return {
 			selected: false,
@@ -31,7 +31,7 @@ var NavButtonLink = base.Component.extend(
 		};
 	},
 
-	update: function(selected)
+	update(selected)
 	{
 		this.state.set({
 			selected: selected,
@@ -46,9 +46,9 @@ var NavButtonLink = base.Component.extend(
  * This will setup a navigation link.
  * @class
  */
-var MainLink = base.Component.extend(
+const MainLink = base.Component.extend(
 {
-	render: function()
+	render()
 	{
 		return {
 			tag: 'li',
@@ -58,9 +58,9 @@ var MainLink = base.Component.extend(
 		};
 	},
 
-	addLink: function()
+	addLink()
 	{
-		var link,
+		let link,
 		children = [
 			(!this.icon)? null : Span({
 				className: 'icon ' + this.icon
@@ -90,7 +90,7 @@ var MainLink = base.Component.extend(
 		return this.cache('link', link);
 	},
 
-	update: function(selected)
+	update(selected)
 	{
 		this.link.update(selected);
 	}
@@ -101,7 +101,7 @@ var MainLink = base.Component.extend(
  * @params {object} props
  * @return {object}
  */
-var NavigationGroup = Atom.extend(function(props)
+const NavigationGroup = Atom.extend((props) =>
 {
 	return Ul({
 		className: 'navigation-group',
@@ -118,9 +118,9 @@ var NavigationGroup = Atom.extend(function(props)
  * This will create a navigation component.
  * @class
  */
-var Navigation = SwitchNavigation.extend(
+const Navigation = SwitchNavigation.extend(
 {
-	render: function()
+	render()
 	{
 		return {
 			tag: 'nav',
@@ -131,14 +131,14 @@ var Navigation = SwitchNavigation.extend(
                 watch:
                 {
 					value: ['[[path]]', this.data],
-					callBack: base.bind(this, this.updateLinks)
+					callBack: this.updateLinks.bind(this)
 				},
 				children: this.addLinks(this.options)
 			}
 		};
     },
 
-    updateLinks: function(ele, value)
+    updateLinks(ele, value)
 	{
 		if(this.hasSetup === false)
 		{
@@ -146,13 +146,13 @@ var Navigation = SwitchNavigation.extend(
 			return;
 		}
 
-		var check = false,
+		let check = false,
 		links = this.links,
 		firstLink = null;
 
-		for(var i = 0, length = links.length; i < length; i++)
+		for(let i = 0, length = links.length; i < length; i++)
 		{
-			var link = links[i];
+			let link = links[i];
 			if(link.rendered === false)
 			{
 				continue;
@@ -171,7 +171,7 @@ var Navigation = SwitchNavigation.extend(
 				continue;
 			}
 
-			var a = link.link.link;
+			let a = link.link.link;
 			if(!a)
 			{
 				continue;
@@ -185,7 +185,7 @@ var Navigation = SwitchNavigation.extend(
 		{
 			this.updateLink(firstLink, true);
 
-			var links = firstLink.links;
+			let links = firstLink.links;
 			if(links)
 			{
 				this.updateLink(links[0], true);
@@ -193,28 +193,28 @@ var Navigation = SwitchNavigation.extend(
 		}
     },
 
-    updateLink: function(link, selected)
+    updateLink(link, selected)
 	{
 		link.update(selected);
 	},
 
-	afterSetup: function()
+	afterSetup()
 	{
-		var path = this.data.get('path');
+		let path = this.data.get('path');
 		this.updateLinks(null, path);
 	},
 
-	addLinks: function(options)
+	addLinks(options)
 	{
-		var links = [];
-		var option;
+		let links = [];
+		let option;
 
-		for(var i = 0, length = options.length; i < length; i++)
+		for(let i = 0, length = options.length; i < length; i++)
 		{
 			option = options[i];
 			if(!option.group)
 			{
-                var link = this.addLink(option);
+                let link = this.addLink(option);
 				links.push(link);
 				continue;
 			}
@@ -225,9 +225,9 @@ var Navigation = SwitchNavigation.extend(
 		return links;
 	},
 
-	addGroup: function(option)
+	addGroup(option)
 	{
-		var childLinks = this.addLinks(option.options);
+		let childLinks = this.addLinks(option.options);
 
 		return NavigationGroup({
 			text: option.group,
@@ -235,9 +235,9 @@ var Navigation = SwitchNavigation.extend(
 		});
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
-        var link = new MainLink(option);
+        let link = new MainLink(option);
         this.links.push(link);
         return link;
 	}
@@ -253,18 +253,18 @@ var Navigation = SwitchNavigation.extend(
  * @class
  * @augments Navigation
  */
-var InlineNavigation = Navigation.extend(
+const InlineNavigation = Navigation.extend(
 {
-	onCreated: function()
+	onCreated()
 	{
 		this.data = base.router.data;
 		this.reset();
 		this.subs = [];
 	},
 
-	addSubNav: function(link)
+	addSubNav(link)
 	{
-		var sub = new SubNavigation(
+		let sub = new SubNavigation(
 		{
 			parentLink: link,
 			options: link.options,
@@ -274,14 +274,14 @@ var InlineNavigation = Navigation.extend(
 		return sub;
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
-        var link = new MainLink(option);
+        let link = new MainLink(option);
         this.links.push(link);
 
 		if(link.options)
 		{
-			var sub = this.addSubNav(link);
+			let sub = this.addSubNav(link);
 			link = {
 				className: 'child-group',
 				link: link,
@@ -292,9 +292,9 @@ var InlineNavigation = Navigation.extend(
 	}
 });
 
-var SubNavigation = Navigation.extend(
+const SubNavigation = Navigation.extend(
 {
-	onCreated: function()
+	onCreated()
 	{
 		this.data = base.router.data;
 		this.reset();
@@ -304,7 +304,7 @@ var SubNavigation = Navigation.extend(
 		this.parentLink.links = this.links;
 	},
 
-	render: function()
+	render()
 	{
 		return {
 			tag: 'nav',
@@ -315,14 +315,14 @@ var SubNavigation = Navigation.extend(
 				tag: 'ul',
 				watch: {
 					value: ['[[path]]', this.data],
-					callBack: base.bind(this, this.updateLinks)
+					callBack: this.updateLinks.bind(this)
 				},
 				children: this.links
 			}
 		};
 	},
 
-	onState: function()
+	onState()
 	{
 		return [
 			['selected', {
@@ -334,7 +334,7 @@ var SubNavigation = Navigation.extend(
 		];
 	},
 
-	setupStates: function()
+	setupStates()
 	{
 		return {
 			remotes: [
@@ -347,15 +347,15 @@ var SubNavigation = Navigation.extend(
 		};
 	},
 
-	updateLinks: function(ele, value)
+	updateLinks(ele, value)
 	{
-		var check = false,
+		let check = false,
 		links = this.links,
 		firstLink = null;
 
-		for(var i = 0, length = links.length; i < length; i++)
+		for(let i = 0, length = links.length; i < length; i++)
 		{
-			var link = links[i];
+			let link = links[i];
 			if(link.rendered === false)
 			{
 				continue;
@@ -376,14 +376,14 @@ var SubNavigation = Navigation.extend(
 		this.updateParentLink(check);
 	},
 
-	updateParentLink: function(selected)
+	updateParentLink(selected)
 	{
 		this.parentLink.update(selected);
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
-		var link = new MainLink(option);
+		let link = new MainLink(option);
 		this.links.push(link);
 		this.parentLinks.push(link);
 
@@ -405,27 +405,27 @@ var SubNavigation = Navigation.extend(
  * @class
  * @augments InlineNavigation
  */
-var PrimaryNavigation = InlineNavigation.extend(
+const PrimaryNavigation = InlineNavigation.extend(
 {
-	afterSetup: function()
+	afterSetup()
 	{
-		var subs = this.subs;
+		let subs = this.subs;
 		if(!subs.length)
 		{
 			return false;
 		}
 
-		for(var i = 0, length = subs.length; i < length; i++)
+		for(let i = 0, length = subs.length; i < length; i++)
 		{
-			var sub = subs[i];
+			let sub = subs[i];
 			sub.setup(this.appNav);
 		}
 
-		var path = this.data.get('path');
+		let path = this.data.get('path');
 		this.updateLinks(null, path);
 	},
 
-	addSubNav: function(link)
+	addSubNav(link)
 	{
 		this.subs.push(new PrimarySubNavigation(
 		{
@@ -436,14 +436,14 @@ var PrimaryNavigation = InlineNavigation.extend(
 		}));
 	},
 
-	addLink: function(option)
+	addLink(option)
 	{
-		option.callBack = function(e)
+		option.callBack = (e) =>
 		{
 			base.state.set('app-control', 'ignoreHover', true);
 		};
 
-        var link = new MainLink(option);
+        let link = new MainLink(option);
         this.links.push(link);
 
 		if(link.options)
@@ -454,16 +454,16 @@ var PrimaryNavigation = InlineNavigation.extend(
 	}
 });
 
-var PrimarySubNavigation = SubNavigation.extend(
+const PrimarySubNavigation = SubNavigation.extend(
 {
-	addLink: function(option)
+	addLink(option)
 	{
-		option.callBack = function(e)
+		option.callBack = (e) =>
 		{
 			base.state.set('app-control', 'ignoreHover', true);
 		};
 
-		var link = new MainLink(option);
+		let link = new MainLink(option);
 		this.links.push(link);
 		this.parentLinks.push(link);
 

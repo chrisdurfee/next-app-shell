@@ -1,8 +1,8 @@
 "use strict";
 
-var AsidePage = BasicPage.extend(
+const AsidePage = BasicPage.extend(
 {
-	render: function()
+	render()
 	{
 		return MainSection(
 		{
@@ -41,7 +41,7 @@ var AsidePage = BasicPage.extend(
 		});
 	},
 
-	addAside: function()
+	addAside()
 	{
 		return {
 			title: H1({
@@ -51,9 +51,9 @@ var AsidePage = BasicPage.extend(
 		};
 	},
 
-	addBody: function()
+	addBody()
 	{
-		var path = 'aside';
+		let path = 'aside';
 
 		return [
 			{
@@ -73,7 +73,7 @@ var AsidePage = BasicPage.extend(
 									}),
 									label: new Loader({
 										src: 'layout/atoms/atom-test.js',
-										callBack: function()
+										callBack()
 										{
 											return LabelText();
 										}
@@ -276,7 +276,7 @@ var AsidePage = BasicPage.extend(
 		];
 	},
 
-	addNavigation: function()
+	addNavigation()
 	{
 		return new InlineNavigation(
 		{
@@ -284,9 +284,9 @@ var AsidePage = BasicPage.extend(
 		});
 	},
 
-	getLinks: function()
+	getLinks()
 	{
-		var path = 'aside';
+		let path = 'aside';
 
 		return [
 			{

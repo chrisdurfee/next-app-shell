@@ -6,14 +6,14 @@
      * Set any common dependencies that are shared between
      * pages.
      */
-    var common = [];
+    let common = [];
 
     /**
      * This will setup the route creator. we want to pass
      * the common depends to the module routes to use when
      * adding local dependencies.
      */
-    var routes = new ModuleRoutes(common);
+    let routes = new ModuleRoutes(common);
 
     /**
      * This will create our module and add it to the app
@@ -33,7 +33,7 @@
             routes.add('/full-contain', FullContainPage, 'Full Contain Example'),
             routes.load('/aside/:page?/:marketing?/:label?/:name?', {
                 src: 'layout/pages/aside-page.js',
-                callBack: function()
+                callBack()
                 {
                     return new AsidePage();
                 }

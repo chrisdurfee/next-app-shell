@@ -1,6 +1,6 @@
 "use strict";
 
-var TopBar = function(props)
+const TopBar = (props) =>
 {
 	return Header({
 		children: [
@@ -12,7 +12,7 @@ var TopBar = function(props)
 	});
 };
 
-var MainColumn = Tag.extend(function(props)
+const MainColumn = Tag.extend((props) =>
 {
 	return {
 		className: 'col ' + (props.className || ''),
@@ -20,7 +20,7 @@ var MainColumn = Tag.extend(function(props)
 	};
 });
 
-var AsideTemplate = Template.extend(function(props)
+const AsideTemplate = Template.extend((props) =>
 {
 	return {
 		className: 'body aside-container',
