@@ -87,7 +87,7 @@ export class ModuleRoutes
 	 */
 	load(uri, loader, title, persist, module = false)
 	{
-		const depends = loader.depends || [];
+		let depends = loader.depends || [];
 		if (this.common)
 		{
 			depends = this.depends(depends);
