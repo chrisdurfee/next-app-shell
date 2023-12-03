@@ -270,6 +270,22 @@ export const TelInput = Input.extend((props) =>
 	};
 });
 
+/**
+ * This will create a label.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Label = Atom((props, children) =>
+{
+	return {
+		tag: 'label',
+		...props,
+		children
+	};
+});
+
 export const Textarea = FormEle.extend((props) =>
 {
 	return {
