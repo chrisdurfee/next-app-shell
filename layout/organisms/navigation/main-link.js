@@ -12,9 +12,10 @@ import { NavButtonLink } from './nav-button-link.js';
  */
 const Option = Atom((props, children) =>
 {
+	props.class = 'option' + (props.options? ' sub' : '');
+
 	return {
 		tag: 'li',
-		class: 'option' + (props.options? ' sub' : ''),
 		...props,
 		children
 	};

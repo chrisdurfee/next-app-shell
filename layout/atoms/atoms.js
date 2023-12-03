@@ -303,9 +303,10 @@ export const Label = Atom((props, children) =>
  */
 export const Row = Atom((props, children) =>
 {
+	props.class = 'row ' + (props.class || '');
+
 	return {
 		...props,
-		class: 'row ' + (props.class || ''),
 		children
 	};
 });
