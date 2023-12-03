@@ -29,7 +29,7 @@ const Navigation = Atom((props, children) =>
 const Logo = Atom((props, children) =>
 {
 	return {
-		...props,
+		class: 'logo',
 		children
 	};
 });

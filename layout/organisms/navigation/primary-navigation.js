@@ -202,6 +202,10 @@ export class PrimarySubNavigation extends SubNavigation
 		for (let i = 0, length = subs.length; i < length; i++)
 		{
 			const sub = subs[i];
+			if (!sub.panel)
+			{
+				continue;
+			}
 			this.appNav.appendChild(sub.panel);
 		}
 	}

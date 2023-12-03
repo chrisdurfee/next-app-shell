@@ -1,4 +1,4 @@
-import { Div, Input, Span, Ul } from "../atoms/atoms.js";
+import { Div, GridPanel, Input, Span, Ul } from "../atoms/atoms.js";
 import { Atom } from "../libs/base/base.js";
 
 /**
