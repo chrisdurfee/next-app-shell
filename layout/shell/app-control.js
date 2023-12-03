@@ -1,45 +1,100 @@
-import { Component } from "../libs/base/base.js";
+import { Atom, Component } from "../libs/base/base.js";
 import { MainNavigation } from "./main-navigation.js";
 
+/**
+ * This will create the app container.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+const AppContainer = Atom((props, children) =>
+{
+    return {
+        class: 'app-nav-container',
+        ...props,
+        children
+    };
+});
+
+/**
+ * AppControl
+ *
+ * This will create the app control.
+ *
+ * @class
+ * @extends Component
+ */
 export class AppControl extends Component
 {
+    /**
+     * This will set up the timer.
+     *
+     * @override
+     * @protected
+     * @return {void}
+     */
     onCreated()
     {
+        /**
+         * @member {int|null} timer
+         */
         this.timer = null;
     }
 
+    /**
+     * This will render the component.
+     *
+     * @override
+     * @return {object}
+     */
 	render()
 	{
-		return {
-			className: 'app-nav-container',
-			onState: [
-                ['ignoreHover', {
-                    ignoreHover: true
-                }]
-            ],
-            mouseleave: this.removeIgnore.bind(this),
-			primary: new MainNavigation({
+		return AppContainer(
+            {
+                onState: [
+                    ['ignoreHover', {
+                        ignoreHover: true
+                    }]
+                ],
+                mouseleave: this.removeIgnore.bind(this)
+            },
+            new MainNavigation({
                 options: this.options,
                 parent: this
             })
-		};
+        );
     }
 
+    /**
+     * This will remove the ignore.
+     *
+     * @return {void}
+     */
     removeIgnore()
     {
         window.clearTimeout(this.timer);
 
-        let state = this.state;
-        this.timer = window.setTimeout(function()
+        const DURATION = 400;
+        this.timer = window.setTimeout(() =>
         {
-            state.set({
+            this.state.set({
                 ignoreHover: false
             });
-        }, 400);
+        }, DURATION);
     }
 
+
+    /**
+     * This will setup the states.
+     *
+     * @return {object}
+     */
 	setupStates()
 	{
+        /**
+         * This will set a global state id for the app control.
+         */
 		this.stateTargetId = 'app-control';
 
 		return {
