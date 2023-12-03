@@ -1,43 +1,50 @@
+import { Div, Header, MainSection } from "../atoms/atoms.js";
+import { GridContainer } from '../molecules/molecules.js';
+import { Panel } from '../molecules/panel.js';
+import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
+import { AsideTemplate } from '../templates/aside-template.js';
+import { BasicPage } from './basic-page.js';
 
+/**
+ * AsidePage
+ *
+ * This will create an a side page.
+ *
+ * @class
+ * @extends BasicPage
+ */
 export class AsidePage extends BasicPage
 {
 	render()
 	{
 		return MainSection(
-		{
-			children:
+			{
+				route: {
+					uri: 'aside/overlay-test',
+					component: new Overlay({
+						backHref: 'aside/',
+						children: [
+							new Panel([
+								Div([
+									Header([
+										H1('Overlay')
+									]),
+									Div({ class: 'contained' }, [
+										GridContainer()
+									])
+								])
+							])
+						]
+					})
+				}
+			},
 			[
 				AsideTemplate({
 					left: this.addAside(),
 					right: this.addBody()
 				})
-			],
-			route: {
-				uri: 'aside/overlay-test',
-				component: new Overlay({
-					backHref: 'aside/',
-					children: [
-						new Panel({
-							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Overlay',
-											})
-										]
-									}),
-									panels: {
-										className: 'contained',
-										panels: GridContainer()
-									}
-								}
-							]
-						})
-					]
-				})
-			}
-		});
+			]
+		);
 	}
 
 	addAside()
