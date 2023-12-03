@@ -132,8 +132,6 @@ export const Icon = Atom((props, children) =>
 	return {
 		tag: 'i',
 		...props,
-		class: icon,
-		text: icon,
 		children
 	};
 });

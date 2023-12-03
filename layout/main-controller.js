@@ -1,6 +1,6 @@
 import { Configs } from "./configs.js";
-import { AppModules } from "./imports.js";
 import { base, Builder } from "./libs/base/base.js";
+import { AppModules } from "./modules/module.js";
 import { AppShell } from "./shell/app-shell.js";
 import { Push } from "./worker/push.js";
 

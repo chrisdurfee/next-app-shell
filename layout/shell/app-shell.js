@@ -1,4 +1,4 @@
-import { Atoms, Component } from '../libs/base/base.js';
+import { Atom, Component } from '../libs/base/base.js';
 import { AppControl } from './app-control.js';
 
 /**
@@ -8,7 +8,7 @@ import { AppControl } from './app-control.js';
  * @param {array} children
  * @return {object}
  */
-const AppContainer = Atoms((props, children) =>
+const AppContainer = Atom((props, children) =>
 {
 	return {
 		class: 'app-container',
@@ -24,7 +24,7 @@ const AppContainer = Atoms((props, children) =>
  * @param {array} children
  * @return {object}
  */
-const ActivePanelContainer = Atoms((props, children) =>
+const ActivePanelContainer = Atom((props, children) =>
 {
 	return {
 		class: 'active-panel-container',

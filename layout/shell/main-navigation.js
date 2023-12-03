@@ -11,8 +11,9 @@ import { PrimaryNavigation } from "../organisms/navigation/primary-navigation.js
  */
 const Navigation = Atom((props, children) =>
 {
+	props.class = 'main-navigation nav-container';
+
 	return {
-		tag: 'main-navigation nav-container',
 		...props,
 		children
 	};
@@ -25,11 +26,11 @@ const Navigation = Atom((props, children) =>
  * @param {object} props
  * @return {object}
  */
-const Logo = Atom((props) =>
+const Logo = Atom((props, children) =>
 {
 	return {
-		tag: 'a logo',
-		...props
+		...props,
+		children
 	};
 });
 
