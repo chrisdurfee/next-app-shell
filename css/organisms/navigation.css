@@ -142,7 +142,7 @@
 }
 .navigation li.option .selected .label,
 .navigation li.option .active .label{
-	color: inherit
+	color: var(--primary-color);
 }
 .navigation li.option.selected,
 .navigation li.option.active{
