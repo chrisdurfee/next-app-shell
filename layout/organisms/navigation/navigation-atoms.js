@@ -10,8 +10,7 @@ import { Atom } from "../../libs/base/base.js";
 export const NavigationGroup = Atom((props, children) =>
 {
 	return Ul({ class: 'navigation-group', map: props.map }, [
-		H2(props.text),
-		...children
+		H2(children)
 	]);
 });
 

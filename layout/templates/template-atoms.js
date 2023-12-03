@@ -6,7 +6,7 @@ import { Atom } from "../libs/base/base.js";
  *
  * @param {object} props
  * @param {array} children
- * @reutrn {object}
+ * @return {object}
  */
 export const TopBar = Atom((props, children) =>
 {
@@ -24,8 +24,9 @@ export const TopBar = Atom((props, children) =>
  */
 export const MainColumn = Atom((props, children) =>
 {
+	props.class = 'col ' + (props.class || '');
+
 	return {
-		class: 'col ' + (props.className || ''),
 		...props,
         children
 	};

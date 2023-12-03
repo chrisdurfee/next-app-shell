@@ -56,7 +56,7 @@ export class AsidePage extends BasicPage
 	 */
 	addAside()
 	{
-		return Header([
+		return Div([
 			H1('Active Primary Title'),
 			this.addNavigation()
 		]);

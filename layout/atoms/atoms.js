@@ -49,7 +49,6 @@ export const Img = Atom((props, children) =>
 
 	return {
 		tag: 'img',
-		...props,
 		draggable: draggable,
 		src: props.src,
 		alt: props.alt,
@@ -68,22 +67,21 @@ export const Img = Atom((props, children) =>
  */
 export const Button = Atom((props, children) =>
 {
+	props.class = 'bttn ' + (props.class || '');
 	return {
 		tag: 'button',
 		...props,
-		class: props.class || 'bttn',
-		click: props.click,
 		children
 	};
 });
 
 export const MainSection = Atom((props, children) =>
 {
+	props.class = 'basic-page ' + (props.class || '');
+
 	return {
 		tag: 'section',
 		...props,
-		class: 'basic-page ' + (props.class || ''),
-		route: props.route,
 		children
 	};
 });
