@@ -1,4 +1,4 @@
-import { Label } from '../../atoms/atoms.js';
+import { Label, Span } from '../../atoms/atoms.js';
 import { Atom, Component, NavLink } from '../../libs/base/base.js';
 import { NavButtonLink } from './nav-button-link.js';
 
