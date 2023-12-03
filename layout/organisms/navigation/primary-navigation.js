@@ -1,379 +1,16 @@
-
-/**
- * NavButtonLink
- *
- * This will create a button to open and close
- * nested navigations.
- * @class
- */
-export class NavButtonLink extends Component
-{
-	render()
-	{
-		let self = this,
-		state = this.state;
-
-		return {
-			onState: [
-				['selected', {
-					selected: true
-				}],
-				['active', {
-					active: true
-				}]
-			],
-			click()
-			{
-				let value = !state.get('active');
-				state.set('active', value);
-
-				let active = null;
-				if(value)
-				{
-					active = self;
-				}
-
-				if(self.checkCallBack)
-				{
-					self.checkCallBack(active);
-				}
-			},
-			children: this.children
-		};
-	}
-
-	setupStates()
-	{
-		return {
-			selected: false,
-			active: false
-		};
-	}
-
-	update(selected)
-	{
-		this.state.set({
-			selected: selected,
-			active: selected
-		});
-	}
-}
-
-/**
- * MainLink
- *
- * This will setup a navigation link.
- * @class
- */
-export class MainLink extends Component
-{
-	render()
-	{
-		return {
-			tag: 'li',
-			className: 'option' + (this.options? ' sub' : ''),
-			a: this.addLink(),
-			click: !this.options? this.callBack : null
-		};
-	}
-
-	addLink()
-	{
-		let link,
-		children = [
-			(!this.icon)? null : Span({
-				className: 'icon ' + this.icon
-			}),
-			{
-				className: 'label',
-				text: this.label || ''
-			}
-		];
-
-		if(this.href)
-		{
-			link = new NavLink(
-			{
-				href: this.href,
-				activeClass: 'selected',
-				exact: this.exact || false,
-				children: children
-			});
-		}
-		else
-		{
-			link = new NavButtonLink({
-				children: children,
-				checkCallBack: this.checkCallBack
-			});
-		}
-
-		return this.cache('link', link);
-	}
-
-	isSelected()
-	{
-		return this.link.state.get('selected');
-	}
-
-	update(selected)
-	{
-		this.link.update(selected);
-	}
-}
-
-/**
- * This will return a navigation group.
- * @params {object} props
- * @return {object}
- */
-const NavigationGroup = Atom.extend((props) =>
-{
-	return Ul({
-		className: 'navigation-group',
-		text: H2({
-			text: props.text
-		}),
-		children: props.children || null
-	});
-});
-
-/**
- * Navigation
- *
- * This will create a navigation component.
- * @class
- */
-export class Navigation extends Component
-{
-	render()
-	{
-		return {
-			tag: 'nav',
-			className: 'navigation',
-			ul: Ul(
-			{
-				children: this.addLinks(this.options)
-			}),
-			subs: this.addSubs()
-		};
-	}
-
-	addSubs()
-	{
-		return null;
-	}
-
-	addLinks(options)
-	{
-		let links = [];
-		let option;
-
-		for(let i = 0, length = options.length; i < length; i++)
-		{
-			option = options[i];
-			if(!option.group)
-			{
-				links.push(this.addLink(option));
-				continue;
-			}
-
-			links.push(this.addGroup(option));
-
-		}
-		return links;
-	}
-
-	addGroup(option)
-	{
-		let childLinks = this.addLinks(option.options);
-
-		return NavigationGroup({
-			text: option.group,
-			children: childLinks
-		});
-	}
-
-	addLink(option)
-	{
-		return new MainLink(option);
-	}
-}
-
-global.Navigation = Navigation;
-
-/**
- * InlineNavigation
- *
- * This will create a navigation that has sub
- * navigations. The sub navigations items will
- * display below the parent.
- *
- * @class
- * @augments Navigation
- */
-export class InlineNavigation extends Navigation
-{
-	onCreated()
-	{
-		this.subs = [];
-		this.links = [];
-	}
-
-	setupSubNav(link)
-	{
-		return new SubNavigation(
-		{
-			parentLink: link,
-			options: link.options
-		});
-	}
-
-	addSubNav(link)
-	{
-		let sub = this.setupSubNav(link);
-		link.sub = sub;
-
-		this.subs.push(sub);
-		return sub;
-	}
-
-	addLink(option)
-	{
-		let link = new MainLink(option);
-		this.links.push(link);
-
-		if(link.options)
-		{
-			let sub = this.addSubNav(link);
-			link = {
-				className: 'child-group',
-				link: link,
-				sub: sub
-			};
-		}
-		return link;
-	}
-}
-
-global.InlineNavigation = InlineNavigation;
-
-/**
- * SubNavigation
- *
- * This will create a nested navigation.
- * @class
- * @augments InlineNavigation
- */
-export class SubNavigation extends InlineNavigation
-{
-	render()
-	{
-		let className = this.mainClassName || '';
-
-		return {
-			tag: 'nav',
-			className: 'navigation sub ' + className,
-			onState: this.onState(),
-			ul:
-			{
-				tag: 'ul',
-				children: this.addLinks(this.options),
-				subs: this.addSubs(),
-				link: {
-					watch: {
-						value: ['[[path]]', base.router.data],
-						callBack: this.updateLinks.bind(this)
-					}
-				}
-			}
-		};
-	}
-
-	onState()
-	{
-		return [
-			['selected', {
-				active: true
-			}],
-			['active', {
-				active: true
-			}]
-		];
-	}
-
-	setupStates()
-	{
-		return {
-			remotes: [
-				{
-					id: this.parentLink.link.getId(),
-					selected: null,
-					active: null
-				}
-			]
-		};
-	}
-
-	isSelected()
-	{
-		return this.state.get('selected');
-	}
-
-	afterSetup()
-	{
-		let path = base.router.data.get('path');
-		this.updateLinks(null, path);
-	}
-
-	updateLinks(ele, value)
-	{
-		let check = false,
-		links = this.links,
-		firstLink = null;
-
-		for(let i = 0, length = links.length; i < length; i++)
-		{
-			let link = links[i];
-			if(link.rendered === false)
-			{
-				continue;
-			}
-
-			let path = link.link.panel.pathname;
-			if(!path)
-			{
-				if(link.isSelected())
-				{
-					check = true;
-					break;
-				}
-			}
-
-			check = link.exact? (value === path) : (new RegExp(path + '($|\/|\\.).*').test(value));
-			if(check === true)
-			{
-				break;
-			}
-		}
-
-		this.updateParentLink(check);
-	}
-
-	updateParentLink(selected)
-	{
-		this.parentLink.update(selected);
-	}
-}
+import { State } from '../../libs/base/base.js';
+import { InlineNavigation, SubNavigation } from './inline-navigation.js';
+import { MainLink } from './main-link.js';
 
 /**
  * This will update the app to ingnor hover.
  *
  * @param {object} e
+ * @return {void}
  */
 const ignorHover = (e) =>
 {
-	base.state.set('app-control', 'ignoreHover', true);
+	State.set('app-control', 'ignoreHover', true);
 };
 
 /**
@@ -385,29 +22,29 @@ const ignorHover = (e) =>
  */
 const isActive = (buttons, active) =>
 {
-	if(!buttons.length)
+	if (!buttons.length)
 	{
 		return false;
 	}
 
 	let check = false;
-	for(let i = 0, length = buttons.length; i < length; i++)
+	for (let i = 0, length = buttons.length; i < length; i++)
 	{
 		let link = buttons[i],
 		sub = link.sub,
 		button = link.link;
 
 		sub = link.sub;
-		if(sub.buttons.length)
+		if (sub.buttons.length)
 		{
-			let result = isActive(sub.buttons, active);
-			if(result)
+			const result = isActive(sub.buttons, active);
+			if (result)
 			{
 				check = true;
 			}
 		}
 
-		if(button !== active && check === false)
+		if (button !== active && check === false)
 		{
 			button.state.set('active', false);
 		}
@@ -432,26 +69,42 @@ export class PrimaryNavigation extends InlineNavigation
 		this.buttons = [];
 	}
 
+	/**
+	 * This wil set up the sub nav.
+	 *
+	 * @returns {void}
+	 */
 	afterSetup()
 	{
-		let subs = this.subs;
-		if(!subs.length)
+		const subs = this.subs;
+		if (!subs.length)
 		{
-			return false;
+			return;
 		}
 
-		for(let i = 0, length = subs.length; i < length; i++)
+		for (let i = 0, length = subs.length; i < length; i++)
 		{
-			let sub = subs[i];
+			const sub = subs[i];
 			this.appNav.appendChild(sub.panel);
 		}
 	}
 
+	/**
+	 * This will add the sub navs.
+	 *
+	 * @returns {array}
+	 */
 	addSubs()
 	{
 		return this.subs;
 	}
 
+	/**
+	 * This will set up the sub nav.
+	 *
+	 * @param {object} link
+	 * @returns {object}
+	 */
 	setupSubNav(link)
 	{
 		return new PrimarySubNavigation(
@@ -463,24 +116,35 @@ export class PrimaryNavigation extends InlineNavigation
 		});
 	}
 
+	/**
+	 * This will check the buttons.
+	 *
+	 * @param {boolean} active
+	 */
 	checkButtons(active)
 	{
 		isActive(this.buttons, active);
 	}
 
+	/**
+	 * This will add a link.
+	 *
+	 * @param {object} option
+	 * @return {object}
+	 */
 	addLink(option)
 	{
 		option.callBack = ignorHover;
 
-		if(option.options)
+		if (option.options)
 		{
 			option.checkCallBack = this.checkButtons.bind(this);
 		}
 
-		let link = new MainLink(option);
+		const link = new MainLink(option);
 		this.links.push(link);
 
-		if(link.options)
+		if (link.options)
 		{
 			this.addSubNav(link);
 			this.buttons.push(link);
@@ -498,10 +162,15 @@ export class PrimaryNavigation extends InlineNavigation
  */
 export class PrimarySubNavigation extends SubNavigation
 {
+	/**
+	 * This will set upt he class name by depth.
+	 *
+	 * @return {void}
+	 */
 	beforeSetup()
 	{
 		let className;
-		switch(this.depth)
+		switch (this.depth)
 		{
 			case 1:
 				className = 'one';
@@ -517,17 +186,22 @@ export class PrimarySubNavigation extends SubNavigation
 		this.buttons = [];
 	}
 
+	/**
+	 * This will set up the sub nav.
+	 *
+	 * @returns {void}
+	 */
 	afterSetup()
 	{
-		let subs = this.subs;
-		if(!subs.length)
+		const subs = this.subs;
+		if (!subs.length)
 		{
-			return false;
+			return;
 		}
 
-		for(let i = 0, length = subs.length; i < length; i++)
+		for (let i = 0, length = subs.length; i < length; i++)
 		{
-			let sub = subs[i];
+			const sub = subs[i];
 			this.appNav.appendChild(sub.panel);
 		}
 	}
@@ -557,14 +231,14 @@ export class PrimarySubNavigation extends SubNavigation
 	{
 		option.callBack = ignorHover;
 
-		if(option.options)
+		if (option.options)
 		{
 			option.checkCallBack = this.checkButtons.bind(this);
 		}
 
 		let link = new MainLink(option);
 		this.links.push(link);
-		if(link.options)
+		if (link.options)
 		{
 			this.addSubNav(link);
 			this.buttons.push(link);
