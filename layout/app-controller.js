@@ -1,3 +1,4 @@
+import { } from "../layout/modules/main/module.js";
 import { MainController } from './main-controller.js';
 
 /**

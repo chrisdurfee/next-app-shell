@@ -97,19 +97,19 @@ export class MainController
 
 		for (let i = 0, length = modules.length; i < length; i++)
 		{
-			let module = modules[i];
+			const module = modules[i];
 			if (!module)
 			{
 				continue;
 			}
 
-			let routes = module.getRoutes();
+			const routes = module.getRoutes();
 			if (routes)
 			{
 				this.routes = this.routes.concat(routes);
 			}
 
-			let links = module.getLinks();
+			const links = module.getLinks();
 			if (links)
 			{
 				this.links = this.links.concat(links);

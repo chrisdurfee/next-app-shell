@@ -1,12 +1,12 @@
-"use strict";
+import { Atom } from "../libs/base/base.js";
 
-var LabelText = Atom.extend(function(props)
+export const LabelText = Atom((props, children) =>
 {
 	return {
         text: 'label',
         buttons: new Loader({
             src: 'layout/organisms/button-group.js',
-            callBack: function()
+            callBack()
             {
                 return new ButtonGroup();
             }
