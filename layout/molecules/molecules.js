@@ -1,4 +1,6 @@
-"use strict";
+import { Div } from "../atoms/atoms.js";
+import { Atom } from "../libs/base/base.js";
+
 
 const Nav = Tag.extend((props) =>
 {
@@ -126,29 +128,33 @@ const Switch = Checkbox.extend((props) =>
 	};
 });
 
-const GridContainer = Tag.extend((props) =>
+/**
+ * This will create a grid container.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const GridContainer = Atom((props, children) =>
 {
-	return {
-		className: 'grid-container',
-		children: [
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel(),
-			GridPanel()
-		]
-	};
+	return Div({ class: 'grid-container' }, [
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel(),
+		GridPanel()
+	]);
 });
