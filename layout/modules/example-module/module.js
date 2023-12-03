@@ -6,7 +6,7 @@
      * Set any common dependencies that are shared between
      * pages.
      */
-    let common = [
+    const common = [
         'layout/modules/example-module/css/pages/example-page.css'
     ];
 
@@ -15,7 +15,7 @@
      * the common depends to the module routes to use when
      * adding local dependencies.
      */
-    let routes = new ModuleRoutes(common);
+    const routes = new ModuleRoutes(common);
 
     /**
      * This will create the example module and add it to the

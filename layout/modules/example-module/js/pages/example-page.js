@@ -1,4 +1,5 @@
-"use strict";
+import { Div, MainSection } from "../../../../atoms/atoms.js";
+import { BasicPage } from "../../../../pages/basic-page.js";
 
 /**
  * ExamplePage
@@ -6,28 +7,31 @@
  * This will create a example page.
  * @class
  */
-const ExamplePage = BasicPage.extend(
+export class ExamplePage extends BasicPage
 {
+	/**
+	 * This will render the page.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return MainSection(
-		{
-			children:
-			[
-				AsideTemplate({
-					right: this.addBody()
-				})
-			]
-		});
-	},
+		return MainSection([
+			AsideTemplate({
+				right: this.addBody()
+			})
+		]);
+	}
 
+	/**
+	 * This will add the body of the page.
+	 *
+	 * @returns {object}
+	 */
 	addBody()
 	{
 		return [
-			{
-				className: 'contained',
-				panels: GridContainer()
-			}
+			Div({ class: 'contained' }, [GridContainer()])
 		];
 	}
-});
+}

@@ -1,6 +1,5 @@
-"use strict";
 
-const AsidePage = BasicPage.extend(
+export class AsidePage extends BasicPage
 {
 	render()
 	{
@@ -39,7 +38,7 @@ const AsidePage = BasicPage.extend(
 				})
 			}
 		});
-	},
+	}
 
 	addAside()
 	{
@@ -49,7 +48,7 @@ const AsidePage = BasicPage.extend(
 			}),
 			nav: this.addNavigation()
 		};
-	},
+	}
 
 	addBody()
 	{
@@ -279,7 +278,7 @@ const AsidePage = BasicPage.extend(
 				]
 			}
 		];
-	},
+	}
 
 	addNavigation()
 	{
@@ -287,7 +286,7 @@ const AsidePage = BasicPage.extend(
 		{
 			options: this.getLinks()
 		});
-	},
+	}
 
 	getLinks()
 	{
@@ -396,4 +395,4 @@ const AsidePage = BasicPage.extend(
 			}
 		]
 	}
-});
+}

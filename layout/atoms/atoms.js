@@ -99,10 +99,6 @@ export const Strong = Tag.extend((props) => {
 	tag: 'strong'
 });
 
-export const Ul = Tag.extend((props) => {
-	tag: 'ul'
-});;
-
 /* icons */
 /* icon font: https://material.io/resources/icons/?style=baseline */
 export const Icon = Tag.extend((icon) =>
@@ -296,7 +292,55 @@ export const Label = Atom((props, children) =>
 export const Row = Atom((props, children) =>
 {
 	return {
-		tag: 'row ' + (props.className || ''),
+		...props,
+		class: 'row ' + (props.className || ''),
+		children
+	};
+});
+
+/**
+ * This will create a list item.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Li = Atom((props, children) =>
+{
+	return {
+		tag: 'li',
+		...props,
+		children
+	};
+});
+
+/**
+ * This will create a nav object.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Nav = Atom((props, children) =>
+{
+	return {
+		tag: 'nav',
+		...props,
+		children
+	};
+});
+
+/**
+ * This will create a list.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Ul = Atom((props, children) =>
+{
+	return {
+		tag: 'ul',
 		...props,
 		children
 	};

@@ -6,14 +6,14 @@
      * Set any common dependencies that are shared between
      * pages.
      */
-    let common = [];
+    const common = [];
 
     /**
      * This will setup the route creator. we want to pass
      * the common depends to the module routes to use when
      * adding local dependencies.
      */
-    let routes = new ModuleRoutes(common);
+    const routes = new ModuleRoutes(common);
 
     /**
      * This will create our module and add it to the app

@@ -1,4 +1,5 @@
-"use strict";
+import { A, Li, Nav, Ul } from "../atoms/atoms.js";
+import { Component, base } from "../libs/base/base.js";
 
 /**
  * SwitchLink
@@ -6,7 +7,7 @@
  * This will create a tab link component.
  * @class
  */
-const SwitchLink = base.Component.extend(
+export class SwitchLink extends Component
 {
 	/**
 	 * This will configure the link active class.
@@ -16,33 +17,35 @@ const SwitchLink = base.Component.extend(
 	onCreated()
 	{
 		this.selectedClass = this.activeClass || 'selected';
-	},
+	}
 
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		let href = this.href,
+		const href = this.href,
 		text = this.text;
 
-		let watchers = this.setupWatchers(href, text);
+		const watchers = this.setupWatchers(href, text);
 
-		let onState = {};
+		const onState = {};
 		onState[this.selectedClass] = true;
 
-		return {
-			tag: 'li',
-			a:
-			{
-				tag: 'a',
-				className: this.className || null,
+		return Li({ class: 'option' }, [
+			A({
+				class: this.className || null,
 				onState: ['selected', onState],
 				href: this.getString(href),
 				text: this.getString(text),
 				children: this.children,
 				watch: watchers,
 				cache: 'link'
-			}
-		};
-	},
+			})
+		]);
+	}
 
 	/**
 	 * This will get string.
@@ -53,7 +56,7 @@ const SwitchLink = base.Component.extend(
 	getString(string)
 	{
 		return typeof string !== 'object'? string : null;
-	},
+	}
 
 	/**
 	 * This will setup the watchers.
@@ -65,9 +68,9 @@ const SwitchLink = base.Component.extend(
 	 */
 	setupWatchers(href, text)
 	{
-		let watchers = [];
+		const watchers = [];
 
-		if(href && typeof href === 'object')
+		if (href && typeof href === 'object')
 		{
 			watchers.push(
 			{
@@ -76,7 +79,7 @@ const SwitchLink = base.Component.extend(
 			});
 		}
 
-		if(text && typeof text === 'object')
+		if (text && typeof text === 'object')
 		{
 			watchers.push(
 			{
@@ -85,25 +88,41 @@ const SwitchLink = base.Component.extend(
 			});
 		}
 		return watchers;
-	},
+	}
 
+	/**
+	 * This will setup the states.
+	 *
+	 * @return {object}
+	 */
 	setupStates()
 	{
 		return {
 			selected: false
 		};
-	},
+	}
 
+	/**
+	 * This will get the link pathname.
+	 *
+	 * @return {string}
+	 */
 	getPathname()
 	{
 		this.link.pathname;
-	},
+	}
 
+	/**
+	 * This will update the link.
+	 *
+	 * @param {boolean} selected
+	 * @return {void}
+	 */
 	update(selected)
 	{
 		this.state.set('selected', selected);
 	}
-});
+}
 
 /**
  * SwitchLink
@@ -112,105 +131,136 @@ const SwitchLink = base.Component.extend(
  * @class
  * @augments SwitchLink
  */
-const SwitchALink = SwitchLink.extend(
+export class SwitchALink extends SwitchLink
 {
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		let href = this.href,
+		const href = this.href,
 		text = this.text;
 
-		let watchers = this.setupWatchers(href, text);
+		const watchers = this.setupWatchers(href, text);
 
-		let onState = {};
+		const onState = {};
 		onState[this.selectedClass] = true;
 
-		return {
-			tag: 'a',
-			className: this.className || null,
+		return A({
+			class: this.className || null,
 			onState: ['selected', onState],
 			href: this.getString(href),
 			text: this.getString(text),
 			children: this.children,
 			watch: watchers
-		};
-	},
+		});
+	}
 
+	/**
+	 * This will set the link.
+	 *
+	 * @return {void}
+	 */
 	afterSetup()
 	{
 		this.link = this.panel;
-	},
+	}
 
+	/**
+	 * This will get the link pathname.
+	 *
+	 * @return {string}
+	 */
 	getPathname()
 	{
 		this.link.pathname;
 	}
-});
+}
 
-const SwitchNavigation = base.Component.extend(
+/**
+ * SwitchNavigation
+ *
+ * This will create a switch navigation component.
+ *
+ * @class
+ * @extends Component
+ */
+export class SwitchNavigation extends Component
 {
 	onCreated()
 	{
         this.data = base.router.data;
 		this.reset();
-	},
+	}
 
+	/**
+	 * This will reset the links.
+	 *
+	 * @return {void}
+	 */
 	reset()
 	{
 		this.links = [];
 		this.hasSetup = false;
-	},
+	}
 
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return {
-			tag: 'nav',
-			className: 'navigation switch-navigation',
-			ul:
-			{
-				tag: 'ul',
-                watch:
-                {
-					value: ['[[path]]', this.data],
+		return Nav({ class: 'navigation switch-navigation' }, [
+			Ul({
+				watch: {
+					value: ['[[path]]', base.router.data],
 					callBack: this.updateLinks.bind(this)
-				},
-				children: this.addLinks()
-			}
-		};
-	},
+				}
+			}, this.addLinks())
+		]);
+	}
 
+	/**
+	 * This will reset the links on destroy.
+	 *
+	 * @return {void}
+	 */
 	beforeDestroy()
 	{
 		this.reset();
-	},
+	}
 
-	updateLinks(ele, value)
+	updateLinks(value)
 	{
-		if(this.hasSetup === false)
+		if (this.hasSetup === false)
 		{
 			this.hasSetup = true;
 			return;
 		}
 
 		let check = false,
-		links = this.links,
 		firstLink = null;
+		const links = this.links;
 
-		for(let i = 0, length = links.length; i < length; i++)
+		for (let i = 0, length = links.length; i < length; i++)
 		{
-			let link = links[i];
-			if(link.rendered === false)
+			const link = links[i];
+			if (link.rendered === false)
 			{
 				continue;
 			}
 
 			/* we want to save the first route in the switch
 			so it can be selected if no route is active */
-			if(i === 0)
+			if (i === 0)
 			{
 				firstLink = link;
 			}
 
-			if(check === true)
+			if (check === true)
 			{
 				this.updateLink(link, false);
 				continue;
@@ -220,31 +270,49 @@ const SwitchNavigation = base.Component.extend(
 			this.updateLink(link, check);
 		}
 
-		if(check !== true && firstLink)
+		if (check !== true && firstLink)
 		{
 			this.updateLink(firstLink, true);
 		}
-	},
+	}
 
+	/**
+	 * This will update the link.
+	 *
+	 * @param {object} link
+	 * @param {boolean} selected
+	 * @return {void}
+	 */
 	updateLink(link, selected)
 	{
 		link.update(selected);
-	},
+	}
 
+	/**
+	 * This will add the links.
+	 *
+	 * @return {array}
+	 */
 	addLinks()
 	{
-		let links = [],
+		const links = [],
 		options = this.options || [];
 
-		for(let i = 0, length = options.length; i < length; i++)
+		for (let i = 0, length = options.length; i < length; i++)
 		{
-			let link = this.addLink(options[i]);
+			const link = this.addLink(options[i]);
 			this.links.push(link);
 			links.push(link);
 		}
 		return links;
-	},
+	}
 
+	/**
+	 * This will add a link.
+	 *
+	 * @param {object} option
+	 * @return {object}
+	 */
 	addLink(option)
 	{
 		return new SwitchLink(
@@ -254,4 +322,4 @@ const SwitchNavigation = base.Component.extend(
             children: option.children
 		});
     }
-});
+}
