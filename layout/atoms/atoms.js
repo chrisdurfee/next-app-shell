@@ -286,6 +286,22 @@ export const Label = Atom((props, children) =>
 	};
 });
 
+/**
+ * This will create a label.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Row = Atom((props, children) =>
+{
+	return {
+		tag: 'row ' + (props.className || ''),
+		...props,
+		children
+	};
+});
+
 export const Textarea = FormEle.extend((props) =>
 {
 	return {
