@@ -61,11 +61,22 @@ export class AppShell extends Component
 		]);
 	}
 
+	/**
+	 * This will get the body panel.
+	 *
+	 * @returns {object}
+	 */
 	getBodyPanel()
 	{
 		return this.mainBody;
 	}
 
+	/**
+	 * This will add a notice.
+	 *
+	 * @param {object} props
+	 * @return {void}
+	 */
 	addNotice(props)
 	{
 		this.notices.addNotice(props);
