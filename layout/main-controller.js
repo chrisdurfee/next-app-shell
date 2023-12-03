@@ -1,6 +1,6 @@
 import { Configs } from "./configs.js";
 import { AppModules } from "./imports.js";
-import { base } from "./libs/base/base.js";
+import { base, Builder } from "./libs/base/base.js";
 import { AppShell } from "./shell/app-shell.js";
 import { Push } from "./worker/push.js";
 
@@ -10,7 +10,7 @@ import { Push } from "./worker/push.js";
  * This will setup the main app controller.
  * @class
  */
-class MainController
+export class MainController
 {
 	/**
 	 * @member {array} modules
@@ -27,6 +27,11 @@ class MainController
 	 */
 	links = [];
 
+	/**
+	 * This will setup the main controller.
+	 *
+	 * @return {MainController}
+	 */
 	constructor()
 	{
 		/**
@@ -40,6 +45,13 @@ class MainController
 		this.appShell = null;
 	}
 
+	/**
+	 * This will setup the push.
+	 *
+	 * @protected
+	 * @param {object} serviceWorker
+	 * @return {object}
+	 */
 	setupPush(serviceWorker)
 	{
 		this.serviceWorker = serviceWorker;
@@ -48,6 +60,7 @@ class MainController
 
 	/**
 	 * This will get the router settings.
+	 *
 	 * @return {object}
 	 */
 	getRouterSettings()
@@ -57,30 +70,17 @@ class MainController
 
 	/**
 	 * This will setup the router.
+	 *
 	 * @protected
+	 * @return {void}
 	 */
 	setupRouter()
 	{
-		let settings = this.getRouterSettings(),
+		const settings = this.getRouterSettings(),
 		baseUrl = settings.baseUrl;
 
-		let router = this.router = base.router;
+		const router = this.router = base.router;
 		router.setup(baseUrl, settings.title);
-
-		/* this will modify the base tag to ref from
-		the base url for all xhr */
-		this.updateBaseTag(baseUrl);
-	}
-
-	updateBaseTag(url)
-	{
-		/* this will modify the base tag to ref from
-		the base url for all xhr */
-		let ele = document.getElementsByTagName('base');
-		if(ele.length)
-		{
-			ele[0].href = url;
-		}
 	}
 
 	/**
@@ -89,28 +89,28 @@ class MainController
 	 */
 	setupModules()
 	{
-		let modules = this.modules = AppModules || [];
-		if(!modules || modules.length < 1)
+		const modules = this.modules = AppModules || [];
+		if (!modules || modules.length < 1)
 		{
 			return;
 		}
 
-		for(let i = 0, length = modules.length; i < length; i++)
+		for (let i = 0, length = modules.length; i < length; i++)
 		{
 			let module = modules[i];
-			if(!module)
+			if (!module)
 			{
 				continue;
 			}
 
 			let routes = module.getRoutes();
-			if(routes)
+			if (routes)
 			{
 				this.routes = this.routes.concat(routes);
 			}
 
 			let links = module.getLinks();
-			if(links)
+			if (links)
 			{
 				this.links = this.links.concat(links);
 			}
@@ -156,13 +156,13 @@ class MainController
 	 */
 	setupAppShell()
 	{
-		let options = this.getNavOptions();
-		let main = this.appShell = new AppShell(
+		const options = this.getNavOptions();
+		const main = this.appShell = new AppShell(
 		{
-			options: options,
+			options,
 			routes: this.getRoutes()
 		});
-		main.setup(document.body);
+		Builder.render(main, document.body);
 	}
 
 	/**
@@ -175,6 +175,11 @@ class MainController
 		return this.appShell.getBodyPanel();
 	}
 
+	/**
+	 * This will setup the main controller.
+	 *
+	 * @return {void}
+	 */
 	setup()
 	{
 		this.setupRouter();
