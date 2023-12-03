@@ -1,4 +1,4 @@
-import { Builder, Component, Html } from "../libs/base/base.js";
+import { Builder, Component, Html } from "../layout/libs/base/base.js";
 
 const added = [];
 
