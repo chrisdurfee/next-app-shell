@@ -1,4 +1,4 @@
-import { Div } from "../../layout/atoms/atoms.js";
+import { A, Div } from "../../layout/atoms/atoms.js";
 import { Atom, Component } from "../libs/base/base.js";
 import { PrimaryNavigation } from "../organisms/navigation/primary-navigation.js";
 
@@ -28,10 +28,11 @@ const Navigation = Atom((props, children) =>
  */
 const Logo = Atom((props, children) =>
 {
-	return {
+	return A(
+	{
 		class: 'logo',
-		children
-	};
+		href: './'
+	});
 });
 
 /**

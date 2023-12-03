@@ -1,6 +1,8 @@
-import { A, Div, Header, MainSection } from "../atoms/atoms.js";
+import { A, Div, H1, Header, MainSection } from "../atoms/atoms.js";
 import { GridContainer } from '../molecules/molecules.js';
+import { InlineOverlay } from '../organisms/inline-overlay.js';
 import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
+import { Overlay } from '../organisms/overlay.js';
 import { Panel } from '../organisms/panel.js';
 import { AsideTemplate } from '../templates/aside-template.js';
 import { BasicPage } from './basic-page.js';
@@ -81,15 +83,15 @@ export class AsidePage extends BasicPage
 									Header([
 										H1('Aside')
 									]),
-									Div({ class: 'card' }, [
-										new Loader({
-											src: 'layout/atoms/atom-test.js',
-											callBack()
-											{
-												return LabelText();
-											}
-										})
-									]),
+									// Div({ class: 'card' }, [
+									// 	Import({
+									// 		src: '../layout/atoms/atom-test.js',
+									// 		callBack()
+									// 		{
+									// 			return LabelText();
+									// 		}
+									// 	})
+									// ]),
 									GridContainer()
 								])
 							]
