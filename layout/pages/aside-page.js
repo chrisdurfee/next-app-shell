@@ -26,16 +26,18 @@ export class AsidePage extends BasicPage
 					component: new Overlay({
 						backHref: 'aside/',
 						children: [
-							new Panel([
-								Div([
-									Header([
-										H1('Overlay')
-									]),
-									Div({ class: 'contained' }, [
-										GridContainer()
+							new Panel({
+								children: [
+									Div([
+										Header([
+											H1('Overlay')
+										]),
+										Div({ class: 'contained' }, [
+											GridContainer()
+										])
 									])
-								])
-							])
+								]
+							})
 						]
 					})
 				}
