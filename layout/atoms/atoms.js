@@ -1,18 +1,5 @@
 import { Atom } from '../libs/base/base.js';
-
-export const Tag = Atom.extend((props) =>
-{
-	return {
-		className: props.className || null,
-		onState: props.onState || null,
-		onSet: props.onSet || null,
-		bind: props.bind || null,
-		watch: props.watch || null,
-		innerHTML: props.innerHTML || null,
-		text: props.text || null,
-		children: props.children
-	};
-});
+import { Html } from '../libs/base/modules/html/html.js';
 
 /**
  * This will create a div.
@@ -29,123 +16,161 @@ export const Div = Atom((props, children) =>
 	};
 });
 
-export const Video = Tag.extend((props) =>
+/**
+ * This will create a video object.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Video = Atom((props, children) =>
 {
 	return {
 		tag: 'video',
+		...props,
 		innerHTML: '<source src="' + props.src + '"></source>',
 		autoplay: true,
 		muted: true,
-		loop: true
+		loop: true,
+		children
 	};
 });
 
-export const Img = Tag.extend((props) =>
+/**
+ * This will create an image object.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Img = Atom((props, children) =>
 {
-	let draggable = (props.draggable === true);
+	const draggable = (props.draggable === true);
 
 	return {
 		tag: 'img',
+		...props,
 		draggable: draggable,
-		src: props.src || null,
-		alt: props.alt || '',
+		src: props.src,
+		alt: props.alt,
 		click: props.click,
-		onmousedown: props.onmousedown || null
+		onmousedown: props.onmousedown,
+		children
 	};
 });
 
-export const Button = Tag.extend((props) =>
+/**
+ * This will create a button.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Button = Atom((props, children) =>
 {
 	return {
 		tag: 'button',
-		className: props.className || 'bttn',
-		click: props.click || null
+		...props,
+		class: props.class || 'bttn',
+		click: props.click,
+		children
 	};
 });
 
-export const MainSection = Tag.extend((props) =>
+export const MainSection = Atom((props, children) =>
 {
 	return {
 		tag: 'section',
-		className: 'basic-page ' + (props.className || ''),
-		route: props.route || null
+		...props,
+		class: 'basic-page ' + (props.class || ''),
+		route: props.route,
+		children
 	};
 });
 
-export const Header = Tag.extend((props) =>
+export const Header = Atom((props, children) =>
 {
 	return {
-		tag: 'header'
+		tag: 'header',
+		...props,
+		children
 	};
 });
 
-export const H1 = Tag.extend((props) => {
-	tag: 'h1'
-});
+export const H1 = Atom((props, children) => ({
+	tag: 'h1',
+	...props,
+	children
+}));
 
-export const H2 = Tag.extend((props) => {
-	tag: 'h2'
-});
+export const H2 = Atom((props, children) => ({
+	tag: 'h2',
+	...props,
+	children
+}));
 
-export const Span = Tag.extend((props) => {
-	tag: 'span'
-});;
+export const Span = Atom((props, children) => ({
+	tag: 'span',
+	...props,
+	children
+}));
 
-export const Br = Tag.extend((props) => {
+export const Br = Atom((props, children) => ({
 	tag: 'br'
-});
+}));
 
-export const Strong = Tag.extend((props) => {
-	tag: 'strong'
-});
+export const Strong = Atom((props, children) => ({
+	tag: 'strong',
+	...props,
+	children
+}));
 
 /* icons */
 /* icon font: https://material.io/resources/icons/?style=baseline */
-export const Icon = Tag.extend((icon) =>
+export const Icon = Atom((props, children) =>
 {
 	return {
 		tag: 'i',
-		className: icon,
-		text: icon
+		...props,
+		class: icon,
+		text: icon,
+		children
 	};
 });
 
 /* Extended buttons */
 
-export const GrayButton = Button.extend((props) =>
+export const GrayButton = Atom((props, children) =>
 {
-	let className = props.className;
+	let className = props.class;
 	className = (className) ? 'gray-bttn ' + className : 'gray-bttn';
-	return {
-		className: className
-	};
+	props.class = className;
+
+	return Button(props, children);
 });
 
-export const OutlineButton = Button.extend((props) =>
+export const OutlineButton = Atom((props, children) =>
 {
-	let className = props.className;
+	let className = props.class;
 	className = (className) ? 'outlined-bttn ' + className : 'outlined-bttn';
-	return {
-		className: className
-	};
+	props.class = className;
+
+	return Button(props, children);
 });
 
-export const TextButton = Button.extend((props) =>
+export const TextButton = Atom((props, children) =>
 {
-	let className = props.className;
+	let className = props.class;
 	className = (className) ? 'text-bttn ' + className : 'text-bttn';
-	return {
-		className: className
-	};
+	props.class = className;
+
+	return Button(props, children);
 });
 
-export const IconButton = Button.extend((props) =>
+export const IconButton = Atom((props, children) =>
 {
 	let icon = props.icon;
-	return {
-		className: icon + '-icon icon-bttn outlined-bttn',
-		children: Icon(icon)
-	};
+	return Button({ class: icon + '-icon icon-bttn outlined-bttn' }, [Icon(icon)]);
 });
 
 export const ToggleButton = IconButton({
@@ -160,95 +185,86 @@ export let CloseButton = IconButton({
 	icon: 'close'
 });
 
-export let Message = Tag.extend((props) =>
+export let Message = Atom((props, children) =>
+{
+	props.class = 'messeage ' + props.class;
+	return Div(props, children);
+});
+
+export const P = Atom((props, children) =>
 {
 	return {
-		className: 'message ' + props.className
+		tag: 'p',
+		...props,
+		children
 	};
 });
 
-export const P = Tag.extend((props) =>
-{
-	return {
-		tag: 'p'
-	};
-});
-
-export const A = Tag.extend((props) =>
+export const A = Atom((props, children) =>
 {
 	return {
 		tag: 'a',
-		href: props.href || null,
-		watch: props.watch || null
+		...props,
+		children
 	};
 });
 
-export const Form = Tag.extend((props) =>
+export const Form = Atom((props, children) =>
 {
 	return {
-		tag: 'form'
+		tag: 'form',
+		...props,
+		children
 	};
 });
 
-export const Fieldset = Tag.extend((props) =>
+export const Fieldset = Atom((props, children) =>
 {
 	return {
-		tag: 'fieldset'
+		tag: 'fieldset',
+		...props,
+		children
 	};
 });
 
-export const Legend = Tag.extend((props) =>
+export const Legend = Atom((props, children) =>
 {
 	return {
-		tag: 'legend'
+		tag: 'legend',
+		...props,
+		children
 	};
 });
 
-const FormEle = Tag.extend((props) =>
-{
-	return {
-		autofocus: props.autofocus || null,
-		disabled: props.disabled || null,
-		form: props.form || null,
-		maxlength: props.maxlength || null,
-		multiple: props.multiple || null,
-		name: props.name || null,
-		placeholder: props.placeholder || null,
-		required: props.required || null,
-		value: props.value || null,
-		id: props.id || null
-	};
-});
-
-export const Input = FormEle.extend((props) =>
+export const Input = Atom((props, children) =>
 {
 	return {
 		tag: 'input',
-		type: props.type || 'text',
-		min: props.min || null,
-		max: props.max || null,
-		onblur: props.onblur || null
+		...props,
+		children
 	};
 });
 
-export const DefaultSelect = FormEle.extend((props) =>
+export const DefaultSelect = Atom((props, children) =>
 {
 	return {
 		tag: 'select',
-		onblur: props.onblur || null,
+		...props,
 		onCreated(ele)
 		{
-			if(props.options)
+			if (props.options)
 			{
-				base.builder.setupSelectOptions(ele, props.options);
+				Html.setupSelectOptions(ele, props.options);
 			}
-		}
+		},
+		children
 	};
 });
 
-export const TelInput = Input.extend((props) =>
+export const TelInput = Atom((props, children) =>
 {
-	return {
+	return Input({
+		...props,
 		type: 'tel',
 		name: 'Phone',
 		label: 'Phone',
@@ -263,7 +279,7 @@ export const TelInput = Input.extend((props) =>
 
 			target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
 		}
-	};
+	});
 });
 
 /**
@@ -293,7 +309,7 @@ export const Row = Atom((props, children) =>
 {
 	return {
 		...props,
-		class: 'row ' + (props.className || ''),
+		class: 'row ' + (props.class || ''),
 		children
 	};
 });
@@ -346,28 +362,34 @@ export const Ul = Atom((props, children) =>
 	};
 });
 
-export const Textarea = FormEle.extend((props) =>
+export const Textarea = Atom((props, children) =>
 {
 	return {
-		tag: 'textarea'
+		tag: 'textarea',
+		...props,
+		children
 	};
 });
 
 /* submit button */
-export const Submit = Button.extend((props) =>
+export const Submit = Atom((props, children) =>
 {
-	return {
-		type: 'submit'
-	};
+	return Button({
+		...props,
+		type: 'submit',
+		children
+	});
 });
 
 /* template tests */
 
-export const GridPanel = Tag.extend((props) =>
+export const GridPanel = Atom((props, children) =>
 {
 	let span = (props.span)? 'span-' + props.span : '';
+	props.class = 'panel ' + span;
 
-	return {
-		className: 'panel ' + span
-	};
+	return Div({
+		...props,
+		children
+	});
 });
