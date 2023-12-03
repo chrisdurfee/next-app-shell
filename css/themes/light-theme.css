@@ -1,0 +1,14 @@
+@supports (--color: #6B98F2) {
+    :root {
+        --base-primary: #FDFDFF;
+        --base-sub: #F7F7FC;
+        --base-layer: #FBFBFF;
+        --base-raised: #FFF;
+        --base-border: #EDF2F7;
+        --base-input: #FFF;
+        --base-input-border: var(--gray-30);
+        --primary-color: #5F8AE1;
+
+        --text-color: #2B303A;
+    }
+}

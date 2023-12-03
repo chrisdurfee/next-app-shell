@@ -29,13 +29,13 @@ button{
 }
 .app-nav-container .main-navigation {
 	position: relative;
-	background-color: #FFF;
+	background-color: var(--base-raised);
 	width: 64px;
 	height: 100%;
 	z-index: 5;
 	overflow-y: auto;
 	overflow-x: hidden;
-	border-right: 1px solid #EBEEF1;
+	border-right: 1px solid var(--base-border);
 	transition: width .2s .1s ease-in-out;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
@@ -66,7 +66,7 @@ a.logo {
 .app-nav-container .navigation-group h2{
 	position: relative;
 	font-weight: 500;
-	color: #4a566d;
+	color: var(--text-color);
 	font-size: 16px;
 	letter-spacing: 0.5px;
 	padding: 20px 30px;
@@ -79,6 +79,7 @@ a.logo {
 }
 .app-container .active-panel-container{
 	flex: 1 1 auto;
+	display: flex;
 	overflow-y: auto;
 	position: relative;
 	left: 64px;

@@ -1,5 +1,6 @@
 .basic-page{
 	flex: 1 1 auto;
+	display: flex;
 }
 .basic-page header{
 	height: 54px;
@@ -11,13 +12,15 @@
 	height: 54px;
 	line-height: 54px;
 	padding-left: 20px;
-	color: #4a566d;
+	color: var(--text-color);
 	font-weight: 600;
     font-size: 24px;
 	margin: 0px;
 }
 .basic-page .body{
 	flex: 1;
+	display: flex;
+	flex-direction: column;
 }
 .basic-page .row .col{
 	position: relative;
@@ -25,7 +28,6 @@
 }
 .basic-page .aside-container > .row,
 .basic-page .bside-container > .row  {
-	max-height: 100vh;
 	overflow: hidden;
 }
 .basic-page .aside-container > .row > .col,
@@ -35,7 +37,7 @@
 }
 .basic-page .aside-container .row .col:first-child,
 .basic-page .bside-container .row .col:last-child{
-	background: #F2F5F9;
+	background: var(--base-layer);
 }
 .basic-page .row .col:nth-child(2){
 	flex-grow: 3;
@@ -43,7 +45,6 @@
 .aside-container .control h1{
 	position: relative;
     font-weight: 600;
-    color: #4a566d;
     font-size: 16px;
     letter-spacing: 0.5px;
     padding: 20px 16px;

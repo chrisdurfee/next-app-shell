@@ -186,12 +186,6 @@ label .label-text {
     margin-bottom: .5em;
 }
 
-::-webkit-input-placeholder {color: #B3B9C2;}
-::-moz-placeholder {color: #B3B9C2;}
-:-moz-placeholder {color: #B3B9C2;}
-:-ms-input-placeholder {color: #B3B9C2;}
-::placeholder {color: #B3B9C2;}
-
 /* Floating outline input */
 .floating :placeholder-shown::-webkit-input-placeholder {opacity: 0;}
 .floating :placeholder-shown::-moz-placeholder {opacity: 0;}
@@ -451,7 +445,7 @@ label input[type="radio"] + span {
 	margin: 20px;
 }
 .panel{
-	background: #F2F5F9;
+	background: var(--base-raised);
 	height: 180px;
 }
 .grid-container .panel:first-child{

@@ -10,7 +10,7 @@ html, body{
 	bottom: 0;
 	left: 0;
 	right: 0;
-	background-color: #FFF;
+	background-color: var(--base-primary);
 	z-index: 100;
 	opacity: 1;
 	pointer-events: none;
@@ -24,7 +24,7 @@ html, body{
 	position: absolute;
 	width: 0;
 	height: 4px;
-	background: #2C90EE;
+	background: var(--primary-color);
 	-webkit-transition: all .5s;
 	transition: all .5s;
 	top: 0;
@@ -69,7 +69,7 @@ html, body{
 	transform: scale(1, 1);
 }
 .loader-progress.complete .progress .wipe:first-child{
-	background-color: #C8C8C8;
+	background-color: var(--base-layer);
 	transition-delay: 0s;
 	transition-duration: .2s;
 	z-index: 1;
@@ -82,7 +82,7 @@ html, body{
 	display: none;
 }
 .loader-progress.complete .progress .wipe:last-child{
-	background-color: #F1F1F1;
+	background-color: var(--base-raised);
 	transition-delay: .2s;
 	transition-duration: .3s;
 	z-index: 3;

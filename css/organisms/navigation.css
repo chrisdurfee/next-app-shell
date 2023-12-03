@@ -1,6 +1,5 @@
 .app-nav-container .navigation{
 	position: absolute;
-	background: #FFF;
 	width: 330px;
 	top: 0;
 	bottom: 0;
@@ -13,7 +12,7 @@
 .app-nav-container .navigation.sub{
 	z-index: 10;
 	opacity: 0;
-	background:#F2F5F9;
+	background: var(--base-primary);
 	box-shadow: 10px 0px 15px -5px rgba(0,0,0,.2);
 	-webkit-transform: translateX(230px);
 	transform: translateX(230px);
@@ -22,7 +21,7 @@
 	pointer-events: none;
 }
 .app-nav-container .navigation.sub {
-    border-right: 1px solid #e1ecf5;
+    border-right: 1px solid var(--base-border);
 }
 .app-nav-container:not(.ignoreHover):hover .navigation.sub.active{
 	pointer-events: all;
@@ -49,8 +48,8 @@
 	transition-duration: .4s !important;
 }
 .navigation ul{
-	position:relative;
-	list-style:none;
+	position: relative;
+	list-style: none;
 	padding: 0;
 	margin: 0;
 }
@@ -80,7 +79,7 @@
 .navigation li.option,
 .navigation li.option a,
 .navigation li.option > div{
-	color: #9db3c5;
+	color: inherit;
 }
 .navigation li.option.sub > *:before{
 	content: '';
@@ -98,7 +97,7 @@
 	transform: rotate(180deg);
 }
 .navigation li.option:hover{
-	background-color: rgba(0,40,80,.04);
+	background-color: var(--base-raised);
 }
 .navigation li.option:hover,
 .navigation li.option:hover a{
@@ -106,7 +105,7 @@
 	box-shadow: none;
 }
 .navigation li.option:active{
-	background: rgba(0,40,80, .1);
+	background: var(--base-raised);
 }
 .navigation li.option .icon,
 .navigation li.option .label{
@@ -132,7 +131,6 @@
 	font-size: 14px;
 	font-weight: 500;
 	letter-spacing: 0.25px;
-	color: #9db3c5;
 	margin-left: 30px;
 	opacity: 1;
 	-webkit-transition: opacity .3s ease-in;
@@ -144,11 +142,11 @@
 }
 .navigation li.option .selected .label,
 .navigation li.option .active .label{
-	color: #4a566d;
+	color: inherit
 }
 .navigation li.option.selected,
 .navigation li.option.active{
-	color: #4a566d;
+	color: inherit;
 	background: none;
 }
 .drawer .navigation li.option{
@@ -174,8 +172,7 @@
 .aside-container .drawer h2{
 	font-size: 12px;
 	letter-spacing: 0.25px;
-	border-bottom: 1px solid #e1ebf3;
-	color: #4a566d;
+	border-bottom: 1px solid var(--base-border);
 	padding: 20px 16px;
     margin: 0;
 }
@@ -204,16 +201,13 @@
 	margin: 4px 0 4px 16px;
 }
 .drawer .child-group .navigation.sub .option{
-	border-left: 1px solid #e1ebf3;
+	border-left: 1px solid var(--border-color);
 }
 .app-nav-container:hover .navigation li.option.sub > .active{
-	background-color: #F2F5F9;
+	background-color: var(--base-raised);
 }
 .app-nav-container:hover .navigation.sub li.option.sub > .active{
 	background-color: rgba(0,40,80,.04);
-}
-.navigation li.option:hover .label{
-	color: #7f91a0;
 }
 .navigation li.option .selected .icon,
 .navigation li.option .active .icon{
@@ -231,7 +225,7 @@
 	bottom: 0;
 	left: 0;
 	margin: auto 0;
-    background-color: #6B98F2;
+    background-color: var(--primary-color);
     border-radius: 2px 0 0 2px;
     z-index: 0;
 }
