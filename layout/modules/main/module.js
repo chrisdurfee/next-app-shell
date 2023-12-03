@@ -1,8 +1,8 @@
-import { BsidePage } from '../../pages//bside-page.js';
-import { FullContainPage } from '../../pages//full-contain-page.js';
-import { FullPage } from '../../pages//full-page.js';
 import { AsideBsidePage } from '../../pages/aside-bside-page.js';
 import { AsidePage } from '../../pages/aside-page.js';
+import { BsidePage } from '../../pages/bside-page.js';
+import { FullContainPage } from '../../pages/full-contain-page.js';
+import { FullPage } from '../../pages/full-page.js';
 import { Module, ModuleRoutes } from '../module.js';
 
 /**

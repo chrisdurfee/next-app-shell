@@ -1,7 +1,7 @@
 import { A, Div, Header, MainSection } from "../atoms/atoms.js";
 import { GridContainer } from '../molecules/molecules.js';
-import { Panel } from '../molecules/panel.js';
 import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
+import { Panel } from '../organisms/panel.js';
 import { AsideTemplate } from '../templates/aside-template.js';
 import { BasicPage } from './basic-page.js';
 
