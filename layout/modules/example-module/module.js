@@ -1,9 +1,9 @@
 import { BsidePage } from '../../pages//bside-page.js';
-import { ExamplePage } from '../../pages//example-page.js';
 import { FullContainPage } from '../../pages//full-contain-page.js';
 import { FullPage } from '../../pages//full-page.js';
 import { AsideBsidePage } from '../../pages/aside-bside-page.js';
 import { Module, ModuleRoutes } from '../module.js';
+import { ExamplePage } from './js/pages/example-page.js';
 
 
 /**
