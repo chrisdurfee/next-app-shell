@@ -71,13 +71,18 @@ const AsidePage = BasicPage.extend(
 											})
 										]
 									}),
-									label: new Loader({
-										src: 'layout/atoms/atom-test.js',
-										callBack()
-										{
-											return LabelText();
-										}
-									}),
+									label: {
+										className: 'card',
+										children: [
+											new Loader({
+												src: 'layout/atoms/atom-test.js',
+												callBack()
+												{
+													return LabelText();
+												}
+											})
+										]
+									},
 									panels: GridContainer()
 								}
 							]
