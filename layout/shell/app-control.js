@@ -1,11 +1,12 @@
-"use strict";
+import { Component } from "../libs/base/base.js";
+import { MainNavigation } from "./main-navigation.js";
 
-const AppControl = base.Component.extend(
+export class AppControl extends Component
 {
     onCreated()
     {
         this.timer = null;
-    },
+    }
 
 	render()
 	{
@@ -22,7 +23,7 @@ const AppControl = base.Component.extend(
                 parent: this
             })
 		};
-    },
+    }
 
     removeIgnore()
     {
@@ -35,7 +36,7 @@ const AppControl = base.Component.extend(
                 ignoreHover: false
             });
         }, 400);
-    },
+    }
 
 	setupStates()
 	{
@@ -46,4 +47,4 @@ const AppControl = base.Component.extend(
             pinned: false
 		};
 	}
-});
+}

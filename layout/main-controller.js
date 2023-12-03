@@ -1,4 +1,8 @@
-"use strict";
+import { Configs } from "./configs.js";
+import { AppModules } from "./imports.js";
+import { base } from "./libs/base/base.js";
+import { AppShell } from "./shell/app-shell.js";
+import { Push } from "./worker/push.js";
 
 /**
  * MainController
@@ -6,22 +10,22 @@
  * This will setup the main app controller.
  * @class
  */
-const MainController = base.Class.extend(
+class MainController
 {
 	/**
-	 * @param {array} modules
+	 * @member {array} modules
 	 */
-	modules: [],
+	modules = [];
 
 	/**
-	 * @param {array} routes
+	 * @member {array} routes
 	 */
-	routes: [],
+	routes = [];
 
 	/**
-	 * @param {array} links
+	 * @member {array} links
 	 */
-	links: [],
+	links = [];
 
 	constructor()
 	{
@@ -34,13 +38,13 @@ const MainController = base.Class.extend(
 		 * @member {object} appShell
 		 */
 		this.appShell = null;
-	},
+	}
 
 	setupPush(serviceWorker)
 	{
 		this.serviceWorker = serviceWorker;
 		this.push = new Push(this.pushPublicKey, serviceWorker);
-	},
+	}
 
 	/**
 	 * This will get the router settings.
@@ -49,7 +53,7 @@ const MainController = base.Class.extend(
 	getRouterSettings()
 	{
 		return Configs.router;
-	},
+	}
 
 	/**
 	 * This will setup the router.
@@ -66,7 +70,7 @@ const MainController = base.Class.extend(
 		/* this will modify the base tag to ref from
 		the base url for all xhr */
 		this.updateBaseTag(baseUrl);
-	},
+	}
 
 	updateBaseTag(url)
 	{
@@ -77,7 +81,7 @@ const MainController = base.Class.extend(
 		{
 			ele[0].href = url;
 		}
-	},
+	}
 
 	/**
 	 * This will setup the app modules.
@@ -111,7 +115,7 @@ const MainController = base.Class.extend(
 				this.links = this.links.concat(links);
 			}
 		}
-	},
+	}
 
 	/**
 	 * This will get the routes that will be used in
@@ -122,7 +126,7 @@ const MainController = base.Class.extend(
 	getRoutes()
 	{
 		return this.routes;
-	},
+	}
 
 	/**
 	 * This will get the options to create the app
@@ -133,7 +137,7 @@ const MainController = base.Class.extend(
 	getNavOptions()
 	{
 		return this.links;
-	},
+	}
 
 	/**
 	 * This will navigate to the uri.
@@ -145,7 +149,7 @@ const MainController = base.Class.extend(
 	navigate(uri, data, replace)
 	{
 		this.router.navigate(uri, data, replace);
-	},
+	}
 
 	/**
 	 * This will setup the app shell.
@@ -159,7 +163,7 @@ const MainController = base.Class.extend(
 			routes: this.getRoutes()
 		});
 		main.setup(document.body);
-	},
+	}
 
 	/**
 	 * This will get the main body element.
@@ -169,7 +173,7 @@ const MainController = base.Class.extend(
 	getMainBody()
 	{
 		return this.appShell.getBodyPanel();
-	},
+	}
 
 	setup()
 	{
@@ -177,4 +181,4 @@ const MainController = base.Class.extend(
 		this.setupModules();
 		this.setupAppShell();
 	}
-});
+}

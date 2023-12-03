@@ -1,4 +1,4 @@
-"use strict";
+import { MainController } from './main-controller.js';
 
 /**
  * AppController
@@ -7,7 +7,7 @@
  * the app settings.
  * @class
  */
-const AppController = MainController.extend(
+export class AppController extends MainController
 {
 
-});
+}

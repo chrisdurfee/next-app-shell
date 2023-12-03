@@ -35,25 +35,11 @@
 			</div>
 		</div>
 
-		<script src="./layout/script-loader.js"></script>
-		<script src="./layout/imports.js"></script>
-		<script>
-			"use strict";
+		<script type="module">
+			import {AppController} from './scripts/layout/app-controller.js';
 
-			/* this will store the app object that will be used
-			to controll the app and user interface */
-			let app;
-
-			const loaderContainer = document.getElementById('loader-container'),
-			progress = document.getElementById('progress'),
-			progressLabel = document.getElementById('progress-label');
-			scriptLoader.progress.callBack = scriptLoader.showProgress(progress, progressLabel, () =>
-			{
-				base.animate.hide(loaderContainer, 'complete', 600);
-
-				app = new AppController();
-				app.setup();
-			});
+			const app = new AppController();
+			app.setup();
 
 		</script>
 	</body>

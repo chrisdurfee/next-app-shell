@@ -1,31 +1,67 @@
-"use strict";
+import { Div } from "../../layout/atoms/atoms.js";
+import { Atom, Component } from "../libs/base/base.js";
 
-const MainNavigation = base.Component.extend(
+/**
+ * This will create the main navigation.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+const Navigation = Atom((props, children) =>
 {
+	return {
+		tag: 'main-navigation nav-container',
+		...props,
+		children
+	};
+});
+
+
+/**
+ * This will create a logo.
+ *
+ * @param {object} props
+ * @return {object}
+ */
+const Logo = Atom((props) =>
+{
+	return {
+		tag: 'a logo',
+		...props
+	};
+});
+
+/**
+ * MainNavigation
+ *
+ * This will create the main navigation.
+ *
+ * @class
+ * @extends Component
+ */
+export class MainNavigation extends Component
+{
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return {
-			className: 'main-navigation nav-container',
-			children:
-			[
-				this.addLogo(),
-				{
-					className: 'nav-container',
-					nav: this.addPrimaryNav()
-				}
-			]
-		};
-	},
+		return Navigation([
+			Logo(),
+			Div({ class: 'nav-container' }, [
+				this.addPrimaryNav()
+			])
+		]);
+	}
 
-	addLogo()
-	{
-		return A(
-		{
-			className: 'logo',
-			href: './'
-		});
-	},
-
+	/**
+	 * This will create the primary navigation.
+	 *
+	 * @return {object}
+	 */
 	addPrimaryNav()
 	{
 		return new PrimaryNavigation(
@@ -34,4 +70,4 @@ const MainNavigation = base.Component.extend(
 			appNav: this.parent.panel
 		});
 	}
-});
+}

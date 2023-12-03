@@ -1,11 +1,9 @@
-"use strict";
-
 /**
  * Config
  *
  * This will set the app configs.
  */
-const Configs =
+export const Configs =
 {
 	appName: 'Example',
 

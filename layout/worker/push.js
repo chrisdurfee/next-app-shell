@@ -1,4 +1,3 @@
-"use strict";
 
 const urlB64ToUint8Array = (base64String) =>
 {
@@ -17,7 +16,7 @@ const urlB64ToUint8Array = (base64String) =>
 	return outputArray;
 };
 
-const Push = base.Class.extend(
+export class Push
 {
 	constructor(publicKey, serviceWorker)
 	{
@@ -28,14 +27,14 @@ const Push = base.Class.extend(
 		{
 			this.getSubscription();
 		}
-	},
+	}
 
 	setupState(supported)
 	{
 		let target = this.state = base.state.add('push');
 		target.addAction('supported', supported);
 		target.addAction('subscribed', false);
-	},
+	}
 
 	supported()
 	{
@@ -43,7 +42,7 @@ const Push = base.Class.extend(
 		this.setupState(supported);
 
 		return supported;
-	},
+	}
 
 	getSubscription()
 	{
@@ -61,7 +60,7 @@ const Push = base.Class.extend(
 			state.set('subscribed', subscribed);
 			self.updateSubscription(subscription);
 		});
-	},
+	}
 
 	subscribe()
 	{
@@ -82,10 +81,10 @@ const Push = base.Class.extend(
 		{
 			state.set('subscription', false);
 		});
-	},
+	}
 
 	updateSubscription(subscription)
 	{
 
 	}
-});
+}
