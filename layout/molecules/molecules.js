@@ -27,14 +27,8 @@ export const Nav = Atom((props, children) =>
 export const MessageLabel = Atom((props, children) =>
 {
 	return Div({ class: 'message-label' }, [
-		Span({
-			text: props.name,
-			className: 'name'
-		}),
-		Span({
-			text: props.time,
-			className: 'time'
-		})
+		Span({ class: 'name' }, props.name),
+		Span({ class: 'time' }, props.time)
 	]);
 });
 
