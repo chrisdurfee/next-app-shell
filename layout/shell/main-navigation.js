@@ -31,7 +31,9 @@ const Logo = Atom((props, children) =>
 	return A(
 	{
 		class: 'logo',
-		href: './'
+		href: './',
+		...props,
+		children
 	});
 });
 

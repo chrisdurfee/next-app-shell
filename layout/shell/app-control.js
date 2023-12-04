@@ -52,16 +52,11 @@ export class AppControl extends Component
 	{
 		return AppContainer(
             {
-                onState: [
-                    ['ignoreHover', {
-                        ignoreHover: true
-                    }]
-                ],
+                onState: ['ignoreHover', { ignoreHover: true }],
                 mouseleave: this.removeIgnore.bind(this)
             },
             new MainNavigation({
-                options: this.options,
-                parent: this
+                options: this.options
             })
         );
     }
