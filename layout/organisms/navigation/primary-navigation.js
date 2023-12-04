@@ -240,8 +240,9 @@ export class PrimarySubNavigation extends SubNavigation
 			option.checkCallBack = this.checkButtons.bind(this);
 		}
 
-		let link = new MainLink(option);
+		const link = new MainLink(option);
 		this.links.push(link);
+
 		if (link.options)
 		{
 			this.addSubNav(link);
