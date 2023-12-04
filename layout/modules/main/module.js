@@ -107,15 +107,15 @@ Module.create(
                             options: [
                                 {
                                     label: 'irure nostrud 1',
-                                    href:'/synopsis/Book/irure-nostrud'
+                                    href:'synopsis/Book/irure-nostrud'
                                 },
                                 {
                                     label: 'ipsum dolore 2',
-                                    href: '/synopsis/Book/ipsum-dolore'
+                                    href: 'synopsis/Book/ipsum-dolore'
                                 },
                                 {
                                     label: 'enim consectetur 3',
-                                    href: '/synopsis/Book/enim-consectetur'
+                                    href: 'synopsis/Book/enim-consectetur'
                                 }
                             ]
                         },
@@ -124,15 +124,15 @@ Module.create(
                             options: [
                                 {
                                     label: 'irure nostrud',
-                                    href:'/synopsis/concepts/irure-nostrud'
+                                    href:'synopsis/concepts/irure-nostrud'
                                 },
                                 {
                                     label: 'ipsum dolore',
-                                    href: '/synopsis/concepts/ipsum-dolore'
+                                    href: 'synopsis/concepts/ipsum-dolore'
                                 },
                                 {
                                     label: 'enim consectetur',
-                                    href: '/synopsis/concepts/enim-consectetur'
+                                    href: 'synopsis/concepts/enim-consectetur'
                                 }
                             ]
                         }
@@ -151,15 +151,15 @@ Module.create(
             options: [
                 {
                     label: 'irure nostrud',
-                    href:'/gallery/irure-nostrud'
+                    href:'gallery/irure-nostrud'
                 },
                 {
                     label: 'ipsum dolore',
-                    href: '/gallery/ipsum-dolore'
+                    href: 'gallery/ipsum-dolore'
                 },
                 {
                     label: 'enim consectetur',
-                    href: '/gallery/enim-consectetur'
+                    href: 'gallery/enim-consectetur'
                 }
             ]
         },
