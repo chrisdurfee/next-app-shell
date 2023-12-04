@@ -14,8 +14,8 @@ export const BsideTemplate = Atom((props, children) =>
 {
 	return Template({ class: 'body bside-container' }, [
 		Row([
-			MainColumn(props.left),
-			MainColumn(props.right)
+			MainColumn(props.left?.children),
+			MainColumn(props.right?.children)
 		])
 	]);
 });
