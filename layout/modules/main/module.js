@@ -34,7 +34,7 @@ Module.create(
         routes.add('/', FullPage, 'Example'),
         routes.add('/full', FullPage, 'Full Example'),
         routes.add('/full-contain', FullContainPage, 'Full Contain Example'),
-        routes.add('/aside', AsidePage, 'Aside Example'),
+        routes.add('/aside/:page?/:marketing?/:label?/:name?', AsidePage, 'Aside Example'),
         // routes.load('/aside/:page?/:marketing?/:label?/:name?', {
         //     src: 'layout/pages/aside-page.js',
         //     callBack()
