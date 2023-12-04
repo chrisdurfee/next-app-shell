@@ -102,7 +102,8 @@ export class SubNavigation extends InlineNavigation
 		const map = this.mapOptions(this.options);
 
 		return Nav({ class: className, onState: this.onState() }, [
-			Ul({  }, [
+			Ul([
+				...map,
 				...this.addSubs(),
 				this.addWatcher()
 			])
