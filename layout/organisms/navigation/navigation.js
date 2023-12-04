@@ -25,7 +25,7 @@ export class Navigation extends Component
 
 		return Nav({ class: 'navigation' }, [
 			Ul({ map }),
-			this.addSubs()
+			...this.addSubs()
 		]);
 	}
 
@@ -37,7 +37,7 @@ export class Navigation extends Component
 	 */
 	mapOptions(options)
 	{
-		return [options, (option) =>
+		const items = this.map(options, (option) =>
 		{
 			if (!option.group)
 			{
@@ -45,7 +45,9 @@ export class Navigation extends Component
 			}
 
 			return this.addGroup(option);
-		}];
+		});
+
+		return [items, (item) => item];
 	}
 
 	/**
