@@ -214,7 +214,7 @@ export class SubNavigation extends InlineNavigation
 				}
 			}
 
-			check = link.exact? (value === path) : (new RegExp(path + '($|\/|\\.).*').test(value));
+			check = link.exact? (value === path) : (new RegExp(path + '($|/|\\.).*').test(value));
 			if (check === true)
 			{
 				break;

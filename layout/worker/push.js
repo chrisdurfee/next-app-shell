@@ -1,9 +1,10 @@
+import { base } from "../libs/base/base.js";
 
 const urlB64ToUint8Array = (base64String) =>
 {
 	let padding = '='.repeat((4 - base64String.length % 4) % 4);
 	let base64 = (base64String + padding)
-	.replace(/\-/g, '+')
+	.replace(/-/g, '+')
 	.replace(/_/g, '/');
 
 	let rawData = window.atob(base64),

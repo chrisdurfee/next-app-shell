@@ -266,7 +266,7 @@ export class SwitchNavigation extends Component
 				continue;
 			}
 
-			check = (new RegExp(link.getPathname() + '($|\/|\\.).*').test(value));
+			check = (new RegExp(link.getPathname() + '($|/|\\.).*').test(value));
 			this.updateLink(link, check);
 		}
 

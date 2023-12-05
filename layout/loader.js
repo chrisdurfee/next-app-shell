@@ -368,7 +368,7 @@ export class Loader extends Component
      */
     getLayout()
     {
-        const layout = this.callBack();
+        let layout = this.callBack();
         if (typeof layout === 'function')
         {
             layout = layout();
