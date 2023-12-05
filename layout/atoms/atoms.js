@@ -371,11 +371,8 @@ export const Textarea = Atom((props, children) =>
 /* submit button */
 export const Submit = Atom((props, children) =>
 {
-	return Button({
-		...props,
-		type: 'submit',
-		children
-	});
+	props.type = 'submit';
+	return Button(props, children);
 });
 
 /* template tests */
@@ -385,8 +382,5 @@ export const GridPanel = Atom((props, children) =>
 	let span = (props.span)? 'span-' + props.span : '';
 	props.class = 'panel ' + span;
 
-	return Div({
-		...props,
-		children
-	});
+	return Div(props, children);
 });
