@@ -1,0 +1,34 @@
+{
+	"name": "@base-framework/next-app-shell",
+	"version": "0.1.0",
+	"description": "This is an example app that uses the base framework.",
+	"main": "/dist/main.js",
+	"scripts": {
+		"build": "node ./esbuild.js",
+		"prepublishOnly": "node ./esbuild.js"
+	},
+	"keywords": [
+		"JavaScript",
+		"Framework",
+		"Base",
+		"ES6"
+	],
+	"author": "Chris Durfee",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/chrisdurfee/next-app-shell.git"
+	},
+	"bugs": {
+		"url": "https://github.com/chrisdurfee/next-app-shell/issues"
+	},
+	"devDependencies": {
+		"esbuild": "^0.15.7"
+	},
+	"files": [
+		"pacakge.json",
+		"readme.md",
+		"dist"
+	],
+	"homepage": "https://github.com/chrisdurfee/next-app-shell#readme"
+}
