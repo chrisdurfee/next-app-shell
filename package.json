@@ -23,7 +23,8 @@
 		"url": "https://github.com/chrisdurfee/next-app-shell/issues"
 	},
 	"devDependencies": {
-		"esbuild": "^0.15.7"
+		"esbuild": "^0.15.7",
+		"eslint": "^8.55.0"
 	},
 	"files": [
 		"pacakge.json",
