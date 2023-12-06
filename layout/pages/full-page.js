@@ -1,6 +1,5 @@
 import { H1, Header, MainSection, P } from "../atoms/atoms.js";
 import { Data } from "../libs/base/base.js";
-import { Import } from "../libs/base/modules/import/import.js";
 import { GridContainer } from '../molecules/molecules.js';
 import { FullTemplate } from '../templates/full-template.js';
 import { BasicPage } from './basic-page.js';
@@ -44,9 +43,6 @@ export class FullPage extends BasicPage
 				H1('Title [[name]]'),
 			]),
 			P('This will test the deep data binding [[other.name]]'),
-			Import({
-				src: '/layout/atoms/import-buttons.js'
-			}),
 			FullTemplate(this.addBody())
 		]);
 	}
