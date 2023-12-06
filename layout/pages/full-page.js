@@ -30,6 +30,7 @@ export class FullPage extends BasicPage
 			]
 		});
 	}
+
 	/**
 	 * This will render the page.
 	 *
