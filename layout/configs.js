@@ -9,7 +9,7 @@ export const Configs =
 
 	router:
 	{
-		baseUrl: '/next-app-shell/',
+		baseUrl: '/',
 		title: 'Example'
 	}
 };

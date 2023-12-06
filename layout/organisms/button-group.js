@@ -1,5 +1,5 @@
-import { Atom, Component } from '../../base/base.js';
 import { Button, P } from '../atoms/atoms.js';
+import { Atom, Component } from '../libs/base/base.js';
 
 /**
  * This will create a button group.
@@ -90,3 +90,5 @@ export class ButtonGroup extends Component
 		};
 	}
 }
+
+export default ButtonGroup;
