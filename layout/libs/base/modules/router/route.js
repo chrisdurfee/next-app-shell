@@ -1,7 +1,6 @@
 import { SimpleData } from '../data/data.js';
 import { Import } from '../import/import.js';
 import { ComponentHelper } from './component-helper.js';
-import { router } from './router.js';
 
 /**
  * This will setup a route uri pattern.
@@ -117,20 +116,23 @@ export class Route extends SimpleData
 	/**
 	 * @constructor
 	 * @param {object} settings
+	 * @param {function} titleCallBack
 	 */
-	constructor(settings)
+	constructor(settings, titleCallBack)
 	{
 		const uri = settings.baseUri;
 
 		const paramKeys = paramPattern(uri);
 		const params = getParamDefaults(paramKeys);
-		super(params);
+		const proxy = super(params);
 
 		this.uri = uri;
 		this.paramKeys = paramKeys;
+		this.titleCallBack = titleCallBack;
 
 		this.setupRoute(settings);
 		this.set('active', false);
+		return proxy;
 	}
 
 	/**
@@ -168,10 +170,7 @@ export class Route extends SimpleData
 	 */
 	setTitle(title)
 	{
-		router.updateTitle({
-			title: title,
-			stage: this.stage
-		});
+		this.titleCallBack(this, title);
 	}
 
 	/**
