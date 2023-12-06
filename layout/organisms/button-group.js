@@ -39,7 +39,7 @@ const StateButton = Atom((props, children) =>
  * @class
  * @extends Component
  */
-export class ButtonGroup extends Component
+export default class ButtonGroup extends Component
 {
     /**
      * This will render the component.
@@ -90,5 +90,3 @@ export class ButtonGroup extends Component
 		};
 	}
 }
-
-export default ButtonGroup;
