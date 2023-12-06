@@ -1,4 +1,4 @@
-import { H1, Header, MainSection } from "../atoms/atoms.js";
+import { H1, Header, MainSection, P } from "../atoms/atoms.js";
 import { Data } from "../libs/base/base.js";
 import { GridContainer } from '../molecules/molecules.js';
 import { FullTemplate } from '../templates/full-template.js';
@@ -41,6 +41,7 @@ export class FullPage extends BasicPage
 			Header([
 				H1('Title [[name]]'),
 			]),
+			P('This will test the deep data binding [[other.name]]'),
 			FullTemplate(this.addBody())
 		]);
 	}
@@ -48,10 +49,11 @@ export class FullPage extends BasicPage
 	afterSetup()
 	{
 		const data = this.data;
+		data.set('name', 'something long here');
 
 		setTimeout(() =>
 		{
-			data.name = 'test';
+			data.name = 'someting else';
 			data.class = 'inactive';
 			data.other.name = 'test';
 			data.other.class = 'inactive';
