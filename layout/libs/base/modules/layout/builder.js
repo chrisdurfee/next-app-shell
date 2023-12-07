@@ -2,6 +2,12 @@ import { base } from '../../main/base.js';
 import { Jot } from "../component/jot.js";
 import { Parser } from './element/parser.js';
 import { HtmlHelper } from './html-helper.js';
+import { RenderController } from './render-controller.js';
+
+/**
+ * This will set up the render engine.
+ */
+const render = RenderController.setup();
 
 /**
  * Builder
@@ -133,11 +139,7 @@ export class Builder
 		const settings = Parser.parse(obj, parent),
 		ele = this.createNode(settings, container, parent);
 
-		const propName = obj.cache;
-		if (parent && propName)
-		{
-			parent[propName] = ele;
-		}
+		this.cache(ele, obj.cache, parent);
 
 		/* we want to recursively add the children to
 		the new element */
@@ -196,25 +198,13 @@ export class Builder
 	}
 
 	/**
-	 * This will be called when an element onCreated directive is called.
-	 *
-	 * @param {object} ele
-	 * @param {function} callBack
-	 * @param {object} parent
-	 */
-	onCreated(ele, callBack, parent)
-	{
-		callBack(ele);
-	}
-
-	/**
 	 * This will cache an element ot the parent.
 	 *
 	 * @param {object} ele
 	 * @param {object} propName
 	 * @param {object} parent
 	 */
-	cache(ele, propName, parent)
+	static cache(ele, propName, parent)
 	{
 		if (parent && propName)
 		{
@@ -273,21 +263,7 @@ export class Builder
 	 */
 	static createNode(settings, container, parent)
 	{
-		const tag = settings.tag;
-		if (tag === 'text')
-		{
-			const child = settings.attr[0];
-			const text = (child)? child.value : '';
-			return HtmlHelper.createText(text, container);
-		}
-		else if (tag === 'comment')
-		{
-			const child = settings.attr[0];
-			const text = (child)? child.value : '';
-			return HtmlHelper.createComment(text, container);
-		}
-
-		return HtmlHelper.create(tag, settings.attr, container, parent);
+		return render.createNode(settings, container, parent);
 	}
 }
 
