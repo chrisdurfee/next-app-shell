@@ -1,4 +1,4 @@
-"use strict";
+import { Component } from '../libs/base/base.js';
 
 /**
  * BasicPage
@@ -7,7 +7,7 @@
  * to all child modules.
  * @class
  */
-const BasicPage = base.Component.extend(
+export class BasicPage extends Component
 {
 	/**
 	 * This will be called every time the route
@@ -19,4 +19,4 @@ const BasicPage = base.Component.extend(
 	{
 
 	}
-});
+}

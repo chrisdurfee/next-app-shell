@@ -1,24 +1,22 @@
-"use strict";
+import { Row } from "../atoms/atoms.js";
+import { Atom } from "../libs/base/base.js";
+import { MainColumn } from "./template-atoms.js";
+import { Template } from "./template.js";
 
-const AsideBsideTemplate = Template.extend((props) =>
+/**
+ * This will create a aside b side template.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const AsideBsideTemplate = Atom((props, children) =>
 {
-	return {
-		className: 'body aside-container bside-container',
-		row:
-		{
-			className: 'row',
-			children:
-			[
-				MainColumn({
-					children: props.left || null
-				}),
-				MainColumn({
-					children: props.center || null
-				}),
-				MainColumn({
-					children: props.right || null
-				})
-			]
-		}
-	};
+	return Template({ class: 'body aside-container bside-container' }, [
+		Row([
+			MainColumn(props.left),
+			MainColumn(props.center, props.center?.children),
+			MainColumn(props.right)
+		])
+	]);
 });

@@ -1,42 +1,21 @@
-"use strict";
+import { Row } from "../atoms/atoms.js";
+import { Atom } from "../libs/base/base.js";
+import { MainColumn } from "./template-atoms.js";
+import { Template } from "./template.js";
 
-const TopBar = (props) =>
+/**
+ * This will create a aside template.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const AsideTemplate = Atom((props, children) =>
 {
-	return Header({
-		children: [
-			H1({
-				text: props.text,
-				watch: props.watch
-			})
-		]
-	});
-};
-
-const MainColumn = Tag.extend((props) =>
-{
-	return {
-		className: 'col ' + (props.className || ''),
-		children: props.children
-	};
-});
-
-const AsideTemplate = Template.extend((props) =>
-{
-	return {
-		className: 'body aside-container',
-		row:
-		{
-			className: 'row',
-			children:
-			[
-				MainColumn({
-					className: 'drawer control',
-					children: props.left || null
-				}),
-				MainColumn({
-					children: props.right || null
-				})
-			]
-		}
-	};
+	return Template({ class: 'body aside-container' }, [
+		Row([
+			MainColumn({ class: 'drawer control' }, props.left.children),
+			MainColumn(props.right)
+		])
+	]);
 });

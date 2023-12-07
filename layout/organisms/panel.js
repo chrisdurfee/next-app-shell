@@ -1,12 +1,23 @@
-"use strict";
+import { Div } from "../atoms/atoms.js";
+import { Component } from "../libs/base/base.js";
 
-const Panel = base.Component.extend(
+/**
+ * Panel
+ *
+ * This will create a panel.
+ *
+ * @class
+ * @extends Component
+ */
+export class Panel extends Component
 {
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return {
-            className: 'panel-container',
-            children: this.children
-        };
+		return Div({ class: 'panel-container' }, this.children);
 	}
-});
+}

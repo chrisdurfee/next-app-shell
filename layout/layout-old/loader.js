@@ -1,315 +1,598 @@
-(function(global)
+import { Builder, Component, Html } from "../libs/base/base.js";
+
+const added = [];
+
+/**
+ * This will check if a script or style has been added.
+ *
+ * @param {string} src
+ * @return {bool}
+ */
+const isAdded = (src) => added.indexOf(src) !== -1;
+
+/**
+ * This will track previously loaded scripts and styles.
+ */
+const loaded = [];
+
+/**
+ * This will check if a script or style has been loaded.
+ *
+ * @param {string} src
+ * @return {bool}
+ */
+const isLoaded = (src) => loaded.indexOf(src) !== -1;
+
+/**
+ * This will create a script atom.
+ *
+ * @param {object} props
+ * @return {object}
+ */
+const Script = (props) => ({
+    tag: 'script',
+    src: props.src,
+    async: false,
+    load(e)
+    {
+        loaded.push(props.src);
+
+        const callBack = props.load;
+        if (callBack)
+        {
+            callBack();
+        }
+    }
+});
+
+/**
+ * This will create a style atom.
+ *
+ * @param {object} props
+ * @return {object}
+ */
+const Style = (props) => ({
+    tag: 'link',
+    rel: 'stylesheet',
+    type: 'text/css',
+    href: props.src,
+    load(e)
+    {
+        loaded.push(props.src);
+
+        const callBack = props.load;
+        if (callBack)
+        {
+            callBack();
+        }
+    }
+});
+
+/**
+ * Group
+ *
+ * This will setup a depends group to load all
+ * dependencies before loaded the script.
+ */
+export class Group
 {
-    "use strict";
+    constructor(callBack)
+    {
+        this.percent = 0;
+        this.loaded = 0;
+        this.total = 0;
+        this.callBack = callBack || null;
+    }
 
     /**
-     * This will track previously loaded scripts and styles.
-     */
-    var loaded = [];
-
-    /**
-     * This will check if a script or style has been loaded.
+     * This will add the resource to the document.
      *
      * @param {string} src
-     * @return {bool}
      */
-    var isLoaded = function(src)
+    add(src)
     {
-        return base.inArray(loaded, src) !== -1;
-    };
+        this.total++;
+        let atom;
+
+        const load = this.update.bind(this);
+        if (isAdded(src))
+        {
+            load();
+            return;
+        }
+        else
+        {
+            added.push(src);
+        }
+
+        if (src.indexOf('.css') !== -1)
+        {
+            atom = Style({
+                load,
+                src
+            });
+        }
+        else
+        {
+            atom = Script({
+                load,
+                src
+            });
+        }
+
+        Builder.build(atom, document.head);
+    }
 
     /**
-     * This will create a script atom.
+     * This will add the dependencies to the document.
      *
-     * @param {object} props
-     * @return {object}
+     * @param {array} files
      */
-    var Script = function(props)
+    addFiles(files)
+    {
+        if (!files)
+        {
+            return;
+        }
+
+        for (let i = 0, length = files.length; i < length; i++)
+        {
+            const src = files[i];
+            if (!isLoaded(src))
+            {
+                this.add(src);
+            }
+        }
+    }
+
+    /**
+     * This will update the progress.
+     *
+     * @return {void}
+     */
+    update()
+    {
+        const percent = this.updateProgress();
+        if (percent >= 100)
+        {
+            const callBack = this.callBack;
+            if (callBack)
+            {
+                callBack();
+            }
+        }
+    }
+
+    updateProgress()
+    {
+        ++this.loaded;
+        return (this.percent = Math.floor(this.loaded / this.total * 100));
+    }
+}
+
+/**
+ * Loader
+ *
+ * This will create a loader component to defer loading
+ * until the component needs to render. The loader will
+ * load the script and add the component.
+ *
+ * @class
+ */
+export class Loader extends Component
+{
+    /**
+     * This will add the script.
+     *
+     * @return {void}
+     */
+    beforeSetup()
+    {
+        this.addScript();
+    }
+
+    /**
+     * This will render the loader.
+     *
+     * @returns {object}
+     */
+    render()
     {
         return {
-            tag: 'script',
-            src: props.src,
-            defer: props.defer || false,
-            load: function(e)
-            {
-                loaded.push(props.src);
-
-                var callBack = props.load;
-                if(callBack)
+            class: 'loader',
+            onState: [
+                ['loaded', {
+                    completed: true
+                }],
+                ['loaded', (val) =>
                 {
-                    callBack();
-                }
-            }
+                    if (!val)
+                    {
+                        return {};
+                    }
+
+                    return this.setLayout();
+                }],
+                ['loaded', (val) =>
+                {
+                    if (val)
+                    {
+                        this.changePanel();
+                    }
+                }]
+            ]
         };
-    };
+    }
 
     /**
-     * This will create a style atom.
+     * This will setup the layout.
      *
-     * @param {object} props
      * @return {object}
      */
-    var Style = function(props)
+    setLayout()
     {
-        return {
-            tag: 'link',
-            rel: 'stylesheet',
-            type: 'text/css',
-            href: props.src,
-            load: function(e)
+        if (this.persist && this.layout)
+        {
+            return this.layout;
+        }
+
+        const layout = this.getLayout();
+        if (layout.isUnit !== true)
+        {
+            // this will cache the layout element
+            layout.onCreated = (ele) =>
             {
-                loaded.push(props.src);
-
-                var callBack = props.load;
-                if(callBack)
-                {
-                    callBack();
-                }
+                this.layout = ele;
+            };
+        }
+        else
+        {
+            // this will pass the loader settings
+            layout.route = this.route;
+            if (this.persist === true)
+            {
+                layout.persist = true;
             }
-        };
-    };
-
-    var builder = base.builder;
+        }
+        return (this.layout = layout);
+    }
 
     /**
-     * Group
+     * This will add the loader script.
      *
-     * This will setup a depends group to load all
-     * dependencies before loaded the script.
+     * @return {void}
      */
-    var Group = base.Class.extend(
+    addScript()
     {
-        constructor: function(callBack)
+        const src = this.src;
+        const loaded = this.isLoaded = isLoaded(src);
+        if (loaded)
         {
-            this.percent = 0;
-            this.loaded = 0;
-            this.total = 0;
-            this.callBack = callBack || null;
-        },
+            return;
+        }
 
-        /**
-         * This will add the resource to the document.
-         *
-         * @param {string} src
-         */
-        add: function(src)
+        const callBack = this.loaded.bind(this);
+        if (this.depends)
         {
-            this.total++;
-            var atom;
+            const group = new Group(callBack);
 
-            if(src.indexOf('.css') !== -1)
-            {
-                atom = Style({
-                    load: base.bind(this, this.update),
-                    src: src
-                });
-            }
-            else
-            {
-                atom = Script({
-                    load: base.bind(this, this.update),
-                    src: src,
-                    defer: true,
-                });
-            }
+            group.addFiles(this.depends);
+            group.add(src);
+            return;
+        }
 
-            builder.build(atom, document.head);
-        },
+        Builder.build(Script({
+            src,
+            load: callBack
+        }), document.head);
+    }
 
-        /**
-         * This will add the dependencies to the document.
-         *
-         * @param {array} files
-         */
-        addFiles: function(files)
+    /**
+     * This will set the loaded state.
+     *
+     * @return {void}
+     */
+    loaded()
+    {
+        this.state.set('loaded', true);
+    }
+
+    /**
+     * This will setup the loader states.
+     *
+     * @return {object}
+     */
+    setupStates()
+    {
+        return {
+            loaded: this.isLoaded
+        };
+    }
+
+    /**
+     * This will swap loader panel to the layout element.
+     *
+     * @return {void}
+     */
+    changePanel()
+    {
+        const panel = this.panel;
+
+        if (!this.isLoaded)
         {
-            if(!files)
-            {
-                return;
-            }
+            this.checkUpdate();
+        }
 
-            for(var i = 0, length = files.length; i < length; i++)
-            {
-                var src = files[i];
-                if(!isLoaded(src))
-                {
-                    this.add(src);
-                }
-            }
-        },
-
-        update: function()
+        // we want to add the component layout to the parent node
+        const parent = panel.parentNode;
+        if (parent)
         {
-            var percent = this.updateProgress();
-            if(percent >= 100)
-            {
-                var callBack = this.callBack;
-                if(callBack)
-                {
-                    callBack();
-                }
-            }
-        },
+            const layout = this.layout;
+            const element = layout.isComponent? layout.panel : layout;
 
-        updateProgress: function()
+            this.panel = element;
+            parent.insertBefore(element, panel);
+        }
+
+        Html.removeElement(panel);
+    }
+
+    /**
+     * This will update the layout from the route.
+     *
+     * @param {object} params
+     */
+    update(params)
+    {
+        this.loadedParams = params;
+
+        if (this.state.get('loaded'))
         {
-            ++this.loaded;
-            return (this.percent = Math.floor(this.loaded / this.total * 100));
+            this.checkUpdate();
+        }
+    }
+
+    checkUpdate()
+    {
+        const layout = this.layout;
+        if(layout && layout.isUnit && typeof layout.update === 'function')
+        {
+            layout.update(this.loadedParams);
+        }
+    }
+
+    /**
+     * This will get the loader layout.
+     *
+     * @return {object}
+     */
+    getLayout()
+    {
+        const layout = this.callBack();
+        if (typeof layout === 'function')
+        {
+            layout = layout();
+        }
+        return layout;
+    }
+}
+
+const modules = [];
+
+/**
+ * This will load the module.
+ *
+ * @param {string} src
+ * @param {function} callBack
+ * @return {object}
+ */
+export const loadModule = (src, callBack) =>
+{
+    import(src).then(module =>
+    {
+        modules.push(src);
+
+        if (callBack)
+        {
+            callBack(module);
         }
     });
+};
 
-    /**
-     * Loader
-     *
-     * This will create a loader component to defer loading
-     * until the component needs to render. The loader will
-     * load the script and add the component.
-     */
-    var Loader = base.Component.extend(
+/**
+ * This will check if an object is a contructor.
+ *
+ * @param {object|function} object
+ * @returns {bool}
+ */
+const isConstructor = (object) =>
+{
+    if (!object)
     {
-        beforeSetup: function()
+        return false;
+    }
+
+    return (typeof object?.prototype?.constructor === 'function');
+};
+
+/**
+ * This will render the module.
+ *
+ * @param {object} layout
+ * @param {object} ele
+ * @param {object} parent
+ * @param {function} callBack
+ * @return {object}
+ */
+const render = (layout, ele, parent) =>
+{
+    const frag = Builder.build(layout, null, parent);
+    const firstChild = frag.firstChild;
+    ele.after(frag);
+    return firstChild;
+};
+
+/**
+ * This will create a comment.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const Comment = (props) => ({
+    tag: 'comment',
+    text: 'import placeholder',
+    onCreated: props.onCreated
+});
+
+/**
+ * This will create an import wrapper component that
+ * will wrap the comment atom to pass route to the
+ * imported layout.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ImportWrapper = Jot(
+{
+    render()
+    {
+        return Comment(
         {
-            this.addScript();
-        },
-
-        render: function()
-        {
-            var self = this;
-
-            return {
-                className: 'loader',
-                onState: [
-                    ['loaded', {
-                        completed: true
-                    }],
-                    ['loaded', function(ele, val)
-                    {
-                        if(!val)
-                        {
-                            return {};
-                        }
-
-                        return self.setLayout();
-                    }],
-                    ['loaded', function(ele, val)
-                    {
-                        if(val)
-                        {
-                            self.changePanel();
-                        }
-                    }]
-                ]
-            };
-        },
-
-        /**
-         * This will setup the layout.
-         *
-         * @return {object}
-         */
-        setLayout: function()
-        {
-            if(this.persist && this.layout)
+            onCreated: (ele) =>
             {
-                return this.layout;
-            }
-
-            var self = this,
-            layout = this.getLayout();
-            if(layout.isComponent !== true)
-            {
-                // this will cache the layout element
-                layout.onCreated = function(ele)
+                const src = this.src;
+                if (!src)
                 {
-                    self.layout = ele;
-                };
+                    return;
+                }
+
+                if (this.depends)
+                {
+                    const group = new Group(() =>
+                    {
+                        this.loadAndRender(ele);
+                    });
+
+                    group.addFiles(this.depends);
+                    return;
+                }
+
+                this.loadAndRender(ele);
             }
-            else
+        });
+    },
+
+    getLayout(module)
+    {
+        let layout = module.default;
+        if (!layout)
+        {
+            return;
+        }
+
+        const callBack = this.callBack;
+        if (callBack)
+        {
+            layout = callBack(layout);
+        }
+        else
+        {
+            if (isConstructor(layout))
             {
-                // this will pass the loader settings
+                layout = new layout();
                 layout.route = this.route;
-                if(this.persist === true)
+
+                if (this.persist)
                 {
                     layout.persist = true;
                 }
             }
-            return (this.layout = layout);
-        },
-
-        /**
-         * This will add the loader script.
-         */
-        addScript: function()
-        {
-            var src = this.src,
-            loaded = this.isLoaded = isLoaded(src);
-            if(!loaded)
-            {
-                var callBack = base.bind(this, this.loaded);
-                if(this.depends)
-                {
-                    var group = new Group(callBack);
-
-                    group.addFiles(this.depends);
-                    group.add(this.src);
-                    return;
-                }
-
-                this.build(Script({
-                    src: src,
-                    load: callBack
-                }), document.head);
-            }
-        },
-
-        loaded: function()
-        {
-            this.state.set('loaded', true);
-        },
-
-        setupStates: function()
-        {
-            return {
-                loaded: this.isLoaded
-            };
-        },
-
-        /**
-         * This will swap loader panel to the layout element.
-         */
-        changePanel: function()
-        {
-            var panel = this.panel;
-
-            // we want to add the component layout to the parent node
-            var parent = panel.parentNode;
-            if(parent)
-            {
-                var layout = this.layout;
-                var element = layout.isComponent? layout.panel : layout;
-                this.panel = element;
-                parent.insertBefore(element, panel);
-            }
-
-            builder.removeElement(panel);
-        },
-
-        /**
-         * This will get the loader layout.
-         *
-         * @return {object}
-         */
-        getLayout: function()
-        {
-            var layout = this.callBack();
-            if(typeof layout === 'function')
+            else
             {
                 layout = layout();
             }
-            return layout;
         }
-    });
 
-    global.Loader = Loader;
+        return (this.layout = layout);
+    },
 
-})(this);
+    /**
+     * This will load the module and render the layout.
+     *
+     * @param {object} ele
+     */
+    loadAndRender(ele)
+    {
+        loadModule(this.src, (module) =>
+        {
+            this.loaded = true;
+            const layout = this.layout || this.getLayout(module);
+            this.layoutRoot = render(layout, ele, this.parent);
+        });
+    },
+
+    /**
+     * This will check if the layout should be updated.
+     *
+     * @param {object} layout
+     * @returns {bool}
+     */
+    shouldUpdate(layout)
+    {
+        if (this.updateLayout === true)
+        {
+            return true;
+        }
+
+        return (this.updateLayout = (layout && layout.isUnit && typeof layout.update === 'function'));
+    },
+
+    /**
+     * This will update the module layout.
+     *
+     * @param {object} params
+     */
+    updateModuleLayout(params)
+    {
+        const layout = this.layout;
+        if (this.shouldUpdate(layout))
+        {
+            layout.update(params);
+        }
+    },
+
+    /**
+     * This will call if the import is added to a route. This will pass
+     * the update params to the imported layout.
+     *
+     * @param {object} params
+     */
+    update(params)
+    {
+        if (this.loaded === true)
+        {
+            this.updateModuleLayout(params);
+        }
+    },
+
+    beforeDestroy()
+    {
+        if (!this.layoutRoot)
+        {
+            return;
+        }
+
+        Html.removeElement(this.layoutRoot);
+    }
+});
+
+/**
+ * This will import a module.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const Import = (props) =>
+{
+    return new ImportWrapper(props);
+};

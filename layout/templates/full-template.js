@@ -1,9 +1,17 @@
-"use strict";
+import { Atom } from "../libs/base/base.js";
+import { Template } from "./template.js";
 
-const FullTemplate = Template.extend((props) =>
+/**
+ * This will create a full template.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const FullTemplate = Atom((props, children) =>
 {
-	return {
-		className: 'body full-container ' + props.className,
-		children: props.children
-	};
+	return Template({
+		class: 'body full-container ' + props.class,
+		...props,
+	}, children);
 });

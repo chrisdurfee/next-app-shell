@@ -1,4 +1,5 @@
-"use strict";
+import { A, Div, Li, Nav, Ul } from "../atoms/atoms.js";
+import { Component, base } from "../libs/base/base.js";
 
 /**
  * TabLink
@@ -6,7 +7,7 @@
  * This will create a tab link component.
  * @class
  */
-const TabLink = base.Component.extend(
+export class TabLink extends Component
 {
 	/**
 	 * This will configure the link active class.
@@ -16,33 +17,35 @@ const TabLink = base.Component.extend(
 	onCreated()
 	{
 		this.selectedClass = this.activeClass || 'selected';
-	},
+	}
 
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		let href = this.href,
+		const href = this.href,
 		text = this.label;
 
-		let watchers = this.setupWatchers(href, text);
+		const watchers = this.setupWatchers(href, text);
 
-		let onState = {};
+		const onState = {};
 		onState[this.selectedClass] = true;
 
-		return {
-			tag: 'li',
-			className: 'option',
-			a: {
-				tag: 'a',
-				className: this.className || null,
+		return Li({ class: 'option' }, [
+			A({
+				class: this.className || null,
 				onState: ['selected', onState],
 				href: this.getString(href),
 				text: this.getString(text),
 				children: this.children,
 				watch: watchers,
 				cache: 'link'
-			}
-		};
-	},
+			})
+		]);
+	}
 
 	/**
 	 * This will get string.
@@ -53,7 +56,7 @@ const TabLink = base.Component.extend(
 	getString(string)
 	{
 		return typeof string !== 'object'? string : null;
-	},
+	}
 
 	/**
 	 * This will setup the watchers.
@@ -65,13 +68,9 @@ const TabLink = base.Component.extend(
 	 */
 	setupWatchers(href, text)
 	{
-		let self = this,
-		exact = (this.exact !== false),
-		data = base.router.data;
+		const watchers = [];
 
-		let watchers = [];
-
-		if(href && typeof href === 'object')
+		if (href && typeof href === 'object')
 		{
 			watchers.push(
 			{
@@ -80,7 +79,7 @@ const TabLink = base.Component.extend(
 			});
 		}
 
-		if(text && typeof text === 'object')
+		if (text && typeof text === 'object')
 		{
 			watchers.push(
 			{
@@ -89,73 +88,102 @@ const TabLink = base.Component.extend(
 			});
 		}
 		return watchers;
-	},
+	}
 
+	/**
+	 * This will setup the states.
+	 *
+	 * @return {object}
+	 */
 	setupStates()
 	{
 		return {
 			selected: false
 		};
-	},
+	}
 
+	/**
+	 * This will update the link.
+	 *
+	 * @param {boolean} selected
+	 * @return {void}
+	 */
 	update(selected)
 	{
 		this.state.set('selected', selected);
 	}
-});
+}
 
-const TabNavigation = base.Component.extend(
+/**
+ * TabNavigation
+ *
+ * This will create a tab navigation component.
+ *
+ * @class
+ */
+export class TabNavigation extends Component
 {
 	onCreated()
 	{
 		this.links = [];
-	},
+	}
 
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return {
-			tag: 'nav',
-			className: 'tab',
-			ul:
-			{
-				tag: 'ul',
+		return Nav({ class: 'tab' }, [
+			Ul({
 				watch: {
 					value: ['[[path]]', base.router.data],
 					callBack: this.updateLinks.bind(this)
-				},
-				children: this.addLinks()
-			}
-		};
-	},
+				}
+			}, this.addLinks())
+		]);
+	}
 
+	/**
+	 * This will update the links.
+	 *
+	 * @return {void}
+	 */
 	afterSetup()
 	{
-		let path = base.router.data.get('path');
-		this.updateLinks(null, path);
-	},
+		const path = base.router.data.get('path');
+		this.updateLinks(path);
+	}
 
-	updateLinks(ele, value)
+	/**
+	 * This will update the links.
+	 *
+	 * @param {string} value
+	 * @return {void}
+	 */
+	updateLinks(value)
 	{
 		let check = false,
-		links = this.links,
 		firstLink = null;
+		const links = this.links;
 
-		for(let i = 0, length = links.length; i < length; i++)
+		for (let i = 0, length = links.length; i < length; i++)
 		{
-			let link = links[i];
-			if(link.rendered === false)
+			const link = links[i];
+			if (link.rendered === false)
 			{
 				continue;
 			}
 
 			/* we want to save the first route in the switch
 			so it can be selected if no route is active */
-			if(i === 0)
+			if (i === 0)
 			{
 				firstLink = link;
 			}
 
-			if(check === true)
+			if (check === true)
 			{
 				this.updateLink(link, false);
 				continue;
@@ -165,31 +193,49 @@ const TabNavigation = base.Component.extend(
 			this.updateLink(link, check);
 		}
 
-		if(check !== true && firstLink)
+		if (check !== true && firstLink)
 		{
 			this.updateLink(firstLink, true);
 		}
-	},
+	}
 
+	/**
+	 * This will update the link.
+	 *
+	 * @param {object} link
+	 * @param {boolean} selected
+	 * @return {void}
+	 */
 	updateLink(link, selected)
 	{
 		link.update(selected);
-	},
+	}
 
+	/**
+	 * This will add the links.
+	 *
+	 * @return {array}
+	 */
 	addLinks()
 	{
-		let links = [],
+		const links = [],
 		options = this.options || [];
 
-		for(let i = 0, length = options.length; i < length; i++)
+		for (let i = 0, length = options.length; i < length; i++)
 		{
-			let link = this.addLink(options[i]);
+			const link = this.addLink(options[i]);
 			this.links.push(link);
 			links.push(link);
 		}
 		return links;
-	},
+	}
 
+	/**
+	 * This will add a link.
+	 *
+	 * @param {object} option
+	 * @return {object}
+	 */
 	addLink(option)
 	{
 		return new TabLink({
@@ -197,7 +243,7 @@ const TabNavigation = base.Component.extend(
 			href: option.href
 		});
     }
-});
+}
 
 /**
  * Tab
@@ -206,33 +252,39 @@ const TabNavigation = base.Component.extend(
  * to tab panels.
  * @class
  */
-const Tab = base.Component.extend(
+export class Tab extends Component
 {
+	/**
+	 * This will render the component.
+	 *
+	 * @return {object}
+	 */
 	render()
 	{
-		return {
-            className: 'tab-panel',
-            children:
-            [
-                new TabNavigation({
-					options: this.options
-				}),
-                {
-					tag: 'section',
-					className: 'tab-content',
-                    switch: this.addGroup()
-                }
-            ]
-        };
-	},
+		return Div({ class: 'tab-panel' }, [
+			new TabNavigation({
+				options: this.options
+			}),
+			{
+				tag: 'section',
+				class: 'tab-content',
+				switch: this.addGroup()
+			}
+		]);
+	}
 
+	/**
+	 * This will add the group.
+	 *
+	 * @return {array}
+	 */
     addGroup()
     {
-		let option,
-		switches = [];
+		let option;
+		const switches = [];
 
-		let options = this.options;
-		for(let i = 0, length = options.length; i < length; i++)
+		const options = this.options;
+		for (let i = 0, length = options.length; i < length; i++)
 		{
             option = options[i];
 			switches.push(
@@ -245,4 +297,4 @@ const Tab = base.Component.extend(
 		}
 		return switches;
     }
-});
+}

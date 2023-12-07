@@ -1,17 +1,15 @@
-"use strict";
-
 /**
  * Config
  *
  * This will set the app configs.
  */
-const Configs =
+export const Configs =
 {
 	appName: 'Example',
 
 	router:
 	{
-		baseUrl: '/next-app-shell/',
+		baseUrl: '/',
 		title: 'Example'
 	}
 };

@@ -1,6 +1,17 @@
-"use strict";
+import { Atom } from "../libs/base/base.js";
 
-const Template = Atom.extend(
+/**
+ * This will create a template.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+export const Template = Atom((props, children) =>
 {
-	tag: 'section'
+	return {
+		tag: 'section',
+		...props,
+		children
+	};
 });

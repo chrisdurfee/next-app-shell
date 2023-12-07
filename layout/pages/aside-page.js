@@ -1,90 +1,98 @@
-"use strict";
+import { A, Div, H1, Header, MainSection } from "../atoms/atoms.js";
+import { Import } from "../libs/base/modules/import/import.js";
+import { GridContainer } from '../molecules/molecules.js';
+import { InlineOverlay } from '../organisms/inline-overlay.js';
+import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
+import { Overlay } from '../organisms/overlay.js';
+import { Panel } from '../organisms/panel.js';
+import { AsideTemplate } from '../templates/aside-template.js';
+import { BasicPage } from './basic-page.js';
 
-const AsidePage = BasicPage.extend(
+/**
+ * AsidePage
+ *
+ * This will create an a side page.
+ *
+ * @class
+ * @extends BasicPage
+ */
+export class AsidePage extends BasicPage
 {
 	render()
 	{
 		return MainSection(
-		{
-			children:
+			{
+				route: {
+					uri: 'aside/overlay-test',
+					component: new Overlay({
+						backHref: 'aside/',
+						children: [
+							new Panel({
+								children: [
+									Div([
+										Header([
+											H1('Overlay')
+										]),
+										Div({ class: 'contained' }, [
+											GridContainer()
+										])
+									])
+								]
+							})
+						]
+					})
+				}
+			},
 			[
 				AsideTemplate({
 					left: this.addAside(),
 					right: this.addBody()
 				})
-			],
-			route: {
-				uri: 'aside/overlay-test',
-				component: new Overlay({
-					backHref: 'aside/',
-					children: [
-						new Panel({
-							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Overlay',
-											})
-										]
-									}),
-									panels: {
-										className: 'contained',
-										panels: GridContainer()
-									}
-								}
-							]
-						})
-					]
-				})
-			}
-		});
-	},
+			]
+		);
+	}
 
+	/**
+	 * This will add the aside of the page.
+	 *
+	 * @returns {object}
+	 */
 	addAside()
 	{
-		return {
-			title: H1({
-				text: 'Active Primary Title'
-			}),
-			nav: this.addNavigation()
-		};
-	},
+		return Div([
+			H1('Active Primary Title'),
+			this.addNavigation()
+		]);
+	}
 
+	/**
+	 * This will add the body of the page.
+	 *
+	 * @returns {object}
+	 */
 	addBody()
 	{
-		let path = 'aside';
+		const path = 'aside';
 
 		return [
 			{
-				className: 'contained',
+				class: 'contained',
 				switch: [
 					{
 						uri: path,
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Aside',
-											})
-										]
-									}),
-									label: {
-										className: 'card',
-										children: [
-											new Loader({
-												src: 'layout/atoms/atom-test.js',
-												callBack()
-												{
-													return LabelText();
-												}
-											})
-										]
-									},
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Aside')
+									]),
+									Div({ class: 'card' }, [
+										Import({
+											src: '/layout/atoms/import-buttons.js'
+										})
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -101,16 +109,12 @@ const AsidePage = BasicPage.extend(
 												children: [
 													new Panel({
 														children: [
-															{
-																title: Header({
-																	children: [
-																		H1({
-																			text: 'Overlay',
-																		})
-																	]
-																}),
-																panels: GridContainer()
-															}
+															Div([
+																Header([
+																	H1('Overlay')
+																]),
+																GridContainer()
+															])
 														]
 													})
 												]
@@ -120,18 +124,12 @@ const AsidePage = BasicPage.extend(
 											uri: 'aside/marketing/*',
 											component: new Panel({
 												children: [
-													{
-														tag: 'a',
-														href: 'aside/marketing/irure-nostrud/1',
-														title: Header({
-															children: [
-																H1({
-																	text: 'Marketing',
-																})
-															]
-														}),
-														panels: GridContainer()
-													}
+													A({ href: 'aside/marketing/irure-nostrud/1' }, [
+														Header([
+															H1('Marketing')
+														]),
+														GridContainer()
+													])
 												]
 											})
 										}
@@ -144,16 +142,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/tempor-nulla',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Tempor nulla',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Tempor nulla')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -161,16 +155,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/tempor-esse',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Tempor esse',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Tempor esse')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -178,16 +168,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/voluptate-dolore',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Voluptate dolore',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Voluptate dolore')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -195,16 +181,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/non-lorem',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Non Lorem',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Non Lorem')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -212,16 +194,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/tempor-nulla-1',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Tempor nulla 1',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Tempor nulla 1')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -229,16 +207,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/tempor-esse-1',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Tempor esse 1',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Tempor esse 1')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -246,16 +220,12 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/voluptate-dolore-1',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Voluptate dolore 1',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Voluptate dolore 1')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					},
@@ -263,35 +233,41 @@ const AsidePage = BasicPage.extend(
 						uri: path + '/non-lorem-1',
 						component: new Panel({
 							children: [
-								{
-									title: Header({
-										children: [
-											H1({
-												text: 'Non Lorem 1',
-											})
-										]
-									}),
-									panels: GridContainer()
-								}
+								Div([
+									Header([
+										H1('Non Lorem 1')
+									]),
+									GridContainer()
+								])
 							]
 						})
 					}
 				]
 			}
 		];
-	},
+	}
 
+	/**
+	 * This will add the navigation of the page.
+	 *
+	 * @returns {object}
+	 */
 	addNavigation()
 	{
 		return new InlineNavigation(
 		{
 			options: this.getLinks()
 		});
-	},
+	}
 
+	/**
+	 * This will get the links.
+	 *
+	 * @return {array}
+	 */
 	getLinks()
 	{
-		let path = 'aside';
+		const path = 'aside';
 
 		return [
 			{
@@ -396,4 +372,4 @@ const AsidePage = BasicPage.extend(
 			}
 		]
 	}
-});
+}

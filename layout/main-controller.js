@@ -1,4 +1,8 @@
-"use strict";
+import { Configs } from "./configs.js";
+import { base, Builder } from "./libs/base/base.js";
+import { AppModules } from "./modules/module.js";
+import { AppShell } from "./shell/app-shell.js";
+import { Push } from "./worker/push.js";
 
 /**
  * MainController
@@ -6,23 +10,28 @@
  * This will setup the main app controller.
  * @class
  */
-const MainController = base.Class.extend(
+export class MainController
 {
 	/**
-	 * @param {array} modules
+	 * @member {array} modules
 	 */
-	modules: [],
+	modules = [];
 
 	/**
-	 * @param {array} routes
+	 * @member {array} routes
 	 */
-	routes: [],
+	routes = [];
 
 	/**
-	 * @param {array} links
+	 * @member {array} links
 	 */
-	links: [],
+	links = [];
 
+	/**
+	 * This will setup the main controller.
+	 *
+	 * @return {MainController}
+	 */
 	constructor()
 	{
 		/**
@@ -34,50 +43,45 @@ const MainController = base.Class.extend(
 		 * @member {object} appShell
 		 */
 		this.appShell = null;
-	},
+	}
 
+	/**
+	 * This will setup the push.
+	 *
+	 * @protected
+	 * @param {object} serviceWorker
+	 * @return {object}
+	 */
 	setupPush(serviceWorker)
 	{
 		this.serviceWorker = serviceWorker;
 		this.push = new Push(this.pushPublicKey, serviceWorker);
-	},
+	}
 
 	/**
 	 * This will get the router settings.
+	 *
 	 * @return {object}
 	 */
 	getRouterSettings()
 	{
 		return Configs.router;
-	},
+	}
 
 	/**
 	 * This will setup the router.
+	 *
 	 * @protected
+	 * @return {void}
 	 */
 	setupRouter()
 	{
-		let settings = this.getRouterSettings(),
+		const settings = this.getRouterSettings(),
 		baseUrl = settings.baseUrl;
 
-		let router = this.router = base.router;
+		const router = this.router = base.router;
 		router.setup(baseUrl, settings.title);
-
-		/* this will modify the base tag to ref from
-		the base url for all xhr */
-		this.updateBaseTag(baseUrl);
-	},
-
-	updateBaseTag(url)
-	{
-		/* this will modify the base tag to ref from
-		the base url for all xhr */
-		let ele = document.getElementsByTagName('base');
-		if(ele.length)
-		{
-			ele[0].href = url;
-		}
-	},
+	}
 
 	/**
 	 * This will setup the app modules.
@@ -85,33 +89,33 @@ const MainController = base.Class.extend(
 	 */
 	setupModules()
 	{
-		let modules = this.modules = AppModules || [];
-		if(!modules || modules.length < 1)
+		const modules = this.modules = AppModules || [];
+		if (!modules || modules.length < 1)
 		{
 			return;
 		}
 
-		for(let i = 0, length = modules.length; i < length; i++)
+		for (let i = 0, length = modules.length; i < length; i++)
 		{
-			let module = modules[i];
-			if(!module)
+			const module = modules[i];
+			if (!module)
 			{
 				continue;
 			}
 
-			let routes = module.getRoutes();
-			if(routes)
+			const routes = module.getRoutes();
+			if (routes)
 			{
 				this.routes = this.routes.concat(routes);
 			}
 
-			let links = module.getLinks();
-			if(links)
+			const links = module.getLinks();
+			if (links)
 			{
 				this.links = this.links.concat(links);
 			}
 		}
-	},
+	}
 
 	/**
 	 * This will get the routes that will be used in
@@ -122,7 +126,7 @@ const MainController = base.Class.extend(
 	getRoutes()
 	{
 		return this.routes;
-	},
+	}
 
 	/**
 	 * This will get the options to create the app
@@ -133,7 +137,7 @@ const MainController = base.Class.extend(
 	getNavOptions()
 	{
 		return this.links;
-	},
+	}
 
 	/**
 	 * This will navigate to the uri.
@@ -145,21 +149,21 @@ const MainController = base.Class.extend(
 	navigate(uri, data, replace)
 	{
 		this.router.navigate(uri, data, replace);
-	},
+	}
 
 	/**
 	 * This will setup the app shell.
 	 */
 	setupAppShell()
 	{
-		let options = this.getNavOptions();
-		let main = this.appShell = new AppShell(
+		const options = this.getNavOptions();
+		const main = this.appShell = new AppShell(
 		{
-			options: options,
+			options,
 			routes: this.getRoutes()
 		});
-		main.setup(document.body);
-	},
+		Builder.render(main, document.body);
+	}
 
 	/**
 	 * This will get the main body element.
@@ -169,12 +173,17 @@ const MainController = base.Class.extend(
 	getMainBody()
 	{
 		return this.appShell.getBodyPanel();
-	},
+	}
 
+	/**
+	 * This will setup the main controller.
+	 *
+	 * @return {void}
+	 */
 	setup()
 	{
 		this.setupRouter();
 		this.setupModules();
 		this.setupAppShell();
 	}
-});
+}

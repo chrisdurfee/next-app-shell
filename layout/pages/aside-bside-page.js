@@ -1,27 +1,41 @@
-"use strict";
+import { Div, MainSection } from "../atoms/atoms.js";
+import { GridContainer } from '../molecules/molecules.js';
+import { AsideBsideTemplate } from '../templates/aside-bside-template.js';
+import { BasicPage } from './basic-page.js';
 
-var AsideBsidePage = BasicPage.extend(
+/**
+ * AsideBsidePage
+ *
+ * This will create a aside bside page.
+ *
+ * @class
+ * @extends BasicPage
+ */
+export class AsideBsidePage extends BasicPage
 {
-	render: function()
+	/**
+	 * This will render the page.
+	 *
+	 * @return {object}
+	 */
+	render()
 	{
-		return MainSection(
-		{
-			children:
-			[
-				AsideBsideTemplate({
-					center: this.addBody()
-				})
-			]
-		});
-	},
-
-	addBody: function()
-	{
-		return [
-			{
-				className: 'contained',
-				panels: GridContainer()
-			}
-		];
+		return MainSection([
+			AsideBsideTemplate({
+				center: this.addBody()
+			})
+		]);
 	}
-});
+
+	/**
+	 * This will add the body of the page.
+	 *
+	 * @return {object}
+	 */
+	addBody()
+	{
+		return Div({ class: 'contained' }, [
+			GridContainer()
+		]);
+	}
+}

@@ -1,120 +1,157 @@
-(function(global)
+import { A, Div, Img } from "../atoms/atoms.js";
+import { Atom, Component } from "../libs/base/base.js";
+
+/**
+ * This will create an overlay back button.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @return {object}
+ */
+const BackButton = Atom((props, children) =>
 {
-    "use strict";
+    return Div({ class: 'back' }, [
+        A({ href: props.href || '/', cache: 'backArrow' }, [
+            Img({
+                src: './images/back-arrow.svg'
+            })
+        ])
+    ]);
+});
+
+/**
+ * Overlay
+ *
+ * This will create an overlay.
+ *
+ * @class
+ * @extends Component
+ */
+export class Overlay extends Component
+{
+    /**
+     * This will stop presistence.
+     *
+     * @return {void}
+     */
+    beforeSetup()
+    {
+        this.persist = false;
+    }
 
     /**
-     * This will create an overlay back button.
+     * This will render the component.
      *
-     * @param {object} props
      * @return {object}
      */
-    const BackButton = Tag.extend((props) =>
+    render()
     {
-        return {
-            className: 'back',
-            a: A({
-                href: props.href || '/',
-                children: Img({
-                    src: './images/back-arrow.svg'
-                }),
-                cache: 'backArrow'
-            })
-        };
-    });
+        const referralPath = this.getReferralPath();
 
-    const Overlay = base.Component.extend(
-    {
-        beforeSetup()
-        {
-            this.persist = false;
-        },
-
-        render()
-        {
-            let referralPath = this.getReferralPath();
-
-            return {
-                className: this.getOverlayType(),
+        return Div(
+            {
+                class: this.getOverlayType(),
                 onSet: ['loading', {
                     loading: true
-                }],
-                children: [
-                    BackButton({
-                        href: referralPath || this.backHref
-                    }),
-                    this.addBody(),
-                    this.getRoutes()
-                ]
-            };
-        },
+                }]
+            },
+            [
+                BackButton({
+                    href: referralPath || this.backHref
+                }),
+                this.addBody(),
+                this.getRoutes()
+            ]
+        );
+    }
 
-        /**
-         * This will get the referral path if set by a route.
-         * @return {string|null}
-         */
-        getReferralPath()
-        {
-            let route = this.route;
-            if(!route)
-            {
-                return null;
-            }
-
-            return route.referralPath;
-        },
-
-        /**
-         * This will get the overlay className.
-         */
-        getOverlayType()
-        {
-            return 'overlay ' + (this.type || '');
-        },
-
-        /**
-         * This can be overriden to return routes.
-         * @return {array|null}
-         */
-        getRoutes()
+    /**
+     * This will get the referral path if set by a route.
+     *
+     * @return {string|null}
+     */
+    getReferralPath()
+    {
+        const route = this.route;
+        if (!route)
         {
             return null;
-        },
-
-        /**
-         * This will setup the overlay states.
-         * @return {object}
-         */
-        setupStates()
-        {
-            return {
-                loading: false
-            };
-        },
-
-        addLoading()
-        {
-            this.state.set('loading', true);
-        },
-
-        removeLoading()
-        {
-            this.state.set('loading', false);
-        },
-
-        addBody()
-        {
-            return {
-                className: 'body fadeIn',
-                children: this.getBodyContents()
-            };
-        },
-
-        getBodyContents()
-        {
-            return this.children || null;
         }
-    });
 
-    global.Overlay = Overlay;
+        return route.referralPath;
+    }
 
-})(this);
+    /**
+     * This will get the overlay className.
+     *
+     * @return {string}
+     */
+    getOverlayType()
+    {
+        return 'overlay ' + (this.type || '');
+    }
+
+    /**
+     * This can be overriden to return routes.
+     *
+     * @return {array|null}
+     */
+    getRoutes()
+    {
+        return null;
+    }
+
+    /**
+     * This will setup the overlay states.
+     *
+     * @return {object}
+     */
+    setupStates()
+    {
+        return {
+            loading: false
+        };
+    }
+
+    /**
+     * This will set the loading state.= to true.
+     *
+     * @return {void}
+     */
+    addLoading()
+    {
+        this.state.set('loading', true);
+    }
+
+    /**
+     * This will set the loading state to false.
+     *
+     * @return {void}
+     */
+    removeLoading()
+    {
+        this.state.set('loading', false);
+    }
+
+    /**
+     * This will add the body of the overlay.
+     *
+     * @returns {object}
+     */
+    addBody()
+    {
+        return Div({ class: 'body fadeIn' }, [
+            this.getBodyContents()
+        ]);
+    }
+
+    /**
+     * This will get the body contents.
+     *
+     * @return {array|null}
+     */
+    getBodyContents()
+    {
+        return this.children || null;
+    }
+}

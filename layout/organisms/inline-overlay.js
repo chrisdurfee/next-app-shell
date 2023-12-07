@@ -1,15 +1,22 @@
-(function(global)
+import { Overlay } from './overlay.js';
+
+/**
+ * InlineOverlay
+ *
+ * This will create an inline overlay.
+ *
+ * @class
+ * @extends Overlay
+ */
+export class InlineOverlay extends Overlay
 {
-    "use strict";
-
-    const InlineOverlay = Overlay.extend(
+    /**
+     * This will get the overlay type.
+     *
+     * @return {string}
+     */
+    getOverlayType()
     {
-        getOverlayType()
-        {
-            return 'overlay inline ' + this.type;
-        }
-    });
-
-    global.InlineOverlay = InlineOverlay;
-
-})(this);
+        return 'overlay inline ' + this.type;
+    }
+}
