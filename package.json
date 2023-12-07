@@ -4,8 +4,9 @@
 	"description": "This is an example app that uses the base framework.",
 	"main": "/dist/main.js",
 	"scripts": {
-		"build": "node ./esbuild.js",
-		"prepublishOnly": "node ./esbuild.js"
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview"
 	},
 	"keywords": [
 		"JavaScript",
@@ -23,13 +24,15 @@
 		"url": "https://github.com/chrisdurfee/next-app-shell/issues"
 	},
 	"devDependencies": {
-		"esbuild": "^0.15.7",
-		"eslint": "^8.55.0"
+		"esbuild": "^0.15.7"
+	},
+	"dependencies": {
+		"@base-framework/base": "^2.6.5",
+		"vite": "^3.1.0"
 	},
 	"files": [
 		"pacakge.json",
-		"readme.md",
-		"dist"
+		"readme.md"
 	],
 	"homepage": "https://github.com/chrisdurfee/next-app-shell#readme"
 }
