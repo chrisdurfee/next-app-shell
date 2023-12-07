@@ -27,7 +27,7 @@
 		"esbuild": "^0.15.7"
 	},
 	"dependencies": {
-		"@base-framework/base": "^2.6.5",
+		"@base-framework/base": "^3.0.0",
 		"vite": "^3.1.0"
 	},
 	"files": [
