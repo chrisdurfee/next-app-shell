@@ -1,5 +1,5 @@
+import { Atom, Component } from "@base-framework/base";
 import { A, Div, Img } from "../atoms/atoms.js";
-import { Atom, Component } from "../libs/base/base.js";
 
 /**
  * This will create an overlay back button.

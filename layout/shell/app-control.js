@@ -1,4 +1,4 @@
-import { Atom, Component } from "../libs/base/base.js";
+import { Atom, Component } from "@base-framework/base";
 import { MainNavigation } from "./main-navigation.js";
 
 /**

@@ -1,5 +1,5 @@
+import { Atom } from "@base-framework/base";
 import { Div, GridPanel, Input, Span, Ul } from "../atoms/atoms.js";
-import { Atom } from "../libs/base/base.js";
 
 /**
  * This will create a nav list.

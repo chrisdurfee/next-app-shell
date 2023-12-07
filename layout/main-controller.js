@@ -1,5 +1,5 @@
+import { base, Builder } from "@base-framework/base";
 import { Configs } from "./configs.js";
-import { base, Builder } from "./libs/base/base.js";
 import { AppModules } from "./modules/module.js";
 import { AppShell } from "./shell/app-shell.js";
 import { Push } from "./worker/push.js";
