@@ -1,6 +1,5 @@
-import { Atom } from "@base-framework/base";
+import { Atom, Import } from "@base-framework/base";
 import { Div } from "../atoms/atoms.js";
-import { Import } from "../libs/base/modules/import/import.js";
 
 export default Atom((props, children) =>
 {
