@@ -1,4 +1,4 @@
-import { Component } from '../libs/base/base.js';
+import { Component } from '@base-framework/base';
 
 /**
  * BasicPage

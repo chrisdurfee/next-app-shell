@@ -1,4 +1,4 @@
-import { Atom } from "../libs/base/base.js";
+import { Atom } from "@base-framework/base";
 
 /**
  * This will create a template.

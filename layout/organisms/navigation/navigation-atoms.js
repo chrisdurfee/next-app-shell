@@ -1,5 +1,5 @@
+import { Atom } from "@base-framework/base";
 import { H2, Ul } from "../../atoms/atoms.js";
-import { Atom } from "../../libs/base/base.js";
 
 /**
  * This will return a navigation group.

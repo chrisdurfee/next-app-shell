@@ -1,4 +1,4 @@
-import { base } from "../libs/base/base.js";
+import { base } from "@base-framework/base";
 
 const urlB64ToUint8Array = (base64String) =>
 {

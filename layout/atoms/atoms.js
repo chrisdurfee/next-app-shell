@@ -1,4 +1,4 @@
-import { Atom } from '../libs/base/base.js';
+import { Atom } from '@base-framework/base';
 import { Html } from '../libs/base/modules/html/html.js';
 
 /**

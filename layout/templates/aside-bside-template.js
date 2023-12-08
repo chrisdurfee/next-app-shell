@@ -1,5 +1,5 @@
+import { Atom } from "@base-framework/base";
 import { Row } from "../atoms/atoms.js";
-import { Atom } from "../libs/base/base.js";
 import { MainColumn } from "./template-atoms.js";
 import { Template } from "./template.js";
 

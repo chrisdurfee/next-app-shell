@@ -1,5 +1,5 @@
+import { Component, base } from "@base-framework/base";
 import { A, Li, Nav, Ul } from "../atoms/atoms.js";
-import { Component, base } from "../libs/base/base.js";
 
 /**
  * SwitchLink

@@ -1,4 +1,4 @@
-import { State } from '../../libs/base/base.js';
+import { State } from '@base-framework/base';
 import { InlineNavigation, SubNavigation } from './inline-navigation.js';
 import { MainLink } from './main-link.js';
 
