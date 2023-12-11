@@ -1,5 +1,4 @@
-import { Atom } from '@base-framework/base';
-import { Html } from '../libs/base/modules/html/html.js';
+import { Atom, Html } from '@base-framework/base';
 
 /**
  * This will create a div.
