@@ -177,7 +177,17 @@ export class Module
 			const route = routes[i];
 			if (route && route.component.src)
 			{
-				route.component = new Loader(route.component);
+				if(route.module === true)
+				{
+					route.import = {
+						src: route.component.src,
+						callBack: route?.component?.callBack || null
+					};
+				}
+				else
+				{
+					route.component = new Loader(route.component);
+				}
 			}
 		}
 	}
