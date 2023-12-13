@@ -1,19 +1,12 @@
+import { A, Br, Div, Fieldset, Form, H1, H2, Header, Input, Label, Legend, Li, Nav, P, Span, Strong, Textarea, Ul } from '@base-framework/atoms';
 import { Atom, Html } from '@base-framework/base';
 
-/**
- * This will create a div.
- *
- * @param {object} props
- * @param {array} children
- * @return {object}
- */
-export const Div = Atom((props, children) =>
-{
-	return {
-		...props,
-		children
-	};
-});
+export {
+	A, Br, Div, Fieldset, Form, H1,
+	H2, Header, Input,
+	Label, Legend, Li,
+	Nav, P, Span, Strong, Textarea, Ul
+};
 
 /**
  * This will create a video object.
@@ -85,43 +78,6 @@ export const MainSection = Atom((props, children) =>
 	};
 });
 
-export const Header = Atom((props, children) =>
-{
-	return {
-		tag: 'header',
-		...props,
-		children
-	};
-});
-
-export const H1 = Atom((props, children) => ({
-	tag: 'h1',
-	...props,
-	children
-}));
-
-export const H2 = Atom((props, children) => ({
-	tag: 'h2',
-	...props,
-	children
-}));
-
-export const Span = Atom((props, children) => ({
-	tag: 'span',
-	...props,
-	children
-}));
-
-export const Br = Atom((props, children) => ({
-	tag: 'br'
-}));
-
-export const Strong = Atom((props, children) => ({
-	tag: 'strong',
-	...props,
-	children
-}));
-
 /* icons */
 /* icon font: https://material.io/resources/icons/?style=baseline */
 export const Icon = Atom((props, children) =>
@@ -186,60 +142,6 @@ export let Message = Atom((props, children) =>
 	return Div(props, children);
 });
 
-export const P = Atom((props, children) =>
-{
-	return {
-		tag: 'p',
-		...props,
-		children
-	};
-});
-
-export const A = Atom((props, children) =>
-{
-	return {
-		tag: 'a',
-		...props,
-		children
-	};
-});
-
-export const Form = Atom((props, children) =>
-{
-	return {
-		tag: 'form',
-		...props,
-		children
-	};
-});
-
-export const Fieldset = Atom((props, children) =>
-{
-	return {
-		tag: 'fieldset',
-		...props,
-		children
-	};
-});
-
-export const Legend = Atom((props, children) =>
-{
-	return {
-		tag: 'legend',
-		...props,
-		children
-	};
-});
-
-export const Input = Atom((props, children) =>
-{
-	return {
-		tag: 'input',
-		...props,
-		children
-	};
-});
-
 export const DefaultSelect = Atom((props, children) =>
 {
 	return {
@@ -284,84 +186,11 @@ export const TelInput = Atom((props, children) =>
  * @param {array} children
  * @return {object}
  */
-export const Label = Atom((props, children) =>
-{
-	return {
-		tag: 'label',
-		...props,
-		children
-	};
-});
-
-/**
- * This will create a label.
- *
- * @param {object} props
- * @param {array} children
- * @return {object}
- */
 export const Row = Atom((props, children) =>
 {
 	props.class = 'row ' + (props.class || '');
 
 	return {
-		...props,
-		children
-	};
-});
-
-/**
- * This will create a list item.
- *
- * @param {object} props
- * @param {array} children
- * @return {object}
- */
-export const Li = Atom((props, children) =>
-{
-	return {
-		tag: 'li',
-		...props,
-		children
-	};
-});
-
-/**
- * This will create a nav object.
- *
- * @param {object} props
- * @param {array} children
- * @return {object}
- */
-export const Nav = Atom((props, children) =>
-{
-	return {
-		tag: 'nav',
-		...props,
-		children
-	};
-});
-
-/**
- * This will create a list.
- *
- * @param {object} props
- * @param {array} children
- * @return {object}
- */
-export const Ul = Atom((props, children) =>
-{
-	return {
-		tag: 'ul',
-		...props,
-		children
-	};
-});
-
-export const Textarea = Atom((props, children) =>
-{
-	return {
-		tag: 'textarea',
 		...props,
 		children
 	};
