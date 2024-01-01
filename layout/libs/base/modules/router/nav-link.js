@@ -16,6 +16,7 @@ export class NavLink extends Component
      * This will configure the link active class.
      *
      * @protected
+     * @return {void}
      */
     beforeSetup()
     {
@@ -73,7 +74,7 @@ export class NavLink extends Component
 
         const watchers = [];
 
-        if(href && typeof href === 'object')
+        if (href && typeof href === 'object')
         {
             watchers.push(
             {
@@ -82,7 +83,7 @@ export class NavLink extends Component
             });
         }
 
-        if(text && typeof text === 'object')
+        if (text && typeof text === 'object')
         {
             watchers.push(
             {
@@ -97,13 +98,19 @@ export class NavLink extends Component
             {
                 const path = ele.pathname + ele.hash;
 				const selected = exact? (value === path) : (new RegExp('^' + ele.pathname + '($|#|/|\\.).*').test(value));
-                this.update(ele, selected);
+                this.update(selected);
             }
         });
 
         return watchers;
     }
 
+    /**
+     * This will setup the states.
+     *
+     * @protected
+     * @return {object}
+     */
     setupStates()
     {
         return {
@@ -114,10 +121,9 @@ export class NavLink extends Component
     /**
      * This will update the class on the element.
      *
-     * @param {object} ele
      * @param {bool} selected
      */
-    update(ele, selected)
+    update(selected)
     {
         this.state.set('selected', selected);
     }

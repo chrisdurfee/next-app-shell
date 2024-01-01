@@ -1,6 +1,6 @@
 /**
  * Base Framework
- * @version 3.0.5
+ * @version 3.0.10
  * @author Chris Durfee
  * @file This is a javascript framework to allow complex
  * functions to work in many browsers and versions.
@@ -17,12 +17,14 @@ import { EventMethods } from './events/event-methods.js';
  * Base
  *
  * This is the base framework.
+ *
  * @class
  */
 class Base
 {
 	/**
 	 * This will create an instance of base.
+	 *
 	 * @constructor
 	 */
 	constructor()
@@ -30,7 +32,7 @@ class Base
 		/**
 		 * @member {string} version
 		 */
-		this.version = '3.0.5';
+		this.version = '3.0.10';
 
 		/**
 		 * @member {array} errors
@@ -51,19 +53,15 @@ class Base
 	 */
 	augment(methods)
 	{
-		if (!methods || typeof methods !== 'object')
+		if (!Types.isObject(methods))
 		{
 			return this;
 		}
 
-		const prototype = this.constructor.prototype;
-		for (var property in methods)
+		Object.entries(methods).forEach(([property, method]) =>
 		{
-			if (Object.prototype.hasOwnProperty.call(methods, property))
-			{
-				prototype[property] = methods[property];
-			}
-		}
+            this.constructor.prototype[property] = method;
+        });
 		return this;
 	}
 
@@ -74,8 +72,7 @@ class Base
 	 * @param {string} methodName the method name being overriden.
 	 * @param {function} overrideMethod The new function to call.
 	 * @param {array} args The args to pass to the first function call.
-	 *
-	 * @return {*} The results of the function being called.
+	 * @return {mixed} The results of the function being called.
 	 */
 	override(obj, methodName, overrideMethod, args)
 	{
@@ -138,18 +135,16 @@ class Base
 	 * @param {array} [argArray] Default args to pass.
 	 * @param {boolean} [addArgs] Set to add merge args from the
 	 * curried function.
-	 *
 	 * @return {(function|boolean)} The callBack function or false.
 	 */
-	createCallBack(obj, method, argArray, addArgs)
+	createCallBack(obj, method, argArray = [], addArgs = false)
 	{
 		if (typeof method !== 'function')
 		{
 			return false;
 		}
 
-		argArray = argArray || [];
-		return function(...args)
+		return (...args) =>
 		{
 			if (addArgs === true)
 			{

@@ -1,3 +1,4 @@
+import { Objects } from "../../shared/objects.js";
 import { Types } from "../../shared/types.js";
 
 /**
@@ -5,22 +6,12 @@ import { Types } from "../../shared/types.js";
  *
  * @param {string} path
  * @param {string} prop
- * @returns {string}
+ * @return {string}
  */
 function getNewPath(path, prop)
 {
-	if (path === '')
-    {
-        path = prop;
-        return (!isNaN(path))? `[${prop}]` : path;
-    }
-
-	if (!isNaN(prop))
-    {
-        return `${path}[${prop}]`
-    }
-
-    return `${path}.${prop}`;
+    const propPath = isNaN(Number(prop)) ? prop : `[${prop}]`;
+    return path === '' ? propPath : `${path}.${propPath}`;
 }
 
 /**
@@ -29,7 +20,7 @@ function getNewPath(path, prop)
  * @param {object} data
  * @param {string} path
  * @param {string} root
- * @returns {Proxy}
+ * @return {object}
  */
 function createHandler(data, path = '', dataRoot = '')
 {
@@ -41,7 +32,7 @@ function createHandler(data, path = '', dataRoot = '')
          * @param {object} target
          * @param {string} prop
          * @param {object} receiver
-         * @returns {mixed}
+         * @return {mixed}
          */
         get(target, prop, receiver)
         {
@@ -53,10 +44,10 @@ function createHandler(data, path = '', dataRoot = '')
 
             // Access the property within the dataRoot
             const dataTarget = target[dataRoot] || target;
-            const value = Reflect.get(dataTarget, prop, receiver);
+            const value = dataTarget[prop];
 
             // Return the value directly if it's not an object
-            if (!Types.isObject(value))
+            if (!Types.isObject(value) || Objects.isPlainObject(value) === false)
             {
                 return value;
             }
@@ -89,7 +80,8 @@ function createHandler(data, path = '', dataRoot = '')
             const newPath = getNewPath(path, prop);
 
             data.set(newPath, value);
-            return Reflect.set(dataTarget, prop, value, receiver);
+            dataTarget[prop] = value;
+            return true;
         }
     };
 }
@@ -98,6 +90,6 @@ function createHandler(data, path = '', dataRoot = '')
  * This will create a data proxy.
  *
  * @param {object} data
- * @returns {Proxy}
+ * @return {Proxy}
  */
 export const DataProxy = (data, root = 'stage') => new Proxy(data, createHandler(data, '', root));

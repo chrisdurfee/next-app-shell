@@ -19,9 +19,9 @@ export class Tracker
     constructor()
     {
         /**
-         * @member {object} types
+         * @member {Map} types
          */
-        this.types = {};
+        this.types = new Map();
     }
 
     /**
@@ -33,8 +33,11 @@ export class Tracker
      */
     add(addingType, data)
     {
-        const type = this.types[addingType] || (this.types[addingType] = []);
-        type.push(data);
+        if (!this.types.has(addingType))
+        {
+            this.types.set(addingType, []);
+        }
+        this.types.get(addingType).push(data);
     }
 
     /**
@@ -44,7 +47,7 @@ export class Tracker
      */
     get(type)
     {
-        return this.types[type] || false;
+        return this.types.get(type) || false;
     }
 
     /**
@@ -70,34 +73,33 @@ export class Tracker
      */
     removeType(removingType)
     {
-        const types = this.types;
-        if (!types)
+        if (!this.types.has(removingType))
         {
             return;
         }
 
-        const type = types[removingType];
-        if (!type.length)
+        const typeData = this.types.get(removingType);
+        if (!typeData.length)
         {
             return;
         }
 
         let data,
         callBack = TrackerTypes.get(removingType);
-        for (var i = 0, length = type.length; i < length; i++)
+        for (var i = 0, length = typeData.length; i < length; i++)
         {
-            data = type[i];
+            data = typeData[i];
             if (!data)
             {
                 continue;
             }
 
             // this will stop any circular referrences
-            type[i] = null;
+            typeData[i] = null;
 
             this.removeByCallBack(callBack, data);
         }
-        delete types[type];
+        this.types.delete(removingType);
     }
 
     /**
@@ -112,25 +114,19 @@ export class Tracker
         if (type)
         {
             this.removeType(type);
+            return;
         }
-        else
-        {
-            const types = this.types;
-            for (var prop in types)
-            {
-                if (Object.prototype.hasOwnProperty.call(types, prop))
-                {
-                    type = types[prop];
-                    if (!type)
-                    {
-                        continue;
-                    }
 
-                    this.removeType(prop);
-                }
+        this.types.forEach((value, typeKey) =>
+        {
+            if (!typeKey)
+            {
+                return;
             }
 
-            delete this.types;
-        }
+            this.removeType(typeKey);
+        });
+
+        this.types.clear();
     }
 }

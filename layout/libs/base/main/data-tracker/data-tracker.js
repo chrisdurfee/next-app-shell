@@ -20,7 +20,7 @@ export class DataTracker
      * @member trackers This is an object that stores all tracker
      * objects by tracking id.
      */
-    static trackers = {};
+    static trackers = new Map();
 
     /**
      * @private
@@ -60,7 +60,7 @@ export class DataTracker
      */
     static getTrackingId(obj)
     {
-        return obj.trackingId || (obj.trackingId = 'dt' + this.trackingCount++);
+        return obj.trackingId || (obj.trackingId = `dt${this.trackingCount++}`);
     }
 
     /**
@@ -74,7 +74,6 @@ export class DataTracker
     {
         const id = this.getTrackingId(obj),
         tracker = this.find(id);
-
         tracker.add(type, data);
     }
 
@@ -89,7 +88,7 @@ export class DataTracker
     static get(obj, type)
     {
         const id = obj.trackingId;
-        const tracker = this.trackers[id];
+        const tracker = this.trackers.get(id);
         if (!tracker)
         {
             return false;
@@ -107,8 +106,11 @@ export class DataTracker
      */
     static find(id)
     {
-        const trackers = this.trackers;
-        return (trackers[id] || (trackers[id] = new Tracker()));
+        if (!this.trackers.has(id))
+        {
+            this.trackers.set(id, new Tracker());
+        }
+        return this.trackers.get(id);
     }
 
     /**
@@ -124,16 +126,7 @@ export class DataTracker
 			return true;
 		}
 
-		/* we want to loop through each property and
-		check if it belongs to the object directly */
-		for (var key in obj)
-		{
-			if (Object.prototype.hasOwnProperty.call(obj, key))
-			{
-				return false;
-			}
-		}
-		return true;
+		return (obj.size === 0);
 	}
 
     /**
@@ -146,16 +139,12 @@ export class DataTracker
     static remove(obj, type)
     {
         const id = obj.trackingId;
-        if (!id)
+        if (!id || !this.trackers.has(id))
         {
             return true;
         }
 
-        const tracker = this.trackers[id];
-        if (!tracker)
-        {
-            return false;
-        }
+        const tracker = this.trackers.get(id);
 
         if (type)
         {
@@ -165,14 +154,13 @@ export class DataTracker
             if no elements are listed under the msg */
             if (this.isEmpty(tracker.types))
             {
-                delete this.trackers[id];
+                this.trackers.delete(id);
             }
         }
         else
         {
             tracker.remove();
-
-            delete this.trackers[id];
+            this.trackers.delete(id);
         }
     }
 }

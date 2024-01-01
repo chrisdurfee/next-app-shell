@@ -1,4 +1,5 @@
 import { Dom } from "../../../../../shared/dom.js";
+import { onSet } from "../reactive/on-set.js";
 
 /**
  * This will add aria attributes.
@@ -58,26 +59,22 @@ export const addAria = (ele, attributes, parent) =>
         attributes.role = null;
     }
 
-    for (var prop in attributes)
+    Object.entries(attributes).forEach(([key, value]) =>
     {
-        if (!Object.prototype.hasOwnProperty.call(attributes, prop) || attributes[prop] === null)
+        if (value === null)
         {
-            continue;
+            return;
         }
 
-        var value = attributes[prop];
-        var attr = 'aria-' + prop;
-
-        /* this will setup an onSet to change the attr value
-        when the data chnages. */
+        const attr = `aria-${key}`;
         if (Array.isArray(value))
         {
             value.push(onSetCallBack(attr));
-            this.onSet(ele, value, parent);
+            onSet(ele, value, parent);
         }
         else
         {
             Dom.setAttr(ele, attr, value);
         }
-    }
+    });
 }

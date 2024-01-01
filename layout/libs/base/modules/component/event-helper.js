@@ -14,6 +14,7 @@ export class EventHelper
 	 * This will create an event helper.
 	 *
 	 * @constructor
+	 * @return {EventHelper}
 	 */
 	constructor()
 	{
@@ -27,6 +28,7 @@ export class EventHelper
 	 * This will add an array of events.
 	 *
 	 * @param {array} events
+	 * @return {void}
 	 */
 	addEvents(events)
 	{
@@ -36,12 +38,10 @@ export class EventHelper
 			return false;
 		}
 
-		let event;
-		for (var i = 0; i < length; i++)
+		events.forEach((event) =>
 		{
-			event = events[i];
 			this.on(...event);
-		}
+		});
 	}
 
 	/**
@@ -98,13 +98,10 @@ export class EventHelper
 	 */
 	set()
 	{
-		let event,
-		events = this.events;
-		for (var i = 0, length = events.length; i < length; i++)
+		this.events.forEach((event) =>
 		{
-			event = events[i];
 			Events.on(event.event, event.obj, event.callBack, event.capture);
-		}
+		});
 	}
 
 	/**
@@ -114,13 +111,10 @@ export class EventHelper
 	 */
 	unset()
 	{
-		let event,
-		events = this.events;
-		for (var i = 0, length = events.length; i < length; i++)
+		this.events.forEach((event) =>
 		{
-			event = events[i];
 			Events.off(event.event, event.obj, event.callBack, event.capture);
-		}
+		});
 	}
 
 	/**

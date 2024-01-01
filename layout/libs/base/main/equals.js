@@ -1,3 +1,5 @@
+import { Objects } from '../shared/objects.js';
+
 /**
  * This will count the properties of an object.
  *
@@ -7,13 +9,8 @@
 const countProperty = (obj) =>
 {
 	let count = 0;
-	for (var property in obj)
+	for (let property of Object.entries(obj))
 	{
-		if (!Object.prototype.hasOwnProperty.call(obj, property))
-		{
-			continue;
-		}
-
 		count++;
 
 		/**
@@ -48,20 +45,18 @@ const matchProperties = (obj1, obj2) =>
 	 * We want to check each object1 property to the
 	 * object 2 property.
 	 */
-	for (var property in obj1)
+	for (let [property, value1] of Object.entries(obj1))
 	{
 		/**
 		 * We want to check if the property is owned by the
 		 * object and that they have matching types.
 		 */
-		if (!Object.prototype.hasOwnProperty.call(obj1, property) || !Object.prototype.hasOwnProperty.call(obj2, property))
+		if (!Objects.hasOwnProp(obj2, property))
 		{
 			break;
 		}
 
-		const value1 = obj1[property],
-		value2 = obj2[property];
-
+		const value2 = obj2[property];
 		if (typeof value1 !== typeof value2)
 		{
 			break;
@@ -122,8 +117,8 @@ const compareObjects = (obj1, obj2) =>
 /**
  * This will compare if two values match.
  *
- * @param {*} option1
- * @param {*} option2
+ * @param {mixed} option1
+ * @param {mixed} option2
  * @return {boolean}
  */
 export const equals = (option1, option2) =>
