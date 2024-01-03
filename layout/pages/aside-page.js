@@ -24,23 +24,18 @@ export class AsidePage extends BasicPage
 			{
 				route: {
 					uri: 'aside/overlay-test',
-					component: new Overlay({
-						backHref: 'aside/',
-						children: [
-							new Panel({
-								children: [
-									Div([
-										Header([
-											H1('Overlay')
-										]),
-										Div({ class: 'contained' }, [
-											GridContainer()
-										])
-									])
-								]
-							})
-						]
-					})
+					component: new Overlay({ backHref: 'aside/' }, [
+						new Panel([
+							Div([
+								Header([
+									H1('Overlay')
+								]),
+								Div({ class: 'contained' }, [
+									GridContainer()
+								])
+							])
+						])
+					])
 				}
 			},
 			[
@@ -80,167 +75,140 @@ export class AsidePage extends BasicPage
 				switch: [
 					{
 						uri: path,
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Aside')
-									]),
-									Div({ class: 'card' }, [
-										Import({
-											src: '/layout/atoms/import-buttons.js'
-										})
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Aside')
+								]),
+								Div({ class: 'card' }, [
+									Import({
+										src: '/layout/atoms/import-buttons.js'
+									})
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/marketing*',
-						component: new Panel({
-							children: [
-								{
-									switch: [
-										{
-											uri: 'aside/marketing/irure-nostrud/:id',
-											component: new InlineOverlay({
-												backHref: 'aside/marketing/',
-												children: [
-													new Panel({
-														children: [
-															Div([
-																Header([
-																	H1('Overlay')
-																]),
-																GridContainer()
-															])
-														]
-													})
-												]
-											})
-										},
-										{
-											uri: 'aside/marketing/*',
-											component: new Panel({
-												children: [
-													A({ href: 'aside/marketing/irure-nostrud/1' }, [
-														Header([
-															H1('Marketing')
-														]),
-														GridContainer()
-													])
-												]
-											})
-										}
-									]
-								}
-							]
-						})
+						component: new Panel([
+							{
+								switch: [
+									{
+										uri: 'aside/marketing/irure-nostrud/:id',
+										component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
+											new Panel([
+												Div([
+													Header([
+														H1('Overlay')
+													]),
+													GridContainer()
+												])
+											])
+										])
+									},
+									{
+										uri: 'aside/marketing/*',
+										component: new Panel([
+											A({ href: 'aside/marketing/irure-nostrud/1' }, [
+												Header([
+													H1('Marketing')
+												]),
+												GridContainer()
+											])
+										])
+									}
+								]
+							}
+						])
 					},
 					{
 						uri: path + '/tempor-nulla',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Tempor nulla')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Tempor nulla')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/tempor-esse',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Tempor esse')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Tempor esse')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/voluptate-dolore',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Voluptate dolore')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Voluptate dolore')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/non-lorem',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Non Lorem')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Non Lorem')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/tempor-nulla-1',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Tempor nulla 1')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Tempor nulla 1')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/tempor-esse-1',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Tempor esse 1')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Tempor esse 1')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/voluptate-dolore-1',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Voluptate dolore 1')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Voluptate dolore 1')
+								]),
+								GridContainer()
+							])
+						])
 					},
 					{
 						uri: path + '/non-lorem-1',
-						component: new Panel({
-							children: [
-								Div([
-									Header([
-										H1('Non Lorem 1')
-									]),
-									GridContainer()
-								])
-							]
-						})
+						component: new Panel([
+							Div([
+								Header([
+									H1('Non Lorem 1')
+								]),
+								GridContainer()
+							])
+						])
 					}
 				]
 			}
@@ -370,6 +338,6 @@ export class AsidePage extends BasicPage
 					}
 				]
 			}
-		]
+		];
 	}
 }

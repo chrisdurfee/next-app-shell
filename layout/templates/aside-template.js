@@ -14,8 +14,12 @@ export const AsideTemplate = Atom((props, children) =>
 {
 	return Template({ class: 'body aside-container' }, [
 		Row([
-			MainColumn({ class: 'drawer control' }, props.left.children),
-			MainColumn(props.right)
+			MainColumn({ class: 'drawer control' }, [
+				props.left
+			]),
+			MainColumn([
+				props.right
+			])
 		])
 	]);
 });
