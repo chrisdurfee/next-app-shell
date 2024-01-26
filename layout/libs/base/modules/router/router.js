@@ -67,7 +67,7 @@ export class Router
 		this.title = '';
 
 		this.lastPath = null;
-		this.path = null;
+		this.activePath = null;
 
 		/**
 		 * This will be used to access our history object.
@@ -528,10 +528,10 @@ export class Router
 	 */
 	checkActiveRoutes(path)
 	{
-		this.lastPath = this.path;
+		this.lastPath = this.activePath;
 
 		path = path || this.getPath();
-		this.path = path;
+		this.activePath = path;
 
 		const routes = this.routes,
 		length = routes.length;
@@ -712,7 +712,7 @@ export class Router
 			return;
 		}
 
-		route.setPath(this.path, this.lastPath);
+		route.setPath(this.activePath, this.lastPath);
 		route.select();
 		this.updateTitle(route);
 	}
@@ -747,7 +747,7 @@ export class Router
 	{
 		/* we want to get the window location path */
 		let location = this.location,
-		path = this.path = location.pathname;
+		path = this.activePath = location.pathname;
 
 		if (this.history.type === 'hash')
 		{
