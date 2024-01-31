@@ -20,7 +20,7 @@ function getNewPath(path, prop)
  * @param {object} data
  * @param {string} path
  * @param {string} root
- * @return {object}
+ * @returns {Proxy}
  */
 function createHandler(data, path = '', dataRoot = '')
 {
@@ -32,13 +32,19 @@ function createHandler(data, path = '', dataRoot = '')
          * @param {object} target
          * @param {string} prop
          * @param {object} receiver
-         * @return {mixed}
+         * @returns {mixed}
          */
         get(target, prop, receiver)
         {
             // Directly return the property if it's on the root level and we're at the root path
-            if (path === '' && prop in target)
+            if (prop in target)
             {
+                // Check if the property is a function and bind it
+                if (typeof target[prop] === 'function')
+                {
+                    return target[prop].bind(target);
+                }
+
                 return Reflect.get(target, prop, receiver);
             }
 
@@ -54,7 +60,7 @@ function createHandler(data, path = '', dataRoot = '')
 
             // Create a new handler for nested properties
             const newPath = getNewPath(path, prop);
-            return new Proxy(value, createHandler(data, newPath, dataRoot));
+            return new Proxy(dataTarget, createNestedHandler(data, newPath));
         },
 
         /**
@@ -68,19 +74,69 @@ function createHandler(data, path = '', dataRoot = '')
          */
         set(target, prop, value, receiver)
         {
-            // Set the property at the root level if we're at the root path
             if (path === '' && prop in target)
             {
                 return Reflect.set(target, prop, value, receiver);
             }
 
             // Set the property within the dataRoot
-            const dataTarget = target[dataRoot] || target;
             const dataReciever = receiver[dataRoot] || receiver;
             const newPath = getNewPath(path, prop);
 
             data.set(newPath, value);
-            return Reflect.set(dataTarget, prop, value, dataReciever);
+            return Reflect.set(target, prop, value, dataReciever);
+        }
+    };
+}
+
+/**
+ * This will create a deep nested handler for the proxy.
+ *
+ * @param {object} data
+ * @param {string} path
+ * @returns {Proxy}
+ */
+function createNestedHandler(data, path = '')
+{
+    return {
+
+        /**
+         * This will get the value of the prop.
+         *
+         * @param {object} target
+         * @param {string} prop
+         * @param {object} receiver
+         * @returns {mixed}
+         */
+        get(target, prop, receiver)
+        {
+            const value = Reflect.get(target, prop, receiver);
+
+            // Return the value directly if it's not an object
+            if (!Types.isObject(value) || Objects.isPlainObject(value) === false)
+            {
+                return value;
+            }
+
+            // Create a new handler for nested properties
+            const newPath = getNewPath(path, prop);
+            return new Proxy(value, createNestedHandler(data, newPath));
+        },
+
+        /**
+         * This will set the value of the prop.
+         *
+         * @param {object} target
+         * @param {string} prop
+         * @param {mixed} value
+         * @param {object} receiver
+         * @return {mixed}
+         */
+        set(target, prop, value, receiver)
+        {
+            const newPath = getNewPath(path, prop);
+            data.set(newPath, value);
+            return Reflect.set(target, prop, value, receiver);
         }
     };
 }
@@ -89,6 +145,6 @@ function createHandler(data, path = '', dataRoot = '')
  * This will create a data proxy.
  *
  * @param {object} data
- * @return {Proxy}
+ * @returns {Proxy}
  */
 export const DataProxy = (data, root = 'stage') => new Proxy(data, createHandler(data, '', root));
