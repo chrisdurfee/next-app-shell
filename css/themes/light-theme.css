@@ -8,6 +8,7 @@
         --base-input: #FFF;
         --base-input-border: var(--gray-30);
         --primary-color: #5F8AE1;
+        --shadow: #576096;
 
         --text-color: #2B303A;
     }
