@@ -8,31 +8,6 @@
 export class ModuleRoutes
 {
 	/**
-	 * This will create the module routes.
-	 *
-	 * @param {array} [common]
-	 */
-	constructor(common)
-	{
-		/**
-		 * @member {array} common
-		 */
-		this.common = common || [];
-	}
-
-	/**
-	 * This will get the dependencies and add them to the
-	 * common dependencies.
-	 *
-	 * @param {array} deps
-	 * @return {array}
-	 */
-	depends(deps)
-    {
-        return this.common.concat(deps);
-    }
-
-	/**
 	 * This will add a route.
 	 *
 	 * @param {string} uri
