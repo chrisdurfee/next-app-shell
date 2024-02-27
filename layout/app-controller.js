@@ -56,21 +56,6 @@ const AddModules = (modules) =>
 export class AppController
 {
 	/**
-	 * @member {array} modules
-	 */
-	modules = [];
-
-	/**
-	 * @member {array} routes
-	 */
-	routes = [];
-
-	/**
-	 * @member {array} links
-	 */
-	links = [];
-
-	/**
 	 * This will setup the main controller.
 	 *
 	 * @return {MainController}
@@ -89,16 +74,6 @@ export class AppController
 	}
 
 	/**
-	 * This will get the router settings.
-	 *
-	 * @return {object}
-	 */
-	getRouterSettings()
-	{
-		return Configs.router;
-	}
-
-	/**
 	 * This will setup the router.
 	 *
 	 * @protected
@@ -106,7 +81,7 @@ export class AppController
 	 */
 	setupRouter()
 	{
-		const settings = this.getRouterSettings(),
+		const settings = Configs.router,
 		baseUrl = settings.baseUrl;
 
 		const router = this.router = base.router;
@@ -138,6 +113,9 @@ export class AppController
 
 	/**
 	 * This will setup the app shell.
+	 *
+	 * @protected
+	 * @return {void}
 	 */
 	setupAppShell()
 	{
