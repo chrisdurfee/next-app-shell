@@ -38,9 +38,7 @@ export class Module
 	{
 		this.title = settings.title;
 		this.links = settings.links;
-
-		const routes = settings.routes;
-		this.routes = routes;
+		this.routes = settings.routes;
 	}
 
 	/**
