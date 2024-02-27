@@ -1,5 +1,5 @@
 import { Atom } from "@base-framework/base";
-import { H1, Header } from "../atoms/atoms.js";
+import { H1, Header } from "../../atoms/atoms.js";
 
 /**
  * This will create a top bar.

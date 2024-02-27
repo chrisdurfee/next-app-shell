@@ -1,10 +1,10 @@
 import { Import } from "@base-framework/base";
-import { A, Div, H1, Header, MainSection } from "../atoms/atoms.js";
-import { GridContainer } from '../molecules/molecules.js';
-import { InlineOverlay } from '../organisms/inline-overlay.js';
-import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
-import { Overlay } from '../organisms/overlay.js';
-import { Panel } from '../organisms/panel.js';
+import { A, Div, H1, Header, MainSection } from "../../atoms/atoms.js";
+import { GridContainer } from '../../molecules/molecules.js';
+import { InlineOverlay } from '../../organisms/inline-overlay.js';
+import { InlineNavigation } from '../../organisms/navigation/inline-navigation.js';
+import { Overlay } from '../../organisms/overlay.js';
+import { Panel } from '../../organisms/panel.js';
 import { AsideTemplate } from '../templates/aside-template.js';
 import { BasicPage } from './basic-page.js';
 

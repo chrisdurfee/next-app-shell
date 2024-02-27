@@ -1,20 +1,20 @@
 import { Atom } from "@base-framework/base";
-import { Row } from "../atoms/atoms.js";
+import { Row } from "../../atoms/atoms.js";
 import { MainColumn } from "./template-atoms.js";
 import { Template } from "./template.js";
 
 /**
- * This will create a b side template.
+ * This will create a aside template.
  *
  * @param {object} props
  * @param {array} children
  * @return {object}
  */
-export const BsideTemplate = Atom((props, children) =>
+export const AsideTemplate = Atom((props, children) =>
 {
-	return Template({ class: 'body bside-container' }, [
+	return Template({ class: 'body aside-container' }, [
 		Row([
-			MainColumn([
+			MainColumn({ class: 'drawer control' }, [
 				props.left
 			]),
 			MainColumn([
