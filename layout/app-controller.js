@@ -30,13 +30,13 @@ const AddModules = (modules) =>
 		const routes = module.getRoutes();
 		if (routes)
 		{
-			appRoutes = routes.concat(routes);
+			appRoutes = appRoutes.concat(routes);
 		}
 
 		const links = module.getLinks();
 		if (links)
 		{
-			appLinks = links.concat(links);
+			appLinks = appLinks.concat(links);
 		}
 	});
 
