@@ -25,7 +25,6 @@
     left: 0;
     right: 0;
     z-index: 20;
-    display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 646px;

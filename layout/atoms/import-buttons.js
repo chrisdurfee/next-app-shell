@@ -1,5 +1,5 @@
 import { Atom, Import } from "@base-framework/base";
-import { Div, Span } from "../atoms/atoms.js";
+import { Div, Span } from "./atoms.js";
 
 export default Atom((props, children) =>
 {
