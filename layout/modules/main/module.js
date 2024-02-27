@@ -28,7 +28,7 @@ Module.create(
 
         routes.load(
             '/aside/:page?/:marketing?/:label?/:name?',
-            '/layout/pages/aside-page.js',
+            '/layout/pages/types/aside-page.js',
             'Aside Example'
         ),
 
