@@ -3,7 +3,48 @@ import { } from "../layout/modules/main/module.js";
 import { Configs } from "./configs.js";
 import { AppModules } from "./modules/module.js";
 import { AppShell } from "./shell/app-shell.js";
-import { Push } from "./worker/push.js";
+
+/**
+ * This will add the modules to the app.
+ *
+ * @param {array} modules
+ * @return {object}
+ */
+const AddModules = (modules) =>
+{
+	if (!modules || modules.length < 1)
+	{
+		return {};
+	}
+
+	let appRoutes = [];
+	let appLinks = [];
+
+	modules.forEach((module) =>
+	{
+		if (!module)
+		{
+			return;
+		}
+
+		const routes = module.getRoutes();
+		if (routes)
+		{
+			appRoutes = routes.concat(routes);
+		}
+
+		const links = module.getLinks();
+		if (links)
+		{
+			appLinks = links.concat(links);
+		}
+	});
+
+	return {
+		routes: appRoutes,
+		links: appLinks
+	};
+};
 
 /**
  * AppController
@@ -48,19 +89,6 @@ export class AppController
 	}
 
 	/**
-	 * This will setup the push.
-	 *
-	 * @protected
-	 * @param {object} serviceWorker
-	 * @return {object}
-	 */
-	setupPush(serviceWorker)
-	{
-		this.serviceWorker = serviceWorker;
-		this.push = new Push(this.pushPublicKey, serviceWorker);
-	}
-
-	/**
 	 * This will get the router settings.
 	 *
 	 * @return {object}
@@ -88,57 +116,12 @@ export class AppController
 	/**
 	 * This will setup the app modules.
 	 *
+	 * @protected
+	 * @return {object}
 	 */
 	setupModules()
 	{
-		const modules = this.modules = AppModules || [];
-		if (!modules || modules.length < 1)
-		{
-			return;
-		}
-
-		for (let i = 0, length = modules.length; i < length; i++)
-		{
-			const module = modules[i];
-			if (!module)
-			{
-				continue;
-			}
-
-			const routes = module.getRoutes();
-			if (routes)
-			{
-				this.routes = this.routes.concat(routes);
-			}
-
-			const links = module.getLinks();
-			if (links)
-			{
-				this.links = this.links.concat(links);
-			}
-		}
-	}
-
-	/**
-	 * This will get the routes that will be used in
-	 * the app shell.
-	 *
-	 * @return {array}
-	 */
-	getRoutes()
-	{
-		return this.routes;
-	}
-
-	/**
-	 * This will get the options to create the app
-	 * navigation.
-	 *
-	 * @return {array}
-	 */
-	getNavOptions()
-	{
-		return this.links;
+		return AddModules(AppModules);
 	}
 
 	/**
@@ -158,11 +141,11 @@ export class AppController
 	 */
 	setupAppShell()
 	{
-		const options = this.getNavOptions();
+		const { routes, links: options } = this.setupModules();
 		const main = this.appShell = new AppShell(
 		{
 			options,
-			routes: this.getRoutes()
+			routes
 		});
 		Builder.render(main, document.body);
 	}
@@ -185,7 +168,6 @@ export class AppController
 	setup()
 	{
 		this.setupRouter();
-		this.setupModules();
 		this.setupAppShell();
 	}
 }
