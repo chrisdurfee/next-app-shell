@@ -37,7 +37,7 @@ export class AppControl extends Component
     onCreated()
     {
         /**
-         * @member {int|null} timer
+         * @member {number|null} timer
          */
         this.timer = null;
     }

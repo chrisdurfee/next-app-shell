@@ -1,5 +1,5 @@
 import { Atom, Component } from '@base-framework/base';
-import { AppControl } from './app-control.js';
+import { AppControl } from './navigation/app-control.js';
 
 /**
  * This will create the app container.

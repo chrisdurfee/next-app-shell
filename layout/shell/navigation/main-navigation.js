@@ -1,6 +1,6 @@
 import { Atom, Component } from "@base-framework/base";
-import { A, Div } from "../../layout/atoms/atoms.js";
-import { PrimaryNavigation } from "../organisms/navigation/primary-navigation.js";
+import { A, Div } from "../../atoms/atoms.js";
+import { PrimaryNavigation } from "../../organisms/navigation/primary-navigation.js";
 
 /**
  * This will create the main navigation.
@@ -18,7 +18,6 @@ const Navigation = Atom((props, children) =>
 		children
 	};
 });
-
 
 /**
  * This will create a logo.
