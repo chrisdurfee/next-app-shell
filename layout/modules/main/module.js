@@ -1,22 +1,13 @@
 import { AsideBsidePage } from '../../pages/aside-bside-page.js';
-import { AsidePage } from '../../pages/aside-page.js';
 import { BsidePage } from '../../pages/bside-page.js';
 import { FullContainPage } from '../../pages/full-contain-page.js';
 import { FullPage } from '../../pages/full-page.js';
-import { Module, ModuleRoutes } from '../module.js';
+import { Module } from '../module.js';
 
 /**
- * Set any common dependencies that are shared between
- * pages.
+ * This will setup the route creator.
  */
-const common = [];
-
-/**
- * This will setup the route creator. we want to pass
- * the common depends to the module routes to use when
- * adding local dependencies.
- */
-const routes = new ModuleRoutes(common);
+const routes = Module.routeCreator();
 
 /**
  * This will create our module and add it to the app
@@ -34,14 +25,13 @@ Module.create(
         routes.add('/', FullPage, 'Example'),
         routes.add('/full', FullPage, 'Full Example'),
         routes.add('/full-contain', FullContainPage, 'Full Contain Example'),
-        routes.add('/aside/:page?/:marketing?/:label?/:name?', AsidePage, 'Aside Example'),
-        // routes.load('/aside/:page?/:marketing?/:label?/:name?', {
-        //     src: 'layout/pages/aside-page.js',
-        //     callBack()
-        //     {
-        //         return new AsidePage();
-        //     }
-        // }, 'Aside Example'),
+
+        routes.load(
+            '/aside/:page?/:marketing?/:label?/:name?',
+            '/layout/pages/aside-page.js',
+            'Aside Example'
+        ),
+
         routes.add('/bside', BsidePage, 'Bside Example'),
         routes.add('/aside-bside', AsideBsidePage, 'Aside Bside Example')
     ],

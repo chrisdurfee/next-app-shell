@@ -16,7 +16,7 @@ import { BasicPage } from './basic-page.js';
  * @class
  * @extends BasicPage
  */
-export class AsidePage extends BasicPage
+export default class AsidePage extends BasicPage
 {
 	render()
 	{

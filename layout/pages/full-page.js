@@ -1,6 +1,5 @@
 import { Data } from "@base-framework/base";
 import { H1, Header, MainSection, P } from "../atoms/atoms.js";
-import { Modal } from "../molecules/modal.js";
 import { GridContainer } from '../molecules/molecules.js';
 import { FullTemplate } from '../templates/full-template.js';
 import { BasicPage } from './basic-page.js';
@@ -53,7 +52,7 @@ export class FullPage extends BasicPage
 		const data = this.data;
 		data.set('name', 'something long here');
 
-		new Modal().open();
+		//new Modal().open();
 
 		setTimeout(() =>
 		{

@@ -1,121 +1,9 @@
-import { Loader } from "../loader.js";
+import { ModuleRoutes } from './module-routes.js';
 
+/**
+ * @type {array} AppModules
+ */
 export const AppModules = [];
-
-/**
- * This will create a route object.
- * @param {string} uri
- * @param {function} component
- * @param {string} [title]
- */
-export const addRoute = (uri, component, title) =>
-{
-	return {
-		uri: uri,
-		component: component,
-		title: title,
-		persist: true
-	};
-};
-
-/**
- * ModuleRoutes
- *
- * This will help create local module routes.
- *
- * @class
- */
-export class ModuleRoutes
-{
-	/**
-	 * This will create the module routes.
-	 *
-	 * @param {array} [common]
-	 */
-	constructor(common)
-	{
-		/**
-		 * @member {array} common
-		 */
-		this.common = common || [];
-	}
-
-	/**
-	 * This will get the dependencies and add them to the
-	 * common dependencies.
-	 *
-	 * @param {array} deps
-	 * @return {array}
-	 */
-	depends(deps)
-    {
-        return this.common.concat(deps);
-    }
-
-	/**
-	 * This will add a route.
-	 *
-	 * @param {string} uri
-	 * @param {object} component
-	 * @param {string} [title]
-	 * @param {bool} [persist]
-	 * @param {bool} [module]
-	 * @return {object}
-	 */
-	add(uri, component, title, persist, module = false)
-	{
-		persist = (persist !== false);
-
-		return {
-			uri,
-			component,
-			title,
-			persist,
-			module
-		};
-	}
-
-	/**
-	 * This will add a loaded route.
-	 *
-	 * @param {string} uri
-	 * @param {object} loader
-	 * @param {string} [title]
-	 * @param {bool} [persist]
-	 * @param {bool} [module]
-	 * @return {object}
-	 */
-	load(uri, loader, title, persist, module = false)
-	{
-		let depends = loader.depends || [];
-		if (this.common)
-		{
-			depends = this.depends(depends);
-		}
-
-		let callBack = loader.callBack;
-		if (typeof callBack === 'string')
-		{
-			let component;
-			callBack = () =>
-			{
-				return component || (component = new window[loader.callBack]());
-			};
-		}
-
-		return this.add(
-			uri,
-			{
-				src: loader.src,
-				depends: depends,
-                callBack: callBack
-			},
-			title,
-			persist,
-			module
-		);
-	}
-}
 
 /**
  * Module
@@ -146,50 +34,23 @@ export class Module
 	 *
 	 * @param {object} settings
 	 */
-	constructor(settings)
+	constructor(settings = {})
 	{
-		settings = settings || {};
-
 		this.title = settings.title;
-
-		let routes = settings.routes;
-		this.convertLoaderRoutes(routes);
-		this.routes = routes;
-
 		this.links = settings.links;
+
+		const routes = settings.routes;
+		this.routes = routes;
 	}
 
 	/**
-	 * This will setup the loader routes.
+	 * This will create a route creator.
 	 *
-	 * @param {array} routes
-	 * @return {void}
+	 * @return {object}
 	 */
-	convertLoaderRoutes(routes)
+	static routeCreator()
 	{
-		if (!routes)
-		{
-			return;
-		}
-
-		for (let i = 0, length = routes.length; i < length; i++)
-		{
-			const route = routes[i];
-			if (route && route.component.src)
-			{
-				if(route.module === true)
-				{
-					route.import = {
-						src: route.component.src,
-						callBack: route?.component?.callBack || null
-					};
-				}
-				else
-				{
-					route.component = new Loader(route.component);
-				}
-			}
-		}
+		return new ModuleRoutes();
 	}
 
 	/**
