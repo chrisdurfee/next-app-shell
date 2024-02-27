@@ -1,6 +1,9 @@
 import { A, Br, Div, Fieldset, Form, H1, H2, Header, Input, Label, Legend, Li, Nav, P, Span, Strong, Textarea, Ul } from '@base-framework/atoms';
 import { Atom, Html } from '@base-framework/base';
 
+/**
+ * This will export the base atoms.
+ */
 export {
 	A, Br, Div, Fieldset, Form, H1,
 	H2, Header, Input,

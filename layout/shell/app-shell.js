@@ -70,15 +70,4 @@ export class AppShell extends Component
 	{
 		return this.mainBody;
 	}
-
-	/**
-	 * This will add a notice.
-	 *
-	 * @param {object} props
-	 * @return {void}
-	 */
-	addNotice(props)
-	{
-		this.notices.addNotice(props);
-	}
 }
