@@ -1,17 +1,17 @@
-import { Div, MainSection } from "../../atoms/atoms.js";
-import { GridContainer } from '../../molecules/molecules.js';
-import { AsideBsideTemplate } from '../templates/aside-bside-template.js';
+import { Div, MainSection } from "../atoms/atoms.js";
+import { GridContainer } from '../molecules/molecules.js';
 import { BasicPage } from './basic-page.js';
+import { BsideTemplate } from './templates/bside-template.js';
 
 /**
- * AsideBsidePage
+ * BsidePage
  *
- * This will create a aside bside page.
+ * This will create a bside page.
  *
  * @class
  * @extends BasicPage
  */
-export class AsideBsidePage extends BasicPage
+export class BsidePage extends BasicPage
 {
 	/**
 	 * This will render the page.
@@ -21,8 +21,8 @@ export class AsideBsidePage extends BasicPage
 	render()
 	{
 		return MainSection([
-			AsideBsideTemplate({
-				center: this.addBody()
+			BsideTemplate({
+				left: this.addBody()
 			})
 		]);
 	}

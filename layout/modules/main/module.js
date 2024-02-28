@@ -1,7 +1,7 @@
-import { AsideBsidePage } from '../../pages/types/aside-bside-page.js';
-import { BsidePage } from '../../pages/types/bside-page.js';
-import { FullContainPage } from '../../pages/types/full-contain-page.js';
-import { FullPage } from '../../pages/types/full-page.js';
+import { AsideBsidePage } from '../../components/pages/aside-bside-page.js';
+import { BsidePage } from '../../components/pages/bside-page.js';
+import { FullContainPage } from '../../components/pages/full-contain-page.js';
+import { FullPage } from '../../components/pages/full-page.js';
 import { Module } from '../module.js';
 
 /**
@@ -28,7 +28,7 @@ Module.create(
 
         routes.load(
             '/aside/:page?/:marketing?/:label?/:name?',
-            '/layout/pages/types/aside-page.js',
+            '/layout/components/pages/aside-page.js',
             'Aside Example'
         ),
 

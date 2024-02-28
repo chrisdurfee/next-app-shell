@@ -1,7 +1,7 @@
-import { Div, MainSection } from "../../atoms/atoms.js";
-import { GridContainer } from '../../molecules/molecules.js';
-import { FullTemplate } from '../templates/full-template.js';
+import { Div, MainSection } from "../atoms/atoms.js";
+import { GridContainer } from '../molecules/molecules.js';
 import { BasicPage } from './basic-page.js';
+import { FullTemplate } from './templates/full-template.js';
 
 /**
  * FullContainPage
