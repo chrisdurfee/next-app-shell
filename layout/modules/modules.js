@@ -24,17 +24,11 @@ export const AddModules = (modules) =>
 			return;
 		}
 
-		const routes = module.getRoutes();
-		if (routes)
-		{
-			appRoutes = appRoutes.concat(routes);
-		}
+		const routes = module.getRoutes() || [];
+        appRoutes.push(...routes);
 
-		const links = module.getLinks();
-		if (links)
-		{
-			appLinks = appLinks.concat(links);
-		}
+        const links = module.getLinks() || [];
+        appLinks.push(...links);
 	});
 
 	return {

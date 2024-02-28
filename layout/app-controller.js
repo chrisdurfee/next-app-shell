@@ -13,21 +13,24 @@ import { AppShell } from "./shell/app-shell.js";
 export class AppController
 {
 	/**
+	 * @member {object} router
+	 */
+	router = null;
+
+	/**
+	 * @member {object} appShell
+	 */
+	appShell = null;
+
+	/**
 	 * This will setup the main controller.
 	 *
 	 * @return {MainController}
 	 */
 	constructor()
 	{
-		/**
-		 * @member {object} router
-		 */
-		this.router = null;
-
-		/**
-		 * @member {object} appShell
-		 */
-		this.appShell = null;
+		this.setupRouter();
+		this.setupAppShell();
 	}
 
 	/**
@@ -38,11 +41,9 @@ export class AppController
 	 */
 	setupRouter()
 	{
-		const settings = Configs.router,
-		baseUrl = settings.baseUrl;
-
+		const { baseUrl, title } = Configs.router;
 		const router = this.router = base.router;
-		router.setup(baseUrl, settings.title);
+		router.setup(baseUrl, title);
 	}
 
 	/**
@@ -51,6 +52,7 @@ export class AppController
 	 * @param {string} uri
 	 * @param {object} [data]
 	 * @param {bool} [replace=false]
+	 * @return {void}
 	 */
 	navigate(uri, data, replace)
 	{
@@ -66,11 +68,7 @@ export class AppController
 	setupAppShell()
 	{
 		const { routes, links: options } = modules;
-		const main = this.appShell = new AppShell(
-		{
-			options,
-			routes
-		});
+		const main = this.appShell = new AppShell({ options, routes });
 		Builder.render(main, document.body);
 	}
 
@@ -82,16 +80,5 @@ export class AppController
 	getMainBody()
 	{
 		return this.appShell.getBodyPanel();
-	}
-
-	/**
-	 * This will setup the main controller.
-	 *
-	 * @return {void}
-	 */
-	setup()
-	{
-		this.setupRouter();
-		this.setupAppShell();
 	}
 }

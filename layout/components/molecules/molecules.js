@@ -132,24 +132,6 @@ export const Radio = Atom((props, children) =>
  */
 export const GridContainer = Atom((props, children) =>
 {
-	return Div({ class: 'grid-container' }, [
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel(),
-		GridPanel()
-	]);
+	const items = new Array(18).fill(1);
+	return Div({ class: 'grid-container', map: [items, () => GridPanel()], ...props });
 });
