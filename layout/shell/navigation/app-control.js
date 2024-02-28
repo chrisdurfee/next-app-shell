@@ -28,19 +28,9 @@ const AppContainer = Atom((props, children) =>
 export class AppControl extends Component
 {
     /**
-     * This will set up the timer.
-     *
-     * @override
-     * @protected
-     * @return {void}
+     * @member {number|null} timer
      */
-    onCreated()
-    {
-        /**
-         * @member {number|null} timer
-         */
-        this.timer = null;
-    }
+    timer = null;
 
     /**
      * This will render the component.
