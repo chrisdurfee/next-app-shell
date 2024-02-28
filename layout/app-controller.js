@@ -1,7 +1,6 @@
 import { base, Builder } from "@base-framework/base";
-import { AddModules } from "../layout/modules/modules.js";
+import { modules } from "../layout/modules/modules.js";
 import { Configs } from "./configs.js";
-import { AppModules } from "./modules/module.js";
 import { AppShell } from "./shell/app-shell.js";
 
 /**
@@ -47,17 +46,6 @@ export class AppController
 	}
 
 	/**
-	 * This will setup the app modules.
-	 *
-	 * @protected
-	 * @return {object}
-	 */
-	setupModules()
-	{
-		return AddModules(AppModules);
-	}
-
-	/**
 	 * This will navigate to the uri.
 	 *
 	 * @param {string} uri
@@ -77,7 +65,7 @@ export class AppController
 	 */
 	setupAppShell()
 	{
-		const { routes, links: options } = this.setupModules();
+		const { routes, links: options } = modules;
 		const main = this.appShell = new AppShell(
 		{
 			options,

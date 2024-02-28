@@ -1,4 +1,5 @@
 import "./main/module.js";
+import { AppModules } from "./module.js";
 
 /**
  * This will add the modules to the app.
@@ -41,3 +42,5 @@ export const AddModules = (modules) =>
 		links: appLinks
 	};
 };
+
+export const modules = AddModules(AppModules);
