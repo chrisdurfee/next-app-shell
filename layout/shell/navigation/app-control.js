@@ -69,7 +69,6 @@ export class AppControl extends Component
         }, DURATION);
     }
 
-
     /**
      * This will setup the states.
      *

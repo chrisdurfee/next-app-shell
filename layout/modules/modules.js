@@ -2,18 +2,13 @@ import "./main/module.js";
 import { AppModules } from "./module.js";
 
 /**
- * This will add the modules to the app.
+ * This will get the module settings.
  *
- * @param {array} modules
+ * @param {object} module
  * @return {object}
  */
-export const AddModules = (modules) =>
+const getModuleSettings = (modules) =>
 {
-	if (!modules || modules.length < 1)
-	{
-		return {};
-	}
-
 	let appRoutes = [];
 	let appLinks = [];
 
@@ -35,6 +30,22 @@ export const AddModules = (modules) =>
 		routes: appRoutes,
 		links: appLinks
 	};
+};
+
+/**
+ * This will add the modules to the app.
+ *
+ * @param {array} modules
+ * @return {object}
+ */
+export const AddModules = (modules) =>
+{
+	if (!modules || modules.length < 1)
+	{
+		return {};
+	}
+
+	return getModuleSettings(modules);
 };
 
 export const modules = AddModules(AppModules);
