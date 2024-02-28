@@ -1,5 +1,21 @@
-
-@import url('loading.css');
 @import url('animation.css');
 @import url('base.css');
-@import url('import-files.css');
+
+@import url('text/text.css');
+@import url('colors/color.css');
+@import url('layout.css');
+
+/* atoms */
+@import url('components/atoms/atoms.css');
+
+/* molecules */
+@import url('components/molecules/molecules.css');
+
+/* organisms */
+@import url('components/organisms/navigation.css');
+@import url('components/organisms/tab.css');
+@import url('components/organisms/list.css');
+
+/* pages */
+@import url('components/pages/basic-page.css');
+@import url('components/organisms/overlay.css');

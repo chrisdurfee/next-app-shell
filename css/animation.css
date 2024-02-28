@@ -504,7 +504,6 @@
     }
 }
 .flipOutX {
-	-webkit-backface-visibility: visible !important;
 	-webkit-animation: flipOutX .8s;
 	animation: flipOutX .8s;
 

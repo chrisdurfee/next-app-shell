@@ -413,7 +413,6 @@ a.card {
     border-width: 2px;
     border-radius: 0px;
     text-align: center;
-    -webkit-appearance: textfield;
 }
 .number-picker input[type=number]::-webkit-inner-spin-button,
 .number-picker input[type=number]::-webkit-outer-spin-button {
