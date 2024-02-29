@@ -1,6 +1,6 @@
 import { Dialog, Div, Footer, H2, Header } from "@base-framework/atoms";
 import { Builder, Component } from "@base-framework/base";
-import "../../css/molecules/modal.css";
+import "../../../css/components/molecules/modal.css";
 
 /**
  * Modal

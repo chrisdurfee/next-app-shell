@@ -1,5 +1,6 @@
 import { Data } from "@base-framework/base";
-import { P } from "../../../../../components/atoms/atoms.js";
+import { Button, P } from "../../../../../components/atoms/atoms.js";
+import { Modal } from '../../../../../components/molecules/modal.js';
 import { GridContainer } from '../../../../../components/molecules/molecules.js';
 import { FullPage } from '../../../../../components/pages/full-page.js';
 
@@ -111,6 +112,13 @@ export class MainFullPage extends FullPage
 	{
 		return [
 			P('This will test the deep data binding [[other.name]]'),
+			Button({
+				text: 'Test Modal',
+				click: () =>
+				{
+					new Modal().open();
+				}
+			}),
 			GridContainer()
 		];
 	}
