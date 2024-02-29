@@ -1,7 +1,7 @@
-import { BsidePage } from '../../pages//bside-page.js';
-import { FullContainPage } from '../../pages//full-contain-page.js';
-import { FullPage } from '../../pages//full-page.js';
-import { AsideBsidePage } from '../../pages/aside-bside-page.js';
+import { AsideBsidePage } from '../../components/pages/aside-bside-page.js';
+import { BsidePage } from '../../components/pages/bside-page.js';
+import { FullContainPage } from '../../components/pages/full-contain-page.js';
+import { FullPage } from '../../components/pages/full-page.js';
 import { Module } from '../module.js';
 
 /**

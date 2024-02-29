@@ -45,9 +45,7 @@ export class AppControl extends Component
                 onState: ['ignoreHover', { ignoreHover: true }],
                 mouseleave: this.removeIgnore.bind(this)
             },
-            new MainNavigation({
-                options: this.options
-            })
+            new MainNavigation({ options: this.options })
         );
     }
 
