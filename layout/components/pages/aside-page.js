@@ -11,7 +11,7 @@ import { AsideTemplate } from './templates/aside-template.js';
  * @class
  * @extends BasicPage
  */
-export default class AsidePage extends BasicPage
+export class AsidePage extends BasicPage
 {
 	/**
 	 * @member {string}	title
@@ -32,7 +32,7 @@ export default class AsidePage extends BasicPage
 	{
 		return MainSection(
 			{
-				route: this.addRouotes()
+				route: this.addRoutes()
 			},
 			[
 				AsideTemplate({
@@ -48,7 +48,7 @@ export default class AsidePage extends BasicPage
 	 *
 	 * @returns {array}
 	 */
-	addRouotes()
+	addRoutes()
 	{
 		return [];
 	}

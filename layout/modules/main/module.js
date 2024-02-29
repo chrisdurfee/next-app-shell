@@ -1,6 +1,6 @@
-import { AsideBsidePage } from '../../components/pages/aside-bside-page.js';
-import { BsidePage } from '../../components/pages/bside-page.js';
 import { Module } from '../module.js';
+import { MainAsideBsidePage } from './js/components/pages/main-aside-bside-page.js';
+import { MainBsidePage } from './js/components/pages/main-bside-page.js';
 import { MainFullContainPage } from './js/components/pages/main-full-contain-page.js';
 import { MainFullPage } from './js/components/pages/main-full-page.js';
 
@@ -32,8 +32,8 @@ Module.create(
             'Aside Example'
         ),
 
-        routes.add('/bside', BsidePage, 'Bside Example'),
-        routes.add('/aside-bside', AsideBsidePage, 'Aside Bside Example')
+        routes.add('/bside', MainBsidePage, 'Bside Example'),
+        routes.add('/aside-bside', MainAsideBsidePage, 'Aside Bside Example')
     ],
 
     /**

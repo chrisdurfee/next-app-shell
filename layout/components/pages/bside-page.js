@@ -1,5 +1,4 @@
 import { Div, MainSection } from "../atoms/atoms.js";
-import { GridContainer } from '../molecules/molecules.js';
 import { BasicPage } from './basic-page.js';
 import { BsideTemplate } from './templates/bside-template.js';
 
@@ -34,8 +33,6 @@ export class BsidePage extends BasicPage
 	 */
 	addBody()
 	{
-		return Div({ class: 'contained' }, [
-			GridContainer()
-		]);
+		return Div({ class: 'contained' }, this.children);
 	}
 }
