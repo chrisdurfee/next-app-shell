@@ -1,12 +1,11 @@
 import { Div, MainSection } from "../atoms/atoms.js";
-import { GridContainer } from '../molecules/molecules.js';
 import { BasicPage } from './basic-page.js';
 import { FullTemplate } from './templates/full-template.js';
 
 /**
  * FullContainPage
  *
- * This will create a full page.
+ * This will create a full contained page.
  *
  * @class
  * @extends BasicPage
@@ -33,9 +32,7 @@ export class FullContainPage extends BasicPage
 	addBody()
 	{
 		return [
-			Div({ class: 'contained' }, [
-				GridContainer()
-			])
+			Div({ class: 'contained' }, this.children)
 		];
 	}
 }

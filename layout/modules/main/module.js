@@ -1,8 +1,8 @@
 import { AsideBsidePage } from '../../components/pages/aside-bside-page.js';
 import { BsidePage } from '../../components/pages/bside-page.js';
-import { FullContainPage } from '../../components/pages/full-contain-page.js';
-import { FullPage } from '../../components/pages/full-page.js';
 import { Module } from '../module.js';
+import { MainFullContainPage } from './js/components/pages/main-full-contain-page.js';
+import { MainFullPage } from './js/components/pages/main-full-page.js';
 
 /**
  * This will setup the route creator.
@@ -22,13 +22,13 @@ Module.create(
      */
     routes:
     [
-        routes.add('/', FullPage, 'Example'),
-        routes.add('/full', FullPage, 'Full Example'),
-        routes.add('/full-contain', FullContainPage, 'Full Contain Example'),
+        routes.add('/', MainFullPage, 'Example'),
+        routes.add('/full', MainFullPage, 'Full Example'),
+        routes.add('/full-contain', MainFullContainPage, 'Full Contain Example'),
 
         routes.load(
             '/aside/:page?/:marketing?/:label?/:name?',
-            '/layout/components/pages/aside-page.js',
+            '/layout/modules/main/js/components/pages/main-aside-page.js',
             'Aside Example'
         ),
 

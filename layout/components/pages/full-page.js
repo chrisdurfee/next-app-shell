@@ -1,6 +1,4 @@
-import { Data } from "@base-framework/base";
-import { H1, Header, MainSection, P } from "../atoms/atoms.js";
-import { GridContainer } from '../molecules/molecules.js';
+import { H1, Header, MainSection } from "../atoms/atoms.js";
 import { BasicPage } from './basic-page.js';
 import { FullTemplate } from './templates/full-template.js';
 
@@ -14,23 +12,6 @@ import { FullTemplate } from './templates/full-template.js';
  */
 export class FullPage extends BasicPage
 {
-	onCreated()
-	{
-		this.data = new Data({
-			name: 'name',
-			class: 'active',
-			other: {
-				name: 'name',
-				class: 'active'
-			},
-			items: [
-				{
-					name: 'name',
-				}
-			]
-		});
-	}
-
 	/**
 	 * This will render the page.
 	 *
@@ -40,30 +21,20 @@ export class FullPage extends BasicPage
 	{
 		return MainSection([
 			Header([
-				H1('Title [[name]]'),
+				this.addHeader(),
 			]),
-			P('This will test the deep data binding [[other.name]]'),
 			FullTemplate(this.addBody())
 		]);
 	}
 
-	afterSetup()
+	/**
+	 * This will add the header of the page.
+	 *
+	 * @return {object}
+	 */
+	addHeader()
 	{
-		const data = this.data;
-		data.set('name', 'something long here');
-
-		//new Modal().open();
-
-		setTimeout(() =>
-		{
-			data.name = 'someting else';
-			data.class = 'inactive';
-			data.other.name = 'test';
-			data.other.class = 'inactive';
-			data.items[0].name = 'test';
-			data.items[0].class = 'inactive';
-			console.log(data.get())
-		}, 5000);
+		return H1(this.title);
 	}
 
 	/**
@@ -73,8 +44,6 @@ export class FullPage extends BasicPage
 	 */
 	addBody()
 	{
-		return [
-			GridContainer()
-		];
+		return this.children;
 	}
 }
