@@ -52,6 +52,26 @@ export class Module
 	}
 
 	/**
+	 * This will convert the routes to the route creator.
+	 *
+	 * @param {array} routes
+	 * @return {array}
+	 */
+	static convertRoutes(routes)
+	{
+		const routeCreator = Module.routeCreator();
+		return routes.map(route =>
+		{
+			if (route.import)
+			{
+				return routeCreator.load(route.path, route.import, route.title);
+			}
+
+			return routeCreator.add(route.path, route.component, route.title);
+		});
+	}
+
+	/**
 	 * This will get the module routes.
 	 *
 	 * @return {array}
