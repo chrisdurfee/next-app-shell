@@ -27,29 +27,20 @@ const isActive = (buttons, active) =>
 		return false;
 	}
 
-	let check = false;
-	for (let i = 0, length = buttons.length; i < length; i++)
+	return buttons.some(link =>
 	{
-		let link = buttons[i],
-		sub = link.sub,
-		button = link.link;
-
-		sub = link.sub;
-		if (sub.buttons.length)
+        const { sub, link: button } = link;
+        if (sub && sub.buttons.length && isActive(sub.buttons, active))
 		{
-			const result = isActive(sub.buttons, active);
-			if (result)
-			{
-				check = true;
-			}
-		}
+            return true;
+        }
 
-		if (button !== active && check === false)
+        if (button !== active)
 		{
-			button.state.set('active', false);
-		}
-	}
-	return check;
+            button.state.set('active', false);
+        }
+        return false;
+    });
 };
 
 /**
@@ -76,17 +67,7 @@ export class PrimaryNavigation extends InlineNavigation
 	 */
 	afterSetup()
 	{
-		const subs = this.subs;
-		if (!subs.length)
-		{
-			return;
-		}
-
-		for (let i = 0, length = subs.length; i < length; i++)
-		{
-			const sub = subs[i];
-			this.appNav.appendChild(sub.panel);
-		}
+		this.subs.forEach(sub => this.appNav.appendChild(sub.panel));
 	}
 
 	/**
@@ -135,11 +116,7 @@ export class PrimaryNavigation extends InlineNavigation
 	addLink(option)
 	{
 		option.callBack = ignorHover;
-
-		if (option.options)
-		{
-			option.checkCallBack = this.checkButtons.bind(this);
-		}
+		option.checkCallBack = option.options ? this.checkButtons.bind(this) : undefined;
 
 		const link = new MainLink(option);
 		this.links.push(link);
@@ -169,20 +146,8 @@ export class PrimarySubNavigation extends SubNavigation
 	 */
 	beforeSetup()
 	{
-		let className;
-		switch (this.depth)
-		{
-			case 1:
-				className = 'one';
-				break;
-			case 2:
-				className = 'two';
-				break;
-			case 3:
-				className = 'three';
-				break;
-		}
-		this.mainClassName = className;
+		const classNameMap = { 1: 'one', 2: 'two', 3: 'three' };
+        this.mainClassName = classNameMap[this.depth] || '';
 		this.buttons = [];
 	}
 
@@ -193,17 +158,7 @@ export class PrimarySubNavigation extends SubNavigation
 	 */
 	afterSetup()
 	{
-		const subs = this.subs;
-		if (!subs.length)
-		{
-			return;
-		}
-
-		for (let i = 0, length = subs.length; i < length; i++)
-		{
-			const sub = subs[i];
-			this.appNav.appendChild(sub.panel);
-		}
+		this.subs.forEach(sub => this.appNav.appendChild(sub.panel));
 	}
 
 	addSubs()
@@ -230,11 +185,7 @@ export class PrimarySubNavigation extends SubNavigation
 	addLink(option)
 	{
 		option.callBack = ignorHover;
-
-		if (option.options)
-		{
-			option.checkCallBack = this.checkButtons.bind(this);
-		}
+		option.checkCallBack = option.options ? this.checkButtons.bind(this) : undefined;
 
 		const link = new MainLink(option);
 		this.links.push(link);

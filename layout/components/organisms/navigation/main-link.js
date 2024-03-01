@@ -10,11 +10,11 @@ import { NavButtonLink } from './nav-button-link.js';
  * @param {array} children
  * @return {object}
  */
-const Option = Atom((props, children) =>
+const Option = Atom(({ options, click }, children) =>
 {
 	const settings = {
-		class: 'option' + (props.options? ' sub' : ''),
-		click: props.click
+		class: `option${options ? ' sub' : ''}`,
+		click
 	};
 
 	return {
@@ -61,7 +61,7 @@ export class MainLink extends Component
 	getLinkChildren()
 	{
 		return [
-			(this.icon) && Span({
+			this.icon && Span({
 				class: 'icon ' + this.icon
 			}),
 			Label({ class: 'label' }, this.label)

@@ -5,10 +5,9 @@ import { A, Div, Img } from "../atoms/atoms.js";
  * This will create an overlay back button.
  *
  * @param {object} props
- * @param {array} children
  * @return {object}
  */
-const BackButton = Atom((props, children) =>
+const BackButton = Atom((props) =>
 {
     return Div({ class: 'back' }, [
         A({ href: props.href || '/', cache: 'backArrow' }, [

@@ -97,16 +97,11 @@ export class SubNavigation extends InlineNavigation
 	 */
 	render()
 	{
-		const mainClassName = this.mainClassName || '';
-		const className = 'navigation sub ' + mainClassName;
+		const className = `navigation sub ${this.mainClassName || ''}`;
 		const map = this.mapOptions(this.options);
 
 		return Nav({ class: className, onState: this.onState() }, [
-			Ul([
-				...map,
-				...this.addSubs(),
-				this.addWatcher()
-			])
+			Ul([ ...map, ...this.addSubs(), this.addWatcher() ])
 		]);
 	}
 
@@ -134,12 +129,8 @@ export class SubNavigation extends InlineNavigation
 	onState()
 	{
 		return [
-			['selected', {
-				active: true
-			}],
-			['active', {
-				active: true
-			}]
+			['selected', { active: true }],
+			['active', { active: true }]
 		];
 	}
 
@@ -194,12 +185,10 @@ export class SubNavigation extends InlineNavigation
 	updateLinks(value)
 	{
 		let check = false;
-		const links = this.links;
 
-		for (let i = 0, length = links.length; i < length; i++)
+		for (const link of this.links)
 		{
-			const link = links[i];
-			if (link.rendered === false)
+			if (!link.rendered)
 			{
 				continue;
 			}
@@ -214,7 +203,7 @@ export class SubNavigation extends InlineNavigation
 				}
 			}
 
-			check = link.exact? (value === path) : (new RegExp(path + '($|/|\\.).*').test(value));
+			check = link.exact? (value === path) : (new RegExp(`${path}($|/|\\.).*`).test(value));
 			if (check === true)
 			{
 				break;
