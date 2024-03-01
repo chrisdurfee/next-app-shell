@@ -21,15 +21,30 @@ const Buttons = Atom((props, children) =>
  * This will create a state button.
  *
  * @param {object} props
- * @param {array} children
  * @return {object}
  */
-const StateButton = Atom((props, children) =>
+const StateButton = Atom(({ value, label }) =>
 {
 	return Button({
-		click: (e, {state}) => state.set('performance', props.value),
-	}, props.label);
+		click: (e, {state}) =>
+		{
+			state.set('performance', value);
+		},
+	}, label);
 });
+
+/**
+ * This is a map of button text.
+ *
+ * @type {object}
+ * @const
+ */
+const ButtonText =
+{
+	fair: 'This is just Fair',
+	good: 'So Good!',
+	bad: 'This is bad'
+};
 
 /**
  * ButtonGroup
@@ -50,31 +65,11 @@ export default class ButtonGroup extends Component
 	{
 		return Buttons([
 			P({
-				onState: ['performance', (state) =>
-				{
-					switch (state)
-					{
-						case 'fair':
-							return 'This is just Fair';
-						case 'good':
-							return 'So Good!';
-						case 'bad':
-							return 'This is bad';
-					}
-				}]
+				onState: ['performance', (state) => ButtonText[state] || ButtonText.fair]
 			}),
-			StateButton({
-				label: 'Bad',
-				value: 'bad'
-			}),
-			StateButton({
-				label: 'Good',
-				value: 'good'
-			}),
-			StateButton({
-				label: 'Fair',
-				value: 'fair'
-			})
+			StateButton({ label: 'Bad', value: 'bad' }),
+			StateButton({ label: 'Good', value: 'good' }),
+			StateButton({ label: 'Fair', value: 'fair' })
 		]);
 	}
 
