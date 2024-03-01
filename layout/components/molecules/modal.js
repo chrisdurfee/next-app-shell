@@ -19,36 +19,31 @@ export class Modal extends Component
 	 */
 	render()
 	{
-		return Dialog({ class: 'modal right', open: false }, [
-			Header([
-				H2('Title')
-			]),
-			Div({ class: 'modal-body' }, [
-
-			]),
-			Footer({ class: 'modal-footer'}, [
-
-			])
+		return Dialog({ class: 'modal right', click: (event) =>
+			{
+				if (event.target === this.panel)
+				{
+					this.close();
+				}
+			}}, [
+			{
+				class: 'modal-content',
+				children:
+				[
+					Header({ class: 'modal-header' }, [
+						H2({ class: 'modal-title' }, 'Modal Title')
+					]),
+					Div({ class: 'modal-body' }, 'Modal Body'),
+					Footer({ class: 'modal-footer' }, 'Modal Footer')
+				]
+			}
 		]);
 	}
 
 	open()
 	{
-		const container = document.body;
-		const modal = new Modal();
-		Builder.render(modal, container);
-
-		const dialog = modal.panel;
-		dialog.showModal();
-
-		dialog.addEventListener('click', (event) =>
-		{
-			// Check if the click was on the dialog directly, not its children
-			if (event.target === dialog)
-			{
-				dialog.close();
-			}
-		});
+		Builder.render(this, document.body);
+		this.panel.showModal();
 	}
 
 	close()

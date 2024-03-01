@@ -99,8 +99,6 @@ export class MainFullPage extends FullPage
 	{
 		const data = this.data;
 		testData(data);
-
-		//new Modal().open();
 	}
 
 	/**

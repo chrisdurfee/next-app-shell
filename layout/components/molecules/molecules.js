@@ -43,7 +43,7 @@ export const Label = Atom((props, children) =>
 {
 	return {
 		tag: 'label',
-		for: props.id,
+		htmlFor: props.id,
 		class: props.class,
 		children:
 		[
@@ -64,7 +64,7 @@ export const FloatingLabel = Atom((props, children) =>
 {
 	return Label({
 			class: 'floating',
-			for: props.id || null
+			htmlFor: props.id || null
 		},
 		[
 			children,
@@ -85,7 +85,7 @@ export const Checkbox = Atom((props, children) =>
 	return Label(
 		{
 			class: 'check-label',
-			for: props.id,
+			htmlFor: props.id,
 		},
 		[
 			Input({
@@ -110,7 +110,7 @@ export const Radio = Atom((props, children) =>
 	return Label(
 		{
 			class: 'radio-label',
-			for: props.id,
+			htmlFor: props.id,
 		},
 		[
 			Input({
