@@ -51,9 +51,7 @@ export class AppShell extends Component
 	render()
 	{
 		return AppContainer([
-			new AppControl({
-				options: this.options
-			}),
+			new AppControl({ options: this.options }),
 			ActivePanelContainer({
 				switch: this.routes,
 				cache: 'mainBody'
