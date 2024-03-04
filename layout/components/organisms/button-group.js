@@ -28,7 +28,7 @@ const StateButton = Atom(({ value, label }) =>
 	return Button({
 		click: (e, {state}) =>
 		{
-			state.set('performance', value);
+			state.performance = value;
 		},
 	}, label);
 });
