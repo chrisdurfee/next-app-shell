@@ -50,7 +50,7 @@ export class AsidePage extends BasicPage
 	 */
 	addRoutes()
 	{
-		return [];
+		return this.routes || [];
 	}
 
 	/**
@@ -88,7 +88,7 @@ export class AsidePage extends BasicPage
 	 */
 	addSwitch()
 	{
-		return [];
+		return this.switch || [];
 	}
 
 	/**
@@ -111,6 +111,6 @@ export class AsidePage extends BasicPage
 	 */
 	getLinks()
 	{
-		return [];
+		return this.links || [];
 	}
 }

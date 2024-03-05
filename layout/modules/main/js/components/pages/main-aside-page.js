@@ -256,6 +256,8 @@ const AsideLinks = (path) =>
 	];
 };
 
+const basePath = 'aside';
+
 /**
  * MainAsidePage
  *
@@ -275,37 +277,22 @@ const MainAsidePage = () =>
 		/**
 		 * @member {string}	basePath
 		 */
-		basePath: 'aside',
+		basePath,
 
 		/**
-		 * This will add the routes.
-		 *
-		 * @returns {array}
+		 * @member {array} routes
 		 */
-		addRoutes()
-		{
-			return AsideRoutes(this.basePath);
-		},
+		routes: AsideRoutes(basePath),
 
 		/**
-		 * This will add the switch of the page.
-		 *
-		 * @returns {array}
+		 * @member {array} switch
 		 */
-		addSwitch()
-		{
-			return AsideSwitch(this.basePath);
-		},
+		switch: AsideSwitch(basePath),
 
 		/**
-		 * This will get the links.
-		 *
-		 * @return {array}
+		 * @member {array} links
 		 */
-		getLinks()
-		{
-			return AsideLinks(this.basePath);
-		}
+		links: AsideLinks(basePath)
 	});
 };
 
