@@ -18,7 +18,7 @@ const routes = Module.convertRoutes(
     // Dynamically loaded route
     {
         path: '/aside/:page?/:marketing?/:label?/:name?',
-        import: '/layout/modules/main/js/components/pages/main-aside-page.js',
+        import: '/layout/modules/main/js/components/pages/main-aside/main-aside-page.js',
         title: 'Aside Example'
     }
 ]);
