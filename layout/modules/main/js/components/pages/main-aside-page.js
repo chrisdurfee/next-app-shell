@@ -40,9 +40,7 @@ const ImportButtons = () =>
 				H1('Aside')
 			]),
 			Div({ class: 'card' }, [
-				Import({
-					src: '/layout/components/atoms/import-buttons.js'
-				})
+				Import({ src: '/layout/components/atoms/import-buttons.js' })
 			]),
 			GridContainer()
 		])
@@ -256,6 +254,12 @@ const AsideLinks = (path) =>
 	];
 };
 
+/**
+ * This will create the base path.
+ *
+ * @constant
+ * @type {string}
+ */
 const basePath = 'aside';
 
 /**
