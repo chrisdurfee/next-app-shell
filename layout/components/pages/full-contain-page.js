@@ -20,19 +20,9 @@ export class FullContainPage extends BasicPage
 	render()
 	{
 		return MainSection([
-			FullTemplate(this.addBody())
+			FullTemplate([
+				Div({ class: 'contained' }, this.children)
+			])
 		]);
-	}
-
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {array}
-	 */
-	addBody()
-	{
-		return [
-			Div({ class: 'contained' }, this.children)
-		];
 	}
 }

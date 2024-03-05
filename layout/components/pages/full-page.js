@@ -21,29 +21,9 @@ export class FullPage extends BasicPage
 	{
 		return MainSection([
 			Header([
-				this.addHeader(),
+				H1(this.title),
 			]),
-			FullTemplate(this.addBody())
+			FullTemplate(this.children)
 		]);
-	}
-
-	/**
-	 * This will add the header of the page.
-	 *
-	 * @return {object}
-	 */
-	addHeader()
-	{
-		return H1(this.title);
-	}
-
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {array}
-	 */
-	addBody()
-	{
-		return this.children;
 	}
 }

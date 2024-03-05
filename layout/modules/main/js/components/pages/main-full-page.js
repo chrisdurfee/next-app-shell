@@ -108,10 +108,7 @@ export const MainFullPage = () => (
 			P('This will test the deep data binding [[other.name]]'),
 			Button({
 				text: 'Test Modal',
-				click: () =>
-				{
-					new Modal().open();
-				}
+				click: () => new Modal().open()
 			}),
 			GridContainer()
 		]
