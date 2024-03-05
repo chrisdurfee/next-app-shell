@@ -8,9 +8,8 @@ import { Panel } from '../../../../../../components/organisms/panel.js';
  *
  * @returns {object}
  */
-const ExampleOverlay = () =>
-{
-	return new Overlay({ backHref: 'aside/' }, [
+const ExampleOverlay = () => (
+	new Overlay({ backHref: 'aside/' }, [
 		new Panel([
 			Div([
 				Header([
@@ -21,8 +20,8 @@ const ExampleOverlay = () =>
 				])
 			])
 		])
-	]);
-};
+	])
+);
 
 /**
  * This will create the aside routes.

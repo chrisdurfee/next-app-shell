@@ -43,6 +43,44 @@ const ExamplePage = (url, title) => ({
 });
 
 /**
+ * This will create a marketing page.
+ *
+ * @returns {object}
+ */
+const MarketingPage = () => (
+	new Panel([
+		{
+			switch: [
+				{
+					uri: 'aside/marketing/irure-nostrud/:id',
+					component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
+						new Panel([
+							Div([
+								Header([
+									H1('Overlay')
+								]),
+								GridContainer()
+							])
+						])
+					])
+				},
+				{
+					uri: 'aside/marketing/*',
+					component: new Panel([
+						A({ href: 'aside/marketing/irure-nostrud/1' }, [
+							Header([
+								H1('Marketing')
+							]),
+							GridContainer()
+						])
+					])
+				}
+			]
+		}
+	])
+);
+
+/**
  * This will create the aside switch.
  *
  * @param {string} basePath
@@ -55,36 +93,7 @@ export const AsideSwitch = (basePath) => ([
 	},
 	{
 		uri: basePath + '/marketing*',
-		component: new Panel([
-			{
-				switch: [
-					{
-						uri: 'aside/marketing/irure-nostrud/:id',
-						component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
-							new Panel([
-								Div([
-									Header([
-										H1('Overlay')
-									]),
-									GridContainer()
-								])
-							])
-						])
-					},
-					{
-						uri: 'aside/marketing/*',
-						component: new Panel([
-							A({ href: 'aside/marketing/irure-nostrud/1' }, [
-								Header([
-									H1('Marketing')
-								]),
-								GridContainer()
-							])
-						])
-					}
-				]
-			}
-		])
+		component: MarketingPage()
 	},
 	ExamplePage(basePath + '/tempor-nulla', 'Tempor nulla'),
 	ExamplePage(basePath + '/tempor-esse', 'Tempor esse'),
