@@ -9,11 +9,10 @@ import { AsideBsidePage } from '../../../../../components/pages/aside-bside-page
  *
  * @rerutn {AsideBsidePage}
  */
-export const MainAsideBsidePage = () =>
-{
-	return new AsideBsidePage([
+export const MainAsideBsidePage = () => (
+	new AsideBsidePage([
 		Div({ class: 'contained' }, [
 			GridContainer()
 		])
-	]);
-};
+	])
+);

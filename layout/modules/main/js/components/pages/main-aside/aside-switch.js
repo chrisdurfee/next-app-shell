@@ -9,9 +9,8 @@ import { Panel } from '../../../../../../components/organisms/panel.js';
  *
  * @returns {object}
  */
-const ImportButtons = () =>
-{
-	return new Panel([
+const ImportButtons = () => (
+	new Panel([
 		Div([
 			Header([
 				H1('Aside')
@@ -21,8 +20,8 @@ const ImportButtons = () =>
 			]),
 			GridContainer()
 		])
-	]);
-};
+	])
+);
 
 /**
  * This will create an example page.
@@ -31,20 +30,17 @@ const ImportButtons = () =>
  * @param {string} title
  * @returns {object}
  */
-const ExamplePage = (url, title) =>
-{
-	return {
-		uri: url,
-		component: new Panel([
-			Div([
-				Header([
-					H1(title)
-				]),
-				GridContainer()
-			])
+const ExamplePage = (url, title) => ({
+	uri: url,
+	component: new Panel([
+		Div([
+			Header([
+				H1(title)
+			]),
+			GridContainer()
 		])
-	};
-};
+	])
+});
 
 /**
  * This will create the aside switch.
@@ -52,53 +48,50 @@ const ExamplePage = (url, title) =>
  * @param {string} basePath
  * @returns {array}
  */
-export const AsideSwitch = (basePath) =>
-{
-	return [
-		{
-			uri: basePath,
-			component: ImportButtons()
-		},
-		{
-			uri: basePath + '/marketing*',
-			component: new Panel([
-				{
-					switch: [
-						{
-							uri: 'aside/marketing/irure-nostrud/:id',
-							component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
-								new Panel([
-									Div([
-										Header([
-											H1('Overlay')
-										]),
-										GridContainer()
-									])
-								])
-							])
-						},
-						{
-							uri: 'aside/marketing/*',
-							component: new Panel([
-								A({ href: 'aside/marketing/irure-nostrud/1' }, [
+export const AsideSwitch = (basePath) => ([
+	{
+		uri: basePath,
+		component: ImportButtons()
+	},
+	{
+		uri: basePath + '/marketing*',
+		component: new Panel([
+			{
+				switch: [
+					{
+						uri: 'aside/marketing/irure-nostrud/:id',
+						component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
+							new Panel([
+								Div([
 									Header([
-										H1('Marketing')
+										H1('Overlay')
 									]),
 									GridContainer()
 								])
 							])
-						}
-					]
-				}
-			])
-		},
-		ExamplePage(basePath + '/tempor-nulla', 'Tempor nulla'),
-		ExamplePage(basePath + '/tempor-esse', 'Tempor esse'),
-		ExamplePage(basePath + '/voluptate-dolore', 'Voluptate dolore'),
-		ExamplePage(basePath + '/non-lorem', 'Non Lorem'),
-		ExamplePage(basePath + '/tempor-nulla-1', 'Tempor nulla 1'),
-		ExamplePage(basePath + '/tempor-esse-1', 'Tempor esse 1'),
-		ExamplePage(basePath + '/voluptate-dolore-1', 'Voluptate dolore 1'),
-		ExamplePage(basePath + '/non-lorem-1', 'Non Lorem 1')
-	];
-};
+						])
+					},
+					{
+						uri: 'aside/marketing/*',
+						component: new Panel([
+							A({ href: 'aside/marketing/irure-nostrud/1' }, [
+								Header([
+									H1('Marketing')
+								]),
+								GridContainer()
+							])
+						])
+					}
+				]
+			}
+		])
+	},
+	ExamplePage(basePath + '/tempor-nulla', 'Tempor nulla'),
+	ExamplePage(basePath + '/tempor-esse', 'Tempor esse'),
+	ExamplePage(basePath + '/voluptate-dolore', 'Voluptate dolore'),
+	ExamplePage(basePath + '/non-lorem', 'Non Lorem'),
+	ExamplePage(basePath + '/tempor-nulla-1', 'Tempor nulla 1'),
+	ExamplePage(basePath + '/tempor-esse-1', 'Tempor esse 1'),
+	ExamplePage(basePath + '/voluptate-dolore-1', 'Voluptate dolore 1'),
+	ExamplePage(basePath + '/non-lorem-1', 'Non Lorem 1')
+]);

@@ -9,22 +9,19 @@ import { FullPage } from '../../../../../components/pages/full-page.js';
  *
  * @returns {object}
  */
-const getData = () =>
-{
-	return {
+const getData = () => ({
+	name: 'name',
+	class: 'active',
+	other: {
 		name: 'name',
-		class: 'active',
-		other: {
+		class: 'active'
+	},
+	items: [
+		{
 			name: 'name',
-			class: 'active'
-		},
-		items: [
-			{
-				name: 'name',
-			}
-		]
-	};
-};
+		}
+	]
+});
 
 /**
  * This will test the deep data binding [[other.name]]
@@ -104,9 +101,8 @@ const FullProps = () => (
  *
  * @returns {FullPage}
  */
-export const MainFullPage = () =>
-{
-	return new FullPage(
+export const MainFullPage = () => (
+	new FullPage(
 		FullProps(),
 		[
 			P('This will test the deep data binding [[other.name]]'),
@@ -119,5 +115,5 @@ export const MainFullPage = () =>
 			}),
 			GridContainer()
 		]
-	);
-};
+	)
+);

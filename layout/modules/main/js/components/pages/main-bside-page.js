@@ -9,11 +9,10 @@ import { BsidePage } from '../../../../../components/pages/bside-page.js';
  *
  * @returns {BsidePage}
  */
-export const MainBsidePage = () =>
-{
-	return new BsidePage([
+export const MainBsidePage = () => (
+	new BsidePage([
 		Div({ class: 'contained' }, [
 			GridContainer()
 		])
-	]);
-};
+	])
+);

@@ -30,12 +30,9 @@ const ExampleOverlay = () =>
  * @param {string} basePath
  * @returns {array}
  */
-export const Routes = (basePath) =>
-{
-	return [
-		{
-			uri: `${basePath}/overlay-test`,
-			component: ExampleOverlay()
-		}
-	];
-};
+export const Routes = (basePath) => ([
+	{
+		uri: `${basePath}/overlay-test`,
+		component: ExampleOverlay()
+	}
+]);

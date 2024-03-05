@@ -9,11 +9,10 @@ import { FullContainPage } from './../../../../../components/pages/full-contain-
  *
  * @returns {FullContainPage}
  */
-export const MainFullContainPage = () =>
-{
-	return new FullContainPage([
+export const MainFullContainPage = () => (
+	new FullContainPage([
 		Div({ class: 'contained' }, [
 			GridContainer()
 		])
-	]);
-};
+	])
+);

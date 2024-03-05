@@ -8,14 +8,13 @@ import { Div, GridPanel, Input, Span, Ul } from "../atoms/atoms.js";
  * @param {array} children
  * @return {object}
  */
-export const Nav = Atom((props, children) =>
-{
-	return {
+export const Nav = Atom((props, children) =>(
+	{
 		tag: 'nav',
 		class: props.class || null,
 		ul: Ul(children)
-	};
-});
+	}
+));
 
 /**
  * This will create a message label.
@@ -24,13 +23,12 @@ export const Nav = Atom((props, children) =>
  * @param {array} children
  * @return {object}
  */
-export const MessageLabel = Atom((props, children) =>
-{
-	return Div({ class: 'message-label' }, [
+export const MessageLabel = Atom((props, children) => (
+	Div({ class: 'message-label' }, [
 		Span({ class: 'name' }, props.name),
 		Span({ class: 'time' }, props.time)
-	]);
-});
+	])
+));
 
 /**
  * This will create a label.
@@ -39,19 +37,16 @@ export const MessageLabel = Atom((props, children) =>
  * @param {array} children
  * @return {object}
  */
-export const Label = Atom((props, children) =>
-{
-	return {
-		tag: 'label',
-		htmlFor: props.id,
-		class: props.class,
-		children:
-		[
-			Span({ class: 'label-text' }, props.label),
-			...children
-		]
-	};
-});
+export const Label = Atom((props, children) => ({
+	tag: 'label',
+	htmlFor: props.id,
+	class: props.class,
+	children:
+	[
+		Span({ class: 'label-text' }, props.label),
+		...children
+	]
+}));
 
 /**
  * This will create a floating label.

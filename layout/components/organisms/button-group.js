@@ -8,14 +8,11 @@ import { Button, P } from '../atoms/atoms.js';
  * @param {array} children
  * @return {object}
  */
-const Buttons = Atom((props, children) =>
-{
-	return {
-		class: 'button-group',
-		...props,
-		children
-	};
-});
+const Buttons = Atom((props, children) => ({
+	class: 'button-group',
+	...props,
+	children
+}));
 
 /**
  * This will create a state button.
@@ -23,15 +20,9 @@ const Buttons = Atom((props, children) =>
  * @param {object} props
  * @return {object}
  */
-const StateButton = Atom(({ value, label }) =>
-{
-	return Button({
-		click: (e, {state}) =>
-		{
-			state.performance = value;
-		},
-	}, label);
-});
+const StateButton = Atom(({ value, label }) => (
+	Button({ click: (e, {state}) => state.performance = value }, label)
+));
 
 /**
  * This is a map of button text.

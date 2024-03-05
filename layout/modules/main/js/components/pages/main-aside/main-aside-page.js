@@ -18,9 +18,8 @@ const basePath = 'aside';
  *
  * @returns {AsidePage}
  */
-const MainAsidePage = () =>
-{
-	return new AsidePage({
+const MainAsidePage = () => (
+	new AsidePage({
 		/**
 		 * @member {string}	title
 		 */
@@ -45,7 +44,7 @@ const MainAsidePage = () =>
 		 * @member {array} links
 		 */
 		links: Links(basePath)
-	});
-};
+	})
+);
 
 export default MainAsidePage;
