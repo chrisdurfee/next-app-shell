@@ -7,22 +7,13 @@ import { FullContainPage } from './../../../../../components/pages/full-contain-
  *
  * This will create a full page.
  *
- * @class
- * @extends BasicPage
+ * @returns {FullContainPage}
  */
-export class MainFullContainPage extends FullContainPage
+export const MainFullContainPage = () =>
 {
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {array}
-	 */
-	addBody()
-	{
-		return [
-			Div({ class: 'contained' }, [
-				GridContainer()
-			])
-		];
-	}
-}
+	return new FullContainPage([
+		Div({ class: 'contained' }, [
+			GridContainer()
+		])
+	]);
+};

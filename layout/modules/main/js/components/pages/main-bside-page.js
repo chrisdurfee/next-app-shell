@@ -7,20 +7,13 @@ import { BsidePage } from '../../../../../components/pages/bside-page.js';
  *
  * This will create a bside page.
  *
- * @class
- * @extends BsidePage
+ * @returns {BsidePage}
  */
-export class MainBsidePage extends BsidePage
+export const MainBsidePage = () =>
 {
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {object}
-	 */
-	addBody()
-	{
-		return Div({ class: 'contained' }, [
+	return new BsidePage([
+		Div({ class: 'contained' }, [
 			GridContainer()
-		]);
-	}
-}
+		])
+	]);
+};

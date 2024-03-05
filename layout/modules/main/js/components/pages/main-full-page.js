@@ -61,54 +61,54 @@ const testData = (data) =>
 };
 
 /**
- * MainFullPage
+ * 	This will set up the component props.
  *
- * This will create a main full page.
- *
- * @class
- * @extends FullPage
+ * @returns {object}
  */
-export class MainFullPage extends FullPage
+const FullProps = () => (
 {
 	/**
 	 * @member {string} title
 	 */
-	title = 'Title [[name]]';
+	title: 'Title [[name]]',
 
 	/**
 	 * This will create the data.
 	 *
 	 * @override
-	 * @protected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	onCreated()
 	{
 		const settings = getData();
 		this.data = new Data(settings);
-	}
+	},
 
 	/**
 	 * This will run after the setup.
 	 *
 	 * @override
-	 * @protected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	afterSetup()
 	{
 		const data = this.data;
 		testData(data);
 	}
+});
 
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {array}
-	 */
-	addBody()
-	{
-		return [
+/**
+ * MainFullPage
+ *
+ * This will create a main full page.
+ *
+ * @returns {FullPage}
+ */
+export const MainFullPage = () =>
+{
+	return new FullPage(
+		FullProps(),
+		[
 			P('This will test the deep data binding [[other.name]]'),
 			Button({
 				text: 'Test Modal',
@@ -118,6 +118,6 @@ export class MainFullPage extends FullPage
 				}
 			}),
 			GridContainer()
-		];
-	}
-}
+		]
+	);
+};

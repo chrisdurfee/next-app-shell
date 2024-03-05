@@ -9,11 +9,11 @@ import { MainFullPage } from './js/components/pages/main-full-page.js';
  */
 const routes = Module.convertRoutes(
 [
-    { path: '/', component: MainFullPage, title: 'Example' },
-    { path: '/full', component: MainFullPage, title: 'Full Example' },
-    { path: '/full-contain', component: MainFullContainPage, title: 'Full Contain Example' },
-    { path: '/aside-bside', component: MainAsideBsidePage, title: 'Aside Bside Example' },
-    { path: '/bside', component: MainBsidePage, title: 'Bside Example' },
+    { path: '/', component: MainFullPage(), title: 'Example' },
+    { path: '/full', component: MainFullPage(), title: 'Full Example' },
+    { path: '/full-contain', component: MainFullContainPage(), title: 'Full Contain Example' },
+    { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
+    { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
 
     // Dynamically loaded route
     {

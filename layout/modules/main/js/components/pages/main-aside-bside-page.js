@@ -7,20 +7,13 @@ import { AsideBsidePage } from '../../../../../components/pages/aside-bside-page
  *
  * This will create a aside bside page.
  *
- * @class
- * @extends AsideBsidePage
+ * @rerutn {AsideBsidePage}
  */
-export class MainAsideBsidePage extends AsideBsidePage
+export const MainAsideBsidePage = () =>
 {
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {object}
-	 */
-	addBody()
-	{
-		return Div({ class: 'contained' }, [
+	return new AsideBsidePage([
+		Div({ class: 'contained' }, [
 			GridContainer()
-		]);
-	}
-}
+		])
+	]);
+};
