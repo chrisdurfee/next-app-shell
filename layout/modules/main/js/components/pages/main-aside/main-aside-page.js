@@ -1,7 +1,7 @@
 import { AsidePage } from "../../../../../../components/pages/aside-page.js";
+import { AsideSwitch } from "./aside-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";
-import { AsideSwitch } from "./switch.js";
 
 /**
  * This will create the base path.
