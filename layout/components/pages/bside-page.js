@@ -21,18 +21,8 @@ export class BsidePage extends BasicPage
 	{
 		return MainSection([
 			BsideTemplate({
-				left: this.addBody()
+				left: Div({ class: 'contained' }, this.children)
 			})
 		]);
-	}
-
-	/**
-	 * This will add the body of the page.
-	 *
-	 * @return {object}
-	 */
-	addBody()
-	{
-		return Div({ class: 'contained' }, this.children);
 	}
 }

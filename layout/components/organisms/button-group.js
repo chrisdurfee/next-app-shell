@@ -21,7 +21,10 @@ const Buttons = Atom((props, children) => ({
  * @return {object}
  */
 const StateButton = Atom(({ value, label }) => (
-	Button({ click: (e, {state}) => state.performance = value }, label)
+	Button({
+		onState: ['performance', { active: value}],
+		click: (e, {state}) => state.performance = value
+	}, label)
 ));
 
 /**
