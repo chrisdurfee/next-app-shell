@@ -52,6 +52,7 @@ export const Img = Atom((props, children) =>
 		alt: props.alt,
 		click: props.click,
 		onmousedown: props.onmousedown,
+		...props,
 		children
 	};
 });
