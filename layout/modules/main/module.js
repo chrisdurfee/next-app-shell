@@ -100,7 +100,7 @@ Module.create(
      * This will get the options to create the app
      * navigation.
      *
-     * @return {array}
+     * @param {array} links
      */
     links
 });
