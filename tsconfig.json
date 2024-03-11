@@ -13,5 +13,8 @@
     },
     "include": [
         "layout/**/*"
-    ] // Adjust this to point to your source files
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }

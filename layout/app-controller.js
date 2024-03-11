@@ -24,8 +24,6 @@ export class AppController
 
 	/**
 	 * This will setup the main controller.
-	 *
-	 * @return {MainController}
 	 */
 	constructor()
 	{
@@ -51,7 +49,7 @@ export class AppController
 	 *
 	 * @param {string} uri
 	 * @param {object} [data]
-	 * @param {bool} [replace=false]
+	 * @param {boolean} [replace=false]
 	 * @return {void}
 	 */
 	navigate(uri, data, replace)

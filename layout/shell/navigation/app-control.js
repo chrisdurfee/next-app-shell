@@ -35,7 +35,6 @@ export class AppControl extends Component
     /**
      * This will render the component.
      *
-     * @override
      * @return {object}
      */
 	render()
