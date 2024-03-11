@@ -40,7 +40,7 @@ export class InlineNavigation extends Navigation
 	/**
 	 * This will add a sub navigation.
 	 *
-	 * @param {objecy} link
+	 * @param {object} link
 	 * @returns {object}
 	 */
 	addSubNav(link)
