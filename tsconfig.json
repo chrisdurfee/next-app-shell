@@ -9,7 +9,12 @@
         "noEmit": false, // Ensures that files are emitted
         "esModuleInterop": true,
         "module": "ESNext", // Specifies the module system, adjust according to your project's module system
-        "target": "ESNext" // Set the target ECMAScript version according to your project's needs
+        "target": "ESNext", // Set the target ECMAScript version according to your project's needs
+        "baseUrl": "./node_modules/",
+        "paths": {
+            "@base-framework/base": ["@base-framework/base/dist/base.js"],
+            "@base-framework/atoms": ["/@base-framework/atoms/dist/atoms.js"]
+        }
     },
     "include": [
         "layout/**/*"
