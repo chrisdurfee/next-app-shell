@@ -43,11 +43,6 @@ const ActivePanelContainer = Atom((props, children) =>
  */
 export class AppShell extends Component
 {
-	constructor(...args)
-	{
-		super(...args);
-	}
-
 	/**
 	 * This will render the component.
 	 *
