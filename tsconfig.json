@@ -2,6 +2,11 @@
     "compilerOptions": {
         "allowJs": true, // Allows TypeScript to process JS files
         "checkJs": true, // Enables type checking for JS files, based on your JSDoc comments
+        "strictPropertyInitialization": false, // Disables strict checking of property initialization in classes
+        "strictNullChecks": false, // When true, 'null' and 'undefined' are only assignable to 'any' and their respective types
+        "noImplicitThis": false, // Allows 'this' to be of type 'any'
+        "strict": false,
+        "noImplicitAny": false,
         "emitDeclarationOnly": true, // Instructs the compiler to only emit `.d.ts` declaration files
         "declaration": true, // Enables generation of declaration files
         "declarationDir": "./dist/types",
@@ -10,16 +15,16 @@
         "esModuleInterop": true,
         "module": "ESNext", // Specifies the module system, adjust according to your project's module system
         "target": "ESNext", // Set the target ECMAScript version according to your project's needs
-        "baseUrl": "./node_modules/",
+        "baseUrl": "node_modules/",
         "paths": {
             "@base-framework/base": ["@base-framework/base/dist/base.js"],
-            "@base-framework/atoms": ["/@base-framework/atoms/dist/atoms.js"]
+            "@base-framework/atoms": ["@base-framework/atoms/dist/atoms.js"]
         }
     },
     "include": [
         "layout/**/*"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules/"
     ]
 }
