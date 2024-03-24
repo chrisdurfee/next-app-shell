@@ -15,16 +15,16 @@
         "esModuleInterop": true,
         "module": "ESNext", // Specifies the module system, adjust according to your project's module system
         "target": "ESNext", // Set the target ECMAScript version according to your project's needs
-        "baseUrl": "node_modules/",
+        "baseUrl": "./",
         "paths": {
-            "@base-framework/base": ["@base-framework/base/dist/base.js"],
-            "@base-framework/atoms": ["@base-framework/atoms/dist/atoms.js"]
+            "@base-framework/base": ["node_modules/@base-framework/base/dist/base.js"],
+            "@base-framework/atoms": ["node_modules/@base-framework/atoms/dist/atoms.js"]
         }
     },
     "include": [
         "layout/**/*"
     ],
     "exclude": [
-        "node_modules/"
+        "node_modules"
     ]
 }
