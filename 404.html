@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+		<meta charset="utf-8">
+		<!-- view to lock mobile from zooming -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<title>script example</title>
+		<link rel="stylesheet" type="text/css" href="./css/dashr.css">
+		<base href="./">
+
+		<!-- pwa settings -->
+		<link rel="manifest" href="manifest.json">
+
+		<!-- ios pwa settings -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Test">
+
+		<!-- icons and theme -->
+		<link rel="apple-touch-icon" href="images/icons/icon-192.png">
+		<meta name="msapplication-TileImage" content="images/icons/icon-192.png">
+		<meta name="msapplication-TileColor" content="#2F3BA2">
+		<meta name="theme-color" content="#212A34">
+	</head>
+	<body id="body">
+		<script type="module">
+			import { AppController } from './layout/app-controller.js';
+
+			const app = new AppController();
+		</script>
+	</body>
+</html>
