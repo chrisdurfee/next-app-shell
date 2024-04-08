@@ -4,6 +4,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [],
 	base: '/next-app-shell/',
+	publicDir: 'static',
 	server: {
 		open: true
 	}
