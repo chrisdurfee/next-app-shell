@@ -7,7 +7,7 @@ export default Atom((props, children) =>
 		Span('Label'),
 		Div('test import'),
 		Import({
-			src: import('/layout/components/organisms/button-group.js')
+			src: import('../organisms/button-group.js')
 		})
 	]);
 });

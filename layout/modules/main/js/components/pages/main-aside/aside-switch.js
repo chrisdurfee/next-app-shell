@@ -16,7 +16,7 @@ const ImportButtons = () => (
 				H1('Aside')
 			]),
 			Div({ class: 'card' }, [
-				Import({ src: import('/layout/components/atoms/import-buttons.js') })
+				Import({ src: import('../../../../../../components/atoms/import-buttons.js') })
 			]),
 			GridContainer()
 		])
