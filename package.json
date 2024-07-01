@@ -26,7 +26,8 @@
 		"url": "https://github.com/chrisdurfee/next-app-shell/issues"
 	},
 	"devDependencies": {
-		"esbuild": "^0.15.7"
+		"esbuild": "^0.15.7",
+		"vite-plugin-dynamic-import": "^1.5.0"
 	},
 	"dependencies": {
 		"@base-framework/atoms": "^1.0.1",

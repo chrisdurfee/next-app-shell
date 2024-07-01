@@ -267,12 +267,10 @@ label input[type="radio"]:focus {
     box-shadow: none;
 }
 label input[type="checkbox"]:checked {
-    background-image: url('../images/icons/checkbox.svg');
     background-color: var(--primary-color);
     border-color: var(--primary-color);
 }
 label input[type="radio"]:checked {
-    background-image: url('../images/icons/radio.svg');
     border-color: var(--primary-color);
 }
 .check-label input + span::before,
@@ -333,9 +331,6 @@ label input[type="radio"]:checked {
 }
 .select .option:hover {
     background-color: var(--base-raised);
-}
-.select label input[type="radio"] {
-    background-image: url('../images/icons/select-check.svg');
 }
 
 /* date picker */
