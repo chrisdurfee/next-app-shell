@@ -29,6 +29,12 @@ export class ModuleRoutes
 		};
 	}
 
+	/**
+	 * This will check if the object is a promise.
+	 *
+	 * @param {*} obj
+	 * @returns {bool}
+	 */
 	isPromise(obj)
 	{
 		return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
