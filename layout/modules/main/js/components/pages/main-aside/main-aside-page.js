@@ -18,7 +18,7 @@ const basePath = 'aside';
  *
  * @returns {AsidePage}
  */
-const MainAsidePage = () => (
+export const MainAsidePage = () => (
 	new AsidePage({
 		/**
 		 * @member {string}	title

@@ -29,6 +29,11 @@ export class ModuleRoutes
 		};
 	}
 
+	isPromise(obj)
+	{
+		return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+	}
+
 	/**
 	 * This will add a loaded route.
 	 *
@@ -41,6 +46,12 @@ export class ModuleRoutes
 	load(uri, loader, title, persist = true)
 	{
 		if (typeof loader === 'string')
+		{
+			loader = {
+				src: loader
+			};
+		}
+		else if (this.isPromise(loader))
 		{
 			loader = {
 				src: loader
