@@ -90,7 +90,7 @@
 	bottom: 0px;
 	right: 22px;
 	margin: auto 0px;
-	background: url(../../../images/arrow-right.svg) no-repeat center;
+	background: url(/images/arrow-right.svg) no-repeat center;
 	transition: transform .2s ease;
 }
 .navigation li.option.sub > *.active:before{
@@ -121,10 +121,10 @@
 	background-size: 26%;
 }
 .navigation li.option .icon.group{
-	background-image: url(../../../images/group-icon.svg);
+	background-image: url(/images/group-icon.svg);
 }
 .navigation li.option .icon.blank{
-	background-image: url(../../../images/group-icon.svg);
+	background-image: url(/images/group-icon.svg);
 }
 .navigation li.option .label{
 	width: auto;
@@ -185,7 +185,7 @@
 	bottom: 0px;
 	right: 22px;
 	margin: auto 0px;
-	background: url(../../../images/arrow-down.svg) no-repeat center;
+	background: url(/images/arrow-down.svg) no-repeat center;
 	transition: transform .2s ease;
 }
 .drawer .navigation .child-group > li.option > *:after{
