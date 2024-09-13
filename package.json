@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"description": "This is an example app that uses the base framework.",
 	"main": "/dist/main.js",
+	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
