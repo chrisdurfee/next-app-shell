@@ -8,6 +8,23 @@ This is an example app shell for the Base Framework. It is a simple, single page
 
 This app uses components and atoms to create layouts. Components are reusable layouts that contain the presentation and functionality. They are reusable and extensible, helping to reduce redundant code through abstract types.
 
+## Technologies
+
+- JavaScript
+- HTML
+- CSS
+- Canvas API
+- Base Framework
+- Vite
+
+## Screenshots
+
+![Aside Layout](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-buttons.png)
+![Aside Navigation](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-sub-nav.png)
+![Aside Inline Overlay](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-inline-overlay.png)
+![Aside Overlay](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-overlay.png)
+![Modal](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/modal.png)
+
 ## Getting Started
 
 To begin using the Base Framework, follow these steps:

@@ -1,6 +1,6 @@
 {
 	"name": "@base-framework/next-app-shell",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "This is an example app that uses the base framework.",
 	"main": "/dist/main.js",
 	"type": "module",
