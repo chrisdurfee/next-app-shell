@@ -4,6 +4,8 @@
 
 This is an example app shell for the Base Framework. It is a simple, single page application that demonstrates the framework's capabilities. The app shell is a good starting point for creating your own application.
 
+Here is the link to the example app: [Next App Shell](https://chrisdurfee.github.io/next-app-shell/)
+
 ## Layouts
 
 This app uses components and atoms to create layouts. Components are reusable layouts that contain the presentation and functionality. They are reusable and extensible, helping to reduce redundant code through abstract types.
@@ -13,7 +15,6 @@ This app uses components and atoms to create layouts. Components are reusable la
 - JavaScript
 - HTML
 - CSS
-- Canvas API
 - Base Framework
 - Vite
 
