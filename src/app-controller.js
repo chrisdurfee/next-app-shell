@@ -1,6 +1,6 @@
 import { base, Builder } from "@base-framework/base";
-import { modules } from "../layout/modules/modules.js";
 import { Configs } from "./configs.js";
+import { modules } from "./modules/modules.js";
 import { AppShell } from "./shell/app-shell.js";
 
 /**
