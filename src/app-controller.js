@@ -1,4 +1,4 @@
-import { base, Builder } from "@base-framework/base";
+import { Builder } from "@base-framework/base";
 import { Configs } from "./configs.js";
 import { modules } from "./modules/modules.js";
 import { AppShell } from "./shell/app-shell.js";
@@ -64,8 +64,13 @@ export class AppController
 	 */
 	setupRouter()
 	{
+		this.router = router;
+
+		/**
+		 * This will add the configs router settings
+		 * to the router.
+		 */
 		const { baseUrl, title } = Configs.router;
-		const router = this.router = base.router;
 		router.setup(baseUrl, title);
 	}
 

@@ -11,7 +11,7 @@ import { MainNavigation } from "./main-navigation.js";
 const AppContainer = Atom((props, children) =>
 {
     return {
-        class: 'app-nav-container',
+        class: 'app-nav-container bg-base-layer relative width-[64px] h-full z-10 overflow-y-auto overflow-x-hidden',
         ...props,
         children
     };
