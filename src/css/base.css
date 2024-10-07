@@ -15,11 +15,6 @@ button{
 	outline: 0;
 	text-decoration: none;
 }
-.app-container{
-	height: 100vh;
-	display: flex;
-	overflow: hidden;
-}
 .app-nav-container {
 	position: absolute;
 	height: 100%;
@@ -77,14 +72,6 @@ a.logo {
 }
 .app-nav-container:hover .navigation-group h2{
 	opacity: 1;
-}
-.app-container .active-panel-container{
-	flex: 1 1 auto;
-	display: flex;
-	overflow-y: auto;
-	position: relative;
-	left: 64px;
-	z-index: 1;
 }
 .navigation.sub.active ~ .active-panel-container:after{
 	opacity: 1;
