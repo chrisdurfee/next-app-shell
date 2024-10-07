@@ -6,7 +6,7 @@ import { Button, P } from '../atoms/atoms.js';
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const Buttons = Atom((props, children) => ({
 	class: 'button-group',
@@ -18,7 +18,7 @@ const Buttons = Atom((props, children) => ({
  * This will create a state button.
  *
  * @param {object} props
- * @return {object}
+ * @returns {object}
  */
 const StateButton = Atom(({ value, label }) => (
 	Button({
@@ -53,7 +53,7 @@ export default class ButtonGroup extends Component
     /**
      * This will render the component.
      *
-     * @return {object}
+     * @returns {object}
      */
 	render()
 	{
@@ -70,7 +70,7 @@ export default class ButtonGroup extends Component
     /**
      * This will setup the states.
      *
-     * @return {object}
+     * @returns {object}
      */
 	setupStates()
 	{

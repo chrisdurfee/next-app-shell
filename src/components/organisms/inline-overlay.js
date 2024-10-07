@@ -13,7 +13,7 @@ export class InlineOverlay extends Overlay
     /**
      * This will get the overlay type.
      *
-     * @return {string}
+     * @returns {string}
      */
     getOverlayType()
     {

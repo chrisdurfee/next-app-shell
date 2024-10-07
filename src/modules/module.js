@@ -44,7 +44,7 @@ export class Module
 	/**
 	 * This will create a route creator.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	static routeCreator()
 	{
@@ -55,7 +55,7 @@ export class Module
 	 * This will convert the routes to the route creator.
 	 *
 	 * @param {array} routes
-	 * @return {array}
+	 * @returns {array}
 	 */
 	static convertRoutes(routes)
 	{
@@ -74,7 +74,7 @@ export class Module
 	/**
 	 * This will get the module routes.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	getRoutes()
 	{
@@ -84,7 +84,7 @@ export class Module
 	/**
 	 * This will get the module links.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	getLinks()
 	{
@@ -95,7 +95,7 @@ export class Module
 	 * This will create a module.
 	 *
 	 * @param {object} settings
-	 * @return {object}
+	 * @returns {object}
 	 */
 	static create(settings)
 	{

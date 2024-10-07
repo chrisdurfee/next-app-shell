@@ -5,7 +5,7 @@ import { A, Div, Img } from "../atoms/atoms.js";
  * This will create an overlay back button.
  *
  * @param {object} props
- * @return {object}
+ * @returns {object}
  */
 const BackButton = Atom((props) =>
 {
@@ -31,7 +31,7 @@ export class Overlay extends Component
     /**
      * This will stop presistence.
      *
-     * @return {void}
+     * @returns {void}
      */
     beforeSetup()
     {
@@ -41,7 +41,7 @@ export class Overlay extends Component
     /**
      * This will render the component.
      *
-     * @return {object}
+     * @returns {object}
      */
     render()
     {
@@ -67,7 +67,7 @@ export class Overlay extends Component
     /**
      * This will get the referral path if set by a route.
      *
-     * @return {string|null}
+     * @returns {string|null}
      */
     getReferralPath()
     {
@@ -83,7 +83,7 @@ export class Overlay extends Component
     /**
      * This will get the overlay className.
      *
-     * @return {string}
+     * @returns {string}
      */
     getOverlayType()
     {
@@ -93,7 +93,7 @@ export class Overlay extends Component
     /**
      * This can be overriden to return routes.
      *
-     * @return {array|null}
+     * @returns {array|null}
      */
     getRoutes()
     {
@@ -103,7 +103,7 @@ export class Overlay extends Component
     /**
      * This will setup the overlay states.
      *
-     * @return {object}
+     * @returns {object}
      */
     setupStates()
     {
@@ -115,7 +115,7 @@ export class Overlay extends Component
     /**
      * This will set the loading state.= to true.
      *
-     * @return {void}
+     * @returns {void}
      */
     addLoading()
     {
@@ -125,7 +125,7 @@ export class Overlay extends Component
     /**
      * This will set the loading state to false.
      *
-     * @return {void}
+     * @returns {void}
      */
     removeLoading()
     {
@@ -147,7 +147,7 @@ export class Overlay extends Component
     /**
      * This will get the body contents.
      *
-     * @return {array|null}
+     * @returns {array|null}
      */
     getBodyContents()
     {

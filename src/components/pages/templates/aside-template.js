@@ -8,7 +8,7 @@ import { Template } from "./template.js";
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const AsideTemplate = Atom((props, children) =>
 {

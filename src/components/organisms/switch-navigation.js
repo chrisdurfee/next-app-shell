@@ -22,7 +22,7 @@ export class SwitchLink extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -51,7 +51,7 @@ export class SwitchLink extends Component
 	 * This will get string.
 	 *
 	 * @param {string} string
-	 * @return {(string|null)}
+	 * @returns {(string|null)}
 	 */
 	getString(string)
 	{
@@ -64,7 +64,7 @@ export class SwitchLink extends Component
 	 * @protected
 	 * @param {string} href
 	 * @param {string} text
-	 * @return {array}
+	 * @returns {array}
 	 */
 	setupWatchers(href, text)
 	{
@@ -93,7 +93,7 @@ export class SwitchLink extends Component
 	/**
 	 * This will setup the states.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	setupStates()
 	{
@@ -105,7 +105,7 @@ export class SwitchLink extends Component
 	/**
 	 * This will get the link pathname.
 	 *
-	 * @return {string}
+	 * @returns {string}
 	 */
 	getPathname()
 	{
@@ -116,7 +116,7 @@ export class SwitchLink extends Component
 	 * This will update the link.
 	 *
 	 * @param {boolean} selected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	update(selected)
 	{
@@ -136,7 +136,7 @@ export class SwitchALink extends SwitchLink
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -161,7 +161,7 @@ export class SwitchALink extends SwitchLink
 	/**
 	 * This will set the link.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	afterSetup()
 	{
@@ -171,7 +171,7 @@ export class SwitchALink extends SwitchLink
 	/**
 	 * This will get the link pathname.
 	 *
-	 * @return {string}
+	 * @returns {string}
 	 */
 	getPathname()
 	{
@@ -198,7 +198,7 @@ export class SwitchNavigation extends Component
 	/**
 	 * This will reset the links.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	reset()
 	{
@@ -209,7 +209,7 @@ export class SwitchNavigation extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -226,7 +226,7 @@ export class SwitchNavigation extends Component
 	/**
 	 * This will reset the links on destroy.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	beforeDestroy()
 	{
@@ -281,7 +281,7 @@ export class SwitchNavigation extends Component
 	 *
 	 * @param {object} link
 	 * @param {boolean} selected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	updateLink(link, selected)
 	{
@@ -291,7 +291,7 @@ export class SwitchNavigation extends Component
 	/**
 	 * This will add the links.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	addLinks()
 	{
@@ -311,7 +311,7 @@ export class SwitchNavigation extends Component
 	 * This will add a link.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addLink(option)
 	{

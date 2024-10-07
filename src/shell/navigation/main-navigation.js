@@ -7,7 +7,7 @@ import { PrimaryNavigation } from "../../components/organisms/navigation/primary
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const Navigation = Atom((props, children) =>
 {
@@ -23,7 +23,7 @@ const Navigation = Atom((props, children) =>
  * This will create a logo.
  *
  * @param {object} props
- * @return {object}
+ * @returns {object}
  */
 const Logo = Atom((props, children) =>
 {
@@ -49,7 +49,7 @@ export class MainNavigation extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -64,7 +64,7 @@ export class MainNavigation extends Component
 	/**
 	 * This will create the primary navigation.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addPrimaryNav()
 	{

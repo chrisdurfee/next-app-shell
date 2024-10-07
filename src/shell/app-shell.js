@@ -6,7 +6,7 @@ import { AppControl } from './navigation/app-control.js';
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const AppContainer = Atom((props, children) =>
 {
@@ -22,7 +22,7 @@ const AppContainer = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const ActivePanelContainer = Atom((props, children) =>
 {
@@ -46,7 +46,7 @@ export class AppShell extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{

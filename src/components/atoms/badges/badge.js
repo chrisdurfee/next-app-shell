@@ -74,7 +74,7 @@ const getBadgeClasses = (type) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Badge = Atom((props, children) =>
 {

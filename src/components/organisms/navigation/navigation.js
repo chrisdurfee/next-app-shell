@@ -14,7 +14,7 @@ export class Navigation extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -33,7 +33,7 @@ export class Navigation extends Component
 	 * This will get the options.
 	 *
 	 * @param {array} options
-	 * @return {array}
+	 * @returns {array}
 	 */
 	mapOptions(options)
 	{
@@ -44,7 +44,7 @@ export class Navigation extends Component
 	/**
 	 * This will get the subs.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	addSubs()
 	{
@@ -55,7 +55,7 @@ export class Navigation extends Component
 	 * This will add a group.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addGroup(option)
 	{
@@ -67,7 +67,7 @@ export class Navigation extends Component
 	 * This will add a link.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addLink(option)
 	{

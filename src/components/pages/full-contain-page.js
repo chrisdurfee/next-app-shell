@@ -15,7 +15,7 @@ export class FullContainPage extends BasicPage
 	/**
 	 * This will render the page.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{

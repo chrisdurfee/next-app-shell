@@ -107,7 +107,7 @@ export class AsidePage extends BasicPage
 	/**
 	 * This will get the links.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	getLinks()
 	{

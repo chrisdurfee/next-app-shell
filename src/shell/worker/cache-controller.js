@@ -24,7 +24,7 @@ class CacheController
 	 * This will check if there is an update from
 	 * the service worker version.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	checkUpdate()
 	{
@@ -39,7 +39,7 @@ class CacheController
 	 * This will send a message to the client side to notify the app
 	 * has an update.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	alert()
 	{

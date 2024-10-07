@@ -6,7 +6,7 @@ import { MainNavigation } from "./main-navigation.js";
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const AppContainer = Atom((props, children) =>
 {
@@ -35,7 +35,7 @@ export class AppControl extends Component
     /**
      * This will render the component.
      *
-     * @return {object}
+     * @returns {object}
      */
 	render()
 	{
@@ -51,7 +51,7 @@ export class AppControl extends Component
     /**
      * This will remove the ignore.
      *
-     * @return {void}
+     * @returns {void}
      */
     removeIgnore()
     {
@@ -69,7 +69,7 @@ export class AppControl extends Component
     /**
      * This will setup the states.
      *
-     * @return {object}
+     * @returns {object}
      */
 	setupStates()
 	{

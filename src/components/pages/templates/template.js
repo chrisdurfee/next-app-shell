@@ -5,7 +5,7 @@ import { Atom } from "@base-framework/base";
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Template = Atom((props, children) =>
 {

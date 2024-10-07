@@ -60,7 +60,7 @@ export class InlineNavigation extends Navigation
 	 * This will add a link.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addLink(option)
 	{
@@ -93,7 +93,7 @@ export class SubNavigation extends InlineNavigation
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -137,7 +137,7 @@ export class SubNavigation extends InlineNavigation
 	/**
 	 * This will set up the states.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	setupStates()
 	{
@@ -168,7 +168,7 @@ export class SubNavigation extends InlineNavigation
 	/**
 	 * This will update the links after setup.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	afterSetup()
 	{

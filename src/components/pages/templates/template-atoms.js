@@ -6,7 +6,7 @@ import { H1, Header } from "../../atoms/atoms.js";
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const TopBar = Atom((props, children) =>
 {
@@ -20,7 +20,7 @@ export const TopBar = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const MainColumn = Atom((props, children) =>
 {

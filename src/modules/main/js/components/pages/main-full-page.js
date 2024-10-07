@@ -27,7 +27,7 @@ const getData = () => ({
  * This will test the deep data binding [[other.name]]
  *
  * @param {object} data
- * @return {void}
+ * @returns {void}
  */
 const testData = (data) =>
 {

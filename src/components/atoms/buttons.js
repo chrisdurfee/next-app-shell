@@ -6,7 +6,7 @@ import { Icon } from './icons';
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Button = Atom((props, children) =>
 {

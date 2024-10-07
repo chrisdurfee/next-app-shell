@@ -15,7 +15,7 @@ export class AsideBsidePage extends BasicPage
 	/**
 	 * This will render the page.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{

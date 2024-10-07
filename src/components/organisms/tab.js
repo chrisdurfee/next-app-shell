@@ -22,7 +22,7 @@ export class TabLink extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -51,7 +51,7 @@ export class TabLink extends Component
 	 * This will get string.
 	 *
 	 * @param {string} string
-	 * @return {(string|null)}
+	 * @returns {(string|null)}
 	 */
 	getString(string)
 	{
@@ -64,7 +64,7 @@ export class TabLink extends Component
 	 * @protected
 	 * @param {string} href
 	 * @param {string} text
-	 * @return {array}
+	 * @returns {array}
 	 */
 	setupWatchers(href, text)
 	{
@@ -93,7 +93,7 @@ export class TabLink extends Component
 	/**
 	 * This will setup the states.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	setupStates()
 	{
@@ -106,7 +106,7 @@ export class TabLink extends Component
 	 * This will update the link.
 	 *
 	 * @param {boolean} selected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	update(selected)
 	{
@@ -131,7 +131,7 @@ export class TabNavigation extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -148,7 +148,7 @@ export class TabNavigation extends Component
 	/**
 	 * This will update the links.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	afterSetup()
 	{
@@ -160,7 +160,7 @@ export class TabNavigation extends Component
 	 * This will update the links.
 	 *
 	 * @param {string} value
-	 * @return {void}
+	 * @returns {void}
 	 */
 	updateLinks(value)
 	{
@@ -204,7 +204,7 @@ export class TabNavigation extends Component
 	 *
 	 * @param {object} link
 	 * @param {boolean} selected
-	 * @return {void}
+	 * @returns {void}
 	 */
 	updateLink(link, selected)
 	{
@@ -214,7 +214,7 @@ export class TabNavigation extends Component
 	/**
 	 * This will add the links.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
 	addLinks()
 	{
@@ -234,7 +234,7 @@ export class TabNavigation extends Component
 	 * This will add a link.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addLink(option)
 	{
@@ -257,7 +257,7 @@ export class Tab extends Component
 	/**
 	 * This will render the component.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -276,7 +276,7 @@ export class Tab extends Component
 	/**
 	 * This will add the group.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 */
     addGroup()
     {

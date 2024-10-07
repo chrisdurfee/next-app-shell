@@ -19,7 +19,7 @@ export {
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Video = Atom((props, children) =>
 {
@@ -39,7 +39,7 @@ export const Video = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Img = Atom((props, children) =>
 {
@@ -79,7 +79,7 @@ export const Message = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Row = Atom((props, children) =>
 {

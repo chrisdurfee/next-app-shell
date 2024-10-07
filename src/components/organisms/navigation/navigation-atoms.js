@@ -6,7 +6,7 @@ import { H2, Ul } from "../../atoms/atoms.js";
  *
  * @param {object} props
  * @param {object} children
- * @return {object}
+ * @returns {object}
  */
 export const NavigationGroup = Atom(({ map }, children) =>
 {
@@ -20,7 +20,7 @@ export const NavigationGroup = Atom(({ map }, children) =>
  *
  * @param {object} props
  * @param {object} children
- * @return {object}
+ * @returns {object}
  */
 export const Nav = Atom((props, children) =>
 {

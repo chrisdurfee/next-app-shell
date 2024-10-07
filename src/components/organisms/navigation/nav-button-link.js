@@ -13,7 +13,7 @@ export class NavButtonLink extends Component
      * This will render the component.
      *
      * @override
-     * @return {object}
+     * @returns {object}
      */
 	render()
 	{
@@ -50,7 +50,7 @@ export class NavButtonLink extends Component
      *
      * @override
      * @protected
-     * @return {object}
+     * @returns {object}
      */
 	setupStates()
 	{
@@ -64,7 +64,7 @@ export class NavButtonLink extends Component
      * This will update the states.
      *
      * @param {object} selected
-     * @return {void}
+     * @returns {void}
      */
 	update(selected)
 	{

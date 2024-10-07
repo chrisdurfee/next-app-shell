@@ -8,7 +8,7 @@ import { NavButtonLink } from './nav-button-link.js';
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 const Option = Atom(({ options, click }, children) =>
 {
@@ -37,7 +37,7 @@ export class MainLink extends Component
 	 *
 	 * @override
 	 * @protected
-	 * @return {object}
+	 * @returns {object}
 	 */
 	render()
 	{
@@ -55,7 +55,7 @@ export class MainLink extends Component
 	/**
 	 * This will get the children.
 	 *
-	 * @return {array}
+	 * @returns {array}
 	 * @protected
 	 */
 	getLinkChildren()
@@ -71,7 +71,7 @@ export class MainLink extends Component
 	/**
 	 * This will add the link.
 	 *
-	 * @return {object}
+	 * @returns {object}
 	 * @protected
 	 */
 	addLink()

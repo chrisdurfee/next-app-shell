@@ -15,7 +15,7 @@ export class ModuleRoutes
 	 * @param {string} [title]
 	 * @param {bool} [persist]
 	 * @param {bool} [module]
-	 * @return {object}
+	 * @returns {object}
 	 */
 	add(uri, component, title, persist)
 	{
@@ -47,7 +47,7 @@ export class ModuleRoutes
 	 * @param {object|string} loader
 	 * @param {string} [title]
 	 * @param {bool} [persist]
-	 * @return {object}
+	 * @returns {object}
 	 */
 	load(uri, loader, title, persist = true)
 	{

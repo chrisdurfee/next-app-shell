@@ -6,7 +6,7 @@ import { MainLink } from './main-link.js';
  * This will update the app to ingnor hover.
  *
  * @param {object} e
- * @return {void}
+ * @returns {void}
  */
 const ignorHover = (e) =>
 {
@@ -18,7 +18,7 @@ const ignorHover = (e) =>
  *
  * @param {array} buttons
  * @param {object} active
- * @return {boolean}
+ * @returns {boolean}
  */
 const isActive = (buttons, active) =>
 {
@@ -111,7 +111,7 @@ export class PrimaryNavigation extends InlineNavigation
 	 * This will add a link.
 	 *
 	 * @param {object} option
-	 * @return {object}
+	 * @returns {object}
 	 */
 	addLink(option)
 	{
@@ -142,7 +142,7 @@ export class PrimarySubNavigation extends SubNavigation
 	/**
 	 * This will set upt he class name by depth.
 	 *
-	 * @return {void}
+	 * @returns {void}
 	 */
 	beforeSetup()
 	{

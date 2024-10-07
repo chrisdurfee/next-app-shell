@@ -6,7 +6,7 @@ import { Div, GridPanel, Input, Span, Ul } from "../atoms/atoms.js";
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Nav = Atom((props, children) =>(
 	{
@@ -21,7 +21,7 @@ export const Nav = Atom((props, children) =>(
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const MessageLabel = Atom((props, children) => (
 	Div({ class: 'message-label' }, [
@@ -35,7 +35,7 @@ export const MessageLabel = Atom((props, children) => (
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Label = Atom((props, children) => ({
 	tag: 'label',
@@ -53,7 +53,7 @@ export const Label = Atom((props, children) => ({
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const FloatingLabel = Atom((props, children) =>
 {
@@ -73,7 +73,7 @@ export const FloatingLabel = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Checkbox = Atom((props, children) =>
 {
@@ -98,7 +98,7 @@ export const Checkbox = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const Radio = Atom((props, children) =>
 {
@@ -123,7 +123,7 @@ export const Radio = Atom((props, children) =>
  *
  * @param {object} props
  * @param {array} children
- * @return {object}
+ * @returns {object}
  */
 export const GridContainer = Atom((props, children) =>
 {
