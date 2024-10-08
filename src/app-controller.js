@@ -1,4 +1,4 @@
-import { Builder } from "@base-framework/base";
+import { Builder, router } from "@base-framework/base";
 import { Configs } from "./configs.js";
 import { modules } from "./modules/modules.js";
 import { AppShell } from "./shell/app-shell.js";

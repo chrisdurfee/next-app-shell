@@ -24,7 +24,10 @@ export class Navigation extends Component
 		const map = this.mapOptions(this.options);
 
 		return Nav({ class: 'navigation' }, [
-			Ul(map),
+			Ul({
+				class: 'group flex flex-col gap-4 py-2',
+				map
+			}),
 			...this.addSubs()
 		]);
 	}
