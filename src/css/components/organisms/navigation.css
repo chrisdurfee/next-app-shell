@@ -1,55 +1,14 @@
-.app-nav-container .navigation {
+/* .app-nav-container .navigation {
 	position: absolute;
 	width: 100%;
 	top: 0;
 	bottom: 0;
 	overflow-y: auto;
 	overflow-x: hidden;
-}
+} */
 
 .app-nav-container .navigation:not(.sub) {
 	top: 80px;
-}
-
-.app-nav-container .navigation.sub {
-	z-index: 10;
-	opacity: 0;
-	background: var(--base-primary);
-	box-shadow: 10px 0px 15px -5px rgba(0, 0, 0, .2);
-	-webkit-transform: translateX(230px);
-	transform: translateX(230px);
-	-webkit-transition: opacity .2s ease-in-out, transform .2s ease-in-out;
-	transition: opacity .2s ease-in-out, transform .2s ease-in-out;
-	pointer-events: none;
-}
-
-.app-nav-container .navigation.sub {
-	border-right: 1px solid var(--base-border);
-}
-
-.app-nav-container:not(.ignoreHover):hover .navigation.sub.active {
-	pointer-events: all;
-	opacity: 1;
-	-webkit-transition: opacity .2s ease-in-out, transform .2s ease-in-out;
-	transition: opacity .2s ease-in-out, transform .2s ease-in-out;
-}
-
-.app-nav-container:not(.ignoreHover):hover .navigation.sub.one.active {
-	-webkit-transform: translateX(290px);
-	transform: translateX(290px);
-	z-index: 10;
-}
-
-.app-nav-container:not(.ignoreHover):hover .navigation.sub.two.active {
-	-webkit-transform: translateX(620px);
-	transform: translateX(620px);
-	z-index: 11;
-}
-
-.app-nav-container:not(.ignoreHover):hover .navigation.sub.three.active {
-	-webkit-transform: translateX(950px);
-	transform: translateX(950px);
-	z-index: 12;
 }
 
 .app-nav-container .navigation.sub:hover {
@@ -90,19 +49,6 @@
 .navigation li.option a,
 .navigation li.option>div {
 	color: inherit;
-}
-
-.navigation li.option.sub>*:before {
-	content: '';
-	position: absolute;
-	width: 8px;
-	height: 14px;
-	top: 0px;
-	bottom: 0px;
-	right: 22px;
-	margin: auto 0px;
-	background: url(/images/arrow-right.svg) no-repeat center;
-	transition: transform .2s ease;
 }
 
 .navigation li.option.sub>*.active:before {
@@ -210,7 +156,11 @@
 	margin: 0;
 }
 
-.drawer .navigation li.option.sub>*:before {
+.app-nav-container:not(:hover) :before {
+	display: none;
+}
+
+.navigation li.option.sub>*:before {
 	content: '';
 	position: absolute;
 	width: 12px;
@@ -223,23 +173,23 @@
 	transition: transform .2s ease;
 }
 
-.drawer .navigation .child-group>li.option>*:after {
+.navigation .child-group>li.option>*:after {
 	content: unset;
 }
 
-.drawer .navigation li.option.sub~.navigation.sub:not(.active) {
+.navigation li.option.sub~.navigation.sub:not(.active) {
 	display: none;
 }
 
-.drawer .navigation li.option.sub~.navigation.sub.active {
+.navigation li.option.sub~.navigation.sub.active {
 	display: block;
 }
 
-.drawer .child-group .navigation.sub {
+.child-group .navigation.sub {
 	margin: 4px 0 4px 16px;
 }
 
-.drawer .child-group .navigation.sub .option {
+.child-group .navigation.sub .option {
 	border-left: 1px solid var(--border-color);
 }
 

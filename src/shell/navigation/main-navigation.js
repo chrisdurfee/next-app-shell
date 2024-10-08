@@ -1,6 +1,6 @@
 import { Atom, Component } from "@base-framework/base";
 import { A, Div } from "../../components/atoms/atoms.js";
-import { PrimaryNavigation } from "../../components/organisms/navigation/primary-navigation.js";
+import { InlineNavigation } from "../../components/organisms/navigation/inline-navigation.js";
 
 /**
  * This will create the main navigation.
@@ -68,7 +68,7 @@ export class MainNavigation extends Component
 	 */
 	addPrimaryNav()
 	{
-		return new PrimaryNavigation(
+		return new InlineNavigation(
 		{
 			options: this.options,
 			appNav: this.parent.panel
