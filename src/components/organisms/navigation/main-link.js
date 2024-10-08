@@ -13,7 +13,7 @@ import { NavButtonLink } from './nav-button-link.js';
 const Option = Atom(({ options, click }, children) =>
 {
 	const settings = {
-		class: `option${options ? ' sub' : ''}`,
+		class: `rounded-md option${options ? ' sub' : ''}`,
 		click
 	};
 
@@ -62,7 +62,7 @@ export class MainLink extends Component
 	{
 		return [
 			this.icon && Span({
-				class: 'icon ' + this.icon
+				class: 'icon rounded-md ' + this.icon
 			}),
 			Label({ class: 'label' }, this.label)
 		];

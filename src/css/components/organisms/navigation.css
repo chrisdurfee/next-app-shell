@@ -47,13 +47,11 @@
 .app-nav-container .navigation.sub:hover{
 	transition-duration: .4s !important;
 }
-.navigation ul{
-	position: relative;
+.navigation ul {
 	list-style: none;
-	padding: 0;
 	margin: 0;
 }
-.navigation li.option{
+.navigation li.option {
 	position: relative;
 	width: auto;
 	height: 44px;
@@ -116,7 +114,7 @@
 	z-index: 5;
 }
 .navigation li.option .icon{
-	width: 64px;
+	width: 48px;
 	background:  no-repeat center;
 	background-size: 26%;
 }
@@ -148,6 +146,9 @@
 .navigation li.option.active{
 	color: inherit;
 	background: none;
+}
+.navigation li.option .selected .icon {
+	background-color: var(--base-raised);
 }
 .drawer .navigation li.option{
 	height: 40px;
@@ -212,9 +213,6 @@
 .navigation li.option .selected .icon,
 .navigation li.option .active .icon{
 	opacity: 1;
-    -webkit-filter: brightness(0.3) saturate(3.5);
-    -moz-filter: brightness(0.3) saturate(3.5);
-    filter: brightness(0.3) saturate(3.5);
 }
 .navigation li.option > *:after {
 	content: '';
