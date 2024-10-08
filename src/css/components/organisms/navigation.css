@@ -99,8 +99,7 @@
 	letter-spacing: 0.25px;
 	margin-left: 30px;
 	opacity: 1;
-	-webkit-transition: opacity .3s ease-in;
-	-moz-transition: opacity .3s ease-in;
+	cursor: pointer;
 	transition: opacity .3s ease-in;
 }
 
