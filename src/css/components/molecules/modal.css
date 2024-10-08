@@ -16,7 +16,7 @@
 }
 ::backdrop {
     opacity: .5;
-    animation: shadowIn .2s;
+    animation: shadowIn .2s ease forwards;
     background-color: #000;
 }
 .modal {

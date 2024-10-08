@@ -430,7 +430,6 @@ a.card:hover {
 }
 .modal {
     background-color: var(--base-primary);
-    box-shadow: 0px 16px 20px rgba(34, 54, 84, 0.1), 0px 12px 16px rgba(34, 54, 84, 0.08);
 }
 .modal-header > i {
     background-color: rgba(107, 152, 242, 0.1);
@@ -448,7 +447,6 @@ a.card:hover {
 .alert,
 .notification {
     background-color: #3F4656;
-    box-shadow: 0px 12px 16px rgba(34, 54, 84, 0.1), 0px 8px 12px rgba(34, 54, 84, 0.08), 0px -8px 12px rgba(34, 54, 84, 0.02);
 }
 .alert {
     border-color: var(--primary-color);

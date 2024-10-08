@@ -19,7 +19,7 @@ export class Modal extends Component
 	 */
 	render()
 	{
-		return Dialog({ class: 'modal right', click: (event) =>
+		return Dialog({ class: 'modal right shadow-xl', click: (event) =>
 			{
 				if (event.target === this.panel)
 				{
