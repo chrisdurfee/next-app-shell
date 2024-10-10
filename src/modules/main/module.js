@@ -1,3 +1,4 @@
+import { Icons } from '../../components/icons.js';
 import { Module } from '../module.js';
 import { MainAsideBsidePage } from './js/components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './js/components/pages/main-bside-page.js';
@@ -30,16 +31,16 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Example', href: './', icon: 'blank' },
-    { label: 'Aside', href: 'aside', icon: 'blank' },
-    { label: 'Bside', href: 'bside', icon: 'blank' },
-    { label: 'Aside + Bside', href: 'aside-bside', icon: 'blank' },
-    { label: 'Full', href: 'full', icon: 'blank' },
-    { label: 'Full Contain', href: 'full-contain', icon: 'blank' },
-    { label: 'Messages', href: 'messages', icon: 'blank' },
+    { label: 'Home', href: './', icon: Icons.home },
+    { label: 'Messages', href: 'aside', icon: Icons.chat },
+    { label: 'Calendar', href: 'bside', icon: Icons.calendar },
+    { label: 'Reviews', href: 'aside-bside', icon: Icons.star },
+    { label: 'Map', href: 'full', icon: Icons.map },
+    { label: 'Help', href: 'full-contain', icon: Icons.help },
+    { label: 'Music', href: 'messages', icon: Icons.music },
     {
-        label: 'Synopsis',
-        icon: 'blank',
+        label: 'Photo',
+        icon: Icons.photo,
         options: [
             {
                 group: 'Synopsis',
@@ -65,24 +66,24 @@ const links =
             }
         ]
     },
-    { label: 'Cast', href: 'cast', icon: 'blank' },
+    { label: 'Archive', href: 'cast', icon: Icons.archive },
     {
-        label: 'Gallery',
-        icon: 'blank',
+        label: 'Settings',
+        icon: Icons.adjustments,
         options: [
             { label: 'irure nostrud', href: 'gallery/irure-nostrud' },
             { label: 'ipsum dolore', href: 'gallery/ipsum-dolore' },
             { label: 'enim consectetur', href: 'gallery/enim-consectetur' }
         ]
     },
-    {
-        group: 'Mail',
-        options: [
-            { label: 'Inbox', href: './mail/inbox', icon: 'blank' },
-            { label: 'Sent', href: './mail/sent', icon: 'blank' },
-            { label: 'Spam', href: './mail/spam', icon: 'blank' }
-        ]
-    }
+    // {
+    //     group: 'Mail',
+    //     options: [
+    //         { label: 'Inbox', href: './mail/inbox', icon: 'blank' },
+    //         { label: 'Sent', href: './mail/sent', icon: 'blank' },
+    //         { label: 'Spam', href: './mail/spam', icon: 'blank' }
+    //     ]
+    // }
 ];
 
 /**

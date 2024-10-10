@@ -1,5 +1,6 @@
+import { I } from '@base-framework/atoms';
 import { Atom, Component, NavLink } from '@base-framework/base';
-import { Label, Span } from '../../atoms/atoms.js';
+import { Label } from '../../atoms/atoms.js';
 import { NavButtonLink } from './nav-button-link.js';
 
 
@@ -61,8 +62,9 @@ export class MainLink extends Component
 	getLinkChildren()
 	{
 		return [
-			this.icon && Span({
-				class: 'icon rounded-md ' + this.icon
+			this.icon && I({
+				class: 'icon rounded-md flex items-center justify-center',
+				html: this.icon
 			}),
 			Label({ class: 'label' }, this.label)
 		];
