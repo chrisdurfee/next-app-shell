@@ -11,7 +11,7 @@ import { MainNavigation } from "./main-navigation.js";
 const AppContainer = Atom((props, children) =>
 {
     return {
-        class: 'app-nav-container fixed top-0 bottom-0 left-0 base-sub w-[64px] hover:w-[330px] h-full z-10 overflow-y-auto overflow-x-hidden drop-shadow',
+        class: 'app-nav-container fixed sm:top-0 bottom-0 left-0 w-full h-[56px] base-sub sm:w-[64px] sm:hover:w-[330px] sm:h-full z-10 sm:overflow-y-auto sm:overflow-x-hidden drop-shadow',
         ...props,
         children
     };

@@ -28,7 +28,7 @@ const AppContainer = Atom((props, children) =>
 const ActivePanelContainer = Atom((props, children) =>
 {
 	return Main({
-		class: 'active-panel-container flex flex-auto overflow-y-auto relative z-0 left-[64px]',
+		class: 'active-panel-container flex flex-auto overflow-y-auto relative z-0 sm:left-[64px]',
 		...props,
 		children
 	});
