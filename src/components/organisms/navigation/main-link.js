@@ -64,6 +64,9 @@ export class MainLink extends Component
 		return [
 			this.icon && I({
 				class: 'icon rounded-md flex items-center justify-center',
+				onState: ['selected', {
+					selected: true
+				}],
 				html: this.icon
 			}),
 			Label({ class: 'label' }, this.label)

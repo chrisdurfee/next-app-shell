@@ -84,6 +84,10 @@
 	background-size: 26%;
 }
 
+.navigation li .icon.selected {
+	color: var(--primary-color);
+}
+
 .navigation li.option .icon.group {
 	background-image: url(/images/group-icon.svg);
 }
