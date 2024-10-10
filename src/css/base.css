@@ -48,22 +48,16 @@ button {
 }
 
 .app-nav-container .main-navigation {
-	box-shadow: var(--nav-shadow);
 	transition: width .2s .1s ease-in-out;
 	will-change: width;
 }
 
 a.logo {
-	width: 32px;
-	height: 32px;
 	background: #9db3c5;
-	display: block;
-	margin: 16px;
 }
 
 .app-nav-container:not(.ignoreHover):hover .main-navigation,
 .app-nav-container.pinned .main-navigation {
-	width: 330px;
 	transition: width .2s ease-in-out;
 }
 
