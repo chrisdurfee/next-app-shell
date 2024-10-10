@@ -7,7 +7,7 @@ import { AsideBsidePage } from '../../../../../components/pages/aside-bside-page
  *
  * This will create a aside bside page.
  *
- * @rerutn {AsideBsidePage}
+ * @returns {AsideBsidePage}
  */
 export const MainAsideBsidePage = () => (
 	new AsideBsidePage([

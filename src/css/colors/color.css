@@ -1,11 +1,37 @@
 @import url('./themes/light-theme.css');
 @import url('./themes/dark-theme.css');
 
-body {
+.base-primary {
     background-color: var(--base-primary);
-    color: #2B303A;
+}
+.base-sub {
+    background-color: var(--base-sub);
+}
+.base-layer {
+    background-color: var(--base-layer);
+}
+.base-raised {
+    background-color: var(--base-raised);
+}
+.base-border {
+    background-color: var(--base-border);
+}
+.base-input {
+    background-color: var(--base-input);
+}
+.base-input-border {
+    background-color: var(--base-input-border);
+}
+.primary-color {
+    background-color: var(--primary-color);
+}
+.shadow {
+    background-color: var(--shadow);
+}
+.text-color {
     color: var(--text-color);
 }
+
 *::-webkit-scrollbar-track {
     background-color: #F2F3F5;
 }

@@ -1,12 +1,12 @@
 @supports (--color: #6B98F2) {
     :root {
-        --base-primary: #FDFDFF;
-        --base-sub: #F7F7FC;
-        --base-layer: #FBFBFF;
-        --base-raised: #FFF;
+        --base-primary: hsl(255, 100%, 97.5%);
+        --base-sub: hsl(255, 100%, 97%);
+        --base-layer: hsl(255, 100%, 98%);
+        --base-raised: hsl(255, 100%, 98.5%);
         --base-border: #EDF2F7;
-        --base-input: #FFF;
-        --base-input-border: var(--gray-30);
+        --base-input: hsl(255, 100%, 100%);
+        --base-input-border: var(--base-border);
         --primary-color: #5F8AE1;
         --shadow: #576096;
 

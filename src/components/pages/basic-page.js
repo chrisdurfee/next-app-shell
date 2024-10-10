@@ -5,7 +5,9 @@ import { Component } from '@base-framework/base';
  *
  * This will create a basic module to extend
  * to all child modules.
+ *
  * @class
+ * @extends Component
  */
 export class BasicPage extends Component
 {

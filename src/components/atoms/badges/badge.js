@@ -4,6 +4,7 @@ import { Atom } from '@base-framework/base';
 /**
  * This will set the badge styles.
  *
+ * @constant
  * @type {object} BADGE_STYLES
  */
 const BADGE_STYLES = {
