@@ -1,5 +1,6 @@
 import { Atom, Component } from "@base-framework/base";
 import { A, Div } from "../../components/atoms/atoms.js";
+import { Icons } from "../../components/icons.js";
 import { InlineNavigation } from "../../components/organisms/navigation/inline-navigation.js";
 
 /**
@@ -37,6 +38,38 @@ const Logo = Atom((props, children) =>
 });
 
 /**
+ * This will create a pin icon.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const PinIcon = (pinned) =>
+{
+	if (pinned)
+	{
+		return Icons.unlocked;
+	}
+	return Icons.locked;
+};
+
+/**
+ * This will create a pin button
+ *
+ * @param {object} props
+ * @param {array} children
+ * @returns {object}
+ */
+const PinButton = Atom((props, children) =>
+{
+	return {
+		class: 'pin w-[32px] h-[32px] m-[16px] block cursor-pointer',
+		onState: ['pinned', (val) => (PinIcon(val))],
+		...props,
+		children
+	};
+});
+
+/**
  * MainNavigation
  *
  * This will create the main navigation.
@@ -54,11 +87,28 @@ export class MainNavigation extends Component
 	render()
 	{
 		return Navigation([
-			Logo(),
+			Div({ class: 'flex flex-row justify-between min-w-[330px]'}, [
+				Logo(),
+				PinButton({ click: () => this.state.toggle('pinned') })
+			]),
 			Div({ class: 'nav-container' }, [
 				this.addPrimaryNav()
 			])
 		]);
+	}
+
+	/**
+	 * This will like the pinned state to the app control.
+	 *
+	 * @returns {object}
+	 */
+	setupStates()
+	{
+		return {
+			pinned: {
+				id: 'app-control'
+			}
+		};
 	}
 
 	/**

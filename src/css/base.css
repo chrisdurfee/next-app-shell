@@ -19,10 +19,6 @@ button {
 	text-decoration: none;
 }
 
-.app-nav-container.pinned {
-	height: 100vh;
-}
-
 .app-nav-container:not(.pinned):hover:after {
 	position: absolute;
 	width: 2px;
