@@ -9,14 +9,22 @@ html {
 	box-sizing: border-box;
 }
 
-.app-container {
-	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-}
-
 a,
 button {
 	outline: 0;
 	text-decoration: none;
+}
+
+.app-container {
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+@media (max-width: 640px) {
+
+	.app-container {
+		bottom: -1px;
+		padding-bottom: calc(56px + env(safe-area-inset-bottom));
+	}
 }
 
 .app-nav-container:not(.pinned):hover:after {
@@ -38,14 +46,6 @@ button {
 .app-nav-container.ignoreHover,
 .app-nav-container.ignoreHover * {
 	pointer-events: none !important;
-}
-
-@media (max-width: 640px) {
-
-	.app-container {
-		bottom: -1px;
-		padding-bottom: calc(56px + env(safe-area-inset-bottom));
-	}
 }
 
 @media (min-width: 640px) {
