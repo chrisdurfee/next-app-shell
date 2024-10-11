@@ -141,12 +141,11 @@ export class AppControl extends Component
             ignoreHover: false,
             pinned: {
                 state: false,
-                callBack: (value) =>
+                callBack: () =>
                 {
                     this.state.store();
                 }
-            },
-            hideNav: false
+            }
 		};
 	}
 }
