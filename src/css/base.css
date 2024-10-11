@@ -6,6 +6,7 @@ html {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	outline: none;
 	-ms-overflow-style: -ms-autohiding-scrollbar;
+	box-sizing: border-box;
 }
 
 .app-container {

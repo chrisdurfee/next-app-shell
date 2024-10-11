@@ -31,11 +31,11 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Home', href: './', icon: Icons.home },
-    { label: 'Messages', href: 'aside', icon: Icons.chat },
-    { label: 'Calendar', href: 'bside', icon: Icons.calendar },
-    { label: 'Reviews', href: 'aside-bside', icon: Icons.star },
-    { label: 'Map', href: 'full', icon: Icons.map },
+    { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1 },
+    { label: 'Messages', href: 'aside', icon: Icons.chat, mobileOrder: 2 },
+    { label: 'Calendar', href: 'bside', icon: Icons.calendar, mobileOrder: 3 },
+    { label: 'Reviews', href: 'aside-bside', icon: Icons.star, mobileOrder: 4 },
+    { label: 'Map', href: 'full', icon: Icons.map, mobileOrder: 5 },
     { label: 'Help', href: 'full-contain', icon: Icons.help },
     { label: 'Music', href: 'messages', icon: Icons.music },
     {

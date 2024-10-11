@@ -12,7 +12,7 @@ import { AppControl } from './navigation/app-control.js';
 const AppContainer = Atom((props, children) =>
 {
 	return {
-		class: 'app-container flex relative h-screen overflow-hidden',
+		class: 'app-container flex relative sm:h-screen',
 		...props,
 		children
 	};
@@ -28,7 +28,7 @@ const AppContainer = Atom((props, children) =>
 const ActivePanelContainer = Atom((props, children) =>
 {
 	return Main({
-		class: 'active-panel-container flex flex-auto overflow-y-auto relative z-0 sm:left-[64px]',
+		class: 'active-panel-container flex flex-auto relative z-0 sm:left-[64px] pb-[80px] sm:pb-0',
 		...props,
 		children
 	});

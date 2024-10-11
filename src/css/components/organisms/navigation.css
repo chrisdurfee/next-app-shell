@@ -84,7 +84,8 @@
 	background-size: 26%;
 }
 
-.navigation li .icon.selected {
+.navigation li .icon.selected,
+.mobile-navigation .active i {
 	color: var(--primary-color);
 }
 
@@ -112,6 +113,7 @@
 }
 
 .navigation li.option .selected .label,
+.mobile-navigation .active span,
 .navigation li.option .active .label {
 	color: var(--primary-color);
 }
