@@ -24,7 +24,7 @@ class Service extends CacheController
     /**
      * This will add events to the service worker.
      *
-     * @return {void}
+     * @returns {void}
      */
 	addEvents()
 	{
