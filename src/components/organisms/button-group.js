@@ -57,16 +57,14 @@ export default class ButtonGroup extends Component
      */
 	render()
 	{
-		return Div([
+		return Buttons([
 			P({
 				onState: ['performance', (state) => ButtonText[state] || ButtonText.fair]
 			}),
-			Buttons([
-				Div({ class: 'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground ml-auto'}, [
-					StateButton({ label: 'Bad', value: 'bad' }),
-					StateButton({ label: 'Good', value: 'good' }),
-					StateButton({ label: 'Fair', value: 'fair' })
-				])
+			Div({ class: 'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground ml-auto'}, [
+				StateButton({ label: 'Bad', value: 'bad' }),
+				StateButton({ label: 'Good', value: 'good' }),
+				StateButton({ label: 'Fair', value: 'fair' })
 			])
 		]);
 	}
