@@ -1,5 +1,5 @@
 import { Atom, Component } from '@base-framework/base';
-import { Button, P } from '../atoms/atoms.js';
+import { Button, Div, P } from '../atoms/atoms.js';
 
 /**
  * This will create a button group.
@@ -9,7 +9,7 @@ import { Button, P } from '../atoms/atoms.js';
  * @returns {object}
  */
 const Buttons = Atom((props, children) => ({
-	class: 'button-group',
+	class: 'flex items-center px-4 py-2',
 	...props,
 	children
 }));
@@ -57,13 +57,17 @@ export default class ButtonGroup extends Component
      */
 	render()
 	{
-		return Buttons([
+		return Div([
 			P({
 				onState: ['performance', (state) => ButtonText[state] || ButtonText.fair]
 			}),
-			StateButton({ label: 'Bad', value: 'bad' }),
-			StateButton({ label: 'Good', value: 'good' }),
-			StateButton({ label: 'Fair', value: 'fair' })
+			Buttons([
+				Div({ class: 'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground ml-auto'}, [
+					StateButton({ label: 'Bad', value: 'bad' }),
+					StateButton({ label: 'Good', value: 'good' }),
+					StateButton({ label: 'Fair', value: 'fair' })
+				])
+			])
 		]);
 	}
 
