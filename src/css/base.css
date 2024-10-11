@@ -19,10 +19,6 @@ button {
 	text-decoration: none;
 }
 
-.app-nav-container {
-	transition: width .2s;
-}
-
 .app-nav-container.pinned {
 	height: 100vh;
 }
@@ -48,9 +44,16 @@ button {
 	pointer-events: none !important;
 }
 
-.app-nav-container .main-navigation {
-	transition: width .2s .1s ease-in-out;
-	will-change: width;
+@media (min-width: 640px) {
+
+	.app-nav-container {
+		transition: width .2s;
+	}
+
+	.app-nav-container .main-navigation {
+		transition: width .2s .1s ease-in-out;
+		will-change: width;
+	}
 }
 
 a.logo {
