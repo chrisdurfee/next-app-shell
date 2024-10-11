@@ -43,6 +43,7 @@ button {
 @media (min-width: 640px) {
 
 	.app-container {
+		bottom: -1px;
 		padding-bottom: calc(56px + env(safe-area-inset-bottom));
 	}
 	.app-nav-container {
