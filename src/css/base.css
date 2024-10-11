@@ -42,6 +42,9 @@ button {
 
 @media (min-width: 640px) {
 
+	.app-container {
+		padding-bottom: calc(56px + env(safe-area-inset-bottom));
+	}
 	.app-nav-container {
 		transition: width .2s;
 	}
