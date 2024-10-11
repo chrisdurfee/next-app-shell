@@ -40,12 +40,16 @@ button {
 	pointer-events: none !important;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
 
 	.app-container {
 		bottom: -1px;
 		padding-bottom: calc(56px + env(safe-area-inset-bottom));
 	}
+}
+
+@media (min-width: 640px) {
+
 	.app-nav-container {
 		transition: width .2s;
 	}
