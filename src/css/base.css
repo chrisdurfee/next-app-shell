@@ -112,31 +112,3 @@ a.logo {
 	padding-top: calc(12px + env(safe-area-inset-top));
 	height: calc(48px + env(safe-area-inset-top));
 }
-
-.loader {
-	position: relative;
-	overflow: hidden;
-}
-
-.loader *:not(:after) {
-	position: relative;
-	z-index: 1;
-}
-
-.loader:after {
-	content: '';
-	-webkit-animation: swipeRight 2s infinite ease-out;
-	animation: slideRight 2s infinite ease-out;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 4px;
-	z-index: 50;
-	background: var(--primary);
-	backface-visibility: hidden;
-}
-
-.panel-container .loader:after {
-	background: rgba(0, 30, 60, .1);
-}

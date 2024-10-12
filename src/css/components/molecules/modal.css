@@ -2,23 +2,28 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: .2;
     }
 }
+
 @keyframes popIn {
     0% {
         transform: scale(.95);
     }
+
     100% {
         transform: scale(1);
     }
 }
+
 ::backdrop {
     opacity: .5;
     animation: shadowIn .2s ease forwards;
     background-color: #000;
 }
+
 .modal {
     position: absolute;
     top: 10vh;
@@ -43,37 +48,36 @@
 
 @-webkit-keyframes pullRightIn {
     0% {
-        -webkit-transform:translate3d(10%,0,0);
-		opacity:0;
+        -webkit-transform: translate3d(10%, 0, 0);
+        opacity: 0;
     }
 
-	100% {
-        -webkit-transform:translate3d(0%,0,0);
-		opacity:1;
+    100% {
+        -webkit-transform: translate3d(0%, 0, 0);
+        opacity: 1;
     }
 }
+
 @keyframes pullRightIn {
     0% {
-        transform:translate3d(10%,0,0);
-		opacity:0;
+        transform: translate3d(10%, 0, 0);
+        opacity: 0;
     }
 
-	100% {
-        transform:translate3d(0%,0,0);
-		opacity:1;
+    100% {
+        transform: translate3d(0%, 0, 0);
+        opacity: 1;
     }
 }
 
 .pullRightIn {
-	-webkit-animation: pullRightIn .3s ease-out;
-	-webkit-animation-fill-mode: forwards;
-	animation: pullRightIn .3s ease-out;
-	animation-fill-mode: forwards;
+    animation: pullRightIn .3s ease-out;
+    animation-fill-mode: forwards;
 
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
-	will-change: transform, opacity;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
+
 .modal.right {
     top: 0;
     right: 0;

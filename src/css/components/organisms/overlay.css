@@ -8,17 +8,11 @@
     flex-direction: column;
     background-color: var(--base-primary);
     z-index: 10;
-    -webkit-animation: fadeIn .2s ease-in-out;
-    animation: fadeIn .2s ease-in-out;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    will-change: transform, opacity;
     overflow: hidden;
 }
 .overlay.inline{
     position: relative;
     animation: none;
-    will-change: unset;
 }
 .overlay header h1{
     padding-left: 64px;
