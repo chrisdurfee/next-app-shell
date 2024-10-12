@@ -1,1 +1,1 @@
-import{q as r,m as t,y as o,$ as e,_ as s}from"./index.789f54e1.js";const p=r((_,a)=>t([o("Label"),t("test import"),e({src:s(()=>import("./button-group.c075dce1.js"),["assets/button-group.c075dce1.js","assets/index.789f54e1.js","assets/index.bbe19468.css"])})]));export{p as default};
+import{q as r,m as t,y as o,$ as e,_ as s}from"./index.789f54e1.js";const p=r((_,a)=>t([o("Label"),t("test import"),e({src:s(()=>import("./button-group.c075dce1.js"),["assets/button-group.c075dce1.js","assets/index.789f54e1.js","assets/index.86bc0ddb.css"])})]));export{p as default};
