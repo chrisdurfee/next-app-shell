@@ -167,6 +167,7 @@
 
 @media (max-width: 640px) {
 	.app-nav-container {
+		height: calc(56px + env(safe-area-inset-bottom));
 		padding-bottom: env(safe-area-inset-bottom);
 	}
 }
