@@ -8,15 +8,15 @@ import { Li, Nav, Ul } from "../../components/atoms/atoms.js";
  * @param {object} props
  * @returns {object}
  */
-const MobileLink = (props) => (
+const MobileLink = ({ href, icon, label}) => (
     Li({ class: 'flex flex-auto items-center justify-center' }, [
         new NavLink({
             class: 'p-[4px] flex flex-col items-center justify-center',
-            href: props.href,
+            href,
         },
         [
-            I({ class: 'rounded-md flex items-center justify-center', html: props.icon }),
-            Span({ class: 'text-[10px]' }, props.label)
+            I({ class: 'rounded-md flex items-center justify-center', html: icon }),
+            Span({ class: 'text-[10px]' }, label)
         ])
     ])
 );
