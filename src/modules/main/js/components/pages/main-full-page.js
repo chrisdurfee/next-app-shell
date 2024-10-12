@@ -105,9 +105,10 @@ export const MainFullPage = () => (
 	new FullPage(
 		FullProps(),
 		[
-			P('This will test the deep data binding [[other.name]]'),
+			P({ class: 'px-4' }, 'This will test the deep data binding [[other.name]]'),
 			Button({
 				text: 'Test Modal',
+				class: 'mx-4',
 				click: () => new Modal().open()
 			}),
 			GridContainer()

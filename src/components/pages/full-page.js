@@ -20,7 +20,7 @@ export class FullPage extends BasicPage
 	render()
 	{
 		return MainSection([
-			Header([
+			Header({ class: 'p-4' }, [
 				H1(this.title),
 			]),
 			FullTemplate(this.children)

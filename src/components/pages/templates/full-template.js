@@ -11,7 +11,7 @@ import { Template } from "./template.js";
 export const FullTemplate = Atom((props, children) =>
 {
 	return Template({
-		class: 'body full-container ' + props.class,
+		class: 'body full-container flex flex-auto ' + props.class,
 		...props,
 	}, children);
 });
