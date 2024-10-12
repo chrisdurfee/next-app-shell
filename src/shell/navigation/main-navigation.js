@@ -43,10 +43,7 @@ const Logo = Atom((props, children) =>
  * @param {object} props
  * @returns {object}
  */
-const PinIcon = (pinned) =>
-{
-	return (pinned)? Icons.unlocked : Icons.locked;
-};
+const PinIcon = (pinned) => (pinned)? Icons.unlocked : Icons.locked;
 
 /**
  * This will create a pin button
