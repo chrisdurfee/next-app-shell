@@ -70,6 +70,21 @@ const PinButton = Atom((props, children) =>
 });
 
 /**
+ * This will create the primary navigation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const PrimaryNavigation = ({ options, parent}) =>
+{
+	return new InlineNavigation(
+	{
+		options,
+		appNav: parent
+	});
+};
+
+/**
  * MainNavigation
  *
  * This will create the main navigation.
@@ -92,13 +107,16 @@ export class MainNavigation extends Component
 				PinButton({ click: () => this.state.toggle('pinned') })
 			]),
 			Div({ class: 'nav-container' }, [
-				this.addPrimaryNav()
+				PrimaryNavigation({
+					options: this.options,
+					parent: this.parent.panel
+				})
 			])
 		]);
 	}
 
 	/**
-	 * This will like the pinned state to the app control.
+	 * This will link the pinned state to the app control.
 	 *
 	 * @returns {object}
 	 */
@@ -109,19 +127,5 @@ export class MainNavigation extends Component
 				id: 'app-control'
 			}
 		};
-	}
-
-	/**
-	 * This will create the primary navigation.
-	 *
-	 * @returns {object}
-	 */
-	addPrimaryNav()
-	{
-		return new InlineNavigation(
-		{
-			options: this.options,
-			appNav: this.parent.panel
-		});
 	}
 }
