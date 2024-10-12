@@ -180,7 +180,7 @@
 	opacity: 0;
 }
 
-.app-nav-container .navigation .option.sub > *:before {
+.navigation .option.sub > *:before {
 	content: '';
 	position: absolute;
 	width: 12px;
@@ -190,7 +190,7 @@
 	right: 22px;
 	margin: auto 0px;
 	background: url(/images/arrow-down.svg) no-repeat center;
-	transition: transform .2s ease;
+	transition: transform .2s ease, opacity .2s .2s ease;
 }
 
 .app-nav-container:hover .navigation .option.sub > *:before,
