@@ -8,16 +8,14 @@ import { Icons } from "../../components/icons.js";
  * @param {object} props
  * @returns {object}
  */
-const Logo = Atom((props, children) =>
-{
-    return A(
-    {
+const Logo = Atom((props, children) => (
+    A({
         class: 'logo w-[32px] h-[32px] m-[16px] block',
         href: './',
         ...props,
         children
-    });
-});
+    })
+));
 
 /**
  * This will create a pin icon.

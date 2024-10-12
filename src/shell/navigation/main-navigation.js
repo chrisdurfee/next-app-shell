@@ -10,15 +10,11 @@ import { MainHeader } from "./main-header.js";
  * @param {array} children
  * @returns {object}
  */
-const Navigation = Atom((props, children) =>
-{
-	props.class = 'main-navigation nav-container hidden sm:flex flex-col h-full z-10 overflow-y-auto overscroll-none base-sub';
-
-	return {
-		...props,
-		children
-	};
-});
+const Navigation = Atom((props, children) => ({
+	...props,
+	class: 'main-navigation nav-container hidden sm:flex flex-col h-full z-10 overscroll-none base-sub',
+	children
+}));
 
 /**
  * This will create the primary navigation.
@@ -26,13 +22,9 @@ const Navigation = Atom((props, children) =>
  * @param {object} props
  * @returns {object}
  */
-const PrimaryNavigation = ({ options}) =>
-{
-	return new InlineNavigation(
-	{
-		options
-	});
-};
+const PrimaryNavigation = ({ options}) => (
+	new InlineNavigation({ options })
+);
 
 /**
  * MainNavigation
@@ -69,9 +61,7 @@ export class MainNavigation extends Component
 	setupStates()
 	{
 		return {
-			pinned: {
-				id: 'app-control'
-			}
+			pinned: { id: 'app-control' }
 		};
 	}
 }

@@ -6,16 +6,14 @@ import { Atom } from "@base-framework/base";
  * @param {object} props
  * @returns {object}
  */
-const Logo = Atom((props, children) =>
-{
-    return A(
-    {
+const Logo = Atom((props, children) => (
+    A({
         class: 'logo w-[24px] h-[24px] block',
         href: './',
         ...props,
         children
-    });
-});
+    })
+));
 
 /**
  * This will create the mobile header.
