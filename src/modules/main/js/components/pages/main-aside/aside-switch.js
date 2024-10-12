@@ -13,7 +13,7 @@ const ImportButtons = () => (
 	new Panel([
 		Div([
 			Header([
-				H1('Aside')
+				H1({ class: 'p-4' }, 'Aside')
 			]),
 			Div({ class: 'card' }, [
 				Import({ src: import('../../../../../../components/atoms/import-buttons.js') })
@@ -35,7 +35,7 @@ const ExamplePage = (url, title) => ({
 	component: new Panel([
 		Div([
 			Header([
-				H1(title)
+				H1({ class: 'p-4' }, title)
 			]),
 			GridContainer()
 		])

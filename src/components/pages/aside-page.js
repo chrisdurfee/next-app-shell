@@ -14,16 +14,6 @@ import { AsideTemplate } from './templates/aside-template.js';
 export class AsidePage extends BasicPage
 {
 	/**
-	 * @member {string}	title
-	 */
-	title = 'Active Title';
-
-	/**
-	 * @member {string}	basePath
-	 */
-	basePath = 'aside';
-
-	/**
 	 * This will render the page.
 	 *
 	 * @returns {object}
@@ -61,7 +51,7 @@ export class AsidePage extends BasicPage
 	addAside()
 	{
 		return Div([
-			H1(this.title),
+			H1({ class: 'p-4' }, this.title),
 			this.addNavigation()
 		]);
 	}
