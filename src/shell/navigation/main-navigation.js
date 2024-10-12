@@ -45,11 +45,7 @@ const Logo = Atom((props, children) =>
  */
 const PinIcon = (pinned) =>
 {
-	if (pinned)
-	{
-		return Icons.unlocked;
-	}
-	return Icons.locked;
+	return (pinned)? Icons.unlocked : Icons.locked;
 };
 
 /**
@@ -75,12 +71,11 @@ const PinButton = Atom((props, children) =>
  * @param {object} props
  * @returns {object}
  */
-const PrimaryNavigation = ({ options, parent}) =>
+const PrimaryNavigation = ({ options}) =>
 {
 	return new InlineNavigation(
 	{
-		options,
-		appNav: parent
+		options
 	});
 };
 
@@ -108,8 +103,7 @@ export class MainNavigation extends Component
 			]),
 			Div({ class: 'nav-container' }, [
 				PrimaryNavigation({
-					options: this.options,
-					parent: this.parent.panel
+					options: this.options
 				})
 			])
 		]);
