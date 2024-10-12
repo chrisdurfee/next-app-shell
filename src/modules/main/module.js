@@ -31,7 +31,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1 },
+    { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true },
     { label: 'Messages', href: 'aside', icon: Icons.chat, mobileOrder: 2 },
     { label: 'Calendar', href: 'bside', icon: Icons.calendar, mobileOrder: 3 },
     { label: 'Reviews', href: 'aside-bside', icon: Icons.star, mobileOrder: 4 },

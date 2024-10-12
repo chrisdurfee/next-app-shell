@@ -13,6 +13,7 @@ const MobileLink = (props) => (
         new NavLink({
             class: 'p-[4px] flex flex-col items-center justify-center',
             href: props.href,
+            exact: props.exact || false,
         },
         [
             I({ class: 'rounded-md flex items-center justify-center', html: props.icon }),
