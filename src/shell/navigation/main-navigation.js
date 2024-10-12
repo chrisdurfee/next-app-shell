@@ -1,7 +1,7 @@
 import { Atom, Component } from "@base-framework/base";
-import { A, Div } from "../../components/atoms/atoms.js";
-import { Icons } from "../../components/icons.js";
+import { Div } from "../../components/atoms/atoms.js";
 import { InlineNavigation } from "../../components/organisms/navigation/inline-navigation.js";
+import { MainHeader } from "./main-header.js";
 
 /**
  * This will create the main navigation.
@@ -15,48 +15,6 @@ const Navigation = Atom((props, children) =>
 	props.class = 'main-navigation nav-container hidden sm:flex flex-col h-full z-10 overflow-y-auto overscroll-none base-sub';
 
 	return {
-		...props,
-		children
-	};
-});
-
-/**
- * This will create a logo.
- *
- * @param {object} props
- * @returns {object}
- */
-const Logo = Atom((props, children) =>
-{
-	return A(
-	{
-		class: 'logo w-[32px] h-[32px] m-[16px] block',
-		href: './',
-		...props,
-		children
-	});
-});
-
-/**
- * This will create a pin icon.
- *
- * @param {object} props
- * @returns {object}
- */
-const PinIcon = (pinned) => (pinned)? Icons.unlocked : Icons.locked;
-
-/**
- * This will create a pin button
- *
- * @param {object} props
- * @param {array} children
- * @returns {object}
- */
-const PinButton = Atom((props, children) =>
-{
-	return {
-		class: 'pin w-[32px] h-[32px] m-[16px] block cursor-pointer',
-		onState: ['pinned', (val) => (PinIcon(val))],
 		...props,
 		children
 	};
@@ -94,10 +52,7 @@ export class MainNavigation extends Component
 	render()
 	{
 		return Navigation([
-			Div({ class: 'flex flex-row justify-between min-w-[330px]'}, [
-				Logo(),
-				PinButton({ click: () => this.state.toggle('pinned') })
-			]),
+			MainHeader({ callBack: () => this.state.toggle('pinned') }),
 			Div({ class: 'nav-container' }, [
 				PrimaryNavigation({
 					options: this.options
