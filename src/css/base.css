@@ -111,4 +111,11 @@ a.logo {
 	padding-bottom: 12px;
 	padding-top: calc(12px + env(safe-area-inset-top));
 	height: calc(48px + env(safe-area-inset-top));
+	transition: all .2s;
+}
+.mobile-header.hide-header {
+	top: -48px;
+	top: calc(-48px - env(safe-area-inset-bottom));
+	opacity: 0;
+	pointer-events: none;
 }

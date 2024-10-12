@@ -71,4 +71,53 @@ export class AppShell extends Component
 	{
 		return this.mainBody;
 	}
+
+	/**
+	 * This will setup the states.
+	 *
+	 * @returns {object}
+	 */
+	setupStates()
+	{
+		return {
+			hideHeader: false
+		};
+	}
+
+	/**
+	 * This will setup the event to track when the document is scrolled.
+	 *
+	 * @returns {object}
+	 */
+	setupEvents()
+    {
+        return [
+			['scroll', window, this.scrollCheck.bind(this)]
+		];
+    }
+
+	/**
+	 * @member {number} prevScroll
+	 */
+	prevScroll = 0;
+
+	/**
+	 * This will check when the document is scrolled.
+	 *
+	 * @returns {void}
+	 */
+	scrollCheck()
+    {
+        const currentScroll = window.scrollY;
+        const HEADER_HEIGHT = 48;
+        if (currentScroll > HEADER_HEIGHT && currentScroll > this.prevScroll)
+		{
+			this.state.hideHeader = true;
+		}
+		else if (currentScroll <= HEADER_HEIGHT || currentScroll < this.prevScroll) {
+			this.state.hideHeader = false;
+		}
+
+        this.prevScroll = currentScroll;
+    }
 }

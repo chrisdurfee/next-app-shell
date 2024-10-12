@@ -9,14 +9,11 @@ import { MobileNavigation } from "./mobile-navigation.js";
  * @param {array} children
  * @returns {object}
  */
-const AppContainer = Atom((props, children) =>
-{
-    return {
-        class: 'app-nav-container fixed sm:top-0 bottom-0 left-0 w-full base-sub sm:w-[64px] sm:hover:w-[330px] sm:h-full z-10 sm:overflow-y-auto overflow-x-hidden drop-shadow',
-        ...props,
-        children
-    };
-});
+const AppContainer = Atom((props, children) => ({
+    ...props,
+    class: 'app-nav-container fixed sm:top-0 bottom-0 left-0 w-full base-sub sm:w-[64px] sm:hover:w-[330px] sm:h-full z-10 sm:overflow-y-auto overflow-x-hidden drop-shadow',
+    children
+}));
 
 /**
  * This will map the mobile options.
