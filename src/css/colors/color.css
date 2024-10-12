@@ -45,7 +45,8 @@
     background-color: transparent;
 }
 
-*::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-corner {
     background-color: var(--base-layer);
 }
 
@@ -53,7 +54,8 @@
     background-color: var(--primary-30);
 }
 
-*:not(:hover)::-webkit-scrollbar-thumb {
+*:not(:hover)::-webkit-scrollbar-thumb,
+*:not(:hover)::-webkit-scrollbar-corner {
     background-color: transparent;
 }
 

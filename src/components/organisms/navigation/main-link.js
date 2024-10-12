@@ -14,7 +14,7 @@ import { NavButtonLink } from './nav-button-link.js';
 const Option = Atom(({ options, click }, children) =>
 {
 	const settings = {
-		class: `rounded-md option${options ? ' sub' : ''}`,
+		class: `min-w-[48px] rounded-md option${options ? ' sub' : ''}`,
 		click
 	};
 
