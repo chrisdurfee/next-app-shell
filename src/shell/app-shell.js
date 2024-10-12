@@ -1,6 +1,7 @@
 import { Main } from '@base-framework/atoms';
 import { Atom, Component } from '@base-framework/base';
 import { AppControl } from './navigation/app-control.js';
+import { MobileHeader } from './navigation/mobile-header.js';
 
 /**
  * This will create the app container.
@@ -52,6 +53,7 @@ export class AppShell extends Component
 	render()
 	{
 		return AppContainer([
+			MobileHeader(),
 			new AppControl({ options: this.options }),
 			ActivePanelContainer({
 				switch: this.routes,

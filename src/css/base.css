@@ -107,6 +107,12 @@ a.logo {
 	opacity: 1;
 }
 
+.mobile-header {
+	padding-bottom: 12px;
+	padding-top: calc(12px + env(safe-area-inset-top));
+	height: calc(48px + env(safe-area-inset-top));
+}
+
 .loader {
 	position: relative;
 	overflow: hidden;
