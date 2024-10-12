@@ -38,8 +38,8 @@ export class MobileNavigation extends Component
 	 */
 	render()
 	{
-		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full' }, [
-			Ul({ class: 'flex flex-auto m-0 p-0 list-none sm:hidden', map: [this.options, MobileLink] })
+		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full sm:hidden' }, [
+			Ul({ class: 'flex flex-auto m-0 p-0 list-none', map: [this.options, MobileLink] })
 		]);
 	}
 }

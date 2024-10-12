@@ -19,6 +19,61 @@ const AppContainer = Atom((props, children) =>
 });
 
 /**
+ * This will map the mobile options.
+ *
+ * @param {array} options
+ * @param {array} mobileOptions
+ * @param {function} callBack
+ * @returns {void}
+ */
+const mapMobileOptions = (options, mobileOptions, callBack) =>
+{
+    options.forEach(option =>
+    {
+        if (option.options)
+        {
+            mapMobileOptions(option.options, mobileOptions, callBack);
+            return;
+        }
+
+        /**
+         * We also want to add a callBack to ignore the hover to the main options.
+         */
+        option.callBack = callBack;
+        if (option.mobileOrder !== undefined)
+        {
+            mobileOptions.push(option);
+        }
+    });
+};
+
+/**
+ * This will sort the mobile options.
+ *
+ * @param {array} options
+ * @returns {array}
+ */
+const sortMobileOptions = (options) => options.sort((a, b) => a.mobileOrder - b.mobileOrder);
+
+/**
+ * This will get the mobile options.
+ *
+ * @param {array} options
+ * @param {function} callBack
+ * @returns {object}
+ */
+const getMobileOptions = (options, callBack) =>
+{
+    const mobileOptions = [];
+    mapMobileOptions(options, mobileOptions, callBack);
+
+    /**
+     * This will sort the options by the mobile order.
+     */
+    return sortMobileOptions(mobileOptions);
+};
+
+/**
  * AppControl
  *
  * This will create the app control.
@@ -49,37 +104,10 @@ export class AppControl extends Component
         data.setKey(storageKey);
 
         /**
-         * This will resume the data or set the default data.
+         * This will resume the data from the local storage.
          */
-        const defaultData = {
-            ignoreHover: false,
-            pinned: false
-        };
-        data.resume(defaultData);
+        data.resume();
         return data;
-    }
-
-    /**
-     * This will get the mobile options.
-     *
-     * @returns {object}
-     */
-    getMobileOptions()
-    {
-        const options = [];
-        this.options.forEach(option =>
-        {
-            if (option.mobileOrder !== undefined)
-            {
-                options.push(option);
-            }
-        });
-
-        /**
-         * This will sort the options by the mobile order.
-         */
-        options.sort((a, b) => a.mobileOrder - b.mobileOrder);
-        return options;
     }
 
     /**
@@ -89,7 +117,9 @@ export class AppControl extends Component
      */
 	render()
 	{
-        const mobileOptions = this.getMobileOptions();
+        const callBack = this.ignoreHover.bind(this);
+        const mobileOptions = getMobileOptions(this.options, callBack);
+
 		return AppContainer(
             {
                 onState: [
@@ -107,6 +137,16 @@ export class AppControl extends Component
                 new MobileNavigation({ options: mobileOptions })
             ]
         );
+    }
+
+    /**
+     * This will ignore the hover.
+     *
+     * @returns {void}
+     */
+    ignoreHover()
+    {
+        this.state.ignoreHover = true;
     }
 
     /**

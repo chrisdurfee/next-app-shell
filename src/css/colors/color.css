@@ -46,7 +46,7 @@
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: var(--gray-30);
+    background-color: var(--base-layer);
 }
 
 ::selection {
