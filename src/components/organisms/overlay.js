@@ -1,5 +1,7 @@
+import { I } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
-import { A, Div, Img } from "../atoms/atoms.js";
+import { A, Div } from "../atoms/atoms.js";
+import { Icons } from "../icons/icons.js";
 
 /**
  * This will create an overlay back button.
@@ -11,9 +13,7 @@ const BackButton = Atom((props) =>
 {
     return Div({ class: 'back' }, [
         A({ href: props.href || '/', cache: 'backArrow' }, [
-            Img({
-                src: './images/back-arrow.svg'
-            })
+            I({ html: Icons.arrows.left})
         ])
     ]);
 });
