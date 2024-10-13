@@ -1,5 +1,4 @@
 import { Atom } from '@base-framework/base';
-import { Icon } from './icons';
 
 /**
  * This will create a button.
@@ -43,24 +42,6 @@ export const TextButton = Atom((props, children) =>
 	props.class = className;
 
 	return Button(props, children);
-});
-
-export const IconButton = Atom((props, children) =>
-{
-	let icon = props.icon;
-	return Button({ class: icon + '-icon icon-bttn outlined-bttn' }, [Icon(icon)]);
-});
-
-export const ToggleButton = IconButton({
-	icon: 'more_vert'
-});
-
-export const BackButton = IconButton({
-	icon: 'arrow_back'
-});
-
-export const CloseButton = IconButton({
-	icon: 'close'
 });
 
 /* submit button */

@@ -2,7 +2,6 @@ import { A, Br, Div, Fieldset, Form, H1, H2, Header, Input, Label, Legend, Li, N
 import { Atom } from '@base-framework/base';
 export * from "./buttons.js";
 export * from "./form.js";
-export * from "./icons.js";
 
 /**
  * This will export the base atoms.
