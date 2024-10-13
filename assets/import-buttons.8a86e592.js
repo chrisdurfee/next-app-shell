@@ -1,1 +1,0 @@
-import{q as r,m as t,y as o,$ as e,_ as s}from"./index.2f8e9f37.js";const p=r((_,a)=>t([o("Label"),t("test import"),e({src:s(()=>import("./button-group.3bbda7f3.js"),["assets/button-group.3bbda7f3.js","assets/index.2f8e9f37.js","assets/index.1cf1280c.css"])})]));export{p as default};
