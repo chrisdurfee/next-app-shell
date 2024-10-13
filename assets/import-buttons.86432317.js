@@ -1,1 +1,1 @@
-import{q as r,m as t,y as o,$ as e,_ as s}from"./index.da335d07.js";const p=r((_,a)=>t([o("Label"),t("test import"),e({src:s(()=>import("./button-group.574438e4.js"),["assets/button-group.574438e4.js","assets/index.da335d07.js","assets/index.f58b3e0a.css"])})]));export{p as default};
+import{q as r,m as t,y as o,$ as e,_ as s}from"./index.da335d07.js";const p=r((_,a)=>t([o("Label"),t("test import"),e({src:s(()=>import("./button-group.574438e4.js"),["assets/button-group.574438e4.js","assets/index.da335d07.js","assets/index.f3cef623.css"])})]));export{p as default};
