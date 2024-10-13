@@ -2,9 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('animation.css');
 @import url('base.css');
-
 @import url('text/text.css');
 @import url('colors/color.css');
 @import url('layout.css');
@@ -14,6 +12,8 @@
 
 /* molecules */
 @import url('components/molecules/molecules.css');
+@import url('components/molecules/mobile-header.css');
+@import url('components/molecules/app-navigation.css');
 
 /* organisms */
 @import url('components/organisms/navigation.css');

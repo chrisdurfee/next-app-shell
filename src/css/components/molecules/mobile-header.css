@@ -1,0 +1,18 @@
+.mobile-header {
+	padding-bottom: 12px;
+	padding-top: calc(12px + env(safe-area-inset-top));
+	height: calc(48px + env(safe-area-inset-top));
+	transition: all .2s;
+}
+.mobile-header.hide-header {
+	top: -48px;
+	pointer-events: none;
+}
+.mobile-header > * {
+	opacity: 1;
+	transition: opacity .2s;
+}
+.mobile-header.hide-header > * {
+	opacity: 0;
+	pointer-events: none;
+}

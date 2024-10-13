@@ -1,6 +1,6 @@
 import { Button, Dialog, Div, Footer, H2, Header } from "@base-framework/atoms";
 import { Builder, Component } from "@base-framework/base";
-import "../../css/components/molecules/modal.css";
+import "../../css/components/molecules/modals/modal.css";
 import { Icons } from "../icons/icons";
 
 /**

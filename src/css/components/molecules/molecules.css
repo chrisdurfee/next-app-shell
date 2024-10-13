@@ -1,3 +1,10 @@
+/*
+ * Logo
+ */
+a.logo {
+	background-color: var(--primary-color);
+}
+
 .card {
     padding: 20px;
     border-radius: 4px;

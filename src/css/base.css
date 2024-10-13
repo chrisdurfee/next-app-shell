@@ -9,6 +9,9 @@ html {
 	box-sizing: border-box;
 }
 
+/**
+ * Reset the default styles
+ */
 a,
 button {
 	outline: 0;
@@ -20,114 +23,21 @@ a:active {
 	text-decoration: none;
 }
 
+/*
+ * This will set the app padding to support the safe area.
+ */
 .app-container {
 	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
+/**
+ * This will set the app padding bottom on partrait
+ * to support the safe area.
+ */
 @media (max-width: 1024px) and (orientation: portrait) {
 
 	.app-container {
 		bottom: -1px;
 		padding-bottom: calc(56px + env(safe-area-inset-bottom));
 	}
-}
-
-.app-nav-container:not(.pinned):hover:after {
-	position: absolute;
-	width: 2px;
-	content: '';
-	top: 0;
-	bottom: 0;
-	right: -2px;
-	border-right: 2px solid var(--base-border);
-	z-index: 40;
-}
-
-.app-nav-container.ignoreHover,
-.app-nav-container.ignoreHover * {
-	pointer-events: none !important;
-}
-
-.app-nav-container.ignoreHover,
-.app-nav-container.ignoreHover * {
-	pointer-events: none !important;
-}
-
-@media (min-width: 768px) and (orientation: landscape) {
-	.app-container {
-		padding-left: env(safe-area-inset-left);
-		padding-right: env(safe-area-inset-right);
-	}
-}
-
-@media (min-width: 1024px) {
-
-	.app-nav-container {
-		transition: width .2s;
-	}
-
-	.app-nav-container .main-navigation {
-		transition: width .2s .1s ease-in-out;
-		will-change: width;
-	}
-}
-
-a.logo {
-	background-color: var(--primary-color);
-}
-
-.app-nav-container:not(.ignoreHover):hover .main-navigation,
-.app-nav-container.pinned .main-navigation {
-	transition: width .2s ease-in-out;
-}
-
-/**
- * This will remove the shadow when the navigation is pinned
- */
-.app-nav-container:not(.ignoreHover):not(.pinned):hover .main-navigation {
-	box-shadow: var(--nav-shadow-hover);
-}
-
-.app-nav-container .navigation:not(.sub) .option .label {
-	opacity: 0;
-}
-
-.app-nav-container:hover .navigation:not(.sub) .option .label {
-	opacity: 1;
-	transition: opacity .3s ease-in;
-}
-
-.app-nav-container .navigation-group h2 {
-	display: none;
-}
-
-.app-nav-container .navigation .child-group .sub {
-	margin-left: 0;
-}
-
-.app-nav-container:hover .navigation-group h2 {
-	opacity: .6;
-}
-
-.navigation.sub.active~.active-panel-container:after {
-	opacity: 1;
-}
-
-.mobile-header {
-	padding-bottom: 12px;
-	padding-top: calc(12px + env(safe-area-inset-top));
-	height: calc(48px + env(safe-area-inset-top));
-	transition: all .2s;
-}
-.mobile-header.hide-header {
-	top: -48px;
-	pointer-events: none;
-}
-.mobile-header > * {
-	opacity: 1;
-	transition: opacity .2s;
-}
-.mobile-header.hide-header > * {
-	opacity: 0;
-	pointer-events: none;
 }
