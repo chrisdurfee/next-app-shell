@@ -1,4 +1,4 @@
-import { Button, Dialog, Div, Footer, H2, Header, Span } from "@base-framework/atoms";
+import { Button, Dialog, Div, Footer, H2, Header } from "@base-framework/atoms";
 import { Builder, Component } from "@base-framework/base";
 import "../../css/components/molecules/modal.css";
 import { Icons } from "../icons";
@@ -29,11 +29,9 @@ export class Modal extends Component
 			}}, [
 			Div({ class: 'modal-content flex flex-auto flex-col' }, [
 				Header({ class: 'modal-header flex items-center' }, [
-					Span([
-						Button({ class: 'bttn-icon mr-2', click: () => this.close() }, {
-							html: Icons.arrows.left
-						})
-					]),
+					Button({ class: 'bttn-icon mr-2 p-0 bg-transparent hover:bg-transparent', click: () => this.close() }, {
+						html: Icons.arrows.left
+					}),
 					H2({ class: 'modal-title m-0' }, 'Modal Title')
 				]),
 				Div({ class: 'modal-body flex flex-auto' }, 'Modal Body'),

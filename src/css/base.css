@@ -67,7 +67,7 @@ button {
 }
 
 a.logo {
-	background: #9db3c5;
+	background-color: var(--primary-color);
 }
 
 .app-nav-container:not(.ignoreHover):hover .main-navigation,
