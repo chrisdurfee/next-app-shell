@@ -54,7 +54,15 @@ export class AppShell extends Component
 	{
 		return AppContainer([
 			MobileHeader(),
+
+			/**
+			 * This will add the desktop and mobile navigation.
+			 */
 			new AppControl({ options: this.options }),
+
+			/**
+			 * This will add the active panel container that will hold the main body.
+			 */
 			ActivePanelContainer({
 				switch: this.routes,
 				cache: 'mainBody'
