@@ -225,68 +225,6 @@ a.card {
     margin-left: 4px;
     border-left: 5px solid var(--primary-color);
 }
-.modal {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    max-width: 646px;
-    margin: 0 auto;
-    padding: 24px 40px;
-    border-radius: 4px;
-    animation: popIn .2s;
-}
-.modal-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 32px;
-}
-.modal-header > i {
-    padding: 12px;
-    border-radius: 50%;
-    margin-right: 16px;
-}
-.modal-header h4 {
-    line-height: 2;
-    margin: 0;
-}
-.modal-header > .controls {
-    line-height: 1;
-    margin-left: auto;
-}
-.modal-header .close{
-	overflow: visible;
-}
-.modal-header .close:after {
-    content: '';
-    position: absolute;
-    height: 40px;
-    width: 40px;
-    top: -8px;
-    left: -8px;
-    border-radius: 50%;
-    background-color: inherit;
-}
-.modal-footer {
-    text-align: right;
-    margin-top: 32px;
-}
-.modal-footer button {
-    text-align: center;
-    margin-left: 8px;
-}
-.modal-footer .left-button {
-    float: left;
-    margin-left: 0;
-    margin-right: auto;
-}
-@supports (display: flex) {
-    .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-    }
-}
 
 /* Alerts */
 .notification-container {

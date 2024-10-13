@@ -540,25 +540,6 @@ a.card:hover {
     background-color: #2C90EE;
 }
 
-/* Modals */
-.shadow {
-    background-color: #2D3240;
-}
-
-.modal {
-    background-color: var(--base-primary);
-}
-
-.modal-header>i {
-    background-color: rgba(107, 152, 242, 0.1);
-    color: var(--primary-color);
-}
-
-.modal.critical .modal-header>i {
-    background-color: rgba(245, 97, 102, 0.1);
-    color: #F56166;
-}
-
 .critical .bttn {
     background-color: #F56166;
 }

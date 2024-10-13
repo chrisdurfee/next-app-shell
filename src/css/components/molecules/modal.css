@@ -25,24 +25,14 @@
 }
 
 .modal {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    flex-direction: column;
-    width: 100%;
-    max-width: 646px;
     height: 100%;
     max-height: 80vh;
-    margin: 0 auto;
-    padding: 32px 64px;
     color: inherit;
     border-radius: 8px;
     animation: popIn .2s;
     overflow: hidden;
     word-break: break-word;
-    border: none;
+    padding: env(safe-area-inset-top) 64px env(safe-area-inset-bottom) 64px;
     background-color: var(--base-primary);
 }
 
@@ -83,8 +73,12 @@
     right: 0;
     bottom: 0;
     max-height: 100vh;
-    padding: 16px 24px;
+    padding: calc(16px + env(safe-area-inset-top)) 24px calc(16px + env(safe-area-inset-bottom));
     margin-right: 0;
     border-radius: 0;
     animation-name: pullRightIn;
+}
+
+.modal header h2 {
+    font-size: 24px;
 }
