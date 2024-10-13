@@ -34,7 +34,7 @@ a:active {
  * This will set the app padding bottom on partrait
  * to support the safe area.
  */
-@media (max-width: 1024px) and (orientation: portrait) {
+@media (max-width: 640px) and (orientation: portrait) {
 
 	.app-container {
 		bottom: -1px;
