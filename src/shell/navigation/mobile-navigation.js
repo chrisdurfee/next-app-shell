@@ -16,7 +16,7 @@ const MobileLink = (props) => (
             exact: props.exact || false,
         },
         [
-            I({ class: 'rounded-md flex items-center justify-center', html: props.icon }),
+            I({ class: 'flex items-center justify-center', html: props.icon }),
             Span({ class: 'text-[10px]' }, props.label)
         ])
     ])
@@ -39,8 +39,8 @@ export class MobileNavigation extends Component
 	 */
 	render()
 	{
-		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full sm:hidden' }, [
-			Ul({ class: 'flex flex-auto m-0 p-0 list-none', map: [this.options, MobileLink] })
+		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden' }, [
+			Ul({ class: 'flex flex-auto m-0 p-0 list-none md:flex-col', map: [this.options, MobileLink] })
 		]);
 	}
 }

@@ -63,25 +63,6 @@ a {
     color: inherit;
 }
 
-a:not([class]) {
-    color: #747B87;
-}
-
-a:hover {
-    color: #747B87;
-    text-decoration: underline;
-}
-
-a:focus {
-    color: #747B87;
-    text-decoration: underline;
-}
-
-a:active {
-    color: #555C6C;
-    text-decoration: underline;
-}
-
 hr {
     border-color: var(--base-border);
 }
