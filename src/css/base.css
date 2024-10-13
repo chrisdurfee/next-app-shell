@@ -115,7 +115,13 @@ a.logo {
 }
 .mobile-header.hide-header {
 	top: -48px;
-	top: calc(-48px - env(safe-area-inset-bottom));
+	pointer-events: none;
+}
+.mobile-header > * {
+	opacity: 1;
+	transition: opacity .2s;
+}
+.mobile-header.hide-header > * {
 	opacity: 0;
 	pointer-events: none;
 }
