@@ -30,8 +30,7 @@ export class NavButtonLink extends Component
 			],
 			click: () =>
 			{
-				const value = !state.get('active');
-				state.set('active', value);
+				state.toggle('active');
 
 				if (!this.checkCallBack)
 				{

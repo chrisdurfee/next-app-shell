@@ -1,7 +1,7 @@
 import { Component } from "@base-framework/base";
-import { Ul } from "../../atoms/atoms.js";
+import { Nav, Ul } from "../../atoms/atoms.js";
 import { MainLink } from "./main-link.js";
-import { Nav, NavigationGroup } from "./navigation-atoms.js";
+import { NavigationGroup } from "./navigation-atoms.js";
 
 /**
  * Navigation

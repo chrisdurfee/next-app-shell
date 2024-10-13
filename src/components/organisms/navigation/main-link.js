@@ -3,7 +3,6 @@ import { Atom, Component, NavLink } from '@base-framework/base';
 import { Label } from '../../atoms/atoms.js';
 import { NavButtonLink } from './nav-button-link.js';
 
-
 /**
  * This will create a navigation option.
  *
@@ -11,7 +10,7 @@ import { NavButtonLink } from './nav-button-link.js';
  * @param {array} children
  * @returns {object}
  */
-const Option = Atom(({ options, click }, children) =>
+const Li = Atom(({ options, click }, children) =>
 {
 	const settings = {
 		class: `min-w-[48px] rounded-md option${options ? ' sub' : ''}`,
@@ -26,9 +25,28 @@ const Option = Atom(({ options, click }, children) =>
 });
 
 /**
+ * This will get the link content.
+ *
+ * @param {string} label
+ * @param {string} icon
+ * @returns {array}
+ */
+const LinkContent = (label, icon = null) => [
+	icon && I({
+		class: 'icon rounded-md flex items-center justify-center',
+		onState: ['selected', {
+			selected: true
+		}],
+		html: icon
+	}),
+	Label({ class: 'label' }, label)
+];
+
+/**
  * MainLink
  *
  * This will setup a navigation link.
+ *
  * @class
  */
 export class MainLink extends Component
@@ -42,35 +60,11 @@ export class MainLink extends Component
 	 */
 	render()
 	{
-		return Option(
-			{
-				options: this.options,
-				click: !this.options && this.callBack
-			},
-			[
+		const click = !this.options && this.callBack;
+		return Li({ options: this.options, click }, [
 				this.addLink()
 			]
 		);
-	}
-
-	/**
-	 * This will get the children.
-	 *
-	 * @returns {array}
-	 * @protected
-	 */
-	getLinkChildren()
-	{
-		return [
-			this.icon && I({
-				class: 'icon rounded-md flex items-center justify-center',
-				onState: ['selected', {
-					selected: true
-				}],
-				html: this.icon
-			}),
-			Label({ class: 'label' }, this.label)
-		];
 	}
 
 	/**
@@ -81,7 +75,7 @@ export class MainLink extends Component
 	 */
 	addLink()
 	{
-		const children = this.getLinkChildren();
+		const children = LinkContent(this.label, this.icon);
 
 		if (this.href)
 		{

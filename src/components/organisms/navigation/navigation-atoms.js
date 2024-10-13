@@ -14,19 +14,3 @@ export const NavigationGroup = Atom(({ map }, children) =>
 		H2(children)
 	]);
 });
-
-/**
- * This will return a navigation.
- *
- * @param {object} props
- * @param {object} children
- * @returns {object}
- */
-export const Nav = Atom((props, children) =>
-{
-	return {
-		tag: 'nav',
-		...props,
-		children
-	};
-});
