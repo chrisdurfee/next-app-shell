@@ -1,6 +1,6 @@
 import { Atom } from "@base-framework/base";
 import { A, Div } from "../../components/atoms/atoms.js";
-import { Icons } from "../../components/icons.js";
+import { Icons } from "../../components/icons/icons.js";
 
 /**
  * This will create a logo.

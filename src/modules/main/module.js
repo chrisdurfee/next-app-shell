@@ -1,4 +1,4 @@
-import { Icons } from '../../components/icons.js';
+import { Icons } from '../../components/icons/icons.js';
 import { Module } from '../module.js';
 import { MainAsideBsidePage } from './js/components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './js/components/pages/main-bside-page.js';
