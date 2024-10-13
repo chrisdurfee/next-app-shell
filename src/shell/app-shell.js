@@ -122,7 +122,8 @@ export class AppShell extends Component
 		{
 			this.state.hideHeader = true;
 		}
-		else if (currentScroll <= HEADER_HEIGHT || currentScroll < this.prevScroll) {
+		else if (currentScroll <= HEADER_HEIGHT || currentScroll < this.prevScroll)
+		{
 			this.state.hideHeader = false;
 		}
 
