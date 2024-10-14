@@ -17,6 +17,13 @@
     padding: env(safe-area-inset-top) 64px env(safe-area-inset-bottom) 64px;
     background-color: var(--base-primary);
 }
+.modal.large,
+.modal.xl {
+    top: 0;
+    bottom: 0;
+    max-height: 100vh;
+    padding: calc(16px + env(safe-area-inset-top)) 24px calc(16px + env(safe-area-inset-bottom));
+}
 
 .modal.right,
 .modal.left {

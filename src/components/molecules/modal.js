@@ -50,9 +50,9 @@ export class Modal extends Component
 			case 'md':
 				return 'max-w-[646px]';
 			case 'lg':
-				return 'max-w-[646px]';
+				return 'large max-w-[646px]';
 			case 'xl':
-				return 'max-w-[646px]';
+				return 'xl max-w-[646px]';
 			default:
 				return 'max-w-[646px]';
 		}
