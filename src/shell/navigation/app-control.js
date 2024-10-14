@@ -174,6 +174,11 @@ export class AppControl extends Component
 
 		return {
             ignoreHover: false,
+
+            /**
+             * This will add a callback to store the pinned state
+             * in the local storage when it changes.
+             */
             pinned: {
                 state: false,
                 callBack: () => this.state.store()
