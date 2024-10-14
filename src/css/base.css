@@ -41,3 +41,20 @@ a:active {
 		padding-bottom: calc(56px + env(safe-area-inset-bottom));
 	}
 }
+
+.active-panel-container {
+	padding-left: env(safe-area-inset-left);
+	padding-right: env(safe-area-inset-right);
+}
+
+@media (min-width: 768px) and (orientation: landscape) {
+
+	.app-container {
+		padding-left: env(safe-area-inset-left);
+		padding-right: env(safe-area-inset-right);
+	}
+	.active-panel-container {
+		padding-left: calc(64px + env(safe-area-inset-left));
+		padding-right: env(safe-area-inset-right);
+	}
+}
