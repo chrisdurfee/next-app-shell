@@ -46,15 +46,13 @@ export class Modal extends Component
 		switch (this.size)
 		{
 			case 'sm':
-				return 'max-w-[646px]';
-			case 'md':
-				return 'max-w-[646px]';
+				return 'small max-w-[646px]';
 			case 'lg':
 				return 'large max-w-[646px]';
 			case 'xl':
 				return 'xl max-w-[646px]';
 			default:
-				return 'max-w-[646px]';
+				return 'medium max-w-[646px]';
 		}
 	}
 
