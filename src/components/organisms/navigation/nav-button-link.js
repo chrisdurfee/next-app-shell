@@ -20,6 +20,7 @@ export class NavButtonLink extends Component
 		const state = this.state;
 
 		return {
+			class: this.class || '',
 			onState: [
 				['selected', {
 					selected: true

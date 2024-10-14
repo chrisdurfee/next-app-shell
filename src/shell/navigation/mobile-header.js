@@ -22,7 +22,7 @@ const Logo = Atom((props, children) => (
  * @returns {object}
  */
 export const MobileHeader = (props = {}) => (
-    Header({ class: 'mobile-header flex flex-row justify-between sm:hidden px-[12px] fixed top-0 left-0 right-0 z-10 base-primary', onState: ['hideHeader', { 'hide-header': true }]}, [
+    Header({ class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 base-primary transition-all duration-200', onState: ['hideHeader', { 'hide-header': true }]}, [
         Logo({
             src: props.src || '/images/logo.svg'
         })

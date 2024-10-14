@@ -1,12 +1,3 @@
-/* .app-nav-container .navigation {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	bottom: 0;
-	overflow-y: auto;
-	overflow-x: hidden;
-} */
-
 .app-nav-container .navigation:not(.sub) {
 	top: 80px;
 }
@@ -15,62 +6,39 @@
 	transition-duration: .4s !important;
 }
 
-.navigation ul {
-	list-style: none;
-	margin: 0;
-}
-
 .navigation li.option {
-	position: relative;
-	width: auto;
 	height: 44px;
-	line-height: 40px;
-	text-align: left;
 	font-size: 18px;
-	font-weight: 500;
-	border: none;
-	cursor: pointer;
-	padding: 0px;
-	overflow: hidden;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	-webkit-transition: background .1s ease-in;
-	transition: background .1s ease-in;
 }
 
 .navigation li.option a,
 .navigation li.option>div {
-	display: block;
 	height: 44px;
 	text-transform: none;
-}
-
-.navigation li.option,
-.navigation li.option a,
-.navigation li.option>div {
-	color: inherit;
 }
 
 .navigation li.option.sub>*.active:before {
 	transform: rotate(180deg);
 }
 
-.app-nav-container .navigation.sub .option > a.selected:before {
-    content: '';
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    top: calc(50% - 3px);
-    left: 21px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    z-index: 0;
-}
-.app-nav-container .navigation.sub .option .label {
-    margin: 0 0 0 61px;
+.app-nav-container .navigation.sub .option>a.selected:before {
+	content: '';
+	position: absolute;
+	width: 6px;
+	height: 6px;
+	top: calc(50% - 3px);
+	left: 21px;
+	background-color: var(--primary-color);
+	border-radius: 50%;
+	z-index: 0;
 }
 
-.navigation li.option:hover {
+.app-nav-container .navigation.sub .option .label {
+	margin: 0 0 0 61px;
+}
+
+.navigation li.option:hover,
+.navigation li.option:active {
 	background-color: var(--base-raised);
 }
 
@@ -80,26 +48,8 @@
 	box-shadow: none;
 }
 
-.navigation li.option:active {
-	background: var(--base-raised);
-}
-
-.navigation li.option .icon,
-.navigation li.option .label {
-	position: relative;
-	height: 44px;
-	line-height: 40px;
-	float: left;
-	z-index: 5;
-}
-
-.navigation li.option .icon {
-	width: 48px;
-	background: no-repeat center;
-	background-size: 26%;
-}
-
 .navigation li .icon.selected,
+.navigation li i.selected,
 .mobile-navigation .active i {
 	color: var(--primary-color);
 }
@@ -113,13 +63,10 @@
 }
 
 .navigation li.option .label {
-	width: auto;
-	font-size: 14px;
-	font-weight: 500;
+	font-weight: 400;
 	letter-spacing: 0.25px;
 	margin-left: 30px;
 	opacity: 1;
-	cursor: pointer;
 	transition: opacity .3s ease-in;
 }
 
@@ -143,31 +90,6 @@
 	background-color: var(--base-raised);
 }
 
-.drawer .navigation li.option {
-	height: 40px;
-	line-height: 40px;
-}
-
-.drawer .navigation li.option a,
-.drawer .navigation li.option>div {
-	height: 40px;
-}
-
-.drawer .navigation li.option .icon,
-.drawer .navigation li.option .label {
-	height: 40px;
-	line-height: 40px;
-}
-
-.drawer .navigation li.option .label {
-	margin-left: 16px;
-}
-
-/* .drawer .navigation li.option>*.selected:after,
-.drawer .navigation:hover li.option>*.selected:after {
-	height: 42px;
-} */
-
 .aside-container .drawer h2 {
 	font-size: 12px;
 	letter-spacing: 0.25px;
@@ -176,11 +98,7 @@
 	margin: 0;
 }
 
-.app-nav-container .navigation .option.sub > *:before {
-	opacity: 0;
-}
-
-.navigation .option.sub > *:before {
+.navigation .option.sub>*:before {
 	content: '';
 	position: absolute;
 	width: 12px;
@@ -193,18 +111,6 @@
 	transition: transform .2s ease, opacity .2s .2s ease;
 }
 
-.app-nav-container:hover .navigation .option.sub > *:before,
-.app-nav-container.pinned .navigation .option.sub > *:before {
-    opacity: 1;
-}
-
-@media (max-width: 640px) {
-	.app-nav-container {
-		height: calc(56px + env(safe-area-inset-bottom));
-		padding-bottom: env(safe-area-inset-bottom);
-	}
-}
-
 .navigation .child-group>li.option>*:after {
 	content: unset;
 }
@@ -213,24 +119,12 @@
 	display: none;
 }
 
-.navigation li.option.sub~.navigation.sub.active {
-	display: block;
-}
-
 .child-group .navigation.sub {
 	margin: 4px 0 4px 16px;
 }
 
 .child-group .navigation.sub .option {
 	border-left: 1px solid var(--border-color);
-}
-
-.app-nav-container:hover .navigation li.option.sub>.active {
-	background-color: var(--base-raised);
-}
-
-.app-nav-container:hover .navigation.sub li.option.sub>.active {
-	background-color: rgba(0, 40, 80, .04);
 }
 
 .navigation li.option .selected .icon,

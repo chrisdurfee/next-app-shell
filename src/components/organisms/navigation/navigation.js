@@ -25,7 +25,7 @@ export class Navigation extends Component
 
 		return Nav({ class: `navigation` }, [
 			Ul({
-				class: 'relative group flex flex-col gap-2 py-2 px-2',
+				class: 'relative group flex flex-col gap-2 py-2 px-2 list-none m-0',
 				map
 			}),
 			...this.addSubs()

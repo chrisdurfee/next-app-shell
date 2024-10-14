@@ -19,12 +19,21 @@
 	pointer-events: none !important;
 }
 
+@media (max-width: 640px) {
+
+	.app-nav-container {
+		height: calc(56px + env(safe-area-inset-bottom));
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+}
+
 @media (min-width: 768px) and (orientation: landscape) {
 
 	.app-container {
 		padding-left: env(safe-area-inset-left);
 		padding-right: env(safe-area-inset-right);
 	}
+
 	.app-nav-container {
 		padding-left: env(safe-area-inset-left);
 	}
@@ -42,6 +51,11 @@
 	}
 }
 
+.app-nav-container:hover .navigation .option.sub>*:before,
+.app-nav-container.pinned .navigation .option.sub>*:before {
+	opacity: 1;
+}
+
 .app-nav-container:not(.ignoreHover):hover .main-navigation,
 .app-nav-container.pinned .main-navigation {
 	transition: width .2s ease-in-out;
@@ -52,6 +66,10 @@
  */
 .app-nav-container:not(.ignoreHover):not(.pinned):hover .main-navigation {
 	box-shadow: var(--nav-shadow-hover);
+}
+
+.app-nav-container:hover .navigation li.option.sub>.active {
+	background-color: var(--base-raised);
 }
 
 .app-nav-container .navigation:not(.sub) .option .label {
@@ -75,6 +93,10 @@
 	opacity: .6;
 }
 
-.navigation.sub.active~.active-panel-container:after {
+.app-nav-container .navigation.sub.active~.active-panel-container:after {
 	opacity: 1;
+}
+
+.app-nav-container .navigation .option.sub>*:before {
+	opacity: 0;
 }
