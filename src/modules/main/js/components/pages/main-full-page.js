@@ -109,41 +109,48 @@ export const MainFullPage = () => (
 			P({ class: 'px-4' }, 'This will test the deep data binding [[other.name]]'),
 
 			Div({ class: 'flex flex-row justify-center items-center' }, [
-				P({ class: 'px-4' }, 'Modal Test'),
-					Div({ class: 'flex flex-auto flex-row p-1'}, [
+				P({ class: 'px-4 whitespace-nowrap' }, 'Modal Test'),
+					Div({ class: 'flex flex-auto flex-row p-1 flex-wrap'}, [
 						Button({
 							text: 'Large',
-							class: 'mx-2',
+							class: 'm-2',
 							click: () => new Modal({
 								size: 'lg'
 							}).open()
 						}),
 						Button({
 							text: 'Small',
-							class: 'mx-2',
+							class: 'm-2',
 							click: () => new Modal({
 								size: 'sm'
 							}).open()
 						}),
 						Button({
 							text: 'Medium',
-							class: 'mx-2',
+							class: 'm-2',
 							click: () => new Modal({
 								size: 'md'
 							}).open()
 						}),
 						Button({
 							text: 'Extra Large',
-							class: 'mx-2',
+							class: 'm-2',
 							click: () => new Modal({
 								size: 'xl'
 							}).open()
 						}),
 						Button({
 							text: 'Right',
-							class: 'mx-2',
+							class: 'm-2',
 							click: () => new Modal({
 								type: 'right'
+							}).open()
+						}),
+						Button({
+							text: 'Left',
+							class: 'm-2',
+							click: () => new Modal({
+								type: 'left'
 							}).open()
 						})
 					])
