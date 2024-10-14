@@ -20,7 +20,8 @@ export class Modal extends Component
 	 */
 	render()
 	{
-		return Dialog({ class: 'modal right shadow-xl fixed top-[10vh] left-0 right-0 m-auto z-20 flex flex-col w-full max-w-[646px] base-primary border-none', click: (event) =>
+		const className = this.getModalClass();
+		return Dialog({ class: `modal shadow-xl fixed top-[10vh] m-auto z-20 flex flex-col w-full base-primary border-none ${className}`, click: (event) =>
 			{
 				if (event.target === this.panel)
 				{
@@ -38,6 +39,41 @@ export class Modal extends Component
 				Footer({ class: 'modal-footer flex' }, 'Modal Footer')
 			])
 		]);
+	}
+
+	getSizeClass()
+	{
+		switch (this.size)
+		{
+			case 'sm':
+				return 'max-w-[646px]';
+			case 'md':
+				return 'max-w-[646px]';
+			case 'lg':
+				return 'max-w-[646px]';
+			case 'xl':
+				return 'max-w-[646px]';
+			default:
+				return 'max-w-[646px]';
+		}
+	}
+
+	getTypeClass()
+	{
+		switch (this.type)
+		{
+			case 'right':
+				return 'right right-0';
+			case 'left':
+				return 'left left-0';
+			default:
+				return '';
+		}
+	}
+
+	getModalClass()
+	{
+		return this.getSizeClass() + ' ' + this.getTypeClass();
 	}
 
 	open()

@@ -1,3 +1,4 @@
+import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { Button, P } from "../../../../../components/atoms/atoms.js";
 import { Modal } from '../../../../../components/molecules/modal.js';
@@ -106,11 +107,47 @@ export const MainFullPage = () => (
 		FullProps(),
 		[
 			P({ class: 'px-4' }, 'This will test the deep data binding [[other.name]]'),
-			Button({
-				text: 'Test Modal',
-				class: 'mx-4',
-				click: () => new Modal().open()
-			}),
+
+			Div({ class: 'flex flex-row justify-center items-center' }, [
+				P({ class: 'px-4' }, 'Modal Test'),
+					Div({ class: 'flex flex-auto flex-row p-1'}, [
+						Button({
+							text: 'Large',
+							class: 'mx-2',
+							click: () => new Modal({
+								size: 'lg'
+							}).open()
+						}),
+						Button({
+							text: 'Small',
+							class: 'mx-2',
+							click: () => new Modal({
+								size: 'sm'
+							}).open()
+						}),
+						Button({
+							text: 'Medium',
+							class: 'mx-2',
+							click: () => new Modal({
+								size: 'md'
+							}).open()
+						}),
+						Button({
+							text: 'Extra Large',
+							class: 'mx-2',
+							click: () => new Modal({
+								size: 'xl'
+							}).open()
+						}),
+						Button({
+							text: 'Right',
+							class: 'mx-2',
+							click: () => new Modal({
+								type: 'right'
+							}).open()
+						})
+					])
+			]),
 			GridContainer()
 		]
 	)
