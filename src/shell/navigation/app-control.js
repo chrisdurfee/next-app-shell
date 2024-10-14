@@ -156,10 +156,8 @@ export class AppControl extends Component
         window.clearTimeout(this.timer);
 
         const DELAY_MILLISECONDS = 400;
-        this.timer = window.setTimeout(() =>
-        {
-            this.state.ignoreHover = false;
-        }, DELAY_MILLISECONDS);
+        const callBack = () => this.state.ignoreHover = false;
+        this.timer = window.setTimeout(callBack, DELAY_MILLISECONDS);
     }
 
     /**
@@ -178,10 +176,7 @@ export class AppControl extends Component
             ignoreHover: false,
             pinned: {
                 state: false,
-                callBack: () =>
-                {
-                    this.state.store();
-                }
+                callBack: () => this.state.store()
             }
 		};
 	}
