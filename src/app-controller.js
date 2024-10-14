@@ -29,7 +29,7 @@ export class AppController
 	{
 		this.setupService();
 		this.setupRouter();
-		this.setupAppShell();
+		this.renderApp();
 	}
 
 	/**
@@ -88,12 +88,12 @@ export class AppController
 	}
 
 	/**
-	 * This will setup the app shell.
+	 * This will render the app.
 	 *
 	 * @protected
 	 * @returns {void}
 	 */
-	setupAppShell()
+	renderApp()
 	{
 		const { routes, links: options } = modules;
 		const main = this.appShell = new AppShell({ options, routes });
