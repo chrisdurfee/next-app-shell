@@ -1,9 +1,9 @@
 import { Icons } from '../../components/icons/icons.js';
 import { Module } from '../module.js';
-import { MainAsideBsidePage } from './js/components/pages/main-aside-bside-page.js';
-import { MainBsidePage } from './js/components/pages/main-bside-page.js';
-import { MainFullContainPage } from './js/components/pages/main-full-contain-page.js';
-import { MainFullPage } from './js/components/pages/main-full-page.js';
+import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
+import { MainBsidePage } from './components/pages/main-bside-page.js';
+import { MainFullContainPage } from './components/pages/main-full-contain-page.js';
+import { MainFullPage } from './components/pages/main-full-page.js';
 
 /**
  * This will set the routes for the module.
@@ -19,7 +19,7 @@ const routes = Module.convertRoutes(
     // Dynamically loaded route
     {
         path: '/aside/:page?/:marketing?/:label?/:name?*',
-        import: import('./js/components/pages/main-aside/main-aside-page.js'),
+        import: import('./components/pages/main-aside/main-aside-page.js'),
         title: 'Aside Example'
     }
 ]);

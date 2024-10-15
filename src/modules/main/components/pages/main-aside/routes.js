@@ -1,7 +1,7 @@
-import { Div, H1, Header } from "../../../../../../components/atoms/atoms.js";
-import { GridContainer } from '../../../../../../components/molecules/molecules.js';
-import { Overlay } from '../../../../../../components/organisms/overlay.js';
-import { Panel } from '../../../../../../components/organisms/panel.js';
+import { Div, H1, Header } from "../../../../../components/atoms/atoms.js";
+import { GridContainer } from '../../../../../components/molecules/molecules.js';
+import { Overlay } from '../../../../../components/organisms/overlay.js';
+import { Panel } from '../../../../../components/organisms/panel.js';
 
 /**
  * This will create an example overlay.

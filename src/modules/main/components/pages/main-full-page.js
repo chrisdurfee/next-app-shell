@@ -1,9 +1,9 @@
 import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { Button, P } from "../../../../../components/atoms/atoms.js";
-import { Modal } from '../../../../../components/molecules/modal.js';
-import { GridContainer } from '../../../../../components/molecules/molecules.js';
-import { FullPage } from '../../../../../components/pages/full-page.js';
+import { Button, P } from "../../../../components/atoms/atoms.js";
+import { Modal } from '../../../../components/molecules/modal.js';
+import { GridContainer } from '../../../../components/molecules/molecules.js';
+import { FullPage } from '../../../../components/pages/full-page.js';
 
 /**
  * This will get the data for the test.

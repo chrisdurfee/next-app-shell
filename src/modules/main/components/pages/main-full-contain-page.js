@@ -1,6 +1,6 @@
-import UserList from "../../../../../components/organisms/lists/user-list.js";
-import { Div } from "./../../../../../components/atoms/atoms.js";
-import { FullContainPage } from './../../../../../components/pages/full-contain-page.js';
+import UserList from "../../../../components/organisms/lists/user-list.js";
+import { Div } from "./../../../../components/atoms/atoms.js";
+import { FullContainPage } from './../../../../components/pages/full-contain-page.js';
 
 // Sample User Data (this could come from a backend or be passed as props)
 const users = [

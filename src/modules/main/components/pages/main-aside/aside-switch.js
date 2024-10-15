@@ -1,8 +1,8 @@
 import { Import } from "@base-framework/base";
-import { A, Div, H1, Header } from "../../../../../../components/atoms/atoms.js";
-import { GridContainer } from '../../../../../../components/molecules/molecules.js';
-import { InlineOverlay } from '../../../../../../components/organisms/inline-overlay.js';
-import { Panel } from '../../../../../../components/organisms/panel.js';
+import { A, Div, H1, Header } from "../../../../../components/atoms/atoms.js";
+import { GridContainer } from '../../../../../components/molecules/molecules.js';
+import { InlineOverlay } from '../../../../../components/organisms/inline-overlay.js';
+import { Panel } from '../../../../../components/organisms/panel.js';
 
 /**
  * This will create an import buttons.
@@ -16,7 +16,7 @@ const ImportButtons = () => (
 				H1({ class: 'p-4' }, 'Aside')
 			]),
 			Div({ class: 'card' }, [
-				Import({ src: import('../../../../../../components/atoms/import-buttons.js') })
+				Import({ src: import('../../../../../components/atoms/import-buttons.js') })
 			]),
 			GridContainer()
 		])
