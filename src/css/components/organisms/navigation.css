@@ -124,10 +124,6 @@
 	margin: 4px 0 4px 16px;
 }
 
-.child-group .navigation.sub .option {
-	border-left: 1px solid var(--border-color);
-}
-
 .navigation li.option .selected .icon,
 .navigation li.option .active .icon {
 	opacity: 1;

@@ -33,13 +33,13 @@ const Li = Atom(({ options, click }, children) =>
  */
 const LinkContent = (label, icon = null) => [
 	icon && I({
-		class: 'icon w-12 h-12 rounded-md flex items-center justify-center',
+		class: 'icon w-12 rounded-md flex items-center justify-center',
 		onState: ['selected', {
 			selected: true
 		}],
 		html: icon
 	}),
-	Label({ class: 'label flex flex-auto text-sm items-center' }, label)
+	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer' }, label)
 ];
 
 /**

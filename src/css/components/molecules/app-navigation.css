@@ -1,14 +1,3 @@
-.app-nav-container:not(.pinned):hover:after {
-	position: absolute;
-	width: 2px;
-	content: '';
-	top: 0;
-	bottom: 0;
-	right: -2px;
-	border-right: 2px solid var(--base-border);
-	z-index: 40;
-}
-
 .app-nav-container.ignoreHover,
 .app-nav-container.ignoreHover * {
 	pointer-events: none !important;
