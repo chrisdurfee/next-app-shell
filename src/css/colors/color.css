@@ -33,10 +33,6 @@
     background-color: var(--primary-color);
 }
 
-.shadow {
-    background-color: var(--shadow);
-}
-
 .text-color {
     color: var(--text-color);
 }

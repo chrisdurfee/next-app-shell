@@ -95,7 +95,7 @@ export const Row = Atom((props, children) =>
 export const GridPanel = Atom((props, children) =>
 {
 	let span = (props.span)? 'span-' + props.span : '';
-	props.class = 'panel ' + span;
+	props.class = 'panel rounded-xl border bg-card text-card-foreground shadow ' + span;
 
 	return Div(props, children);
 });
