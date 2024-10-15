@@ -9,8 +9,8 @@ import { AppModules } from "./module.js";
  */
 const getModuleSettings = (modules) =>
 {
-	let appRoutes = [];
-	let appLinks = [];
+	let routes = [];
+	let links = [];
 
 	modules.forEach((module) =>
 	{
@@ -19,16 +19,16 @@ const getModuleSettings = (modules) =>
 			return;
 		}
 
-		const routes = module.getRoutes() || [];
-        appRoutes.push(...routes);
+		const moduleRoutes = module.getRoutes() || [];
+        routes.push(...moduleRoutes);
 
-        const links = module.getLinks() || [];
-        appLinks.push(...links);
+        const moduleLinks = module.getLinks() || [];
+        links.push(...moduleLinks);
 	});
 
 	return {
-		routes: appRoutes,
-		links: appLinks
+		routes,
+		links
 	};
 };
 
