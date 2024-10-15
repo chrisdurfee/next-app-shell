@@ -16,15 +16,50 @@ const Logo = Atom((props, children) => (
 ));
 
 /**
+ * @type {number} prevScroll
+ */
+let prevScroll = 0;
+
+/**
+ * This will check when the document is scrolled.
+ *
+ * @returns {void}
+ */
+const scrollCheck = (e, parent) =>
+{
+    const currentScroll = window.scrollY;
+    const HEADER_HEIGHT = 48;
+
+    if (currentScroll > HEADER_HEIGHT && currentScroll > prevScroll)
+    {
+        parent.state.hideHeader = true;
+    }
+    else if (currentScroll <= HEADER_HEIGHT || currentScroll < prevScroll)
+    {
+        parent.state.hideHeader = false;
+    }
+
+    prevScroll = currentScroll;
+};
+
+/**
  * This will create the mobile header.
  *
  * @param {object} props
  * @returns {object}
  */
 export const MobileHeader = (props = {}) => (
-    Header({ class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 base-primary transition-all duration-200', onState: ['hideHeader', { 'hide-header': true }]}, [
-        Logo({
-            src: props.src || '/images/logo.svg'
-        })
-    ])
+    Header(
+        {
+            class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 base-primary transition-all duration-200',
+            addState: () => { hideHeader: false },
+            onState: ['hideHeader', { 'hide-header': true }],
+            addEvent: ['scroll', window, scrollCheck]
+        },
+        [
+            Logo({
+                src: props.src || '/images/logo.svg'
+            })
+        ]
+    )
 );

@@ -82,7 +82,7 @@ export class AppController
 	 * @param {boolean} [replace=false]
 	 * @returns {void}
 	 */
-	navigate(uri, data, replace)
+	navigate(uri, data, replace = false)
 	{
 		this.router.navigate(uri, data, replace);
 	}
@@ -98,15 +98,5 @@ export class AppController
 		const { routes, links: options } = modules;
 		const main = this.appShell = new AppShell({ options, routes });
 		Builder.render(main, document.body);
-	}
-
-	/**
-	 * This will get the main body element.
-	 *
-	 * @returns {object}
-	 */
-	getMainBody()
-	{
-		return this.appShell.getBodyPanel();
 	}
 }
