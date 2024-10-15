@@ -33,7 +33,7 @@ export class ModuleRoutes
 	 * This will check if the object is a promise.
 	 *
 	 * @param {*} obj
-	 * @returns {bool}
+	 * @returns {boolean}
 	 */
 	isPromise(obj)
 	{
@@ -46,7 +46,7 @@ export class ModuleRoutes
 	 * @param {string} uri
 	 * @param {object|string} loader
 	 * @param {string} [title]
-	 * @param {bool} [persist]
+	 * @param {boolean} [persist]
 	 * @returns {object}
 	 */
 	load(uri, loader, title, persist = true)

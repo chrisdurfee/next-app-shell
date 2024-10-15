@@ -10,35 +10,27 @@ export const AppModules = [];
  *
  * This will create a module to extend
  * to all child modules.
+ *
  * @class
  */
 export class Module
 {
 	/**
-	 * @member {string} title
-	 */
-	title = '';
-
-	/**
-	 * @member {array}
-	 */
-	routes = [];
-
-	/**
-	 * @member {array} links
-	 */
-	links = [];
-
-	/**
 	 * This will create a module.
 	 *
 	 * @param {object} settings
 	 */
-	constructor(settings = {})
+	constructor({ links, routes } = {})
 	{
-		this.title = settings.title;
-		this.links = settings.links;
-		this.routes = settings.routes;
+		/**
+		 * @member {array} links
+		 */
+		this.links = links;
+
+		/**
+		 * @member {array} links
+		 */
+		this.routes = routes;
 	}
 
 	/**
