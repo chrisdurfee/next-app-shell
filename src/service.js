@@ -8,7 +8,7 @@ const protocol = window.location.protocol.replace(':', '');
  *
  * @returns {boolean}
  */
-const isSupported = () => !('serviceWorker' in navigator) || protocol === 'http';
+const isSupported = () => ('serviceWorker' in navigator) && protocol !== 'http';
 
 /**
  * This will setup the service worker.
