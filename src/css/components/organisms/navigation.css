@@ -39,7 +39,8 @@
 }
 
 .navigation li.option:hover,
-.navigation li.option:active {
+.navigation li.option:active,
+.mobile-navigation .active i {
 	@apply bg-accent;
 }
 

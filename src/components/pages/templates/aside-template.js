@@ -12,8 +12,8 @@ import { Template } from "./template.js";
  */
 export const AsideTemplate = Atom((props, children) =>
 {
-	return Template({ class: 'body aside-container' }, [
-		Row([
+	return Template({ class: 'body aside-container flex flex-auto flex-col' }, [
+		Row({ class: 'flex flex-auto flex-wrap' }, [
 			MainColumn({ class: 'drawer control' }, [
 				props.left
 			]),

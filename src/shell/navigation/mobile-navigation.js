@@ -16,7 +16,7 @@ const MobileLink = (props) => (
             exact: props.exact || false,
         },
         [
-            I({ class: 'flex items-center justify-center', html: props.icon }),
+            I({ class: 'flex items-center justify-center py-[2px] px-3 rounded-md', html: props.icon }),
             Span({ class: 'text-[10px]' }, props.label)
         ])
     ])
