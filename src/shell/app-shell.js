@@ -1,5 +1,5 @@
 import { Main } from '@base-framework/atoms';
-import { Atom, Component } from '@base-framework/base';
+import { Atom } from '@base-framework/base';
 import { AppControl } from './navigation/app-control.js';
 import { MobileHeader } from './navigation/mobile-header.js';
 
@@ -40,33 +40,24 @@ const ActivePanelContainer = Atom((props, children) =>
  *
  * This will create the app shell.
  *
- * @class
- * @extends Component
+ * @param {object} props
+ * @returns {object}
  */
-export class AppShell extends Component
-{
-	/**
-	 * This will render the component.
-	 *
-	 * @returns {object}
-	 */
-	render()
-	{
-		return AppContainer([
-			MobileHeader(),
+export const AppShell = (props) => (
+	AppContainer([
+		MobileHeader(),
 
-			/**
-			 * This will add the desktop and mobile navigation.
-			 */
-			new AppControl({ options: this.options }),
+		/**
+		 * This will add the desktop and mobile navigation.
+		 */
+		new AppControl({ options: props.options }),
 
-			/**
-			 * This will add the active panel container that will hold the main body.
-			 */
-			ActivePanelContainer({
-				switch: this.routes,
-				cache: 'mainBody'
-			})
-		]);
-	}
-}
+		/**
+		 * This will add the active panel container that will hold the main body.
+		 */
+		ActivePanelContainer({
+			switch: props.routes,
+			cache: 'mainBody'
+		})
+	])
+);

@@ -96,7 +96,7 @@ export class AppController
 	renderApp()
 	{
 		const { routes, links: options } = modules;
-		const main = this.appShell = new AppShell({ options, routes });
+		const main = this.appShell = AppShell({ options, routes });
 		Builder.render(main, document.body);
 	}
 }
