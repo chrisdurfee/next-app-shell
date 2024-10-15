@@ -91,11 +91,10 @@
 	@apply bg-accent;
 }
 
-.aside-container .drawer h2 {
+.aside-container .drawer h4 {
 	font-size: 12px;
 	letter-spacing: 0.25px;
-	border-bottom: 1px solid var(--base-border);
-	padding: 20px 16px;
+	padding: 0 16px;
 	margin: 0;
 }
 

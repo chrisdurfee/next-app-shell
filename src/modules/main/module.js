@@ -76,14 +76,14 @@ const links =
             { label: 'enim consectetur', href: 'gallery/enim-consectetur' }
         ]
     },
-    // {
-    //     group: 'Mail',
-    //     options: [
-    //         { label: 'Inbox', href: './mail/inbox', icon: 'blank' },
-    //         { label: 'Sent', href: './mail/sent', icon: 'blank' },
-    //         { label: 'Spam', href: './mail/spam', icon: 'blank' }
-    //     ]
-    // }
+    {
+        group: 'Mail',
+        options: [
+            { label: 'Inbox', href: './mail/inbox', icon: Icons.calendar },
+            { label: 'Sent', href: './mail/sent', icon: Icons.photo },
+            { label: 'Spam', href: './mail/spam', icon: Icons.phone }
+        ]
+    }
 ];
 
 /**
