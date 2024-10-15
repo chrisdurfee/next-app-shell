@@ -29,7 +29,7 @@
 	height: 6px;
 	top: calc(50% - 3px);
 	left: 21px;
-	background-color: var(--primary-color);
+	@apply bg-primary;
 	border-radius: 50%;
 	z-index: 0;
 }
@@ -52,7 +52,7 @@
 .navigation li .icon.selected,
 .navigation li i.selected,
 .mobile-navigation .active i {
-	color: var(--primary-color);
+	@apply text-primary;
 }
 
 .navigation li.option .icon.group {
@@ -78,7 +78,7 @@
 .navigation li.option .selected .label,
 .mobile-navigation .active span,
 .navigation li.option .active .label {
-	color: var(--primary-color);
+	@apply text-primary;
 }
 
 .navigation li.option.selected,

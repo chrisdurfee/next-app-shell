@@ -39,7 +39,7 @@ const LinkContent = (label, icon = null) => [
 		}],
 		html: icon
 	}),
-	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer' }, label)
+	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer whitespace-nowrap' }, label)
 ];
 
 /**

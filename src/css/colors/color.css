@@ -9,13 +9,19 @@
     background-color: transparent;
 }
 
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+}
+
 *::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-corner {
-    background-color: var(--base-layer);
+    @apply bg-accent;
 }
 
 ::selection {
-    background-color: var(--primary-30);
+    @apply bg-accent;
 }
 
 *:not(:hover)::-webkit-scrollbar-thumb,
@@ -28,7 +34,7 @@ a {
 }
 
 hr {
-    border-color: var(--base-border);
+    @apply border;
 }
 
 
@@ -39,121 +45,16 @@ button.selected,
 button.selected:focus,
 button.selected:active {
     padding: 8px;
-    background-color: var(--primary-color);
-    color: var(--inv-text-color);
+    @apply bg-primary;
     border-radius: 4px;
 }
 
 button:hover,
 .bttn:hover {
-    background-color: var(--primary-color);
-}
-
-button::before,
-.bttn::before,
-button.selected::before {
-    background-color: var(--primary-color);
-}
-
-button svg,
-.bttn svg {
-    fill: #fff;
-    fill: var(--inv-text-color);
+    @apply bg-primary;
 }
 
 button svg path,
 .bttn svg path {
     fill: inherit;
-}
-
-.gray-bttn {
-    background-color: var(--base-layer);
-}
-
-.gray-bttn:hover {
-    background-color: var(--base-raised);
-}
-
-.gray-bttn:focus {
-    background-color: var(--base-raised);
-}
-
-.gray-bttn:active {
-    background-color: var(--base-raised);
-}
-
-.gray-bttn::before {
-    background-color: var(--base-raised);
-}
-
-.gray-bttn svg {
-    fill: #747B87;
-}
-
-.outlined-bttn {
-    background-color: rgba(255, 255, 255, 0);
-}
-
-.outlined-bttn:hover {
-    background-color: transparent;
-    border-color: var(--primary-color);
-    color: #5F8AE1;
-}
-
-.outlined-bttn:focus {
-    background-color: transparent;
-    border-color: var(--primary-color);
-    color: #5F8AE1;
-}
-
-.outlined-bttn:active {
-    background-color: transparent;
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.outlined-bttn svg {
-    fill: #747B87;
-}
-
-.outlined-bttn:hover svg,
-.outlined-bttn:focus svg,
-.outlined-bttn:active svg {
-    fill: var(--primary-color);
-}
-
-.outlined-bttn::before {
-    background-color: #B6CEFF;
-}
-
-.text-bttn {
-    background-color: rgba(255, 255, 255, 0);
-    color: var(--primary-color);
-}
-
-.text-bttn:hover {
-    background-color: var(--base-raised);
-    color: var(--primary-color);
-}
-
-.text-bttn:focus {
-    background-color: var(--base-raised);
-    color: var(--primary-color);
-}
-
-.text-bttn:active {
-    background-color: var(--base-raised);
-    color: var(--primary-color);
-}
-
-.text-bttn svg {
-    fill: var(--primary-color);
-}
-
-.text-bttn::before {
-    background-color: #B6CEFF;
-}
-
-button[class*="-bttn"] {
-    box-shadow: none;
 }

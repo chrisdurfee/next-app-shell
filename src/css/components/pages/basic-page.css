@@ -8,7 +8,6 @@
 .basic-page header h1 {
 	height: 54px;
 	line-height: 54px;
-	color: var(--text-color);
 	font-weight: 600;
 	font-size: 24px;
 	margin: 0px;
@@ -38,7 +37,7 @@
 
 .basic-page .aside-container .row .col:first-child,
 .basic-page .bside-container .row .col:last-child {
-	background: var(--base-layer);
+	@apply border;
 }
 
 .basic-page .row .col:nth-child(2) {
