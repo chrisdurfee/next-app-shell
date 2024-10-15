@@ -1,40 +1,8 @@
 @import url('./themes/light-theme.css');
 @import url('./themes/dark-theme.css');
 
-.base-primary {
-    background-color: var(--base-primary);
-}
-
-.base-sub {
-    background-color: var(--base-sub);
-}
-
-.base-layer {
-    background-color: var(--base-layer);
-}
-
-.base-raised {
-    background-color: var(--base-raised);
-}
-
-.base-border {
-    background-color: var(--base-border);
-}
-
-.base-input {
-    background-color: var(--base-input);
-}
-
-.base-input-border {
-    background-color: var(--base-input-border);
-}
-
 .primary-color {
     background-color: var(--primary-color);
-}
-
-.text-color {
-    color: var(--text-color);
 }
 
 *::-webkit-scrollbar-track {
