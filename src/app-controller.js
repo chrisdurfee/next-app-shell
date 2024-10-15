@@ -1,6 +1,7 @@
 import { Builder, router } from "@base-framework/base";
 import { Configs } from "./configs.js";
 import { modules } from "./modules/modules.js";
+import { setupServiceWorker } from "./service.js";
 import { AppShell } from "./shell/app-shell.js";
 
 /**
@@ -40,20 +41,7 @@ export class AppController
 	 */
 	setupService()
 	{
-		// service workers can only work on secure connections
-		const protocol = window.location.protocol.replace(':', '');
-		if (!('serviceWorker' in navigator) || protocol === 'http')
-		{
-			return false;
-		}
-
-		const sw = navigator.serviceWorker;
-		sw.register('./sw.js', {
-			scope: './'
-		}).then((serviceWorker) =>
-		{
-
-		});
+		setupServiceWorker();
 	}
 
 	/**
