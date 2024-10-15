@@ -52,8 +52,23 @@ export const MobileHeader = (props = {}) => (
     Header(
         {
             class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 base-primary transition-all duration-200',
+
+            /**
+             * This will add the hide header state to the parent
+             * component.
+             */
             addState: () => { hideHeader: false },
+
+            /**
+             * This will add the hide header state to element
+             * when the hide-header state is true.
+             */
             onState: ['hideHeader', { 'hide-header': true }],
+
+            /**
+             * This will check when the document is scrolled
+             * to update the hide header state.
+             */
             addEvent: ['scroll', window, scrollCheck]
         },
         [
