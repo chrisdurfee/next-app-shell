@@ -51,7 +51,7 @@ const scrollCheck = (e, parent) =>
 export const MobileHeader = (props = {}) => (
     Header(
         {
-            class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 base-primary transition-all duration-200',
+            class: 'mobile-header flex flex-row justify-between sm:hidden pb-3 px-3 fixed top-0 left-0 right-0 z-10 bg-background transition-all duration-200',
 
             /**
              * This will add the hide header state to the parent

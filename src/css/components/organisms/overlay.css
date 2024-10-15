@@ -6,7 +6,7 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    background-color: var(--base-primary);
+    @apply bg-background;
     padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) calc(64px + env(safe-area-inset-left));
     z-index: 15;
     overflow: hidden;

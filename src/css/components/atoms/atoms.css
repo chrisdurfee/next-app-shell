@@ -6,7 +6,7 @@
 	margin: 20px;
 }
 .panel{
-	background: var(--base-raised);
+	@apply bg-accent;
 	height: 180px;
 }
 .grid-container .panel:first-child{

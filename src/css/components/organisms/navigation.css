@@ -9,6 +9,7 @@
 .navigation li.option {
 	height: 44px;
 	font-size: 18px;
+	@apply transition-colors;
 }
 
 .navigation li.option a,
@@ -39,7 +40,7 @@
 
 .navigation li.option:hover,
 .navigation li.option:active {
-	background-color: var(--base-raised);
+	@apply bg-accent;
 }
 
 .navigation li.option:hover,
@@ -87,7 +88,7 @@
 }
 
 .navigation li.option .selected {
-	background-color: var(--base-raised);
+	@apply bg-accent;
 }
 
 .aside-container .drawer h2 {

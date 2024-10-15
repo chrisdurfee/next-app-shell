@@ -12,7 +12,7 @@ import { MainHeader } from "./main-header.js";
  */
 const Navigation = Atom((props, children) => ({
 	...props,
-	class: 'main-navigation nav-container hidden lg:flex flex-col h-full z-10 overscroll-none base-sub',
+	class: 'main-navigation nav-container hidden lg:flex flex-col h-full z-10 overscroll-none',
 	children
 }));
 

@@ -15,7 +15,7 @@
     overflow: hidden;
     word-break: break-word;
     padding: env(safe-area-inset-top) 64px env(safe-area-inset-bottom) 64px;
-    background-color: var(--base-primary);
+    @apply bg-background;
 }
 .modal.large,
 .modal.xl {

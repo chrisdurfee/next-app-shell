@@ -35,8 +35,6 @@
 	"dependencies": {
 		"@base-framework/atoms": "^1.0.20",
 		"@base-framework/base": "^3.0.122",
-		"class-variance-authority": "^0.7.0",
-		"clsx": "^2.1.1",
 		"lucide": "^0.453.0",
 		"tailwind-merge": "^2.5.4",
 		"tailwindcss-animate": "^1.0.7",
