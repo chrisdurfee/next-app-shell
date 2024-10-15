@@ -71,15 +71,16 @@
 	transition: opacity .3s ease-in;
 }
 
-.app-nav-container .navigation-group h2 {
-	display: none;
+.app-nav-container .navigation-group h4 {
+	opacity: 0;
+	transition: opacity .2s ease-in;
 }
 
 .app-nav-container .navigation .child-group .sub {
 	margin-left: 0;
 }
 
-.app-nav-container:hover .navigation-group h2 {
+.app-nav-container:hover .navigation-group h4 {
 	opacity: .6;
 }
 
