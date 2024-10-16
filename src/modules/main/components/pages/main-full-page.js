@@ -113,7 +113,7 @@ export const MainFullPage = () => (
 					Div({ class: 'flex flex-auto flex-row p-1 flex-wrap'}, [
 						Button({
 							text: 'Large',
-							class: 'm-1',
+							class: 'm-1 primary',
 							click: () => new Modal({
 								size: 'lg'
 							}).open()
@@ -148,7 +148,7 @@ export const MainFullPage = () => (
 						}),
 						Button({
 							text: 'Left',
-							class: 'm-1',
+							class: 'm-1 link',
 							click: () => new Modal({
 								type: 'left'
 							}).open()
