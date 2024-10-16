@@ -1,5 +1,7 @@
 import UserList from "../../../../components/organisms/lists/user-list.js";
+import { Tab } from "../../../../components/organisms/tab.js";
 import { Div } from "./../../../../components/atoms/atoms.js";
+import { Panel } from './../../../../components/organisms/panel.js';
 import { FullContainPage } from './../../../../components/pages/full-contain-page.js';
 
 // Sample User Data (this could come from a backend or be passed as props)
@@ -30,6 +32,21 @@ const users = [
 ];
 
 /**
+ * This will create a tab panel.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const TabPanel = (props) =>
+{
+    return {
+        label: props.label,
+        href: props.link,
+        component: new Panel(props.children)
+    };
+};
+
+/**
  * FullContainPage
  *
  * This will create a full page.
@@ -39,7 +56,28 @@ const users = [
 export const MainFullContainPage = () => (
 	new FullContainPage([
 		Div({ class: 'contained' }, [
-			UserList({ users })
+            new Tab({
+                class: 'h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full grid-cols-2',
+                options: [
+                    TabPanel({
+                        label: 'Story',
+                        link: 'full-contain/synopsis/story',
+                        children: 'this would tell about the story'
+                    }),
+                    TabPanel({
+                        label: 'Book',
+                        link: 'full-contain/synopsis/book',
+                        children: 'dud this come from a book?'
+                    }),
+                    TabPanel({
+                        label: 'List',
+                        link: 'full-contain/list',
+                        children: [
+                            UserList({ users })
+                        ]
+                    })
+                ]
+            })
 		])
 	])
 );

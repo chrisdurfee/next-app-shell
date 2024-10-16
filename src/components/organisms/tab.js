@@ -1,118 +1,27 @@
-import { Component, base } from "@base-framework/base";
-import { A, Div, Li, Nav, Ul } from "../atoms/atoms.js";
+import { Div, Nav, Section, Ul } from "@base-framework/atoms";
+import { Component, NavLink, router } from "@base-framework/base";
 
 /**
- * TabLink
+ * This will validate if a path is active.
  *
- * This will create a tab link component.
- * @class
+ * @param {string} path
+ * @param {string} url
+ * @returns {boolean}
  */
-export class TabLink extends Component
+const isPathActive = (path, url) => new RegExp(`${path}($|/|\\.).*`).test(url);
+
+/**
+ * This will check if a link is active.
+ *
+ * @param {object} link
+ * @param {string} url
+ * @returns {boolean}
+ */
+const isLinkActive = (link, url) =>
 {
-	/**
-	 * This will configure the link active class.
-	 *
-	 * @protected
-	 */
-	onCreated()
-	{
-		this.selectedClass = this.activeClass || 'selected';
-	}
-
-	/**
-	 * This will render the component.
-	 *
-	 * @returns {object}
-	 */
-	render()
-	{
-		const href = this.href,
-		text = this.label;
-
-		const watchers = this.setupWatchers(href, text);
-
-		const onState = {};
-		onState[this.selectedClass] = true;
-
-		return Li({ class: 'option' }, [
-			A({
-				class: this.className || null,
-				onState: ['selected', onState],
-				href: this.getString(href),
-				text: this.getString(text),
-				children: this.children,
-				watch: watchers,
-				cache: 'link'
-			})
-		]);
-	}
-
-	/**
-	 * This will get string.
-	 *
-	 * @param {string} string
-	 * @returns {(string|null)}
-	 */
-	getString(string)
-	{
-		return typeof string !== 'object'? string : null;
-	}
-
-	/**
-	 * This will setup the watchers.
-	 *
-	 * @protected
-	 * @param {string} href
-	 * @param {string} text
-	 * @returns {array}
-	 */
-	setupWatchers(href, text)
-	{
-		const watchers = [];
-
-		if (href && typeof href === 'object')
-		{
-			watchers.push(
-			{
-				attr: 'href',
-				value: href
-			});
-		}
-
-		if (text && typeof text === 'object')
-		{
-			watchers.push(
-			{
-				attr: 'text',
-				value: text
-			});
-		}
-		return watchers;
-	}
-
-	/**
-	 * This will setup the states.
-	 *
-	 * @returns {object}
-	 */
-	setupStates()
-	{
-		return {
-			selected: false
-		};
-	}
-
-	/**
-	 * This will update the link.
-	 *
-	 * @param {boolean} selected
-	 * @returns {void}
-	 */
-	update(selected)
-	{
-		this.state.set('selected', selected);
-	}
-}
+	const path = link.getLinkPath() ?? '';
+	return link.exact? (url === path) : isPathActive(path, url);
+};
 
 /**
  * TabNavigation
@@ -123,6 +32,9 @@ export class TabLink extends Component
  */
 export class TabNavigation extends Component
 {
+	/**
+	 * This will configure the links.
+	 */
 	onCreated()
 	{
 		this.links = [];
@@ -135,13 +47,14 @@ export class TabNavigation extends Component
 	 */
 	render()
 	{
-		return Nav({ class: 'tab' }, [
+		return Nav({ class: `tab ${this.class}` }, [
 			Ul({
+				map: [this.options, (option) => this.addLink(option)],
 				watch: {
-					value: ['[[path]]', base.router.data],
+					value: ['[[path]]', router.data],
 					callBack: this.updateLinks.bind(this)
 				}
-			}, this.addLinks())
+			})
 		]);
 	}
 
@@ -152,7 +65,7 @@ export class TabNavigation extends Component
 	 */
 	afterSetup()
 	{
-		const path = base.router.data.get('path');
+		const path = router.data.path;
 		this.updateLinks(path);
 	}
 
@@ -165,32 +78,20 @@ export class TabNavigation extends Component
 	updateLinks(value)
 	{
 		let check = false,
-		firstLink = null;
-		const links = this.links;
+		firstLink = this.links[0];
 
-		for (let i = 0, length = links.length; i < length; i++)
+		for (const link of this.links)
 		{
-			const link = links[i];
 			if (link.rendered === false)
 			{
 				continue;
 			}
 
-			/* we want to save the first route in the switch
-			so it can be selected if no route is active */
-			if (i === 0)
-			{
-				firstLink = link;
-			}
-
+			check = isLinkActive(link, value);
 			if (check === true)
 			{
-				this.updateLink(link, false);
-				continue;
+				break;
 			}
-
-			check = value.indexOf(link.link.pathname) !== -1;
-			this.updateLink(link, check);
 		}
 
 		if (check !== true && firstLink)
@@ -212,36 +113,20 @@ export class TabNavigation extends Component
 	}
 
 	/**
-	 * This will add the links.
-	 *
-	 * @returns {array}
-	 */
-	addLinks()
-	{
-		const links = [],
-		options = this.options || [];
-
-		for (let i = 0, length = options.length; i < length; i++)
-		{
-			const link = this.addLink(options[i]);
-			this.links.push(link);
-			links.push(link);
-		}
-		return links;
-	}
-
-	/**
 	 * This will add a link.
 	 *
 	 * @param {object} option
 	 * @returns {object}
 	 */
-	addLink(option)
+	addLink({ label: text, href })
 	{
-		return new TabLink({
-			label: option.label,
-			href: option.href
+		const link = new NavLink({
+			text,
+			href,
+			class: 'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm'
 		});
+		this.links.push(link);
+		return link;
     }
 }
 
@@ -250,6 +135,7 @@ export class TabNavigation extends Component
  *
  * This will create a tab component that can route
  * to tab panels.
+ *
  * @class
  */
 export class Tab extends Component
@@ -263,13 +149,13 @@ export class Tab extends Component
 	{
 		return Div({ class: 'tab-panel' }, [
 			new TabNavigation({
+				class: this.class,
 				options: this.options
 			}),
-			{
-				tag: 'section',
+			Section({
 				class: 'tab-content',
 				switch: this.addGroup()
-			}
+			})
 		]);
 	}
 
