@@ -96,6 +96,54 @@ const FullProps = () => (
 });
 
 /**
+ * This will create a modal button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ModalButton = ({ label, buttonStyle, size, type }) => Button({
+	text: label,
+	class: `m-1 ${buttonStyle}`,
+	click: () => new Modal({
+		size,
+		type
+	}).open()
+});
+
+const Buttons = [
+	{
+		label: 'Large',
+		buttonStyle: 'primary',
+		size: 'lg'
+	},
+	{
+		label: 'Small',
+		buttonStyle: 'secondary',
+		size: 'sm'
+	},
+	{
+		label: 'Medium',
+		buttonStyle: 'destructive',
+		size: 'md'
+	},
+	{
+		label: 'Extra Large',
+		buttonStyle: 'outline',
+		size: 'xl'
+	},
+	{
+		label: 'Right',
+		buttonStyle: 'ghost',
+		type: 'right'
+	},
+	{
+		label: 'Left',
+		buttonStyle: 'link',
+		type: 'left'
+	}
+];
+
+/**
  * MainFullPage
  *
  * This will create a main full page.
@@ -108,52 +156,12 @@ export const MainFullPage = () => (
 		[
 			P({ class: 'px-4' }, 'This will test the deep data binding [[other.name]]'),
 
-			Div({ class: 'flex flex-row justify-center items-center' }, [
-				P({ class: 'px-4 whitespace-nowrap' }, 'Modal Test'),
-					Div({ class: 'flex flex-auto flex-row p-1 flex-wrap'}, [
-						Button({
-							text: 'Large',
-							class: 'm-1 primary',
-							click: () => new Modal({
-								size: 'lg'
-							}).open()
-						}),
-						Button({
-							text: 'Small',
-							class: 'm-1 secondary',
-							click: () => new Modal({
-								size: 'sm'
-							}).open()
-						}),
-						Button({
-							text: 'Medium',
-							class: 'm-1 destructive',
-							click: () => new Modal({
-								size: 'md'
-							}).open()
-						}),
-						Button({
-							text: 'Extra Large',
-							class: 'm-1 outline',
-							click: () => new Modal({
-								size: 'xl'
-							}).open()
-						}),
-						Button({
-							text: 'Right',
-							class: 'm-1 ghost',
-							click: () => new Modal({
-								type: 'right'
-							}).open()
-						}),
-						Button({
-							text: 'Left',
-							class: 'm-1 link',
-							click: () => new Modal({
-								type: 'left'
-							}).open()
-						})
-					])
+			Div({ class: 'flex flex-row justify-center items-center rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5' }, [
+				P({ class: 'px-4 whitespace-nowrap m-0' }, 'Modal Test'),
+				Div({
+					class: 'flex flex-auto flex-row p-1 flex-wrap',
+					map: [Buttons, (button) => ModalButton(button)]
+				})
 			]),
 			GridContainer()
 		]

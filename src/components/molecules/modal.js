@@ -21,7 +21,7 @@ export class Modal extends Component
 	render()
 	{
 		const className = this.getModalClass();
-		return Dialog({ class: `modal shadow-xl fixed m-auto z-20 flex flex-col w-full bg-background border-none ${className}`, click: (event) =>
+		return Dialog({ class: `modal m-auto fixed z-50 grid w-full max-w-lg gap-4 border bg-background p-6 shadow-lg ${className}`, click: (event) =>
 			{
 				if (event.target === this.panel)
 				{
@@ -35,8 +35,11 @@ export class Modal extends Component
 					}),
 					H2({ class: 'modal-title m-0' }, 'Modal Title')
 				]),
-				Div({ class: 'modal-body flex flex-auto' }, 'Modal Body'),
-				Footer({ class: 'modal-footer flex' }, 'Modal Footer')
+				Div({ class: 'modal-body flex flex-auto' }, ''),
+				Footer({ class: 'modal-footer flex justify-between' }, [
+					Button({ class: 'bttn ghost', click: () => this.close() }, 'Cancel'),
+					Button({ class: 'bttn primary', click: () => this.close() }, 'Save')
+				])
 			])
 		]);
 	}
@@ -46,9 +49,9 @@ export class Modal extends Component
 		switch (this.size)
 		{
 			case 'sm':
-				return 'small max-w-[646px]';
+				return 'sm max-w-[646px]';
 			case 'lg':
-				return 'large max-w-[646px]';
+				return 'lg max-w-[646px]';
 			case 'xl':
 				return 'xl max-w-[646px]';
 			default:

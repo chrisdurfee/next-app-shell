@@ -15,7 +15,7 @@ const ImportButtons = () => (
 			Header([
 				H1({ class: 'p-4' }, 'Aside')
 			]),
-			Div({ class: 'card' }, [
+			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
 				Import({ src: import('../../../../../components/atoms/import-buttons.js') })
 			]),
 			GridContainer()
