@@ -113,42 +113,42 @@ export const MainFullPage = () => (
 					Div({ class: 'flex flex-auto flex-row p-1 flex-wrap'}, [
 						Button({
 							text: 'Large',
-							class: 'm-2',
+							class: 'm-1',
 							click: () => new Modal({
 								size: 'lg'
 							}).open()
 						}),
 						Button({
 							text: 'Small',
-							class: 'm-2 secondary',
+							class: 'm-1 secondary',
 							click: () => new Modal({
 								size: 'sm'
 							}).open()
 						}),
 						Button({
 							text: 'Medium',
-							class: 'm-2 destructive',
+							class: 'm-1 destructive',
 							click: () => new Modal({
 								size: 'md'
 							}).open()
 						}),
 						Button({
 							text: 'Extra Large',
-							class: 'm-2 outline',
+							class: 'm-1 outline',
 							click: () => new Modal({
 								size: 'xl'
 							}).open()
 						}),
 						Button({
 							text: 'Right',
-							class: 'm-2',
+							class: 'm-1 ghost',
 							click: () => new Modal({
 								type: 'right'
 							}).open()
 						}),
 						Button({
 							text: 'Left',
-							class: 'm-2',
+							class: 'm-1',
 							click: () => new Modal({
 								type: 'left'
 							}).open()
