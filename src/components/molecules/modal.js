@@ -30,7 +30,7 @@ export class Modal extends Component
 			}}, [
 			Div({ class: 'modal-content flex flex-auto flex-col' }, [
 				Header({ class: 'modal-header flex items-center' }, [
-					Button({ class: 'bttn-icon mr-2 p-0 bg-transparent sm:hidden hover:bg-transparent', click: () => this.close() }, {
+					Button({ class: 'bttn icon mr-2 p-0 bg-transparent sm:hidden hover:bg-transparent', click: () => this.close() }, {
 						html: Icons.arrows.left
 					}),
 					H2({ class: 'modal-title m-0' }, 'Modal Title')

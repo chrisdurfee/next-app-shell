@@ -1,4 +1,4 @@
-import { Atom, Component } from '@base-framework/base';
+import { Atom, Component, Dom } from '@base-framework/base';
 import { Button, Div, P } from '../atoms/atoms.js';
 
 /**
@@ -22,7 +22,13 @@ const Buttons = Atom((props, children) => ({
  */
 const StateButton = Atom(({ value, label }) => (
 	Button({
-		onState: ['performance', { active: value}],
+		class: 'm-1 inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow text-zinc-600 dark:text-zinc-200',
+		onState: [
+			['performance', { active: value}],
+			['performance', (state, ele) => {
+				Dom.setData(ele, 'state', state === value ? 'active' : '');
+			}]
+		],
 		click: (e, {state}) => state.performance = value
 	}, label)
 ));
