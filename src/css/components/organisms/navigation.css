@@ -73,7 +73,7 @@
 }
 
 .navigation li.option .icon~.label {
-	margin-left: 15px;
+	margin-left: 0;
 }
 
 .navigation li.option .selected .label,
