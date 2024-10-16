@@ -8,7 +8,7 @@ import { Component, NavLink, router } from "@base-framework/base";
  * @param {string} url
  * @returns {boolean}
  */
-const isPathActive = (path, url) => new RegExp(`${path}($|/|\\.).*`).test(url);
+const isPathActive = (path, url) => url.indexOf(path) !== -1;
 
 /**
  * This will check if a link is active.
@@ -20,7 +20,7 @@ const isPathActive = (path, url) => new RegExp(`${path}($|/|\\.).*`).test(url);
 const isLinkActive = (link, url) =>
 {
 	const path = link.getLinkPath() ?? '';
-	return link.exact? (url === path) : isPathActive(path, url);
+	return isPathActive(path, url);
 };
 
 /**
@@ -47,8 +47,9 @@ export class TabNavigation extends Component
 	 */
 	render()
 	{
-		return Nav({ class: `tab ${this.class}` }, [
+		return Nav({ class: `tab h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${this.class}` }, [
 			Ul({
+				class: 'flex flex-auto flex-row',
 				map: [this.options, (option) => this.addLink(option)],
 				watch: {
 					value: ['[[path]]', router.data],
@@ -82,6 +83,7 @@ export class TabNavigation extends Component
 
 		for (const link of this.links)
 		{
+			console.log(link)
 			if (link.rendered === false)
 			{
 				continue;
@@ -124,7 +126,7 @@ export class TabNavigation extends Component
 			text,
 			href,
 			dataSet: ['selected', ['state', true, 'active']],
-			class: 'inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm'
+			class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm'
 		});
 		this.links.push(link);
 		return link;

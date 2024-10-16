@@ -42,7 +42,7 @@ const TabPanel = (props) =>
     return {
         label: props.label,
         href: props.link,
-        component: new Panel(props.children)
+        component: new Panel({ class: 'p-8' }, props.children)
     };
 };
 
@@ -57,7 +57,7 @@ export const MainFullContainPage = () => (
 	new FullContainPage([
 		Div({ class: 'contained' }, [
             new Tab({
-                class: 'h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground grid w-full grid-cols-2',
+                class: 'max-w-[400px]',
                 options: [
                     TabPanel({
                         label: 'Story',
