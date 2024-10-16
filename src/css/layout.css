@@ -2,22 +2,10 @@
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    margin-left: -20px;
-}
-.row::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-@supports (display: flex) {
-    .row::after {
-        display: none;
-    }
 }
 .col {
-    float: left;
-    flex: 1 1 160px;
-    padding-left: 20px;
+    display: flex;
+    flex: 1 1 auto;
 }
 .s-1 {
     width: 8.333%;

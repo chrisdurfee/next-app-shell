@@ -12,7 +12,7 @@ import { Template } from "./template.js";
  */
 export const AsideBsideTemplate = Atom((props, children) =>
 {
-	return Template({ class: 'body aside-container bside-container' }, [
+	return Template({ class: 'body aside-container bside-container flex flex-auto flex-col' }, [
 		Row([
 			MainColumn([
 				props.left

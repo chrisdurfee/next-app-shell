@@ -50,7 +50,7 @@ export class AsidePage extends BasicPage
 	 */
 	addAside()
 	{
-		return Div([
+		return Div({ class: 'flex flex-auto flex-col' }, [
 			H1({ class: 'p-4' }, this.title),
 			this.addNavigation()
 		]);
@@ -63,12 +63,12 @@ export class AsidePage extends BasicPage
 	 */
 	addBody()
 	{
-		return [
+		return Div({ class: 'flex flex-auto flex-col' }, [
 			{
 				class: 'contained',
 				switch: this.addSwitch()
 			}
-		];
+		]);
 	}
 
 	/**

@@ -2,7 +2,7 @@
  * Logo
  */
 a.logo {
-	background-color: var(--primary-color);
+	@apply bg-primary rounded-md;
 }
 
 .card {

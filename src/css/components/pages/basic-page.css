@@ -65,5 +65,4 @@
 .basic-page .aside-container .row .col:first-child,
 .basic-page .bside-container .row .col:last-child {
 	flex-grow: 0;
-	flex-basis: 320px;
 }

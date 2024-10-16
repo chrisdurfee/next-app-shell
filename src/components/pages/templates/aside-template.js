@@ -14,7 +14,7 @@ export const AsideTemplate = Atom((props, children) =>
 {
 	return Template({ class: 'body aside-container flex flex-auto flex-col' }, [
 		Row({ class: 'flex flex-auto flex-wrap' }, [
-			MainColumn({ class: 'drawer control' }, [
+			MainColumn({ class: 'drawer control flex flex-auto w-full md:max-w-[320px]' }, [
 				props.left
 			]),
 			MainColumn([
