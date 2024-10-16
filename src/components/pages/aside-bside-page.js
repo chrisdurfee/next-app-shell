@@ -21,7 +21,7 @@ export class AsideBsidePage extends BasicPage
 	{
 		return MainSection([
 			AsideBsideTemplate({
-				center: Div({ class: 'contained' }, this.children)
+				center: Div({ class: 'contained flex flex-auto flex-col' }, this.children)
 			})
 		]);
 	}

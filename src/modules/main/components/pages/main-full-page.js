@@ -120,21 +120,21 @@ export const MainFullPage = () => (
 						}),
 						Button({
 							text: 'Small',
-							class: 'm-2',
+							class: 'm-2 secondary',
 							click: () => new Modal({
 								size: 'sm'
 							}).open()
 						}),
 						Button({
 							text: 'Medium',
-							class: 'm-2',
+							class: 'm-2 destructive',
 							click: () => new Modal({
 								size: 'md'
 							}).open()
 						}),
 						Button({
 							text: 'Extra Large',
-							class: 'm-2',
+							class: 'm-2 outline',
 							click: () => new Modal({
 								size: 'xl'
 							}).open()
