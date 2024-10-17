@@ -22,8 +22,7 @@ const TabButton = (props) =>
                     selected: props.value
                 }],
                 click: (e) => props.callBack(props.value),
-                text: props.label
-            }, props.children)
+            }, props.label)
         ]
     );
 };
