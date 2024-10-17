@@ -150,7 +150,7 @@ const getGreetingMessage = () =>
  * @returns {object}
  */
 const Greeting = () => (
-	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
+	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
 		new DynamicTime({
 			filter: () => getGreetingMessage()
 		})
@@ -163,7 +163,7 @@ const Greeting = () => (
  * @returns {object}
  */
 const BindCard = () => (
-	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
+	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
 		H2({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
 		P('This will test the deep data binding [[other.name]]')
 	])
@@ -209,8 +209,8 @@ const Buttons = [
  * @returns {object}
  */
 const ModalCard = () => (
-	Div({ class: 'flex flex-row justify-center items-center rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5' }, [
-		P({ class: 'px-4 whitespace-nowrap m-0' }, 'Modal Test'),
+	Div({ class: 'flex flex-row justify-center items-center rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
+		P({ class: 'whitespace-nowrap m-0' }, 'Modal Test'),
 		Div({
 			class: 'flex flex-auto flex-row p-1 flex-wrap',
 			map: [Buttons, (button) => ModalButton(button)]
