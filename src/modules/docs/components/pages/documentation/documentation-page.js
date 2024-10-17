@@ -1,5 +1,5 @@
 import { AsidePage } from "../../../../../components/pages/aside-page.js";
-import { ComponentSwitch } from "./component-switch.js";
+import { DocumentationSwitch } from "./documentation-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";
 
@@ -12,13 +12,13 @@ import { Routes } from "./routes.js";
 const basePath = 'docs';
 
 /**
- * ComponentPage
+ * DocumentationPage
  *
- * This will create an a component page.
+ * This will create an a documentation page.
  *
  * @returns {AsidePage}
  */
-export const ComponentPage = () => (
+export const DocumentationPage = () => (
 	new AsidePage({
 		/**
 		 * @member {string}	title
@@ -38,7 +38,7 @@ export const ComponentPage = () => (
 		/**
 		 * @member {array} switch
 		 */
-		switch: ComponentSwitch(basePath),
+		switch: DocumentationSwitch(basePath),
 
 		/**
 		 * @member {array} links
@@ -47,4 +47,4 @@ export const ComponentPage = () => (
 	})
 );
 
-export default ComponentPage;
+export default DocumentationPage;

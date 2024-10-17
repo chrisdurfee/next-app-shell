@@ -11,7 +11,7 @@ import { FullContainPage } from '../../../../components/pages/full-contain-page.
 const DocHeader = Atom(({ title, description}) => (
 	Header({ class: 'flex flex-col' }, [
 		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
-		P({ class: 'text-base text-muted-foreground py-2' }, description),
+		P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
 	])
 ));
 

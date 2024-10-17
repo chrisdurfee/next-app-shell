@@ -16,7 +16,7 @@ export const Links = (path) => ([
 		[
 			{
 				label: 'Buttons',
-				href: path + '/buttons'
+				href: `${path}/components/buttons`
 			}
 		]
 	}

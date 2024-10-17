@@ -8,7 +8,7 @@ const routes = Module.convertRoutes(
 [
     {
         path: '/docs*',
-        import: import('./components/pages/components/component-page.js'),
+        import: import('./components/pages/documentation/documentation-page.js'),
         title: 'Docs'
     }
 ]);
@@ -21,7 +21,7 @@ const routes = Module.convertRoutes(
 const links =
 [
     {
-        group: 'Getting Started',
+        group: 'Discover',
         options: [
             { label: 'Docs', href: './docs', icon: Icons.calendar }
         ]

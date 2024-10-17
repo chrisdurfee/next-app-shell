@@ -127,7 +127,7 @@ export class SubNavigation extends InlineNavigation
 		const map = this.mapOptions(this.options);
 
 		return Nav({ class: className, onState: this.onState() }, [
-			Ul([ ...map, ...this.addSubs(), this.addWatcher() ])
+			Ul({ class: 'relative group flex flex-col gap-2 py-2 px-0 list-none m-0' }, [ ...map, ...this.addSubs(), this.addWatcher() ])
 		]);
 	}
 
