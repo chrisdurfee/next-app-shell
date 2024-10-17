@@ -83,7 +83,6 @@ export class TabNavigation extends Component
 
 		for (const link of this.links)
 		{
-			console.log(link)
 			if (link.rendered === false)
 			{
 				continue;
