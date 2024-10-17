@@ -7,9 +7,10 @@ import { ButtonPage } from "../buttons/button-page.js";
  * @param {string} title
  * @returns {object}
  */
-const Page = (url, title, ButtonPage) => ({
+const Page = (url, title, page) => ({
 	uri: url,
-	component: ButtonPage()
+	title,
+	component: page()
 });
 
 /**
