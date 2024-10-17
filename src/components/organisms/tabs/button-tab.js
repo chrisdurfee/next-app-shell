@@ -7,10 +7,8 @@ import { Component } from "@base-framework/base";
  * @param {object} props
  * @returns {object}
  */
-const TabButton = (props) =>
-{
-    console.log(props)
-    return Li(
+const TabButton = (props) => (
+    Li(
         {
             class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm',
             dataSet: ['selected', ['state', props.value, 'active']],
@@ -18,14 +16,12 @@ const TabButton = (props) =>
         [
             Button({
                 class: 'flex flex-auto justify-center items-center',
-                onSet: ['selected', {
-                    selected: props.value
-                }],
+                onSet: ['selected', { selected: props.value }],
                 click: (e) => props.callBack(props.value),
             }, props.label)
         ]
-    );
-};
+    )
+);
 
 /**
  * This will add an option.
@@ -48,12 +44,11 @@ const addOption = (option, callBack) =>
  * @param {object} props
  * @returns {object}
  */
-const Navigation = (props) =>
-{
-    return Nav({ class: `tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${props.class}` }, [
+const Navigation = (props) => (
+    Nav({ class: `tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${props.class}` }, [
         Ul({ class: 'flex flex-auto flex-row', map: [props.options, (option) => addOption(option, props.callBack)] })
     ])
-};
+);
 
 /**
  * ButtonTab
@@ -153,7 +148,7 @@ export class ButtonTab extends Component
      */
     setupStates()
     {
-        let callBack = this.callBack,
+        const callBack = this.callBack,
         type = typeof callBack;
 
         return {
