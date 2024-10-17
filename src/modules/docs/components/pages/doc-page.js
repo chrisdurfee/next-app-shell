@@ -1,7 +1,7 @@
 import { Div, H1, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Panel } from '../../../../components/organisms/panel.js';
-import { Tab } from "../../../../components/organisms/tab.js";
+import { ButtonTab } from "../../../../components/organisms/tabs/button-tab.js";
 import { FullContainPage } from '../../../../components/pages/full-contain-page.js';
 
 /**
@@ -34,18 +34,18 @@ export const DocPage = Atom((props, children) => (
             H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, props.title),
             P({ class: 'text-base text-muted-foreground' }, props.description),
 
-            new Tab({
+            new ButtonTab({
                 class: 'max-w-[400px]',
                 options: [
                     TabPanel({
                         label: 'Preview',
-                        link: 'full-contain/synopsis/story',
-                        children: 'this would tell about the story'
+                        value: 'preview',
+                        layout: Div('This is a preview of the page.')
                     }),
                     TabPanel({
-                        label: 'Book',
-                        link: 'full-contain/synopsis/book',
-                        children: 'dud this come from a book?'
+                        label: 'Code',
+                        value: 'code',
+                        children: Div('This is a code of the page.')
                     })
                 ]
             })

@@ -1,5 +1,5 @@
 import UserList from "../../../../components/organisms/lists/user-list.js";
-import { Tab } from "../../../../components/organisms/tab.js";
+import { Tab } from "../../../../components/organisms/tabs/tab.js";
 import { Div } from "./../../../../components/atoms/atoms.js";
 import { Panel } from './../../../../components/organisms/panel.js';
 import { FullContainPage } from './../../../../components/pages/full-contain-page.js';
