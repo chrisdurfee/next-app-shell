@@ -7,9 +7,9 @@ import { Module } from '../module.js';
 const routes = Module.convertRoutes(
 [
     {
-        path: '/docs/:page?/:subpage?*',
-        import: import('./components/pages/doc-page.js'),
-        title: 'Aside Example'
+        path: '/docs*',
+        import: import('./components/pages/components/component-page.js'),
+        title: 'Docs'
     }
 ]);
 
