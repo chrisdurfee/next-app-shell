@@ -7,7 +7,7 @@ import { Module } from '../module.js';
 const routes = Module.convertRoutes(
 [
     {
-        path: '/docs*',
+        path: '/docs/:page?/:sub?*',
         import: import('./components/pages/documentation/documentation-page.js'),
         title: 'Docs'
     }
@@ -23,7 +23,7 @@ const links =
     {
         group: 'Discover',
         options: [
-            { label: 'Docs', href: './docs', icon: Icons.calendar }
+            { label: 'Docs', href: 'docs', icon: Icons.calendar }
         ]
     }
 ];

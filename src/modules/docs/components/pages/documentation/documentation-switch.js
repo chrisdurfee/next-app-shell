@@ -22,6 +22,6 @@ const Page = (url, title, page) => ({
  * @returns {array}
  */
 export const DocumentationSwitch = (basePath) => ([
-	Page(basePath, 'Introduction', IntroPage),
+	Page(`${basePath}`, 'Introduction', IntroPage),
 	Page(`${basePath}/components/buttons`, 'Buttons', ButtonPage)
 ]);

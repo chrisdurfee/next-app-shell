@@ -145,11 +145,11 @@ const getGreetingMessage = () =>
 };
 
 /**
- * This will create a greeting.
+ * This will create a greeting card.
  *
  * @returns {object}
  */
-const Greeting = () => (
+const GreetingCard = () => (
 	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
 		new DynamicTime({
 			filter: () => getGreetingMessage()
@@ -229,7 +229,7 @@ export const MainFullPage = () => (
 	new FullPage(
 		FullProps(),
 		[
-			Greeting(),
+			GreetingCard(),
 			BindCard(),
 			ModalCard(),
 			GridContainer()

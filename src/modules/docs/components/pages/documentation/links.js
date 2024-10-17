@@ -6,7 +6,7 @@
  */
 export const Links = (path) => ([
 	{
-		href: path,
+		href: `${path}`,
 		label: 'Introduction',
 		exact: true
 	},

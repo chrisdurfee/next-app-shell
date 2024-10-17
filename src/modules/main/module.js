@@ -79,9 +79,9 @@ const links =
     {
         group: 'Mail',
         options: [
-            { label: 'Inbox', href: './mail/inbox', icon: Icons.calendar },
-            { label: 'Sent', href: './mail/sent', icon: Icons.photo },
-            { label: 'Spam', href: './mail/spam', icon: Icons.phone }
+            { label: 'Inbox', href: 'mail/inbox', icon: Icons.calendar },
+            { label: 'Sent', href: 'mail/sent', icon: Icons.photo },
+            { label: 'Spam', href: 'mail/spam', icon: Icons.phone }
         ]
     }
 ];
