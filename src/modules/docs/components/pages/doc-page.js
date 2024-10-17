@@ -1,23 +1,11 @@
 import { Div, H1, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Panel } from '../../../../components/organisms/panel.js';
 import { ButtonTab } from "../../../../components/organisms/tabs/button-tab.js";
 import { FullContainPage } from '../../../../components/pages/full-contain-page.js';
 
-/**
- * This will create a tab panel.
- *
- * @param {object} props
- * @returns {object}
- */
-const TabPanel = (props) =>
-{
-    return {
-        label: props.label,
-        href: props.link,
-        component: new Panel({ class: 'p-8' }, props.children)
-    };
-};
+const TabContent = Atom((props, children) => (
+    Div({ class: 'p-4' }, children)
+));
 
 /**
  * DocPage
@@ -37,16 +25,20 @@ export const DocPage = Atom((props, children) => (
             new ButtonTab({
                 class: 'max-w-[400px]',
                 options: [
-                    TabPanel({
+                    {
                         label: 'Preview',
                         value: 'preview',
-                        layout: Div('This is a preview of the page.')
-                    }),
-                    TabPanel({
+                        layout: TabContent([
+                            Div('This is a preview of the page.')
+                        ])
+                    },
+                    {
                         label: 'Code',
                         value: 'code',
-                        children: Div('This is a code of the page.')
-                    })
+                        layout: TabContent([
+                            Div('This is a code of the page.')
+                        ])
+                    }
                 ]
             })
 		])
