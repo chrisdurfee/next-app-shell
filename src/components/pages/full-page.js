@@ -1,6 +1,21 @@
+import { P } from "@base-framework/atoms";
+import { Atom } from '@base-framework/base';
 import { H1, Header, MainSection } from "../atoms/atoms.js";
 import { BasicPage } from './basic-page.js';
 import { FullTemplate } from './templates/full-template.js';
+
+/**
+ * This will create a header for the documentation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const PageHeader = Atom(({ title, description}) => (
+	Header({ class: 'sm:py-8 px-4 flex flex-col' }, [
+		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
+		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
+	])
+));
 
 /**
  * FullPage
@@ -20,9 +35,10 @@ export class FullPage extends BasicPage
 	render()
 	{
 		return MainSection([
-			Header({ class: 'p-4' }, [
-				H1(this.title),
-			]),
+			PageHeader({
+				title: this.title,
+				description: this.description
+			}),
 			FullTemplate(this.children)
 		]);
 	}

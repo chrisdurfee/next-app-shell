@@ -1,6 +1,6 @@
-import { Div } from "@base-framework/atoms";
-import { Data } from "@base-framework/base";
-import { Button, P } from "../../../../components/atoms/atoms.js";
+import { Button, Div, H2, P } from "@base-framework/atoms";
+import { Data, DateTime } from "@base-framework/base";
+import { DynamicTime } from "@base-framework/organisms";
 import { Modal } from '../../../../components/molecules/modal.js';
 import { GridContainer } from '../../../../components/molecules/molecules.js';
 import { FullPage } from '../../../../components/pages/full-page.js';
@@ -33,7 +33,7 @@ const getData = () => ({
 const testData = (data) =>
 {
 	// test setter
-	data.set('name', 'something long here');
+	data.set('name', 'Home');
 
 	const DURATION = 5000; // five seconds
 
@@ -44,7 +44,7 @@ const testData = (data) =>
 	setTimeout(() =>
 	{
 		// test first level
-		data.name = 'someting else';
+		data.name = 'Update';
 		data.class = 'inactive';
 
 		// test deep level
@@ -68,7 +68,12 @@ const FullProps = () => (
 	/**
 	 * @member {string} title
 	 */
-	title: 'Title [[name]]',
+	title: 'Main Page [[name]]',
+
+	/**
+	 * @member {string} title
+	 */
+	description: 'This is the main page.',
 
 	/**
 	 * This will create the data.
@@ -110,6 +115,60 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 	}).open()
 });
 
+/**
+ * This will get the current time.
+ *
+ * @returns {string}
+ */
+const getCurrentTime = () => DateTime.formatTime('', 24);
+
+/**
+ * This will get the greeting message.
+ *
+ * @returns {string}
+ */
+const getGreetingMessage = () =>
+{
+	let message = 'Morning';
+
+	const current = getCurrentTime();
+	if (current >= '18:00:00')
+	{
+		message = 'Evening';
+	}
+	else if (current >= '12:00:00')
+	{
+		message = 'Afternoon';
+	}
+
+	return `Good ${message}`;
+};
+
+/**
+ * This will create a greeting.
+ *
+ * @returns {object}
+ */
+const Greeting = () => (
+	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
+		new DynamicTime({
+			filter: () => getGreetingMessage()
+		})
+	])
+);
+
+/**
+ * This will create a bind card.
+ *
+ * @returns {object}
+ */
+const BindCard = () => (
+	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
+		H2({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
+		P('This will test the deep data binding [[other.name]]')
+	])
+);
+
 const Buttons = [
 	{
 		label: 'Large',
@@ -144,6 +203,22 @@ const Buttons = [
 ];
 
 /**
+ * This will create a modal card.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ModalCard = () => (
+	Div({ class: 'flex flex-row justify-center items-center rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5' }, [
+		P({ class: 'px-4 whitespace-nowrap m-0' }, 'Modal Test'),
+		Div({
+			class: 'flex flex-auto flex-row p-1 flex-wrap',
+			map: [Buttons, (button) => ModalButton(button)]
+		})
+	])
+);
+
+/**
  * MainFullPage
  *
  * This will create a main full page.
@@ -154,15 +229,9 @@ export const MainFullPage = () => (
 	new FullPage(
 		FullProps(),
 		[
-			P({ class: 'px-4' }, 'This will test the deep data binding [[other.name]]'),
-
-			Div({ class: 'flex flex-row justify-center items-center rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5' }, [
-				P({ class: 'px-4 whitespace-nowrap m-0' }, 'Modal Test'),
-				Div({
-					class: 'flex flex-auto flex-row p-1 flex-wrap',
-					map: [Buttons, (button) => ModalButton(button)]
-				})
-			]),
+			Greeting(),
+			BindCard(),
+			ModalCard(),
 			GridContainer()
 		]
 	)
