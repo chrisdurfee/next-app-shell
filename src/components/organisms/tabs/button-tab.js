@@ -29,38 +29,32 @@ const TabButton = (props) =>
 };
 
 /**
+ * This will add an option.
+ *
+ * @param {object} option
+ * @param {function} callBack
+ * @returns {object}
+ */
+const addOption = (option, callBack) =>
+{
+    option.callBack = callBack;
+    return TabButton(option);
+};
+
+/**
  * Navigation
  *
  * This will create a tab navigation component.
  *
- * @class
+ * @param {object} props
+ * @returns {object}
  */
-class Navigation extends Component
+const Navigation = (props) =>
 {
-    /**
-     * This will render the component.
-     *
-     * @returns {object}
-     */
-    render()
-    {
-        return Nav({ class: `tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${this.class}` }, [
-            Ul({ class: 'flex flex-auto flex-row', map: [this.options, (option) => this.addOption(option)] })
-        ]);
-    }
-
-    /**
-     * This will add an option.
-     *
-     * @param {object} option
-     * @returns {object}
-     */
-    addOption(option)
-    {
-        option.callBack = this.callBack;
-        return TabButton(option);
-    }
-}
+    return Nav({ class: `tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${props.class}` }, [
+        Ul({ class: 'flex flex-auto flex-row', map: [props.options, (option) => addOption(option, props.callBack)] })
+    ])
+};
 
 /**
  * ButtonTab
@@ -78,12 +72,11 @@ export class ButtonTab extends Component
      */
     render()
     {
-        let callBack = this.select.bind(this);
+        const callBack = this.select.bind(this);
 
         return Div({ class: '' }, [
-            new Navigation({
+            Navigation({
                 class: this.class,
-                data: this.state,
                 options: this.options,
                 callBack
             }),
