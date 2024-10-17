@@ -11,6 +11,6 @@ import { Atom } from "@base-framework/base";
 export const NavigationGroup = Atom(({ map }, children) =>
 {
 	return Ul({ class: 'navigation-group flex flex-col gap-2 list-none m-0 py-2 px-0 border-t', map }, [
-		H4({ class: 'text-muted-foreground text-sm py-0 px-4' }, children)
+		H4({ class: 'text-muted-foreground text-sm py-0 px-4 whitespace-nowrap' }, children)
 	]);
 });
