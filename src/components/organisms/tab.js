@@ -47,7 +47,7 @@ export class TabNavigation extends Component
 	 */
 	render()
 	{
-		return Nav({ class: `tab h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${this.class}` }, [
+		return Nav({ class: `tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${this.class}` }, [
 			Ul({
 				class: 'flex flex-auto flex-row',
 				map: [this.options, (option) => this.addLink(option)],
