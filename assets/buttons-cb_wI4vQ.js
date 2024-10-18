@@ -1,0 +1,1 @@
+import{a as r,c as i}from"./index-Xzj5CQKf.js";const s=t=>r((a,n)=>i({...t,...a,class:`bttn ${t.class} ${a.class||""}`},n)),c={primary:s({class:"primary"}),secondary:s({class:"secondary"}),destructive:s({class:"destructive"}),outline:s({class:"outline"}),ghost:s({class:"ghost"}),link:s({class:"link"})},o=r((t,a)=>(c[t.variant]||c.primary)(t,a));export{o as B};
