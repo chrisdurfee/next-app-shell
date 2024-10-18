@@ -31,8 +31,8 @@ const routes = Module.convertRoutes(
 const links =
 [
     { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true },
-    { label: 'Messages', href: 'aside', icon: Icons.chat, mobileOrder: 2 },
-    { label: 'Calendar', href: 'bside', icon: Icons.calendar, mobileOrder: 3 },
+    { label: 'Messages', href: 'aside', icon: Icons.chat.text, mobileOrder: 2 },
+    { label: 'Calendar', href: 'bside', icon: Icons.calendar.default, mobileOrder: 3 },
     { label: 'Reviews', href: 'aside-bside', icon: Icons.star, mobileOrder: 4 },
     { label: 'Map', href: 'full', icon: Icons.map },
     { label: 'Help', href: 'full-contain', icon: Icons.help },
@@ -68,7 +68,7 @@ const links =
     { label: 'Archive', href: 'cast', icon: Icons.archive },
     {
         label: 'Settings',
-        icon: Icons.adjustments,
+        icon: Icons.adjustments.veritical,
         options: [
             { label: 'irure nostrud', href: 'gallery/irure-nostrud' },
             { label: 'ipsum dolore', href: 'gallery/ipsum-dolore' },
