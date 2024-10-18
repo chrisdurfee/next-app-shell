@@ -1,17 +1,16 @@
 import { Icons } from '../../components/icons/icons.js';
 import { Module } from '../module.js';
+import { HomePage } from './components/pages/home/home-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';
 import { MainFullContainPage } from './components/pages/main-full-contain-page.js';
-import { MainFullPage } from './components/pages/main-full-page.js';
 
 /**
  * This will set the routes for the module.
  */
 const routes = Module.convertRoutes(
 [
-    { path: '/', component: MainFullPage(), title: 'Example' },
-    { path: '/full', component: MainFullPage(), title: 'Full Example' },
+    { path: '/', component: HomePage(), title: 'Home' },
     { path: '/full-contain*', component: MainFullContainPage(), title: 'Full Contain Example' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
     { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
@@ -35,7 +34,7 @@ const links =
     { label: 'Messages', href: 'aside', icon: Icons.chat, mobileOrder: 2 },
     { label: 'Calendar', href: 'bside', icon: Icons.calendar, mobileOrder: 3 },
     { label: 'Reviews', href: 'aside-bside', icon: Icons.star, mobileOrder: 4 },
-    { label: 'Map', href: 'full', icon: Icons.map, mobileOrder: 5 },
+    { label: 'Map', href: 'full', icon: Icons.map },
     { label: 'Help', href: 'full-contain', icon: Icons.help },
     { label: 'Music', href: 'messages', icon: Icons.music },
     {

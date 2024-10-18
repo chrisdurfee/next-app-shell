@@ -23,7 +23,7 @@ const links =
     {
         group: 'Discover',
         options: [
-            { label: 'Docs', href: 'docs', icon: Icons.calendar }
+            { label: 'Docs', href: 'docs', icon: Icons.calendar, mobileOrder: 5 }
         ]
     }
 ];

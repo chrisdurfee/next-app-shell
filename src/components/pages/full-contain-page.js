@@ -21,7 +21,7 @@ export class FullContainPage extends BasicPage
 	{
 		return MainSection([
 			FullTemplate([
-				Div({ class: 'contained' }, this.children)
+				Div({ class: 'contained px-4 sm:px-0' }, this.children)
 			])
 		]);
 	}
