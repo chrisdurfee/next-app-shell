@@ -1,3 +1,4 @@
+import { BadgePage } from "./components/buttons/badge-page.js";
 import { ButtonPage } from "./components/buttons/button-page.js";
 import IntroPage from "./introduction/intro-page.js";
 
@@ -23,5 +24,6 @@ const Page = (url, title, page) => ({
  */
 export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}`, 'Introduction', IntroPage),
-	Page(`${basePath}/components/buttons`, 'Buttons', ButtonPage)
+	Page(`${basePath}/components/buttons`, 'Buttons', ButtonPage),
+	Page(`${basePath}/components/badges`, 'Badges', BadgePage),
 ]);

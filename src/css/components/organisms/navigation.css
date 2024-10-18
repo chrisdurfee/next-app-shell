@@ -41,7 +41,7 @@
 .navigation li.option:hover,
 .navigation li.option:active,
 .mobile-navigation .active i {
-	@apply bg-accent;
+	@apply bg-muted;
 }
 
 .navigation li.option:hover,
@@ -89,7 +89,7 @@
 }
 
 .navigation li.option .selected {
-	@apply bg-accent;
+	@apply bg-muted;
 }
 
 .aside-container .drawer h4 {

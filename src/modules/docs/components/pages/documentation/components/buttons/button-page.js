@@ -1,16 +1,11 @@
-import { Code, Div, Pre } from "@base-framework/atoms";
-import { Atom } from "@base-framework/base";
-import { ButtonTab } from "../../../../../../../components/organisms/tabs/button-tab.js";
+import { Button } from "../../../../../../../components/atoms/buttons/buttons.js";
+import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
-const TabContent = Atom((props, children) => (
-    Div({ class: 'p-4' }, children)
-));
-
 /**
- * DocPage
+ * ButtonPage
  *
- * This will create a full page.
+ * This will create a button page.
  *
  * @param {object} props
  * @param {object} children
@@ -23,27 +18,89 @@ export const ButtonPage = () => (
             description: 'Displays a button or a component that looks like a button.'
         },
         [
-            new ButtonTab({
-                class: 'max-w-[400px]',
-                options: [
-                    {
-                        label: 'Preview',
-                        value: 'preview',
-                        layout: TabContent([
-                            Div('This is a preview of the page.')
-                        ])
-                    },
-                    {
-                        label: 'Code',
-                        value: 'code',
-                        layout: TabContent([
-                            Div('This is a code of the page.'),
-                            Pre({ class: 'mb-4 mt-6 p-8 max-h-[650px] overflow-x-auto rounded-lg border' }, [
-                                Code(`<Button>Click Me</Button>`)
-                            ])
-                        ])
-                    }
-                ]
+            DocSection({
+                title: 'Primary Button',
+                description: 'This is a primary button.',
+                preview: [
+                    Button({ variant: 'primary' }, 'Click Me')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const PrimaryButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'primary' }, children)
+);`
+            }),
+
+            DocSection({
+                title: 'Secondary Button',
+                preview: [
+                    Button({ variant: 'secondary' }, 'Secondary')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const SecondaryButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'secondary' }, children)
+);`
+            }),
+
+            DocSection({
+                title: 'Destructive Button',
+                preview: [
+                    Button({ variant: 'destructive' }, 'Destructive')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const DestructiveButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'destructive' }, children)
+);`
+            }),
+
+            DocSection({
+                title: 'Outline Button',
+                preview: [
+                    Button({ variant: 'outline' }, 'Outline')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const OutlineButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'outline' }, children)
+);`
+            }),
+
+            DocSection({
+                title: 'Ghost Button',
+                preview: [
+                    Button({ variant: 'ghost' }, 'Ghost')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const GhostButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'ghost' }, children)
+);`
+            }),
+
+            DocSection({
+                title: 'Link Button',
+                preview: [
+                    Button({ variant: 'link' }, 'Link')
+                ],
+                code: `
+import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const LinkButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'link' }, children)
+);`
             })
         ]
     )

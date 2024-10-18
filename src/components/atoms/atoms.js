@@ -1,6 +1,6 @@
 import { A, Br, Div, Fieldset, Form, H1, H2, Header, Input, Label, Legend, Li, Nav, P, Span, Strong, Textarea, Ul } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-export * from "./buttons.js";
+export * from "./buttons/buttons.js";
 export * from "./form.js";
 
 /**
