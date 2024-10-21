@@ -16,7 +16,7 @@
 	}
 }
 
-@media (min-width: 768px) and (orientation: landscape) {
+@media (min-width: 768px) {
 
 	.app-container {
 		padding-left: env(safe-area-inset-left);
