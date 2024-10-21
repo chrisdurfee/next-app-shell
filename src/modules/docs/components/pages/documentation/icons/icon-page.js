@@ -15,16 +15,18 @@ import { DocPage } from "../../doc-page.js";
 const IconCard = (icon, iconName, path) =>
 {
     path = 'Icons' + ((path) ? '.' + path : '');
-    return Div({ class: 'flex flex-auto max-w-[150px] flex-col justify-center items-center flex-wrap rounded-lg border bg-card text-base text-muted-foreground shadow-sm h-[8.5rem] cursor-pointer',
-        click: () =>
-        {
-            // copy to clipboard
-            navigator.clipboard.writeText(`${path}.${iconName}`);
-        }
-     }, [
-        I({ html: icon }),
-        Div(iconName)
-    ])
+    return Div({ class: 'flex flex-auto flex-col items-center gap-2 max-w-[150px] h-[8.5rem] cursor-pointer' }, [
+        Div({ class: 'flex flex-auto w-full h-full justify-center items-center flex-wrap rounded-lg border bg-card text-base shadow-sm',
+            click: () =>
+            {
+                // copy to clipboard
+                navigator.clipboard.writeText(`${path}.${iconName}`);
+            }
+        }, [
+            I({ html: icon }),
+        ]),
+        Div({ class: 'text-muted-foreground' }, iconName)
+    ]);
 };
 
 /**

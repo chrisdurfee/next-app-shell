@@ -65,7 +65,7 @@ const links =
             }
         ]
     },
-    { label: 'Archive', href: 'cast', icon: Icons.archive },
+    { label: 'Archive', href: 'cast', icon: Icons.newspaper },
     {
         label: 'Settings',
         icon: Icons.adjustments.veritical,
@@ -78,9 +78,9 @@ const links =
     {
         group: 'Mail',
         options: [
-            { label: 'Inbox', href: 'mail/inbox', icon: Icons.calendar },
-            { label: 'Sent', href: 'mail/sent', icon: Icons.photo },
-            { label: 'Spam', href: 'mail/spam', icon: Icons.phone }
+            { label: 'Inbox', href: 'mail/inbox', icon: Icons.archive.box.default },
+            { label: 'Sent', href: 'mail/sent', icon: Icons.archive.box.arrow },
+            { label: 'Spam', href: 'mail/spam', icon: Icons.archive.box.x }
         ]
     }
 ];
