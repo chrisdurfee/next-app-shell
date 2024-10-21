@@ -18,7 +18,7 @@
 	text-transform: none;
 }
 
-.navigation li.option.sub>*.active:before {
+.navigation .rotate {
 	transform: rotate(180deg);
 }
 
@@ -56,14 +56,6 @@
 	@apply text-primary;
 }
 
-.navigation li.option .icon.group {
-	background-image: url(/images/group-icon.svg);
-}
-
-.navigation li.option .icon.blank {
-	background-image: url(/images/group-icon.svg);
-}
-
 .navigation li.option .label {
 	font-weight: 400;
 	letter-spacing: 0.25px;
@@ -97,19 +89,6 @@
 	letter-spacing: 0.25px;
 	padding: 0 16px;
 	margin: 0;
-}
-
-.navigation .option.sub>*:before {
-	content: '';
-	position: absolute;
-	width: 12px;
-	height: 6px;
-	top: 0px;
-	bottom: 0px;
-	right: 22px;
-	margin: auto 0px;
-	background: url(/images/arrow-down.svg) no-repeat center;
-	transition: transform .2s ease, opacity .2s .2s ease;
 }
 
 .navigation .child-group>li.option>*:after {

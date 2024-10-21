@@ -1,6 +1,7 @@
-import { I } from '@base-framework/atoms';
+import { I, Span } from '@base-framework/atoms';
 import { Atom, Component, NavLink } from '@base-framework/base';
 import { Label } from '../../atoms/atoms.js';
+import { Icons } from '../../icons/icons.js';
 import { NavButtonLink } from './nav-button-link.js';
 
 /**
@@ -29,9 +30,10 @@ const Li = Atom(({ options, click }, children) =>
  *
  * @param {string} label
  * @param {string} icon
+ * @param {boolean} hasChildren
  * @returns {array}
  */
-const LinkContent = (label, icon = null) => [
+const LinkContent = (label, icon = null, hasChildren = false) => [
 	icon && I({
 		class: 'icon w-12 rounded-md flex items-center justify-center',
 		onState: ['selected', {
@@ -39,7 +41,21 @@ const LinkContent = (label, icon = null) => [
 		}],
 		html: icon
 	}),
-	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer whitespace-nowrap' }, label)
+	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer whitespace-nowrap' }, label),
+	hasChildren && Span(
+		{
+			class: 'flex justify-center items-center px-1 transition-all text-muted-foreground',
+			onState: [
+				['selected', {
+					rotate: true
+				}],
+				['active', {
+					rotate: true
+				}]
+			]
+		}, [
+		I({ html: Icons.chevron.single.down })
+	])
 ];
 
 /**
@@ -75,7 +91,8 @@ export class MainLink extends Component
 	 */
 	addLink()
 	{
-		const children = LinkContent(this.label, this.icon);
+		const hasChildren = this.options && this.options.length > 0;
+		const children = LinkContent(this.label, this.icon, hasChildren);
 
 		if (this.href)
 		{
