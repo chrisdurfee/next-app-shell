@@ -123,7 +123,7 @@ export class SubNavigation extends InlineNavigation
 	 */
 	render()
 	{
-		const className = `navigation sub ${this.mainClassName || ''}`;
+		const className = `navigation flex flex-auto flex-col sub ${this.mainClassName || ''}`;
 		const map = this.mapOptions(this.options);
 
 		return Nav({ class: className, onState: this.onState() }, [

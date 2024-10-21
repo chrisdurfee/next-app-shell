@@ -1,7 +1,108 @@
-import { A, I } from "@base-framework/atoms";
+import { A, Div, H3, H5, I, P } from "@base-framework/atoms";
+import { Strings } from "@base-framework/base";
 import { Icons } from "../../../../../../components/icons/icons.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from "../../doc-page.js";
+
+/**
+ * This will create an icon card.
+ *
+ * @param {string} icon
+ * @param {string} iconName
+ * @param {string|null} path
+ * @returns {object}
+ */
+const IconCard = (icon, iconName, path) =>
+{
+    path = 'Icons' + ((path) ? '.' + path : '');
+    return Div({ class: 'flex flex-auto max-w-[150px] flex-col justify-center items-center flex-wrap rounded-lg border bg-card text-base text-muted-foreground shadow-sm h-[8.5rem] cursor-pointer',
+        click: () =>
+        {
+            // copy to clipboard
+            navigator.clipboard.writeText(`${path}.${iconName}`);
+        }
+     }, [
+        I({ html: icon }),
+        Div(iconName)
+    ])
+};
+
+/**
+ * This will create an icon row.
+ *
+ * @param {*} icons
+ * @param {array} layout
+ * @param {string|null} path
+ */
+const IconRow = (icons, layout, path) =>
+{
+    const isIconObject = (typeof icons === 'object');
+    if (isIconObject)
+    {
+        layout.push(P({ class: 'text-muted-foreground' }, 'path: ' + path + '.{icon}'));
+    }
+
+    const row = [];
+    layout.push(Div({ class: 'flex flex-auto flex-wrap gap-2 my-8' }, row));
+
+    if (isIconObject === false)
+    {
+        row.push(IconCard(icons, path));
+    }
+    else
+    {
+        for (var prop in icons)
+        {
+            if (icons.hasOwnProperty(prop) === false)
+            {
+                continue;
+            }
+
+            const icon = icons[prop];
+            if(typeof icon !== 'object')
+            {
+                row.push(IconCard(icon, prop, path));
+                continue;
+            }
+
+            const childPath = `${path}.${prop}`;
+            IconRow(icon, layout, childPath);
+        }
+    }
+};
+
+/**
+ * This will greate the icon guide layout.
+ *
+ * @param {object} obj
+ * @returns {array}
+ */
+const IconGuide = (obj) =>
+{
+    if (!obj || typeof obj !== 'object')
+    {
+        return;
+    }
+
+    const layout = [];
+    for (let [prop, value] of Object.entries(obj))
+    {
+        if (prop === 'parse')
+        {
+            continue;
+        }
+
+        layout.push(H5({
+            id: prop.toLowerCase(),
+            class: 'text-2xl font-bold'
+        }, Strings.titleCase(prop)));
+
+        const icon = value;
+        IconRow(icon, layout, prop);
+    }
+
+    return layout;
+};
 
 /**
  * IconPage
@@ -34,7 +135,13 @@ import { I } from '@base-framework/atoms';
 export const HomeIcon = () => (
     I({ html: Icons.home} )
 );`
-            })
+            }),
+
+            Div({ class: 'my-20' }, [
+                H3({ class: 'text-2xl font-bold' }, 'Default Icons'),
+                P({ class: 'text-muted-foreground' }, 'A few of the icons have been saved to the "Icons" object. You can use these icons in your project. Click to copy the Icon path. Here is a list of the icons that are available:'),
+            ]),
+            IconGuide(Icons)
         ]
     )
 );

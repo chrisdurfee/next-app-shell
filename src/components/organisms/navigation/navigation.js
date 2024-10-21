@@ -23,7 +23,7 @@ export class Navigation extends Component
 		 */
 		const map = this.mapOptions(this.options);
 
-		return Nav({ class: `navigation` }, [
+		return Nav({ class: `navigation flex flex-auto flex-col` }, [
 			Ul({
 				class: 'relative group flex flex-col gap-2 py-2 px-2 list-none m-0',
 				map
