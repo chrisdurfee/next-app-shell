@@ -51,11 +51,11 @@ export class Modal extends Component
 			case 'sm':
 				return 'sm max-w-[646px]';
 			case 'lg':
-				return 'lg max-w-[646px]';
+				return 'lg max-w-[900px]';
 			case 'xl':
-				return 'xl max-w-[646px]';
+				return 'xl max-w-[1400px]';
 			default:
-				return 'medium max-w-[646px]';
+				return 'medium max-w-[760px]';
 		}
 	}
 

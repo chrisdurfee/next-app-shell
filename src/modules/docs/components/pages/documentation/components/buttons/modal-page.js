@@ -20,8 +20,8 @@ const Modals = [
 		size: 'md'
 	},
 	{
-		label: 'Extra Large',
-		buttonStyle: 'outline',
+		label: 'XL',
+		buttonStyle: 'primary',
 		size: 'xl'
 	},
 	{
@@ -67,6 +67,31 @@ export const ModalPage = () => (
             description: 'Displays a modal or a component that looks like a modal.'
         },
         [
+			DocSection({
+                title: 'Extra Large Modal',
+                description: 'This is an extra large modal.',
+                preview: [
+                    ModalButton(Modals[3])
+                ],
+                code: `
+import { Modal } from "../components/molecules/modal.js";
+import { Button } from "../components/atoms/atoms.js";
+
+/**
+ * This will create a modal button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ModalButton = (props, children) => Button({
+	text: label,
+    variant: 'primary',
+	click: () => new Modal({
+		size: 'xl'
+	}).open()
+});`
+            }),
+
             DocSection({
                 title: 'Large Modal',
                 description: 'This is a large modal.',
@@ -136,6 +161,31 @@ const ModalButton = (props, children) => Button({
     variant: 'primary',
 	click: () => new Modal({
 		size: 'md'
+	}).open()
+});`
+            }),
+
+			DocSection({
+                title: 'Right Modal',
+                preview: [
+                    ModalButton(Modals[4])
+                ],
+                code: `
+import { Modal } from "../components/molecules/modal.js";
+import { Button } from "../components/atoms/atoms.js";
+
+/**
+ * This will create a modal button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ModalButton = (props, children) => Button({
+	text: label,
+    variant: 'primary',
+	click: () => new Modal({
+	    size: 'lg',
+		type: 'right'
 	}).open()
 });`
             })
