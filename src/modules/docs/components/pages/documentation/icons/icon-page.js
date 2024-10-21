@@ -125,8 +125,8 @@ export const IconPage = () => (
             A({ href: 'https://heroicons.com/', target: '_blank', class: 'bttn link' }, 'link: Hericons'),
 
             DocSection({
-                title: 'Badge',
-                description: 'This is a badge.',
+                title: 'Icons',
+                description: 'This is an icon.',
                 preview: [
                     I({ html: Icons.home} )
                 ],
