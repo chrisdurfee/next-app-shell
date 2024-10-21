@@ -55,7 +55,7 @@ const TabPanel = (props) =>
  */
 export const MainFullContainPage = () => (
 	new FullContainPage([
-		Div({ class: 'contained' }, [
+		Div({ class: 'contained py-4' }, [
             new Tab({
                 class: 'max-w-[400px]',
                 options: [
