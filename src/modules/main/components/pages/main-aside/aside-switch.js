@@ -1,8 +1,21 @@
-import { Import } from "@base-framework/base";
-import { A, Div, H1, Header } from "../../../../../components/atoms/atoms.js";
+import { Atom, Import } from "@base-framework/base";
+import { A, Div, H1, Header, P } from "../../../../../components/atoms/atoms.js";
 import { GridContainer } from '../../../../../components/molecules/molecules.js';
 import { InlineOverlay } from '../../../../../components/organisms/inline-overlay.js';
 import { Panel } from '../../../../../components/organisms/panel.js';
+
+/**
+ * This will create a header for the documentation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const PageHeader = Atom(({ title, description}) => (
+	Header({ class: 'sm:py-8 px-4 flex flex-col' }, [
+		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
+		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
+	])
+));
 
 /**
  * This will create an import buttons.
@@ -12,9 +25,9 @@ import { Panel } from '../../../../../components/organisms/panel.js';
 const ImportButtons = () => (
 	new Panel([
 		Div([
-			Header([
-				H1({ class: 'p-4' }, 'Aside')
-			]),
+			PageHeader({
+				title: 'Main Title',
+			}),
 			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
 				Import({ src: import('../../../../../components/atoms/import-buttons.js') })
 			]),
@@ -34,9 +47,9 @@ const ExamplePage = (url, title) => ({
 	uri: url,
 	component: new Panel([
 		Div([
-			Header([
-				H1({ class: 'p-4' }, title)
-			]),
+			PageHeader({
+				title,
+			}),
 			GridContainer()
 		])
 	])
@@ -56,9 +69,9 @@ const MarketingPage = () => (
 					component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
 						new Panel([
 							Div([
-								Header([
-									H1('Overlay')
-								]),
+								PageHeader({
+									title: 'Overlay',
+								}),
 								GridContainer()
 							])
 						])
@@ -68,9 +81,9 @@ const MarketingPage = () => (
 					uri: 'aside/marketing/*',
 					component: new Panel([
 						A({ href: 'aside/marketing/irure-nostrud/1' }, [
-							Header([
-								H1('Marketing')
-							]),
+							PageHeader({
+								title: 'Marketing',
+							}),
 							GridContainer()
 						])
 					])
