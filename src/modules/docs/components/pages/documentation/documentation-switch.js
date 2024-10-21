@@ -2,6 +2,7 @@ import { BadgePage } from "./components/buttons/badge-page.js";
 import { ButtonPage } from "./components/buttons/button-page.js";
 import { ModalPage } from "./components/buttons/modal-page.js";
 import { TabPage } from "./components/buttons/tab-page.js";
+import IconPage from "./icons/icon-page.js";
 import IntroPage from "./introduction/intro-page.js";
 
 /**
@@ -26,6 +27,7 @@ const Page = (url, title, page) => ({
  */
 export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}`, 'Introduction', IntroPage),
+	Page(`${basePath}/icons`, 'Icons', IconPage),
 	Page(`${basePath}/components/buttons*`, 'Buttons', ButtonPage),
 	Page(`${basePath}/components/badges*`, 'Badges', BadgePage),
 	Page(`${basePath}/components/tabs*`, 'Tabs', TabPage),
