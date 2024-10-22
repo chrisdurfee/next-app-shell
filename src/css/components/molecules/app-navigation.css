@@ -16,7 +16,7 @@
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 641px) {
 
 	.app-container {
 		padding-left: env(safe-area-inset-left);

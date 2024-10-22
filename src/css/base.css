@@ -129,7 +129,7 @@ a:active {
 	}
 
 	.active-panel-container {
-		padding-left: calc(64px + env(safe-area-inset-left));
+		padding-left: calc(64px);
 		padding-right: env(safe-area-inset-right);
 	}
 }
