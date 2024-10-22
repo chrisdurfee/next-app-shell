@@ -40,7 +40,7 @@ export class MobileNavigation extends Component
 	render()
 	{
 		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden' }, [
-			Ul({ class: 'flex flex-auto m-0 p-0 list-none md:flex-col', map: [this.options, MobileLink] })
+			Ul({ class: 'flex flex-auto m-0 p-0 list-none sm:flex-col', map: [this.options, MobileLink] })
 		]);
 	}
 }
