@@ -21,7 +21,7 @@ export class Modal extends Component
 	render()
 	{
 		const className = this.getModalClass();
-		return Dialog({ class: `modal m-auto fixed z-50 grid w-full max-w-lg gap-4 border bg-background p-6 shadow-lg ${className}`, click: (event) =>
+		return Dialog({ class: `modal m-auto fixed z-50 grid w-full gap-4 border bg-background p-6 shadow-lg ${className}`, click: (event) =>
 			{
 				if (event.target === this.panel)
 				{
