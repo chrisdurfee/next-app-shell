@@ -20,6 +20,9 @@ const DefaultVariant = (defaultProps) =>
 
 /**
  * This will set upt the variants for the button.
+ *
+ * @constant
+ * @type {object}
  */
 const BUTTON_VARIANTS = {
 	primary: DefaultVariant({ class: 'primary' }),

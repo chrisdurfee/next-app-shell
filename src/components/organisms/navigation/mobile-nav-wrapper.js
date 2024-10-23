@@ -54,17 +54,16 @@ const Header = (props) => (
  * This will map the mobile options.
  *
  * @param {array} options
- * @param {array} mobileOptions
  * @param {function} callBack
  * @returns {void}
  */
-const mapCloseCallBack = (options, mobileOptions, callBack) =>
+const mapCloseCallBack = (options, callBack) =>
 {
 	options.forEach(option =>
 	{
 		if (option.options)
 		{
-			mapCloseCallBack(option.options, mobileOptions, callBack);
+			mapCloseCallBack(option.options, callBack);
 			return;
 		}
 
@@ -76,38 +75,47 @@ const mapCloseCallBack = (options, mobileOptions, callBack) =>
 };
 
 /**
+ * This will create the expanded navigation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ExapandedNavigation = (props) =>
+{
+	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
+	mapCloseCallBack(props.options, [], closeCallBack);
+
+	return Div(
+		{
+			class: 'bg-background flex flex-auto flex-col absolute w-full transition-all h-0 data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow data-[expanded=true]:border-b rounded-md',
+			addState()
+			{
+				return {
+					expanded: false
+				};
+			},
+			dataSet: ['expanded', ['expanded', true, 'true']]
+		},
+		[
+			new InlineNavigation(
+			{
+				options: props.options
+			})
+		]
+	);
+}
+
+/**
  * This will create the mobile navigation.
  *
  * @param {object} props
  * @returns {object}
  */
-const MobileNav = (props) =>
-{
-	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
-	mapCloseCallBack(props.options, [], closeCallBack);
-
-	return Div({
-		class: 'bg-background flex flex-auto flex-col w-full relative'}, [
-			Div(
-				{
-					class: 'bg-background flex flex-auto flex-col absolute w-full transition-all h-0 data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow data-[expanded=true]:border-b rounded-md',
-					addState()
-					{
-						return {
-							expanded: false
-						};
-					},
-					dataSet: ['expanded', ['expanded', true, 'true']]
-				},
-				[
-					new InlineNavigation(
-					{
-						options: props.options
-					})
-				]
-			)
-		]);
-};
+const MobileNav = (props) => (
+	Div({ class: 'bg-background flex flex-auto flex-col w-full relative' }, [
+		ExapandedNavigation(props)
+	])
+);
 
 /**
  * This will create a mobile navigation wrapper.
