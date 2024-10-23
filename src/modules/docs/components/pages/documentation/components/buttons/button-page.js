@@ -19,6 +19,17 @@ export const ButtonPage = () => (
         },
         [
             DocSection({
+                title: 'Usage',
+                description: 'Import the button atom and use it in your components. This platform has variants for different use cases. The variant can be set using the `variant` prop.',
+                preview: [
+                    Button({ variant: 'primary' }, 'Click Me')
+                ],
+                code: `import { Button } from '../components/atoms/buttons/buttons.js';
+
+Button({ ...props, variant: 'secondary' }, primary)`
+            }),
+
+            DocSection({
                 title: 'Primary Button',
                 description: 'This is a primary button.',
                 preview: [
