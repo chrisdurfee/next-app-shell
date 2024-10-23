@@ -23,7 +23,7 @@ export const DocumentationPage = () => (
 		/**
 		 * @member {string}	title
 		 */
-		title: 'Getting Started',
+		title: 'Documentation',
 
 		/**
 		 * @member {string}	basePath

@@ -83,7 +83,7 @@ const mapCloseCallBack = (options, callBack) =>
 const ExapandedNavigation = (props) =>
 {
 	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
-	mapCloseCallBack(props.options, [], closeCallBack);
+	mapCloseCallBack(props.options, closeCallBack);
 
 	return Div(
 		{
