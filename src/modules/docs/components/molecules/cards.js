@@ -9,8 +9,8 @@ import { Atom } from "@base-framework/base";
  * @returns {object}
  */
 export const CodeCard = Atom((props, children) => (
-    Pre({ class: 'flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces' }, [
-        Code({ class: 'font-mono text-sm' }, children)
+    Pre({ class: 'flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces cursor-pointer' }, [
+        Code({ class: 'font-mono text-sm', click: () => navigator.clipboard.writeText(children[0].textContent) }, children)
     ])
 ));
 
