@@ -1,3 +1,4 @@
+import { H2, Header } from "@base-framework/atoms";
 import { Button } from "../../../../../../../components/atoms/buttons/buttons.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -28,6 +29,10 @@ export const ButtonPage = () => (
 
 Button({ ...props, variant: 'secondary' }, primary)`
             }),
+
+            Header({ class: 'flex flex-col py-8' }, [
+                H2({ class: 'text-3xl font-bold tracking-tight border-b pb-2' }, 'Variants'),
+            ]),
 
             DocSection({
                 title: 'Primary Button',
