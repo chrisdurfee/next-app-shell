@@ -22,8 +22,9 @@ export class Navigation extends Component
 		 * This will get the options.
 		 */
 		const map = this.mapOptions(this.options);
+		const className = this.class || '';
 
-		return Nav({ class: `navigation flex flex-auto flex-col` }, [
+		return Nav({ class: `navigation flex flex-auto flex-col ${className}` }, [
 			Ul({
 				class: 'relative group flex flex-col gap-2 py-2 px-2 list-none m-0',
 				map

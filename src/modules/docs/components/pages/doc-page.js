@@ -1,6 +1,6 @@
 import { Div, H1, Header, P, Section } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { FullContainPage } from '../../../../components/pages/full-contain-page.js';
+import { CenterPage } from "../../../../components/pages/center-page.js";
 
 /**
  * This will create a header for the documentation.
@@ -39,7 +39,7 @@ const DocBody = Atom((props, children) => (
  * @returns {DocPage}
  */
 export const DocPage = Atom((props, children) => (
-	new FullContainPage([
+	new CenterPage([
 		DocBody(props, children)
 	])
 ));
