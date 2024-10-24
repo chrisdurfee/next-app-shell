@@ -1,6 +1,5 @@
-import { I, Span } from "@base-framework/atoms";
+import { I, Li, Nav, Span, Ul } from "@base-framework/atoms";
 import { Component, NavLink } from "@base-framework/base";
-import { Li, Nav, Ul } from "../../components/atoms/atoms.js";
 
 /**
  * This will create a mobile link.

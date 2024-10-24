@@ -1,5 +1,5 @@
+import { A, Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { A, Div } from "../../components/atoms/atoms.js";
 import { Icons } from "../../components/icons/icons.js";
 
 /**
