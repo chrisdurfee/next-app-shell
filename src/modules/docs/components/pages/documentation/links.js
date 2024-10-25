@@ -33,6 +33,10 @@ export const Links = (path) => ([
 			{
 				label: 'Modals',
 				href: `${path}/components/modals`
+			},
+			{
+				label: 'Dialogs',
+				href: `${path}/components/dialogs`
 			}
 		]
 	}

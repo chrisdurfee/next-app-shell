@@ -1,9 +1,8 @@
 @import url('./modal-animations.css');
 
 ::backdrop {
-    opacity: .5;
     animation: shadowIn .2s ease forwards;
-    background-color: #000;
+    @apply bg-black/80;
 }
 
 .modal {

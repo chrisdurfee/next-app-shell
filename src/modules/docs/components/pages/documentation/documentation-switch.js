@@ -1,5 +1,6 @@
 import { BadgePage } from "./components/buttons/badge-page.js";
 import { ButtonPage } from "./components/buttons/button-page.js";
+import { DialogPage } from "./components/buttons/dialog-page.js";
 import { ModalPage } from "./components/buttons/modal-page.js";
 import { TabPage } from "./components/buttons/tab-page.js";
 import IconPage from "./icons/icon-page.js";
@@ -32,4 +33,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/badges*`, 'Badges', BadgePage),
 	Page(`${basePath}/components/tabs*`, 'Tabs', TabPage),
 	Page(`${basePath}/components/modals*`, 'Modals', ModalPage),
+	Page(`${basePath}/components/dialogs*`, 'Modals', DialogPage),
 ]);
