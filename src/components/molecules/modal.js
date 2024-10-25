@@ -4,6 +4,14 @@ import "../../css/components/molecules/modals/modal.css";
 import { Icons } from "../icons/icons";
 
 /**
+ * This will render the modal component.
+ *
+ * @param {object} component
+ * @returns {object}
+ */
+const render = (component) => { return Builder.render(component, document.body); };
+
+/**
  * Modal
  *
  * This will be a modal component.
@@ -44,6 +52,11 @@ export class Modal extends Component
 		]);
 	}
 
+	/**
+	 * This will get the size class.
+	 *
+	 * @returns {string}
+	 */
 	getSizeClass()
 	{
 		switch (this.size)
@@ -59,6 +72,11 @@ export class Modal extends Component
 		}
 	}
 
+	/**
+	 * This will get the type class.
+	 *
+	 * @returns {string}
+	 */
 	getTypeClass()
 	{
 		switch (this.type)
@@ -72,17 +90,32 @@ export class Modal extends Component
 		}
 	}
 
+	/**
+	 * This will get the modal class.
+	 *
+	 * @returns {string}
+	 */
 	getModalClass()
 	{
 		return this.getSizeClass() + ' ' + this.getTypeClass();
 	}
 
+	/**
+	 * This will open the modal.
+	 *
+	 * @returns {void}
+	 */
 	open()
 	{
-		Builder.render(this, document.body);
+		render(this);
 		this.panel.showModal();
 	}
 
+	/**
+	 * This will close the modal.
+	 *
+	 * @returns {void}
+	 */
 	close()
 	{
 		this.panel.close();
