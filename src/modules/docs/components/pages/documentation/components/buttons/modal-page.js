@@ -46,6 +46,7 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 	text: label,
 	class: `m-1 ${buttonStyle}`,
 	click: () => new Modal({
+		title: 'Are you absolutely sure?',
 		size,
 		type
 	}).open()
@@ -87,7 +88,8 @@ const ModalButton = (props, children) => Button({
 	text: label,
     variant: 'primary',
 	click: () => new Modal({
-		size: 'xl'
+		size: 'xl',
+		title: 'Are you absolutely sure?'
 	}).open()
 });`
             }),
@@ -112,7 +114,8 @@ const ModalButton = (props, children) => Button({
 	text: label,
     variant: 'primary',
 	click: () => new Modal({
-		size: 'lg'
+		size: 'lg',
+		title: 'Are you absolutely sure?'
 	}).open()
 });`
             }),
@@ -136,7 +139,8 @@ const ModalButton = (props, children) => Button({
 	text: label,
     variant: 'primary',
 	click: () => new Modal({
-		size: 'sm'
+		size: 'sm',
+		title: 'Are you absolutely sure?'
 	}).open()
 });`
             }),
@@ -160,7 +164,8 @@ const ModalButton = (props, children) => Button({
 	text: label,
     variant: 'primary',
 	click: () => new Modal({
-		size: 'md'
+		size: 'md',
+		title: 'Are you absolutely sure?'
 	}).open()
 });`
             }),
@@ -185,7 +190,8 @@ const ModalButton = (props, children) => Button({
     variant: 'primary',
 	click: () => new Modal({
 	    size: 'lg',
-		type: 'right'
+		type: 'right',
+		title: 'Are you absolutely sure?'
 	}).open()
 });`
             })

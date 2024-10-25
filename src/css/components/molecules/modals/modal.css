@@ -9,11 +9,10 @@
     height: 100%;
     max-height: 80vh;
     color: inherit;
-    border-radius: 8px;
     animation: popIn .2s;
     overflow: hidden;
     word-break: break-word;
-    @apply bg-background;
+    @apply bg-background shadow-xl md:rounded-md;
 }
 .modal.sm {
     max-width: 425px;
@@ -42,8 +41,4 @@
 .modal.left {
     margin-left: 0;
     animation-name: pullLeftIn;
-}
-
-.modal header h2 {
-    font-size: 24px;
 }

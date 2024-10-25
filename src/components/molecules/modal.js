@@ -10,12 +10,12 @@ import { Dialog } from "./dialogue.js";
  * @param {object} props
  * @returns {object}
  */
-const ModalHeader = (props) => (
+const ModalHeader = ({ title }) => (
     Header({ class: 'modal-header flex items-center' }, [
         Button({ class: 'bttn icon mr-2 p-0 bg-transparent sm:hidden hover:bg-transparent', click: (e, parent) => parent.close() }, {
             html: Icons.arrows.left
         }),
-        H2({ class: 'modal-title m-0' }, 'Modal Title')
+        H2({ class: 'text-lg font-semibold m-0' }, title)
     ])
 );
 
@@ -29,7 +29,7 @@ const ModalHeader = (props) => (
 export const ModalContainer = Atom((props, children) => (
     MainDialog({ class: `modal m-auto fixed z-50 grid w-full gap-4 border bg-background p-6 shadow-lg ${props.class}`, click: props.click}, [
         Div({ class: 'modal-content flex flex-auto flex-col' }, [
-            ModalHeader(),
+            ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto' }, children),
             Footer({ class: 'modal-footer flex justify-between' }, props.buttons)
         ])
@@ -56,9 +56,9 @@ export class Modal extends Dialog
 	{
         const click = (event) => { if (event.target === this.panel) this.close() };
 		const className = this.getMainClass();
-        return ModalContainer({ class: className, click, buttons: this.getButtons() }, [
-            Div({ class: '' }, '')
-        ]);
+		const title = this.title || 'Are you abosolutely sure?';
+
+        return ModalContainer({ class: className, click, title, buttons: this.getButtons() }, this.children);
 	}
 
     /**
