@@ -11,7 +11,7 @@ import { Panel } from '../../../../../components/organisms/panel.js';
  * @returns {object}
  */
 const PageHeader = Atom(({ title, description}) => (
-	Header({ class: 'sm:py-8 px-4 flex flex-col' }, [
+	Header({ class: 'sm:py-8 px-5 flex flex-col' }, [
 		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
 		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
 	])
