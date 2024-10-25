@@ -58,7 +58,7 @@ export class Modal extends Dialog
 		const className = this.getMainClass();
 		const title = this.title || 'Are you abosolutely sure?';
 
-        return ModalContainer({ class: className, click, title, buttons: this.getButtons() }, this.children);
+        return ModalContainer({ class: className, click, title, buttons: this.getButtons(), aria: { expanded: ['open']} }, this.children);
 	}
 
     /**

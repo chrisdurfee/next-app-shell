@@ -30,7 +30,7 @@ const DialogHeader = ({ title }) => (
  * @returns {object}
  */
 export const DialogContainer = Atom((props, children) => (
-    MainDialog({ class: `flex flex-auto flex-col fixed z-50 w-full max-w-lg gap-4 border bg-background text-foreground p-6 shadow-lg duration-200 sm:rounded-lg`, click: props.click}, [
+    MainDialog({ class: `flex flex-auto flex-col fixed z-50 w-full max-w-lg gap-4 border bg-background text-foreground p-6 shadow-lg duration-200 sm:rounded-lg`, click: props.click, aria: { expanded: ['open']}}, [
         Div({ class: 'flex flex-auto flex-col space-y-2' }, [
             DialogHeader(props),
             Div({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, children),
@@ -77,6 +77,23 @@ export class Dialog extends Component
         ];
     }
 
+    /**
+     * This will setup the states.
+     *
+     * @returns {object}
+     */
+    setupStates()
+    {
+        return {
+            open: false
+        };
+    }
+
+    /**
+     * This will confirm the action.
+     *
+     * @returns {void}
+     */
     confirm()
     {
         this.confirmed && this.confirmed();
@@ -102,6 +119,7 @@ export class Dialog extends Component
 	{
 		render(this);
 		this.panel.showModal();
+        this.state.open = true;
 	}
 
 	/**
@@ -111,6 +129,7 @@ export class Dialog extends Component
 	 */
 	close()
 	{
+        this.state.open = false;
 		this.panel.close();
 		this.destroy();
 	}
