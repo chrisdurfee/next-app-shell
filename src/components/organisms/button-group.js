@@ -23,7 +23,7 @@ const Buttons = Atom((props, children) => ({
  */
 const StateButton = Atom(({ value, label }) => (
 	Button({
-		class: 'inline-flex items-center justify-center whitespace-nowrap rounded-md px-8 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
+		class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-md px-8 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
 		onState: ['performance', { active: value}],
 		dataSet: ['performance', ['state', value, 'active']],
 		click: (e, {state}) => state.performance = value
@@ -64,7 +64,7 @@ export default class ButtonGroup extends Component
 			P({
 				onState: ['performance', (state) => ButtonText[state] || ButtonText.fair]
 			}),
-			Div({ class: 'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground ml-auto'}, [
+			Div({ class: 'inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground'}, [
 				StateButton({ label: 'Bad', value: 'bad' }),
 				StateButton({ label: 'Good', value: 'good' }),
 				StateButton({ label: 'Fair', value: 'fair' })
