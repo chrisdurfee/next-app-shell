@@ -1,6 +1,7 @@
-import { Button, Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
+import { Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
 import { Atom, Builder, Component } from "@base-framework/base";
 import "../../css/components/molecules/modals/modal.css";
+import { Button } from "../atoms/buttons/buttons.js";
 
 /**
  * This will render the modal component.
@@ -35,7 +36,7 @@ export const DialogContainer = Atom((props, children) => (
             DialogHeader(props),
             Div({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, children),
         ]),
-        Footer({ class: 'flex flex-col-reverse sm:flex-row sm:justify-end mt-6 space-x-2' }, props.buttons)
+        Footer({ class: 'flex flex-col-reverse sm:flex-row sm:justify-end mt-6 sm:space-x-2' }, props.buttons)
     ])
 ));
 
@@ -72,8 +73,8 @@ export class Dialog extends Component
     getButtons()
     {
         return [
-            Button({ class: 'bttn outline', click: () => this.close() }, 'Cancel'),
-            Button({ class: 'bttn primary', click: () => this.confirm() }, 'Save')
+            Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
+            Button({ variant: 'primary', click: () => this.confirm() }, 'Save')
         ];
     }
 

@@ -1,6 +1,7 @@
-import { Button, Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
+import { Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
 import "../../css/components/molecules/modals/modal.css";
+import { Button } from "../atoms/buttons/buttons.js";
 import { Icons } from "../icons/icons";
 import { Dialog } from "./dialogue.js";
 
@@ -69,8 +70,8 @@ export class Modal extends Dialog
     getButtons()
     {
         return [
-            Button({ class: 'bttn outline', click: () => this.close() }, 'Cancel'),
-            Button({ class: 'bttn primary', click: () => this.close() }, 'Save')
+            Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
+            Button({ variant: 'primary', click: () => this.confirm() }, 'Save')
         ];
     }
 
