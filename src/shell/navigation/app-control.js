@@ -144,6 +144,9 @@ export class AppControl extends Component
     ignoreHover()
     {
         this.state.ignoreHover = true;
+
+        const DELAY_MILLISECONDS = 100;
+        window.setTimeout(() => this.removeIgnore(), DELAY_MILLISECONDS);
     }
 
     /**
