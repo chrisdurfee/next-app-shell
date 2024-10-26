@@ -5,6 +5,7 @@ import { ModalPage } from "./components/buttons/modal-page.js";
 import { TabPage } from "./components/buttons/tab-page.js";
 import IconPage from "./icons/icon-page.js";
 import IntroPage from "./introduction/intro-page.js";
+import { ThemePage } from "./theme/theme-page.js";
 
 /**
  * This will create a page.
@@ -28,6 +29,7 @@ const Page = (url, title, page) => ({
  */
 export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}`, 'Introduction', IntroPage),
+	Page(`${basePath}/theme`, 'Theme', ThemePage),
 	Page(`${basePath}/icons`, 'Icons', IconPage),
 	Page(`${basePath}/components/buttons*`, 'Buttons', ButtonPage),
 	Page(`${basePath}/components/badges*`, 'Badges', BadgePage),

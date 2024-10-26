@@ -11,6 +11,11 @@ export const Links = (path) => ([
 		exact: true
 	},
 	{
+		href: `${path}/theme`,
+		label: 'Theme',
+		exact: true
+	},
+	{
 		href: `${path}/icons`,
 		label: 'Icons'
 	},
