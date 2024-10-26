@@ -24,7 +24,7 @@ export class Calendar extends Component
 
          return new Data({
             monthName: this.getMonthName(currentMonth),
-            activeDate: `${current.getFullYear()}-${currentMonth + 1}-${current.getDate()}`,
+            currentDate: `${current.getFullYear()}-${currentMonth + 1}-${current.getDate()}`,
             current: {
                 date: current.getDate(),
                 year: current.getFullYear(),
@@ -118,7 +118,7 @@ export class Calendar extends Component
         /**
          * Set the active date and month name.
          */
-        data.activeDate = `${year}-${month + 1}-${data.current.date}`;
+        data.currentDate = `${year}-${month + 1}-${data.current.date}`;
         data.monthName = this.getMonthName(month);
     }
 
