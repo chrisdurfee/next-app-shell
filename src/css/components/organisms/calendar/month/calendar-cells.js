@@ -21,14 +21,15 @@ const FormatDate = (year, month, day) => `${year}-${pad(month + 1)}-${pad(day)}`
 /**
  * This will create the calendar cells.
  *
- * @param {number} month
- * @param {number} year
+ * @param {object} current
  * @param {object} today
  * @param {function} selectCallBack
  * @returns {object}
  */
-export const CalendarCells = (month, year, today, selectCallBack) =>
+export const CalendarCells = (current, today, selectCallBack) =>
 {
+    const { year, month } = current;
+    const selectedDate = FormatDate(year, month, current.date);
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const prevMonthDays = new Date(year, month, 0).getDate();
@@ -44,6 +45,7 @@ export const CalendarCells = (month, year, today, selectCallBack) =>
         cells.push(
             DayCell({
                 day: prevMonthDays - i,
+                currentDate: selectedDate,
                 date: FormatDate(prevYear, prevMonth, prevMonthDays - i),
                 isOutsideMonth: true,
                 select: selectCallBack
@@ -62,6 +64,7 @@ export const CalendarCells = (month, year, today, selectCallBack) =>
         cells.push(
             DayCell({
                 day,
+                currentDate: selectedDate,
                 date: FormatDate(year, month, day),
                 isToday,
                 isOutsideMonth: false,
@@ -82,6 +85,7 @@ export const CalendarCells = (month, year, today, selectCallBack) =>
         cells.push(
             DayCell({
                 day: i,
+                currentDate: selectedDate,
                 date: FormatDate(nextYear, nextMonth, i),
                 isOutsideMonth: true,
                 select: selectCallBack

@@ -24,6 +24,7 @@ export class Calendar extends Component
 
          return new Data({
             monthName: this.getMonthName(currentMonth),
+            activeDate: `${current.getFullYear()}-${currentMonth + 1}-${current.getDate()}`,
             current: {
                 date: current.getDate(),
                 year: current.getFullYear(),
@@ -69,7 +70,7 @@ export class Calendar extends Component
             month--;
         }
 
-        this.setCurrentMonthYear(month, year);
+        this.setCurrentDate(month, year);
     }
 
     /**
@@ -92,7 +93,7 @@ export class Calendar extends Component
             month++;
         }
 
-        this.setCurrentMonthYear(month, year);
+        this.setCurrentDate(month, year);
     }
 
     /**
@@ -100,13 +101,24 @@ export class Calendar extends Component
      *
      * @param {number} month
      * @param {number} year
+     * @param {number} [date=null]
      * @returns {void}
      */
-    setCurrentMonthYear(month, year)
+    setCurrentDate(month, year, date = null)
     {
         const data = this.data;
         data.current.month = month;
         data.current.year = year;
+
+        if (typeof date === 'number')
+        {
+            data.current.date = date;
+        }
+
+        /**
+         * Set the active date and month name.
+         */
+        data.activeDate = `${year}-${month + 1}-${data.current.date}`;
         data.monthName = this.getMonthName(month);
     }
 
@@ -119,9 +131,7 @@ export class Calendar extends Component
     selectDate(date)
     {
         const newDate = new Date(date + 'T00:00:00');
-        console.log(date, newDate);
-        this.data.current.date = newDate.getDate();
-        this.setCurrentMonthYear(newDate.getMonth(), newDate.getFullYear());
+        this.setCurrentDate(newDate.getMonth(), newDate.getFullYear(), newDate.getDate());
     }
 
     /**

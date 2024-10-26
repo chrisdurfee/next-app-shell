@@ -51,8 +51,7 @@ export const MonthCalendar = (props) => (
         Div({ class: 'flex flex-auto flex-col w-full', onSet: ['current.month', () => [
                 Div({ class: 'grid grid-cols-7' }, HeaderCells()),
                 Div({ class: 'grid grid-cols-7' }, CalendarCells(
-                    props.current.month,
-                    props.current.year,
+                    props.current,
                     props.today,
                     props.select
                 ))
