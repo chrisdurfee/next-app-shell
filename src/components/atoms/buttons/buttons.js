@@ -33,7 +33,7 @@ const WithIconVariant = (defaultProps) =>
 			class: `bttn ${defaultProps.class} ${props.class || ''}`
 		}, [
 			props.icon ? I({ html: props.icon }) : null,
-			...children
+			...(children || [])
 		])
 	));
 };
@@ -52,7 +52,7 @@ const BUTTON_VARIANTS = {
 	outline: DefaultVariant({ class: 'outline' }),
 	ghost: DefaultVariant({ class: 'ghost' }),
 	link: DefaultVariant({ class: 'link' }),
-	icon: DefaultVariant({ class: 'icon' }),
+	icon: WithIconVariant({ class: 'icon' }),
 	withIcon: WithIconVariant({ class: 'with-icon' }),
 };
 

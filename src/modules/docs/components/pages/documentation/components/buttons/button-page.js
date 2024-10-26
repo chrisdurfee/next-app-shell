@@ -134,6 +134,21 @@ export const LinkButton = Atom((props, children)) => (
             }),
 
             DocSection({
+                title: 'Icon Button',
+                description: 'Displays a button with an icon.',
+                preview: [
+                    Button({ variant: 'icon', icon: Icons.home })
+                ],
+                code: `import { Button } from '../components/atoms/buttons/buttons.js';
+import { Icons } from '../components/icons/icons.js';
+import { Atom } from '@base-framework/base';
+
+export const IconButton = Atom((props)) => (
+    Button({ ...props, variant: 'icon', icon: Icons.home })
+);`
+            }),
+
+            DocSection({
                 title: 'With Icon Button',
                 preview: [
                     Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')
