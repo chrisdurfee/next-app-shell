@@ -22,7 +22,7 @@ const getOutsideMonthClass = (isOutsideMonth) => (isOutsideMonth ? 'text-muted-f
  * @param {object} props - The properties for the day cell.
  * @returns {object}
  */
-export const DayCell = ({ day, isToday, isOutsideMonth }) => (
+export const DayCell = ({ day, date, isToday, isOutsideMonth, select }) => (
     Button(
         {
             class: `
@@ -33,6 +33,7 @@ export const DayCell = ({ day, isToday, isOutsideMonth }) => (
       `,
             disabled: day === null,
             'aria-label': day ? `Day ${day}` : null,
+            click: () => select(date),
         },
         day.toString()
     )
