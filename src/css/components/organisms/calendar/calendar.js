@@ -68,8 +68,7 @@ export class Calendar extends Component
             month--;
         }
 
-        data.current.month = month;
-        data.current.year = year;
+        this.setCurrentMonthYear(month, year);
     }
 
     /**
@@ -92,8 +91,22 @@ export class Calendar extends Component
             month++;
         }
 
+        this.setCurrentMonthYear(month, year);
+    }
+
+    /**
+     * This will set the current month and year.
+     *
+     * @param {number} month
+     * @param {number} year
+     * @returns {void}
+     */
+    setCurrentMonthYear(month, year)
+    {
+        const data = this.data;
         data.current.month = month;
         data.current.year = year;
+        data.monthName = this.getMonthName(month);
     }
 
     /**

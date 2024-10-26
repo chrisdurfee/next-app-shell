@@ -16,7 +16,7 @@ const CalendarHeader = ({ next, previous }) => (
         Span('[[monthName]] [[current.year]]'),
         NavigationButton({
             label: 'Previous',
-            click: () => previous
+            click: previous
         }),
         NavigationButton({
             label: 'Next',
@@ -108,11 +108,14 @@ export const MonthCalendar = (props) => (
             next: props.next,
             previous: props.previous
         }),
-        Div({ class: 'grid grid-cols-7' }, HeaderCells()),
-        Div({ class: 'grid grid-cols-7' }, CalendarCells(
-            props.current.month,
-            props.current.year,
-            props.today
-        )),
+        Div({ class: 'flex flex-auto flex-col w-full', onSet: ['current.month', () => [
+                Div({ class: 'grid grid-cols-7' }, HeaderCells()),
+                Div({ class: 'grid grid-cols-7' }, CalendarCells(
+                    props.current.month,
+                    props.current.year,
+                    props.today
+                ))
+            ]]
+        }),
     ])
 );
