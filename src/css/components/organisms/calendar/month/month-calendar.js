@@ -48,7 +48,7 @@ export const MonthCalendar = (props) => (
             next: props.next,
             previous: props.previous
         }),
-        Div({ class: 'flex flex-auto flex-col w-full', onSet: ['current.month', () => [
+        Div({ class: 'flex flex-auto flex-col w-full', onSet: ['activeDate', () => [
                 Div({ class: 'grid grid-cols-7' }, HeaderCells()),
                 Div({ class: 'grid grid-cols-7' }, CalendarCells(
                     props.current,
