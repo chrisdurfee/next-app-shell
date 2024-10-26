@@ -2,6 +2,7 @@ import { Div, H2, P } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { GridContainer } from '../../../../../components/molecules/molecules.js';
 import { FullPage } from '../../../../../components/pages/full-page.js';
+import { Calendar } from "../../../../../css/components/organisms/calendar/calendar.js";
 import { GreetingCard } from './greeting-card.js';
 
 /**
@@ -107,7 +108,8 @@ const FullProps = () => (
 const BindCard = () => (
 	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
 		H2({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
-		P('This will test the deep data binding [[other.name]]')
+		P('This will test the deep data binding [[other.name]]'),
+		new Calendar()
 	])
 );
 
