@@ -1,11 +1,21 @@
-import { Div, Span } from '@base-framework/atoms';
+import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
-import { DayCell } from './day-cell.js';
-import { DayHeader } from './day-header.js';
-import { NavigationButton } from './navigation-button.js';
+import { MonthCalendar } from './month-calendar.js';
 
+/**
+ * Calendar
+ *
+ * This will create a calendar component.
+ *
+ * @class Calendar
+ */
 export class Calendar extends Component
 {
+    /**
+     * This will set up the data for the calendar.
+     *
+     * @returns {Data}
+     */
     setData()
     {
         const today = new Date();
@@ -38,92 +48,11 @@ export class Calendar extends Component
         return monthNames[month];
     }
 
-    getDayHeaders()
-    {
-        const daysOfWeek = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-        return daysOfWeek.map(DayHeader);
-    }
-
-    getCalendarCells()
-    {
-        const data = this.data;
-        const year = data.current.year;
-        const month = data.current.month;
-
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const prevMonthDays = new Date(year, month, 0).getDate();
-
-        const cells = [];
-
-        // Previous month's last days
-        for (let i = firstDay - 1; i >= 0; i--)
-        {
-            cells.push(
-                DayCell({
-                    day: prevMonthDays - i,
-                    isOutsideMonth: true,
-                })
-            );
-        }
-
-        const today = data.today;
-        // Current month's days
-        for (let day = 1; day <= daysInMonth; day++)
-        {
-            const isToday =
-            day === today.date &&
-            month === today.month &&
-            year === today.year;
-
-            cells.push(
-                DayCell({
-                    day,
-                    isToday,
-                    isOutsideMonth: false,
-                })
-            );
-        }
-
-        // Next month's first days to fill the last week
-        const totalCells = cells.length;
-        const nextMonthDays = (7 - (totalCells % 7)) % 7;
-        for (let i = 1; i <= nextMonthDays; i++)
-        {
-            cells.push(
-                DayCell({
-                    day: i,
-                    isOutsideMonth: true,
-                })
-            );
-        }
-
-        return cells;
-    }
-
-    renderCalendar()
-    {
-        // Month-year display
-        const monthYearDisplay = Div({ class: 'text-sm font-medium text-center relative items-center' }, [
-            Span('[[monthName]] [[current.year]]'),
-            NavigationButton({
-                label: 'Previous',
-                click: () => this.goToPreviousMonth()
-            }),
-            NavigationButton({
-                label: 'Next',
-                click: () => this.goToNextMonth()
-            })
-        ]);
-
-        // Calendar grid
-        return Div({ class: 'rdp w-full space-y-1' }, [
-            monthYearDisplay,
-            Div({ class: 'grid grid-cols-7' }, [...this.getDayHeaders()]),
-            Div({ class: 'grid grid-cols-7' }, [...this.getCalendarCells()]),
-        ]);
-    }
-
+    /**
+     * This will go to the previous month.
+     *
+     * @returns {void}
+     */
     goToPreviousMonth()
     {
         const data = this.data;
@@ -143,6 +72,11 @@ export class Calendar extends Component
         data.current.year = year;
     }
 
+    /**
+     * This will go to the next month.
+     *
+     * @returns {void}
+     */
     goToNextMonth()
     {
         const data = this.data;
@@ -162,10 +96,20 @@ export class Calendar extends Component
         data.current.year = year;
     }
 
+    /**
+     * This will render the calendar.
+     *
+     * @returns {object}
+     */
     render()
     {
         return Div({ class: 'calendar-container p-3 rounded-md border' }, [
-            this.renderCalendar(),
+            MonthCalendar({
+                current: this.data.current,
+                today: this.data.today,
+                next: () => this.goToNextMonth(),
+                previous: () => this.goToPreviousMonth()
+            }),
         ]);
     }
 }
