@@ -9,6 +9,7 @@
 
 /* atoms */
 @import url('components/atoms/atoms.css');
+@import url('components/atoms/buttons.css');
 
 /* molecules */
 @import url('components/molecules/molecules.css');
