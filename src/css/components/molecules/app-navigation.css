@@ -54,8 +54,8 @@
 /**
  * This will remove the shadow when the navigation is pinned
  */
-.app-nav-container:not(.ignoreHover):not(.pinned):hover .main-navigation {
-	box-shadow: var(--nav-shadow-hover);
+.app-nav-container:not(.ignoreHover):not(.pinned):hover {
+	@apply shadow-lg;
 }
 
 .app-nav-container:hover .navigation li.option.sub>.active {
