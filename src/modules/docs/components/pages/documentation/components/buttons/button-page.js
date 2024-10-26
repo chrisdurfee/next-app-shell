@@ -78,6 +78,19 @@ export const DestructiveButton = Atom((props, children)) => (
             }),
 
             DocSection({
+                title: 'Warning Button',
+                preview: [
+                    Button({ variant: 'warning' }, 'Warning')
+                ],
+                code: `import { Button } from '../components/atoms/buttons/buttons.js';
+import { Atom } from '@base-framework/base';
+
+export const WarningButton = Atom((props, children)) => (
+    Button({ ...props, variant: 'warning' }, children)
+);`
+            }),
+
+            DocSection({
                 title: 'Outline Button',
                 preview: [
                     Button({ variant: 'outline' }, 'Outline')
