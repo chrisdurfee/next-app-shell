@@ -1,4 +1,4 @@
-import { Button as BaseButton } from '@base-framework/atoms';
+import { Button as BaseButton, I } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -19,6 +19,26 @@ const DefaultVariant = (defaultProps) =>
 };
 
 /**
+ * This will create a button with an icon.
+ *
+ * @param {object} defaultProps
+ * @returns {object}
+ */
+const WithIconVariant = (defaultProps) =>
+{
+	return Atom((props, children) => (
+		BaseButton({
+			...defaultProps,
+			...props,
+			class: `bttn ${defaultProps.class} ${props.class || ''}`
+		}, [
+			props.icon ? I({ html: props.icon }) : null,
+			...children
+		])
+	));
+};
+
+/**
  * This will set upt the variants for the button.
  *
  * @constant
@@ -32,6 +52,8 @@ const BUTTON_VARIANTS = {
 	outline: DefaultVariant({ class: 'outline' }),
 	ghost: DefaultVariant({ class: 'ghost' }),
 	link: DefaultVariant({ class: 'link' }),
+	icon: DefaultVariant({ class: 'icon' }),
+	withIcon: WithIconVariant({ class: 'with-icon' }),
 };
 
 /**

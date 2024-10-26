@@ -1,5 +1,6 @@
 import { H2, Header } from "@base-framework/atoms";
 import { Button } from "../../../../../../../components/atoms/buttons/buttons.js";
+import { Icons } from "../../../../../../../components/icons/icons.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -130,7 +131,17 @@ import { Atom } from '@base-framework/base';
 export const LinkButton = Atom((props, children)) => (
     Button({ ...props, variant: 'link' }, children)
 );`
-            })
+            }),
+
+            DocSection({
+                title: 'With Icon Button',
+                preview: [
+                    Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')
+                ],
+                code: `import { Button } from '../components/atoms/buttons/buttons.js';
+
+Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')`
+            }),
         ]
     )
 );

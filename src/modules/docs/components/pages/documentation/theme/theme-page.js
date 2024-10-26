@@ -98,7 +98,6 @@ const ColorGuide = (obj) =>
             { var: '--destructive-foreground', class: 'bg-destructive-foreground' },
         ]),
 
-        //warning colors
         ColorRow('Used for warning actions such as <Button variant="warning">', [
             { var: '--warning', class: 'bg-warning' },
             { var: '--warning-foreground', class: 'bg-warning-foreground' },
