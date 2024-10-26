@@ -28,6 +28,7 @@ const BUTTON_VARIANTS = {
 	primary: DefaultVariant({ class: 'primary' }),
 	secondary: DefaultVariant({ class: 'secondary' }),
 	destructive: DefaultVariant({ class: 'destructive' }),
+	warning: DefaultVariant({ class: 'warning' }),
 	outline: DefaultVariant({ class: 'outline' }),
 	ghost: DefaultVariant({ class: 'ghost' }),
 	link: DefaultVariant({ class: 'link' }),
