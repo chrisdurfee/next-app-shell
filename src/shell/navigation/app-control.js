@@ -11,7 +11,7 @@ import { MobileNavigation } from "./mobile-navigation.js";
  */
 const AppContainer = Atom((props, children) => ({
     ...props,
-    class: 'app-nav-container bg-background fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px] lg:hover:w-[330px] sm:h-full z-10 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border',
+    class: 'app-nav-container bg-background fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px] lg:hover:w-[330px] sm:h-full z-10 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r',
     children
 }));
 
