@@ -12,7 +12,7 @@ import { NavigationButton } from './navigation-button.js';
  * @returns {object}
  */
 const CalendarHeader = ({ next, previous }) => (
-    Div({ class: 'text-sm font-medium text-center relative items-center' }, [
+    Div({ class: 'flex flex-auto min-h-12 text-sm font-medium relative justify-center items-center' }, [
         Span('[[monthName]] [[current.year]]'),
         NavigationButton({
             label: 'Previous',
