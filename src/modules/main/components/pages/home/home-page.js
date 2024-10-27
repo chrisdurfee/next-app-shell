@@ -103,7 +103,7 @@ const FullProps = () => (
 				title: 'Notification Title',
 				description: 'This is a notification.',
 			})
-		), 3000);
+		), 2000);
 	}
 });
 
