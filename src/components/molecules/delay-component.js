@@ -1,21 +1,17 @@
-import { base, Component, Html } from "@base-framework/base";
+import { base, Component, Dom, Html } from "@base-framework/base";
 
 /**
  * DelayComponent
  *
  * A component that adds a delay before removing itself from the DOM.
  *
+ * @property {string} removingClass - The class name to be added before destruction.
+ *
  * @class
  * @extends Component
  */
 export class DelayComponent extends Component
 {
-    /**
-     * @param {string} removingClass This is the class name that will be added
-     * before being destroyed.
-     */
-    removingClass = '';
-
     /**
      * This will remove the component from the DOM after a delay.
      *
@@ -34,7 +30,7 @@ export class DelayComponent extends Component
             return;
         }
 
-        base.addClass(panel, className);
+        Dom.addClass(panel, className);
         base.on('animationend', panel, (e) => Html.removeElement(panel));
     }
 }

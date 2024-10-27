@@ -1,5 +1,6 @@
 import { Div, H2, P } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { Icons } from "../../../../../components/icons/icons.js";
 import { GridContainer } from '../../../../../components/molecules/molecules.js';
 import { FullPage } from '../../../../../components/pages/full-page.js';
 import { Calendar } from "../../../../../css/components/organisms/calendar/calendar.js";
@@ -102,6 +103,7 @@ const FullProps = () => (
 			app.addNotification({
 				title: 'Notification Title',
 				description: 'This is a notification.',
+				icon: Icons.warning
 			})
 		), 2000);
 	}

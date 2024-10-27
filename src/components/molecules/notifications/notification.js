@@ -2,6 +2,7 @@ import { A, Div, Footer, H3, Header, I, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Timer } from "@base-framework/organisms";
 import { Button } from "../../atoms/buttons/buttons.js";
+import { Icons } from "../../icons/icons.js";
 import { DelayComponent } from "../delay-component.js";
 
 /**
@@ -12,8 +13,8 @@ import { DelayComponent } from "../delay-component.js";
  */
 const TitleBar = (title) =>
 {
-    return Header({ class: 'flex justify-center mb-4'}, [
-        H3({ class: 'mb-0 mr-4' }, title)
+    return Header({ class: 'flex justify-center'}, [
+        H3({ class: 'text-lg font-bold mb-0' }, title)
     ]);
 };
 
@@ -25,7 +26,7 @@ const TitleBar = (title) =>
  */
 const NotificationLink = Atom((props, children) => (
     A({
-        class: 'bg-popover flex flex-auto flex-col shadow-lg pointer-events-auto',
+        class: `bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 ${props.color} border rounded-md min-w-[380px] mt-4`,
         href: href,
         class: `${props.class} ${props.color}`,
         role: 'alert'
@@ -40,9 +41,8 @@ const NotificationLink = Atom((props, children) => (
  */
 const NotificationButton = Atom((props, children) => (
     Div({
-        class: 'bg-popover flex flex-auto flex-col shadow-lg pointer-events-auto',
+        class: `bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 ${props.color} border rounded-md min-w-[380px] mt-4`,
         click: () => props.close(),
-        class: `${props.class} ${props.color}`,
         role: 'alert'
     }, children)
 ));
@@ -106,7 +106,7 @@ export class Notification extends DelayComponent
         if (duration !== 'infinite')
         {
             this.timer = new Timer(duration, this.close.bind(this));
-            //this.timer.start();
+            this.timer.start();
         }
     }
 
@@ -136,16 +136,21 @@ export class Notification extends DelayComponent
     getChildren()
     {
         return [
-            this.icon && I({ html: this.icon }),
             Div({ class: 'flex flex-auto flex-col' }, [
-                this.title && TitleBar(this.title),
-                P({ class: 'm-0' }, this.description),
+                Div({ class: 'flex flex-auto flex-row items-center w-full' }, [
+                    this.icon && I({ class: 'mr-4', html: this.icon }),
+                    this.title && TitleBar(this.title)
+                ]),
+                P({ class: 'text-base text-muted-foreground m-0' }, this.description),
                 (this.primary || this.secondary) && Footer({
                     class: 'margin-top-24 flex align-center',
                     children: this.getButtons()
                 })
             ]),
-            CloseButton({
+            Button({
+                class: 'absolute top-[12px] right-[12px]',
+                variant: 'icon',
+                icon: Icons.x,
                 click: this.close.bind(this)
             })
         ];

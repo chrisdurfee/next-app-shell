@@ -1,0 +1,23 @@
+@keyframes pullRight {
+    0% {
+        transform: translate3d(0%, 0, 0);
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(10%, 0, 0);
+        opacity: 0;
+    }
+}
+
+.pullRight {
+    animation: pullRight .5s ease-in-out;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
