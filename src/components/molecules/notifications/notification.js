@@ -26,7 +26,7 @@ const TitleBar = (title) =>
  */
 const NotificationLink = Atom((props, children) => (
     A({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 ${props.color} border rounded-md min-w-[380px] mt-4`,
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] mt-4`,
         href: href,
         class: `${props.class} ${props.color}`,
         role: 'alert'
@@ -41,7 +41,7 @@ const NotificationLink = Atom((props, children) => (
  */
 const NotificationButton = Atom((props, children) => (
     Div({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 ${props.color} border rounded-md min-w-[380px] mt-4`,
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] mt-4`,
         click: () => props.close(),
         role: 'alert'
     }, children)
@@ -78,21 +78,42 @@ export class Notification extends DelayComponent
      */
     render()
     {
+        const type = this.getType();
         const href = this.href || null;
         if (href)
         {
             return NotificationLink({
                 href,
                 class: this.class,
-                color: this.color
             }, this.getChildren());
         }
 
         return NotificationButton({
             close: this.close.bind(this),
             class: this.class,
-            color: this.color
         }, this.getChildren());
+    }
+
+    /**
+     * This will get the type of notification.
+     *
+     * @returns {string}
+     */
+    getType()
+    {
+        switch (this.type)
+        {
+            case 'success':
+                return 'bg-green-500';
+            case 'destructive':
+                return 'bg-destructive';
+            case 'info':
+                return 'bg-blue-500';
+            case 'warning':
+                return 'bg-warning';
+            default:
+                return '';
+        }
     }
 
     /**

@@ -29,7 +29,8 @@ export const NotificationPage = () => (
                             app.notify({
                                 title: 'Notification Title',
                                 description: 'This is a notification.',
-                                icon: Icons.warning
+                                icon: Icons.warning,
+                                type: 'warning'
                             })
                         }
                     }, 'Show')
@@ -38,6 +39,7 @@ export const NotificationPage = () => (
     title: 'Notification Title',
     description: 'This is a notification.',
     icon: Icons.warning,
+    type: 'warning', // 'success', 'destructive', 'info', 'warning'
     duration: 5000 // in milliseconds, leave it blank for 4 seconds, infinite is also a value to prevent it from going away
 })`
             })
