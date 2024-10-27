@@ -2,6 +2,8 @@ import { Div } from "@base-framework/atoms";
 import { Component, Data } from "@base-framework/base";
 import { Notification } from "./notification.js";
 
+let id = 0;
+
 /**
  * NotificationContainer
  *
@@ -41,8 +43,23 @@ export class NotificationContainer extends Component
      */
     addNotice(props = {})
     {
-        props.callBack = (props) => this.removeNotice(props);
+        props.id = id++;
+        props.callBack = () => this.removeNotice(props);
         this.data.push('notifications', props);
+    }
+
+    /**
+     * This will get the index of a notification.
+     *
+     * @param {object} notice
+     * @returns {number}
+     */
+    getIndex(notice)
+    {
+        const notificaitons = this.data.get('notifications');
+        if (!notificaitons) return -1;
+
+        return notificaitons.findIndex(n => n.id === notice.id);
     }
 
     /**
@@ -53,10 +70,10 @@ export class NotificationContainer extends Component
      */
     removeNotice(notice)
     {
-        const index = this.data.notifications.indexOf(notice);
+        const index = this.getIndex(notice);
         if (index !== -1)
         {
-            this.data.splice('nottifications', index);
+            this.data.splice('notifications', index);
         }
     }
 }

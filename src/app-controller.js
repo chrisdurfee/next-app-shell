@@ -94,7 +94,7 @@ export class AppController
 	 * @param {object} props
 	 * @returns {void}
 	 */
-	addNotification(props)
+	notify(props)
 	{
 		this.appShell.notifications.addNotice(props);
 	}

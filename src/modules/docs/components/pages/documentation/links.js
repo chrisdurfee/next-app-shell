@@ -40,6 +40,10 @@ export const Links = (path) => ([
 				href: `${path}/components/modals`
 			},
 			{
+				label: 'Notifications',
+				href: `${path}/components/notifications`
+			},
+			{
 				label: 'Dialogs',
 				href: `${path}/components/dialogs`
 			}
