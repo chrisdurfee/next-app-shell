@@ -28,7 +28,7 @@ const ModalHeader = ({ title }) => (
  * @returns {object}
  */
 export const ModalContainer = Atom((props, children) => (
-    MainDialog({ class: `modal m-auto fixed z-50 grid w-full gap-4 border bg-background p-6 shadow-lg ${props.class}`, click: props.click}, [
+    MainDialog({ class: `modal m-auto fixed z-20 grid w-full gap-4 border bg-background p-6 shadow-lg ${props.class}`, click: props.click}, [
         Div({ class: 'modal-content flex flex-auto flex-col' }, [
             ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto' }, children),

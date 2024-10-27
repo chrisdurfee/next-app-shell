@@ -24,7 +24,7 @@ const TitleBar = (title) =>
  */
 const NotificationLink = Atom((props, children) => (
     A({
-        class: 'flex flex-auto flex-col',
+        class: 'bg-popover flex flex-auto flex-col shadow-lg pointer-events-auto',
         href: href,
         class: `${props.class} ${props.color}`,
         role: 'alert'
@@ -39,7 +39,7 @@ const NotificationLink = Atom((props, children) => (
  */
 const NotificationButton = Atom((props, children) => (
     Div({
-        class: 'flex flex-auto flex-col',
+        class: 'bg-popover flex flex-auto flex-col shadow-lg pointer-events-auto',
         click: () => props.close(),
         class: `${props.class} ${props.color}`,
         role: 'alert'
@@ -47,14 +47,14 @@ const NotificationButton = Atom((props, children) => (
 ));
 
 /**
- * NotificationComponent
+ * Notification
  *
  * A component that displays notifications.
  *
  * @class
  * @extends DelayComponent
  */
-export class NotificationComponent extends DelayComponent
+export class Notification extends DelayComponent
 {
     class = 'notification';
     text = 'This is a notification.';
@@ -138,7 +138,7 @@ export class NotificationComponent extends DelayComponent
             this.icon && I({ html: this.icon }),
             Div({ class: 'flex flex-auto flex-col' }, [
                 this.title && TitleBar(this.title),
-                P({ class: 'm-0' }, this.text),
+                P({ class: 'm-0' }, this.description),
                 (this.primary || this.secondary) && Footer({
                     class: 'margin-top-24 flex align-center',
                     children: this.getButtons()

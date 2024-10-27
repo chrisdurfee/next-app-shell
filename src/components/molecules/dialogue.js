@@ -31,7 +31,7 @@ const DialogHeader = ({ title }) => (
  * @returns {object}
  */
 export const DialogContainer = Atom((props, children) => (
-    MainDialog({ class: `flex flex-auto flex-col fixed z-50 w-full max-w-lg gap-4 border bg-background text-foreground p-6 shadow-lg duration-200 sm:rounded-lg`, click: props.click, aria: { expanded: ['open']}}, [
+    MainDialog({ class: `flex flex-auto flex-col fixed z-30 w-full max-w-lg gap-4 border bg-background text-foreground p-6 shadow-lg duration-200 sm:rounded-lg`, click: props.click, aria: { expanded: ['open']}}, [
         Div({ class: 'flex flex-auto flex-col space-y-2' }, [
             DialogHeader(props),
             Div({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, children),

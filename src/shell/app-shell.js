@@ -1,5 +1,6 @@
 import { Main } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { NotificationContainer } from '../components/molecules/notifications/notification-container.js';
 import { AppControl } from './navigation/app-control.js';
 import { MobileHeader } from './navigation/mobile-header.js';
 
@@ -58,6 +59,10 @@ export const AppShell = (props) => (
 		ActivePanelContainer({
 			switch: props.routes,
 			cache: 'mainBody'
+		}),
+
+		new NotificationContainer({
+			cache: 'notifications'
 		})
 	])
 );

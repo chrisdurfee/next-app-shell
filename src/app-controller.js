@@ -84,7 +84,18 @@ export class AppController
 	renderApp()
 	{
 		const { routes, links: options } = modules;
-		const main = this.appShell = AppShell({ options, routes });
-		Builder.render(main, document.body);
+		const main = AppShell({ options, routes });
+		this.appShell = Builder.render(main, document.body);
+	}
+
+	/**
+	 * This will add a notification.
+	 *
+	 * @param {object} props
+	 * @returns {void}
+	 */
+	addNotification(props)
+	{
+		this.appShell.notifications.addNotice(props);
 	}
 }

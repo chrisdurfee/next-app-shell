@@ -97,6 +97,13 @@ const FullProps = () => (
 	{
 		const data = this.data;
 		testData(data);
+
+		window.setTimeout(() => (
+			app.addNotification({
+				title: 'Notification Title',
+				description: 'This is a notification.',
+			})
+		), 3000);
 	}
 });
 
@@ -107,7 +114,7 @@ const FullProps = () => (
  */
 const BindCard = () => (
 	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
-		H2({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
+		H2({ cache: 'header', class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
 		P('This will test the deep data binding [[other.name]]'),
 		new Calendar()
 	])
