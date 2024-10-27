@@ -1,4 +1,7 @@
-import { DelayComponent } from "../delay-component";
+import { A, Div, Footer, H3, Header, I, P } from "@base-framework/atoms";
+import { Timer } from "@base-framework/organisms";
+import { Button } from "../../../components/atoms/buttons/button.js";
+import { DelayComponent } from "../delay-component.js";
 
 /**
  * This will get the title bar
@@ -6,27 +9,42 @@ import { DelayComponent } from "../delay-component";
  * @param {object} titleBar
  * @returns Header
  */
-const TitleBar = (titleBar) =>
+const TitleBar = (title) =>
 {
-    if(!titleBar)
-    {
-        return null;
-    }
-
-    return Header({
-        className: 'flex align-center margin-bottom-small',
-        children: [
-            H3({
-                className: 'margin-bottom-0 margin-right-12',
-                text: titleBar[0]
-            }),
-            Span({
-                className: (this.color === 'light')? 'gray-50' : 'gray-40',
-                text: titleBar[1]
-            })
-        ]
-    });
+    return Header({ class: 'flex justify-center mb-4'}, [
+        H3({ class: 'mb-0 mr-4' }, title)
+    ]);
 };
+
+/**
+ * This will create a link for the notification.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const NotificationLink = Atom((props, children) => (
+    A({
+        class: 'flex flex-auto flex-col',
+        href: href,
+        class: `${props.class} ${props.color}`,
+        role: 'alert'
+    }, children)
+));
+
+/**
+ * This will create a link for the notification.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const NotificationButton = Atom((props, children) => (
+    Div({
+        class: 'flex flex-auto flex-col',
+        click: () => props.close(),
+        class: `${props.class} ${props.color}`,
+        role: 'alert'
+    }, children)
+));
 
 /**
  * NotificationComponent
@@ -38,150 +56,123 @@ const TitleBar = (titleBar) =>
  */
 export class NotificationComponent extends DelayComponent
 {
-    className = 'notification';
+    class = 'notification';
     text = 'This is a notification.';
     removingClass = 'pullRight';
-    color = 'dark';
 
+    /**
+     * This will be called when the component is created.
+     *
+     * @returns {void}
+     */
     onCreated()
     {
         this.duration = this.duration || 4000;
     }
 
+    /**
+     * This will render the component.
+     *
+     * @returns {object}
+     */
     render()
     {
         const href = this.href || null;
+        if (href)
+        {
+            return NotificationLink({
+                href,
+                class: this.class,
+                color: this.color
+            }, this.getChildren());
+        }
 
-        return {
-            tag: (href)? 'a' : 'div',
-            click: (!href)? null : () =>
-            {
-                this.close();
-            },
-            href: href,
-            class: this.className + ' ' + this.color,
-            role: 'alert',
-            nest: this.getChildren()
-        };
+        return NotificationButton({
+            close: this.close,
+            class: this.class,
+            color: this.color
+        }, this.getChildren());
     }
 
+    /**
+     * This will be called after the component is set up.
+     *
+     * @returns {void}
+     */
     afterSetup()
     {
         const duration = this.duration;
         if (duration !== 'infinite')
         {
-            this.timer = new Timer(duration, base.bind(this, this.close));
+            this.timer = new Timer(duration, this.close.bind(this));
             this.timer.start();
         }
     }
 
-    getIcon()
-    {
-        const icon = this.icon;
-        return icon;
-    }
-
-    getTitleBar()
-    {
-        return TitleBar(this.titleBar);
-    }
-
+    /**
+     * This will get the buttons for the notification.
+     *
+     * @returns {array}
+     */
     getButtons()
     {
         return [
-            this.secondary && SecondaryButton({
-                text: this.secondary,
-                click: this.secondaryAction && base.bind(this, this.secondaryAction)
-            }),
+            this.secondary && Button({
+                variant: 'secondary',
+                click: this.secondaryAction && this.secondaryAction.bind(this)
+            }, this.secondary),
             this.primary && Button({
-                text: this.primary,
-                click: this.primaryAction && base.bind(this, this.primaryAction)
-            })
+                click: this.primaryAction && this.primaryAction.bind(this)
+            }, this.primary,)
         ];
     }
 
+    /**
+     * This will get the children for the notification.
+     *
+     * @returns {array}
+     */
     getChildren()
     {
-        const icon = this.getIcon();
-        const titleBar = this.getTitleBar();
-
         return [
-            icon && Icon(icon),
-            {
-                class: 'notification-body',
-                nest: [
-                    (this.title && !this.titleBar) && H3({
-                        className: 'margin-bottom-small',
-                        text: this.title
-                    }),
-                    titleBar || null,
-                    P({
-                        className: 'margin-0',
-                        text: this.text
-                    }),
-                    (this.primary || this.secondary) && Footer({
-                        className: 'margin-top-24 flex align-center',
-                        children: this.getButtons()
-                    })
-                ]
-            },
+            this.icon && I({ html: this.icon }),
+            Div({ class: 'flex flex-auto flex-col' }, [
+                this.title && TitleBar(this.title),
+                P({ class: 'm-0' }, this.text),
+                (this.primary || this.secondary) && Footer({
+                    class: 'margin-top-24 flex align-center',
+                    children: this.getButtons()
+                })
+            ]),
             CloseButton({
-                click: base.bind(this, this.close)
+                click: this.close.bind(this)
             })
         ];
     }
 
+    /**
+     * This will close the notification.
+     *
+     * @param {object} e The event object.
+     * @returns {void}
+     */
     close(e)
     {
-        if(e)
+        if (e)
         {
-            StopEvent(e);
+            e.stopPropagation();
         }
 
-        if(this.duration !== 'infinite')
+        if (this.duration !== 'infinite')
         {
             this.timer.stop();
         }
 
-        SafeInvoke(this.callBack, this);
+        if (this.callBack)
+        {
+            this.callBack();
+        }
+
         this.destroy();
     }
 }
-
-global.Alert = NotificationComponent.extend(
-{
-    type: 'default',
-    icon: '',
-
-    beforeSetup()
-    {
-        this.className = 'alert ' + this.type;
-    },
-
-    getIcon()
-    {
-        let type = this.type,
-        types = ['default', 'danger', 'warning', 'success'],
-        icon = this.icon;
-
-        type = (types.includes(type)) ? type : 'default';
-        if (!icon)
-        {
-            switch (type) {
-                case 'danger':
-                    icon = Icons.alert.error;
-                    break;
-                case 'warning':
-                    icon = Icons.alert.warning;
-                    break;
-                case 'success':
-                    icon = Icons.alert.success;
-                    break;
-                default:
-                    icon = Icons.alert.info;
-            }
-        }
-
-        return icon;
-    }
-});
