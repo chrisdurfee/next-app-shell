@@ -66,9 +66,9 @@ export const MainFullContainPage = () => (
                         children: [
                             Div({ class: 'flex flex-auto flex-col' }, [
                                 Div({ class: 'flex flex-auto flex-row gap-2' }, [
-                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
-                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.append(users) }, 'Append'),
-                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.mingle(users) }, 'Mingle'),
+                                    Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
+                                    Button({ variant: 'outline', click: (e, parent) => parent.list.append(users) }, 'Append'),
+                                    Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(users) }, 'Mingle'),
                                 ])
                             ]),
                             UserList({ users })
