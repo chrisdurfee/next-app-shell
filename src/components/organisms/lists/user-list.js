@@ -1,5 +1,6 @@
-import { Div, Img, Li, P, Span, Time, Ul } from '@base-framework/atoms';
+import { Div, Img, Li, P, Span, Time } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { List } from '@base-framework/organisms';
 
 /**
  * User Image Atom
@@ -10,7 +11,7 @@ import { Atom } from '@base-framework/base';
 const UserImage = Atom(({ src, alt }) =>
 {
     return Img({
-        class: 'h-12 w-12 flex-none rounded-full bg-gray-50',
+        class: 'h-12 w-12 flex-none rounded-full',
         src,
         alt
     });
@@ -25,8 +26,8 @@ const UserImage = Atom(({ src, alt }) =>
 const UserInfo = Atom(({ name, email }) =>
 {
     return Div({ class: 'min-w-0 flex-auto' }, [
-        P({ class: 'text-sm font-semibold leading-6 text-gray-900' }, name),
-        P({ class: 'mt-1 truncate text-xs leading-5 text-gray-500' }, email)
+        P({ class: 'text-sm font-semibold leading-6' }, name),
+        P({ class: 'mt-1 truncate text-xs leading-5 text-muted-foreground' }, email)
     ]);
 });
 
@@ -53,7 +54,7 @@ const UserOnline = () =>
  */
 const UserOffline = (lastSeen) =>
 {
-    return P({ class: 'mt-1 text-xs leading-5 text-gray-500' }, [
+    return P({ class: 'mt-1 text-xs leading-5 text-muted-foreground' }, [
         Span(`Last seen `),
         Time({ datetime: lastSeen }, '3h ago')
     ]);
@@ -79,7 +80,7 @@ const getStatus = (status, lastSeen) =>
 const UserStatus = Atom(({ role, lastSeen, status }) =>
 {
     return Div({ class: 'hidden shrink-0 sm:flex sm:flex-col sm:items-end' }, [
-        P({ class: 'text-sm leading-6 text-gray-900' }, role),
+        P({ class: 'text-sm leading-6' }, role),
         getStatus(status, lastSeen)
     ]);
 });
@@ -113,14 +114,14 @@ const UserListItem = Atom((user) =>
  */
 const UserList = Atom((props) =>
 {
-    return Ul(
-        {
-            ...props,
-            role: 'list',
-            class: 'divide-y divide-gray-100',
-            map: [props.users, UserListItem]
-        }
-    );
+    return new List({
+        cache: 'list',
+        key: 'name',
+        items: props.users,
+        role: 'list',
+        class: 'divide-y divide-border',
+        rowItem: UserListItem
+    });
 });
 
 export default UserList;

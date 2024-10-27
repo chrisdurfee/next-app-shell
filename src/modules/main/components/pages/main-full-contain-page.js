@@ -1,6 +1,7 @@
+import { Div } from "@base-framework/atoms";
+import { Button } from "../../../../components/atoms/buttons/buttons.js";
 import UserList from "../../../../components/organisms/lists/user-list.js";
 import { Tab } from "../../../../components/organisms/tabs/tab.js";
-import { Div } from "./../../../../components/atoms/atoms.js";
 import { Panel } from './../../../../components/organisms/panel.js';
 import { FullContainPage } from './../../../../components/pages/full-contain-page.js';
 
@@ -60,6 +61,20 @@ export const MainFullContainPage = () => (
                 class: 'max-w-[400px]',
                 options: [
                     TabPanel({
+                        label: 'List',
+                        link: 'full-contain/list',
+                        children: [
+                            Div({ class: 'flex flex-auto flex-col' }, [
+                                Div({ class: 'flex flex-auto flex-row gap-2' }, [
+                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
+                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.append(users) }, 'Append'),
+                                    Button({ variant: 'secondary', click: (e, parent) => parent.list.mingle(users) }, 'Mingle'),
+                                ])
+                            ]),
+                            UserList({ users })
+                        ]
+                    }),
+                    TabPanel({
                         label: 'Story',
                         link: 'full-contain/synopsis/story',
                         children: 'this would tell about the story'
@@ -68,13 +83,6 @@ export const MainFullContainPage = () => (
                         label: 'Book',
                         link: 'full-contain/synopsis/book',
                         children: 'dud this come from a book?'
-                    }),
-                    TabPanel({
-                        label: 'List',
-                        link: 'full-contain/list',
-                        children: [
-                            UserList({ users })
-                        ]
                     })
                 ]
             })
