@@ -93,7 +93,7 @@ const UserStatus = Atom(({ role, lastSeen, status }) =>
  */
 const UserListItem = Atom((user) =>
 {
-    return Li({ class: 'flex justify-between gap-x-6 py-4' }, [
+    return Li({ class: 'fadeIn flex justify-between gap-x-6 py-4' }, [
         Div({ class: 'flex min-w-0 gap-x-4' }, [
             UserImage({ src: user.image, alt: user.name }),
             UserInfo({ name: user.name, email: user.email })

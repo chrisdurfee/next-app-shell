@@ -8,6 +8,23 @@
     }
 }
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+.fadeIn {
+    animation: fadeIn .2s ease-in;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: opacity;
+}
+
 @keyframes popIn {
     0% {
         transform: scale(.95);
