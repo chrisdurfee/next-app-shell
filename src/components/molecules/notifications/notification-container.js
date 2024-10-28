@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Component, Data } from "@base-framework/base";
+import { Component } from "@base-framework/base";
+import { List } from "@base-framework/organisms";
 import { Notification } from "./notification.js";
 
 let id = 0;
@@ -14,25 +15,22 @@ let id = 0;
 export class NotificationContainer extends Component
 {
     /**
-     * This will set the default data.
-     *
-     * @returns {Data}
-     */
-    setData()
-    {
-        return new Data({
-            notifications: []
-        });
-    }
-
-    /**
      * This will render the component.
      *
      * @returns {object}
      */
     render()
     {
-        return Div({ class: 'pointer-events-none fixed bottom-[80px] right-0 z-50 p-5', for: ['notifications', (item) => new Notification(item)] });
+        return Div({ class: 'pointer-events-none fixed bottom-[80px] right-0 z-50 p-5' }, [
+            new List({
+                cache: 'list',
+                key: 'id',
+                items: [],
+                role: 'list',
+                class: 'divide-y divide-border',
+                rowItem: (item) => new Notification(item)
+            })
+        ]);
     }
 
     /**
@@ -45,21 +43,7 @@ export class NotificationContainer extends Component
     {
         props.id = id++;
         props.callBack = () => this.removeNotice(props);
-        this.data.push('notifications', props);
-    }
-
-    /**
-     * This will get the index of a notification.
-     *
-     * @param {object} notice
-     * @returns {number}
-     */
-    getIndex(notice)
-    {
-        const notificaitons = this.data.get('notifications');
-        if (!notificaitons) return -1;
-
-        return notificaitons.findIndex(n => n.id === notice.id);
+        this.list.append([ props ]);
     }
 
     /**
@@ -70,10 +54,6 @@ export class NotificationContainer extends Component
      */
     removeNotice(notice)
     {
-        const index = this.getIndex(notice);
-        if (index !== -1)
-        {
-            this.data.splice('notifications', index);
-        }
+        this.list.delete(notice.id);
     }
 }
