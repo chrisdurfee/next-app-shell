@@ -1,4 +1,4 @@
-import { Icons } from '../../components/icons/icons.js';
+import { Icons } from '@components/icons/icons.js';
 import { Module } from '../module.js';
 
 /**

@@ -1,8 +1,8 @@
 import { Atom, Import } from "@base-framework/base";
-import { A, Div, H1, Header, P } from "../../../../../components/atoms/atoms.js";
-import { GridContainer } from '../../../../../components/molecules/molecules.js';
-import { InlineOverlay } from '../../../../../components/organisms/inline-overlay.js';
-import { Panel } from '../../../../../components/organisms/panel.js';
+import { A, Div, H1, Header, P } from "@components/atoms/atoms.js";
+import { GridContainer } from '@components/molecules/molecules.js';
+import { InlineOverlay } from '@components/organisms/inline-overlay.js';
+import { Panel } from '@components/organisms/panel.js';
 
 /**
  * This will create a header for the documentation.
@@ -29,7 +29,7 @@ const ImportButtons = () => (
 				title: 'Main Title',
 			}),
 			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
-				Import({ src: import('../../../../../components/atoms/import-buttons.js') })
+				Import({ src: import('@components/atoms/import-buttons.js') })
 			]),
 			GridContainer()
 		])

@@ -1,5 +1,5 @@
-import { Button } from "../../../../../../../components/atoms/atoms.js";
-import { Modal } from "../../../../../../../components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -75,8 +75,8 @@ export const ModalPage = () => (
                     ModalButton(Modals[3])
                 ],
                 code: `
-import { Modal } from "../components/molecules/modal.js";
-import { Button } from "../components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
 
 /**
  * This will create a modal button.
@@ -101,8 +101,8 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[0])
                 ],
                 code: `
-import { Modal } from "../components/molecules/modal.js";
-import { Button } from "../components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
 
 /**
  * This will create a modal button.
@@ -126,8 +126,8 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[1])
                 ],
                 code: `
-import { Modal } from "../components/molecules/modal.js";
-import { Button } from "../components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
 
 /**
  * This will create a modal button.
@@ -151,8 +151,8 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[2])
                 ],
                 code: `
-import { Modal } from "../components/molecules/modal.js";
-import { Button } from "../components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
 
 /**
  * This will create a modal button.
@@ -176,8 +176,8 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[4])
                 ],
                 code: `
-import { Modal } from "../components/molecules/modal.js";
-import { Button } from "../components/atoms/atoms.js";
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
 
 /**
  * This will create a modal button.

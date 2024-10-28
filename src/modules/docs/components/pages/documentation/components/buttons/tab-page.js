@@ -1,8 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Panel } from "../../../../../../../components/organisms/panel.js";
-import { ButtonTab } from "../../../../../../../components/organisms/tabs/button-tab.js";
-import { Tab } from "../../../../../../../components/organisms/tabs/tab.js";
+import { Panel } from "@components/organisms/panel.js";
+import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
+import { Tab } from "@components/organisms/tabs/tab.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -54,7 +54,7 @@ export const TabPage = () => (
                     })
                 ],
                 code: `
-import { ButtonTab } from "../components/organisms/tabs/button-tab.js";
+import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
 
 /**
  * This will create a tab content.
@@ -122,8 +122,8 @@ export const PreviewTab = (props) => (
                     })
                 ],
                 code: `
-import { LinkTab } from "../components/organisms/tabs/link-tab.js";
-import { Panel } from "../components/organisms/panel.js";
+import { LinkTab } from "@components/organisms/tabs/link-tab.js";
+import { Panel } from "@components/organisms/panel.js";
 
 /**
  * ExampleTab

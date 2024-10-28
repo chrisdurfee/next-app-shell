@@ -1,4 +1,4 @@
-import { AsidePage } from "../../../../../components/pages/aside-page.js";
+import { AsidePage } from "@components/pages/aside-page.js";
 import { DocumentationSwitch } from "./documentation-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";

@@ -1,6 +1,6 @@
 import { Div, H1, Header, P, Section } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { CenterPage } from "../../../../components/pages/center-page.js";
+import { CenterPage } from "@components/pages/center-page.js";
 
 /**
  * This will create a header for the documentation.

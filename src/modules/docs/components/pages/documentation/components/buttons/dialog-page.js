@@ -1,5 +1,5 @@
-import { Button } from "../../../../../../../components/atoms/buttons/buttons.js";
-import { Dialog } from "../../../../../../../components/molecules/dialogue.js";
+import { Button } from "@components/atoms/buttons/buttons.js";
+import { Dialog } from "@components/molecules/dialogue.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -41,7 +41,7 @@ export const DialogPage = () => (
                         confirmed: () => console.log('Confirmed!')
                     })
                 ],
-                code: `import { Button } from '../components/molecules/dialogue.js';
+                code: `import { Button } from '@components/molecules/dialogue.js';
 
 new Dialog({
     title: 'Are you absoultely sure?',

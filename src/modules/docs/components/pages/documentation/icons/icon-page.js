@@ -1,6 +1,6 @@
 import { A, Div, H3, H5, I, P } from "@base-framework/atoms";
 import { Strings } from "@base-framework/base";
-import { Icons } from "../../../../../../components/icons/icons.js";
+import { Icons } from "@components/icons/icons.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from "../../doc-page.js";
 
@@ -131,7 +131,7 @@ export const IconPage = () => (
                     I({ html: Icons.home} )
                 ],
                 code: `
-import { Icons } from '../components/icons/icons.js';
+import { Icons } from '@components/icons/icons.js';
 import { I } from '@base-framework/atoms';
 
 export const HomeIcon = () => (

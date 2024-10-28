@@ -1,4 +1,4 @@
-import { Card } from "../../../../../../../components/atoms/cards/card.js";
+import { Card } from "@components/atoms/cards/card.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -24,7 +24,7 @@ export const CardPage = () => (
                 preview: [
                     Card()
                 ],
-                code: `import { Button } from '../components/atoms/cards/card.js';
+                code: `import { Button } from '@components/atoms/cards/card.js';
 
 Card()`
             })

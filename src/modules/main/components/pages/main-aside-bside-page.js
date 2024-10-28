@@ -1,6 +1,6 @@
-import { Div } from "../../../../components/atoms/atoms.js";
-import { GridContainer } from '../../../../components/molecules/molecules.js';
-import { AsideBsidePage } from '../../../../components/pages/aside-bside-page.js';
+import { Div } from "@components/atoms/atoms.js";
+import { GridContainer } from '@components/molecules/molecules.js';
+import { AsideBsidePage } from '@components/pages/aside-bside-page.js';
 
 /**
  * MainAsideBsidePage

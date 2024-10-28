@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { ButtonTab } from "../../../../components/organisms/tabs/button-tab.js";
+import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
 import { CodeCard, PreviewCard } from "./cards.js";
 
 /**
