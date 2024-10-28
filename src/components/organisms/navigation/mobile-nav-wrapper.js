@@ -87,7 +87,7 @@ const ExapandedNavigation = (props) =>
 
 	return Div(
 		{
-			class: 'bg-popover flex flex-auto flex-col absolute w-full h-0 data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow data-[expanded=true]:border rounded-md z-20',
+			class: 'bg-popover flex flex-auto flex-col absolute w-full h-0 max-h-[500px] overflow-y-auto data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow data-[expanded=true]:border rounded-md z-20',
 			addState()
 			{
 				return {
