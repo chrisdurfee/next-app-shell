@@ -50,6 +50,10 @@ export const Links = (path) => ([
 			{
 				label: 'Cards',
 				href: `${path}/components/cards`
+			},
+			{
+				label: 'Avatars',
+				href: `${path}/components/avatars`
 			}
 		]
 	}
