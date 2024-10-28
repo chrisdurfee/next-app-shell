@@ -25,9 +25,7 @@ export class NotificationContainer extends Component
             new List({
                 cache: 'list',
                 key: 'id',
-                items: [],
                 role: 'list',
-                class: 'divide-y divide-border',
                 rowItem: (item) => new Notification(item)
             })
         ]);
