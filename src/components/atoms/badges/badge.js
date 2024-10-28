@@ -47,6 +47,41 @@ const BADGE_STYLES = {
         backgroundColor: 'bg-pink-50',
         textColor: 'text-pink-700',
         ringColor: 'ring-pink-700/10'
+    },
+    primary: {
+        backgroundColor: 'bg-primary',
+        textColor: 'text-primary-foreground',
+        ringColor: 'ring-primary/10'
+    },
+    secondary: {
+        backgroundColor: 'bg-secondary',
+        textColor: 'text-secondary-foreground',
+        ringColor: 'ring-secondary/10'
+    },
+    destructive: {
+        backgroundColor: 'bg-destructive',
+        textColor: 'text-destructive-foreground',
+        ringColor: 'ring-destructive/10'
+    },
+    warning: {
+        backgroundColor: 'bg-warning',
+        textColor: 'text-warning-foreground',
+        ringColor: 'ring-warning/10'
+    },
+    outline: {
+        backgroundColor: 'bg-background',
+        textColor: 'text-primary',
+        ringColor: 'ring-input'
+    },
+    ghost: {
+        backgroundColor: 'bg-background',
+        textColor: 'text-primary',
+        ringColor: 'ring-background'
+    },
+    link: {
+        backgroundColor: 'bg-background',
+        textColor: 'text-primary',
+        ringColor: 'ring-background'
     }
 };
 
@@ -67,7 +102,7 @@ const getBadgeStyle = (type) => BADGE_STYLES[type] || BADGE_STYLES.gray;
 const getBadgeClasses = (type) =>
 {
     const { backgroundColor, textColor, ringColor } = getBadgeStyle(type);
-    return `inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset ${backgroundColor} ${textColor} ${ringColor}`;
+    return `inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors ${backgroundColor} ${textColor} ${ringColor}`;
 };
 
 /**

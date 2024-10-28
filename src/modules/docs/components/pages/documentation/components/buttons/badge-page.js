@@ -23,7 +23,7 @@ export const BadgePage = () => (
                 title: 'Badge',
                 description: 'This is a badge.',
                 preview: [
-                    Div({ class: 'flex gap-2' }, [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
                         Badge({ type: 'gray' }, 'Text'),
                         Badge({ type: 'red' }, 'Text'),
                         Badge({ type: 'yellow' }, 'Text'),
@@ -31,7 +31,14 @@ export const BadgePage = () => (
                         Badge({ type: 'blue' }, 'Text'),
                         Badge({ type: 'indigo' }, 'Text'),
                         Badge({ type: 'purple' }, 'Text'),
-                        Badge({ type: 'pink' }, 'Text')
+                        Badge({ type: 'pink' }, 'Text'),
+                        Badge({ type: 'primary' }, 'Text'),
+                        Badge({ type: 'secondary' }, 'Text'),
+                        Badge({ type: 'destructive' }, 'Text'),
+                        Badge({ type: 'warning' }, 'Text'),
+                        Badge({ type: 'outline' }, 'Text'),
+                        Badge({ type: 'ghost' }, 'Text'),
+                        Badge({ type: 'link' }, 'Text')
                     ])
                 ],
                 code: `
