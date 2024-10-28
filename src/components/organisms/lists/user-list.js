@@ -26,8 +26,8 @@ const UserImage = Atom(({ src, alt }) =>
 const UserInfo = Atom(({ name, email }) =>
 {
     return Div({ class: 'min-w-0 flex-auto' }, [
-        P({ class: 'text-sm font-semibold leading-6' }, name),
-        P({ class: 'mt-1 truncate text-xs leading-5 text-muted-foreground' }, email)
+        P({ class: 'text-base font-semibold leading-6 m-0' }, name),
+        P({ class: 'truncate text-sm leading-5 text-muted-foreground m-0' }, email)
     ]);
 });
 
@@ -38,7 +38,7 @@ const UserInfo = Atom(({ name, email }) =>
  */
 const UserOnline = () =>
 {
-    return Div({ class: 'mt-1 flex items-center gap-x-1.5' }, [
+    return Div({ class: 'flex items-center gap-x-1.5' }, [
         Div({ class: 'flex-none rounded-full bg-emerald-500/20 p-1' }, [
             Div({ class: 'h-1.5 w-1.5 rounded-full bg-emerald-500' })
         ]),
@@ -54,7 +54,7 @@ const UserOnline = () =>
  */
 const UserOffline = (lastSeen) =>
 {
-    return P({ class: 'mt-1 text-xs leading-5 text-muted-foreground' }, [
+    return P({ class: 'text-xs leading-5 text-muted-foreground' }, [
         Span(`Last seen `),
         Time({ datetime: lastSeen }, '3h ago')
     ]);
@@ -80,7 +80,7 @@ const getStatus = (status, lastSeen) =>
 const UserStatus = Atom(({ role, lastSeen, status }) =>
 {
     return Div({ class: 'hidden shrink-0 sm:flex sm:flex-col sm:items-end' }, [
-        P({ class: 'text-sm leading-6' }, role),
+        P({ class: 'text-sm leading-6 m-0' }, role),
         getStatus(status, lastSeen)
     ]);
 });
@@ -93,7 +93,7 @@ const UserStatus = Atom(({ role, lastSeen, status }) =>
  */
 const UserListItem = Atom((user) =>
 {
-    return Li({ class: 'flex justify-between gap-x-6 py-5' }, [
+    return Li({ class: 'flex justify-between gap-x-6 py-4' }, [
         Div({ class: 'flex min-w-0 gap-x-4' }, [
             UserImage({ src: user.image, alt: user.name }),
             UserInfo({ name: user.name, email: user.email })
