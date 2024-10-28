@@ -1,6 +1,7 @@
 import { Div, Img, Li, P, Span, Time } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { List } from '@base-framework/organisms';
+import { Avatar } from '../../molecules/avatar.js';
 
 /**
  * User Image Atom
@@ -86,6 +87,18 @@ const UserStatus = Atom(({ role, lastSeen, status }) =>
 });
 
 /**
+ * This will get the initials from the name.
+ *
+ * @param {string} name
+ * @returns {string}
+ */
+const getInitials = (name) =>
+{
+    const names = name.split(' ');
+    return names.map(n => n[0]).join('');
+};
+
+/**
  * User List Item Atom.
  *
  * @param {object} user
@@ -95,7 +108,7 @@ const UserListItem = Atom((user) =>
 {
     return Li({ class: 'fadeIn flex justify-between gap-x-6 py-4' }, [
         Div({ class: 'flex min-w-0 gap-x-4' }, [
-            UserImage({ src: user.image, alt: user.name }),
+            Avatar({ src: user.image, alt: user.name, fallbackText: getInitials(user.name) }),
             UserInfo({ name: user.name, email: user.email })
         ]),
         UserStatus({
