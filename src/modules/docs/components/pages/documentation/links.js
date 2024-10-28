@@ -62,7 +62,11 @@ export const Links = (path) => ([
 			{
 				label: 'Alerts',
 				href: `${path}/components/alerts`
-			}
+			},
+			{
+				label: 'Comboboxes',
+				href: `${path}/components/comboboxes`
+			},
 		]
 	}
 ]);
