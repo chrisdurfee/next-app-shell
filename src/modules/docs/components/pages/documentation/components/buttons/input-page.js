@@ -1,6 +1,15 @@
 import { Input, TelInput } from "@components/atoms/form/input.js";
+import { Select } from "@components/atoms/form/select.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
+
+const frameworks = [
+    { value: 'next.js', label: 'Next.js' },
+    { value: 'sveltekit', label: 'SvelteKit' },
+    { value: 'nuxt.js', label: 'Nuxt.js' },
+    { value: 'remix', label: 'Remix' },
+    { value: 'astro', label: 'Astro' },
+];
 
 /**
  * InputPage
@@ -60,6 +69,24 @@ Input({
                 description: 'This is a text input.',
                 preview: [
                     TelInput({
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+Input({
+    type: 'text',
+    placeholder: 'Enter your text here...'
+})`
+            }),
+
+            DocSection({
+                title: 'Select',
+                description: 'This is a select input.',
+                preview: [
+                    Select({
+                        options: frameworks,
+                        change: (e) => console.log(e.target.value)
                     })
                 ],
                 code: `
