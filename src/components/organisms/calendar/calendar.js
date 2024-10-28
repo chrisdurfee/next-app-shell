@@ -141,7 +141,7 @@ export class Calendar extends Component
      */
     render()
     {
-        return Div({ class: 'calendar-container p-3 rounded-md border' }, [
+        return Div({ class: 'calendar-container p-3 rounded-md border min-w-80' }, [
             MonthCalendar({
                 current: this.data.current,
                 today: this.data.today,
