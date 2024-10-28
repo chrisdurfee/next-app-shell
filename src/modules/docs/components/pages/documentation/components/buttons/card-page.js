@@ -14,13 +14,13 @@ import { DocPage } from '../../../doc-page.js';
 export const CardPage = () => (
 	DocPage(
         {
-            title: 'Dialog',
-            description: 'Displays a dialog or a component that looks like a dialog.'
+            title: 'Cards',
+            description: 'Cards are a great way to display content in a concise and organized manner.',
         },
         [
             DocSection({
                 title: 'Usage',
-                description: 'Import the dialog atom and use it in your components.',
+                description: 'Import the card atom and use it in your components.',
                 preview: [
                     Card()
                 ],

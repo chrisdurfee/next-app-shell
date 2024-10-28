@@ -13,9 +13,7 @@ import { Dialog } from "./dialogue.js";
  */
 const ModalHeader = ({ title }) => (
     Header({ class: 'modal-header flex items-center' }, [
-        Button({ class: 'mr-2 p-0 bg-transparent flex sm:hidden', click: (e, parent) => parent.close() }, {
-            html: Icons.arrows.left
-        }),
+        Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 bg-transparent flex sm:hidden', click: (e, parent) => parent.close() }),
         H2({ class: 'text-lg font-semibold m-0' }, title)
     ])
 );
