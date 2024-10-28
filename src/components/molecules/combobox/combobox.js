@@ -15,7 +15,7 @@ const ComboboxItem = (item, onSelect) => {
         click: () => onSelect(item),
         onState: ['selectedValue', { 'bg-secondary': item.value }]
     }, [
-        item.icon && I({ html: item.icon}),
+        item.icon && Span({ class: 'mr-2 flex items-baseline' }, [I({ class: 'flex w-4 h-4', html: item.icon})]),
         Span(item.label),
     ]);
 };
