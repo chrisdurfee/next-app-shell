@@ -1,4 +1,4 @@
-import { Input } from "@components/atoms/form/input.js";
+import { Input, TelInput } from "@components/atoms/form/input.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -34,6 +34,40 @@ Input({
     type: 'text',
     placeholder: 'Enter your text here...',
     change: (e) => console.log(e.target.value)
+})`
+            }),
+
+            DocSection({
+                title: 'Text Input',
+                description: 'This is a text input.',
+                preview: [
+                    Input({
+                        type: 'text',
+                        placeholder: 'Enter your text here...'
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+Input({
+    type: 'text',
+    placeholder: 'Enter your text here...'
+})`
+            }),
+
+            DocSection({
+                title: 'Tel Input',
+                description: 'This is a text input.',
+                preview: [
+                    TelInput({
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+Input({
+    type: 'text',
+    placeholder: 'Enter your text here...'
 })`
             })
         ]
