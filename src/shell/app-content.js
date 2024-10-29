@@ -19,6 +19,6 @@ export const AppContent = (props) => (
 		},
 		onState: ['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)]
 	}, [
-        LoginPage()
+        MainContent(props)
     ])
 );
