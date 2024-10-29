@@ -1,7 +1,7 @@
 /**
  * This is a enum for the different steps in the login process.
  *
- * @enum {string} STEPS
+ * @type {object} STEPS
  */
 export const STEPS =
 {

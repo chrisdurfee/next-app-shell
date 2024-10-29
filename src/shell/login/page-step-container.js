@@ -4,8 +4,6 @@ import { LoginSection } from './sections/login-section.js';
 import { STEPS } from './steps.js';
 
 /**
- * PageStepContainer
- *
  * This will create the step container.
  *
  * @returns {object}
