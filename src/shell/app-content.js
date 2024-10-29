@@ -28,7 +28,5 @@ export const AppContent = (props) => (
 		 * This will render the content based on the sign in state.
 		 */
 		onState: ['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)]
-	}, [
-        MainContent(props)
-    ])
+	})
 );
