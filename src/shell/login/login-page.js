@@ -1,35 +1,38 @@
-import { Div, H1, Header, P, Section } from '@base-framework/atoms';
-import { Atom } from '@base-framework/base';
 import { FullPage } from '@components/pages/full-page.js';
 import { FullscreenPage } from '../../components/pages/fullscreen-page.js';
-import { LoginForm } from './login-form.js';
+import { PageStepContainer } from './page-step-container.js';
+import { STEPS } from './steps.js';
 
 /**
- * This will create a header for the documentation.
+ * This will setup the page settings.
  *
- * @param {object} props
- * @returns {object}
+ * @type {object} PageSettings
  */
-const LoginHeader = Atom(({ title, description}) => (
-	Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
-		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
-		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
-	])
-));
+const PageProps =
+{
+	/**
+	 * This will setup the states.
+	 *
+	 * @returns {object}
+	 */
+	setupStates()
+	{
+		return {
+			step: STEPS.LOGIN
+		};
+	},
 
-/**
- * This will create the login section.
- *
- * @returns {object}
- */
-const LoginSection = () => (
-	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Div({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
-			LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
-			LoginForm(),
-		])
-	])
-);
+	/**
+	 * This will show the step.
+	 *
+	 * @param {string} step
+	 * @returns {void}
+	 */
+	showStep(step)
+	{
+		this.state.step = step;
+	}
+}
 
 /**
  * LoginPage
@@ -39,7 +42,7 @@ const LoginSection = () => (
  * @returns {FullPage}
  */
 export const LoginPage = () => (
-	new FullscreenPage([
-		LoginSection()
+	new FullscreenPage(PageProps, [
+		PageStepContainer()
 	])
 );
