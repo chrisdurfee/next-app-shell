@@ -1,7 +1,7 @@
 import { Div, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { FullPage } from '@components/pages/full-page.js';
-import { Page } from '@components/pages/page.js';
+import { FullscreenPage } from '../../components/pages/fullscreen-page.js';
 import { LoginForm } from './login-form.js';
 
 /**
@@ -39,17 +39,7 @@ const LoginSection = () => (
  * @returns {FullPage}
  */
 export const LoginPage = () => (
-	new Page({
-		/**
-		 * This will render the page.
-		 *
-		 * @returns {object}
-		 */
-		render()
-		{
-			return Div({ class: 'flex flex-col h-screen' }, [
-				LoginSection()
-			]);
-		}
-	})
+	new FullscreenPage([
+		LoginSection()
+	])
 );

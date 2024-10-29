@@ -14,11 +14,11 @@ export const AppContent = (props) => (
 		addState()
 		{
 			return {
-				isSignedIn: true
+				isSignedIn: false
 			};
 		},
 		onState: ['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)]
 	}, [
-        MainContent(props)
+        LoginPage()
     ])
 );
