@@ -21,10 +21,10 @@ const SignUpLink = () => (
 const CredentialsContainer = () => (
 	Div({ class: 'grid gap-4' }, [
 		Div({ class: 'grid gap-4' }, [
-			Input( { type: 'text', placeholder: 'Username' } ),
+			Input( { type: 'text', placeholder: 'Username', required: true } ),
 		]),
 		Div({ class: 'grid gap-4' }, [
-			Input( { type: 'password', placeholder: 'Password' } ),
+			Input( { type: 'password', placeholder: 'Password', required: true } ),
 		])
 	])
 );
@@ -36,7 +36,7 @@ const CredentialsContainer = () => (
  */
 const SignInButton = () => (
 	Div({ class: 'grid gap-4' }, [
-		Button({ type: 'submit', click: () => app.signIn() }, 'Login')
+		Button({ type: 'submit' }, 'Login')
 	])
 );
 
@@ -57,7 +57,7 @@ const SignInWIthGoogleButton = () => (
  * @returns {object}
  */
 export const LoginForm = () => (
-	Form({ class: 'flex flex-col p-6 pt-0' }, [
+	Form({ class: 'flex flex-col p-6 pt-0', submit: () => app.signIn() }, [
 		Div({ class: 'grid gap-4' }, [
 			CredentialsContainer(),
 			SignInButton(),
