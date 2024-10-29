@@ -1,4 +1,4 @@
-import { Input as BaseInput, Textarea as BaseTextarea } from '@base-framework/atoms';
+import { Checkbox as BaseCheckbox, Input as BaseInput, Textarea as BaseTextarea } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -107,3 +107,16 @@ export const Textarea = Atom((props) =>
         class: `flex h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     });
 });
+
+/**
+ * This will create a checkbox.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const Checkbox = Atom((props) => (
+    BaseCheckbox({
+        ...props,
+        class: `flex h-4 w-4 rounded-md border border-input bg-background text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
+    })
+));

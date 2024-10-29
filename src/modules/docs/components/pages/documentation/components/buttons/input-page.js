@@ -1,4 +1,4 @@
-import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import { Checkbox, EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { Select } from "@components/atoms/form/select.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -91,6 +91,22 @@ import { Button } from '@components/atoms/form/input.js';
 
 EmailInput({
 
+})`
+            }),
+
+            DocSection({
+                title: 'Checkbox',
+                description: 'This is a checkbox input.',
+                preview: [
+                    Checkbox({
+                        change: (e) => console.log(e.target.checked)
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+Checkbox({
+    change: (e) => console.log(e.target.checked)
 })`
             }),
 
