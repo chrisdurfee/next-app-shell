@@ -1,4 +1,4 @@
-import { Div, Form, H1, Header, P } from '@base-framework/atoms';
+import { Div, Form, H1, Header, P, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Input } from '@components/atoms/form/input.js';
@@ -31,7 +31,16 @@ const LoginForm = () => (
 					]),
 					Div({ class: 'grid gap-4' }, [
 						Button({ type: 'submit' }, 'Login')
-					])
+					]),
+
+					Div({ class: 'grid gap-4' }, [
+						Button({ variant: 'outline' }, 'Login with Google')
+					]),
+
+					Div({ class: '' }, [
+						Span({ class: 'text-sm text-muted-foreground mt-8 mb-0' }, 'Don\'t have an account? '),
+						Span({ class: 'text-sm font-medium text-primary underline' }, 'Sign up'),
+					]),
 				]),
 			])
 		])
