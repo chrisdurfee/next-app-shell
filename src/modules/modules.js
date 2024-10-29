@@ -1,5 +1,6 @@
 import "./main/module.js";
 import "./docs/module.js";
+import "./login/module.js";
 import { AppModules } from "./module.js";
 
 /**
