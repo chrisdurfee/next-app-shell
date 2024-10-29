@@ -14,7 +14,7 @@ import { MobileHeader } from './navigation/mobile-header.js';
 const AppContainer = Atom((props, children) =>
 {
 	return {
-		class: 'app-container flex relative sm:h-screen',
+		class: 'app-container flex relative h-screen',
 		...props,
 		children
 	};

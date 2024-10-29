@@ -89,7 +89,7 @@ const LoginForm = () => (
  */
 const LoginSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Div({ class: 'rounded-xl border bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
+		Div({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
 			LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
 			LoginForm(),
 		])
