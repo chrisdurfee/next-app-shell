@@ -2,7 +2,7 @@ import { Div, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Icons } from '@components/icons/icons.js';
 import { Alert } from '@components/molecules/alert.js';
-import { ForgotPasswordForm } from './forms/forgot-password-form.js';
+import { ForgotPasswordForm } from '../forms/forgot-password-form.js';
 
 /**
  * This will create a header for the documentation.
