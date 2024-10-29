@@ -99,6 +99,16 @@ export class AppController
 	}
 
 	/**
+	 * This will sign the user out.
+	 *
+	 * @returns {void}
+	 */
+	signOut()
+	{
+		this.appShell.state.isSignedIn = false;
+	}
+
+	/**
 	 * This will add a notification.
 	 *
 	 * @param {object} props
