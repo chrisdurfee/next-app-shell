@@ -1,6 +1,7 @@
 import { Div, Form } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { EmailInput } from '@components/atoms/form/input.js';
+import { STEPS } from '../steps';
 
 /**
  * This will create the email container.
@@ -33,7 +34,7 @@ const SubmitButton = () => (
  */
 const CancelButton = () => (
 	Div({ class: 'grid gap-4' }, [
-		Button({ variant: 'outline', 'aria-label': 'Cancel' }, 'Cancel')
+		Button({ variant: 'outline', 'aria-label': 'Cancel', click: (e, parent) => parent.showStep(STEPS.LOGIN) }, 'Cancel')
 	])
 );
 

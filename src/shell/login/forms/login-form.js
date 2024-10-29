@@ -1,17 +1,22 @@
 import { Div, Form, Span } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Input } from '@components/atoms/form/input.js';
+import { STEPS } from '../steps.js';
 
 /**
  * This will create a sign up link.
  * @returns {object}
  */
-const SignUpLink = () => (
+const SignUpLink = () => ([
 	Div({ class: '' }, [
-		Span({ class: 'text-sm text-muted-foreground mt-8 mb-0' }, 'Don\'t have an account? '),
-		Span({ class: 'text-sm font-medium text-primary underline' }, 'Sign up'),
-	])
-);
+		Span({ class: 'text-sm text-muted-foreground mt-8 mb-0' }, 'Forgot your password? '),
+		Span({ class: 'text-sm font-medium text-primary underline cursor-pointer', click: (e, parent) => parent.showStep(STEPS.FORGOT_PASSWORD) }, 'Reset it'),
+	]),
+	// Div({ class: '' }, [
+	// 	Span({ class: 'text-sm text-muted-foreground mt-8 mb-0' }, 'Don\'t have an account? '),
+	// 	Span({ class: 'text-sm font-medium text-primary underline' }, 'Sign up'),
+	// ])
+]);
 
 /**
  * This will create the credentials container.
