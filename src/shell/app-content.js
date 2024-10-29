@@ -14,7 +14,7 @@ export const AppContent = (props) => (
 		addState()
 		{
 			return {
-				isSignedIn: false
+				isSignedIn: true
 			};
 		},
 		onState: ['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)]
