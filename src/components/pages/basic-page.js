@@ -1,4 +1,4 @@
-import { Component } from '@base-framework/base';
+import { Page } from './page.js';
 
 /**
  * BasicPage
@@ -7,9 +7,9 @@ import { Component } from '@base-framework/base';
  * to all child modules.
  *
  * @class
- * @extends Component
+ * @extends Page
  */
-export class BasicPage extends Component
+export class BasicPage extends Page
 {
 	/**
 	 * This will be called every time the route
