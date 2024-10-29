@@ -1,5 +1,7 @@
 import { Div, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Icons } from '@components/icons/icons.js';
+import { Alert } from '@components/molecules/alert.js';
 import { ForgotPasswordForm } from './forms/forgot-password-form.js';
 
 /**
@@ -16,15 +18,45 @@ const PasswordHeader = Atom(({ title, description}) => (
 ));
 
 /**
+ * This will create a success message.
+ *
+ * @returns {object}
+ */
+const SuccessMessage = () => (
+	Alert({
+		title: 'Success!',
+		description: 'Check your email for instructions to reset your password.',
+		icon: Icons.circleCheck
+	})
+);
+
+/**
  * This will create the forgot password section.
  *
  * @returns {object}
  */
 export const ForgotPasswordSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Div({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
-			PasswordHeader({ title: 'Forgot Password', description: 'Please enter your email address.' }),
-			ForgotPasswordForm(),
-		])
+		Div({
+            class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
+            addState()
+			{
+				return {
+					showMessage: false
+				};
+			},
+			onState: ['showMessage', (state) =>
+			{
+				if (state)
+				{
+					return SuccessMessage();
+				}
+
+				return [
+                    PasswordHeader({ title: 'Forgot Password', description: 'Please enter your email address.' }),
+                    ForgotPasswordForm(),
+                ];
+			}]
+        })
 	])
 );

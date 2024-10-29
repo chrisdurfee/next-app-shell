@@ -44,11 +44,11 @@ const CancelButton = () => (
  * @returns {object}
  */
 export const ForgotPasswordForm = () => (
-	Form({ class: 'flex flex-col p-6 pt-0', submit: () => app.signIn(), role: 'form' }, [
+	Form({ class: 'flex flex-col p-6 pt-0', submit: (e, parent) => parent.state.showMessage = true, role: 'form' }, [
 		Div({ class: 'grid gap-4' }, [
 			EmailContainer(),
 			SubmitButton(),
 			CancelButton(),
-		]),
+		])
 	])
 );

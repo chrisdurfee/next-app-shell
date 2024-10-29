@@ -29,7 +29,7 @@ export const AlertPage = () => (
                         icon: Icons.information
                     })
                 ],
-                code: `import { Button } from '@components/atoms/form/input.js';
+                code: `import { Alert } from "@components/molecules/alert.js";
 import { Icons } from "@components/icons/icons.js";
 
 Alert({
