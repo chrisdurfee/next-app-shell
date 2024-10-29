@@ -89,6 +89,16 @@ export class AppController
 	}
 
 	/**
+	 * This will sign the user in.
+	 *
+	 * @returns {void}
+	 */
+	signIn()
+	{
+		this.appShell.state.isSignedIn = true;
+	}
+
+	/**
 	 * This will add a notification.
 	 *
 	 * @param {object} props

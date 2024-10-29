@@ -36,7 +36,7 @@ const CredentialsContainer = () => (
  */
 const SignInButton = () => (
 	Div({ class: 'grid gap-4' }, [
-		Button({ type: 'submit' }, 'Login')
+		Button({ type: 'submit', click: () => app.signIn() }, 'Login')
 	])
 );
 
