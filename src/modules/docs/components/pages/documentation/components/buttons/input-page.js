@@ -1,4 +1,4 @@
-import { Input, TelInput } from "@components/atoms/form/input.js";
+import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { Select } from "@components/atoms/form/select.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -66,7 +66,7 @@ Input({
 
             DocSection({
                 title: 'Tel Input',
-                description: 'This is a text input.',
+                description: 'This is a phone input.',
                 preview: [
                     TelInput({
                     })
@@ -74,9 +74,23 @@ Input({
                 code: `
 import { Button } from '@components/atoms/form/input.js';
 
-Input({
-    type: 'text',
-    placeholder: 'Enter your text here...'
+TelInput({
+})`
+            }),
+
+            DocSection({
+                title: 'Email Input',
+                description: 'This is a email input.',
+                preview: [
+                    EmailInput({
+
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+EmailInput({
+
 })`
             }),
 
@@ -94,6 +108,22 @@ import { Button } from '@components/atoms/form/input.js';
 
 Input({
     type: 'text',
+    placeholder: 'Enter your text here...'
+})`
+            }),
+
+            DocSection({
+                title: 'Textarea',
+                description: 'This is a textarea input.',
+                preview: [
+                    Textarea({
+                        placeholder: 'Enter your text here...'
+                    })
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+Textarea({
     placeholder: 'Enter your text here...'
 })`
             })

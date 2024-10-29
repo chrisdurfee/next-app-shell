@@ -1,4 +1,4 @@
-import { Input as BaseInput } from '@base-framework/atoms';
+import { Input as BaseInput, Textarea as BaseTextarea } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -73,5 +73,37 @@ export const TelInput = Atom((props) =>
         required: true,
         pattern: props.pattern || '\\(\\d{3}\\) \\d{3}-\\d{4}', // Updated pattern for flexibility
         keyup: formatPhoneNumber,
+    });
+});
+
+/**
+ * This will create an email input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const EmailInput = Atom((props) =>
+{
+    return Input({
+        ...props,
+        type: 'email',
+        name: props.name || 'Email',
+        label: props.label || 'Email',
+        placeholder: 'Email address',
+    });
+});
+
+/**
+ * This will create a textarea.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const Textarea = Atom((props) =>
+{
+    return BaseTextarea({
+        ...props,
+        as: 'textarea',
+        class: `flex h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     });
 });
