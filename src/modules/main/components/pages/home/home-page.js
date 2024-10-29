@@ -1,5 +1,6 @@
 import { Div, H2, P } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { Button } from "@components/atoms/buttons/buttons.js";
 import { GridContainer } from '@components/molecules/molecules.js';
 import { Calendar } from "@components/organisms/calendar/calendar.js";
 import { FullPage } from '@components/pages/full-page.js';
@@ -114,6 +115,19 @@ const BindCard = () => (
 );
 
 /**
+ * This will create a sign out card.
+ *
+ * @returns {object}
+ */
+const SignOutCard = () => (
+	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
+		H2({ cache: 'header', class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Sign Out Test'),
+		P('This will test the app sign out.'),
+		Button({ variant: 'outline', click: () => app.signOut() }, 'Sign Out')
+	])
+);
+
+/**
  * HomePage
  *
  * This will create a home page.
@@ -126,6 +140,7 @@ export const HomePage = () => (
 		[
 			GreetingCard(),
 			BindCard(),
+			SignOutCard(),
 			GridContainer()
 		]
 	)
