@@ -121,8 +121,8 @@ const BindCard = () => (
  */
 const SignOutCard = () => (
 	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
-		H2({ cache: 'header', class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Sign Out Test'),
-		P('This will test the app sign out.'),
+		H2({ cache: 'header', class: 'scroll-m-20 text-lg font-bold tracking-tight' }, 'Sign Out Test'),
+		P({ class: 'text-muted-foreground' }, 'This will test the app sign out.'),
 		Button({ variant: 'outline', click: () => app.signOut() }, 'Sign Out')
 	])
 );
