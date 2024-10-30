@@ -4,6 +4,23 @@ import { MonthCalendar } from './month/month-calendar.js';
 import { pad } from './utils.js';
 
 /**
+ * This will add time to the date.
+ *
+ * @param {string} date
+ * @returns {string}
+ */
+const addTime = (date) =>
+{
+    if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
+    {
+        date += 'T00:00:01';
+    }
+
+    date.replace(' ', 'T');
+    return date;
+};
+
+/**
  * Calendar
  *
  * This will create a calendar component.
@@ -20,7 +37,7 @@ export class Calendar extends Component
      */
     getSelectedDate(today)
     {
-        const selectedDate = this.selectedDate? new Date(this.selectedDate) : today;
+        const selectedDate = this.selectedDate? new Date(addTime(this.selectedDate)) : today;
         return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
     }
 
@@ -131,7 +148,7 @@ export class Calendar extends Component
         /**
          * Set the active date and month name.
          */
-        data.currentDate = `${year}-${month + 1}-${data.current.date}`;
+        data.currentDate = `${year}-${pad(month + 1)}-${data.current.date}`;
         data.monthName = this.getMonthName(month);
     }
 
@@ -166,7 +183,7 @@ export class Calendar extends Component
                 select: (date) => this.selectDate(date),
                 next: () => this.goToNextMonth(),
                 previous: () => this.goToPreviousMonth()
-            }),
+            })
         ]);
     }
 }

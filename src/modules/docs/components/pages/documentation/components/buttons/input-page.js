@@ -149,7 +149,9 @@ Textarea({
                 title: 'Date Picker',
                 description: '@components/molecules/date-time/date-picker.js',
                 preview: [
-                    new DatePicker()
+                    new DatePicker({
+                        selectedDate: '2022-01-01',
+                    })
                 ],
                 code: `
 import { Button } from '@components/atoms/form/input.js';
