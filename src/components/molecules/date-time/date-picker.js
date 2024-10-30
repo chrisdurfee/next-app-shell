@@ -16,6 +16,7 @@ export const DatePicker = Jot(
 {
     /**
      * The initial state of the DatePicker.
+     *
      * @member {object} state
      */
     state: {
