@@ -31,34 +31,13 @@ export const BreadcrumbPage = () => (
                 preview: [
                     new Breadcrumb( { items } ),
                 ],
-                code: `import { UserListItem } from "@components/organisms/lists/user-list.js";
-import { List } from "@base-framework/organisms";
+                code: `import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
 
-/**
- * User List Atom
- *
- * @param {object} props
- * @returns {object}
- */
-const UserList = Atom((props) =>
-{
-    return new List({
-        cache: 'list',
-        key: 'name',
-        items: [
-        {
-            name: 'Leslie Alexander',
-            email: 'leslie.alexander@example.com',
-            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-            role: 'Co-Founder / CEO',
-            lastSeen: '2023-01-23T13:23Z',
-            status: 'offline'
-        }],
-        role: 'list',
-        class: 'divide-y divide-border',
-        rowItem: UserListItem
-    });
-});`
+new Breadcrumb({ items: [
+    { href: '/', label: 'Home' },
+    { href: '/components', label: 'Components' },
+    { label: 'Breadcrumb' } // Last item, no href needed
+] })`
             }),
 
             H4({ class: 'text-lg font-bold' }, 'Description'),
