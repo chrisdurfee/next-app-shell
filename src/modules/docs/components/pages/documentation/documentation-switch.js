@@ -7,6 +7,7 @@ import CardPage from "./components/buttons/card-page.js";
 import ComboboxPage from "./components/buttons/comboxbox-page.js";
 import { DialogPage } from "./components/buttons/dialog-page.js";
 import InputPage from "./components/buttons/input-page.js";
+import ListPage from "./components/buttons/list-page.js";
 import { ModalPage } from "./components/buttons/modal-page.js";
 import { NotificationPage } from "./components/buttons/nofication-page.js";
 import { TabPage } from "./components/buttons/tab-page.js";
@@ -50,4 +51,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/inputs*`, 'Inputs', InputPage),
 	Page(`${basePath}/components/alerts*`, 'Alerts', AlertPage),
 	Page(`${basePath}/components/comboboxes*`, 'Comboboxes', ComboboxPage),
+	Page(`${basePath}/components/lists*`, 'Lists', ListPage),
 ]);

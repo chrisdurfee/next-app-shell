@@ -71,6 +71,10 @@ export const Links = (path) => ([
 				label: 'Comboboxes',
 				href: `${path}/components/comboboxes`
 			},
+			{
+				label: 'Lists',
+				href: `${path}/components/lists`
+			}
 		]
 	}
 ]);
