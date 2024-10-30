@@ -1,5 +1,6 @@
 import { Checkbox, EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { Select } from "@components/atoms/form/select.js";
+import DatePicker from "@components/molecules/date-time/date-picker.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -142,6 +143,18 @@ import { Button } from '@components/atoms/form/input.js';
 Textarea({
     placeholder: 'Enter your text here...'
 })`
+            }),
+
+            DocSection({
+                title: 'Date Picker',
+                description: '@components/molecules/date-time/date-picker.js',
+                preview: [
+                    new DatePicker()
+                ],
+                code: `
+import { Button } from '@components/atoms/form/input.js';
+
+new DatePicker()`
             })
         ]
     )

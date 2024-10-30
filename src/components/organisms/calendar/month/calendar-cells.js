@@ -1,22 +1,5 @@
+import { FormatDate } from '../utils.js';
 import { DayCell } from './day-cell.js';
-
-/**
- * This will 0 pad the number.
- *
- * @param {number} number
- * @returns {string}
- */
-const pad = (number) => (number < 10 ? `0${number}` : number);
-
-/**
- * This will format the date.
- *
- * @param {number} year
- * @param {number} month
- * @param {number} day
- * @returns {string}
- */
-const FormatDate = (year, month, day) => `${year}-${pad(month + 1)}-${pad(day)}`;
 
 /**
  * This will create the calendar cells.

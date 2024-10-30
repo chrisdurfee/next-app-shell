@@ -1,6 +1,7 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
 import { MonthCalendar } from './month/month-calendar.js';
+import { pad } from './utils.js';
 
 /**
  * Calendar
@@ -112,7 +113,7 @@ export class Calendar extends Component
 
         if (typeof date === 'number')
         {
-            data.current.date = date;
+            data.current.date = pad(date);
         }
 
         /**
@@ -120,11 +121,6 @@ export class Calendar extends Component
          */
         data.currentDate = `${year}-${month + 1}-${data.current.date}`;
         data.monthName = this.getMonthName(month);
-
-        if (typeof this.selectedCallBack === 'function')
-        {
-            this.selectedCallBack(data.currentDate);
-        }
     }
 
     /**
@@ -137,6 +133,11 @@ export class Calendar extends Component
     {
         const newDate = new Date(date + 'T00:00:00');
         this.setCurrentDate(newDate.getMonth(), newDate.getFullYear(), newDate.getDate());
+
+        if (typeof this.selectedCallBack === 'function')
+        {
+            this.selectedCallBack(this.data.currentDate);
+        }
     }
 
     /**

@@ -1,10 +1,12 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
+import { DateTime, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
 import { Calendar } from '../../organisms/calendar/calendar.js';
 
 /**
  * DatePicker Atom
+ *
+ * This will create a date picker component.
  *
  * @param {object} props
  * @param {array} children
@@ -12,7 +14,12 @@ import { Calendar } from '../../organisms/calendar/calendar.js';
  */
 export const DatePicker = Jot(
 {
+    /**
+     * The initial state of the DatePicker.
+     * @member {object} state
+     */
     state: {
+        selectedDate: null,
         open: false
     },
 
@@ -29,18 +36,18 @@ export const DatePicker = Jot(
             this.state.open = false;
         };
 
-        return Div({ class: 'relative w-[200px]' }, [
+        return Div({ class: 'relative w-full max-w-[320px]' }, [
             Button({
                 class: 'flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
                 click: toggleOpen,
             }, [
                 Span({
-                    onState: ['selectedDate', (value) => value ? value.toDateString() : 'Pick a date']
+                    onState: ['selectedDate', (value) => value ? DateTime.format('standard', value) : 'Pick a date']
                 }),
                 I({ html: Icons.calendar.days })
             ]),
             Div({
-                class: 'absolute mt-1 z-10 bg-background border rounded-md shadow-lg p-2',
+                class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
                 onState: ['open', (value) => (value ? new Calendar({
                     selectedCallBack: handleDateSelect
                 }) : null)]
@@ -48,3 +55,5 @@ export const DatePicker = Jot(
         ]);
     }
 });
+
+export default DatePicker;
