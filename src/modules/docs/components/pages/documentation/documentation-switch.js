@@ -1,6 +1,7 @@
 import AlertPage from "./components/buttons/alert-page.js";
 import AvatarPage from "./components/buttons/avatar-page.js";
 import { BadgePage } from "./components/buttons/badge-page.js";
+import BreadcrumbPage from "./components/buttons/breadcrumb-page.js";
 import { ButtonPage } from "./components/buttons/button-page.js";
 import { CalendarPage } from "./components/buttons/calendar-page.js";
 import CardPage from "./components/buttons/card-page.js";
@@ -52,4 +53,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/alerts*`, 'Alerts', AlertPage),
 	Page(`${basePath}/components/comboboxes*`, 'Comboboxes', ComboboxPage),
 	Page(`${basePath}/components/lists*`, 'Lists', ListPage),
+	Page(`${basePath}/components/breadcrumbs*`, 'Breadcrumbs', BreadcrumbPage),
 ]);
