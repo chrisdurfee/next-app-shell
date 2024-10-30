@@ -1,3 +1,4 @@
+import { H4, P } from "@base-framework/atoms";
 import UserList from "@components/organisms/lists/user-list.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -79,7 +80,13 @@ const UserList = Atom((props) =>
         rowItem: UserListItem
     });
 });`
-            })
+            }),
+
+            H4({ class: 'text-lg font-bold' }, 'Description'),
+            P({ class: 'text-muted-foreground' }, 'The List component can be used to display a list of items in a structured format. Each item can be customized to show different information. The List component supports appending, prepending, mingling, and deleting or items. '),
+
+            H4({ class: 'text-lg font-bold' }, 'Performance'),
+            P({ class: 'text-muted-foreground' }, 'The list will only update or re-render the items that have changed, improving performance. It uses a key to know when to update an item.'),
         ]
     )
 );
