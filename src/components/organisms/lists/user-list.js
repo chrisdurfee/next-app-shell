@@ -104,7 +104,7 @@ const getInitials = (name) =>
  * @param {object} user
  * @returns {object}
  */
-const UserListItem = Atom((user) =>
+export const UserListItem = Atom((user) =>
 {
     return Li({ class: 'fadeIn flex justify-between gap-x-6 py-4' }, [
         Div({ class: 'flex min-w-0 gap-x-4' }, [
