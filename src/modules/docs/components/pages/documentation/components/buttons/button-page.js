@@ -45,7 +45,7 @@ Button({ ...props, variant: 'secondary' }, primary)`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const PrimaryButton = Atom((props, children)) => (
+export const PrimaryButton = Atom((props, children) => (
     Button({ ...props, variant: 'primary' }, children)
 );`
             }),
@@ -59,7 +59,7 @@ export const PrimaryButton = Atom((props, children)) => (
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const SecondaryButton = Atom((props, children)) => (
+export const SecondaryButton = Atom((props, children) => (
     Button({ ...props, variant: 'secondary' }, children)
 );`
             }),
@@ -73,7 +73,7 @@ export const SecondaryButton = Atom((props, children)) => (
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const DestructiveButton = Atom((props, children)) => (
+export const DestructiveButton = Atom((props, children) => (
     Button({ ...props, variant: 'destructive' }, children)
 );`
             }),
@@ -86,7 +86,7 @@ export const DestructiveButton = Atom((props, children)) => (
                 code: `import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const WarningButton = Atom((props, children)) => (
+export const WarningButton = Atom((props, children) => (
     Button({ ...props, variant: 'warning' }, children)
 );`
             }),
@@ -100,7 +100,7 @@ export const WarningButton = Atom((props, children)) => (
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const OutlineButton = Atom((props, children)) => (
+export const OutlineButton = Atom((props, children) => (
     Button({ ...props, variant: 'outline' }, children)
 );`
             }),
@@ -114,7 +114,7 @@ export const OutlineButton = Atom((props, children)) => (
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const GhostButton = Atom((props, children)) => (
+export const GhostButton = Atom((props, children) => (
     Button({ ...props, variant: 'ghost' }, children)
 );`
             }),
@@ -128,7 +128,7 @@ export const GhostButton = Atom((props, children)) => (
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const LinkButton = Atom((props, children)) => (
+export const LinkButton = Atom((props, children) => (
     Button({ ...props, variant: 'link' }, children)
 );`
             }),
@@ -143,7 +143,7 @@ export const LinkButton = Atom((props, children)) => (
 import { Icons } from '@components/icons/icons.js';
 import { Atom } from '@base-framework/base';
 
-export const IconButton = Atom((props)) => (
+export const IconButton = Atom((props) => (
     Button({ ...props, variant: 'icon', icon: Icons.home })
 );`
             }),

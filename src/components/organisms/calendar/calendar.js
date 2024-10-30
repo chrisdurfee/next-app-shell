@@ -120,6 +120,11 @@ export class Calendar extends Component
          */
         data.currentDate = `${year}-${month + 1}-${data.current.date}`;
         data.monthName = this.getMonthName(month);
+
+        if (typeof this.selectedCallBack === 'function')
+        {
+            this.selectedCallBack(data.currentDate);
+        }
     }
 
     /**
