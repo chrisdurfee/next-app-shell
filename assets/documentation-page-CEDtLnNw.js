@@ -1,4 +1,4 @@
-import{O as Q,A as _}from"./overlay-COcCaosP.js";import{w as E,m as s,R as k,a as P,D as z,H as N,b as O,X as d,p as K,c as X,U as g,I as T,S as f,B as Z,d as ee,C as U,A as te,e as m,f as oe,y as b,g as H,h as G,T as j,i as r,j as I,k as ne,q as C,l as se,n as R,V as W,v as ae,o as S,r as re,E as ie,s as le,t as ce,u as de,L as A,N as ue,x as pe,P as w,M as V,z as me,G as fe}from"./index-D82u9fGB.js";const be=e=>N({class:"inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",dataSet:["selected",["state",e.value,"active"]]},[O({class:"flex flex-auto justify-center items-center px-3 py-1.5",onSet:["selected",{selected:e.value}],click:t=>e.callBack(e.value)},e.label)]),ge=(e,t)=>(e.callBack=t,be(e)),xe=e=>P({class:`tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${e.class}`},[z({class:"flex flex-auto flex-row",map:[e.options,t=>ge(t,e.callBack)]})]);class q extends E{render(){const t=this.select.bind(this);return s({class:""},[xe({class:this.class,options:this.options,callBack:t}),k({class:"tab-content",onState:["selected",this.updateContent.bind(this)]})])}afterSetup(){const t=this.options[0].value;this.select(t)}update(){const t=this.state.get("selected");this.select(null),this.select(t)}select(t){this.state.selected=t}updateContent(t){const o=this.options;if(!o||o.length<1)return;const a=o[0];for(const p of o)if(p.value===t)return p.layout;return a.layout}setupStates(){const t=this.callBack,o=typeof t;return{selected:{state:null,callBack(a){o==="function"&&t(a)}}}}}const he=d((e,t)=>K({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces cursor-pointer"},[X({class:"font-mono text-sm",click:()=>navigator.clipboard.writeText(t[0].textContent)},t)])),ve=d((e,t)=>s({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-card"},[s({class:"preview flex w-full justify-center items-center"},t)])),$=d((e,t)=>s({class:"py-4"},t)),ye=e=>new q({class:"mt-4 max-w-[400px]",options:[{label:"Preview",value:"preview",layout:$([ve(e.preview)])},{label:"Code",value:"code",layout:$([he(e.code)])}]}),we=d(({title:e,description:t})=>g({class:"flex flex-col"},[T({class:"scroll-m-20 text-2xl font-bold tracking-tight"},e),t&&f({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),n=d((e,t)=>k({class:"py-4"},[we({title:e.title,description:e.description}),ye({preview:e.preview,code:e.code})]));class ke extends Z{render(){return ee([s({class:"contained px-4 flex flex-auto flex-col"},this.children)])}}const Ce=d(({title:e,description:t})=>g({class:"flex flex-col"},[U({class:"scroll-m-20 text-3xl font-bold tracking-tight"},e),f({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),Be=d((e,t)=>s({class:"contained py-8"},[Ce(e),k({class:"pb-12 pt-8"},t)])),l=d((e,t)=>new ke([Be(e,t)])),Te=()=>l({title:"Alerts",description:"Alerts are used to provide feedback to the user about the outcome of an action or to inform them of important information."},[n({title:"Usage",description:"To use the Alert component, import it from the components library and use it in your application.",preview:[te({title:"Heads up!",description:"You can add components to your app using the cli.",icon:m.information})],code:`import { Alert } from "@components/molecules/alert.js";
+import{O as Q,A as _}from"./overlay-CkzBvtWa.js";import{w as E,m as s,R as k,a as P,D as z,H as N,b as O,X as d,p as K,c as X,U as g,I as T,S as f,B as Z,d as ee,C as U,A as te,e as m,f as oe,y as b,g as H,h as G,T as j,i as r,j as I,k as ne,q as C,l as se,n as R,V as W,v as ae,o as S,r as re,E as ie,s as le,t as ce,u as de,L as A,N as ue,x as pe,P as w,M as V,z as me,G as fe}from"./index-DpEjaxRq.js";const be=e=>N({class:"inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm",dataSet:["selected",["state",e.value,"active"]]},[O({class:"flex flex-auto justify-center items-center px-3 py-1.5",onSet:["selected",{selected:e.value}],click:t=>e.callBack(e.value)},e.label)]),ge=(e,t)=>(e.callBack=t,be(e)),xe=e=>P({class:`tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${e.class}`},[z({class:"flex flex-auto flex-row",map:[e.options,t=>ge(t,e.callBack)]})]);class q extends E{render(){const t=this.select.bind(this);return s({class:""},[xe({class:this.class,options:this.options,callBack:t}),k({class:"tab-content",onState:["selected",this.updateContent.bind(this)]})])}afterSetup(){const t=this.options[0].value;this.select(t)}update(){const t=this.state.get("selected");this.select(null),this.select(t)}select(t){this.state.selected=t}updateContent(t){const o=this.options;if(!o||o.length<1)return;const a=o[0];for(const p of o)if(p.value===t)return p.layout;return a.layout}setupStates(){const t=this.callBack,o=typeof t;return{selected:{state:null,callBack(a){o==="function"&&t(a)}}}}}const he=d((e,t)=>K({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces cursor-pointer"},[X({class:"font-mono text-sm",click:()=>navigator.clipboard.writeText(t[0].textContent)},t)])),ve=d((e,t)=>s({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-card"},[s({class:"preview flex w-full justify-center items-center"},t)])),$=d((e,t)=>s({class:"py-4"},t)),ye=e=>new q({class:"mt-4 max-w-[400px]",options:[{label:"Preview",value:"preview",layout:$([ve(e.preview)])},{label:"Code",value:"code",layout:$([he(e.code)])}]}),we=d(({title:e,description:t})=>g({class:"flex flex-col"},[T({class:"scroll-m-20 text-2xl font-bold tracking-tight"},e),t&&f({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),n=d((e,t)=>k({class:"py-4"},[we({title:e.title,description:e.description}),ye({preview:e.preview,code:e.code})]));class ke extends Z{render(){return ee([s({class:"contained px-4 flex flex-auto flex-col"},this.children)])}}const Ce=d(({title:e,description:t})=>g({class:"flex flex-col"},[U({class:"scroll-m-20 text-3xl font-bold tracking-tight"},e),f({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),Be=d((e,t)=>s({class:"contained py-8"},[Ce(e),k({class:"pb-12 pt-8"},t)])),l=d((e,t)=>new ke([Be(e,t)])),Te=()=>l({title:"Alerts",description:"Alerts are used to provide feedback to the user about the outcome of an action or to inform them of important information."},[n({title:"Usage",description:"To use the Alert component, import it from the components library and use it in your application.",preview:[te({title:"Heads up!",description:"You can add components to your app using the cli.",icon:m.information})],code:`import { Alert } from "@components/molecules/alert.js";
 import { Icons } from "@components/icons/icons.js";
 
 Alert({
@@ -30,48 +30,48 @@ Button({ ...props, variant: 'secondary' }, primary)`}),g({class:"flex flex-col p
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const PrimaryButton = Atom((props, children)) => (
+export const PrimaryButton = Atom((props, children) => (
     Button({ ...props, variant: 'primary' }, children)
 );`}),n({title:"Secondary Button",preview:[r({variant:"secondary"},"Secondary")],code:`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const SecondaryButton = Atom((props, children)) => (
+export const SecondaryButton = Atom((props, children) => (
     Button({ ...props, variant: 'secondary' }, children)
 );`}),n({title:"Destructive Button",preview:[r({variant:"destructive"},"Destructive")],code:`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const DestructiveButton = Atom((props, children)) => (
+export const DestructiveButton = Atom((props, children) => (
     Button({ ...props, variant: 'destructive' }, children)
 );`}),n({title:"Warning Button",preview:[r({variant:"warning"},"Warning")],code:`import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const WarningButton = Atom((props, children)) => (
+export const WarningButton = Atom((props, children) => (
     Button({ ...props, variant: 'warning' }, children)
 );`}),n({title:"Outline Button",preview:[r({variant:"outline"},"Outline")],code:`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const OutlineButton = Atom((props, children)) => (
+export const OutlineButton = Atom((props, children) => (
     Button({ ...props, variant: 'outline' }, children)
 );`}),n({title:"Ghost Button",preview:[r({variant:"ghost"},"Ghost")],code:`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const GhostButton = Atom((props, children)) => (
+export const GhostButton = Atom((props, children) => (
     Button({ ...props, variant: 'ghost' }, children)
 );`}),n({title:"Link Button",preview:[r({variant:"link"},"Link")],code:`
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Atom } from '@base-framework/base';
 
-export const LinkButton = Atom((props, children)) => (
+export const LinkButton = Atom((props, children) => (
     Button({ ...props, variant: 'link' }, children)
 );`}),n({title:"Icon Button",description:"Displays a button with an icon.",preview:[r({variant:"icon",icon:m.home})],code:`import { Button } from '@components/atoms/buttons/buttons.js';
 import { Icons } from '@components/icons/icons.js';
 import { Atom } from '@base-framework/base';
 
-export const IconButton = Atom((props)) => (
+export const IconButton = Atom((props) => (
     Button({ ...props, variant: 'icon', icon: Icons.home })
 );`}),n({title:"With Icon Button",preview:[r({variant:"withIcon",icon:m.home},"With Icon")],code:`import { Button } from '@components/atoms/buttons/buttons.js';
 
