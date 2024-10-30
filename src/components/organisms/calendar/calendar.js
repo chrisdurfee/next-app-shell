@@ -32,7 +32,6 @@ export class Calendar extends Component
     setData()
     {
         const today = new Date();
-
         const current = this.getSelectedDate(today);
         const currentMonth = current.getMonth();
 

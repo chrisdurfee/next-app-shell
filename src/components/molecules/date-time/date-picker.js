@@ -50,6 +50,7 @@ export const DatePicker = Jot(
             Div({
                 class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
                 onState: ['open', (value) => (value ? new Calendar({
+                    selectedDate: this.selectedDate,
                     selectedCallBack: handleDateSelect
                 }) : null)]
             })
