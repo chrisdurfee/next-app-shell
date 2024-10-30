@@ -13,6 +13,18 @@ import { pad } from './utils.js';
 export class Calendar extends Component
 {
     /**
+     * This will get the selected data.
+     *
+     * @param {object} today
+     * @returns {Date}
+     */
+    getSelectedDate(today)
+    {
+        const selectedDate = this.selectedDate? new Date(this.selectedDate) : today;
+        return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+    }
+
+    /**
      * This will set up the data for the calendar.
      *
      * @returns {Data}
@@ -20,7 +32,8 @@ export class Calendar extends Component
     setData()
     {
         const today = new Date();
-        const current = new Date(today.getFullYear(), today.getMonth(), 1);
+
+        const current = this.getSelectedDate(today);
         const currentMonth = current.getMonth();
 
          return new Data({
