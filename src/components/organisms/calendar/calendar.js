@@ -37,6 +37,7 @@ export class Calendar extends Component
      */
     getSelectedDate(today)
     {
+        console.log(this.selectedDate)
         const selectedDate = this.selectedDate? new Date(addTime(this.selectedDate)) : today;
         return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
     }
