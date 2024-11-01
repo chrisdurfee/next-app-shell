@@ -4,7 +4,11 @@
  * @param {number} number
  * @returns {string}
  */
-export const pad = (number) => (number < 10 ? `0${number}` : number);
+export const pad = (number) =>
+{
+    number *= 1;
+    return (number < 10 ? `0${number}` : number);
+};
 
 /**
  * This will add time to the date.

@@ -35,6 +35,37 @@ const isCurrentDate = (currentDate, date) => currentDate === date;
 const getCurrentDateClass = (currentDate, date) => (isCurrentDate(currentDate, date) ? 'bg-primary text-primary-foreground' : '');
 
 /**
+ * Get the classes for the day cell.
+ *
+ * @param {boolean} isToday - Indicates if the day is today.
+ * @param {string} currentDate - The current date.
+ * @param {boolean} isOutsideMonth - Indicates if the day is outside the month.
+ * @param {string} date - The date to compare.
+ * @returns {string}
+ */
+const getClasses = (isToday, currentDate, isOutsideMonth, date) =>
+{
+    const currentDateClass = getCurrentDateClass(currentDate, date);
+    if (currentDateClass)
+    {
+        return currentDateClass;
+    }
+
+    const todayClass = getTodayClass(isToday);
+    if(isToday)
+    {
+        return todayClass;
+    }
+
+    const outsideMonthClass = getOutsideMonthClass(isOutsideMonth);
+    if(isOutsideMonth)
+    {
+        return outsideMonthClass;
+    }
+    return 'text-foreground';
+};
+
+/**
  * This will render a day cell in a calendar.
  *
  * @param {object} props - The properties for the day cell.
@@ -45,8 +76,7 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
         {
             class: `
         flex items-center justify-center h-9 w-auto p-0 font-normal text-sm rounded-md
-        ${(getTodayClass(isToday) || getCurrentDateClass(currentDate, date))}
-        ${getOutsideMonthClass(isOutsideMonth)}
+        ${getClasses(isToday, currentDate, isOutsideMonth, date)}
         hover:bg-accent hover:text-accent-foreground focus:z-10
       `,
             disabled: day === null,

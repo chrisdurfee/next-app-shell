@@ -2,6 +2,20 @@ import { FormatDate } from '../utils.js';
 import { DayCell } from './day-cell.js';
 
 /**
+ * This will check if the date is today.
+ *
+ * @param {string|number} day
+ * @param {string|number} month
+ * @param {string|number} year
+ * @param {object} today
+ * @returns {boolean}
+ */
+const isDateToday = (day, month, year, today) =>
+    day === today.date &&
+    month === today.month &&
+    year === today.year;
+
+/**
  * This will create the calendar cells.
  *
  * @param {object} current
@@ -25,11 +39,14 @@ export const CalendarCells = (current, today, selectCallBack) =>
     // Previous month's last days
     for (let i = firstDay - 1; i >= 0; i--)
     {
+        const isToday = isDateToday(prevMonthDays - i, prevMonth, prevYear, today);
+
         cells.push(
             DayCell({
                 day: prevMonthDays - i,
                 currentDate: selectedDate,
                 date: FormatDate(prevYear, prevMonth, prevMonthDays - i),
+                isToday,
                 isOutsideMonth: true,
                 select: selectCallBack
             })
@@ -39,10 +56,7 @@ export const CalendarCells = (current, today, selectCallBack) =>
     // Current month's days
     for (let day = 1; day <= daysInMonth; day++)
     {
-        const isToday =
-        day === today.date &&
-        month === today.month &&
-        year === today.year;
+        const isToday = isDateToday(day, month, year, today);
 
         cells.push(
             DayCell({
@@ -65,11 +79,14 @@ export const CalendarCells = (current, today, selectCallBack) =>
     const nextMonthDays = (7 - (totalCells % 7)) % 7;
     for (let i = 1; i <= nextMonthDays; i++)
     {
+        const isToday = isDateToday(i, nextMonth, nextYear, today);
+
         cells.push(
             DayCell({
                 day: i,
                 currentDate: selectedDate,
                 date: FormatDate(nextYear, nextMonth, i),
+                isToday,
                 isOutsideMonth: true,
                 select: selectCallBack
             })
