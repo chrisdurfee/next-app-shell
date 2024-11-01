@@ -60,7 +60,7 @@ export default class ButtonGroup extends Component
      */
 	render()
 	{
-		return Buttons({ class: 'flex flex-auto flex-col md:flex-row' }, [
+		return Buttons({ class: 'flex flex-auto flex-col' }, [
 			P({
 				onState: ['performance', (state) => ButtonText[state] || ButtonText.fair]
 			}),
