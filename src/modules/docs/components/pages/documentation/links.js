@@ -78,6 +78,10 @@ export const Links = (path) => ([
 			{
 				label: 'Breadcrumbs',
 				href: `${path}/components/breadcrumbs`
+			},
+			{
+				label: 'Navigations',
+				href: `${path}/components/navigations`
 			}
 		]
 	}

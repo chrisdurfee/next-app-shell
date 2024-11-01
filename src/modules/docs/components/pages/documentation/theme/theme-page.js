@@ -1,4 +1,4 @@
-import { A, Div, H3, H5, P, Section } from "@base-framework/atoms";
+import { A, Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
 import { DocPage } from "../../doc-page.js";
 
 /**
@@ -135,7 +135,25 @@ export const ThemePage = () => (
                 H3({ class: 'text-2xl font-bold' }, 'Default Styles'),
                 P({ class: 'text-muted-foreground' }, 'The default styles are defined in the Tailwind CSS configuration file and in the base CSS file. Here\'s the list of variables available for customization:'),
             ]),
-            ColorGuide()
+            ColorGuide(),
+
+            Div({ class: 'flex flex-auto flex-col gap-2 mt-20' }, [
+                H4({ class: 'text-2xl font-bold' }, 'Text Sizes'),
+
+                P({ class: 'text-muted-foreground text-3xl' }, 'Text-3xl A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-2xl' }, 'Text-2xl A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-xl' }, 'Text-xl A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-lg' }, 'Text-lg A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-base' }, 'Text-base A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-sm' }, 'Text-sm A test sentence.'),
+
+                P({ class: 'text-muted-foreground text-xs' }, 'Text-xs A test sentence.'),
+            ])
         ]
     )
 );

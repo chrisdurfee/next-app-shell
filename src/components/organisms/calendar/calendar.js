@@ -1,24 +1,7 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
 import { MonthCalendar } from './month/month-calendar.js';
-import { pad } from './utils.js';
-
-/**
- * This will add time to the date.
- *
- * @param {string} date
- * @returns {string}
- */
-const addTime = (date) =>
-{
-    if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
-    {
-        date += 'T00:00:01';
-    }
-
-    date.replace(' ', 'T');
-    return date;
-};
+import { addTime, pad } from './utils.js';
 
 /**
  * Calendar
@@ -37,7 +20,6 @@ export class Calendar extends Component
      */
     getSelectedDate(today)
     {
-        console.log(this.selectedDate)
         const selectedDate = this.selectedDate? new Date(addTime(this.selectedDate)) : today;
         return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
     }

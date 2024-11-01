@@ -10,6 +10,7 @@ import { DialogPage } from "./components/buttons/dialog-page.js";
 import InputPage from "./components/buttons/input-page.js";
 import ListPage from "./components/buttons/list-page.js";
 import { ModalPage } from "./components/buttons/modal-page.js";
+import NavigationPage from "./components/buttons/navigation-page.js";
 import { NotificationPage } from "./components/buttons/nofication-page.js";
 import { TabPage } from "./components/buttons/tab-page.js";
 import IconPage from "./icons/icon-page.js";
@@ -54,4 +55,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/comboboxes*`, 'Comboboxes', ComboboxPage),
 	Page(`${basePath}/components/lists*`, 'Lists', ListPage),
 	Page(`${basePath}/components/breadcrumbs*`, 'Breadcrumbs', BreadcrumbPage),
+	Page(`${basePath}/components/navigations*`, 'Navigations', NavigationPage),
 ]);
