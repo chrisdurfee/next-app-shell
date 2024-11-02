@@ -102,14 +102,15 @@ EmailInput({
                 preview: [
                     new Checkbox({
                         label: 'Check me',
-                        check: (e) => console.log()
+                        check: (checked) => console.log(checked)
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { Button } from '@components/atoms/form/checkbox.js';
 
-Checkbox({
-    change: (e) => console.log(e.target.checked)
+new Checkbox({
+    label: 'Check me',
+    check: (checked) => console.log(checked)
 })`
             }),
 
