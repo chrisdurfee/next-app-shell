@@ -30,16 +30,22 @@ export const Checkbox = Jot(
         return Div({ class: `flex items-center space-x-2 cursor-pointer ${this.class}` }, [
             Div({
                 class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border`,
-                onState: ['checked', {
+                onState: ['checked',
+                {
                     'bg-primary': true,
                     'text-primary-foreground': true,
                 }],
                 role: 'checkbox',
-                'aria-checked': this.state.checked,
+                aria:
+                {
+                    checked: ['checked'],
+                },
                 tabIndex: 0,
-                click: () => {
+                click: () =>
+                {
                     this.state.checked = !this.state.checked;
-                    if (typeof this.checked === 'function') {
+                    if (typeof this.checked === 'function')
+                    {
                         this.checked(this.state.checked);
                     }
                 }
@@ -47,7 +53,10 @@ export const Checkbox = Jot(
                 BaseCheckbox({
                     id,
                     class: "absolute opacity-0 w-full h-full cursor-pointer",
-                    'aria-checked': this.state.checked,
+                    aria:
+                    {
+                        checked: ['checked'],
+                    },
                     change: (event) =>
                     {
                         const checked = event.target.checked;
@@ -70,15 +79,18 @@ export const Checkbox = Jot(
                             class: 'w-2 h-2 pointer-events-none',
                             html: Icons.check,
                         });
-                    }]}),
+                    }]
+                }),
             ]),
             Label({
                 class: "text-base cursor-pointer",
                 htmlFor: id,
-                click: () => {
+                click: () =>
+                {
                     this.state.toggle('checked');
 
-                    if (typeof this.checked === 'function') {
+                    if (typeof this.checked === 'function')
+                    {
                         this.checked(this.state.checked);
                     }
                 }
