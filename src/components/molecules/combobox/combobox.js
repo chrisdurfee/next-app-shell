@@ -81,9 +81,10 @@ export const Combobox = Jot(
             Button({
                 class: 'inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
                 click: toggleOpen,
-            }, [
+            },
+            [
                 Span({ onState: ['selectedLabel', (value) => value || 'Select item...'] }),
-               I({ html: Icons.chevron.upDown })
+                I({ html: Icons.chevron.upDown })
             ]),
             Div({ class: 'felx flex-auto flex-col', onState: ['open', (value) => (value)? ComboboxDropdown(handleSelect) : null] }),
         ]);
