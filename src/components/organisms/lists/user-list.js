@@ -106,7 +106,7 @@ const getInitials = (name) =>
  */
 export const UserListItem = Atom((user) =>
 {
-    return Li({ class: 'fadeIn flex justify-between gap-x-6 py-4' }, [
+    return Li({ class: 'fadeIn flex justify-between gap-x-6 py-4 px-4 rounded-md hover:bg-accent' }, [
         Div({ class: 'flex min-w-0 gap-x-4' }, [
             Avatar({ src: user.image, alt: user.name, fallbackText: getInitials(user.name) }),
             UserInfo({ name: user.name, email: user.email })
