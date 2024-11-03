@@ -19,9 +19,12 @@ export const DatePicker = Jot(
      *
      * @member {object} state
      */
-    state: {
-        selectedDate: null,
-        open: false
+    state()
+    {
+        return {
+            selectedDate: this.selectedDate ?? null,
+            open: false
+        };
     },
 
     /**
@@ -50,7 +53,7 @@ export const DatePicker = Jot(
             Div({
                 class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
                 onState: ['open', (value) => (value ? new Calendar({
-                    selectedDate: this.selectedDate,
+                    selectedDate: this.state.selectedDate,
                     selectedCallBack: handleDateSelect
                 }) : null)]
             })
