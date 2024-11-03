@@ -1,6 +1,6 @@
 import { Avatar } from "@components/molecules/avatar.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * AvatarPage

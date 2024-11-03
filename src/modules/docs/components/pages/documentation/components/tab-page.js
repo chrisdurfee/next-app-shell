@@ -3,8 +3,8 @@ import { Atom } from "@base-framework/base";
 import { Panel } from "@components/organisms/panel.js";
 import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
 import { Tab } from "@components/organisms/tabs/tab.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * This will create a tab content.

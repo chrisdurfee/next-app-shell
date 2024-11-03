@@ -1,6 +1,6 @@
 import { Card } from "@components/atoms/cards/card.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * DialogPage

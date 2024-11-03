@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Badge } from "@components/atoms/badges/badge.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * BadgePage

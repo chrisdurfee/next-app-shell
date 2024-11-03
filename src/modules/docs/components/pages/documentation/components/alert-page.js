@@ -1,7 +1,7 @@
 import { Icons } from "@components/icons/icons.js";
 import { Alert } from "@components/molecules/alert.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * AlertPage

@@ -1,6 +1,6 @@
 import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 const items = [
     { href: '/', label: 'Home' },

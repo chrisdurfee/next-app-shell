@@ -1,8 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * NavigationPage

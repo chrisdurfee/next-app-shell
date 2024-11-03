@@ -1,7 +1,7 @@
 import { Icons } from "@components/icons/icons.js";
 import { Combobox } from "@components/molecules/combobox/combobox.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 // Mock framework data
 const frameworks = [

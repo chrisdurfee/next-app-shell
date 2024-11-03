@@ -1,6 +1,6 @@
 import { Calendar } from "@components/organisms/calendar/calendar.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 /**
  * CalendarPage

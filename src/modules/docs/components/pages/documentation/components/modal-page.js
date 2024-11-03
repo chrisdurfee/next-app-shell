@@ -1,7 +1,7 @@
 import { Button } from "@components/atoms/atoms.js";
 import { Modal } from "@components/molecules/modal.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 const Modals = [
 	{

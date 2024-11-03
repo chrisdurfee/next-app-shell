@@ -1,7 +1,7 @@
 import { H4, P } from "@base-framework/atoms";
 import UserList from "@components/organisms/lists/user-list.js";
-import { DocSection } from "../../../../molecules/doc-section.js";
-import { DocPage } from '../../../doc-page.js';
+import { DocSection } from "../../../molecules/doc-section.js";
+import { DocPage } from '../../doc-page.js';
 
 // Sample User Data (this could come from a backend or be passed as props)
 const users = [
