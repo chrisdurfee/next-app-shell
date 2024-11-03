@@ -41,7 +41,7 @@ const ConfirmationButton = (props) => Button({
 export const DialogPage = () => (
 	DocPage(
         {
-            title: 'Dialog',
+            title: 'Dialogs',
             description: 'Displays a dialog or a component that looks like a dialog. Dialogs can be opened and closed. They will be closed if the user clicks outside of the dialog or if the user clicks the close button.',
         },
         [
