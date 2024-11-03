@@ -6,6 +6,7 @@ import { ButtonPage } from "./components/buttons/button-page.js";
 import { CalendarPage } from "./components/calendar-page.js";
 import CardPage from "./components/card-page.js";
 import ComboboxPage from "./components/comboxbox-page.js";
+import DataTablePage from "./components/data-table-page.js";
 import { DialogPage } from "./components/dialog-page.js";
 import InputPage from "./components/input-page.js";
 import ListPage from "./components/list-page.js";
@@ -54,6 +55,7 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/alerts*`, 'Alerts', AlertPage),
 	Page(`${basePath}/components/comboboxes*`, 'Comboboxes', ComboboxPage),
 	Page(`${basePath}/components/lists*`, 'Lists', ListPage),
+	Page(`${basePath}/components/data-tables*`, 'Data Tables', DataTablePage),
 	Page(`${basePath}/components/breadcrumbs*`, 'Breadcrumbs', BreadcrumbPage),
 	Page(`${basePath}/components/navigations*`, 'Navigations', NavigationPage),
 ]);
