@@ -1,7 +1,7 @@
-import { Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
+import { Div, Footer, H2, Header, Dialog as MainDialog, P } from "@base-framework/atoms";
 import { Atom, Builder, Component } from "@base-framework/base";
-import "../../css/components/molecules/modals/modal.css";
-import { Button } from "../atoms/buttons/buttons.js";
+import "../../../css/components/molecules/modals/modal.css";
+import { Button } from "../../atoms/buttons/buttons.js";
 
 /**
  * This will render the modal component.
@@ -34,6 +34,7 @@ export const DialogContainer = Atom((props, children) => (
     MainDialog({ class: `flex flex-auto flex-col fixed z-30 w-full max-w-lg gap-4 border bg-background text-foreground p-6 shadow-lg duration-200 sm:rounded-lg`, click: props.click, aria: { expanded: ['open']}}, [
         Div({ class: 'flex flex-auto flex-col space-y-2' }, [
             DialogHeader(props),
+            props.description && P({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, props.description),
             Div({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, children),
         ]),
         Footer({ class: 'flex flex-col-reverse sm:flex-row sm:justify-end mt-6 gap-2 sm:gap-0 sm:space-x-2' }, props.buttons)
@@ -60,9 +61,9 @@ export class Dialog extends Component
 	{
         const click = (event) => { if (event.target === this.panel) this.close() };
 		const className = this.getMainClass();
-        const title = this.title || 'Are you abosolutely sure?';
+        const title = this.title || 'Dialog Title';
 
-        return DialogContainer({ class: className, title, click, buttons: this.getButtons() }, this.description);
+        return DialogContainer({ class: className, title, click, description: this.description, buttons: this.getButtons() }, this.children);
 	}
 
     /**
@@ -73,8 +74,7 @@ export class Dialog extends Component
     getButtons()
     {
         return [
-            Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
-            Button({ variant: 'primary', click: () => this.confirm() }, 'Save')
+            Button({ variant: 'outline', click: () => this.close() }, 'Close')
         ];
     }
 
@@ -91,17 +91,6 @@ export class Dialog extends Component
     }
 
     /**
-     * This will confirm the action.
-     *
-     * @returns {void}
-     */
-    confirm()
-    {
-        this.confirmed && this.confirmed();
-        this.close();
-    }
-
-	/**
 	 * This will get the modal class.
 	 *
 	 * @returns {string}

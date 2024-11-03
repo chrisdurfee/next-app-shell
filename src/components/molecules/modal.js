@@ -3,7 +3,7 @@ import { Atom, Component } from "@base-framework/base";
 import "../../css/components/molecules/modals/modal.css";
 import { Button } from "../atoms/buttons/buttons.js";
 import { Icons } from "../icons/icons";
-import { Dialog } from "./dialogue.js";
+import { Dialog } from "./dialogs/dialog.js";
 
 /**
  * This will create a dialog header.
