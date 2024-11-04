@@ -43,7 +43,7 @@ Tooltip({ content: 'This is a tooltip.' }, [
                 description: 'This will show the tooltip at the bottom of the target element.',
                 preview: [
                     Div({ class: 'flex gap-2 flex-wrap' }, [
-                        Tooltip({ content: 'This is a tooltip.', position: 'left' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'bottom' }, [
                             Button('Hover me')
                         ])
                     ])
