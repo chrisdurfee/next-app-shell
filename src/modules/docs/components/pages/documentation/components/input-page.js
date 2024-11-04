@@ -1,5 +1,5 @@
 import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
@@ -50,6 +50,25 @@ Input({
             }),
 
             DocSection({
+                title: 'File Input',
+                description: 'This is a file input.',
+                preview: [
+                    FileInput({
+                        type: 'text',
+                        placeholder: 'Enter your text here...',
+                        change: (e) => console.log(e.target.value)
+                    })
+                ],
+                code: `import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+
+Input({
+    type: 'text',
+    placeholder: 'Enter your text here...',
+    change: (e) => console.log(e.target.value)
+})`
+            }),
+
+            DocSection({
                 title: 'Text Input',
                 description: 'This is a text input.',
                 preview: [
@@ -59,7 +78,7 @@ Input({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
 Input({
     type: 'text',
@@ -75,7 +94,7 @@ Input({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
 TelInput({
 })`
@@ -90,7 +109,7 @@ TelInput({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
 EmailInput({
 
@@ -107,7 +126,7 @@ EmailInput({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/checkbox.js';
+import { Checkbox } from '@components/atoms/form/checkbox.js';
 
 new Checkbox({
     label: 'Check me',
@@ -125,7 +144,7 @@ new Checkbox({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
 Input({
     type: 'text',
@@ -142,7 +161,7 @@ Input({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
 Textarea({
     placeholder: 'Enter your text here...'
@@ -158,7 +177,7 @@ Textarea({
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import DatePicker from "@components/molecules/date-time/date-picker.js";
 
 new DatePicker()`
             }),

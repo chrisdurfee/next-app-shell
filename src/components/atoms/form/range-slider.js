@@ -46,11 +46,11 @@ export const RangeSlider = Jot(
     {
         return Div({ class: 'relative w-full h-4 flex items-center' }, [
             // Track
-            Div({ class: 'absolute h-1 w-full rounded-full bg-mutes' }),
+            Div({ class: 'absolute h-2 w-full rounded-full bg-muted' }),
 
             // Filled Track
             Div({
-                class: 'absolute h-1 bg-primary rounded-full',
+                class: 'absolute h-2 bg-primary rounded-full',
                 style: 'width: [[filledPercentage]]%'
             }),
 
