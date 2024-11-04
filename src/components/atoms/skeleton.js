@@ -11,9 +11,7 @@ export const Skeleton = ({ className, shape = 'rectangle', width = 'w-full', hei
     const shapeClass = shape === 'circle' ? 'rounded-full' : 'rounded-md';
 
 	return Div({
-        ...props,
-        class: `bg-muted animate-pulse ${width} ${height} ${shapeClass} ${className || ''}`,
-        children
+        class: `bg-muted animate-pulse ${width} ${height} ${shapeClass} ${className || ''}`
     });
 };
 

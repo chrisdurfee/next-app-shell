@@ -90,6 +90,10 @@ export const Links = (path) => ([
 			{
 				label: 'Progress Bars',
 				href: `${path}/components/progress-bars`
+			},
+			{
+				label: 'Skeletons',
+				href: `${path}/components/skeletons`
 			}
 		]
 	}
