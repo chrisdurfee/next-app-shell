@@ -8,9 +8,9 @@ import { Atom } from "@base-framework/base";
  * @param {array} children
  * @returns {object}
  */
-export const Icon = Atom((prop, children) => (
+export const Icon = Atom((props, children) => (
     I({
         ...props,
-        html: children
+        html: children[0].textContent
     })
 ));
