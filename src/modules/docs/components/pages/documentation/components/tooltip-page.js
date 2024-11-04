@@ -43,7 +43,7 @@ Tooltip({ content: 'This is a tooltip.' }, [
                 description: 'This will show the tooltip at the bottom of the target element.',
                 preview: [
                     Div({ class: 'flex gap-2 flex-wrap' }, [
-                        Tooltip({ content: 'This is a tooltip.', position: 'bottom' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'left' }, [
                             Button('Hover me')
                         ])
                     ])
@@ -56,7 +56,7 @@ Tooltip({ content: 'This is a tooltip.', position: 'bottom' }, [
 ])`
             }),
 
-            P({ class: 'text-muted-foreground text-sm mt-4' }, 'The tooltip position can be set to: top, top-right, top-left, bottom, bottom-right, bottom-left.')
+            P({ class: 'text-muted-foreground text-sm mt-4' }, 'The tooltip position can be set to: top, top-right, top-left, bottom, bottom-right, bottom-left, left, right.')
         ]
     )
 );

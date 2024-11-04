@@ -11,7 +11,9 @@ const POSITION_CLASSES = {
     'top-left': 'bottom-full right-full transform translate-x-1 mb-2',
     bottom: 'top-full left-1/2 transform -translate-x-1/2 mt-2',
     'bottom-right': 'top-full left-full transform -translate-x-1 mt-2',
-    'bottom-left': 'top-full right-full transform translate-x-1 mt-2'
+    'bottom-left': 'top-full right-full transform translate-x-1 mt-2',
+    left: 'top-1/2 right-full transform -translate-y-1/2 mr-2',
+    right: 'top-1/2 left-full transform -translate-y-1/2 ml-2'
 };
 
 /**
