@@ -11,6 +11,6 @@ import { Atom } from "@base-framework/base";
 export const Icon = Atom((props, children) => (
     I({
         ...props,
-        html: children[0].textContent
+        html: children[0]?.textContent
     })
 ));
