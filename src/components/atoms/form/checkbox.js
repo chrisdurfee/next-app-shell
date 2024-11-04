@@ -29,7 +29,7 @@ export const Checkbox = Jot(
 
         return Div({ class: `flex items-center space-x-2 cursor-pointer ${this.class}` }, [
             Div({
-                class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border`,
+                class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border hover:border-accent-foreground`,
                 onState: ['checked',
                 {
                     'bg-primary': true,
