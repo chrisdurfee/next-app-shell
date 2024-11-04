@@ -16,6 +16,7 @@ import { NotificationPage } from "./components/nofication-page.js";
 import ProgressBarPage from "./components/progress-bar-page.js";
 import SkeletonPage from "./components/skeleton-page.js";
 import { TabPage } from "./components/tab-page.js";
+import TooltipPage from "./components/tooltip-page.js";
 import IconPage from "./icons/icon-page.js";
 import IntroPage from "./introduction/intro-page.js";
 import { ThemePage } from "./theme/theme-page.js";
@@ -62,4 +63,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/navigations*`, 'Navigations', NavigationPage),
 	Page(`${basePath}/components/progress-bars*`, 'Progress Bars', ProgressBarPage),
 	Page(`${basePath}/components/skeletons*`, 'Skeletons', SkeletonPage),
+	Page(`${basePath}/components/tooltips*`, 'Tooltips', TooltipPage),
 ]);
