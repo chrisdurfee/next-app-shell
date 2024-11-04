@@ -19,10 +19,23 @@ const getId = () => `checkbox-${Math.random().toString(36).substring(2, 9)}`;
  */
 export const Checkbox = Jot(
 {
-    state: {
-        checked: false
+    /**
+     * This will initialize the state of the checkbox.
+     *
+     * @returns {object}
+     */
+    state()
+    {
+        return {
+            checked: this.checked ?? false,
+        };
     },
 
+    /**
+     * This will render the checkbox component.
+     *
+     * @returns {object}
+     */
     render()
     {
         const id = getId();
@@ -82,7 +95,7 @@ export const Checkbox = Jot(
                     }]
                 }),
             ]),
-            Label({
+            this.label && Label({
                 class: "text-base cursor-pointer",
                 htmlFor: id,
                 click: () =>
@@ -94,7 +107,7 @@ export const Checkbox = Jot(
                         this.checked(this.state.checked);
                     }
                 }
-            }, this.label || ''),
+            }, this.label),
         ])
     }
 });
