@@ -20,7 +20,7 @@ export const ProgressBarPage = () => (
         [
             DocSection({
                 title: 'Usage',
-                description: 'Import the card atom and use it in your components.',
+                description: 'Import the progress bar atom and use it in your components. The progress bar can be used to show the progress of a task or process.',
                 preview: [
                     new ProgressBar({ cache: 'progress', progress: 20 })
                 ],
