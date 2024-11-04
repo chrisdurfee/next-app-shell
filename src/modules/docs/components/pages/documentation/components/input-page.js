@@ -1,5 +1,6 @@
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -150,7 +151,7 @@ Textarea({
 
             DocSection({
                 title: 'Date Picker',
-                description: '@components/molecules/date-time/date-picker.js',
+                description: 'This is a date picker input.',
                 preview: [
                     new DatePicker({
                         selectedDate: '2022-01-01',
@@ -163,17 +164,25 @@ new DatePicker()`
             }),
 
             DocSection({
-                title: 'Date Picker',
-                description: '@components/molecules/date-time/date-picker.js',
+                title: 'Range Slider',
+                description: 'This is a range slider input.',
                 preview: [
-                    new DatePicker({
-                        selectedDate: '2022-01-01',
+                    new RangeSlider({
+                        min: 0,
+                        max: 100,
+                        value: 50,
+                        change: (value) => console.log(value)
                     })
                 ],
                 code: `
-import { Button } from '@components/atoms/form/input.js';
+import { RangeSlider } from '@components/atoms/form/range-slider.js';
 
-new DatePicker()`
+new RangeSlider({
+    min: 0,
+    max: 100,
+    value: 50,
+    change: (value) => console.log(value)
+})`
             })
         ]
     )
