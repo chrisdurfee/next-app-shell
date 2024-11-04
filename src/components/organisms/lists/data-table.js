@@ -20,7 +20,7 @@ const TableHeader = (props) =>
                 const align = header.align || 'items-center justify-start';
                 return Th({
                     class: 'cursor-pointer py-3 px-4 text-base',
-                    click: header.sortable ? () => props.sort(header.key) : null
+                    click: header.sortable && (() => props.sort(header.key))
                 }, [
                     Div({ class: `flex flex-auto w-full items-center ${align}` }, [
                         Span(header.label),
