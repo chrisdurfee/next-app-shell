@@ -1,5 +1,6 @@
+import { Div } from "@base-framework/atoms";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
@@ -64,6 +65,50 @@ FileInput({
     multiple: true,
     change: (e) => console.log(e.target.files)
 })`
+            }),
+
+            DocSection({
+                title: 'Radio Input',
+                description: 'This is a radio input.',
+                preview: [
+                    Div({ class: 'grid gap-2' }, [
+                        Radio({
+                            name: 'theme',
+                            label: 'System',
+                            value: 'system',
+                        }),
+                        Radio({
+                            name: 'theme',
+                            label: 'Light',
+                            value: 'light',
+                        }),
+                        Radio({
+                            name: 'theme',
+                            label: 'Dark',
+                            value: 'dark',
+                        })
+                    ])
+                ],
+                code: `import { Radio } from "@components/atoms/form/input.js";
+import { Div } from "@base-framework/atoms";
+
+Div({ class: 'grid gap-2' }, [
+    Radio({
+        name: 'theme',
+        label: 'System',
+        value: 'system',
+    }),
+    Radio({
+        name: 'theme',
+        label: 'Light',
+        value: 'light',
+    }),
+    Radio({
+        name: 'theme',
+        label: 'Dark',
+        value: 'dark',
+    })
+])`
             }),
 
             DocSection({

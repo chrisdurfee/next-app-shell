@@ -1,4 +1,4 @@
-import { Checkbox as BaseCheckbox, Input as BaseInput, Textarea as BaseTextarea } from '@base-framework/atoms';
+import { Checkbox as BaseCheckbox, Input as BaseInput, Textarea as BaseTextarea, Div, Label } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -107,6 +107,26 @@ export const Textarea = Atom((props) =>
         class: `flex h-24 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     });
 });
+
+/**
+ * This will create a radio input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const Radio = (props = {}) =>
+{
+    return Div({ class: 'flex items-center space-x-2' }, [
+        BaseInput({
+            ...props,
+            type: 'radio',
+            class: `cursor-pointer appearance-none h-4 w-4 border rounded-full
+                checked:border-primary checked:bg-primary
+                focus:ring focus:ring-primary`
+        }),
+        props.label && Label({ forHTML: props.value, class: 'cursor-pointer' }, props.label)
+    ]);
+};
 
 /**
  * This will create a checkbox.
