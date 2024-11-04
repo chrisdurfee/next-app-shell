@@ -1,4 +1,4 @@
-import { Div, I, Span, Table, Td, Th, Thead, Tr } from '@base-framework/atoms';
+import { Div, I, Span, Table, Th, Thead, Tr } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { TableBody } from '@base-framework/organisms';
 import { Checkbox } from '../../atoms/form/checkbox.js';
@@ -17,6 +17,13 @@ const TableHeader = (props) =>
     return Thead([
         Tr({ class: 'text-muted-foreground border-b', map: [props.headers, header =>
             {
+                if (header.label === 'checkbox')
+                {
+                    return Th({ class: 'cursor-pointer py-3 px-4 text-base' }, [
+                        new Checkbox({ class: 'mr-2' })
+                    ]);
+                }
+
                 const align = header.align || 'items-center justify-start';
                 return Th({
                     class: 'cursor-pointer py-3 px-4 text-base',
@@ -38,40 +45,13 @@ const TableHeader = (props) =>
  * @param {props} param0
  * @returns {object}
  */
-const Body = ({ rows, selectRow }) => (
+const Body = ({ rows, selectRow, rowItem }) => (
     new TableBody({
         items: rows,
-        rowItem: (row) => DataTableRow(row, selectRow),
+        rowItem: (row) => rowItem(row, selectRow),
         class: 'divide-y divide-border'
     })
 );
-
-/**
- * DataTableRow Atom
- *
- * Represents a row in the data table.
- *
- * @param {object} row - Row data
- * @param {function} onSelect - Callback to handle row selection
- * @returns {object}
- */
-const DataTableRow = (row, onSelect) =>
-{
-    return Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
-        Td({ class: 'p-4 ' }, [
-            new Checkbox({
-                checked: row.selected,
-                class: 'mr-2',
-                click: () => onSelect(row)
-            })
-        ]),
-        Td({ class: 'p-4 ' }, [
-            Span({ class: 'text-muted-foreground' }, row.status)
-        ]),
-        Td({ class: 'p-4 ' }, row.email),
-        Td({ class: 'p-4 text-right' }, `$${row.amount.toFixed(2)}`)
-    ]);
-};
 
 /**
  * DataTable Component
@@ -123,7 +103,7 @@ export const DataTable = Jot(
             Div({ class: 'w-full rounded-md border' }, [
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
-                    Body({ rows: currentRows, selectRow: this.selectRow.bind(this) })
+                    Body({ rows: currentRows, selectRow: this.selectRow.bind(this), rowItem: this.rowItem })
                 ])
             ])
         ]);
