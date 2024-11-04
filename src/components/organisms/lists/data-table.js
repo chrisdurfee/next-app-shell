@@ -1,7 +1,9 @@
-import { Div, I, Input, Span } from '@base-framework/atoms';
+import { Div, I, Span, Table, Td, Th, Thead, Tr } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
-import { List } from '@base-framework/organisms';
+import { TableBody } from '@base-framework/organisms';
 import { Button } from '../../atoms/buttons/buttons.js';
+import { Checkbox } from '../../atoms/form/checkbox.js';
+import { Input } from '../../atoms/form/input.js';
 import { Icons } from '../../icons/icons.js';
 
 /**
@@ -21,18 +23,34 @@ const TableHeader = (toggleSort) =>
         { label: 'Amount', key: 'amount', sortable: true }
     ];
 
-    return Div({ class: 'grid grid-cols-4 p-4 font-semibold text-muted-foreground border-b' }, [
-        ...headers.map(header =>
-            Div({
-                class: 'flex items-center cursor-pointer',
-                click: header.sortable ? () => toggleSort(header.key) : null
-            }, [
-                Span(header.label),
-                header.sortable && I({ html: Icons.sort }) // Sort icon for sortable columns
-            ])
-        )
+    return Thead([
+        Tr({ class: 'grid grid-cols-4 p-4 font-semibold text-muted-foreground border-b' }, [
+            ...headers.map(header =>
+                Th({
+                    class: 'flex items-center cursor-pointer',
+                    click: header.sortable ? () => toggleSort(header.key) : null
+                }, [
+                    Span(header.label),
+                    header.sortable && I({ html: Icons.sort }) // Sort icon for sortable columns
+                ])
+            )
+        ])
     ]);
 };
+
+/**
+ * This will creatw the table body.
+ *
+ * @param {props} param0
+ * @returns {object}
+ */
+const Body = ({ rows, selectRow }) => (
+    new TableBody({
+        items: rows,
+        rowItem: (row) => DataTableRow(row, selectRow),
+        class: 'divide-y divide-border'
+    })
+);
 
 /**
  * DataTableRow Atom
@@ -45,16 +63,19 @@ const TableHeader = (toggleSort) =>
  */
 const DataTableRow = (row, onSelect) =>
 {
-    return Div({ class: 'grid grid-cols-4 items-center px-4 py-2 hover:bg-accent rounded-md' }, [
-        Input({
-            type: 'checkbox',
-            checked: row.selected,
-            class: 'mr-2',
-            change: () => onSelect(row)
-        }),
-        Span({ class: 'text-muted-foreground' }, row.status),
-        Span(row.email),
-        Span({ class: 'text-right' }, `$${row.amount.toFixed(2)}`)
+    return Tr({ class: 'grid grid-cols-4 items-center px-4 py-2 hover:bg-muted' }, [
+        Td({ class: 'p-4 ' }, [
+            new Checkbox({
+                checked: row.selected,
+                class: 'mr-2',
+                click: () => onSelect(row)
+            })
+        ]),
+        Td({ class: 'p-4 ' }, [
+            Span({ class: 'text-muted-foreground' }, row.status)
+        ]),
+        Td({ class: 'p-4 ' }, row.email),
+        Td({ class: 'p-4 text-right' }, `$${row.amount.toFixed(2)}`)
     ]);
 };
 
@@ -156,9 +177,8 @@ export const DataTable = Jot(
         const endIdx = startIdx + this.state.rowsPerPage;
         //const currentRows = this.data.filteredRows.slice(startIdx, endIdx);
         const currentRows = this.data.filteredRows;
-        console.log(currentRows)
 
-        return Div({ class: 'w-full bg-background rounded-lg shadow-md' }, [
+        return Div({ class: 'w-full' }, [
 
             /**
              * This will set up the table controls and search.
@@ -181,19 +201,10 @@ export const DataTable = Jot(
                 ])
             ]),
 
-            /**
-             * This will set up the table headers.
-             */
-            TableHeader((key) => this.sortRows(key)),
-
-            /**
-             * This will set up the table rows.
-             */
-            new List({
-                items: currentRows,
-                rowItem: (row) => DataTableRow(row, this.selectRow.bind(this)),
-                class: 'divide-y divide-border'
-            }),
+            Table({ class: 'border w-full rounded-md' }, [
+                TableHeader((key) => this.sortRows(key)),
+                Body({ rows: currentRows, selectRow: this.selectRow.bind(this) })
+            ]),
 
             /**
              * This will set up the table footer.
