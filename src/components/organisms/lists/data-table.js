@@ -24,14 +24,16 @@ const TableHeader = (toggleSort) =>
     ];
 
     return Thead([
-        Tr({ class: 'grid grid-cols-4 p-4 font-semibold text-muted-foreground border-b' }, [
+        Tr({ class: 'text-muted-foreground border-b' }, [
             ...headers.map(header =>
                 Th({
-                    class: 'flex items-center cursor-pointer',
+                    class: 'cursor-pointer py-3 px-4 text-base',
                     click: header.sortable ? () => toggleSort(header.key) : null
                 }, [
-                    Span(header.label),
-                    header.sortable && I({ html: Icons.sort }) // Sort icon for sortable columns
+                    Div({ class: 'flex flex-auto w-full items-center' }, [
+                        Span(header.label),
+                        header.sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
+                    ])
                 ])
             )
         ])
@@ -63,7 +65,7 @@ const Body = ({ rows, selectRow }) => (
  */
 const DataTableRow = (row, onSelect) =>
 {
-    return Tr({ class: 'grid grid-cols-4 items-center px-4 py-2 hover:bg-muted' }, [
+    return Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
         Td({ class: 'p-4 ' }, [
             new Checkbox({
                 checked: row.selected,
