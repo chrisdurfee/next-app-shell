@@ -201,9 +201,11 @@ export const DataTable = Jot(
                 ])
             ]),
 
-            Table({ class: 'border w-full rounded-md' }, [
-                TableHeader((key) => this.sortRows(key)),
-                Body({ rows: currentRows, selectRow: this.selectRow.bind(this) })
+            Div({ class: 'w-full rounded-md border' }, [
+                Table({ class: 'w-full' }, [
+                    TableHeader((key) => this.sortRows(key)),
+                    Body({ rows: currentRows, selectRow: this.selectRow.bind(this) })
+                ])
             ]),
 
             /**
