@@ -70,6 +70,7 @@ export const Checkbox = Jot(
                     {
                         checked: ['checked'],
                     },
+                    bind: this.bind,
                     change: (event) =>
                     {
                         const checked = event.target.checked;
