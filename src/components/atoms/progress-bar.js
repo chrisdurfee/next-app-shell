@@ -8,7 +8,7 @@ import { Jot } from '@base-framework/base';
  */
 const Progress = () => (
     Div({
-        class: 'absolute h-full rounded-full bg-primary transition-all duration-150',
+        class: 'absolute h-full rounded-full bg-primary transition-all duration-300',
         style: `width: [[progress]]%;`,
     })
 );
@@ -55,6 +55,16 @@ export const ProgressBar = Jot(
      */
     set(progress)
     {
+        if (progress < 0)
+        {
+            progress = 0;
+        }
+
+        if (progress > 100)
+        {
+            progress = 100;
+        }
+
         this.state.progress = progress
     }
 });
