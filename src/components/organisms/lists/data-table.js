@@ -42,11 +42,12 @@ const TableHeader = (props) =>
 /**
  * This will creatw the table body.
  *
- * @param {props} param0
+ * @param {object} props
  * @returns {object}
  */
-const Body = ({ rows, selectRow, rowItem }) => (
+const Body = ({ key, rows, selectRow, rowItem }) => (
     new TableBody({
+        key,
         items: rows,
         rowItem: (row) => rowItem(row, selectRow),
         class: 'divide-y divide-border'
@@ -103,7 +104,12 @@ export const DataTable = Jot(
             Div({ class: 'w-full rounded-md border' }, [
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
-                    Body({ rows: currentRows, selectRow: this.selectRow.bind(this), rowItem: this.rowItem })
+                    Body({
+                        key: this.key,
+                        rows: currentRows,
+                        selectRow: this.selectRow.bind(this),
+                        rowItem: this.rowItem
+                    })
                 ])
             ])
         ]);

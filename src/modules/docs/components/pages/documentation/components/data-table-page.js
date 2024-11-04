@@ -65,13 +65,14 @@ export const DataTablePage = () => (
                 title: 'Usage',
                 description: 'The data table component is used to display data in a structured format. It can be used to display a list of items, a grid of items, or a table of items.',
                 preview: [
-                    new DataTable({ headers, rows, rowItem }),
+                    new DataTable({ headers, rows, rowItem, key: 'id' }),
                 ],
                 code: `import { DataTable } from "@components/organisms/lists/data-table.js";
 import { Div, I, Span, Table, Td, Th, Thead, Tr } from '@base-framework/atoms';
 import { Checkbox } from '@components/atoms/form/checkbox.js';
 
 new DataTable({
+    key: 'id',
     headers: [
         { label: 'checkbox', key: '' },
         { label: 'Status', key: 'status' },
