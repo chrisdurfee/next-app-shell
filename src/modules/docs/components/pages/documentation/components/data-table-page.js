@@ -2,6 +2,13 @@ import { DataTable } from "@components/organisms/lists/data-table.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
+const headers = [
+    { label: '', key: 'select' },
+    { label: 'Status', key: 'status' },
+    { label: 'Email', key: 'email' },
+    { label: 'Amount', key: 'amount', align: 'justify-end' }
+];
+
 const rows = [
     { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
     { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00, selected: false },
@@ -31,18 +38,26 @@ export const DataTablePage = () => (
                 title: 'Usage',
                 description: 'The data table component is used to display data in a structured format. It can be used to display a list of items, a grid of items, or a table of items.',
                 preview: [
-                    new DataTable({ rows }),
+                    new DataTable({ headers, rows }),
                 ],
                 code: `import { DataTable } from "@components/organisms/lists/data-table.js";
 
-new DataTable({ rows: [
-    { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
-    { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00, selected: false },
-    { id: 3, status: 'Processing', email: 'monserrat44@gmail.com', amount: 837.00, selected: false },
-    { id: 4, status: 'Success', email: 'silas22@gmail.com', amount: 874.00, selected: false },
-    { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false },
-    // Add more rows as needed
-]})`
+new DataTable({
+    headers: [
+        { label: '', key: 'select' },
+        { label: 'Status', key: 'status' },
+        { label: 'Email', key: 'email' },
+        { label: 'Amount', key: 'amount', align: 'justify-end' }
+    ],
+    rows: [
+        { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
+        { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00, selected: false },
+        { id: 3, status: 'Processing', email: 'monserrat44@gmail.com', amount: 837.00, selected: false },
+        { id: 4, status: 'Success', email: 'silas22@gmail.com', amount: 874.00, selected: false },
+        { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false },
+        // Add more rows as needed
+    ]
+    })`
             })
         ]
     )

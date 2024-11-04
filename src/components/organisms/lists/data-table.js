@@ -9,32 +9,26 @@ import { Icons } from '../../icons/icons.js';
  *
  * Renders the table headers with sorting capability.
  *
- * @param {function} toggleSort - Callback to handle column sorting
+ * @param {object} props
  * @returns {object}
  */
-const TableHeader = (toggleSort) =>
+const TableHeader = (props) =>
 {
-    const headers = [
-        { label: '', key: 'select' },
-        { label: 'Status', key: 'status' },
-        { label: 'Email', key: 'email', sortable: true },
-        { label: 'Amount', key: 'amount', sortable: true }
-    ];
-
     return Thead([
-        Tr({ class: 'text-muted-foreground border-b' }, [
-            ...headers.map(header =>
-                Th({
+        Tr({ class: 'text-muted-foreground border-b', map: [props.headers, header =>
+            {
+                const align = header.align || 'items-center justify-start';
+                return Th({
                     class: 'cursor-pointer py-3 px-4 text-base',
-                    click: header.sortable ? () => toggleSort(header.key) : null
+                    click: header.sortable ? () => props.sort(header.key) : null
                 }, [
-                    Div({ class: 'flex flex-auto w-full items-center' }, [
+                    Div({ class: `flex flex-auto w-full items-center ${align}` }, [
                         Span(header.label),
                         header.sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
                     ])
-                ])
-            )
-        ])
+                ]);
+            }]
+        })
     ]);
 };
 
@@ -128,7 +122,7 @@ export const DataTable = Jot(
         return Div({ class: 'w-full' }, [
             Div({ class: 'w-full rounded-md border' }, [
                 Table({ class: 'w-full' }, [
-                    TableHeader((key) => this.sortRows(key)),
+                    this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
                     Body({ rows: currentRows, selectRow: this.selectRow.bind(this) })
                 ])
             ])
