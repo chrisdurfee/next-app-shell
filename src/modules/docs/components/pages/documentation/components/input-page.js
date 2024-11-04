@@ -54,17 +54,15 @@ Input({
                 description: 'This is a file input.',
                 preview: [
                     FileInput({
-                        type: 'text',
-                        placeholder: 'Enter your text here...',
-                        change: (e) => console.log(e.target.value)
+                        multiple: true,
+                        change: (e) => console.log(e.target.files)
                     })
                 ],
                 code: `import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
-Input({
-    type: 'text',
-    placeholder: 'Enter your text here...',
-    change: (e) => console.log(e.target.value)
+FileInput({
+    multiple: true,
+    change: (e) => console.log(e.target.files)
 })`
             }),
 
