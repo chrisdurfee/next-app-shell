@@ -27,7 +27,7 @@ export const Checkbox = Jot(
     state()
     {
         return {
-            checked: this.checked ?? false,
+            checked: this.checked ?? false
         };
     },
 
