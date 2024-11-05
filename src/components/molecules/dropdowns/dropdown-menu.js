@@ -1,80 +1,36 @@
-import { Button, Div, I, Li, Span, Ul } from '@base-framework/atoms';
+import { Button, Div, I, Span } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
+import { Dropdown } from './dropdown.js';
 
 /**
- * This will create a shortcut span.
- *
- * @param {string} shortcut
- * @returns {object}
- */
-const Shortcut = (shortcut) => Span({ class: 'ml-auto text-xs tracking-widest opacity-60' }, shortcut);
-
-/**
- * This will create an icon span.
- *
- * @param {string} icon
- * @returns {object}
- */
-const Icon = (icon) => Span({ class: 'flex w-4 h-4', html: icon });
-
-/**
- * This will create a label span.
- *
- * @param {string} label
- * @returns {object}
- */
-const Label = (label) => Span({ class: 'flex-auto' }, label);
-
-/**
- * DropdownItem Component
- *
- * A single item within the dropdown menu. It renders any content passed as `children`.
+ * This will render a dropdown button.
  *
  * @param {object} props
- * @param {function} onClick - Click handler for the dropdown item
  * @returns {object}
  */
-const DropdownItem = (props, onClick) =>
-{
-    return Li({
-        class: `relative flex cursor-default hover:bg-accent hover:text-accent-foreground select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0`,
-        click: () => onClick(props),
+const DropdownButton = ({ label, icon, toggleDropdown }) => (
+    Button({
+        class: `inline-flex items-center justify-between rounded-md border border-input
+            bg-background px-2 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground
+            focus:outline-none transition duration-150 ease-in-out`,
+        click: toggleDropdown
     }, [
-        props.icon && Icon(props.icon),
-        Label(props.label),
-        props.shortcut && Shortcut(props.shortcut),
-    ]);
-};
-
-/**
- * This will render a group of dropdown items.
- *
- * @param {array} group
- * @param {function} onSelect
- * @returns {object}
- */
-const Group = (group, onSelect) =>
-{
-    return Ul({ class: 'grid gap-2' }, [
-        group.map((item) => DropdownItem(item, onSelect))
-    ]);
-};
-
-/**
- * Dropdown Component
- *
- * Renders a list of items within the dropdown menu.
- *
- * @param {function} onSelect - Function to handle item selection
- * @returns {object}
- */
-const Dropdown = (onSelect) => (
-    Div({ class: `absolute mt-2 w-full border rounded-md shadow-lg bg-background z-10 min-w-[300px]` }, [
-        Div({
-            class: 'max-h-60 overflow-y-auto p-1 grid gap-2 divide-y divide-border',
-            for: ['groups', (group) => Group(group, onSelect)]
-        })
+        label && Span(label),
+        icon && I({ html: icon })
     ])
+);
+
+/**
+ * This will render a dropdown container.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const DropdownContainer = ({ onSelect }) => (
+    Div({
+        class: 'mt-2',
+        onState: ['open', (isOpen) => isOpen ? Dropdown(onSelect) : null]
+    })
 );
 
 /**
@@ -96,7 +52,7 @@ export const DropdownMenu = Jot(
     setData()
     {
         return new Data({
-            groups: this.groups || []  // Default to empty array if no items are provided
+            groups: this.groups || []
         });
     },
 
@@ -126,10 +82,11 @@ export const DropdownMenu = Jot(
     handleSelect(item)
     {
         this.state.selectedItem = item;
-        this.state.open = false;  // Close the dropdown after selection
+        this.state.open = false;
+
         if (typeof this.onSelect === 'function')
         {
-            this.onSelect(item);  // Trigger external selection handler if provided
+            this.onSelect(item);
         }
     },
 
@@ -141,23 +98,12 @@ export const DropdownMenu = Jot(
     render()
     {
         return Div({ class: 'relative' }, [
-
-            // Dropdown Button
-            Button({
-                class: `inline-flex items-center justify-between rounded-md border border-input
-                    bg-background px-2 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground
-                    focus:outline-none transition duration-150 ease-in-out`,
-                click: () => this.toggleDropdown(),
-            }, [
-                this.label && Span(this.label),
-                this.icon && I({ html: this.icon })
-            ]),
-
-            // Dropdown (conditionally rendered)
-            Div({
-                class: 'mt-2',
-                onState: ['open', (isOpen) => isOpen ? Dropdown(this.handleSelect.bind(this)) : null]
-            })
+            DropdownButton({
+                label: this.label,
+                icon: this.icon,
+                toggleDropdown: this.toggleDropdown.bind(this)
+            }),
+            DropdownContainer({ onSelect: this.handleSelect.bind(this) })
         ]);
     }
 });
