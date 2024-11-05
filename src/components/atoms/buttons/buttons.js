@@ -1,5 +1,6 @@
 import { Button as BaseButton, I } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Icons } from '../../icons/icons.js';
 
 /**
  * This will create a button.
@@ -67,4 +68,18 @@ export const Button = Atom((props, children) =>
 {
 	const VariantButton = BUTTON_VARIANTS[props.variant] || BUTTON_VARIANTS.primary;
 	return VariantButton(props, children);
+});
+
+export default Button;
+
+/**
+ * This will create a primary button that has a loading icon.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @returns {object}
+ */
+export const LoadingButton = Atom((props, children) =>
+{
+	return Button({ ...props, variant: 'withIcon', icon: Icons.loading, animation: 'animate-spin' }, children);
 });
