@@ -1,6 +1,5 @@
 import { Button, Div, I, Li, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
-import { Icons } from '../../icons/icons.js';
 
 /**
  * This will create a shortcut span.
@@ -150,8 +149,8 @@ export const DropdownMenu = Jot(
                     focus:outline-none transition duration-150 ease-in-out`,
                 click: () => this.toggleDropdown(),
             }, [
-                Span(this.label || 'Open Menu'),  // Button label
-                I({ html: Icons.chevron.single.down })   // Icon to indicate dropdown
+                this.label && Span(this.label),
+                this.icon && I({ html: this.icon })
             ]),
 
             // Dropdown (conditionally rendered)

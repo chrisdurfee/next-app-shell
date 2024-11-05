@@ -24,7 +24,6 @@ export const DropdownMenuPage = () => (
                 description: 'To use the DropdownMenu component, import it from the components library and use it in your application.',
                 preview: [
                     new DropdownMenu({
-                        label: 'My Account',
                         groups: [
                             [
                                 { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
@@ -43,7 +42,8 @@ export const DropdownMenuPage = () => (
                                 { icon: Icons.api, label: 'API', value: 'api' },
                             ]
                         ],
-                        onSelect: (item) => {
+                        onSelect: (item) =>
+                        {
                             console.log("Selected item:", item);
                             // Handle selected item
                         }
