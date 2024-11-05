@@ -32,7 +32,7 @@ const WithIconVariant = (defaultProps) =>
 			...props,
 			class: `bttn ${defaultProps.class} ${props.class || ''}`
 		}, [
-			props.icon ? I({ html: props.icon }) : null,
+			props.icon ? I({ class: props.animation ?? null, html: props.icon }) : null,
 			...(children || [])
 		])
 	));

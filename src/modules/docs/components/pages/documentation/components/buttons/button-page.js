@@ -154,9 +154,21 @@ export const IconButton = Atom((props) => (
                     Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')
                 ],
                 code: `import { Button } from '@components/atoms/buttons/buttons.js';
+import { Icons } from '@components/icons/icons.js';
 
 Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')`
             }),
+
+            DocSection({
+                title: 'Loading Button',
+                preview: [
+                    Button({ variant: 'withIcon', icon: Icons.loading, animation: 'animate-spin' }, 'With Icon')
+                ],
+                code: `import { Button } from '@components/atoms/buttons/buttons.js';
+import { Icons } from '@components/icons/icons.js';
+
+Button({ variant: 'withIcon', icon: Icons.loading, animation: 'animate-spin' }, 'With Icon')`
+            })
         ]
     )
 );
