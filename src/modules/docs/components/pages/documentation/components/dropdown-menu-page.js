@@ -50,17 +50,34 @@ export const DropdownMenuPage = () => (
                         }
                     })
                 ],
-                code: `@components/molecules/combobox/combobox.js';
-import { Icons } from "@components/icons/icons.js";
+                code: `import { Icons } from "@components/icons/icons.js";
+import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
 
-new Combobox({
-    items: [
-    { value: 'next.js', label: 'Next.js', icon: Icons.home },,
-    { value: 'sveltekit', label: 'SvelteKit' },
-    { value: 'nuxt.js', label: 'Nuxt.js' },
-    { value: 'remix', label: 'Remix' },
-    { value: 'astro', label: 'Astro' },
-],
+new DropdownMenu({
+    icon: Icons.ellipsis.vertical,
+    groups: [
+        [
+            { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
+            { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
+            { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+            { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
+        ],
+        [
+            { icon: Icons.user.multiple, label: 'Team', value: 'team' },
+            { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
+            { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
+        ],
+        [
+            { icon: Icons.github, label: 'GitHub', value: 'github' },
+            { icon: Icons.helpCircle, label: 'Support', value: 'support' },
+            { icon: Icons.api, label: 'API', value: 'api' },
+        ]
+    ],
+    onSelect: (item) =>
+    {
+        console.log("Selected item:", item);
+        // Handle selected item
+    },
 })`
             })
         ]
