@@ -28,7 +28,6 @@ const DropdownButton = ({ label, icon, toggleDropdown }) => (
  */
 const DropdownContainer = ({ onSelect }) => (
     Div({
-        class: 'mt-2',
         onState: ['open', (isOpen) => isOpen ? Dropdown(onSelect) : null]
     })
 );
