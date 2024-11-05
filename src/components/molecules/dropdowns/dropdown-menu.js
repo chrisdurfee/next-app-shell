@@ -1,5 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
-import { Data, Jot } from '@base-framework/base';
+import { Builder, Data, Jot } from '@base-framework/base';
+import { AbsoluteContainer } from './absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -10,6 +11,7 @@ import { Dropdown } from './dropdown.js';
  */
 const DropdownButton = ({ label, icon, toggleDropdown }) => (
     Button({
+        cache: 'button',
         class: `inline-flex items-center justify-between rounded-md border border-input
             bg-background px-2 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground
             focus:outline-none transition duration-150 ease-in-out`,
@@ -28,7 +30,15 @@ const DropdownButton = ({ label, icon, toggleDropdown }) => (
  */
 const DropdownContainer = ({ onSelect }) => (
     Div({
-        onState: ['open', (isOpen) => isOpen ? Dropdown(onSelect) : null]
+        onState: ['open', (isOpen, ele, parent) =>
+        {
+            if (isOpen)
+            {
+                Builder.render(new AbsoluteContainer({ parent }, [
+                    Dropdown(onSelect)
+                ]), document.body, parent);
+            }
+        }]
     })
 );
 
@@ -51,7 +61,8 @@ export const DropdownMenu = Jot(
     setData()
     {
         return new Data({
-            groups: this.groups || []
+            groups: this.groups || [],
+            position: { y: 0, x: 0 }
         });
     },
 
@@ -60,9 +71,12 @@ export const DropdownMenu = Jot(
      *
      * @returns {object}
      */
-    state: {
-        open: false,
-        selectedItem: null
+    state()
+    {
+        return {
+            open: false,
+            selectedItem: null
+        };
     },
 
     /**
@@ -71,6 +85,27 @@ export const DropdownMenu = Jot(
     toggleDropdown()
     {
         this.state.toggle('open');
+
+        if (this.state.open)
+        {
+            this.updatePosition();
+        }
+    },
+
+    /**
+     * Updates the dropdown position.
+     *
+     * @returns {void}
+     */
+    updatePosition()
+    {
+        const button = this.button;
+        const rect = button.getBoundingClientRect();
+
+        this.data.position = {
+            y: rect.bottom + window.scrollY,
+            x: rect.left + window.scrollX
+        };
     },
 
     /**
