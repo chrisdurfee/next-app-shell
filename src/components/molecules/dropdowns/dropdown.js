@@ -24,7 +24,7 @@ const Group = (group, onSelect) =>
  * @returns {object}
  */
 export const Dropdown = (onSelect) => (
-    Div({ class: `absolute mt-2 w-full border rounded-md shadow-lg bg-background z-10 min-w-[300px]` }, [
+    Div({ class: `absolute mt-2 w-full border rounded-md shadow-lg bg-background z-10 min-w-[250px]` }, [
         Div({
             class: 'max-h-60 overflow-y-auto p-1 grid gap-2 divide-y divide-border',
             for: ['groups', (group) => Group(group, onSelect)]
