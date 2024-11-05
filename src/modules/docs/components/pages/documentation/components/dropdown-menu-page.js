@@ -15,30 +15,33 @@ import { DocPage } from '../../doc-page.js';
 export const DropdownMenuPage = () => (
 	DocPage(
         {
-            title: 'Comboboxes',
-            description: 'Comboboxes are used to allow users to select an option from a dropdown list or enter a custom value.',
+            title: 'Dropdown Menus',
+            description: 'Dropdown menus are used to display a list of options when a user clicks on a button or input field.',
         },
         [
             DocSection({
                 title: 'Usage',
-                description: 'To use the Combobox component, import it from the components library and use it in your application.',
+                description: 'To use the DropdownMenu component, import it from the components library and use it in your application.',
                 preview: [
                     new DropdownMenu({
                         label: 'My Account',
-                        items: [
-                            { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
-                            { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
-                            { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
-                            { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
-                            { type: 'divider' },
-                            { icon: Icons.user.multiple, label: 'Team', value: 'team' },
-                            { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
-                            { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
-                            { type: 'divider' },
-                            { icon: Icons.github, label: 'GitHub', value: 'github' },
-                            { icon: Icons.helpCircle, label: 'Support', value: 'support' },
-                            { icon: Icons.api, label: 'API', value: 'api' },
-                            { type: 'divider' }
+                        groups: [
+                            [
+                                { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
+                                { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
+                                { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+                                { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
+                            ],
+                            [
+                                { icon: Icons.user.multiple, label: 'Team', value: 'team' },
+                                { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
+                                { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
+                            ],
+                            [
+                                { icon: Icons.github, label: 'GitHub', value: 'github' },
+                                { icon: Icons.helpCircle, label: 'Support', value: 'support' },
+                                { icon: Icons.api, label: 'API', value: 'api' },
+                            ]
                         ],
                         onSelect: (item) => {
                             console.log("Selected item:", item);

@@ -42,13 +42,13 @@ const users = [
 export const ListPage = () => (
 	DocPage(
         {
-            title: 'Comboboxes',
-            description: 'Comboboxes are used to allow users to select an option from a dropdown list or enter a custom value.',
+            title: 'Lists',
+            description: 'Lists are used to display a collection of items in a structured format. Each item can be customized to show different information.',
         },
         [
             DocSection({
                 title: 'Usage',
-                description: 'To use the Combobox component, import it from the components library and use it in your application.',
+                description: 'To use the List component, import it from the components library and use it in your application.',
                 preview: [
                     UserList({ users }),
                 ],
