@@ -98,6 +98,10 @@ export const Links = (path) => ([
 			{
 				label: 'Tooltips',
 				href: `${path}/components/tooltips`
+			},
+			{
+				label: 'Dropdown Menus',
+				href: `${path}/components/dropdown-menus`
 			}
 		]
 	}

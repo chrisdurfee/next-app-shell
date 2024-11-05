@@ -8,6 +8,7 @@ import CardPage from "./components/card-page.js";
 import ComboboxPage from "./components/comboxbox-page.js";
 import DataTablePage from "./components/data-table-page.js";
 import { DialogPage } from "./components/dialog-page.js";
+import DropdownMenuPage from "./components/dropdown-menu-page.js";
 import InputPage from "./components/input-page.js";
 import ListPage from "./components/list-page.js";
 import { ModalPage } from "./components/modal-page.js";
@@ -64,4 +65,5 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/progress-bars*`, 'Progress Bars', ProgressBarPage),
 	Page(`${basePath}/components/skeletons*`, 'Skeletons', SkeletonPage),
 	Page(`${basePath}/components/tooltips*`, 'Tooltips', TooltipPage),
+	Page(`${basePath}/components/dropdown-menus*`, 'Dropdown Menus', DropdownMenuPage),
 ]);
