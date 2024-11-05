@@ -26,20 +26,19 @@ export const DropdownMenuPage = () => (
                     new DropdownMenu({
                         label: 'My Account',
                         items: [
-                            { icon: Icons.user, label: 'Profile', shortcut: '⌘P', value: 'profile' },
+                            { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
                             { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
-                            { icon: Icons.settings, label: 'Settings', shortcut: '⌘S', value: 'settings' },
-                            { icon: Icons.keyboard, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
+                            { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+                            { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
                             { type: 'divider' },
-                            { icon: Icons.team, label: 'Team', value: 'team' },
-                            { icon: Icons.userPlus, label: 'Invite users', value: 'invite' },
+                            { icon: Icons.user.multiple, label: 'Team', value: 'team' },
+                            { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
                             { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
                             { type: 'divider' },
                             { icon: Icons.github, label: 'GitHub', value: 'github' },
                             { icon: Icons.helpCircle, label: 'Support', value: 'support' },
                             { icon: Icons.api, label: 'API', value: 'api' },
-                            { type: 'divider' },
-                            { icon: Icons.logout, label: 'Log out', shortcut: '⌘Q', value: 'logout' },
+                            { type: 'divider' }
                         ],
                         onSelect: (item) => {
                             console.log("Selected item:", item);
