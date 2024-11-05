@@ -69,7 +69,7 @@ const Group = (group, onSelect) =>
  * @returns {object}
  */
 const Dropdown = (onSelect) => (
-    Div({ class: `absolute mt-2 w-full border rounded-md shadow-lg bg-background z-10` }, [
+    Div({ class: `absolute mt-2 w-full border rounded-md shadow-lg bg-background z-10 min-w-[300px]` }, [
         Div({
             class: 'max-h-60 overflow-y-auto p-1 grid gap-2 divide-y divide-border',
             for: ['groups', (group) => Group(group, onSelect)]
@@ -140,12 +140,12 @@ export const DropdownMenu = Jot(
      */
     render()
     {
-        return Div({ class: 'relative w-full max-w-[300px]' }, [
+        return Div({ class: 'relative' }, [
 
             // Dropdown Button
             Button({
-                class: `inline-flex items-center justify-between w-full rounded-md border border-input
-                    bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground
+                class: `inline-flex items-center justify-between rounded-md border border-input
+                    bg-background px-2 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground
                     focus:outline-none transition duration-150 ease-in-out`,
                 click: () => this.toggleDropdown(),
             }, [

@@ -24,6 +24,7 @@ export const DropdownMenuPage = () => (
                 description: 'To use the DropdownMenu component, import it from the components library and use it in your application.',
                 preview: [
                     new DropdownMenu({
+                        icon: Icons.ellipsis.vertical,
                         groups: [
                             [
                                 { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
