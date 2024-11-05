@@ -1,6 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
-import { Builder, Data, Jot } from '@base-framework/base';
-import { AbsoluteContainer } from './absolute-container.js';
+import { Data, Jot } from '@base-framework/base';
+import { renderAbsoluteContainer } from './absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -34,9 +34,9 @@ const DropdownContainer = ({ onSelect }) => (
         {
             if (isOpen)
             {
-                Builder.render(new AbsoluteContainer({ parent }, [
+                renderAbsoluteContainer(parent, [
                     Dropdown(onSelect)
-                ]), document.body, parent);
+                ]);
             }
         }]
     })

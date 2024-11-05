@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { Component } from '@base-framework/base';
+import { Builder, Component } from '@base-framework/base';
 
 /**
  * AbsoluteContainer
@@ -19,11 +19,6 @@ export class AbsoluteContainer extends Component
      */
     setData()
     {
-        if (this.data)
-        {
-            return this.data;
-        }
-
         return this.parent.data;
     }
 
@@ -64,3 +59,14 @@ export class AbsoluteContainer extends Component
         };
     }
 }
+
+/**
+ * This will render the absolute container.
+ *
+ * @param {object} parent
+ * @param {Array} children
+ */
+export const renderAbsoluteContainer = (parent, children) =>
+{
+    Builder.render(new AbsoluteContainer({ parent }, children), document.body, parent);
+};
