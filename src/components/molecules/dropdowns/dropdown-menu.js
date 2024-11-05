@@ -151,7 +151,7 @@ export const DropdownMenu = Jot(
                 click: () => this.toggleDropdown(),
             }, [
                 Span(this.label || 'Open Menu'),  // Button label
-                I({ html: Icons.chevron.down })   // Icon to indicate dropdown
+                I({ html: Icons.chevron.single.down })   // Icon to indicate dropdown
             ]),
 
             // Dropdown (conditionally rendered)
