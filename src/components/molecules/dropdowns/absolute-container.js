@@ -7,7 +7,7 @@ import { Builder, Component } from '@base-framework/base';
  * This will create a absolute cotnainer component.
  *
  * @export
- * @class Dialog
+ * @class AbsoluteContainer
  * @extends {Component}
  */
 export class AbsoluteContainer extends Component
