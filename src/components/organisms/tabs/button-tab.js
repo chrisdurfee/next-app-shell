@@ -82,14 +82,13 @@ export class ButtonTab extends Component
     }
 
     /**
-     * This will select the first value after setup.
+     * This will get the first value.
      *
-     * @returns {void}
+     * @returns {*}
      */
-    afterSetup()
+    getFirstValue()
     {
-        const firstValue = this.options[0].value;
-        this.select(firstValue);
+        return this.options[0]?.value;
     }
 
     /**
@@ -153,7 +152,7 @@ export class ButtonTab extends Component
 
         return {
             selected: {
-                state: null,
+                state: this.getFirstValue(),
                 callBack(value)
                 {
                     if (type === 'function')

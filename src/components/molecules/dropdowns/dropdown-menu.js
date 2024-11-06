@@ -1,6 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
-import { Data, Jot } from '@base-framework/base';
-import { renderAbsoluteContainer } from './absolute-container.js';
+import { Component, Data, Objects } from '@base-framework/base';
+import { AbsoluteContainer } from './absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -34,7 +34,10 @@ const DropdownContainer = ({ onSelect }) => (
         {
             if (isOpen)
             {
-                renderAbsoluteContainer(parent, [
+                console.log(isOpen, ele, parent);
+                return new AbsoluteContainer({
+                    parent: parent,
+                }, [
                     Dropdown(onSelect)
                 ]);
             }
@@ -51,7 +54,7 @@ const DropdownContainer = ({ onSelect }) => (
  * @param {array} children - Dropdown button content
  * @returns {object}
  */
-export const DropdownMenu = Jot(
+export class DropdownMenu extends Component
 {
     /**
      * Initializes component data.
@@ -64,20 +67,48 @@ export const DropdownMenu = Jot(
             groups: this.groups || [],
             position: { y: 0, x: 0 }
         });
-    },
+    }
 
     /**
      * Initializes the component state.
      *
      * @returns {object}
      */
-    state()
+    setupStates()
     {
         return {
             open: false,
             selectedItem: null
         };
-    },
+    }
+
+    /**
+	 * This will add the states.
+	 *
+	 * @protected
+	 * @returns {void}
+	 */
+	addStates()
+	{
+		/* this will check to restore previous a previous state if the
+		component has been preserved. */
+		const state = this.state;
+		if (state)
+		{
+			this.stateHelper.restore(state);
+			return;
+		}
+
+		/* this will only setupa state manager if
+		we have states */
+		const states = this.setupStates();
+		if (Objects.isEmpty(states))
+		{
+			return;
+		}
+
+		this.setStateHelper(states);
+	}
 
     /**
      * Toggles the dropdown open state.
@@ -90,7 +121,7 @@ export const DropdownMenu = Jot(
         {
             this.updatePosition();
         }
-    },
+    }
 
     /**
      * Updates the dropdown position.
@@ -106,7 +137,7 @@ export const DropdownMenu = Jot(
             y: rect.bottom + window.scrollY,
             x: rect.left + window.scrollX
         };
-    },
+    }
 
     /**
      * Handles item selection within the dropdown.
@@ -122,7 +153,7 @@ export const DropdownMenu = Jot(
         {
             this.onSelect(item);
         }
-    },
+    }
 
     /**
      * Renders the Dropdown component.
@@ -140,4 +171,4 @@ export const DropdownMenu = Jot(
             DropdownContainer({ onSelect: this.handleSelect.bind(this) })
         ]);
     }
-});
+}
