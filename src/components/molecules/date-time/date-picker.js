@@ -4,6 +4,16 @@ import { Icons } from '../../icons/icons.js';
 import { Calendar } from '../../organisms/calendar/calendar.js';
 
 /**
+ * This will check if the element clicked was in the
+ * component of the button.
+ *
+ * @param {object} element
+ * @param {object} panel
+ * @returns {boolean}
+ */
+const isOutsideClick = (element, panel) => (!panel.contains(element));
+
+/**
  * DatePicker Atom
  *
  * This will create a date picker component.
@@ -52,6 +62,13 @@ export const DatePicker = Jot(
             ]),
             Div({
                 class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
+                addEvent: ['click', document, (e, { state, panel }) =>
+                {
+                    if (isOutsideClick(e.target, panel))
+                    {
+                        state.open = false;
+                    }
+                }],
                 onState: ['open', (value) => (value ? new Calendar({
                     selectedDate: this.state.selectedDate,
                     selectedCallBack: handleDateSelect
