@@ -35,6 +35,7 @@ const DropdownContainer = ({ onSelect }) => (
             if (isOpen)
             {
                 return new AbsoluteContainer({
+                    cache: 'dropdown',
                     parent: parent,
                     button: parent.button,
                 }, [
@@ -105,10 +106,26 @@ export class DropdownMenu extends Component
         const button = this.button;
         const rect = button.getBoundingClientRect();
 
-        this.data.position = {
-            y: rect.bottom + window.scrollY,
-            x: rect.left + window.scrollX
-        };
+        const dropdown = this.dropdown.panel;
+        const dropdownRect = dropdown.getBoundingClientRect();
+
+        let x = rect.left + window.scrollX;
+        let y = rect.bottom + window.scrollY;
+        const PADDING = 10;
+
+        // Adjust position if dropdown overflows on the right of the viewport
+        if (x + dropdownRect.width > window.innerWidth)
+        {
+            x = window.innerWidth - dropdownRect.width - PADDING;
+        }
+
+        // Adjust position if dropdown overflows at the bottom of the viewport
+        if (y + dropdownRect.height > window.innerHeight)
+        {
+            y = rect.top + window.scrollY - dropdownRect.height - PADDING;
+        }
+
+        this.data.position = { x, y };
     }
 
     /**
