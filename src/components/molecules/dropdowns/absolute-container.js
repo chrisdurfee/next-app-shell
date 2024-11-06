@@ -60,6 +60,36 @@ export class AbsoluteContainer extends Component
     }
 
     /**
+     * This will check if the element clicked was in the
+     * component of the button.
+     *
+     * @param {object} element
+     * @returns {boolean}
+     */
+    isOutsideClick(element)
+    {
+        return (!this.panel.contains(element) && (this.button && !this.button.contains(element)));
+    }
+
+    /**
+     * This will set up the events.
+     *
+     * @returns {array}
+     */
+    setupEvents()
+    {
+        return [
+            ['click', document, (e) =>
+            {
+                if (this.isOutsideClick(e.target))
+                {
+                    this.state.open = false;
+                }
+            }]
+        ];
+    }
+
+    /**
      * This will override the set up to use the body.
      *
      * @param {object} container

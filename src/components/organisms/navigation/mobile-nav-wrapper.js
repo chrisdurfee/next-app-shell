@@ -75,6 +75,16 @@ const mapCloseCallBack = (options, callBack) =>
 };
 
 /**
+ * This will check if the element clicked was in the
+ * component of the button.
+ *
+ * @param {object} element
+ * @param {object} panel
+ * @returns {boolean}
+ */
+const isOutsideClick = (element, panel) => (!panel.contains(element));
+
+/**
  * This will create the expanded navigation.
  *
  * @param {object} props
@@ -87,13 +97,20 @@ const ExapandedNavigation = (props) =>
 
 	return Div(
 		{
-			class: 'bg-popover flex flex-auto flex-col absolute w-full h-0 max-h-[500px] overflow-y-auto data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow data-[expanded=true]:border rounded-md z-20',
+			class: 'bg-popover flex flex-auto flex-col absolute w-full h-0 max-h-[500px] overflow-y-auto data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow-lg data-[expanded=true]:border rounded-md z-20',
 			addState()
 			{
 				return {
 					expanded: false
 				};
 			},
+			addEvent: ['click', document, (e, { state, mobileNav }) =>
+			{
+				if (isOutsideClick(e.target, mobileNav))
+				{
+					state.expanded = false;
+				}
+			}],
 			dataSet: ['expanded', ['expanded', true, 'true']]
 		},
 		[
@@ -126,7 +143,7 @@ const MobileNav = (props) => (
  */
 export const MobileNavWrapper = Atom((props, children) =>
 {
-	return Div({ class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
+	return Div({ cache: 'mobileNav', class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
 		Div({ class: 'flex flex-auto flex-col w-full' }, [
 			Header(props),
 			MobileNav(props)

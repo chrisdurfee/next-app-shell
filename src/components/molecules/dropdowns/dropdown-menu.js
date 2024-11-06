@@ -36,6 +36,7 @@ const DropdownContainer = ({ onSelect }) => (
             {
                 return new AbsoluteContainer({
                     parent: parent,
+                    button: parent.button,
                 }, [
                     Dropdown(onSelect)
                 ]);
