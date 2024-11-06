@@ -25,7 +25,7 @@ const Icon = (icon) => Span({ class: 'flex w-4 h-4', html: icon });
 const Label = (label) => Span({ class: 'flex-auto' }, label);
 
 /**
- * DropdownItem Component
+ * DropdownItem
  *
  * A single item within the dropdown menu. It renders any content passed as `children`.
  *
