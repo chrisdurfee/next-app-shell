@@ -59,6 +59,11 @@ export class AbsoluteContainer extends Component
         };
     }
 
+    /**
+     * This will override the set up to use the body.
+     *
+     * @param {object} container
+     */
     setup(container)
     {
         this.container = document.body;
