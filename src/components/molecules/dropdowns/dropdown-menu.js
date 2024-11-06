@@ -1,5 +1,5 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
-import { Component, Data, Objects } from '@base-framework/base';
+import { Component, Data } from '@base-framework/base';
 import { AbsoluteContainer } from './absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
@@ -34,7 +34,6 @@ const DropdownContainer = ({ onSelect }) => (
         {
             if (isOpen)
             {
-                console.log(isOpen, ele, parent);
                 return new AbsoluteContainer({
                     parent: parent,
                 }, [
@@ -81,34 +80,6 @@ export class DropdownMenu extends Component
             selectedItem: null
         };
     }
-
-    /**
-	 * This will add the states.
-	 *
-	 * @protected
-	 * @returns {void}
-	 */
-	addStates()
-	{
-		/* this will check to restore previous a previous state if the
-		component has been preserved. */
-		const state = this.state;
-		if (state)
-		{
-			this.stateHelper.restore(state);
-			return;
-		}
-
-		/* this will only setupa state manager if
-		we have states */
-		const states = this.setupStates();
-		if (Objects.isEmpty(states))
-		{
-			return;
-		}
-
-		this.setStateHelper(states);
-	}
 
     /**
      * Toggles the dropdown open state.
