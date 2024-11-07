@@ -23,11 +23,23 @@ const isInput = (child) =>
  */
 export const FormControl = Atom((props, children) =>
 {
+    /**
+     * This will handle the invalid event for validation.
+     *
+     * @param {object} e
+     * @returns {void}
+     */
     const handleInvalid = (e) =>
     {
         props.setError(e.target.validationMessage);
     };
 
+    /**
+     * This will handle the input event for validation.
+     *
+     * @param {object} e
+     * @returns {void}
+     */
     const handleInput = (e) =>
     {
         const isValid = e.target.checkValidity();
@@ -37,6 +49,12 @@ export const FormControl = Atom((props, children) =>
         }
     };
 
+    /**
+     * This will enhance the children with validation event listeners
+     * if they are required.
+     *
+     * @type {array} enhancedChildren
+     */
     const enhancedChildren = children.map((child) =>
     {
         if (!child.required)
