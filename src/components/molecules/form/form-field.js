@@ -40,6 +40,12 @@ export const FormField = Jot(
         const id = this.getId(`${name}`);
         const { label, description } = this;
 
+        /**
+         * This will set the error message.
+         *
+         * @param {string|null} error
+         * @returns {void}
+         */
         const setErrorMessage = (error) =>
         {
             this.state.error = error;
