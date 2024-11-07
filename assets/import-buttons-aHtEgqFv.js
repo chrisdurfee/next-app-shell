@@ -1,2 +1,0 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/button-group-BT7_W6KY.js","assets/index-CO7lkkG2.js","assets/index-Cyzn3utA.css"])))=>i.map(i=>d[i]);
-import{X as t,m as s,j as e,S as o,F as r,_ as i}from"./index-CO7lkkG2.js";const c=t((l,a)=>s([e({class:"scroll-m-20 text-lg font-bold tracking-tight"},"Label"),o({class:"text-muted-foreground"},"This section will test the import system."),r({src:i(()=>import("./button-group-BT7_W6KY.js"),__vite__mapDeps([0,1,2]))})]));export{c as default};
