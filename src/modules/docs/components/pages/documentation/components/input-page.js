@@ -253,7 +253,8 @@ new RangeSlider({
                 description: 'This is a toggle switch input.',
                 preview: [
                     new Toggle({
-                        active: true
+                        active: true,
+                        change: (active) => console.log(active)
                     })
                 ],
                 code: `

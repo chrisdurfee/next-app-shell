@@ -33,6 +33,16 @@ const ComboboxDropdown = (handleSelect) => (
 );
 
 /**
+ * This will check if the element clicked was in the
+ * component of the button.
+ *
+ * @param {object} element
+ * @param {object} panel
+ * @returns {boolean}
+ */
+const isOutsideClick = (element, panel) => (!panel.contains(element));
+
+/**
  * Combobox Atom
  *
  * @param {object} props
@@ -81,6 +91,13 @@ export const Combobox = Jot(
             Button({
                 class: 'inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
                 click: toggleOpen,
+                addEvent: ['click', document, (e, { state, panel }) =>
+                {
+                    if (isOutsideClick(e.target, panel))
+                    {
+                        state.open = false;
+                    }
+                }]
             },
             [
                 Span({ onState: ['selectedLabel', (value) => value || 'Select item...'] }),
