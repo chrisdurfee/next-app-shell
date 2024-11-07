@@ -4,7 +4,7 @@ import { BadgePage } from "./components/badge-page.js";
 import BreadcrumbPage from "./components/breadcrumb-page.js";
 import { ButtonPage } from "./components/buttons/button-page.js";
 import { CalendarPage } from "./components/calendar-page.js";
-import CardPage from "./components/card-page.js";
+import CardPage from "./components/cards/card-page.js";
 import ComboboxPage from "./components/comboxbox-page.js";
 import DataTablePage from "./components/data-table-page.js";
 import { DialogPage } from "./components/dialog-page.js";

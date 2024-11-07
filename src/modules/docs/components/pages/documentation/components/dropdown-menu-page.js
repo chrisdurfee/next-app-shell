@@ -29,7 +29,7 @@ export const DropdownMenuPage = () => (
                             [
                                 { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
                                 { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
-                                { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+                                { icon: Icons.cog.six, label: 'Settings', shortcut: '⌘S', value: 'settings' },
                                 { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
                             ],
                             [
