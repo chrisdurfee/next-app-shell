@@ -10,7 +10,7 @@ import { Atom } from "@base-framework/base";
  * @param {array} children
  * @returns {object}
  */
-export const FormItem = Atom((props, children) => Div({ ...props, class: "space-y-2" }, children));
+export const FormItem = Atom((props, children) => Div({ ...props, class: "flex flex-auto flex-col space-y-2" }, children));
 
 /**
  * FormLabel Component
@@ -21,7 +21,7 @@ export const FormItem = Atom((props, children) => Div({ ...props, class: "space-
  * @param {array} children
  * @returns {object}
  */
-export const FormLabel = Atom((props, children) => Label({ ...props, class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" }, children));
+export const FormLabel = Atom((props, children) => Label({ ...props, class: "flex auto text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" }, children));
 
 /**
  * FormDescription Component

@@ -52,7 +52,7 @@ export const FormField = Jot(
             this.state.hasError = !!error;
         };
 
-        return Div({ class: "space-y-4" }, [
+        return Div({ class: "flex flex-auto space-y-4" }, [
             FormItem([
                 FormLabel({ htmlFor: id }, label),
                 FormControl({
