@@ -7,7 +7,9 @@ import { Form, FormField } from "@components/molecules/form/form.js";
 import { CardHeader } from "./card-atoms.js";
 
 /**
- * This will create the social sign-in buttons.
+ * SocialSignIn
+ *
+ * Creates social sign-in buttons for Github and Google.
  *
  * @returns {object}
  */
@@ -16,7 +18,8 @@ const SocialSignIn = () => (
         Button({
             variant: 'outline',
             class: "gap-2 w-full",
-            click: () => console.log("Sign in with Github")
+            click: () => console.log("Sign in with Github"),
+            "aria-label": "Sign in with Github"
         }, [
             Icon({ class: "w-4 h-4" }, Icons.companies.gitHub || ''),
             Span("Github")
@@ -24,7 +27,8 @@ const SocialSignIn = () => (
         Button({
             variant: 'outline',
             class: "gap-2 w-full",
-            click: () => console.log("Sign in with Google")
+            click: () => console.log("Sign in with Google"),
+            "aria-label": "Sign in with Google"
         }, [
             Icon({ class: "w-4 h-4" }, Icons.companies.google || ''),
             Span("Google")
@@ -33,12 +37,13 @@ const SocialSignIn = () => (
 );
 
 /**
- * This will create a form for account creation.
+ * AccountForm
+ *
+ * Creates a form with email and password fields for account creation.
  *
  * @returns {object}
  */
 const AccountForm = () => (
-    // Form for Email and Password
     Form({ submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
         // Email field
         new FormField({
@@ -75,19 +80,21 @@ const AccountForm = () => (
 );
 
 /**
- * Account Card
+ * AccountCard
  *
  * This component creates a card for account creation, including social sign-in options.
  *
- * @param {object} props
- * @param {array} children
  * @returns {object}
  */
 export const AccountCard = () => (
     Card({ class: "w-full max-w-md mx-auto p-8 bg-card space-y-6" }, [
+        // Header with title and description
         CardHeader({ title: "Create an account", description: "Enter your email below to create your account" }),
+
+        // Social sign-in buttons
         SocialSignIn(),
 
+        // Divider for "OR CONTINUE WITH"
         Div({ class: "relative" }, [
             Div({ class: "absolute inset-0 flex items-center" }, [
                 Span({ class: "flex-grow border-t" })
@@ -95,9 +102,9 @@ export const AccountCard = () => (
             Div({ class: 'relative flex justify-center text-xs uppercase' }, [
                 Span({ class: 'bg-background px-2 text-muted-foreground' }, "or continue with")
             ]),
-
         ]),
 
+        // Account creation form
         AccountForm()
     ])
 );
