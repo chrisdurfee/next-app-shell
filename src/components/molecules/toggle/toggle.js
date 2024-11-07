@@ -20,10 +20,7 @@ export const Toggle = Jot(
     state()
     {
         return {
-            active: {
-                state: this.active ?? false,
-                callBack: (value) => this.input.checked = value
-            }
+            active: this.active ?? false
         };
     },
 
