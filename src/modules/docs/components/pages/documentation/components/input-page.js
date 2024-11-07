@@ -4,6 +4,7 @@ import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@compon
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
+import Toggle from "../../../../../../components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -234,6 +235,25 @@ new DatePicker()`
                         max: 100,
                         value: 50,
                         change: (value) => console.log(value)
+                    })
+                ],
+                code: `
+import { RangeSlider } from '@components/atoms/form/range-slider.js';
+
+new RangeSlider({
+    min: 0,
+    max: 100,
+    value: 50,
+    change: (value) => console.log(value)
+})`
+            }),
+
+            DocSection({
+                title: 'Toggle Switch',
+                description: 'This is a toggle switch input.',
+                preview: [
+                    new Toggle({
+                        active: true
                     })
                 ],
                 code: `

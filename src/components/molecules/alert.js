@@ -1,4 +1,4 @@
-import { Div, I, P, Span } from '@base-framework/atoms';
+import { Div, H5, I, P } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -20,7 +20,7 @@ const AlertIcon = (icon) => (
  * @returns {object}
  */
 const AlertTitle = (title) => (
-    Span({ class: 'font-semibold text-muted-foreground' }, title)
+    H5({ class: 'font-semibold' }, title)
 );
 
 /**
