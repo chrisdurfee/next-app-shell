@@ -1,6 +1,5 @@
 import { Form as BaseForm, Div, Label, P, Span } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
-import { Input } from "@components/atoms/form/input.js";
 
 /**
  * Form Component
@@ -41,14 +40,14 @@ export const FormField = Jot(
     {
         const name = this.name;
         const id = this.getId(`form-field-${name}`);
-        const { label, description, onValidate } = this;
+        const { label, description, onValidate, required, placeholder } = this;
 
         // Validation handler to check the input value
         const handleValidate = (value) =>
         {
-            // const error = onValidate ? onValidate(value) : null;
-            // this.state.error = error;
-            // this.state.value = value;
+            const error = onValidate ? onValidate(value) : null;
+            this.state.error = error;
+            this.state.value = value;
         };
 
         return Div({ class: "space-y-4" }, [
@@ -58,6 +57,8 @@ export const FormField = Jot(
                     id,
                     name,
                     value: this.state.value,
+                    required,
+                    placeholder,
                     input: (e) => handleValidate(e.target.value)
                 }, this.children),
                 description && FormDescription({ id: `${id}-description`, children: description }),
@@ -99,7 +100,7 @@ const FormLabel = Atom((props, children) => Label({ ...props, class: "text-sm fo
  * @returns {object}
  */
 const FormControl = Atom((props, children) => {
-    return Input({
+    return Div({
         ...props
     }, children);
 });

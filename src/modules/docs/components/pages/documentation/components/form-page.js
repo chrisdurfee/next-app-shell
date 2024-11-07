@@ -18,6 +18,7 @@ export const ProfileForm = () => (
         new FormField({
             name: "username",
             label: "Username",
+            required: true,
             description: "This is your public display name.",
             onValidate: validateUsername
         }, [
