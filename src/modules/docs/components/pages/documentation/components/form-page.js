@@ -58,18 +58,30 @@ export const FormPage = () => (
                 preview: [
                     ProfileForm()
                 ],
-                code: `@components/molecules/combobox/combobox.js';
-import { Icons } from "@components/icons/icons.js";
+                code: `import { Button } from "@components/atoms/buttons/buttons.js";
+import { Input } from "@components/atoms/form/input.js";
+import { Form, FormField } from "@components/molecules/form/form.js";
 
-new Combobox({
-    items: [
-    { value: 'next.js', label: 'Next.js', icon: Icons.home },,
-    { value: 'sveltekit', label: 'SvelteKit' },
-    { value: 'nuxt.js', label: 'Nuxt.js' },
-    { value: 'remix', label: 'Remix' },
-    { value: 'astro', label: 'Astro' },
-],
-})`
+Form([
+    new FormField({
+        name: "username",
+        label: "Username",
+        description: "This is your public display name.",
+        onValidate: validateUsername
+    }, [
+        Input({ placeholder: "e.g. email@address.com", required: true })
+    ]),
+
+    Button({
+        type: "submit",
+        submit: (e) =>
+        {
+            e.preventDefault();
+            // Handle form submission logic
+            console.log("Form submitted");
+        }
+    }, "Submit")
+])`
             })
         ]
     )
