@@ -1,4 +1,4 @@
-import { Button, Input, Span } from '@base-framework/atoms';
+import { Button, Span } from '@base-framework/atoms';
 import { Jot } from '@base-framework/base';
 
 /**
@@ -41,14 +41,6 @@ export const Toggle = Jot(
             onState: ['active', { 'bg-primary': true, 'bg-muted': false }],
             click: toggleActive
         }, [
-            Input({
-                cache: 'input',
-                class: 'hidden',
-                type: 'checkbox',
-                checked: '[[active]]',
-                bind: this.bind,
-                change: () => console.log('changed')
-            }),
             Span({
                 class: 'absolute h-5 w-5 bg-background rounded-full shadow-md transform transition-transform',
                 onState: ['active', { 'translate-x-[22px]' : true, 'translate-x-[2px]': false }]
