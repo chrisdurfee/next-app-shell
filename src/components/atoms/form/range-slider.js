@@ -67,6 +67,7 @@ export const RangeSlider = Jot(
                 max: '[[max]]',
                 value: '[[value]]',
                 class: 'absolute w-full h-full opacity-0 cursor-pointer',
+                bind: this.bind,
                 input: (e) =>
                 {
                     const value = Number(e.target.value);
