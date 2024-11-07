@@ -21,7 +21,7 @@ const SocialSignIn = () => (
             click: () => console.log("Sign in with Github"),
             "aria-label": "Sign in with Github"
         }, [
-            Icon({ class: "w-4 h-4" }, Icons.companies.gitHub || ''),
+            Icon(Icons.companies.gitHub || ''),
             Span("Github")
         ]),
         Button({
@@ -30,7 +30,7 @@ const SocialSignIn = () => (
             click: () => console.log("Sign in with Google"),
             "aria-label": "Sign in with Google"
         }, [
-            Icon({ class: "w-4 h-4" }, Icons.companies.google || ''),
+            Icon(Icons.companies.google || ''),
             Span("Google")
         ])
     ])

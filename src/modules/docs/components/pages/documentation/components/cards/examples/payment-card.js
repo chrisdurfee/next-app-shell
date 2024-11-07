@@ -1,6 +1,8 @@
-import { Div, Input, Select, Span } from "@base-framework/atoms";
+import { Div, Span } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Card } from "@components/atoms/cards/card.js";
+import { Input } from "@components/atoms/form/input.js";
+import { Select } from "@components/atoms/form/select.js";
 import { Icon } from "@components/atoms/icon.js";
 import { Icons } from "@components/icons/icons.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
@@ -84,7 +86,7 @@ const PaymentForm = () => (
                 Select({
                     required: true,
                     class: "border p-2 rounded-md w-full bg-background text-foreground",
-                    children: [
+                    options: [
                         { value: "", label: "Month", disabled: true },
                         ...Array.from({ length: 12 }, (_, i) => ({
                             value: `${i + 1}`,
@@ -99,7 +101,7 @@ const PaymentForm = () => (
                 Select({
                     required: true,
                     class: "border p-2 rounded-md w-full bg-background text-foreground",
-                    children: [
+                    options: [
                         { value: "", label: "Year", disabled: true },
                         ...Array.from({ length: 10 }, (_, i) => ({
                             value: `${new Date().getFullYear() + i}`,
