@@ -1,4 +1,4 @@
-import { Div, Span } from "@base-framework/atoms";
+import { Button as BaseButton, Div, Span } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Card } from "@components/atoms/cards/card.js";
@@ -16,11 +16,11 @@ import { CardHeader } from "./card-atoms.js";
  * @returns {object}
  */
 const MethodButton = Atom(({ value, label, icon }) => (
-	Button({
-		class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-md px-8 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
+	BaseButton({
+		class: 'text-sm gap-1 font-medium leading-none disabled:cursor-not-allowed disabled:opacity-70 flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground data-[state="active"]:border-primary [&:has([data-state="active"])]:border-primary',
 		onState: ['method', { active: value}],
 		dataSet: ['method', ['state', value, 'active']],
-		click: (e, {state}) => state.performance = value
+		click: (e, {state}) => state.method = value
 	}, [
         Icon(icon),
         Span(label)
