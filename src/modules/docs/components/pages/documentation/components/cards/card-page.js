@@ -3,6 +3,7 @@ import { Card } from "@components/atoms/cards/card.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 import AccountCard from "./examples/account-card.js";
+import PaymentCard from "./examples/payment-card.js";
 
 /**
  * DialogPage
@@ -42,6 +43,16 @@ Card()`
                 code: `import AccountCard from "./examples/account-card.js";
 
 AccountCard()`
+            }),
+
+            DocSection({
+                title: 'Paymnet Card',
+                preview: [
+                    PaymentCard()
+                ],
+                code: `import AccountCard from "./examples/payment-card.js";
+
+PaymentCard()`
             })
         ]
     )
