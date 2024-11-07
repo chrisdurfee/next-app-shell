@@ -2,6 +2,30 @@ import { Form as BaseForm, Div, Label, P } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
 
 /**
+ * This will handle the form submission.
+ *
+ * @param {object} e
+ * @param {function|null} callBack
+ * @returns {void}
+ */
+const submit = (e, callBack = null) =>
+{
+    const form = e.target;
+    const isValid = form.checkValidity();
+    if (!isValid)
+    {
+        return;
+    }
+
+    e.preventDefault();
+
+    if (callBack)
+    {
+        callBack(e);
+    }
+};
+
+/**
  * Form Component
  *
  * A wrapper around the form structure for accessibility and organization.
@@ -10,7 +34,9 @@ import { Atom, Jot } from "@base-framework/base";
  * @param {array} children
  * @returns {object}
  */
-export const Form = Atom((props, children) => BaseForm({ ...props, class: 'space-y-8 w-full max-w-lg' }, children));
+export const Form = Atom((props, children) => (
+    BaseForm({ ...props, submit: (e) => submit(e, props.submit), class: 'space-y-8 w-full max-w-lg' }, children))
+);
 
 /**
  * FormField Component
@@ -123,6 +149,6 @@ const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm 
  * @param {array} children
  * @returns {object}
  */
-const FormMessage = ({ children }) => {
+const FormMessage = (children) => {
     return P({ class: "text-sm text-destructive" }, children);
 };

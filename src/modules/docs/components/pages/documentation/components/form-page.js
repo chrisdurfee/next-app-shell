@@ -14,7 +14,7 @@ const validateUsername = (value) =>
  * Example usage of the form with validation
  */
 export const ProfileForm = () => (
-    Form([
+    Form({ submit: (e) => { console.log(e); } }, [
         new FormField({
             name: "username",
             label: "Username",
