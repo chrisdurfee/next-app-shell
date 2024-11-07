@@ -59,6 +59,23 @@ const ProjectList = ({ projects }) => (
     Div({ class: "space-y-3" }, projects.map(project => ProjectRow(project)))
 );
 
+const projects = [
+    {
+        name: "shadcn/ui",
+        description: "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+        stars: "20k",
+        language: "TypeScript",
+        lastUpdated: "April 2023"
+    },
+    {
+        name: "base-framework",
+        description: "A robust framework for building and structuring large-scale applications with ease.",
+        stars: "2",
+        language: "JavaScript",
+        lastUpdated: "November 2024"
+    }
+];
+
 /**
  * ProjectCard Component
  *
@@ -67,23 +84,6 @@ const ProjectList = ({ projects }) => (
  * @returns {object} - The complete project card.
  */
 export const ProjectCard = () => {
-    const projects = [
-        {
-            name: "shadcn/ui",
-            description: "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
-            stars: "20k",
-            language: "TypeScript",
-            lastUpdated: "April 2023"
-        },
-        {
-            name: "base-framework",
-            description: "A robust framework for building and structuring large-scale applications with ease.",
-            stars: "2",
-            language: "JavaScript",
-            lastUpdated: "November 2024"
-        }
-    ];
-
     return Card({ class: "w-full max-w-md mx-auto p-6 bg-card space-y-6" }, [
         Div({ class: "font-semibold text-lg text-foreground" }, "Projects"),
         ProjectList({ projects })
