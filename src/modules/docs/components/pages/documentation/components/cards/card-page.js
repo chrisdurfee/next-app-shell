@@ -5,6 +5,7 @@ import { DocPage } from '../../../doc-page.js';
 import AccountCard from "./examples/account-card.js";
 import DateSelectCard from "./examples/date-select-card.js";
 import PaymentCard from "./examples/payment-card.js";
+import ProjectCard from "./examples/project-card.js";
 import ReportIssueCard from "./examples/report-issue-card.js";
 import ShareDocumentCard from "./examples/share-document-card.js";
 import TeamMemberCard from "./examples/team-member-card.js";
@@ -181,6 +182,16 @@ DateSelectCard({
                 code: `import AccountCard from "./examples/report-issue-card.js";
 
 ReportIssueCard()`
+            }),
+
+            DocSection({
+                title: 'Project Card',
+                preview: [
+                    ProjectCard()
+                ],
+                code: `import AccountCard from "./examples/project-card.js";
+
+ProjectCard()`
             })
         ]
     )
