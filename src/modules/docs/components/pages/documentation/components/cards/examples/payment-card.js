@@ -1,4 +1,5 @@
 import { Div, Span } from "@base-framework/atoms";
+import { Atom, Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Card } from "@components/atoms/cards/card.js";
 import { Input } from "@components/atoms/form/input.js";
@@ -32,9 +33,8 @@ const MethodButton = Atom(({ value, label, icon }) => (
  * This will create a button group.
  *
  * @class
- * @extends Component
  */
-export class PaymentMethoGroup extends Component
+export const PaymentMethoGroup = Jot(
 {
     /**
      * This will render the component.
@@ -43,30 +43,27 @@ export class PaymentMethoGroup extends Component
      */
 	render()
 	{
-		return Buttons({ class: 'flex flex-auto flex-col' }, [
-			P({
-				onState: ['method', (state) => ButtonText[state] || ButtonText.fair]
-			}),
+		return Div({ class: 'flex flex-auto flex-col' }, [
 			Div({ class: 'grid grid-cols-3 gap-4'}, [
-				MethodButton({ label: 'Card', value: 'card' }),
-				MethodButton({ label: 'Paypal', value: 'paypal' }),
-				MethodButton({ label: 'Apple', value: 'apple' })
+				MethodButton({ label: 'Card', value: 'card', icon: Icons.creditCard }),
+				MethodButton({ label: 'Paypal', value: 'paypal', icon: Icons.companies.paypal }),
+				MethodButton({ label: 'Apple', value: 'apple', icon: Icons.companies.apple })
 			])
 		]);
-	}
+	},
 
     /**
      * This will setup the states.
      *
      * @returns {object}
      */
-	setupStates()
+	state()
 	{
 		return {
 			method: null
 		};
 	}
-}
+});
 
 /**
  * PaymentMethodSelector
@@ -78,30 +75,6 @@ export class PaymentMethoGroup extends Component
 const PaymentMethodSelector = () => (
     Div({ class: "flex items-center justify-center gap-4" }, [
         new PaymentMethoGroup()
-        Button({
-            variant: 'outline',
-            class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
-            click: () => console.log("Selected Card"),
-        }, [
-            Icon({ class: "w-4 h-4" }, Icons.creditCard || ''),
-            Span("Card")
-        ]),
-        Button({
-            variant: 'outline',
-            class: "gap-2 w-full px-4 py-2 bg-muted text-foreground",
-            click: () => console.log("Selected PayPal"),
-        }, [
-            Icon({ class: "w-4 h-4" }, Icons.creditCard || ''),
-            Span("Paypal")
-        ]),
-        Button({
-            variant: 'outline',
-            class: "gap-2 w-full px-4 py-2",
-            click: () => console.log("Selected Apple Pay"),
-        }, [
-            Icon({ class: "w-4 h-4" }, Icons.creditCard || ''),
-            Span("Apple")
-        ]),
     ])
 );
 
