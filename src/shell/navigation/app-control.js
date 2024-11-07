@@ -25,6 +25,11 @@ const AppContainer = Atom((props, children) => ({
  */
 const mapMobileOptions = (options, mobileOptions, callBack) =>
 {
+    if (!options || !options.length)
+    {
+        return;
+    }
+
     options.forEach(option =>
     {
         if (option.options)

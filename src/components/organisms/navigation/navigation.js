@@ -39,7 +39,7 @@ export class Navigation extends Component
 	 * @param {array} options
 	 * @returns {array}
 	 */
-	mapOptions(options)
+	mapOptions(options = [])
 	{
 		const items = options.map(option => option.group ? this.addGroup(option) : this.addLink(option));
 		return [items, (item) => item];

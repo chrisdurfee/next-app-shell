@@ -1,5 +1,4 @@
-import "./main/module.js";
-import "./docs/module.js";
+import "./imported-modules.js";
 import { AppModules } from "./module/module.js";
 
 /**
