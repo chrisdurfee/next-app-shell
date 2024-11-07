@@ -9,6 +9,66 @@ import { Form, FormField } from "@components/molecules/form/form.js";
 import { CardHeader } from "./card-atoms.js";
 
 /**
+ * This will create a state button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const MethodButton = Atom(({ value, label, icon }) => (
+	Button({
+		class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-md px-8 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow',
+		onState: ['method', { active: value}],
+		dataSet: ['method', ['state', value, 'active']],
+		click: (e, {state}) => state.performance = value
+	}, [
+        Icon(icon),
+        Span(label)
+    ])
+));
+
+/**
+ * ButtonGroup
+ *
+ * This will create a button group.
+ *
+ * @class
+ * @extends Component
+ */
+export class PaymentMethoGroup extends Component
+{
+    /**
+     * This will render the component.
+     *
+     * @returns {object}
+     */
+	render()
+	{
+		return Buttons({ class: 'flex flex-auto flex-col' }, [
+			P({
+				onState: ['method', (state) => ButtonText[state] || ButtonText.fair]
+			}),
+			Div({ class: 'grid grid-cols-3 gap-4'}, [
+				MethodButton({ label: 'Card', value: 'card' }),
+				MethodButton({ label: 'Paypal', value: 'paypal' }),
+				MethodButton({ label: 'Apple', value: 'apple' })
+			])
+		]);
+	}
+
+    /**
+     * This will setup the states.
+     *
+     * @returns {object}
+     */
+	setupStates()
+	{
+		return {
+			method: null
+		};
+	}
+}
+
+/**
  * PaymentMethodSelector
  *
  * Creates the payment method selection buttons.
@@ -17,9 +77,10 @@ import { CardHeader } from "./card-atoms.js";
  */
 const PaymentMethodSelector = () => (
     Div({ class: "flex items-center justify-center gap-4" }, [
+        new PaymentMethoGroup()
         Button({
             variant: 'outline',
-            class: "gap-2 w-full px-4 py-2",
+            class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary",
             click: () => console.log("Selected Card"),
         }, [
             Icon({ class: "w-4 h-4" }, Icons.creditCard || ''),
