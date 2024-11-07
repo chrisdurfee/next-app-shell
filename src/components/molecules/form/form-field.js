@@ -14,6 +14,12 @@ import { FormControl } from "./form-control.js";
  */
 export const FormField = Jot(
 {
+    /**
+     * The initial state of the FormField.
+     *
+     * @member {object} state
+     * @returns {object}
+     */
     state()
     {
         return {
