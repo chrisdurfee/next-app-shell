@@ -1,5 +1,5 @@
 import { Icons } from '@components/icons/icons.js';
-import { Module } from '../module.js';
+import { Module } from '../module/module.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';

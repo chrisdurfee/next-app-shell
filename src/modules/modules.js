@@ -1,6 +1,6 @@
 import "./main/module.js";
 import "./docs/module.js";
-import { AppModules } from "./module.js";
+import { AppModules } from "./module/module.js";
 
 /**
  * This will get the module settings.

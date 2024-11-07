@@ -1,5 +1,5 @@
 import { Icons } from '@components/icons/icons.js';
-import { Module } from '../module.js';
+import { Module } from '../module/module.js';
 
 /**
  * This will set the routes for the module.
