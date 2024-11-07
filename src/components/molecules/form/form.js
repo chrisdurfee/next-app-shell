@@ -1,4 +1,4 @@
-import { Form as BaseForm, Div, Label, P, Span } from "@base-framework/atoms";
+import { Form as BaseForm, Div, Label, P } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
 
 /**
@@ -39,8 +39,8 @@ export const FormField = Jot(
     render()
     {
         const name = this.name;
-        const id = this.getId(`form-field-${name}`);
-        const { label, description, onValidate, required, placeholder } = this;
+        const id = this.getId(`${name}`);
+        const { label, description, onValidate } = this;
 
         // Validation handler to check the input value
         const handleValidate = (value) =>
@@ -57,11 +57,9 @@ export const FormField = Jot(
                     id,
                     name,
                     value: this.state.value,
-                    required,
-                    placeholder,
                     input: (e) => handleValidate(e.target.value)
                 }, this.children),
-                description && FormDescription({ id: `${id}-description`, children: description }),
+                description && FormDescription({ id: `${id}-description` }, description),
                 Div({ onState: ['error', (error) => error && FormMessage(error)] })
             ])
         ]);
@@ -114,7 +112,7 @@ const FormControl = Atom((props, children) => {
  * @param {array} children
  * @returns {object}
  */
-const FormDescription = Atom((props, children) => Span({ ...props, class: "text-sm text-muted-foreground" }, children));
+const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm text-muted-foreground" }, children));
 
 /**
  * FormMessage Component

@@ -18,16 +18,15 @@ export const ProfileForm = () => (
         new FormField({
             name: "username",
             label: "Username",
-            required: true,
             description: "This is your public display name.",
             onValidate: validateUsername
         }, [
-            Input({ placeholder: "shadcn" })
+            Input({ placeholder: "e.g. email@address.com", required: true })
         ]),
 
         Button({
             type: "submit",
-            click: (e) =>
+            submit: (e) =>
             {
                 e.preventDefault();
                 // Handle form submission logic
