@@ -53,6 +53,7 @@ export const FormField = Jot(
     {
         return {
             error: null,
+            hasError: false,
             value: this.defaultValue ?? ""
         };
     },
@@ -71,6 +72,7 @@ export const FormField = Jot(
         const setErrorMessage = (error) =>
         {
             this.state.error = error;
+            this.state.hasError = !!error;
         };
 
         return Div({ class: "space-y-4" }, [
@@ -148,6 +150,9 @@ const FormControl = Atom((props, children) =>
             // Enhance input elements with validation event listeners
             return {
                 ...child,
+                aria: {
+                    invalid: ['hasError'],
+                },
                 invalid: handleInvalid,
                 input: handleInput
             };

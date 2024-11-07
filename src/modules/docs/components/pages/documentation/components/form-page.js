@@ -4,35 +4,20 @@ import { Form, FormField } from "@components/molecules/form/form.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
-const validateUsername = (value) =>
-{
-    if (value.length < 2) return "Username must be at least 2 characters.";
-    return null;
-};
-
 /**
  * Example usage of the form with validation
  */
 export const ProfileForm = () => (
-    Form({ submit: (e) => { console.log(e); } }, [
+    Form({ submit: (e) => { console.log("Form submitted"); } }, [
         new FormField({
             name: "username",
             label: "Username",
-            description: "This is your public display name.",
-            onValidate: validateUsername
+            description: "This is your public display name."
         }, [
             Input({ placeholder: "e.g. email@address.com", required: true })
         ]),
 
-        Button({
-            type: "submit",
-            submit: (e) =>
-            {
-                e.preventDefault();
-                // Handle form submission logic
-                console.log("Form submitted");
-            }
-        }, "Submit")
+        Button({ type: "submit" }, "Submit")
     ])
 );
 
@@ -66,8 +51,7 @@ Form([
     new FormField({
         name: "username",
         label: "Username",
-        description: "This is your public display name.",
-        onValidate: validateUsername
+        description: "This is your public display name."
     }, [
         Input({ placeholder: "e.g. email@address.com", required: true })
     ]),
