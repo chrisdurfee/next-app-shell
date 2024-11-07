@@ -1,4 +1,5 @@
 import { Div } from "@base-framework/atoms";
+import { Atom } from "@base-framework/base";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
@@ -15,6 +16,17 @@ const frameworks = [
     { value: 'remix', label: 'Remix' },
     { value: 'astro', label: 'Astro' },
 ];
+
+/**
+ * This will create an input preview.
+ *
+ * @param {object} props
+ * @param {object} children
+ * @returns {object}
+ */
+const InputPreview = Atom((props, children) => (
+    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full max-w-[350px]' }, children)
+));
 
 /**
  * InputPage
@@ -36,18 +48,30 @@ export const InputPage = () => (
                 title: 'Usage',
                 description: 'Import the input atom and use it in your components. The input can be of various types: text, password, email, etc.',
                 preview: [
-                    Input({
-                        type: 'text',
-                        placeholder: 'Enter your text here...',
-                        change: (e) => console.log(e.target.value)
-                    })
+                    Div({ class: 'grid gap-2 w-full max-w-[350px]' }, [
+                        Input({
+                            type: 'text',
+                            placeholder: 'Enter your text here...',
+                            change: (e) => console.log(e.target.value)
+                        }),
+                        EmailInput({}),
+                        TelInput({}),
+                        Textarea({
+                            placeholder: 'Enter your text here...'
+                        })
+                    ])
                 ],
-                code: `import { Button } from '@components/atoms/form/input.js';
+                code: `import { Input, EmailInput, TelInput, Textarea } from '@components/atoms/form/input.js';
 
 Input({
     type: 'text',
     placeholder: 'Enter your text here...',
     change: (e) => console.log(e.target.value)
+}),
+EmailInput({}),
+TelInput({}),
+Textarea({
+    placeholder: 'Enter your text here...'
 })`
             }),
 
@@ -55,10 +79,12 @@ Input({
                 title: 'File Input',
                 description: 'This is a file input.',
                 preview: [
-                    FileInput({
-                        multiple: true,
-                        change: (e) => console.log(e.target.files)
-                    })
+                    InputPreview([
+                        FileInput({
+                            multiple: true,
+                            change: (e) => console.log(e.target.files)
+                        })
+                    ])
                 ],
                 code: `import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 
@@ -116,10 +142,12 @@ Div({ class: 'grid gap-2' }, [
                 title: 'Text Input',
                 description: 'This is a text input.',
                 preview: [
-                    Input({
-                        type: 'text',
-                        placeholder: 'Enter your text here...'
-                    })
+                    InputPreview([
+                        Input({
+                            type: 'text',
+                            placeholder: 'Enter your text here...'
+                        })
+                    ])
                 ],
                 code: `
 import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
@@ -134,8 +162,10 @@ Input({
                 title: 'Tel Input',
                 description: 'This is a phone input.',
                 preview: [
-                    TelInput({
-                    })
+                    InputPreview([
+                        TelInput({
+                        })
+                    ])
                 ],
                 code: `
 import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
@@ -148,9 +178,11 @@ TelInput({
                 title: 'Email Input',
                 description: 'This is a email input.',
                 preview: [
-                    EmailInput({
+                    InputPreview([
+                        EmailInput({
 
-                    })
+                        })
+                    ])
                 ],
                 code: `
 import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
@@ -182,17 +214,24 @@ new Checkbox({
                 title: 'Select',
                 description: 'This is a select input.',
                 preview: [
-                    Select({
-                        options: frameworks,
-                        change: (e) => console.log(e.target.value)
-                    })
+                    InputPreview([
+                        Select({
+                            options: frameworks,
+                            change: (e) => console.log(e.target.value)
+                        })
+                    ])
                 ],
-                code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+                code: `import { Select } from "@components/atoms/form/select.js";
 
-Input({
-    type: 'text',
-    placeholder: 'Enter your text here...'
+Select({
+    options: [
+        { value: 'next.js', label: 'Next.js' },
+        { value: 'sveltekit', label: 'SvelteKit' },
+        { value: 'nuxt.js', label: 'Nuxt.js' },
+        { value: 'remix', label: 'Remix' },
+        { value: 'astro', label: 'Astro' },
+    ],
+    change: (e) => console.log(e.target.value)
 })`
             }),
 
@@ -200,9 +239,11 @@ Input({
                 title: 'Textarea',
                 description: 'This is a textarea input.',
                 preview: [
-                    Textarea({
-                        placeholder: 'Enter your text here...'
-                    })
+                    InputPreview([
+                        Textarea({
+                            placeholder: 'Enter your text here...'
+                        })
+                    ])
                 ],
                 code: `
 import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
@@ -216,9 +257,11 @@ Textarea({
                 title: 'Date Picker',
                 description: 'This is a date picker input.',
                 preview: [
-                    new DatePicker({
-                        selectedDate: '2022-01-01',
-                    })
+                    InputPreview([
+                        new DatePicker({
+                            selectedDate: '2022-01-01',
+                        })
+                    ])
                 ],
                 code: `
 import DatePicker from "@components/molecules/date-time/date-picker.js";
@@ -230,12 +273,14 @@ new DatePicker()`
                 title: 'Range Slider',
                 description: 'This is a range slider input.',
                 preview: [
-                    new RangeSlider({
-                        min: 0,
-                        max: 100,
-                        value: 50,
-                        change: (value) => console.log(value)
-                    })
+                    InputPreview([
+                        new RangeSlider({
+                            min: 0,
+                            max: 100,
+                            value: 50,
+                            change: (value) => console.log(value)
+                        })
+                    ])
                 ],
                 code: `
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
@@ -252,10 +297,12 @@ new RangeSlider({
                 title: 'Toggle Switch',
                 description: 'This is a toggle switch input.',
                 preview: [
-                    new Toggle({
-                        active: true,
-                        change: (active) => console.log(active)
-                    })
+                    InputPreview([
+                        new Toggle({
+                            active: true,
+                            change: (active) => console.log(active)
+                        })
+                    ])
                 ],
                 code: `
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
