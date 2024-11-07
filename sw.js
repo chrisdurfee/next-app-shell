@@ -1,7 +1,7 @@
 importScripts('./worker/cache-controller.js', './worker/service.js');
 
 const appName = 'base-example',
-version = '0.0.43';
+version = '0.0.44';
 
 const files =
 [
