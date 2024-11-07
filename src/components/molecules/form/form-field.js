@@ -61,7 +61,7 @@ export const FormField = Jot(
                     value: this.state.value,
                     setError: setErrorMessage,
                 }, this.children),
-                description && FormDescription({ id: `${id}-description` }, description),
+                description && FormDescription({ id: this.getId(`description`) }, description),
                 Div({ onState: ['error', (error) => error && FormMessage(error)] })
             ])
         ]);
