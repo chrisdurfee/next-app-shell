@@ -66,14 +66,11 @@ export const FormField = Jot(
     {
         const name = this.name;
         const id = this.getId(`${name}`);
-        const { label, description, onValidate } = this;
+        const { label, description } = this;
 
-        // Validation handler to check the input value
-        const handleValidate = (value) =>
+        const setErrorMessage = (error) =>
         {
-            const error = onValidate ? onValidate(value) : null;
             this.state.error = error;
-            this.state.value = value;
         };
 
         return Div({ class: "space-y-4" }, [
@@ -83,7 +80,7 @@ export const FormField = Jot(
                     id,
                     name,
                     value: this.state.value,
-                    input: (e) => handleValidate(e.target.value)
+                    setError: setErrorMessage,
                 }, this.children),
                 description && FormDescription({ id: `${id}-description` }, description),
                 Div({ onState: ['error', (error) => error && FormMessage(error)] })
@@ -117,16 +114,51 @@ const FormLabel = Atom((props, children) => Label({ ...props, class: "text-sm fo
 /**
  * FormControl Component
  *
- * Wrapper around form control elements.
+ * Wrapper around form control elements that automatically handles validation events.
  *
  * @param {object} props
  * @param {array} children
  * @returns {object}
  */
-const FormControl = Atom((props, children) => {
+const FormControl = Atom((props, children) =>
+{
+    const handleInvalid = (e) =>
+    {
+        props.setError(e.target.validationMessage);
+    };
+
+    const handleInput = (e) =>
+    {
+        const isValid = e.target.checkValidity();
+        if (isValid)
+        {
+            props.setError(null);
+        }
+    };
+
+    const enhancedChildren = children.map((child) =>
+    {
+        if (!child.required)
+        {
+            return child;
+        }
+
+        if (child.tag === 'input' || child.type === 'select' || child.type === 'textarea')
+        {
+            // Enhance input elements with validation event listeners
+            return {
+                ...child,
+                invalid: handleInvalid,
+                input: handleInput
+            };
+        }
+        return child;
+    });
+
     return Div({
-        ...props
-    }, children);
+        ...props,
+        class: "w-full"
+    }, enhancedChildren);
 });
 
 /**
@@ -149,6 +181,6 @@ const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm 
  * @param {array} children
  * @returns {object}
  */
-const FormMessage = (children) => {
-    return P({ class: "text-sm text-destructive" }, children);
-};
+const FormMessage = Atom((props, children) => {
+    return P({ ...props, class: "text-sm text-destructive" }, children);
+});
