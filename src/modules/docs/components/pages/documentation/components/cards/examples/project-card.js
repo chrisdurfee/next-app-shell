@@ -72,7 +72,7 @@ const projects = [
         description: "A robust framework for building and structuring large-scale applications with ease.",
         stars: "2",
         language: "JavaScript",
-        lastUpdated: "November 2024"
+        lastUpdated: "June 2024"
     }
 ];
 

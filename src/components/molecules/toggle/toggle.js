@@ -34,7 +34,7 @@ export const Toggle = Jot(
         const toggleActive = (e, { state }) => state.toggle('active');
 
         return Button({
-            class: 'inline-flex h-6 w-11 items-center rounded-full bg-muted transition-colors focus:outline-none',
+            class: 'inline-flex h-6 w-11 min-w-11 items-center rounded-full bg-muted transition-colors focus:outline-none',
             onState: ['active', { 'bg-primary': true, 'bg-muted': false }],
             click: toggleActive
         }, [

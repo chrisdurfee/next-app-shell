@@ -3,6 +3,7 @@ import { Card } from "@components/atoms/cards/card.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 import AccountCard from "./examples/account-card.js";
+import CookieSettingsCard from "./examples/cookie-settings-card.js";
 import DateSelectCard from "./examples/date-select-card.js";
 import PaymentCard from "./examples/payment-card.js";
 import ProjectCard from "./examples/project-card.js";
@@ -192,6 +193,16 @@ ReportIssueCard()`
                 code: `import AccountCard from "./examples/project-card.js";
 
 ProjectCard()`
+            }),
+
+            DocSection({
+                title: 'Cookie Settings Card',
+                preview: [
+                    CookieSettingsCard()
+                ],
+                code: `import AccountCard from "./examples/cookie-settings-card.js";
+
+CookieSettingsCard()`
             })
         ]
     )
