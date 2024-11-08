@@ -3,6 +3,7 @@ import { Checkbox } from '@components/atoms/form/checkbox.js';
 import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
+import { Combobox } from "@components/molecules/combobox/combobox.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
 import Toggle from "@components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -85,6 +86,23 @@ export const ContactForm = () => (
             description: "Let us know how we can help you."
         }, [
             Textarea({ placeholder: "Type your message here...", required: true })
+        ]),
+
+        new FormField({
+            name: "message",
+            label: "Select Framework",
+            description: "Select your preferred framework."
+        }, [
+            new Combobox({
+                required: true,
+                items: [
+                    { value: 'next.js', label: 'Next.js' },
+                    { value: 'sveltekit', label: 'SvelteKit' },
+                    { value: 'nuxt.js', label: 'Nuxt.js' },
+                    { value: 'remix', label: 'Remix' },
+                    { value: 'astro', label: 'Astro' },
+                ],
+            })
         ]),
 
         Button({ type: "submit" }, "Send Message")

@@ -17,12 +17,12 @@ export const TooltipPage = () => (
 	DocPage(
         {
             title: 'Tooltips',
-            description: 'This is a tooltip.',
+            description: 'Tooltips are small popups that appear when a user hovers over an element.',
         },
         [
             DocSection({
                 title: 'Usage',
-                description: 'Import the card atom and use it in your components.',
+                description: 'Import the tooltip atom and use it in your components.',
                 preview: [
                     Div({ class: 'flex gap-2 flex-wrap' }, [
                         Tooltip({ content: 'This is a tooltip.' }, [
@@ -48,10 +48,97 @@ Tooltip({ content: 'This is a tooltip.' }, [
                         ])
                     ])
                 ],
-                code: `import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'bottom' }, [
+    Button('Hover me')
+])`
+            }),
 
-Tooltip({ content: 'This is a tooltip.', position: 'bottom' }, [
+            DocSection({
+                title: 'Top-Right Tooltip',
+                description: 'This will show the tooltip at the top-right of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'top-right' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'top-right' }, [
+    Button('Hover me')
+])`
+            }),
+
+            DocSection({
+                title: 'Top-Left Tooltip',
+                description: 'This will show the tooltip at the top-left of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'top-left' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'top-left' }, [
+    Button('Hover me')
+])`
+            }),
+
+            DocSection({
+                title: 'Bottom-Right Tooltip',
+                description: 'This will show the tooltip at the bottom-right of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'bottom-right' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'bottom-right' }, [
+    Button('Hover me')
+])`
+            }),
+
+            DocSection({
+                title: 'Bottom-Left Tooltip',
+                description: 'This will show the tooltip at the bottom-left of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'bottom-left' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'bottom-left' }, [
+    Button('Hover me')
+])`
+            }),
+
+            DocSection({
+                title: 'Left Tooltip',
+                description: 'This will show the tooltip to the left of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'left' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'left' }, [
+    Button('Hover me')
+])`
+            }),
+
+            DocSection({
+                title: 'Right Tooltip',
+                description: 'This will show the tooltip to the right of the target element.',
+                preview: [
+                    Div({ class: 'flex gap-2 flex-wrap' }, [
+                        Tooltip({ content: 'This is a tooltip.', position: 'right' }, [
+                            Button('Hover me')
+                        ])
+                    ])
+                ],
+                code: `Tooltip({ content: 'This is a tooltip.', position: 'right' }, [
     Button('Hover me')
 ])`
             }),

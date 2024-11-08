@@ -13,6 +13,48 @@ const isInput = (child) =>
 };
 
 /**
+ * This will enhance the children with validation event listeners
+ * if they are required.
+ *
+ * @param {array} children
+ * @param {function} handleInput
+ * @param {function} handleInvalid
+ * @returns {void}
+ */
+const enhanceChildren = (children, handleInput, handleInvalid) =>
+{
+    return children.map((child) =>
+    {
+        /**
+         * This will recursively enhance children with validation event listeners.
+         */
+        if (child.children && child.children.length > 0)
+        {
+            child.children = enhanceChildren(child.children, handleInput, handleInvalid);
+        }
+
+        if (!child.required)
+        {
+            return child;
+        }
+
+        if (isInput(child))
+        {
+            // Enhance input elements with validation event listeners
+            return {
+                ...child,
+                aria: {
+                    invalid: ['hasError'],
+                },
+                invalid: handleInvalid,
+                input: handleInput
+            };
+        }
+        return child;
+    });
+};
+
+/**
  * FormControl Component
  *
  * Wrapper around form control elements that automatically handles validation events.
@@ -55,27 +97,7 @@ export const FormControl = Atom((props, children) =>
      *
      * @type {array} enhancedChildren
      */
-    const enhancedChildren = children.map((child) =>
-    {
-        if (!child.required)
-        {
-            return child;
-        }
-
-        if (isInput(child))
-        {
-            // Enhance input elements with validation event listeners
-            return {
-                ...child,
-                aria: {
-                    invalid: ['hasError'],
-                },
-                invalid: handleInvalid,
-                input: handleInput
-            };
-        }
-        return child;
-    });
+    const enhancedChildren = enhanceChildren(children, handleInput, handleInvalid);
 
     return Div({
         ...props,

@@ -1,4 +1,4 @@
-import { Button, Div, I, Li, Span, Ul } from '@base-framework/atoms';
+import { Button, Div, I, Input, Li, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
 import { AbsoluteContainer, getPosition } from '../absolute-container.js';
@@ -12,7 +12,7 @@ import { AbsoluteContainer, getPosition } from '../absolute-container.js';
 const DropdownButton = ({ toggleDropdown }) => (
     Button({
         cache: 'button',
-        class: 'inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
+        class: 'relative z-[2] inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
         click: toggleDropdown,
         addEvent: ['click', document, (e, { state, panel }) =>
         {
@@ -170,6 +170,16 @@ export const Combobox = Jot(
         return Div({ class: 'relative w-[200px]' }, [
             DropdownButton({ toggleDropdown: this.toggleDropdown.bind(this) }),
             DropdownContainer({ onSelect: handleSelect }),
+
+            // Hidden required input for form validation
+            this.required &&
+            Input({
+                class: 'opacity-0 absolute top-0 left-0 z-[1]',
+                type: 'text',
+                name: this.name,
+                required: true,
+                value: ['[[selectedValue]]', this.state]
+            })
         ]);
     }
 });
