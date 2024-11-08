@@ -1,5 +1,10 @@
-import { A, H4, P, Section, Span } from "@base-framework/atoms";
+import { A, Div, H4, P, Section, Span } from "@base-framework/atoms";
 import { DocPage } from "../../doc-page.js";
+import AccountCard from "../components/cards/examples/account-card.js";
+import DateSelectCard from "../components/cards/examples/date-select-card.js";
+import PaymentCard from "../components/cards/examples/payment-card.js";
+import ShareDocumentCard from "../components/cards/examples/share-document-card.js";
+import TeamMemberCard from "../components/cards/examples/team-member-card.js";
 
 /**
  * IntroPage
@@ -27,6 +32,73 @@ export const IntroPage = () => (
                 ]),
                 P({ class: 'text-muted-foreground' }, [
                     Span(`Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
+                ])
+            ]),
+
+            Div({ class: 'items-start justify-center gap-6 rounded-lg pt-4 md:grid lg:grid-cols-2 xl:grid-cols-2' }, [
+                Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
+                    AccountCard(),
+                    PaymentCard(),
+                ]),
+                Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
+                    TeamMemberCard({
+                        members: [
+                            {
+                                name: 'Leslie Alexander',
+                                email: 'leslie.alexander@example.com',
+                                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'owner',
+                                lastSeen: '2023-01-23T13:23Z',
+                                status: 'offline'
+                            },
+                            {
+                                name: 'Michael Foster',
+                                email: 'michael.foster@example.com',
+                                image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'member',
+                                lastSeen: '2023-01-23T13:23Z',
+                                status: 'offline'
+                            },
+                            {
+                                name: 'Dries Vincent',
+                                email: 'dries.vincent@example.com',
+                                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'owner',
+                                status: 'online'
+                            }
+                        ]
+                    }),
+                    ShareDocumentCard({
+                        link: 'http://example.com/link/to/document',
+                        people: [
+                            {
+                                name: 'Leslie Alexander',
+                                email: 'leslie.alexander@example.com',
+                                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'owner',
+                                lastSeen: '2023-01-23T13:23Z',
+                                status: 'offline'
+                            },
+                            {
+                                name: 'Michael Foster',
+                                email: 'michael.foster@example.com',
+                                image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'member',
+                                lastSeen: '2023-01-23T13:23Z',
+                                status: 'offline'
+                            },
+                            {
+                                name: 'Dries Vincent',
+                                email: 'dries.vincent@example.com',
+                                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+                                role: 'owner',
+                                status: 'online'
+                            }
+                        ]
+                    }),
+                    DateSelectCard({
+                        startDate: '2023-01-23'
+                    })
                 ])
             ]),
 
