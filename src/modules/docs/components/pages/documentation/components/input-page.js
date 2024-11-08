@@ -1,5 +1,6 @@
-import { Div } from "@base-framework/atoms";
+import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
@@ -27,6 +28,27 @@ const frameworks = [
 const InputPreview = Atom((props, children) => (
     Div({ ...props, class: 'flex flex-auto items-center justify-center w-full max-w-[350px]' }, children)
 ));
+
+/**
+ * NotificationToggle
+ *
+ * A component for rendering a toggle switch with a label and description.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const NotificationToggle = ({ label, description, active, onChange }) => (
+    Div({ class: 'flex items-center justify-between p-4 border rounded-md bg-muted/10 border-muted-foreground/20 mb-4' }, [
+        Div({ class: 'flex flex-col pr-8' }, [
+            H4({ class: 'font-semibold' }, label),
+            P({ class: 'text-sm text-muted-foreground' }, description)
+        ]),
+        new Toggle({
+            active,
+            change: onChange
+        })
+    ])
+);
 
 /**
  * InputPage
@@ -313,6 +335,67 @@ new RangeSlider({
     value: 50,
     change: (value) => console.log(value)
 })`
+            }),
+
+            DocSection({
+                title: 'Toggle Switch',
+                description: 'Toggle switches to control various settings.',
+                preview: [
+                    Div({ class: 'p-4' }, [
+                        H4({ class: 'text-lg font-bold mb-4' }, 'Email Notifications'),
+                        NotificationToggle({
+                            label: 'Marketing emails',
+                            description: 'Receive emails about new products, features, and more.',
+                            active: false,
+                            onChange: (active) => console.log('Marketing emails:', active)
+                        }),
+                        NotificationToggle({
+                            label: 'Security emails',
+                            description: 'Receive emails about your account security.',
+                            active: false,
+                            onChange: (active) => console.log('Security emails:', active)
+                        }),
+                        Button({
+                            text: 'Submit',
+                            class: 'mt-4'
+                        })
+                    ])
+                ],
+                code: `
+import { Toggle } from '@components/atoms/form/toggle.js';
+
+const NotificationToggle = ({ label, description, active, onChange }) => (
+    Div({ class: 'flex items-center justify-between p-4 border rounded-md bg-muted/10 border-muted-foreground/20 mb-4' }, [
+        Div({ class: 'flex flex-col pr-8' }, [
+            H4({ class: 'font-semibold' }, label),
+            P({ class: 'text-sm text-muted-foreground' }, description)
+        ]),
+        new Toggle({
+            active,
+            change: onChange
+        })
+    ])
+);
+
+Div({ class: 'p-4' }, [
+    H4({ class: 'text-lg font-bold mb-4' }, 'Email Notifications'),
+    NotificationToggle({
+        label: 'Marketing emails',
+        description: 'Receive emails about new products, features, and more.',
+        active: false,
+        onChange: (active) => console.log('Marketing emails:', active)
+    }),
+    NotificationToggle({
+        label: 'Security emails',
+        description: 'Receive emails about your account security.',
+        active: false,
+        onChange: (active) => console.log('Security emails:', active)
+    }),
+    Button({
+        text: 'Submit',
+        class: 'mt-4'
+    })
+]);`
             })
         ]
     )
