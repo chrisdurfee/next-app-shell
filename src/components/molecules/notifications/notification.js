@@ -182,7 +182,7 @@ export class Notification extends DelayComponent
                         this.title && TitleBar(this.title)
                     ]),
                     P({ class: 'text-base text-muted-foreground m-0 pr-12' }, this.description),
-                    Footer({ class: 'margin-top-24 flex align-center' }, this.getButtons())
+                    (this.primary || this.secondary) && Footer({ class: 'margin-top-24 flex align-center' }, this.getButtons())
                 ])
             ]),
             Button({
