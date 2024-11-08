@@ -6,17 +6,46 @@ import { Icons } from "../../icons/icons.js";
 import { DelayComponent } from "../delay-component.js";
 
 /**
+ * Type styles mapping (reusing from Alert component style)
+ *
+ * @constant
+ * @type {object}
+ */
+const typeStyles =
+{
+    info: {
+        bgColor: 'bg-popover',
+        borderColor: 'border-blue-500',
+        iconColor: 'text-blue-500'
+    },
+    warning: {
+        bgColor: 'bg-popover',
+        borderColor: 'border-yellow-500',
+        iconColor: 'text-yellow-500'
+    },
+    destructive: {
+        bgColor: 'bg-popover',
+        borderColor: 'border-red-500',
+        iconColor: 'text-red-500'
+    },
+    default: {
+        bgColor: 'bg-popover',
+        borderColor: 'border',
+        iconColor: 'text-muted-foreground'
+    }
+};
+
+/**
  * This will get the title bar
  *
  * @param {object} titleBar
  * @returns Header
  */
-const TitleBar = (title) =>
-{
-    return Header({ class: 'flex justify-center'}, [
+const TitleBar = (title) => (
+    Header({ class: 'flex justify-center' }, [
         H3({ class: 'text-lg font-bold mb-0' }, title)
-    ]);
-};
+    ])
+);
 
 /**
  * This will create a link for the notification.
@@ -24,25 +53,24 @@ const TitleBar = (title) =>
  * @param {object} props
  * @returns {object}
  */
-const NotificationLink = Atom((props, children) => (
+const NotificationLink = Atom(({ href, class: customClass }, children) => (
     A({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] max-w-[450px] mt-4`,
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] max-w-[450px] mt-4 ${customClass}`,
         href: href,
-        class: `${props.class} ${props.color}`,
         role: 'alert'
     }, children)
 ));
 
 /**
- * This will create a link for the notification.
+ * This will create a button notification.
  *
  * @param {object} props
  * @returns {object}
  */
-const NotificationButton = Atom((props, children) => (
+const NotificationButton = Atom(({ close, class: customClass }, children) => (
     Div({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] max-w-[450px] mt-4`,
-        click: () => props.close(),
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[380px] max-w-[450px] mt-4 ${customClass}`,
+        click: () => close(),
         role: 'alert'
     }, children)
 ));
@@ -78,42 +106,23 @@ export class Notification extends DelayComponent
      */
     render()
     {
-        const type = this.getType();
+        const { bgColor, borderColor, iconColor } = this.getTypeStyles();
         const href = this.href || null;
+
+        const notificationContent = this.getChildren(iconColor);
+
         if (href)
         {
             return NotificationLink({
                 href,
-                class: this.class,
-            }, this.getChildren());
+                class: `${bgColor} ${borderColor}`,
+            }, notificationContent);
         }
 
         return NotificationButton({
             close: this.close.bind(this),
-            class: this.class,
-        }, this.getChildren());
-    }
-
-    /**
-     * This will get the type of notification.
-     *
-     * @returns {string}
-     */
-    getType()
-    {
-        switch (this.type)
-        {
-            case 'success':
-                return 'bg-green-500';
-            case 'destructive':
-                return 'bg-destructive';
-            case 'info':
-                return 'bg-blue-500';
-            case 'warning':
-                return 'bg-warning';
-            default:
-                return '';
-        }
+            class: `${bgColor} ${borderColor}`,
+        }, notificationContent);
     }
 
     /**
@@ -132,6 +141,17 @@ export class Notification extends DelayComponent
     }
 
     /**
+     * This will get the style properties based on the notification type.
+     *
+     * @returns {object}
+     */
+    getTypeStyles()
+    {
+        const type = this.type || 'default';
+        return typeStyles[type] || typeStyles.default;
+    }
+
+    /**
      * This will get the buttons for the notification.
      *
      * @returns {array}
@@ -139,35 +159,30 @@ export class Notification extends DelayComponent
     getButtons()
     {
         return [
-            this.secondary && Button({
-                variant: 'secondary',
-                click: this.secondaryAction && this.secondaryAction.bind(this)
-            }, this.secondary),
-            this.primary && Button({
-                click: this.primaryAction && this.primaryAction.bind(this)
-            }, this.primary,)
+            Div({ class: 'flex flex-row mt-6 gap-2' }, [
+                this.secondary && Button({ variant: 'outline', click: () => this.secondaryAction && this.secondaryAction() }, this.secondary),
+                this.primary && Button({ click: () => this.primaryAction && this.primaryAction() }, this.primary)
+            ])
         ];
     }
 
     /**
      * This will get the children for the notification.
      *
+     * @param {string} iconColor
      * @returns {array}
      */
-    getChildren()
+    getChildren(iconColor)
     {
         return [
             Div({ class: 'flex items-start' }, [
-                this.icon && I({ class: 'mr-4', html: this.icon }),
+                this.icon && I({ class: `mr-4 ${iconColor}`, html: this.icon }),
                 Div({ class: 'flex flex-auto flex-col' }, [
-                    Div({ class: 'flex flex-auto flex-row items-center w-full' }, [
+                    Div({ class: 'flex flex-auto flex-row items-center w-full pr-12' }, [
                         this.title && TitleBar(this.title)
                     ]),
-                    P({ class: 'text-base text-muted-foreground m-0' }, this.description),
-                    (this.primary || this.secondary) && Footer({
-                        class: 'margin-top-24 flex align-center',
-                        children: this.getButtons()
-                    })
+                    P({ class: 'text-base text-muted-foreground m-0 pr-12' }, this.description),
+                    Footer({ class: 'margin-top-24 flex align-center' }, this.getButtons())
                 ])
             ]),
             Button({

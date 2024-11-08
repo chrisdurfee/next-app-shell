@@ -15,56 +15,150 @@ import { DocPage } from '../../doc-page.js';
  * @returns {DocPage}
  */
 export const NotificationPage = () => (
-	DocPage(
+    DocPage(
         {
             title: 'Notifications',
             description: 'Displays a notification message to the user.'
         },
         [
+            // Default Notification
             DocSection({
-                title: 'In App Notifications',
-                description: 'Notifications can be displayed in the app to inform users about important events or updates. They are a global notification container that can be called from anywhere in the app.',
+                title: 'Default Notification',
+                description: 'This is a standard notification without any specific type.',
                 preview: [
                     new Notification({
-                        title: 'Notification Title',
-                        description: 'This is a notification.',
-                        icon: Icons.warning,
+                        title: 'Default Notification',
+                        description: 'This is a default notification.',
+                        icon: Icons.information,
                         duration: 'infinite',
                     })
                 ],
                 code: `app.notify({
-    title: 'Notification Title',
-    description: 'This is a notification.',
-    icon: Icons.warning,
-    type: 'warning', // 'success', 'destructive', 'info', 'warning'
-    duration: 5000 // in milliseconds, leave it blank for 4 seconds, infinite is also a value to prevent it from going away
+    title: 'Default Notification',
+    description: 'This is a default notification.',
+    icon: Icons.info,
+    duration: 'infinite'
 })`
             }),
 
-            P( { class: 'text-muted-foreground' }, 'Notifications will stack if a few are called at the same time. The notification will be until the duration has been met. If a notificaiton duration is set to \'infinite\', it must be removed by the user.  ' ),
+            // Info Notification
+            DocSection({
+                title: 'Info Notification',
+                description: 'An informational notification to inform users about general information.',
+                preview: [
+                    new Notification({
+                        title: 'Heads up!',
+                        description: 'You can add components to your app using the CLI.',
+                        icon: Icons.information,
+                        type: 'info',
+                        duration: 'infinite',
+                    })
+                ],
+                code: `app.notify({
+    title: 'Heads up!',
+    description: 'You can add components to your app using the CLI.',
+    icon: Icons.information,
+    type: 'info',
+    duration: 'infinite'
+})`
+            }),
+
+            // Warning Notification
+            DocSection({
+                title: 'Warning Notification',
+                description: 'A warning notification to caution the user about potential issues.',
+                preview: [
+                    new Notification({
+                        title: 'Warning!',
+                        description: 'Please check your input before proceeding.',
+                        icon: Icons.warning,
+                        type: 'warning',
+                        duration: 'infinite',
+                    })
+                ],
+                code: `app.notify({
+    title: 'Warning!',
+    description: 'Please check your input before proceeding.',
+    icon: Icons.warning,
+    type: 'warning',
+    duration: 5000
+})`
+            }),
+
+            // Destructive Notification
+            DocSection({
+                title: 'Destructive Notification',
+                description: 'A destructive notification to alert the user of a serious issue or error.',
+                preview: [
+                    new Notification({
+                        title: 'Error!',
+                        description: 'Something went wrong. Please try again later.',
+                        icon: Icons.shield,
+                        type: 'destructive',
+                        duration: 'infinite',
+                    })
+                ],
+                code: `app.notify({
+    title: 'Error!',
+    description: 'Something went wrong. Please try again later.',
+    icon: Icons.error,
+    type: 'destructive',
+    duration: 'infinite'
+})`
+            }),
+
+            // Notification with Primary and Secondary Buttons
+            DocSection({
+                title: 'Notification with Actions',
+                description: 'This notification includes primary and secondary buttons for user actions.',
+                preview: [
+                    new Notification({
+                        title: 'Action Required',
+                        description: 'Would you like to proceed with this action?',
+                        icon: Icons.information,
+                        type: 'info',
+                        primary: 'Proceed',
+                        primaryAction: () => console.log(1),
+                        secondary: 'Cancel',
+                        secondaryAction: () => console.log(1),
+                        duration: 'infinite'
+                    })
+                ],
+                code: `app.notify({
+    title: 'Action Required',
+    description: 'Would you like to proceed with this action?',
+    icon: Icons.question,
+    type: 'info',
+    primary: 'Proceed',
+    primaryAction: () => alert('Primary action clicked!'),
+    secondary: 'Cancel',
+    secondaryAction: () => alert('Secondary action clicked!'),
+    duration: 'infinite' // Notification will remain until user dismisses
+})`
+            }),
+
+            P({ class: 'text-muted-foreground' }, 'Notifications will stack if multiple are triggered at the same time. The notification will remain visible until the specified duration has passed. If a notification duration is set to \'infinite\', it must be manually dismissed by the user.'),
 
             DocSection({
                 title: 'Usage',
-                description: 'Call \'notify\' the gloabl notification container to display notifications.',
+                description: 'Call \'notify\' on the global notification container to display notifications.',
                 preview: [
                     Button({
-                        click: () =>
-                        {
+                        click: () => {
                             app.notify({
                                 title: 'Notification Title',
                                 description: 'This is a notification.',
-                                icon: Icons.warning,
-                                type: 'warning'
-                            })
+                                icon: Icons.information
+                            });
                         }
-                    }, 'Show')
+                    }, 'Show Notification')
                 ],
                 code: `app.notify({
     title: 'Notification Title',
     description: 'This is a notification.',
     icon: Icons.warning,
-    type: 'warning', // 'success', 'destructive', 'info', 'warning'
-    duration: 5000 // in milliseconds, leave it blank for 4 seconds, infinite is also a value to prevent it from going away
+    type: 'warning',
+    duration: 5000 // in milliseconds, leave blank for the default 4 seconds, or use 'infinite' to keep it until dismissed
 })`
             })
         ]
