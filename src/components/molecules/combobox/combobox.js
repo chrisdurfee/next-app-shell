@@ -53,7 +53,7 @@ const ComboboxItem = (item, onSelect) => {
  * @returns {object}
  */
 const ComboboxDropdown = (handleSelect) => (
-    Div({ class: 'bg-popover absolute border rounded-md shadow-lg mt-1 w-full z-10' }, [
+    Div({ class: 'w-full' }, [
         Ul({ class: 'max-h-60 overflow-y-auto p-2 grid gap-1', for: ['items', (item) => ComboboxItem(item, handleSelect) ] }),
     ])
 );
