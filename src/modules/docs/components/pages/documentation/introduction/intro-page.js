@@ -35,7 +35,7 @@ export const IntroPage = () => (
                 ])
             ]),
 
-            Div({ class: 'items-start justify-center gap-6 rounded-lg pt-4 md:grid lg:grid-cols-2 xl:grid-cols-2' }, [
+            Div({ class: 'items-start justify-center gap-6 rounded-lg pt-0 md:p-8 md:border md:rounded-md md:mt-6 md:grid lg:grid-cols-2 xl:grid-cols-2' }, [
                 Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
                     AccountCard(),
                     PaymentCard(),
