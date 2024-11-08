@@ -1,6 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
 import { Component, Data } from '@base-framework/base';
-import { AbsoluteContainer } from './absolute-container.js';
+import { AbsoluteContainer, getPosition } from '../absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -104,28 +104,10 @@ export class DropdownMenu extends Component
     updatePosition()
     {
         const button = this.button;
-        const rect = button.getBoundingClientRect();
-
         const dropdown = this.dropdown.panel;
-        const dropdownRect = dropdown.getBoundingClientRect();
+        const position = getPosition(button, dropdown);
 
-        let x = rect.left + window.scrollX;
-        let y = rect.bottom + window.scrollY;
-        const PADDING = 10;
-
-        // Adjust position if dropdown overflows on the right of the viewport
-        if (x + dropdownRect.width > window.innerWidth)
-        {
-            x = window.innerWidth - dropdownRect.width - PADDING;
-        }
-
-        // Adjust position if dropdown overflows at the bottom of the viewport
-        if (y + dropdownRect.height > window.innerHeight)
-        {
-            y = rect.top + window.scrollY - dropdownRect.height - PADDING;
-        }
-
-        this.data.position = { x, y };
+        this.data.position = position;
     }
 
     /**

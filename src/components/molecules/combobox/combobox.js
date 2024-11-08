@@ -1,6 +1,32 @@
 import { Button, Div, I, Li, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
+import { AbsoluteContainer, getPosition } from '../absolute-container.js';
+
+/**
+ * This will create the dropdown button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const DropdownButton = ({ toggleDropdown }) => (
+    Button({
+        cache: 'button',
+        class: 'inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
+        click: toggleDropdown,
+        addEvent: ['click', document, (e, { state, panel }) =>
+        {
+            if (isOutsideClick(e.target, panel))
+            {
+                state.open = false;
+            }
+        }]
+    },
+    [
+        Span({ onState: ['selectedLabel', (value) => value || 'Select item...'] }),
+        I({ html: Icons.chevron.upDown })
+    ])
+);
 
 /**
  * ComboboxItem Atom
@@ -27,9 +53,34 @@ const ComboboxItem = (item, onSelect) => {
  * @returns {object}
  */
 const ComboboxDropdown = (handleSelect) => (
-    Div({ class: 'absolute border rounded-md shadow-lg mt-1 w-full z-10' }, [
+    Div({ class: 'bg-popover absolute border rounded-md shadow-lg mt-1 w-full z-10' }, [
         Ul({ class: 'max-h-60 overflow-y-auto p-2 grid gap-1', for: ['items', (item) => ComboboxItem(item, handleSelect) ] }),
     ])
+);
+
+/**
+ * This will render a dropdown container.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const DropdownContainer = ({ onSelect }) => (
+    Div({
+        class: 'flex flex-auto flex-col',
+        onState: ['open', (isOpen, ele, parent) =>
+        {
+            if (isOpen)
+            {
+                return new AbsoluteContainer({
+                    cache: 'dropdown',
+                    parent: parent,
+                    button: parent.button,
+                }, [
+                    ComboboxDropdown(onSelect)
+                ]);
+            }
+        }]
+    })
 );
 
 /**
@@ -58,7 +109,10 @@ export const Combobox = Jot(
      */
     setData()
     {
-        return new Data({ items: this.items || [] })
+        return new Data({
+            items: this.items || [],
+            position: { y: 0, x: 0 }
+        });
     },
 
     /**
@@ -73,13 +127,39 @@ export const Combobox = Jot(
     },
 
     /**
+     * Updates the dropdown position.
+     *
+     * @returns {void}
+     */
+    updatePosition()
+    {
+        const button = this.button;
+        const dropdown = this.dropdown.panel;
+        const position = getPosition(button, dropdown);
+
+        this.data.position = position;
+    },
+
+    /**
+     * Toggles the dropdown open state.
+     */
+    toggleDropdown()
+    {
+        this.state.toggle('open');
+
+        if (this.state.open)
+        {
+            this.updatePosition();
+        }
+    },
+
+    /**
      * This will render the component.
      *
      * @returns {object}
      */
     render()
     {
-        const toggleOpen = (e, { state }) => state.toggle('open');
         const handleSelect = (item) => {
             const state = this.state;
             state.selectedValue = item.value;
@@ -88,22 +168,8 @@ export const Combobox = Jot(
         };
 
         return Div({ class: 'relative w-[200px]' }, [
-            Button({
-                class: 'inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-[200px] justify-between',
-                click: toggleOpen,
-                addEvent: ['click', document, (e, { state, panel }) =>
-                {
-                    if (isOutsideClick(e.target, panel))
-                    {
-                        state.open = false;
-                    }
-                }]
-            },
-            [
-                Span({ onState: ['selectedLabel', (value) => value || 'Select item...'] }),
-                I({ html: Icons.chevron.upDown })
-            ]),
-            Div({ class: 'felx flex-auto flex-col', onState: ['open', (value) => (value)? ComboboxDropdown(handleSelect) : null] }),
+            DropdownButton({ toggleDropdown: this.toggleDropdown.bind(this) }),
+            DropdownContainer({ onSelect: handleSelect }),
         ]);
     }
 });

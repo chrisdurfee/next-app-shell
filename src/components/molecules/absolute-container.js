@@ -2,6 +2,39 @@ import { Div } from '@base-framework/atoms';
 import { Component } from '@base-framework/base';
 
 /**
+ * This will get the position of the element and
+ * use the position and container to determine the
+ * position of the container.
+ *
+ * @param {object} button
+ * @param {object} container
+ * @returns {object}
+ */
+export const getPosition = (button, container) =>
+{
+    const rect = (button)? button.getBoundingClientRect() : { top: 0, bottom: 0, left: 0 };
+    const containerRect = container.getBoundingClientRect();
+
+    let x = rect.left + window.scrollX;
+    let y = rect.bottom + window.scrollY;
+    const PADDING = 10;
+
+    // Adjust position if dropdown overflows on the right of the viewport
+    if (x + containerRect.width > window.innerWidth)
+    {
+        x = window.innerWidth - containerRect.width - PADDING;
+    }
+
+    // Adjust position if dropdown overflows at the bottom of the viewport
+    if (y + containerRect.height > window.innerHeight)
+    {
+        y = rect.top + window.scrollY - containerRect.height - PADDING;
+    }
+
+    return { x, y };
+}
+
+/**
  * AbsoluteContainer
  *
  * This will create a absolute cotnainer component.
