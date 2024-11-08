@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Card } from "@components/atoms/cards/card.js";
-import { Input, Textarea } from "@components/atoms/form/Input.js";
+import { Input, Textarea } from "@components/atoms/form/input.js";
 import { Select } from "@components/atoms/form/select.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
 import { CardHeader } from "./card-atoms.js";
