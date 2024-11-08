@@ -34,6 +34,7 @@ export const ComboboxPage = () => (
                 preview: [
                     new Combobox({
                         items: frameworks,
+                        onSelect: (item) => console.log(item)
                     })
                 ],
                 code: `@components/molecules/combobox/combobox.js';
