@@ -3,6 +3,7 @@ import { Configs } from "./configs.js";
 import { modules } from "./modules/modules.js";
 import { setupServiceWorker } from "./service.js";
 import { AppShell } from "./shell/app-shell.js";
+import { setHtmlThemeBySettings } from "./theme.js";
 
 /**
  * AppController
@@ -28,6 +29,7 @@ export class AppController
 	 */
 	constructor()
 	{
+		setHtmlThemeBySettings();
 		this.setupService();
 		this.setupRouter();
 		this.renderApp();

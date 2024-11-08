@@ -1,4 +1,5 @@
 import { A, Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
+import { ThemeToggle } from "@components/molecules/theme-toggle.js";
 import { DocPage } from "../../doc-page.js";
 
 /**
@@ -46,6 +47,13 @@ const ColorRow = (title, colors) =>
 const ColorGuide = (obj) =>
 {
     return Div({ class: 'flex flex-auto flex-col gap-12' }, [
+
+        H5({
+            class: 'text-2xl font-bold'
+        }, 'Theme Toggle'),
+
+        new ThemeToggle(),
+
         H5({
             class: 'text-2xl font-bold'
         }, 'Color Guide'),
