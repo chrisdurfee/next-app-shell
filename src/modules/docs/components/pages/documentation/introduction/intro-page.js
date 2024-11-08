@@ -208,7 +208,7 @@ Module.create(
             Section({ class: 'space-y-4 mt-12' }, [
                 H4({ class: 'text-lg font-bold' }, 'Contributors and Community'),
                 P({ class: 'text-muted-foreground' }, [
-                    Span(`The App Shell is an open-source project, and contributions from the community are welcome. The project is maintained by a dedicated team of developers who aim to continuously enhance its functionality.`)
+                    Span(`The App Shell is an open-source project, and contributions from the community are welcome. The project is maintained by a dedicated developer who aims to continuously enhance its functionality.`)
                 ]),
                 P({ class: 'text-muted-foreground' }, [
                     Span(`For information on contributing, check the `),
