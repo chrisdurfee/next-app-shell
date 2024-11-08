@@ -1,3 +1,4 @@
+import { Div } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { Combobox } from "@components/molecules/combobox/combobox.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -32,10 +33,12 @@ export const ComboboxPage = () => (
                 title: 'Usage',
                 description: 'To use the Combobox component, import it from the components library and use it in your application.',
                 preview: [
-                    new Combobox({
-                        items: frameworks,
-                        onSelect: (item) => console.log(item)
-                    })
+                    Div({ class: 'w-full max-w-[300px]' }, [
+                        new Combobox({
+                            items: frameworks,
+                            onSelect: (item) => console.log(item)
+                        })
+                    ])
                 ],
                 code: `@components/molecules/combobox/combobox.js';
 import { Icons } from "@components/icons/icons.js";
