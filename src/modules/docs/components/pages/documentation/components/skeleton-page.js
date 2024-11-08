@@ -1,7 +1,56 @@
-import { Div } from '@base-framework/atoms';
+import { Div, P, Span } from '@base-framework/atoms';
+import { Jot } from "@base-framework/base";
+import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
+import { Avatar } from "@components/molecules/avatar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
+
+/**
+ * LoadingAvatar Component
+ *
+ * This component displays a skeleton as a placeholder
+ * for an avatar and text while loading. After 3 seconds,
+ * it switches to the actual avatar and text content.
+ */
+const LoadingAvatar = Jot(
+{
+    state: {
+        loaded: false
+    },
+
+    render()
+    {
+        return Div({ class: 'flex flex-auto flex-col max-w-[350px]' }, [
+            Div({ class: 'my-8' }, [
+                Button({ variant: 'outline', click: () => this.state.toggle('loaded') }, 'Toggle Loaded')
+            ]),
+            Div({ class: 'flex items-center bg-card rounded-md border shadow-md w-full max-w-md' }, [
+                Div({
+                    class: 'flex flex-auto gap-4 p-4',
+                    onState: ['loaded', (loaded) =>
+                    {
+                        return loaded
+                        ? [
+                            Avatar({ src: 'https://github.com/shadcn.png', alt: '@shadcn', fallbackText: 'CN', size: 'md' }),
+                            Div({ class: 'flex flex-auto flex-col' }, [
+                                Span({ class: 'text-lg font-semibold text-foreground' }, 'Leslie Alexander'),
+                                P({ class: 'text-sm text-muted-foreground m-0' }, 'leslie.alexander@example.com')
+                            ])
+                            ]
+                        : [
+                            Skeleton({ shape: 'circle', width: 'w-12', height: 'h-12' }), // Skeleton avatar
+                            Div({ class: 'flex flex-auto flex-col gap-2' }, [
+                                Skeleton({ width: 'w-3/4', height: 'h-6' }), // Skeleton for name
+                                Skeleton({ width: 'w-1/2', height: 'h-4' })  // Skeleton for email
+                            ])
+                        ];
+                    }
+                ]})
+            ])
+        ]);
+    }
+});
 
 /**
  * SkeletonPage
@@ -71,6 +120,67 @@ Div({ class: 'space-y-4 flex flex-auto flex-col space-x-4 w-full max-w-64' }, [
         Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
     ])
 ])`
+            }),
+
+            DocSection({
+                title: 'Skeleton with Avatar Loading',
+                description: 'This example demonstrates a skeleton loading animation that transitions to an avatar and user info after 3 seconds.',
+                preview: [
+                    new LoadingAvatar()
+                ],
+                code: `import { Skeleton } from "@components/atoms/skeleton.js";
+import { Avatar } from "@components/molecules/avatar.js";
+import { Jot } from "@base-framework/base";
+import { Div, P, Span } from "@base-framework/atoms";
+import { Button } from "@components/atoms/buttons/buttons.js";
+
+/**
+ * LoadingAvatar Component
+ *
+ * This component displays a skeleton as a placeholder
+ * for an avatar and text while loading. After 3 seconds,
+ * it switches to the actual avatar and text content.
+ */
+const LoadingAvatar = Jot(
+{
+    state: {
+        loaded: false
+    },
+
+    render()
+    {
+        return Div({ class: 'flex flex-auto flex-col max-w-[350px]' }, [
+            Div({ class: 'my-8' }, [
+                Button({ variant: 'outline', click: () => this.state.toggle('loaded') }, 'Toggle Loaded')
+            ]),
+            Div({ class: 'flex items-center bg-card rounded-md border shadow-md w-full max-w-md' }, [
+                Div({
+                    class: 'flex flex-auto gap-4 p-4',
+                    onState: ['loaded', (loaded) =>
+                    {
+                        return loaded
+                        ? [
+                            Avatar({ src: 'https://github.com/shadcn.png', alt: '@shadcn', fallbackText: 'CN', size: 'md' }),
+                            Div({ class: 'flex flex-auto flex-col' }, [
+                                Span({ class: 'text-lg font-semibold text-foreground' }, 'Leslie Alexander'),
+                                P({ class: 'text-sm text-muted-foreground m-0' }, 'leslie.alexander@example.com')
+                            ])
+                            ]
+                        : [
+                            Skeleton({ shape: 'circle', width: 'w-12', height: 'h-12' }), // Skeleton avatar
+                            Div({ class: 'flex flex-auto flex-col gap-2' }, [
+                                Skeleton({ width: 'w-3/4', height: 'h-6' }), // Skeleton for name
+                                Skeleton({ width: 'w-1/2', height: 'h-4' })  // Skeleton for email
+                            ])
+                        ];
+                    }
+                ]})
+            ])
+        ]);
+    }
+});
+
+LoadingAvatar();`
             })
         ]
     )
