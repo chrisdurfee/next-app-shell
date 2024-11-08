@@ -1,4 +1,5 @@
 import { A, Div, H4, P, Section, Span } from "@base-framework/atoms";
+import { CodeCard } from "../../../molecules/cards.js";
 import { DocPage } from "../../doc-page.js";
 import AccountCard from "../components/cards/examples/account-card.js";
 import DateSelectCard from "../components/cards/examples/date-select-card.js";
@@ -154,7 +155,49 @@ export const IntroPage = () => (
                 ]),
                 P({ class: 'text-muted-foreground' }, [
                     Span(`Each module includes its own routes, links, and options, as demonstrated in the example provided. This architecture ensures that modules are self-contained and can be easily integrated into any project using the App Shell framework.`)
-                ])
+                ]),
+
+                CodeCard(`import { Icons } from '@components/icons/icons.js';
+import { Module } from '../module/module.js';
+
+/**
+ * This will set the routes for the module.
+ */
+const routes = Module.convertRoutes(
+[
+    {
+        path: '/docs/:page?/:sub?*',
+        import: import('./components/pages/documentation/documentation-page.js'),
+        title: 'Docs'
+    }
+]);
+
+/**
+ * This will create our module and add it to the app
+ * modules.
+ */
+Module.create(
+{
+    /**
+     * @param {array} routes
+     */
+    routes,
+
+    /**
+     * This will get the options to create the app
+     * navigation.
+     *
+     * @param {array} links
+     */
+    links: [
+        {
+            group: 'Discover',
+            options: [
+                { label: 'Docs', href: 'docs', icon: Icons.document.text, mobileOrder: 5 }
+            ]
+        }
+    ]
+});`)
             ]),
 
             // About the Contributors
