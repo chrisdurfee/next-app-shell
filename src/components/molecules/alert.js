@@ -66,7 +66,8 @@ const AlertDescription = (description) => (
  * @param {object} props
  * @returns {object}
  */
-export const Alert = Atom(({ title, description, icon, type = 'default' }) => {
+export const Alert = Atom(({ title, description, icon, type = 'default' }) =>
+{
     const { borderColor, bgColor, iconColor } = typeStyles[type] || typeStyles.default;
 
     return Div({ class: `flex items-start p-4 border rounded-lg ${bgColor} ${borderColor}` }, [

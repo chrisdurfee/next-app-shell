@@ -157,16 +157,18 @@ export class Notification extends DelayComponent
     getChildren()
     {
         return [
-            Div({ class: 'flex flex-auto flex-col' }, [
-                Div({ class: 'flex flex-auto flex-row items-center w-full' }, [
-                    this.icon && I({ class: 'mr-4', html: this.icon }),
-                    this.title && TitleBar(this.title)
-                ]),
-                P({ class: 'text-base text-muted-foreground m-0' }, this.description),
-                (this.primary || this.secondary) && Footer({
-                    class: 'margin-top-24 flex align-center',
-                    children: this.getButtons()
-                })
+            Div({ class: 'flex items-start' }, [
+                this.icon && I({ class: 'mr-4', html: this.icon }),
+                Div({ class: 'flex flex-auto flex-col' }, [
+                    Div({ class: 'flex flex-auto flex-row items-center w-full' }, [
+                        this.title && TitleBar(this.title)
+                    ]),
+                    P({ class: 'text-base text-muted-foreground m-0' }, this.description),
+                    (this.primary || this.secondary) && Footer({
+                        class: 'margin-top-24 flex align-center',
+                        children: this.getButtons()
+                    })
+                ])
             ]),
             Button({
                 class: 'absolute top-[12px] right-[12px]',
