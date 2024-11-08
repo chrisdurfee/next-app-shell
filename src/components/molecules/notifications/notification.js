@@ -14,22 +14,22 @@ import { DelayComponent } from "../delay-component.js";
 const typeStyles =
 {
     info: {
-        bgColor: 'bg-popover',
+        bgColor: 'bg-muted/10',
         borderColor: 'border-blue-500',
         iconColor: 'text-blue-500'
     },
     warning: {
-        bgColor: 'bg-popover',
-        borderColor: 'border-yellow-500',
-        iconColor: 'text-yellow-500'
+        bgColor: 'bg-muted/10',
+        borderColor: 'border-warning',
+        iconColor: 'text-warning'
     },
     destructive: {
-        bgColor: 'bg-popover',
-        borderColor: 'border-red-500',
+        bgColor: 'bg-muted/10',
+        borderColor: 'border-destructive',
         iconColor: 'text-red-500'
     },
     default: {
-        bgColor: 'bg-popover',
+        bgColor: 'bg-muted/10',
         borderColor: 'border',
         iconColor: 'text-muted-foreground'
     }

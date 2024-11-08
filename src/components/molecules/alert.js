@@ -7,17 +7,17 @@ import { Atom } from '@base-framework/base';
 const typeStyles = {
     info: {
         borderColor: 'border-blue-500',
-        bgColor: 'bg-blue-500/10',
+        bgColor: 'bg-muted/10',
         iconColor: 'text-blue-500'
     },
     warning: {
-        borderColor: 'border-yellow-500',
-        bgColor: 'bg-yellow-500/10',
-        iconColor: 'text-yellow-500'
+        bgColor: 'bg-muted/10',
+        borderColor: 'border-warning',
+        iconColor: 'text-warning'
     },
     destructive: {
-        borderColor: 'border-red-500',
-        bgColor: 'bg-red-500/10',
+        bgColor: 'bg-muted/10',
+        borderColor: 'border-destructive',
         iconColor: 'text-red-500'
     },
     default: {
