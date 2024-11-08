@@ -38,9 +38,6 @@ export const IntroPage = () => (
                     A({ href: 'https://github.com/shadcn', class: 'underline', target: '_blank' }, 'Shadcn’s UI component library'),
                     Span(`, combining best practices for consistency and flexibility.`)
                 ]),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`With a centralized configuration, theming is easily adjustable, allowing for seamless integration with brand guidelines or custom styles as needed.`)
-                ])
             ]),
 
             // About the Icons
