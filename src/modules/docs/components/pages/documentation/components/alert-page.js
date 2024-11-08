@@ -6,26 +6,27 @@ import { DocPage } from '../../doc-page.js';
 /**
  * AlertPage
  *
- * This will create a alert page.
+ * This will create an alert page.
  *
  * @param {object} props
  * @param {object} children
  * @returns {DocPage}
  */
 export const AlertPage = () => (
-	DocPage(
+    DocPage(
         {
             title: 'Alerts',
             description: 'Alerts are used to provide feedback to the user about the outcome of an action or to inform them of important information.',
         },
         [
+            // Default Alert
             DocSection({
-                title: 'Usage',
-                description: 'To use the Alert component, import it from the components library and use it in your application.',
+                title: 'Default Alert',
+                description: 'This is a standard alert without any specific type.',
                 preview: [
                     Alert({
-                        title: 'Heads up!',
-                        description: 'You can add components to your app using the cli.',
+                        title: 'Notice',
+                        description: 'This is a default alert without a specific type.',
                         icon: Icons.information
                     })
                 ],
@@ -33,9 +34,69 @@ export const AlertPage = () => (
 import { Icons } from "@components/icons/icons.js";
 
 Alert({
-    title: 'Heads up!',
-    description: 'You can add components to your app using the cli.',
+    title: 'Notice',
+    description: 'This is a default alert without a specific type.',
     icon: Icons.information
+})`
+            }),
+
+            // Info Alert
+            DocSection({
+                title: 'Info Alert',
+                description: 'An info alert that provides general information to the user.',
+                preview: [
+                    Alert({
+                        title: 'Heads up!',
+                        description: 'You can add components to your app using the CLI.',
+                        icon: Icons.information,
+                        type: 'info'
+                    })
+                ],
+                code: `Alert({
+    title: 'Heads up!',
+    description: 'You can add components to your app using the CLI.',
+    icon: Icons.information,
+    type: 'info'
+})`
+            }),
+
+            // Warning Alert
+            DocSection({
+                title: 'Warning Alert',
+                description: 'A warning alert to caution the user about something important.',
+                preview: [
+                    Alert({
+                        title: 'Warning!',
+                        description: 'Please check your input before proceeding.',
+                        icon: Icons.warning,
+                        type: 'warning'
+                    })
+                ],
+                code: `Alert({
+    title: 'Warning!',
+    description: 'Please check your input before proceeding.',
+    icon: Icons.warning,
+    type: 'warning'
+})`
+            }),
+
+            // Destructive Alert
+            DocSection({
+                title: 'Destructive Alert',
+                description: 'A destructive alert to inform the user of an error or serious issue.',
+                preview: [
+                    Alert({
+                        title: 'Error!',
+                        description: 'Something went wrong. Please try again later.',
+                        icon: Icons.shield,
+                        type: 'destructive'
+                    })
+                ],
+                code: `Alert({
+    title: 'Error!',
+    description: 'Something went wrong. Please try again later.',
+    icon: Icons.error,
+    type: 'destructive'
 })`
             })
         ]
