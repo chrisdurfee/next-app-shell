@@ -141,6 +141,25 @@ export const Combobox = Jot(
     },
 
     /**
+     * Handles the selection of an item.
+     *
+     * @param {object} item
+     * @returns {void}
+     */
+    handleSelect(item)
+    {
+        const state = this.state;
+        state.selectedValue = item.value;
+        state.selectedLabel = item.label;
+        state.open = false;
+
+        if (typeof this.onSelect === 'function')
+        {
+            this.onSelect(item);
+        }
+    },
+
+    /**
      * Toggles the dropdown open state.
      */
     toggleDropdown()
