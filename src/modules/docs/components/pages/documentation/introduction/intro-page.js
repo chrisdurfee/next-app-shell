@@ -79,9 +79,7 @@ export const IntroPage = () => (
             Section({ class: 'space-y-4 mt-12' }, [
                 H4({ class: 'text-lg font-bold' }, 'Development Guidelines'),
                 P({ class: 'text-muted-foreground' }, [
-                    Span(`Modules are an essential part of the App Shell's extensibility. You can add new features by creating modules in the `),
-                    A({ href: '/docs/modules', class: 'underline' }, 'modules folder'),
-                    Span(` and registering them in the `),
+                    Span(`Modules are an essential part of the App Shell's extensibility. You can add new features by creating modules in the modules folder and registering them in the `),
                     A({ href: '/docs/imported-modules', class: 'underline' }, 'imported-modules.js'),
                     Span(` file. This structure supports modularity, making it easier to maintain and scale projects.`)
                 ]),
@@ -98,7 +96,7 @@ export const IntroPage = () => (
                 ]),
                 P({ class: 'text-muted-foreground' }, [
                     Span(`For information on contributing, check the `),
-                    A({ href: 'https://github.com/chrisdurfee/base', class: 'underline' }, 'GitHub repository'),
+                    A({ href: 'https://github.com/chrisdurfee/next-app-shell', class: 'underline', target: '_blank' }, 'GitHub repository'),
                     Span(` and join the community discussions to collaborate and innovate.`)
                 ])
             ])
