@@ -2,8 +2,10 @@ import { A, Div, H4, P, Section, Span } from "@base-framework/atoms";
 import { CodeCard } from "../../../molecules/cards.js";
 import { DocPage } from "../../doc-page.js";
 import AccountCard from "../components/cards/examples/account-card.js";
+import CookieSettingsCard from "../components/cards/examples/cookie-settings-card.js";
 import DateSelectCard from "../components/cards/examples/date-select-card.js";
 import PaymentCard from "../components/cards/examples/payment-card.js";
+import ReportIssueCard from "../components/cards/examples/report-issue-card.js";
 import ShareDocumentCard from "../components/cards/examples/share-document-card.js";
 import TeamMemberCard from "../components/cards/examples/team-member-card.js";
 
@@ -40,6 +42,7 @@ export const IntroPage = () => (
                 Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
                     AccountCard(),
                     PaymentCard(),
+                    CookieSettingsCard()
                 ]),
                 Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
                     TeamMemberCard({
@@ -99,7 +102,8 @@ export const IntroPage = () => (
                     }),
                     DateSelectCard({
                         startDate: '2023-01-23'
-                    })
+                    }),
+                    ReportIssueCard()
                 ])
             ]),
 
