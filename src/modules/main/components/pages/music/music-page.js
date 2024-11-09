@@ -1,5 +1,7 @@
 import { A, Div, H2, H3, Img, P } from "@base-framework/atoms";
+import { Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Skeleton } from "@components/atoms/skeleton.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
@@ -66,73 +68,167 @@ const SidebarMenu = () => (
 );
 
 /**
- * AlbumCard
+ * LargeAlbumSkeleton
  *
- * Displays an album cover with artist and title.
+ * A skeleton placeholder for large album cards.
+ *
+ * @returns {object}
+ */
+const LargeAlbumSkeleton = () => (
+    Div({ class: 'space-y-2 w-[180px] md:w-[250px]' }, [
+        Skeleton({ width: 'w-full', height: 'h-[300px]', shape: 'rectangle', class: 'rounded-md' }),
+        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }), // Placeholder for title
+        Skeleton({ width: 'w-1/2', height: 'h-[14px]' }) // Placeholder for artist
+    ])
+);
+
+/**
+ * SmallAlbumSkeleton
+ *
+ * A skeleton placeholder for small album cards.
+ *
+ * @returns {object}
+ */
+const SmallAlbumSkeleton = () => (
+    Div({ class: 'space-y-2 w-[150px]' }, [
+        Skeleton({ width: 'w-full', height: 'h-[150px]', shape: 'square', class: 'rounded-md' }),
+        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }), // Placeholder for title
+        Skeleton({ width: 'w-1/2', height: 'h-[14px]' }) // Placeholder for artist
+    ])
+);
+
+/**
+ * This will create an album card with a large cover image.
  *
  * @param {object} props
  * @returns {object}
  */
 const LargeAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
-        A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
-            Div({ class: 'overflow-hidden rounded-md aspect-[3/4]' }, [
-                Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
-            ]),
+        Div({
+            class: 'overflow-hidden rounded-md'
+        }, [
+            A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
+                Img({
+                    src,
+                    alt: title,
+                    class: 'h-[300px] w-auto object-cover transition-all hover:scale-105 aspect-[3/4]'
+                })
+            ])
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
-            Div({ class: 'space-y-1 text-sm' }, [
-                H3({ class: 'font-medium leading-none' }, title),
-                P({ class: 'text-xs text-muted-foreground' }, artist)
-            ])
+            H3({ class: 'font-medium leading-none' }, title),
+            P({ class: 'text-xs text-muted-foreground' }, artist)
         ])
     ])
 );
 
 /**
- * AlbumCard
- *
- * Displays an album cover with artist and title.
+ * This will create an album card with a large cover image.
  *
  * @param {object} props
  * @returns {object}
  */
-const SmallAlbumCard = ({ src, title, artist, card = LargeAlbumCard }) => (
+const SmallAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[150px]' }, [
-        A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
-            Div({ class: 'overflow-hidden rounded-md' }, [
-                Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
-            ]),
+        Div({
+            class: 'overflow-hidden rounded-md'
+        }, [
+            A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
+                Img({
+                    src,
+                    alt: title,
+                    class: 'h-[150px] w-auto object-cover transition-all hover:scale-105 aspect-square'
+                })
+            ])
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
-            Div({ class: 'space-y-1 text-sm' }, [
-                H3({ class: 'font-medium leading-none' }, title),
-                P({ class: 'text-xs text-muted-foreground' }, artist)
-            ])
+            H3({ class: 'font-medium leading-none' }, title),
+            P({ class: 'text-xs text-muted-foreground' }, artist)
         ])
     ])
 );
+
+/**
+ * AlbumCardWithSkeleton
+ *
+ * Displays the skeleton placeholder while the album image loads.
+ *
+ * @class
+ */
+const AlbumCardWithSkeleton = Jot(
+{
+    state: { loaded: false },
+
+    /**
+     * This will load the image and set the loaded state to true.
+     *
+     * @returns {void}
+     */
+    loadImage()
+    {
+        const img = new Image();
+        img.src = this.src;
+        //img.onload = () => this.state.loaded = true
+    },
+
+    render()
+    {
+        const { src, title, artist, skeleton, albumCard } = this;
+        this.loadImage();
+
+        return Div({
+            onState: ['loaded', (loaded) =>
+            {
+                if (!loaded)
+                {
+                    return skeleton();
+                }
+
+                return albumCard({
+                    src,
+                    title,
+                    artist
+                })
+            }]
+        });
+    }
+});
 
 /**
  * MusicSection
  *
+ * Displays a section of music albums with skeleton placeholders.
+ *
  * @param {object} props
  * @returns {object}
  */
-const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => (
-    Div({ class: 'my-8' }, [
+const MusicSection = ({ title, description, albums, cardType = 'large' }) =>
+{
+    const skeletonComponent = cardType === 'large' ? LargeAlbumSkeleton : SmallAlbumSkeleton;
+    const albumCard = cardType === 'large' ? LargeAlbumCard : SmallAlbumCard;
+
+    return Div({ class: 'my-8' }, [
         H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
         P({ class: 'text-sm text-muted-foreground mb-4' }, description),
         Div({ class: 'overflow-x-auto lg:overflow-x-none' }, [
             Div({ class: 'inline-flex space-x-4 pb-4' },
-                albums.map(album => card(album))
+                albums.map(album => new AlbumCardWithSkeleton({
+                    src: album.src,
+                    title: album.title,
+                    artist: album.artist,
+                    skeleton: skeletonComponent,
+                    albumCard: albumCard
+                }))
             )
         ])
-    ])
-);
+    ]);
+};
 
 /**
  * MusicPage
+ *
+ * The main page layout combining sidebar, tabs, and content sections.
  *
  * @returns {object}
  */
@@ -159,19 +255,20 @@ export const MusicPage = () => (
                 MusicSection({
                     title: 'Listen Now',
                     description: 'Top picks for you. Updated daily.',
-                    albums: getRandomAlbums(4)
+                    albums: getRandomAlbums(4),
+                    cardType: 'large'
                 }),
                 MusicSection({
                     title: 'Made for You',
                     description: 'Your personal playlists. Updated daily.',
-                    card: SmallAlbumCard,
-                    albums: getRandomAlbums(6)
+                    albums: getRandomAlbums(6),
+                    cardType: 'small'
                 }),
                 MusicSection({
                     title: 'Recently Played',
                     description: 'Your recently played albums and playlists.',
-                    card: SmallAlbumCard,
-                    albums: getRandomAlbums(6)
+                    albums: getRandomAlbums(6),
+                    cardType: 'small'
                 })
             ])
         ])
