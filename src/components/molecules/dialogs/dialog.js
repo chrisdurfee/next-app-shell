@@ -9,7 +9,7 @@ import { Button } from "../../atoms/buttons/buttons.js";
  * @param {object} component
  * @returns {object}
  */
-const render = (component) => { return Builder.render(component, document.body); };
+const render = (component) => { return Builder.render(component, app.appShell.panel); };
 
 /**
  * This will create a dialog header.

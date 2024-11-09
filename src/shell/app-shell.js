@@ -1,4 +1,5 @@
 import { Atom } from '@base-framework/base';
+import { NotificationContainer } from '@components/molecules/notifications/notification-container.js';
 import { AppContent } from './app-content.js';
 
 /**
@@ -13,7 +14,12 @@ const AppContainer = Atom((props, children) =>
 	return {
 		...props,
 		class: 'app-container flex relative h-screen',
-		children
+		children: [
+			new NotificationContainer({
+				cache: 'notifications'
+			}),
+			...children
+		]
 	};
 });
 
