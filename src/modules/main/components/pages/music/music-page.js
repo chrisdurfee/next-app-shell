@@ -14,7 +14,7 @@ const albumsList = [
     { src: 'https://upload.wikimedia.org/wikipedia/en/7/7c/Nine_Inch_Nails_-_The_Fragile.png', title: 'The Fragile', artist: 'Nine Inch Nails' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/f/f8/A.perfect.circle.mer.de.noms.jpg', title: 'Mer de Noms', artist: 'A Perfect Circle' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/d/d8/Warpaint_-_Warpaint_album.jpg', title: 'Warpaint', artist: 'Warpaint' },
-    { src: 'https://upload.wikimedia.org/wikipedia/en/4/41/A_Flourish_and_a_Spoil.jpg', title: 'A Flourish and a Spoil', artist: 'The Districts' },
+    //{ src: 'https://upload.wikimedia.org/wikipedia/en/4/41/A_Flourish_and_a_Spoil.jpg', title: 'A Flourish and a Spoil', artist: 'The Districts' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/6/60/Coldplay_-_A_Rush_of_Blood_to_the_Head_Cover.png', title: 'A Rush of Blood to the Head', artist: 'Coldplay' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/f/fd/Coldplay_-_Parachutes.png', title: 'Parachutes', artist: 'Coldplay' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/b/ba/Radioheadokcomputer.png', title: 'OK Computer', artist: 'Radiohead' },
@@ -76,8 +76,8 @@ const SidebarMenu = () => (
 const LargeAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
         A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
-            Div({ class: 'overflow-hidden rounded-md' }, [
-                Img({ src, alt: title, crossOrigin: 'anonymous', class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
+            Div({ class: 'overflow-hidden rounded-md aspect-[3/4]' }, [
+                Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
             ]),
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
@@ -101,7 +101,7 @@ const SmallAlbumCard = ({ src, title, artist, card = LargeAlbumCard }) => (
     Div({ class: 'space-y-3 w-[150px]' }, [
         A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
             Div({ class: 'overflow-hidden rounded-md' }, [
-                Img({ src, alt: title, crossOrigin: 'anonymous', class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
+                Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
             ]),
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
