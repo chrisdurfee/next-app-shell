@@ -1,4 +1,5 @@
 import { A, Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
+import { Icons } from "@components/icons/icons.js";
 import { ThemeToggle } from "@components/molecules/theme-toggle.js";
 import { DocPage } from "../../doc-page.js";
 
@@ -16,6 +17,11 @@ const ColorCard = (color) =>
             {
                 // copy to clipboard
                 navigator.clipboard.writeText(`${color.class}`);
+                app.notify({
+                    title: "Color copied",
+                    description: `The color '${color.class}' has been copied to your clipboard.`,
+                    icon: Icons.clipboard.checked
+                });
             }
         }),
         Div({ class: 'text-sm text-muted-foreground' }, color.var)

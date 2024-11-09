@@ -1,5 +1,6 @@
 import { A, Div, Footer, H3, Header, I, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { Timer } from "@base-framework/organisms";
 import { Button } from "../../atoms/buttons/buttons.js";
 import { Icons } from "../../icons/icons.js";
 import { DelayComponent } from "../delay-component.js";
@@ -131,12 +132,12 @@ export class Notification extends DelayComponent
      */
     afterSetup()
     {
-        // const duration = this.duration;
-        // if (duration !== 'infinite')
-        // {
-        //     this.timer = new Timer(duration, this.close.bind(this));
-        //     this.timer.start();
-        // }
+        const duration = this.duration;
+        if (duration !== 'infinite')
+        {
+            this.timer = new Timer(duration, this.close.bind(this));
+            this.timer.start();
+        }
     }
 
     /**

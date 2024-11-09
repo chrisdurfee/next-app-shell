@@ -22,6 +22,11 @@ const IconCard = (icon, iconName, path) =>
             {
                 // copy to clipboard
                 navigator.clipboard.writeText(`${path}.${iconName}`);
+                app.notify({
+                    title: "Icon copied",
+                    description: `The icon '${path}.${iconName}' has been copied to your clipboard.`,
+                    icon: Icons.clipboard.checked
+                });
             }
         }, [
             Icon(icon),
