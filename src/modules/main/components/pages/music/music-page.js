@@ -55,10 +55,14 @@ const SidebarMenu = () => (
  * Displays an album cover with artist and title.
  */
 const AlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'flex flex-col items-start p-2 bg-card rounded-lg shadow-sm w-full' }, [
-        Img({ src, alt: title, class: 'w-full h-48 rounded-md object-cover' }),
-        H3({ class: 'mt-2 text-base font-semibold text-card-foreground' }, title),
-        P({ class: 'text-sm text-muted-foreground' }, artist)
+    Div({ class: 'space-y-3 w-[250px]' }, [
+        Div({ class: 'overflow-hidden rounded-md' }, [
+            Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
+        ]),
+        Div({ class: 'space-y-1 text-sm' }, [
+            H3({ class: 'font-medium leading-none' }, title),
+            P({ class: 'text-xs text-muted-foreground' }, artist)
+        ])
     ])
 );
 
@@ -69,9 +73,9 @@ const AlbumCard = ({ src, title, artist }) => (
  */
 const MusicSection = ({ title, description, albums }) => (
     Div({ class: 'mb-8' }, [
-        H2({ class: 'text-xl font-semibold text-foreground mb-2' }, title),
+        H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
         P({ class: 'text-sm text-muted-foreground mb-4' }, description),
-        Div({ class: 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6' }, // Adjusted gap for spacing consistency
+        Div({ class: 'flex space-x-4 pb-4' }, // Adjusted gap for spacing consistency
             albums.map(album => AlbumCard(album))
         )
     ])
