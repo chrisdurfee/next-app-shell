@@ -1,4 +1,4 @@
-import { Div, H2, H3, Img, P } from "@base-framework/atoms";
+import { A, Div, H2, H3, Img, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
@@ -8,10 +8,38 @@ import { FullPage } from "@components/pages/full-page.js";
 
 const PAGE_URL = 'music';
 
+// Album list with cover images
+const albumsList = [
+    { src: 'https://upload.wikimedia.org/wikipedia/en/3/3b/Official_Album_Cover_of_%22The_Downward_Spiral%22_by_Nine_Inch_Nails.png', title: 'The Downward Spiral', artist: 'Nine Inch Nails' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/7/7c/Nine_Inch_Nails_-_The_Fragile.png', title: 'The Fragile', artist: 'Nine Inch Nails' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/f/f8/A.perfect.circle.mer.de.noms.jpg', title: 'Mer de Noms', artist: 'A Perfect Circle' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/d/d8/Warpaint_-_Warpaint_album.jpg', title: 'Warpaint', artist: 'Warpaint' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/4/41/A_Flourish_and_a_Spoil.jpg', title: 'A Flourish and a Spoil', artist: 'The Districts' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/6/60/Coldplay_-_A_Rush_of_Blood_to_the_Head_Cover.png', title: 'A Rush of Blood to the Head', artist: 'Coldplay' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/f/fd/Coldplay_-_Parachutes.png', title: 'Parachutes', artist: 'Coldplay' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/b/ba/Radioheadokcomputer.png', title: 'OK Computer', artist: 'Radiohead' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Tame_Impala_-_Currents.png', title: 'Currents', artist: 'Tame Impala' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/8/81/Arcade_Fire_-_The_Suburbs.jpg', title: 'The Suburbs', artist: 'Arcade Fire' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/1/1e/TheBoyWhoDiedWolf.jpg', title: 'The Boy Who Died Wolf', artist: 'Highly Suspect' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/7/70/MIA_Matangi_Cover.png', title: 'Matangi', artist: 'M.I.A.' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/f/f9/London_Grammar_-_If_You_Wait.png', title: 'If You Wait', artist: 'London Grammar' },
+    //{ src: 'https://upload.wikimedia.org/wikipedia/en/b/b7/NirvanaNevermindalbumcover.jpg', title: 'Nevermind', artist: 'Nirvana' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/8/80/TheOffspringSmashalbumcover.jpg', title: 'Smash', artist: 'The Offspring' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/6/63/Tool_-_Lateralus.jpg', title: 'Lateralus', artist: 'Tool' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Aenima.jpg', title: 'Ænima', artist: 'Tool' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_Hybrid_Theory_Album_Cover.jpg', title: 'Hybrid Theory', artist: 'Linkin Park' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/2/29/BornToDieAlbumCover.png', title: 'Born to Die', artist: 'Lana Del Rey' }
+];
+
+// Utility function to shuffle and select a subset of albums
+const getRandomAlbums = (count) => {
+    return albumsList
+        .sort(() => Math.random() - 0.5)
+        .slice(0, count);
+};
+
 /**
- * Sidebar with Inline Navigation
- *
- * This component displays the sidebar using the InlineNavigation component.
+ * Sidebar with Inline Navigation.
  *
  * @returns {object}
  */
@@ -31,15 +59,6 @@ const SidebarMenu = () => (
                         { label: 'Artists', href: `${PAGE_URL}/artists`, icon: Icons.speaker.default },
                         { label: 'Albums', href: `${PAGE_URL}/albums`, icon: Icons.square.stack }
                     ]
-                },
-                {
-                    group: 'Playlists',
-                    options: [
-                        { label: 'Recently Added', href: `${PAGE_URL}/recently-added`, icon: Icons.list.down },
-                        { label: 'Recently Played', href: `${PAGE_URL}/recently-played`, icon: Icons.list.down },
-                        { label: 'Top Songs', href: `${PAGE_URL}/top-songs`, icon: Icons.list.down },
-                        { label: 'Top Albums', href: `${PAGE_URL}/top-albums`, icon: Icons.list.down }
-                    ]
                 }
             ]
         })
@@ -56,12 +75,16 @@ const SidebarMenu = () => (
  */
 const LargeAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
-        Div({ class: 'overflow-hidden rounded-md' }, [
-            Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
+        A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
+            Div({ class: 'overflow-hidden rounded-md' }, [
+                Img({ src, alt: title, crossOrigin: 'anonymous', class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
+            ]),
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
-            H3({ class: 'font-medium leading-none' }, title),
-            P({ class: 'text-xs text-muted-foreground' }, artist)
+            Div({ class: 'space-y-1 text-sm' }, [
+                H3({ class: 'font-medium leading-none' }, title),
+                P({ class: 'text-xs text-muted-foreground' }, artist)
+            ])
         ])
     ])
 );
@@ -74,22 +97,24 @@ const LargeAlbumCard = ({ src, title, artist }) => (
  * @param {object} props
  * @returns {object}
  */
-const SmallAlbumCard = ({ src, title, artist }) => (
+const SmallAlbumCard = ({ src, title, artist, card = LargeAlbumCard }) => (
     Div({ class: 'space-y-3 w-[150px]' }, [
-        Div({ class: 'overflow-hidden rounded-md' }, [
-            Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
+        A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
+            Div({ class: 'overflow-hidden rounded-md' }, [
+                Img({ src, alt: title, crossOrigin: 'anonymous', class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
+            ]),
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
-            H3({ class: 'font-medium leading-none' }, title),
-            P({ class: 'text-xs text-muted-foreground' }, artist)
+            Div({ class: 'space-y-1 text-sm' }, [
+                H3({ class: 'font-medium leading-none' }, title),
+                P({ class: 'text-xs text-muted-foreground' }, artist)
+            ])
         ])
     ])
 );
 
 /**
  * MusicSection
- *
- * Displays a section of music albums or playlists in a responsive grid.
  *
  * @param {object} props
  * @returns {object}
@@ -99,7 +124,7 @@ const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => 
         H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
         P({ class: 'text-sm text-muted-foreground mb-4' }, description),
         Div({ class: 'overflow-x-auto lg:overflow-x-none' }, [
-            Div({ class: 'inline-flex space-x-4 pb-4' }, // Adjusted gap for spacing consistency
+            Div({ class: 'inline-flex space-x-4 pb-4' },
                 albums.map(album => card(album))
             )
         ])
@@ -109,7 +134,7 @@ const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => 
 /**
  * MusicPage
  *
- * The main page layout combining sidebar, tabs, and content sections.
+ * @returns {object}
  */
 export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
@@ -124,7 +149,6 @@ export const MusicPage = () => (
                             { label: 'Live', value: 'live' }
                         ]
                     }),
-                    // Add music button
                     Div({ class: 'hidden lg:inline-flex' }, [
                         Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus }, 'Add music'),
                     ]),
@@ -135,38 +159,19 @@ export const MusicPage = () => (
                 MusicSection({
                     title: 'Listen Now',
                     description: 'Top picks for you. Updated daily.',
-                    albums: [
-                        { src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
-                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
-                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
-                        { src: 'https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' }
-                    ]
+                    albums: getRandomAlbums(4)
                 }),
                 MusicSection({
                     title: 'Made for You',
                     description: 'Your personal playlists. Updated daily.',
                     card: SmallAlbumCard,
-                    albums: [
-                        { src: 'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80', title: 'Thinking Components', artist: 'Lena Logic' },
-                        { src: 'https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80', title: 'Functional Fury', artist: 'Beth Binary' },
-                        { src: 'https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
-                        { src: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' },
-                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
-                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
-                    ]
+                    albums: getRandomAlbums(6)
                 }),
                 MusicSection({
                     title: 'Recently Played',
                     description: 'Your recently played albums and playlists.',
                     card: SmallAlbumCard,
-                    albums: [
-                        { src: 'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80', title: 'Thinking Components', artist: 'Lena Logic' },
-                        { src: 'https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80', title: 'Functional Fury', artist: 'Beth Binary' },
-                        { src: 'https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
-                        { src: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' },
-                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
-                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
-                    ]
+                    albums: getRandomAlbums(6)
                 })
             ])
         ])
