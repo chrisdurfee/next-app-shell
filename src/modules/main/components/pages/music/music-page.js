@@ -1,9 +1,9 @@
-import { Div, H2, H3, Img, P, Span } from "@base-framework/atoms";
+import { Div, H2, H3, Img, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
-import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
+import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { FullPage } from "@components/pages/full-page.js";
 
 const PAGE_URL = 'music';
@@ -100,59 +100,38 @@ export const MusicPage = () => (
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full border-t' }, [
             SidebarMenu(),
             Div({ class: 'col-span-4 p-6 lg:border-l bg-background overflow-y-auto' }, [
-                // ButtonTab for Music, Podcasts, and Live
-                new ButtonTab({
-                    class: 'mb-6',
-                    options: [
-                        {
-                            label: 'Music',
-                            value: 'music',
-                            layout: TabContent({}, [
-                                MusicSection({
-                                    title: 'Listen Now',
-                                    description: 'Top picks for you. Updated daily.',
-                                    albums: [
-                                        { src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
-                                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
-                                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
-                                        { src: 'https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' }
-                                    ]
-                                }),
-                                MusicSection({
-                                    title: 'Made for You',
-                                    description: 'Your personal playlists. Updated daily.',
-                                    albums: [
-                                        { src: 'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80', title: 'Thinking Components', artist: 'Lena Logic' },
-                                        { src: 'https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80', title: 'Functional Fury', artist: 'Beth Binary' },
-                                        { src: 'https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
-                                        { src: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' }
-                                    ]
-                                })
-                            ])
-                        },
-                        {
-                            label: 'Podcasts',
-                            value: 'podcasts',
-                            layout: TabContent({}, [
-                                H2({ class: 'text-xl font-semibold text-foreground mb-2' }, 'Popular Podcasts'),
-                                P({ class: 'text-sm text-muted-foreground mb-4' }, 'Listen to popular podcasts, updated weekly.')
-                            ])
-                        },
-                        {
-                            label: 'Live',
-                            value: 'live',
-                            layout: TabContent({}, [
-                                H2({ class: 'text-xl font-semibold text-foreground mb-2' }, 'Live Shows'),
-                                P({ class: 'text-sm text-muted-foreground mb-4' }, 'Join live shows and interact with hosts.')
-                            ])
-                        }
+                Div({ class: 'space-between flex flex-auto items-center' }, [
+                    new TabGroup({
+                        class: 'mb-6',
+                        options: [
+                            { label: 'Music', value: 'music' },
+                            { label: 'Podcasts', value: 'podcasts' },
+                            { label: 'Live', value: 'live' }
+                        ]
+                    }),
+                    // Add music button
+                    Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8', icon: Icons.circlePlus }, 'Add music')
+                ]),
+                MusicSection({
+                    title: 'Listen Now',
+                    description: 'Top picks for you. Updated daily.',
+                    albums: [
+                        { src: 'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
+                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
+                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
+                        { src: 'https://images.unsplash.com/photo-1490300472339-79e4adc6be4a?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' }
                     ]
                 }),
-                // Add music button
-                Button({ variant: 'ghost', class: 'text-muted-foreground mb-8' }, [
-                    Span({ class: 'mr-2' }, '+'),
-                    'Add music'
-                ])
+                MusicSection({
+                    title: 'Made for You',
+                    description: 'Your personal playlists. Updated daily.',
+                    albums: [
+                        { src: 'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80', title: 'Thinking Components', artist: 'Lena Logic' },
+                        { src: 'https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80', title: 'Functional Fury', artist: 'Beth Binary' },
+                        { src: 'https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
+                        { src: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' }
+                    ]
+                })
             ])
         ])
     ])
