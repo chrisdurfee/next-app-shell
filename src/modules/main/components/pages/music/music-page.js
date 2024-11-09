@@ -1,5 +1,4 @@
 import { Div, H2, H3, Img, P } from "@base-framework/atoms";
-import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
@@ -13,6 +12,8 @@ const PAGE_URL = 'music';
  * Sidebar with Inline Navigation
  *
  * This component displays the sidebar using the InlineNavigation component.
+ *
+ * @returns {object}
  */
 const SidebarMenu = () => (
     Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar h-full' }, [
@@ -49,9 +50,12 @@ const SidebarMenu = () => (
  * AlbumCard
  *
  * Displays an album cover with artist and title.
+ *
+ * @param {object} props
+ * @returns {object}
  */
 const LargeAlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'space-y-3 w-[250px]' }, [
+    Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
             Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
         ]),
@@ -66,6 +70,9 @@ const LargeAlbumCard = ({ src, title, artist }) => (
  * AlbumCard
  *
  * Displays an album cover with artist and title.
+ *
+ * @param {object} props
+ * @returns {object}
  */
 const SmallAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[150px]' }, [
@@ -83,6 +90,9 @@ const SmallAlbumCard = ({ src, title, artist }) => (
  * MusicSection
  *
  * Displays a section of music albums or playlists in a responsive grid.
+ *
+ * @param {object} props
+ * @returns {object}
  */
 const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => (
     Div({ class: 'my-8' }, [
@@ -95,15 +105,6 @@ const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => 
         ])
     ])
 );
-
-/**
- * TabContent Component
- *
- * A simple container for the tab content.
- */
-const TabContent = Atom((props, children) => (
-    Div({ class: 'py-4' }, children)
-));
 
 /**
  * MusicPage
