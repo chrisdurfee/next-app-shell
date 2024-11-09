@@ -154,6 +154,19 @@ export const MusicPage = () => (
                         { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
                         { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
                     ]
+                }),
+                MusicSection({
+                    title: 'Recently Played',
+                    description: 'Your recently played albums and playlists.',
+                    card: SmallAlbumCard,
+                    albums: [
+                        { src: 'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80', title: 'Thinking Components', artist: 'Lena Logic' },
+                        { src: 'https://images.unsplash.com/photo-1513745405825-efaf9a49315f?w=300&dpr=2&q=80', title: 'Functional Fury', artist: 'Beth Binary' },
+                        { src: 'https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=300&dpr=2&q=80', title: 'React Rendezvous', artist: 'Ethan Byte' },
+                        { src: 'https://images.unsplash.com/photo-1446185250204-f94591f7d702?w=300&dpr=2&q=80', title: 'Stateful Symphony', artist: 'Beth Binary' },
+                        { src: 'https://images.unsplash.com/photo-1468817814611-b7edf94b5d60?w=300&dpr=2&q=80', title: 'Async Awakenings', artist: 'Nina Netcode' },
+                        { src: 'https://images.unsplash.com/photo-1528143358888-6d3c7f67bd5d?w=300&dpr=2&q=80', title: 'The Art of Reusability', artist: 'Lena Logic' },
+                    ]
                 })
             ])
         ])
