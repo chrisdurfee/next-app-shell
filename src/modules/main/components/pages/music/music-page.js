@@ -1,6 +1,7 @@
 import { Div, H2, H3, Img, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
@@ -113,10 +114,9 @@ export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 p-6 lg:border-l px-4 py-6 lg:px-8' }, [
+            Div({ class: 'col-span-4 p-6 px-4 py-6 lg:px-8 mx-auto max-w-[2400px]' }, [
                 Div({ class: 'justify-between flex flex-auto items-center' }, [
                     new TabGroup({
-                        class: 'mb-6',
                         options: [
                             { label: 'Music', value: 'music' },
                             { label: 'Podcasts', value: 'podcasts' },
@@ -124,7 +124,12 @@ export const MusicPage = () => (
                         ]
                     }),
                     // Add music button
-                    Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8', icon: Icons.circlePlus }, 'Add music')
+                    Div({ class: 'hidden lg:inline-flex' }, [
+                        Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus }, 'Add music'),
+                    ]),
+                    Div({ class: 'flex lg:hidden' }, [
+                        Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
+                    ])
                 ]),
                 MusicSection({
                     title: 'Listen Now',
