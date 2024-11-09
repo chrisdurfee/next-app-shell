@@ -11,6 +11,7 @@ import { MainFullContainPage } from './components/pages/main-full-contain-page.j
 const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
+    { path: '/music*', import: import('./components/pages/music/music-page.js'), title: 'Music' },
     { path: '/full-contain*', component: MainFullContainPage(), title: 'Full Contain Example' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
     { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
@@ -31,12 +32,12 @@ const routes = Module.convertRoutes(
 const links =
 [
     { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true },
+    { label: 'Music', href: 'music', icon: Icons.music },
     { label: 'Messages', href: 'aside', icon: Icons.chat.text, mobileOrder: 2 },
     { label: 'Calendar', href: 'bside', icon: Icons.calendar.default, mobileOrder: 3 },
     { label: 'Reviews', href: 'full-contain', icon: Icons.star, mobileOrder: 4 },
     { label: 'Map', href: 'full', icon: Icons.map },
     { label: 'Help', href: 'test', icon: Icons.help },
-    { label: 'Music', href: 'messages', icon: Icons.music },
     {
         label: 'Photo',
         icon: Icons.photo,
