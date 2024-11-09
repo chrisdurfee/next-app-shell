@@ -74,14 +74,6 @@ const links =
             { label: 'ipsum dolore', href: 'gallery/ipsum-dolore' },
             { label: 'enim consectetur', href: 'gallery/enim-consectetur' }
         ]
-    },
-    {
-        group: 'Mail',
-        options: [
-            { label: 'Inbox', href: 'mail/inbox', icon: Icons.archive.box.default },
-            { label: 'Sent', href: 'mail/sent', icon: Icons.archive.box.arrow },
-            { label: 'Spam', href: 'mail/spam', icon: Icons.archive.box.x }
-        ]
     }
 ];
 
