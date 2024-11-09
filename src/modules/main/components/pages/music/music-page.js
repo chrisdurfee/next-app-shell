@@ -114,7 +114,7 @@ export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 p-6 px-4 py-6 lg:px-8 mx-auto max-w-[2400px]' }, [
+            Div({ class: 'col-span-4 p-6 px-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 Div({ class: 'justify-between flex flex-auto items-center' }, [
                     new TabGroup({
                         options: [
