@@ -1,5 +1,18 @@
-import { Div, H2, P, Section } from "@base-framework/atoms";
+import { Div, H2, Header, P, Section } from "@base-framework/atoms";
 import { AlbumCard, LargeAlbumCard, LargeAlbumSkeleton, SmallAlbumCard, SmallAlbumSkeleton } from "./album-cards.js";
+
+/**
+ * This will create a section header.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const SectionHeader = ({ title, description }) => (
+    Header([
+        H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
+        P({ class: 'text-sm text-muted-foreground mb-4' }, description)
+    ])
+);
 
 /**
  * MusicSection
@@ -15,8 +28,7 @@ export const MusicSection = ({ title, description, albums, cardType = 'large' })
     const albumCard = cardType === 'large' ? LargeAlbumCard : SmallAlbumCard;
 
     return Section({ class: 'my-8' }, [
-        H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
-        P({ class: 'text-sm text-muted-foreground mb-4' }, description),
+        SectionHeader({ title, description }),
         Div({ class: 'overflow-x-auto lg:overflow-x-none' }, [
             Div({
                 class: 'inline-flex space-x-4 pb-4',
