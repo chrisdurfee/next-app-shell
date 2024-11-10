@@ -10,11 +10,10 @@ import { Div, P } from "@base-framework/atoms";
  */
 const CalendarDay = ({ day, isCurrentMonth, events = [] }) => (
     Div({
-        class: `flex flex-col items-start justify-start p-2 rounded-md ${isCurrentMonth ? 'bg-background' : 'bg-muted text-muted-foreground'}`
+        class: `flex flex-col p-2 h-20 rounded-md ${isCurrentMonth ? '' : 'bg-muted text-muted-foreground'}`
     }, [
         P({ class: 'text-sm font-medium' }, String(day)), // Day number
-        // Render events if needed
-        // ...events.map(event => P({ class: 'text-xs truncate text-accent font-semibold mt-1' }, event))
+        //...events.map(event => P({ class: 'text-xs truncate text-accent font-semibold mt-1' }, event))
     ])
 );
 
@@ -27,17 +26,15 @@ const CalendarDay = ({ day, isCurrentMonth, events = [] }) => (
  */
 export const CalendarGrid = () => (
     Div({ class: 'grid grid-cols-7 gap-2 h-full' }, [
-        // Days of the week header
+        // Days of the week header with adjusted height
         ...['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day =>
-            P({ class: 'text-center font-semibold text-muted-foreground' }, day)
+            P({ class: 'text-center font-semibold text-muted-foreground py-1 text-xs' }, day)
         ),
         // Placeholder data for days of the month
         ...Array.from({ length: 42 }, (_, index) => {
             const day = index + 1 - new Date().getDay(); // Calculate day
             const isCurrentMonth = day > 0 && day <= 31; // Simplified check for March
-            return Div({ class: 'aspect-square w-full' }, [ // Ensure square shape and full width
-                CalendarDay({ day: isCurrentMonth ? day : '', isCurrentMonth })
-            ]);
+            return CalendarDay({ day: isCurrentMonth ? day : '', isCurrentMonth });
         })
     ])
 );
