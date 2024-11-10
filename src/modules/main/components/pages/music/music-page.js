@@ -83,9 +83,9 @@ const MusicSections = () => (
  */
 export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
-        Div({ class: 'flex flex-auto flex-row h-full lg:border-t' }, [
+        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+            Div({ class: 'col-span-4 p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 MusicSections()
             ])
         ])

@@ -10,7 +10,7 @@ const PAGE_URL = 'music';
  * @returns {object}
  */
 export const SidebarMenu = () => (
-    Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar min-w-[250px] max-w-[300px] h-full' }, [
+    Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar max-w-[300px] h-full' }, [
         new InlineNavigation({
             options: [
                 { label: 'Listen Now', href: `${PAGE_URL}/listen-now`, icon: Icons.playing },
