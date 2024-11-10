@@ -76,15 +76,14 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
         {
             class: `
         flex flex-auto flex-col p-2 rounded-md
-        ${getClasses(isToday, currentDate, isOutsideMonth, date)}
-        hover:bg-accent hover:text-accent-foreground focus:z-10
+        hover:bg-accent hover:text-accent-foreground focus:z-10 lg:items-center
       `,
             disabled: day === null,
             'aria-label': day ? `Day ${day}` : null,
             click: () => select(date),
         },
         [
-            P({ class: 'text-sm font-medium' }, String(day))
+            P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
         ]
     )
 );

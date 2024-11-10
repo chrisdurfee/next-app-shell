@@ -18,7 +18,7 @@ import { pad } from "./utils.js";
  */
 const CalendarHeader = (props) => (
     Div({ class: 'justify-between flex items-center mb-4' }, [
-        H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, '[[monthName]] [[current.year]]'),
+        H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight md:pl-4' }, '[[monthName]] [[current.year]]'),
         Div({ class: 'flex items-center space-x-2' }, [
             Button({ variant: 'icon', icon: Icons.chevron.single.left, click: props.previous }),
             Button({ variant: 'icon', icon: Icons.chevron.single.right, click: props.next }),
@@ -196,7 +196,7 @@ export const CalendarPage = () => (
         render()
         {
             return FullTemplate([
-                Div({ class: 'px-4 flex flex-auto flex-col pt-[80px] sm:pt-0' }, [
+                Div({ class: 'px-4 flex flex-auto flex-col pt-[80px] md:pt-5 md:px-0' }, [
                     Div({ class: 'flex flex-auto flex-col w-full h-full' }, [
                         MonthCalendar({
                             current: this.data.current,

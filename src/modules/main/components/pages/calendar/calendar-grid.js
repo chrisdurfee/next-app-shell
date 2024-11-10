@@ -121,7 +121,9 @@ const HeaderCells = () =>
  */
 export const CalendarGrid = (props) => (
     Div({ class: 'flex flex-auto flex-col w-full', onSet: ['currentDate', () => [
-            Div({ class: 'grid grid-cols-7' }, HeaderCells()),
+            Div({ class: 'flex flex-col lg:border-b' }, [
+                Div({ class: 'grid grid-cols-7' }, HeaderCells())
+            ]),
             Div({ class: 'grid grid-cols-7 h-full' }, CalendarCells(
                 props.current,
                 props.today,
