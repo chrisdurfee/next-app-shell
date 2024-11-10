@@ -1,0 +1,25 @@
+/*
+ * This will set the app padding to support the safe area.
+ */
+ .overlay {
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/**
+ * This will set the app padding bottom on partrait
+ * to support the safe area.
+ */
+@media (max-width: 640px) {
+
+    .overlay {
+		padding-bottom: calc(env(safe-area-inset-bottom));
+	}
+}
+
+@media (min-width: 641px) {
+
+    .overlay {
+		padding-left: env(safe-area-inset-left);
+		padding-right: env(safe-area-inset-right);
+	}
+}
