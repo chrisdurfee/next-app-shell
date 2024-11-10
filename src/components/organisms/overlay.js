@@ -92,15 +92,16 @@ export class Overlay extends Component
     }
 
     /**
-     * This will override the set up to use the body.
-     *
-     * @param {object} container
-     */
-    setup(container)
-    {
-        this.container = app.appShell.panel;
-        this.initialize();
-    }
+	 * This will setup and render the component.
+	 *
+	 * @param {object} container
+	 * @returns {void}
+	 */
+	setup(container)
+	{
+		this.container = app.appShell.panel;
+		this.initialize();
+	}
 
     /**
      * This can be overriden to return routes.
