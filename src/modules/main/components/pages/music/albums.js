@@ -24,6 +24,8 @@ const ALBUMS = [
     { src: 'https://upload.wikimedia.org/wikipedia/en/2/29/BornToDieAlbumCover.png', title: 'Born to Die', artist: 'Lana Del Rey' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/2/2f/How_To_Be_A_Human_Being_cover_art.jpg', title: 'How to Be a Human Being', artist: 'Glass Animals' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/5/54/Tame_Impala_-_The_Slow_Rush.png', title: 'The Slow Rush', artist: 'Tame Impala' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/5/52/Bangerz.png', title: 'Bangerz', artist: 'Miley Cyrus' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/7/7e/Madison_Beer_Life_Support.png', title: 'Life Support', artist: 'Madison Beer' },
 ];
 
 /**
