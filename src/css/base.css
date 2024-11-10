@@ -124,6 +124,10 @@ a:active {
 @media (max-width: 640px) {
 
 	.app-container {
+		padding-bottom: calc(env(safe-area-inset-bottom));
+	}
+
+	.app-container.authed {
 		padding-bottom: calc(56px + env(safe-area-inset-bottom));
 	}
 }

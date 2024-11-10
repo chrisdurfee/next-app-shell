@@ -23,7 +23,7 @@ export const SectionHeader = Atom(({ title, description}) => (
  * @returns {object}
  */
 export const DocSection = Atom((props, children) => (
-    Section({ class: 'py-4' }, [
+    Section({ class: 'grid py-4' }, [
         SectionHeader({
             title: props.title,
             description: props.description

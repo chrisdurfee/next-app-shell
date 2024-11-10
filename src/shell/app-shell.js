@@ -14,6 +14,7 @@ const AppContainer = Atom((props, children) =>
 	return {
 		...props,
 		class: 'app-container flex flex-auto relative',
+		onState: ['isSignedIn', { authed: true }],
 		children: [
 			new NotificationContainer({
 				cache: 'notifications'

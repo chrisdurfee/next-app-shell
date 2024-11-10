@@ -19,6 +19,6 @@ export class FullscreenPage extends Page
     render()
     {
         const className = this.class ?? '';
-        return Div({ class: `flex flex-col h-screen ${className}` }, this.children);
+        return Div({ class: `flex flex-col flex-auto ${className}` }, this.children);
     }
 }
