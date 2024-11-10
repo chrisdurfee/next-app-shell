@@ -58,7 +58,19 @@ const MusicSections = () => (
             description: 'Your recently played albums and playlists.',
             albums: getRandomAlbums(6),
             cardType: 'small'
-        })
+        }),
+        MusicSection({
+            title: 'Popular Playlists',
+            description: 'Popular playlists from around the world.',
+            albums: getRandomAlbums(6),
+            cardType: 'small'
+        }),
+        MusicSection({
+            title: 'New Releases',
+            description: 'New albums and singles from your favorite artists.',
+            albums: getRandomAlbums(6),
+            cardType: 'small'
+        }),
     ])
 );
 
