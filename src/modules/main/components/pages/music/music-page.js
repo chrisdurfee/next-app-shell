@@ -25,7 +25,7 @@ const MusicHeader = () => (
         Div({ class: 'hidden lg:inline-flex' }, [
             Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus }, 'Add music'),
         ]),
-        Div({ class: 'flex lg:hidden' }, [
+        Div({ class: 'flex lg:hidden mr-4' }, [
             Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
         ])
     ])
@@ -85,7 +85,7 @@ export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 p-6 px-4 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+            Div({ class: 'col-span-4 p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 MusicSections()
             ])
         ])
