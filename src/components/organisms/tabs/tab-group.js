@@ -58,7 +58,7 @@ const Navigation = (props) => (
  * @class
  * @extends Component
  */
-export default class TabGroup extends Component
+export class TabGroup extends Component
 {
     /**
      * This will render the component.
@@ -99,3 +99,5 @@ export default class TabGroup extends Component
 		};
 	}
 }
+
+export default TabGroup;

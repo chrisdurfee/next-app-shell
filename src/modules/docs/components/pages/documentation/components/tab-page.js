@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Panel } from "@components/organisms/panel.js";
 import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
+import { TabGroup } from "@components/organisms/tabs/tab-group.js";
 import { Tab } from "@components/organisms/tabs/tab.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -154,7 +155,30 @@ export const ExampleTab = () => (
         ]
     })
 );`
-            })
+            }),
+
+            DocSection({
+                title: 'Tab Group',
+                description: 'This is a tab group. The buttons update the state.',
+                preview: [
+                    new TabGroup({
+                        options: [
+                            { label: 'Music', value: 'music' },
+                            { label: 'Podcasts', value: 'podcasts' },
+                            { label: 'Live', value: 'live' }
+                        ]
+                    })
+                ],
+                code: `import { TabGroup } from "@components/organisms/tabs/tab-group.js";
+
+new TabGroup({
+    options: [
+        { label: 'Music', value: 'music' },
+        { label: 'Podcasts', value: 'podcasts' },
+        { label: 'Live', value: 'live' }
+    ]
+})`,
+            }),
         ]
     )
 );
