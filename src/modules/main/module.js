@@ -11,7 +11,7 @@ const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
     { path: '/music*', import: import('./components/pages/music/music-page.js'), title: 'Music' },
-    { path: '/calendar*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
+    { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
     { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
 
