@@ -108,7 +108,7 @@ const HeaderCells = () =>
 {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     return daysOfWeek.map((day) =>
-        P({ class: 'text-center font-semibold text-muted-foreground py-1 text-xs' }, day));
+        P({ class: 'text-center font-semibold text-muted-foreground py-1 m-0 mb-2 text-xs' }, day));
 };
 
 /**
