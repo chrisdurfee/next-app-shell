@@ -129,16 +129,15 @@ export const AlbumCard = Jot(
         return Div({
             onState: ['loaded', (loaded) =>
             {
-                if (!loaded)
-                {
-                    return skeleton();
-                }
-
-                return albumCard({
-                    src,
-                    title,
-                    artist
-                })
+                return (!loaded)
+                ?
+                    skeleton()
+                :
+                    albumCard({
+                        src,
+                        title,
+                        artist
+                    });
             }]
         });
     }

@@ -21,7 +21,8 @@ const ALBUMS = [
     { src: 'https://upload.wikimedia.org/wikipedia/en/6/63/Tool_-_Lateralus.jpg', title: 'Lateralus', artist: 'Tool' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Aenima.jpg', title: 'Ænima', artist: 'Tool' },
     { src: 'https://upload.wikimedia.org/wikipedia/en/2/2a/Linkin_Park_Hybrid_Theory_Album_Cover.jpg', title: 'Hybrid Theory', artist: 'Linkin Park' },
-    { src: 'https://upload.wikimedia.org/wikipedia/en/2/29/BornToDieAlbumCover.png', title: 'Born to Die', artist: 'Lana Del Rey' }
+    { src: 'https://upload.wikimedia.org/wikipedia/en/2/29/BornToDieAlbumCover.png', title: 'Born to Die', artist: 'Lana Del Rey' },
+    { src: 'https://upload.wikimedia.org/wikipedia/en/2/2f/How_To_Be_A_Human_Being_cover_art.jpg', title: 'How to Be a Human Being', artist: 'Glass Animals' },
 ];
 
 /**
