@@ -1,6 +1,7 @@
-import { I } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
-import { A, Div } from "../atoms/atoms.js";
+import { Div } from "../atoms/atoms.js";
+import { Button } from "../atoms/buttons/buttons.js";
+import { Icon } from "../atoms/icon.js";
 import { Icons } from "../icons/icons.js";
 
 /**
@@ -12,10 +13,19 @@ import { Icons } from "../icons/icons.js";
 const BackButton = Atom((props) =>
 {
     return Div({ class: 'bttn icon m-4' }, [
-        A({ href: props.href || '/', cache: 'backArrow' }, [
-            I({ html: Icons.arrows.left})
+        Button({
+            variant: 'icon',
+            class: 'back-button',
+            click: () => window.history.back()
+        }, [
+            Icon(Icons.arrows.left)
         ])
     ]);
+    // return Div({ class: 'bttn icon m-4' }, [
+    //     A({ href: props.href || '/', cache: 'backArrow' }, [
+    //         I({ html: Icons.arrows.left})
+    //     ])
+    // ]);
 });
 
 /**
@@ -99,7 +109,7 @@ export class Overlay extends Component
 	 */
 	setup(container)
 	{
-		this.container = app.appShell.panel;
+		this.container = document.body;
 		this.initialize();
 	}
 

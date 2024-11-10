@@ -1,4 +1,5 @@
 import { Icons } from '@components/icons/icons.js';
+import { Overlay } from '@components/organisms/overlay.js';
 import { Module } from '../module/module.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
@@ -10,7 +11,7 @@ import { MainBsidePage } from './components/pages/main-bside-page.js';
 const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
-    { path: '/music/album/:album?*', import: import('@components/organisms/overlay.js'), title: 'Album' },
+    { path: '/music/album/:album?*', component: new Overlay(), title: 'Album' },
     { path: '/music*', import: import('./components/pages/music/music-page.js'), title: 'Music' },
     { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
