@@ -11,7 +11,7 @@ import { Icons } from "../icons/icons.js";
  */
 const BackButton = Atom((props) =>
 {
-    return Div({ class: 'back' }, [
+    return Div({ class: 'bttn icon m-4' }, [
         A({ href: props.href || '/', cache: 'backArrow' }, [
             I({ html: Icons.arrows.left})
         ])
@@ -71,13 +71,14 @@ export class Overlay extends Component
      */
     getReferralPath()
     {
-        const route = this.route;
-        if (!route)
+        let route = this.route;
+        if(!route)
         {
             return null;
         }
 
-        return route.referralPath;
+        let referralPath = route.referralPath;
+        return (referralPath !== window.location.pathname)? referralPath : null;
     }
 
     /**
@@ -87,7 +88,18 @@ export class Overlay extends Component
      */
     getOverlayType()
     {
-        return 'overlay flex flex-auto absolute top-[60px] left-0 bottom-0 right-0 flex-col bg-background z-20 overscroll-none lg:left-[64px] lg:top-0 ' + (this.type || '');
+        return 'overlay flex flex-auto fixed top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 overscroll-none lg:left-[64px] lg:top-0 ' + (this.type || '');
+    }
+
+    /**
+     * This will override the set up to use the body.
+     *
+     * @param {object} container
+     */
+    setup(container)
+    {
+        this.container = app.appShell.panel;
+        this.initialize();
     }
 
     /**
@@ -154,3 +166,5 @@ export class Overlay extends Component
         return this.children || null;
     }
 }
+
+export default Overlay;

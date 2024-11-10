@@ -10,6 +10,7 @@ import { MainBsidePage } from './components/pages/main-bside-page.js';
 const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
+    { path: '/music/album/:album*', import: import('@components/organisms/overlay.js'), title: 'Album' },
     { path: '/music*', import: import('./components/pages/music/music-page.js'), title: 'Music' },
     { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },

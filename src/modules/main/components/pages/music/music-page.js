@@ -2,7 +2,6 @@ import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
-import { Overlay } from "@components/organisms/overlay.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { FullPage } from "@components/pages/full-page.js";
 import { getRandomAlbums } from "./albums.js";
@@ -75,14 +74,6 @@ const MusicSections = () => (
     ])
 );
 
-const route = [
-    {
-        uri: '/music/:album',
-        component: new Overlay(),
-        title: ':album'
-    }
-];
-
 /**
  * MusicPage
  *
@@ -97,14 +88,7 @@ export const MusicPage = () => (
             Div({ class: 'col-span-4 p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 MusicSections()
             ])
-        ]),
-        Div({ class: 'test', route: [
-            {
-                uri: 'music/album/:album',
-                component: new Overlay(),
-                title: ':album'
-            }
-        ] })
+        ])
     ])
 );
 
