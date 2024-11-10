@@ -100,8 +100,7 @@ export const CalendarPage = () => (
          */
         getMonthName(month)
         {
-            const monthNames = DateTime.monthNames;
-            return monthNames[month];
+            return DateTime.getMonthName(month);
         },
 
         /**
