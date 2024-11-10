@@ -117,13 +117,35 @@ export const AlbumCard = Jot(
     state: { loaded: false },
 
     /**
+     * This will get the cards by type.
+     *
+     * @returns {object}
+     */
+    getCardsByType()
+    {
+        if (this.cardType === 'large')
+        {
+            return { skeleton: LargeAlbumSkeleton, albumCard: LargeAlbumCard };
+        }
+
+        return { skeleton: SmallAlbumSkeleton, albumCard: SmallAlbumCard };
+    },
+
+    /**
      * This will render the AlbumCard component.
      *
      * @returns {object}
      */
     render()
     {
-        const { src, title, artist, skeleton, albumCard } = this;
+        const { src, title, artist } = this;
+        const { skeleton, albumCard } = this.getCardsByType();
+
+        /**
+         * This will load the image and set the loaded state to true
+         * when the image is loaded. This will swap the skeleton
+         * with the album card.
+         */
         loadImage(src, () => this.state.loaded = true);
 
         return Div({
