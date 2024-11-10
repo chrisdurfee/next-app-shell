@@ -43,7 +43,7 @@ export const SmallAlbumSkeleton = () => (
 export const LargeAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
         Div({
-            class: 'overflow-hidden rounded-md'
+            class: 'overflow-hidden rounded-md aspect-[3/4] w-full'
         }, [
             A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
                 Img({
@@ -69,7 +69,7 @@ export const LargeAlbumCard = ({ src, title, artist }) => (
 export const SmallAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[150px]' }, [
         Div({
-            class: 'overflow-hidden rounded-md'
+            class: 'overflow-hidden rounded-md w-full aspect-square'
         }, [
             A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
                 Img({
