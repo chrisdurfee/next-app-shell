@@ -1,4 +1,5 @@
 import { Atom, Component } from "@base-framework/base";
+import MusicPage from "../../modules/main/components/pages/music/music-page.js";
 import { Div } from "../atoms/atoms.js";
 import { Button } from "../atoms/buttons/buttons.js";
 import { Icon } from "../atoms/icon.js";
@@ -21,11 +22,6 @@ const BackButton = Atom((props) =>
             Icon(Icons.arrows.left)
         ])
     ]);
-    // return Div({ class: 'bttn icon m-4' }, [
-    //     A({ href: props.href || '/', cache: 'backArrow' }, [
-    //         I({ html: Icons.arrows.left})
-    //     ])
-    // ]);
 });
 
 /**
@@ -98,7 +94,7 @@ export class Overlay extends Component
      */
     getOverlayType()
     {
-        return 'overlay flex flex-auto fixed top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 overscroll-none lg:left-[64px] lg:top-0 ' + (this.type || '');
+        return 'overlay flex flex-auto fixed top-[0px] left-0 bottom-0 right-0 flex-col bg-background overflow-x-auto z-20 lg:left-[64px] lg:top-0 ' + (this.type || '');
     }
 
     /**
@@ -174,7 +170,7 @@ export class Overlay extends Component
      */
     getBodyContents()
     {
-        return this.children || null;
+        return MusicPage();
     }
 }
 
