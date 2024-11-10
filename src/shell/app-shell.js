@@ -13,7 +13,7 @@ const AppContainer = Atom((props, children) =>
 {
 	return {
 		...props,
-		class: 'app-container flex relative h-screen',
+		class: 'app-container flex flex-auto relative',
 		children: [
 			new NotificationContainer({
 				cache: 'notifications'
