@@ -13,7 +13,7 @@ import { MobileHeader } from './navigation/mobile-header.js';
 const ActivePanelContainer = Atom((props, children) =>
 {
 	return Main({
-		class: 'active-panel-container flex flex-auto relative z-0 pb-[80px] md:pb-0',
+		class: 'active-panel-container flex flex-auto relative z-0 min-h-screen pb-[70px] md:pb-0',
 		...props,
 		children
 	});
