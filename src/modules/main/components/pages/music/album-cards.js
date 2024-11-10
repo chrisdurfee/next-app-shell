@@ -13,9 +13,9 @@ const PAGE_URL = 'music';
  */
 export const LargeAlbumSkeleton = () => (
     Div({ class: 'space-y-2 w-[180px] md:w-[250px]' }, [
-        Skeleton({ width: 'w-full', height: 'h-[300px]', shape: 'rectangle', class: 'rounded-md' }),
-        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }), // Placeholder for title
-        Skeleton({ width: 'w-1/2', height: 'h-[14px]' }) // Placeholder for artist
+        Skeleton({ width: 'w-full', height: 'h-[240px] md:h-[333.33px]', shape: 'rectangle', class: 'rounded-md' }),
+        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }),
+        Skeleton({ width: 'w-1/2', height: 'h-[14px]' })
     ])
 );
 
@@ -29,8 +29,8 @@ export const LargeAlbumSkeleton = () => (
 export const SmallAlbumSkeleton = () => (
     Div({ class: 'space-y-2 w-[150px]' }, [
         Skeleton({ width: 'w-full', height: 'h-[150px]', shape: 'square', class: 'rounded-md' }),
-        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }), // Placeholder for title
-        Skeleton({ width: 'w-1/2', height: 'h-[14px]' }) // Placeholder for artist
+        Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }),
+        Skeleton({ width: 'w-1/2', height: 'h-[14px]' })
     ])
 );
 
@@ -49,7 +49,7 @@ export const LargeAlbumCard = ({ src, title, artist }) => (
                 Img({
                     src,
                     alt: title,
-                    class: 'h-[300px] w-auto object-cover transition-all hover:scale-105 aspect-[3/4]'
+                    class: 'w-auto object-cover transition-all hover:scale-105 aspect-[3/4]'
                 })
             ])
         ]),
@@ -75,7 +75,7 @@ export const SmallAlbumCard = ({ src, title, artist }) => (
                 Img({
                     src,
                     alt: title,
-                    class: 'h-[150px] w-auto object-cover transition-all hover:scale-105 aspect-square'
+                    class: 'w-auto object-cover transition-all hover:scale-105 aspect-square'
                 })
             ])
         ]),

@@ -25,6 +25,15 @@ export const SidebarMenu = () => (
                         { label: 'Artists', href: `${PAGE_URL}/artists`, icon: Icons.speaker.default },
                         { label: 'Albums', href: `${PAGE_URL}/albums`, icon: Icons.square.stack }
                     ]
+                },
+                {
+                    group: 'Playlists',
+                    options: [
+                        { label: 'Recently Added', href: `${PAGE_URL}/recently-added`, icon: Icons.list.down },
+                        { label: 'Recently Played', href: `${PAGE_URL}/recently-played`, icon: Icons.list.down },
+                        { label: 'Top Songs', href: `${PAGE_URL}/top-songs`, icon: Icons.list.down },
+                        { label: 'Top Albums', href: `${PAGE_URL}/top-albums`, icon: Icons.list.down }
+                    ]
                 }
             ]
         })
