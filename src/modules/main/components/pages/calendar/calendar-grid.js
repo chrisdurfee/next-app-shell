@@ -12,10 +12,8 @@ const CalendarDay = ({ day, isCurrentMonth, events = [] }) => (
     Div({
         class: `flex flex-col p-2 h-20 rounded-md ${isCurrentMonth ? 'bg-background text-foreground' : 'bg-muted text-muted-foreground'}`
     }, [
-        P({ class: 'text-sm font-medium' }, day), // Day number
-        ...events.map(event =>
-            P({ class: 'text-xs truncate text-accent font-semibold mt-1' }, event) // Event titles
-        )
+        P({ class: 'text-sm font-medium' }, String(day)), // Day number
+        //...events.map(event => P({ class: 'text-xs truncate text-accent font-semibold mt-1' }, event))
     ])
 );
 

@@ -1,7 +1,7 @@
 import { Button, Div, H2 } from "@base-framework/atoms";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
-import { FullPage } from "@components/pages/full-page.js";
+import { CenterPage } from "@components/pages/center-page.js";
 import { CalendarGrid } from "./calendar-grid.js"; // Importing the calendar grid component
 import { SidebarMenu } from "./sidebar-menu.js";
 
@@ -14,10 +14,10 @@ import { SidebarMenu } from "./sidebar-menu.js";
  */
 const CalendarHeader = () => (
     Div({ class: 'justify-between flex flex-auto items-center mb-4' }, [
-        H2({ class: 'text-2xl font-semibold tracking-tight' }, 'March 2023'), // Placeholder month/year
+        H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'March 2023'), // Placeholder month/year
         Div({ class: 'flex items-center space-x-2' }, [
-            Button({ variant: 'icon', icon: Icons.chevron.single.left, click: () => {/* Navigate to previous month */} }),
-            Button({ variant: 'icon', icon: Icons.chevron.single.right, click: () => {/* Navigate to next month */} }),
+            Button({ variant: 'icon', icon: Icons.chevron.single.left, click: () => {} }),
+            Button({ variant: 'icon', icon: Icons.chevron.single.right, click: () => {} }),
             Tooltip({ content: 'Add Event', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
         ])
     ])
@@ -31,7 +31,7 @@ const CalendarHeader = () => (
  * @returns {object}
  */
 const CalendarSections = () => (
-    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px] p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8' }, [
+    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px] p-0 px-2 md:px-6 md:py-6 lg:px-8' }, [
         CalendarHeader(),
         CalendarGrid() // Month view grid
     ])
@@ -45,8 +45,8 @@ const CalendarSections = () => (
  * @returns {object}
  */
 export const CalendarPage = () => (
-    new FullPage({ title: 'Calendar' }, [
-        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
+    new CenterPage([
+        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t pt-[80px] sm:pt-0' }, [
             SidebarMenu(),
             CalendarSections()
         ])
