@@ -1,0 +1,1 @@
+import{m as r}from"./index-C6gfCS-R.js";const o=({className:e,shape:s="rectangle",width:l="w-full",height:a="h-4"})=>r({class:`bg-muted animate-pulse ${l} ${a} ${s==="circle"?"rounded-full":"rounded-md"} ${e||""}`});export{o as S};
