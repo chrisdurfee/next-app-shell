@@ -2,9 +2,9 @@ import { Div, H2 } from "@base-framework/atoms";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
-import { CenterPage } from "@components/pages/center-page.js";
 import { CalendarGrid } from "./calendar-grid.js"; // Importing the calendar grid component
 import { SidebarMenu } from "./sidebar-menu.js";
+import { BlankPage } from "@components/pages/blank-page.js";
 
 /**
  * CalendarHeader
@@ -32,7 +32,7 @@ const CalendarHeader = () => (
  * @returns {object}
  */
 const CalendarSections = () => (
-    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px] p-0 px-2 md:px-6 md:py-6 lg:px-8' }, [
+    Div({ class: 'col-span-4 p-0 px-2 md:px-6 md:py-6 lg:px-8' }, [
         CalendarHeader(),
         CalendarGrid() // Month view grid
     ])
@@ -46,8 +46,8 @@ const CalendarSections = () => (
  * @returns {object}
  */
 export const CalendarPage = () => (
-    new CenterPage([
-        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t pt-[80px] sm:pt-0' }, [
+    new BlankPage([
+        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full' }, [
             SidebarMenu(),
             CalendarSections()
         ])
