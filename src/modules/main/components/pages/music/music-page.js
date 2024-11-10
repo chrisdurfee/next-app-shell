@@ -39,36 +39,36 @@ const MusicHeader = () => (
  * @returns {object}
  */
 const MusicSections = () => (
-    Div({ class: 'col-span-4 p-6 px-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
         MusicHeader(),
         MusicSection({
             title: 'Listen Now',
             description: 'Top picks for you. Updated daily.',
-            albums: getRandomAlbums(4),
+            albums: getRandomAlbums(5),
             cardType: 'large'
         }),
         MusicSection({
             title: 'Made for You',
             description: 'Your personal playlists. Updated daily.',
-            albums: getRandomAlbums(6),
+            albums: getRandomAlbums(8),
             cardType: 'small'
         }),
         MusicSection({
             title: 'Recently Played',
             description: 'Your recently played albums and playlists.',
-            albums: getRandomAlbums(6),
+            albums: getRandomAlbums(8),
             cardType: 'small'
         }),
         MusicSection({
             title: 'Popular Playlists',
             description: 'Popular playlists from around the world.',
-            albums: getRandomAlbums(6),
+            albums: getRandomAlbums(8),
             cardType: 'small'
         }),
         MusicSection({
             title: 'New Releases',
             description: 'New albums and singles from your favorite artists.',
-            albums: getRandomAlbums(6),
+            albums: getRandomAlbums(8),
             cardType: 'small'
         }),
     ])
@@ -85,7 +85,7 @@ export const MusicPage = () => (
     new FullPage({ title: 'Discover' }, [
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 p-6 px-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+            Div({ class: 'col-span-4 p-6 px-4 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 MusicSections()
             ])
         ])
