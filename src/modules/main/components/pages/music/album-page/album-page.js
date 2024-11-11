@@ -2,7 +2,7 @@ import { Button, Div, H1, Img, Li, P, Span } from "@base-framework/atoms";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { Icons } from "@components/icons/icons.js";
 import { Overlay } from "@components/organisms/overlay.js";
-import { getAlbumByTitle } from "./albums.js";
+import { getAlbumByTitle } from "../albums.js";
 
 /**
  * Skeleton for Album Cover while loading.
@@ -77,6 +77,17 @@ const AlbumDetails = ({ album }) => (
 );
 
 /**
+ * This will display an empty state when the album does not exist.
+ *
+ * @returns {object}
+ */
+const EmptyState = () => (
+    Div({ class: 'flex items-center justify-center h-full' }, [
+        P('That album does not exist.')
+    ])
+);
+
+/**
  * AlbumPageContent
  *
  * Main content of the album overlay page.
@@ -85,18 +96,31 @@ const AlbumDetails = ({ album }) => (
  */
 const AlbumPageContent = () =>
 {
-    const album = getAlbumByTitle('How to Be a Human Being');
+    return Div({
+        class: 'p-6 space-y-8 lg:flex lg:space-x-8',
 
-    return Div({ class: 'p-6 space-y-8 lg:flex lg:space-x-8' }, [
-        Div({ class: 'w-full lg:w-1/3' }, [
-            AlbumCover({ src: album.src, title: album.title })
-            //album.loading ? AlbumCoverSkeleton() : AlbumCover({ src: album.cover, title: album.title })
-        ]),
-        Div({ class: 'flex-1 space-y-4' }, [
-            AlbumDetails({ album }),
-            TrackList({ tracks: album.tracks })
-        ])
-    ]);
+        /**
+         * This will get the parent object that has access to the route
+         * and use it to get the album details.
+         */
+        useParent({ route })
+        {
+            const title = route.album ?? null;
+            const album = getAlbumByTitle(title);
+            if (!album) return EmptyState();
+
+            return [
+                Div({ class: 'w-full lg:w-1/3' }, [
+                    AlbumCover({ src: album.src, title: album.title })
+                    //album.loading ? AlbumCoverSkeleton() : AlbumCover({ src: album.cover, title: album.title })
+                ]),
+                Div({ class: 'flex-1 space-y-4' }, [
+                    AlbumDetails({ album }),
+                    TrackList({ tracks: album.tracks })
+                ])
+            ];
+        }
+    });
 };
 
 /**

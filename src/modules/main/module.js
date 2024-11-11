@@ -3,7 +3,7 @@ import { Module } from '../module/module.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';
-import AlbumPage from './components/pages/music/album-page.js';
+import AlbumPage from './components/pages/music/album-page/album-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
     { path: '/music/album/:album?*', component: AlbumPage(), title: 'Album' },
-    { path: '/music*', import: import('./components/pages/music/music-page.js'), title: 'Music' },
+    { path: '/music*', import: import('./components/pages/music/music-page/music-page.js'), title: 'Music' },
     { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
     { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },

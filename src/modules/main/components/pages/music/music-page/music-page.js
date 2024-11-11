@@ -4,7 +4,7 @@ import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { BlankPage } from "@components/pages/blank-page.js";
-import { getRandomAlbums } from "./albums.js";
+import { getRandomAlbums } from "../albums.js";
 import { MusicSection } from "./music-section.js";
 import { SidebarMenu } from "./sidebar-menu.js";
 

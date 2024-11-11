@@ -15,8 +15,8 @@ export class InlineOverlay extends Overlay
      *
      * @returns {string}
      */
-    getOverlayType()
+    getClassName()
     {
-        return 'overlay inline ' + this.type;
+        return 'overlay relative inline top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
     }
 }

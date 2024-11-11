@@ -54,7 +54,7 @@ export class Overlay extends Component
 
         return Div(
             {
-                class: this.getOverlayType(),
+                class: this.getClassName(),
                 onSet: ['loading', {
                     loading: true
                 }]
@@ -63,8 +63,7 @@ export class Overlay extends Component
                 BackButton({
                     href: referralPath || this.backHref
                 }),
-                this.addBody(),
-                this.getRoutes()
+                this.addBody()
             ]
         );
     }
@@ -91,7 +90,7 @@ export class Overlay extends Component
      *
      * @returns {string}
      */
-    getOverlayType()
+    getClassName()
     {
         return 'overlay absolute top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
     }
@@ -107,16 +106,6 @@ export class Overlay extends Component
 		this.container = document.body;
 		this.initialize();
 	}
-
-    /**
-     * This can be overriden to return routes.
-     *
-     * @returns {array|null}
-     */
-    getRoutes()
-    {
-        return null;
-    }
 
     /**
      * This will setup the overlay states.
@@ -137,7 +126,7 @@ export class Overlay extends Component
      */
     addLoading()
     {
-        this.state.set('loading', true);
+        this.state.loading = true;
     }
 
     /**
@@ -147,7 +136,7 @@ export class Overlay extends Component
      */
     removeLoading()
     {
-        this.state.set('loading', false);
+        this.state.loading = false;
     }
 
     /**
@@ -157,7 +146,7 @@ export class Overlay extends Component
      */
     addBody()
     {
-        return Div({ class: 'body fadeIn' }, [
+        return Div({ class: 'body fadeIn flex flex-auto flex-col' }, [
             this.getBodyContents()
         ]);
     }

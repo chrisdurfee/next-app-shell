@@ -478,7 +478,12 @@ export const getRandomAlbums = (count) =>
  * @param {string} title
  * @returns {object}
  */
-export const getAlbumByTitle = (title) =>
+export const getAlbumByTitle = (title = '') =>
 {
-    return ALBUMS.find(album => album.title === title);
+    const preparedTitle = title.replace(/-/g, ' ').toLowerCase();
+    return ALBUMS.find(album =>
+    {
+        const albumTitle = album?.title?.toLowerCase();
+        return albumTitle === preparedTitle;
+    });
 };
