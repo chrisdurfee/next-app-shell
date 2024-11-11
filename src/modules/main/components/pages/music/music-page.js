@@ -1,9 +1,9 @@
-import { Div } from "@base-framework/atoms";
+import { Div, H1, Header } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
-import { FullPage } from "@components/pages/full-page.js";
+import { BlankPage } from "@components/pages/blank-page.js";
 import { getRandomAlbums } from "./albums.js";
 import { MusicSection } from "./music-section.js";
 import { SidebarMenu } from "./sidebar-menu.js";
@@ -40,37 +40,42 @@ const MusicHeader = () => (
  */
 const MusicSections = () => (
     Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
-        MusicHeader(),
-        MusicSection({
-            title: 'Listen Now',
-            description: 'Top picks for you. Updated daily.',
-            albums: getRandomAlbums(5),
-            cardType: 'large'
-        }),
-        MusicSection({
-            title: 'Made for You',
-            description: 'Your personal playlists. Updated daily.',
-            albums: getRandomAlbums(8),
-            cardType: 'small'
-        }),
-        MusicSection({
-            title: 'Recently Played',
-            description: 'Your recently played albums and playlists.',
-            albums: getRandomAlbums(8),
-            cardType: 'small'
-        }),
-        MusicSection({
-            title: 'Popular Playlists',
-            description: 'Popular playlists from around the world.',
-            albums: getRandomAlbums(8),
-            cardType: 'small'
-        }),
-        MusicSection({
-            title: 'New Releases',
-            description: 'New albums and singles from your favorite artists.',
-            albums: getRandomAlbums(8),
-            cardType: 'small'
-        }),
+        Header({ class: 'sm:py-4 sm:pb-0 px-6 flex flex-col lg:hidden' }, [
+            H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Discover'),
+        ]),
+        Div({ class: 'p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8'}, [
+            MusicHeader(),
+            MusicSection({
+                title: 'Listen Now',
+                description: 'Top picks for you. Updated daily.',
+                albums: getRandomAlbums(5),
+                cardType: 'large'
+            }),
+            MusicSection({
+                title: 'Made for You',
+                description: 'Your personal playlists. Updated daily.',
+                albums: getRandomAlbums(8),
+                cardType: 'small'
+            }),
+            MusicSection({
+                title: 'Recently Played',
+                description: 'Your recently played albums and playlists.',
+                albums: getRandomAlbums(8),
+                cardType: 'small'
+            }),
+            MusicSection({
+                title: 'Popular Playlists',
+                description: 'Popular playlists from around the world.',
+                albums: getRandomAlbums(8),
+                cardType: 'small'
+            }),
+            MusicSection({
+                title: 'New Releases',
+                description: 'New albums and singles from your favorite artists.',
+                albums: getRandomAlbums(8),
+                cardType: 'small'
+            }),
+        ])
     ])
 );
 
@@ -82,10 +87,10 @@ const MusicSections = () => (
  * @returns {object}
  */
 export const MusicPage = () => (
-    new FullPage({ title: 'Discover' }, [
+    new BlankPage([
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+            Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
                 MusicSections()
             ])
         ])

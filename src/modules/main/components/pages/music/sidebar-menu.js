@@ -1,4 +1,4 @@
-import { Div } from "@base-framework/atoms";
+import { Div, H1, Header } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 
@@ -11,6 +11,9 @@ const PAGE_URL = 'music';
  */
 export const SidebarMenu = () => (
     Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar max-w-[300px] h-full' }, [
+        Header({ class: 'pb-2 px-6 flex flex-col' }, [
+            H1({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Discover'),
+        ]),
         new InlineNavigation({
             options: [
                 { label: 'Listen Now', href: `${PAGE_URL}/listen-now`, icon: Icons.playing },
