@@ -16,7 +16,7 @@ export const SidebarMenu = () => (
         ]),
         new InlineNavigation({
             options: [
-                { label: 'Listen Now', href: `${PAGE_URL}`, icon: Icons.playing },
+                { label: 'Listen Now', href: `${PAGE_URL}`, icon: Icons.playing, exact: true },
                 { label: 'Browse', href: `${PAGE_URL}/browse`, icon: Icons.square.grid },
                 { label: 'Radio', href: `${PAGE_URL}/radio`, icon: Icons.signal },
                 {
