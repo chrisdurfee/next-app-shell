@@ -5,6 +5,14 @@
 	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
 }
 
+.overlay > * {
+	@apply bg-background;
+}
+
+.overlay .body {
+	@apply bg-background;
+}
+
 /**
  * This will set the app padding bottom on partrait
  * to support the safe area.

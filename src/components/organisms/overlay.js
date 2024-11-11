@@ -94,7 +94,7 @@ export class Overlay extends Component
      */
     getOverlayType()
     {
-        return 'overlay flex flex-auto absolute top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
+        return 'overlay absolute top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
     }
 
     /**
