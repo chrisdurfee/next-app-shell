@@ -28,6 +28,14 @@ export const pad = (number) =>
     };
 
     /**
+     * This will remove the hyphens from the date.
+     *
+     * @param {string} date
+     * @returns {string}
+     */
+    export const removeHyphens = (date) => date.replace(/-/g, '_');
+
+    /**
      * This will format the date.
      *
      * @param {number} year

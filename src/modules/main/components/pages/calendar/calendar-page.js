@@ -6,6 +6,7 @@ import { Icons } from "@components/icons/icons.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { FullTemplate } from "@components/pages/templates/full-template.js";
 import { CalendarGrid } from "./calendar-grid.js";
+import { createDynamicEvents } from "./events.js";
 import { pad } from "./utils.js";
 
 /**
@@ -75,13 +76,16 @@ export const CalendarPage = () => (
             const today = new Date();
             const current = this.getSelectedDate(today);
             const currentMonth = current.getMonth();
+            const currentYear = current.getFullYear();
+            const events = createDynamicEvents(currentMonth, currentYear);
 
             return new Data({
+                events,
                 monthName: this.getMonthName(currentMonth),
-                currentDate: `${current.getFullYear()}-${currentMonth + 1}-${current.getDate()}`,
+                currentDate: `${currentYear}-${currentMonth + 1}-${current.getDate()}`,
                 current: {
                     date: current.getDate(),
-                    year: current.getFullYear(),
+                    year: currentYear,
                     month: currentMonth
                 },
                 today: {
@@ -124,6 +128,7 @@ export const CalendarPage = () => (
             }
 
             this.setCurrentDate(month, year);
+            this.data.events = createDynamicEvents(month, year);
         },
 
         /**
@@ -147,6 +152,7 @@ export const CalendarPage = () => (
             }
 
             this.setCurrentDate(month, year);
+            this.data.events = createDynamicEvents(month, year);
         },
 
         /**

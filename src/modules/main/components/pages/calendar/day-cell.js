@@ -1,4 +1,5 @@
-import { Button, P } from "@base-framework/atoms";
+import { Button, Div, P, Span } from "@base-framework/atoms";
+import { removeHyphens } from "./utils.js";
 
 /**
  * This will get the class for today.
@@ -83,7 +84,11 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
             click: () => select(date),
         },
         [
-            P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
+            P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day)),
+            Div({
+                class: 'flex flex-auto flex-row flex-wrap',
+                for: [`events._${removeHyphens(date)}`, (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]' })]
+            })
         ]
     )
 );
