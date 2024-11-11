@@ -28,7 +28,7 @@ export const MusicSection = ({ title, description, albums, cardType = 'large' })
         SectionHeader({ title, description }),
         Div({ class: 'overflow-x-auto lg:overflow-x-none' }, [
             Div({
-                class: 'inline-flex space-x-4 pb-4',
+                class: 'inline-flex space-x-4 pb-4 mr-6 lg:mr-0',
                 map: [albums, (album) => new AlbumCard({
                     src: album.src,
                     title: album.title,

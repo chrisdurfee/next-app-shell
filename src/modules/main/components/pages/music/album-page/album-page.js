@@ -1,59 +1,10 @@
-import { Button, Div, H1, Img, Li, P, Span } from "@base-framework/atoms";
-import { Skeleton } from "@components/atoms/skeleton.js";
+import { Button, Div, H1, P } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { Overlay } from "@components/organisms/overlay.js";
 import { getAlbumByTitle } from "../albums.js";
-
-/**
- * Skeleton for Album Cover while loading.
- */
-const AlbumCoverSkeleton = () => (
-    Div({ class: 'aspect-square w-full rounded-lg bg-muted' }, [
-        Skeleton({ width: 'w-full', height: 'h-full', shape: 'square' })
-    ])
-);
-
-/**
- * AlbumCover component
- *
- * @param {string} src - Album cover image source
- * @returns {object}
- */
-const AlbumCover = ({ src, title }) => (
-    Img({ src, alt: title, class: 'w-full h-auto object-cover rounded-lg' })
-);
-
-/**
- * TrackListItem
- *
- * A single track in the album song list.
- *
- * @param {object} track - Track details.
- * @returns {object}
- */
-const TrackListItem = ({ title, plays, duration }) => (
-    Li({ class: 'flex justify-between items-center py-3 px-2 hover:bg-muted rounded-md' }, [
-        Div({ class: 'flex flex-col' }, [
-            Span({ class: 'text-base font-semibold' }, title),
-            P({ class: 'text-xs text-muted-foreground' }, `${plays} plays`)
-        ]),
-        P({ class: 'text-sm text-muted-foreground' }, duration)
-    ])
-);
-
-/**
- * TrackList
- *
- * Displays the list of tracks in the album.
- *
- * @param {array} tracks - Array of track objects.
- * @returns {object}
- */
-const TrackList = ({ tracks }) => (
-    Div({ class: 'flex flex-col divide-y divide-border mt-6' }, [
-        ...tracks.map(track => TrackListItem(track))
-    ])
-);
+import { AlbumCard } from "./album-card.js";
+import { EmptyState } from "./empty-state.js";
+import { TrackList } from "./track-list.js";
 
 /**
  * AlbumDetails
@@ -73,17 +24,6 @@ const AlbumDetails = ({ album }) => (
             Button({ variant: 'icon', icon: Icons.heart, label: 'Favorite' }),
             Button({ variant: 'icon', icon: Icons.more, label: 'More' })
         ])
-    ])
-);
-
-/**
- * This will display an empty state when the album does not exist.
- *
- * @returns {object}
- */
-const EmptyState = () => (
-    Div({ class: 'flex items-center justify-center h-full' }, [
-        P('That album does not exist.')
     ])
 );
 
@@ -111,7 +51,7 @@ const AlbumPageContent = () =>
 
             return [
                 Div({ class: 'w-full lg:w-1/3' }, [
-                    AlbumCover({ src: album.src, title: album.title })
+                    new AlbumCard({ src: album.src, title: album.title })
                     //album.loading ? AlbumCoverSkeleton() : AlbumCover({ src: album.cover, title: album.title })
                 ]),
                 Div({ class: 'flex-1 space-y-4' }, [
