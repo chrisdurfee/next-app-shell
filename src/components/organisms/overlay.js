@@ -1,5 +1,4 @@
 import { Atom, Component } from "@base-framework/base";
-import MusicPage from "../../modules/main/components/pages/music/music-page.js";
 import { Div } from "../atoms/atoms.js";
 import { Button } from "../atoms/buttons/buttons.js";
 import { Icon } from "../atoms/icon.js";
@@ -170,7 +169,7 @@ export class Overlay extends Component
      */
     getBodyContents()
     {
-        return MusicPage();
+        return this.children;
     }
 }
 
