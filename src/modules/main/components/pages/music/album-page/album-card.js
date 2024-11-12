@@ -4,6 +4,8 @@ import { Skeleton } from "@components/atoms/skeleton.js";
 
 /**
  * Skeleton for Album Cover while loading.
+ *
+ * @returns {object}
  */
 const AlbumCoverSkeleton = () => (
     Div({ class: 'aspect-square w-full rounded-lg bg-muted' }, [
