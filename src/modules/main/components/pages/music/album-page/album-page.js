@@ -1,34 +1,10 @@
-import { Div, H1, H2, Header, P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
+import { Div, H2, Header } from "@base-framework/atoms";
 import { BackButton, Overlay } from "@components/organisms/overlay.js";
 import { getAlbumByTitle } from "../albums.js";
 import { AlbumCard } from "./album-card.js";
+import { AlbumDetails } from "./album-details.js";
 import { EmptyState } from "./empty-state.js";
 import { TrackList } from "./track-list.js";
-
-/**
- * AlbumDetails
- *
- * Displays the album title, artist, and additional information.
- *
- * @param {object} album - Album details.
- * @returns {object}
- */
-const AlbumDetails = ({ album }) => (
-    Div({ class: 'space-y-2 mt-4' }, [
-        H1({ class: 'text-3xl font-bold' }, album.title),
-        P({ class: 'text-sm text-muted-foreground' }, `Album • ${album.year} • ${album.tracks.length} songs • ${album.duration}`),
-        Div({ class: 'flex flex-auto items-center justify-center lg:justify-start' }, [
-            Div({ class: 'flex space-x-4 mt-4' }, [
-                Button({ variant: 'icon', icon: Icons.play, label: 'Play' }),
-                Button({ variant: 'icon', icon: Icons.download, label: 'Download' }),
-                Button({ variant: 'icon', icon: Icons.heart, label: 'Favorite' }),
-                Button({ variant: 'icon', icon: Icons.ellipsis.vertical, label: 'More' })
-            ])
-        ])
-    ])
-);
 
 /**
  * AlbumPageContent

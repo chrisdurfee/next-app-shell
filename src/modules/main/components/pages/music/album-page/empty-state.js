@@ -4,6 +4,7 @@ import { BackButton } from "@components/organisms/overlay.js";
 import { Icons } from "../../../../../../components/icons/icons";
 import { getAlbumByTitle } from "../albums.js";
 import { AlbumCard } from "./album-card.js";
+import { AlbumDetails } from "./album-details.js";
 
 const title = 'The Suburbs';
 const album = getAlbumByTitle(title);
@@ -25,15 +26,16 @@ export const EmptyState = () => (
                 P('Let\'s get you back to the music. Here is something you might like.')
             ]),
             A({ href: `music/album/${title.replace(/\s+/g, '-').toLowerCase()}`, class: 'flex items-center' }, [
-                Div({ class: 'relative flex flex-auto flex-col items-center justify-center' }, [
+                Div({ class: 'relative flex flex-auto flex-col' }, [
                     Div ({ class: 'absolute top-0 left-0 right-0 bottom-0 w-10 h-10 m-auto bg-background rounded-xl' }, [
                         Button({ class: 'icon rounded-full' }, [
                             Icon(Icons.play),
                         ])
                     ]),
-                    new AlbumCard({ src: album.src, title: album.title })
+                    new AlbumCard({ src: album.src, title: album.title }),
                 ])
             ]),
+            AlbumDetails({ album }),
         ])
     ])
 );
