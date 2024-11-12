@@ -40,7 +40,7 @@ const AlbumDetails = ({ album }) => (
 const AlbumPageContent = () =>
 {
     return Div({
-        class: 'p-6 space-y-8 lg:flex lg:space-x-8 2xl:mx-auto 2xl:max-w-[1600px]',
+        class: 'p-6 space-y-8 lg:flex 2xl:mx-auto 2xl:max-w-[1600px]',
 
         /**
          * This will get the parent object that has access to the route
@@ -48,7 +48,7 @@ const AlbumPageContent = () =>
          */
         useParent({ route })
         {
-            return Div({ class: 'flex flex-auto flex-col', onSet: [route, 'album', (title) =>
+            return Div({ class: 'flex flex-auto lg:space-x-8', onSet: [route, 'album', (title) =>
             {
                 const album = getAlbumByTitle(title);
                 if (!album)
