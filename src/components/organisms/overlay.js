@@ -10,9 +10,9 @@ import { Icons } from "../icons/icons.js";
  * @param {object} props
  * @returns {object}
  */
-const BackButton = Atom((props) =>
+export const BackButton = Atom((props) =>
 {
-    return Div({ class: 'bttn icon m-4' }, [
+    return Div({ class: 'flex-none m-4 ml-0' }, [
         Button({
             variant: 'icon',
             class: 'back-button',
@@ -50,8 +50,6 @@ export class Overlay extends Component
      */
     render()
     {
-        const referralPath = this.getReferralPath();
-
         return Div(
             {
                 class: this.getClassName(),
@@ -60,9 +58,6 @@ export class Overlay extends Component
                 }]
             },
             [
-                BackButton({
-                    href: referralPath || this.backHref
-                }),
                 this.addBody()
             ]
         );
@@ -92,7 +87,7 @@ export class Overlay extends Component
      */
     getClassName()
     {
-        return 'overlay absolute top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
+        return 'overlay absolute top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 flex flex-auto lg:left-[64px] lg:top-0 ' + (this.class || '');
     }
 
     /**
