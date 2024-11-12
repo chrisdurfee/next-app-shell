@@ -6,6 +6,13 @@ import { getAlbumByTitle } from "../albums.js";
 import { AlbumCard } from "./album-card.js";
 import { AlbumDetails } from "./album-details.js";
 
+/**
+ * This will be the default empty state
+ * recommended for when the album does not exist.
+ *
+ * This should be swapped out for a more dynamic
+ * response for a real user.
+ */
 const title = 'The Suburbs';
 const album = getAlbumByTitle(title);
 
