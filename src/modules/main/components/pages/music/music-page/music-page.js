@@ -19,7 +19,7 @@ const MusicHeader = () => (
             options: [
                 { label: 'Music', value: 'music' },
                 { label: 'Podcasts', value: 'podcasts' },
-                { label: 'Live', value: 'live' }
+                { label: 'Live', value: 'live', disabled: true }
             ]
         }),
         Div({ class: 'hidden lg:inline-flex' }, [

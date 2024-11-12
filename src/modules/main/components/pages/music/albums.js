@@ -306,7 +306,7 @@ const ALBUMS = [
     },
     {
         src: 'https://upload.wikimedia.org/wikipedia/en/2/2f/Aenima.jpg',
-        title: 'Ænima',
+        title: 'Aenima',
         artist: 'Tool',
         year: 1996,
         duration: '77:18',
