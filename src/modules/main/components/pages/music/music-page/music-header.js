@@ -3,16 +3,13 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
-import { BlankPage } from "@components/pages/blank-page.js";
-import { MusicSections } from "./music-sections.js";
-import { SidebarMenu } from "./sidebar-menu.js";
 
 /**
  * This will create a music header with tabs and add music button.
  *
  * @returns {object}
  */
-const MusicHeader = () => (
+export const MusicHeader = () => (
     Div({ class: 'justify-between flex flex-auto items-center' }, [
         new TabGroup({
             options: [
@@ -31,22 +28,4 @@ const MusicHeader = () => (
     ])
 );
 
-/**
- * MusicPage
- *
- * The main page layout combining sidebar, tabs, and content sections.
- *
- * @returns {object}
- */
-export const MusicPage = () => (
-    new BlankPage([
-        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
-            SidebarMenu(),
-            Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
-                MusicSections()
-            ])
-        ])
-    ])
-);
-
-export default MusicPage;
+export default MusicHeader;
