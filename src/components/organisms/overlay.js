@@ -142,7 +142,7 @@ export class Overlay extends Component
     addBody()
     {
         return Div({ class: 'body fadeIn flex flex-auto flex-col' }, [
-            this.getBodyContents()
+            this.getContents()
         ]);
     }
 
@@ -151,7 +151,7 @@ export class Overlay extends Component
      *
      * @returns {array|null}
      */
-    getBodyContents()
+    getContents()
     {
         return this.children;
     }

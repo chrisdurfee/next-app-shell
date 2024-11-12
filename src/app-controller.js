@@ -32,7 +32,6 @@ export class AppController
 		setHtmlThemeBySettings();
 		this.setupService();
 		this.setupRouter();
-		this.renderApp();
 	}
 
 	/**
@@ -83,7 +82,7 @@ export class AppController
 	 * @protected
 	 * @returns {void}
 	 */
-	renderApp()
+	render()
 	{
 		const { routes, links: options } = modules;
 		const main = AppShell({ options, routes });
