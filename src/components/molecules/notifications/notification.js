@@ -55,7 +55,7 @@ const TitleBar = (title) => (
  */
 const NotificationLink = Atom(({ href, class: customClass }, children) => (
     A({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md w-full max-w-[380px] mt-4 ${customClass}`,
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[340px] max-w-[450px] mt-4 ${customClass}`,
         href: href,
         role: 'alert'
     }, children)
@@ -69,7 +69,7 @@ const NotificationLink = Atom(({ href, class: customClass }, children) => (
  */
 const NotificationButton = Atom(({ close, class: customClass }, children) => (
     Div({
-        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md w-full max-w-[380px] mt-4 ${customClass}`,
+        class: `pullRightIn bg-popover text-popover-foreground relative flex flex-auto flex-col justify-start shadow-lg pointer-events-auto p-4 border rounded-md min-w-[340px] max-w-[450px] mt-4 ${customClass}`,
         click: () => close(),
         role: 'alert'
     }, children)
