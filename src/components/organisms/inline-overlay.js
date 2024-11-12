@@ -19,4 +19,16 @@ export class InlineOverlay extends Overlay
     {
         return 'overlay relative inline top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
     }
+
+    /**
+	 * This will setup and render the component.
+	 *
+	 * @param {object} container
+	 * @returns {void}
+	 */
+	setup(container)
+	{
+		this.container = container;
+		this.initialize();
+	}
 }
