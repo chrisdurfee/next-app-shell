@@ -48,7 +48,6 @@ const MusicSections = () => (
         Div({ class: 'p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8'}, [
             MusicHeader(),
             Div({
-                class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]',
                 addState() { return { mode: 'music' }},
                 onState: ['mode', (value) =>
                 {

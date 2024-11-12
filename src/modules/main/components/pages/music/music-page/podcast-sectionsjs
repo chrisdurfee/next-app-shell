@@ -8,7 +8,7 @@ import { MusicSection } from "./music-section.js";
  * @returns {object}
  */
 export const PodcastSections = () => (
-    Div({ class: 'w-full lg:w-1/3' }, [
+    Div({ class: 'w-full' }, [
         MusicSection({
             title: 'Latest Podcasts',
             description: 'Listen to the latest podcasts from your favorite creators.',
