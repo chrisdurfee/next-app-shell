@@ -86,6 +86,11 @@ export class TabGroup extends Component
     select(value)
     {
         this.state.selected = value;
+
+        if (typeof this.onSelect === 'function')
+        {
+            this.onSelect(value, this.parent);
+        }
     }
 
     /**
