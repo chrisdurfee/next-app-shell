@@ -2,11 +2,11 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@import url('animations.css');
 @import url('base.css');
 @import url('text/text.css');
 @import url('colors/color.css');
 @import url('layout.css');
-@import url('animations.css');
 
 /* atoms */
 @import url('components/atoms/atoms.css');
