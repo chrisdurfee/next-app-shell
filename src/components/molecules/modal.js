@@ -11,10 +11,11 @@ import { Dialog } from "./dialogs/dialog.js";
  * @param {object} props
  * @returns {object}
  */
-const ModalHeader = ({ title }) => (
+const ModalHeader = ({ title, description }) => (
     Header({ class: 'modal-header flex items-center' }, [
-        Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 bg-transparent flex sm:hidden', click: (e, parent) => parent.close() }),
-        H2({ class: 'text-lg font-semibold m-0' }, title)
+        Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
+        H2({ class: 'text-lg font-semibold m-0' }, title),
+		description && Div({ class: 'text-sm text-muted-foreground' }, description)
     ])
 );
 
@@ -26,22 +27,22 @@ const ModalHeader = ({ title }) => (
  * @returns {object}
  */
 export const ModalContainer = Atom((props, children) => (
-    MainDialog({ class: `modal m-auto fixed z-20 grid w-full gap-4 border bg-background p-6 shadow-lg ${props.class}`, click: props.click}, [
+    MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl md:rounded-md break-words overflow-hidden ${props.class}`, click: props.click}, [
         Div({ class: 'modal-content flex flex-auto flex-col' }, [
             ModalHeader(props),
-            Div({ class: 'modal-body flex flex-auto' }, children),
+            Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto' }, children),
             Footer({ class: 'modal-footer flex justify-between' }, props.buttons)
         ])
     ])
 ));
 
 /**
- * Dialog
+ * Modal
  *
- * This will create a dialog component.
+ * This will create a modal component.
  *
  * @export
- * @class Dialog
+ * @class Modal
  * @extends {Component}
  */
 export class Modal extends Dialog
@@ -55,9 +56,19 @@ export class Modal extends Dialog
 	{
         const click = (event) => { if (event.target === this.panel) this.close() };
 		const className = this.getMainClass();
-		const title = this.title || 'Are you abosolutely sure?';
+		const title = this.title || '';
+		const description = this.description || null;
 
-        return ModalContainer({ class: className, click, title, buttons: this.getButtons(), aria: { expanded: ['open']} }, this.children);
+        return ModalContainer({
+				class: className,
+				click,
+				title,
+				description,
+				buttons: this.getButtons(),
+				aria: { expanded: ['open']}
+			},
+			this.children
+		);
 	}
 
     /**
