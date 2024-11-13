@@ -14,7 +14,7 @@ export const MusicPage = () => (
     new BlankPage([
         Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
             SidebarMenu(),
-            Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+            Div({ class: 'col-span-4' }, [
                 MusicSections()
             ])
         ])

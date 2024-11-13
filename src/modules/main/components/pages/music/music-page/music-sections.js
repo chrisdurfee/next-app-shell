@@ -12,7 +12,7 @@ import { PodcastSections } from "./podcast-sectionsjs";
  * @returns {object}
  */
 export const MusicSections = () => (
-    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1400px]' }, [
         Header({ class: 'sm:py-4 sm:pb-0 px-6 flex flex-col lg:hidden' }, [
             H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Discover'),
         ]),
