@@ -1,4 +1,6 @@
-import { Button } from "@components/atoms/atoms.js";
+import { Div } from "@base-framework/atoms";
+import { Button } from "@components/atoms/buttons/buttons.js";
+import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
 import { Modal } from "@components/molecules/modal.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -49,7 +51,21 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 		title: 'Are you absolutely sure?',
 		size,
 		type
-	}).open()
+	}, [
+		Div({ class: 'flex flex-auto flex-col items-center justify-center p-4' }, [
+			Button({
+				click: () =>
+				{
+					new Confirmation({
+						title: 'Are you absoultely sure?',
+						description: 'This action cannot be undone. This will permanently delete your account and remove your data from our servers.',
+						confirmTextLabel: 'Save',
+						confirmed: () => console.log('Confirmed!')
+					}).open()
+				}
+			}, 'Confirm')
+		])
+	]).open()
 });
 
 /**
