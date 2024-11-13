@@ -1,7 +1,5 @@
 import { Div, H1, Header } from "@components/atoms/atoms.js";
-import { GridContainer } from '@components/molecules/molecules.js';
-import { Overlay } from '@components/organisms/overlay.js';
-import { Panel } from '@components/organisms/panel.js';
+import { BackButton, Overlay } from '@components/organisms/overlay.js';
 
 /**
  * This will create an example overlay.
@@ -9,14 +7,12 @@ import { Panel } from '@components/organisms/panel.js';
  * @returns {object}
  */
 const ExampleOverlay = () => (
-	new Overlay({ backHref: 'aside/' }, [
-		new Panel([
-			Div([
-				Header([
-					H1('Overlay')
-				]),
-				Div({ class: 'contained' }, [
-					GridContainer()
+	new Overlay([
+		Div({ class: 'p-6 2xl:mx-auto 2xl:max-w-[1600px]' }, [
+			Div({ class: 'w-full lg:w-1/3' }, [
+				Header({ class: 'flex flex-auto items-center mb-2' }, [
+					BackButton(),
+					H1({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, 'Overlay'),
 				])
 			])
 		])

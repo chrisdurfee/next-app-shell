@@ -1,7 +1,8 @@
 import { Atom, Import } from "@base-framework/base";
-import { A, Div, H1, Header, P } from "@components/atoms/atoms.js";
+import { A, Div, H1, H2, Header, P } from "@components/atoms/atoms.js";
 import { GridContainer } from '@components/molecules/molecules.js';
 import { InlineOverlay } from '@components/organisms/inline-overlay.js';
+import { BackButton } from '@components/organisms/overlay.js';
 import { Panel } from '@components/organisms/panel.js';
 
 /**
@@ -69,9 +70,10 @@ const MarketingPage = () => (
 					component: new InlineOverlay({ backHref: 'aside/marketing/' }, [
 						new Panel([
 							Div([
-								PageHeader({
-									title: 'Overlay',
-								}),
+								Header({ class: 'flex flex-auto items-center mb-2' }, [
+									BackButton(),
+									H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, 'Overlay'),
+								]),
 								GridContainer()
 							])
 						])
