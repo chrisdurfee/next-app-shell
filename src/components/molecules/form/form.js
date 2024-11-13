@@ -39,5 +39,5 @@ const submit = (e, callBack = null) =>
  * @returns {object}
  */
 export const Form = Atom((props, children) => (
-    BaseForm({ ...props, submit: (e) => submit(e, props.submit), class: 'space-y-8 w-full max-w-lg' }, children))
+    BaseForm({ ...props, submit: (e) => submit(e, props.submit), class: `space-y-8 w-full max-w-lg ${props.class ?? '' }` }, children))
 );

@@ -1,5 +1,6 @@
 import { Div, Footer, H2, Header, Dialog as MainDialog } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
+import { Form } from "@components/molecules/form/form.js";
 import "../../css/components/molecules/modals/modal.css";
 import { Button } from "../atoms/buttons/buttons.js";
 import { Icons } from "../icons/icons";
@@ -28,7 +29,7 @@ const ModalHeader = ({ title, description }) => (
  */
 export const ModalContainer = Atom((props, children) => (
     MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl md:rounded-md break-words overflow-hidden ${props.class}`, click: props.click}, [
-        Div({ class: 'modal-content flex flex-auto flex-col' }, [
+        Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (this.onSubmit && this.onSubmit()) }, [
             ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto' }, children),
             Footer({ class: 'modal-footer flex justify-between' }, props.buttons)
@@ -80,7 +81,7 @@ export class Modal extends Dialog
     {
         return [
             Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
-            Button({ variant: 'primary', click: () => this.confirm() }, 'Save')
+            Button({ variant: 'primary', type: 'submit', click: () => this.confirm() }, 'Save')
         ];
     }
 
