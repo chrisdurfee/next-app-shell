@@ -29,7 +29,7 @@ const ModalHeader = ({ title, description }) => (
  */
 export const ModalContainer = Atom((props, children) => (
     MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl md:rounded-md break-words overflow-hidden ${props.class}`, click: props.click}, [
-        Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (this.onSubmit && this.onSubmit()) }, [
+        Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto' }, children),
             Footer({ class: 'modal-footer flex justify-between' }, props.buttons)
@@ -66,6 +66,7 @@ export class Modal extends Dialog
 				title,
 				description,
 				buttons: this.getButtons(),
+				onSubmit: this.submit,
 				aria: { expanded: ['open']}
 			},
 			this.children
