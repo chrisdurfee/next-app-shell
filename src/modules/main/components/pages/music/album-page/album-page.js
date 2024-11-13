@@ -36,7 +36,7 @@ const AlbumPageContent = () =>
                     Div({ class: 'w-full lg:w-1/3' }, [
                         Header({ class: 'flex flex-auto items-center mb-2' }, [
                             BackButton(),
-                            H2({ class: 'text-2xl font-bold tracking-tight' }, album.artist),
+                            H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, album.artist),
                         ]),
                         new AlbumCard({ src: album.src, title: album.title }),
                         AlbumDetails({ album }),

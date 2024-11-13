@@ -70,6 +70,7 @@ export const AlbumCard = Jot(
         loadImage(src, () => this.state.loaded = true);
 
         return Div({
+            class: 'aspect-square m-auto w-[75%] rounded-lg bg-muted',
             onState: ['loaded', (loaded) =>
             {
                 return (!loaded)
