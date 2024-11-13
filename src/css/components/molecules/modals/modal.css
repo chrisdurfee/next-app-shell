@@ -1,7 +1,7 @@
 .modal {
     max-height: 80vh;
     animation: popIn .2s;
-    @apply bg-background shadow-xl md:rounded-md;
+    @apply bg-background shadow-xl md:rounded-md rounded-md py-4 px-6;
 }
 .modal.sm {
     max-width: 425px;

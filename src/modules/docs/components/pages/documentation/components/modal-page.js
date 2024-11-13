@@ -1,7 +1,10 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Input, Textarea } from "@components/atoms/form/input.js";
+import { Select } from "@components/atoms/form/select.js";
 import { Icons } from "@components/icons/icons.js";
 import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
+import { FormField } from "@components/molecules/form/form.js";
 import { Modal } from "@components/molecules/modal.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -86,9 +89,10 @@ const ModalForm = () => (
 	new Modal({
 		title: 'Report an Issue',
 		description: "What area are you having problems with?",
+		size: 'lg',
 		onSubmit: () => console.log('Form submitted')
 	}, [
-		Div({ class: 'flex flex-auto flex-col items-center justify-center max-w-lg' }, [
+		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
 			// Row for Area and Security Level
 			Div({ class: "flex flex-auto w-full gap-4" }, [
 				// Area field

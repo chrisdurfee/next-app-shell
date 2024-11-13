@@ -15,8 +15,10 @@ import { Dialog } from "./dialogs/dialog.js";
 const ModalHeader = ({ title, description }) => (
     Header({ class: 'modal-header flex items-center' }, [
         Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
-        H2({ class: 'text-lg font-semibold m-0' }, title),
-		description && Div({ class: 'text-sm text-muted-foreground' }, description)
+        Div({ class: 'flex flex-auto flex-col ml-2' }, [
+			H2({ class: 'text-lg font-semibold m-0' }, title),
+			description && Div({ class: 'text-sm text-muted-foreground' }, description)
+		])
     ])
 );
 
@@ -28,7 +30,7 @@ const ModalHeader = ({ title, description }) => (
  * @returns {object}
  */
 export const ModalContainer = Atom((props, children) => (
-    MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl md:rounded-md break-words overflow-hidden ${props.class}`, click: props.click}, [
+    MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden ${props.class}`, click: props.click}, [
         Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto' }, children),
@@ -102,7 +104,7 @@ export class Modal extends Dialog
 			case 'xl':
 				return 'xl max-w-[1400px]';
 			default:
-				return 'medium max-w-[760px]';
+				return 'md max-w-[760px]';
 		}
 	}
 
