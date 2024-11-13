@@ -85,11 +85,15 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
  *
  * @returns {object}
  */
-const ModalForm = () => (
+const ModalForm = ({
+	size = 'lg',
+	type = 'center'
+}) => (
 	new Modal({
 		title: 'Report an Issue',
 		description: "What area are you having problems with?",
-		size: 'lg',
+		size,
+		type,
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
@@ -161,10 +165,10 @@ const ModalForm = () => (
  * @param {object} props
  * @returns {object}
  */
-const ModalFormButton = ({ label, buttonStyle }) => Button({
+const ModalFormButton = ({ label, buttonStyle, size, type }) => Button({
 	text: label,
 	class: `m-1 ${buttonStyle}`,
-	click: () => ModalForm().open()
+	click: () => ModalForm({ size, type }).open()
 });
 
 /**
@@ -311,9 +315,8 @@ const ModalButton = (props, children) => Button({
 });`
             }),
 
-			// modal with form
 			DocSection({
-				title: 'Left Modal',
+				title: 'Form Modal',
 				preview: [
 					ModalFormButton({
 						label: 'Form Modal',
@@ -323,7 +326,178 @@ const ModalButton = (props, children) => Button({
 				code: `
 import { Modal } from "@components/molecules/modal.js";
 import { Button } from "@components/atoms/atoms.js";
-`
+
+/**
+ * This will create a modal form.
+ *
+ * @returns {object}
+ */
+const ModalForm = ({
+	size = 'lg',
+	type = 'center'
+}) => (
+	new Modal({
+		title: 'Report an Issue',
+		description: "What area are you having problems with?",
+		size,
+		type,
+		onSubmit: () => console.log('Form submitted')
+	}, [
+		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
+			// Row for Area and Security Level
+			Div({ class: "flex flex-auto w-full gap-4" }, [
+				// Area field
+				new FormField({ name: "area", label: "Area" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "billing", label: "Billing" },
+							{ value: "technical", label: "Technical" },
+							{ value: "account", label: "Account" },
+							{ value: "other", label: "Other" }
+						],
+						defaultValue: "billing",
+						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+					})
+				]),
+
+				// Security Level field
+				new FormField({ name: "security_level", label: "Security Level" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "severity_1", label: "Severity 1" },
+							{ value: "severity_2", label: "Severity 2" },
+							{ value: "severity_3", label: "Severity 3" }
+						],
+						defaultValue: "severity_2",
+						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+					})
+				])
+			]),
+
+			// Subject field
+			new FormField({
+				name: "subject",
+				label: "Subject",
+			}, [
+				Input({
+					type: "text",
+					placeholder: "I need help with...",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			]),
+
+			// Description field
+			new FormField({
+				name: "description",
+				label: "Description",
+			}, [
+				Textarea({
+					placeholder: "Please include all information relevant to your issue.",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			])
+		])
+	])
+);`
+			}),
+
+			DocSection({
+				title: 'Right Form Modal',
+				preview: [
+					ModalFormButton({
+						label: 'Form Modal',
+						buttonStyle: 'primary',
+						size: 'md',
+						type: 'right'
+					})
+				],
+				code: `
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
+
+/**
+ * This will create a modal form.
+ *
+ * @returns {object}
+ */
+const ModalForm = ({
+	type = 'right'
+}) => (
+	new Modal({
+		title: 'Report an Issue',
+		description: "What area are you having problems with?",
+		size,
+		type,
+		onSubmit: () => console.log('Form submitted')
+	}, [
+		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
+			// Row for Area and Security Level
+			Div({ class: "flex flex-auto w-full gap-4" }, [
+				// Area field
+				new FormField({ name: "area", label: "Area" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "billing", label: "Billing" },
+							{ value: "technical", label: "Technical" },
+							{ value: "account", label: "Account" },
+							{ value: "other", label: "Other" }
+						],
+						defaultValue: "billing",
+						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+					})
+				]),
+
+				// Security Level field
+				new FormField({ name: "security_level", label: "Security Level" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "severity_1", label: "Severity 1" },
+							{ value: "severity_2", label: "Severity 2" },
+							{ value: "severity_3", label: "Severity 3" }
+						],
+						defaultValue: "severity_2",
+						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+					})
+				])
+			]),
+
+			// Subject field
+			new FormField({
+				name: "subject",
+				label: "Subject",
+			}, [
+				Input({
+					type: "text",
+					placeholder: "I need help with...",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			]),
+
+			// Description field
+			new FormField({
+				name: "description",
+				label: "Description",
+			}, [
+				Textarea({
+					placeholder: "Please include all information relevant to your issue.",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			])
+		])
+	])
+);`
 			})
         ]
     )
