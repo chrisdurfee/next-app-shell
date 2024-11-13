@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
 import { Modal } from "@components/molecules/modal.js";
+import { Icons } from "../../../../../../components/icons/icons.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -60,7 +61,15 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 						title: 'Are you absoultely sure?',
 						description: 'This action cannot be undone. This will permanently delete your account and remove your data from our servers.',
 						confirmTextLabel: 'Save',
-						confirmed: () => console.log('Confirmed!')
+						confirmed: () =>
+						{
+							app.notify({
+								icon: Icons.trash,
+								title: 'Account deleted',
+								description: 'Your account has been successfully deleted.',
+								type: 'destructive'
+							})
+						}
 					}).open()
 				}
 			}, 'Confirm')
