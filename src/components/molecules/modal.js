@@ -81,7 +81,7 @@ export class Modal extends Dialog
     {
         return [
             Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
-            Button({ variant: 'primary', type: 'submit', click: () => this.confirm() }, 'Save')
+            Button({ variant: 'primary', type: 'submit' }, 'Save')
         ];
     }
 
