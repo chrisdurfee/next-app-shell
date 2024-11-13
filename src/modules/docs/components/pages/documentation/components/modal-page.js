@@ -1,8 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Icons } from "@components/icons/icons.js";
 import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
 import { Modal } from "@components/molecules/modal.js";
-import { Icons } from "../../../../../../components/icons/icons.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -75,6 +75,92 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 			}, 'Confirm')
 		])
 	]).open()
+});
+
+/**
+ * This will create a modal form.
+ *
+ * @returns {object}
+ */
+const ModalForm = () => (
+	new Modal({
+		title: 'Report an Issue',
+		description: "What area are you having problems with?",
+		onSubmit: () => console.log('Form submitted')
+	}, [
+		Div({ class: 'flex flex-auto flex-col items-center justify-center max-w-lg' }, [
+			// Row for Area and Security Level
+			Div({ class: "flex flex-auto w-full gap-4" }, [
+				// Area field
+				new FormField({ name: "area", label: "Area" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "billing", label: "Billing" },
+							{ value: "technical", label: "Technical" },
+							{ value: "account", label: "Account" },
+							{ value: "other", label: "Other" }
+						],
+						defaultValue: "billing",
+						change: (e) => console.log(`Area selected: ${e.target.value}`)
+					})
+				]),
+
+				// Security Level field
+				new FormField({ name: "security_level", label: "Security Level" }, [
+					Select({
+						required: true,
+						class: "border p-2 rounded-md w-full bg-background text-foreground",
+						options: [
+							{ value: "severity_1", label: "Severity 1" },
+							{ value: "severity_2", label: "Severity 2" },
+							{ value: "severity_3", label: "Severity 3" }
+						],
+						defaultValue: "severity_2",
+						change: (e) => console.log(`Security Level selected: ${e.target.value}`)
+					})
+				])
+			]),
+
+			// Subject field
+			new FormField({
+				name: "subject",
+				label: "Subject",
+			}, [
+				Input({
+					type: "text",
+					placeholder: "I need help with...",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			]),
+
+			// Description field
+			new FormField({
+				name: "description",
+				label: "Description",
+			}, [
+				Textarea({
+					placeholder: "Please include all information relevant to your issue.",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
+				})
+			])
+		])
+	])
+);
+
+/**
+ * This will create a modal button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ModalFormButton = ({ label, buttonStyle }) => Button({
+	text: label,
+	class: `m-1 ${buttonStyle}`,
+	click: () => ModalForm().open()
 });
 
 /**
@@ -219,7 +305,22 @@ const ModalButton = (props, children) => Button({
 		title: 'Are you absolutely sure?'
 	}).open()
 });`
-            })
+            }),
+
+			// modal with form
+			DocSection({
+				title: 'Left Modal',
+				preview: [
+					ModalFormButton({
+						label: 'Form Modal',
+						buttonStyle: 'primary'
+					})
+				],
+				code: `
+import { Modal } from "@components/molecules/modal.js";
+import { Button } from "@components/atoms/atoms.js";
+`
+			})
         ]
     )
 );
