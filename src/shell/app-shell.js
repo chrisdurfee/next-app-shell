@@ -1,4 +1,4 @@
-import { Atom } from '@base-framework/base';
+import { Atom, Jot } from '@base-framework/base';
 import { NotificationContainer } from '@components/molecules/notifications/notification-container.js';
 import { AppContent } from './app-content.js';
 
@@ -32,8 +32,15 @@ const AppContainer = Atom((props, children) =>
  * @param {object} props
  * @returns {object}
  */
-export const AppShell = (props) => (
-	AppContainer([
-		AppContent(props)
-	])
-);
+export const AppShell = Jot({
+	render()
+	{
+		const { options, routes, onCreated } = this;
+		return AppContainer({ onCreated }, [
+			AppContent({
+				options,
+				routes
+			})
+		]);
+	}
+});

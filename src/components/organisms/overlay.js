@@ -98,7 +98,7 @@ export class Overlay extends Component
 	 */
 	setup(container)
 	{
-		this.container = document.body;
+		this.container = app.appShell.panel;
 		this.initialize();
 	}
 

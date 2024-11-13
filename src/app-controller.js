@@ -85,8 +85,8 @@ export class AppController
 	render()
 	{
 		const { routes, links: options } = modules;
-		const main = AppShell({ options, routes });
-		this.appShell = Builder.render(main, document.body);
+		const main = this.appShell = new AppShell({ options, routes });
+		Builder.render(main, document.body);
 	}
 
 	/**
