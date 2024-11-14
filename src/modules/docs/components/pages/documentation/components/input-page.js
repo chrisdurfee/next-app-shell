@@ -6,6 +6,7 @@ import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@compon
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
+import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
 import Toggle from "../../../../../../components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -49,6 +50,17 @@ const NotificationToggle = ({ label, description, active, onChange }) => (
         })
     ])
 );
+
+const options = [
+    'Apple',
+    'Banana',
+    'Cherry',
+    'Date',
+    'Elderberry',
+    'Fig',
+    'Grape',
+    'Honeydew'
+];
 
 /**
  * InputPage
@@ -95,6 +107,32 @@ TelInput({}),
 Textarea({
     placeholder: 'Enter your text here...'
 })`
+            }),
+
+            // Search Dropdown
+            DocSection({
+                title: 'Search Dropdown',
+                description: 'This is a search dropdown.',
+                preview: [
+                    Div({ class: 'relative w-full max-w-md' }, [
+                        new SearchDropdown({ options })
+                    ])
+                ],
+                code: `import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
+
+const options = [
+    'Apple',
+    'Banana',
+    'Cherry',
+    'Date',
+    'Elderberry',
+    'Fig',
+    'Grape',
+    'Honeydew'
+];
+
+new SearchDropdown({ options })
+`
             }),
 
             DocSection({
