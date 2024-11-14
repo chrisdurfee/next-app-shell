@@ -55,6 +55,29 @@ export class AbsoluteContainer extends Component
         return this.parent.data;
     }
 
+    /**
+     * This will get the class size.
+     *
+     * @returns {string}
+     */
+    getSize()
+    {
+        const size = this.size || 'lg';
+        switch (size)
+        {
+            case 'sm':
+                return 'w-48';
+            case 'md':
+                return 'w-64';
+            case 'lg':
+                return 'w-[250px]';
+            case 'xl':
+                return 'w-96';
+            case 'full':
+                return 'w-full';
+        }
+    }
+
 	/**
 	 * This will render the modal component.
 	 *
@@ -62,8 +85,9 @@ export class AbsoluteContainer extends Component
 	 */
 	render()
 	{
+        const size = this.getSize();
         return Div({
-            class: 'absolute mt-2 border rounded-md shadow-lg bg-popover z-30 w-[250px]',
+            class: `absolute mt-2 border rounded-md shadow-lg bg-popover z-30 ${size}`,
             style: 'top: [[position.y]]px; left: [[position.x]]px'
         }, this.children);
 	}
