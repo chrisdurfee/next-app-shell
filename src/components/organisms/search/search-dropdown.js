@@ -33,11 +33,11 @@ const SearchInput = Atom((props) => (
  * @param {object} props - The properties of the component.
  * @returns {object} - The list item component.
  */
-const ListItem = Atom(({ index, click }, children) => (
+const ListItem = Atom(({ index, click, state }, children) => (
 	Li({
 		class: `p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground`,
 		onState: [
-			['selectedIndex', {
+			[state, 'selectedIndex', {
 				'bg-accent': index,
 				'text-white': index
 			}],
@@ -52,11 +52,11 @@ const ListItem = Atom(({ index, click }, children) => (
  * @param {object} props - The properties of the component.
  * @returns {object} - The dropdown component.
  */
-const Dropdown = Atom(({ selectOption }) => (
+const Dropdown = Atom(({ selectOption, state }) => (
 	Ul({
 		class: 'list-none m-0 p-0',
 		for: ['filteredOptions', (option, index) =>
-		ListItem({ index, click: selectOption }, option)]
+		ListItem({ index, click: selectOption, state }, option)]
 	})
 ));
 
@@ -168,6 +168,7 @@ export const SearchDropdown = Jot(
 	 */
 	selectOption(index)
 	{
+		this.state.selectedIndex = index;
 		this.state.searchQuery = this.data.filteredOptions[index];
 		this.state.open = false;
 
@@ -249,6 +250,7 @@ export const SearchDropdown = Jot(
 			}),
 
 			DropdownContainer({
+				state: this.state,
 				updatePosition: this.updatePosition.bind(this),
 				setSelected: this.setSelectedIndexByQuery.bind(this),
 				selectOption: this.selectOption.bind(this),
