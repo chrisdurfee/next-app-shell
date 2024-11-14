@@ -16,15 +16,15 @@ const SearchInput = Atom((props) => (
 		bind: [props.state, 'searchQuery'],
 		keyup: (e, { state }) =>
 		{
-			state.isOpen = true;
+			state.open = true;
 
 			if (typeof props.filterOptions === 'function')
 			{
 				props.filterOptions();
 			}
 		},
-		focus: (e, { state }) => (state.isOpen = true),
-		blur: (e, { state }) => setTimeout(() => (state.isOpen = false), 100),
+		focus: (e, { state }) => (state.open = true),
+		blur: (e, { state }) => setTimeout(() => (state.open = false), 100),
 		keydown: (e) => (typeof props.handleKeyDown === 'function') && props.handleKeyDown(e),
 	})
 ));
@@ -71,9 +71,9 @@ const Dropdown = Atom(({ selectOption }) => (
 const DropdownContainer = (props) => (
     Div({
 		class: 'relative flex fle-auto flex-col',
-        onState: ['isOpen', (isOpen, ele, parent) =>
+        onState: ['open', (open, ele, parent) =>
         {
-            if (isOpen)
+            if (open)
             {
 				props.setSelected();
 
@@ -124,7 +124,7 @@ export const SearchDropdown = Jot(
 		return {
 			searchQuery: '',
 			selectedIndex: -1,
-			isOpen: false,
+			open: false,
 		};
 	},
 
@@ -173,7 +173,7 @@ export const SearchDropdown = Jot(
 	selectOption(index)
 	{
 		this.state.searchQuery = this.data.filteredOptions[index];
-		this.state.isOpen = false;
+		this.state.open = false;
 
 		if (typeof this.onSelect === 'function')
 		{
@@ -188,9 +188,9 @@ export const SearchDropdown = Jot(
      */
     updatePosition()
     {
-        const button = this.button;
+        const input = this.input;
         const dropdown = this.dropdown.panel;
-        const position = getPosition(button, dropdown);
+        const position = getPosition(input, dropdown);
 
         this.data.position = position;
     },
