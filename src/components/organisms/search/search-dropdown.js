@@ -73,9 +73,7 @@ const DropdownContainer = (props) => (
         {
             if (open)
             {
-				props.setSelected();
-
-                return new AbsoluteContainer({
+				return new AbsoluteContainer({
                     cache: 'dropdown',
                     parent: parent,
                     button: parent.input,
@@ -188,6 +186,7 @@ export const SearchDropdown = Jot(
 
         if (this.state.open)
         {
+			this.setSelectedIndexByQuery();
             this.updatePosition();
         }
     },
