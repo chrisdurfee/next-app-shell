@@ -16,14 +16,12 @@ const SearchInput = Atom((props) => (
 		bind: [props.state, 'searchQuery'],
 		keyup: (e, { state }) =>
 		{
-			state.open = true;
-
 			if (typeof props.filterOptions === 'function')
 			{
 				props.filterOptions();
 			}
 		},
-		focus: (e, { state }) => (state.open = true),
+		focus: (e, parent) => parent.toggleDropdown(),
 		blur: (e, { state }) => setTimeout(() => (state.open = false), 100),
 		keydown: (e) => (typeof props.handleKeyDown === 'function') && props.handleKeyDown(e),
 	})
@@ -180,6 +178,19 @@ export const SearchDropdown = Jot(
 			this.onSelect(this.state.searchQuery);
 		}
 	},
+
+	/**
+     * Toggles the dropdown open state.
+     */
+    toggleDropdown()
+    {
+        this.state.toggle('open');
+
+        if (this.state.open)
+        {
+            this.updatePosition();
+        }
+    },
 
 	/**
      * Updates the dropdown position.
