@@ -1,7 +1,7 @@
 import { Div, Li, Ul } from '@base-framework/atoms';
 import { Atom, Component, Data, Jot } from '@base-framework/base';
 import { Input } from "../../atoms/form/input.js";
-import { AbsoluteContainer } from "../../molecules/absolute-container.js";
+import { AbsoluteContainer, getPosition } from "../../molecules/absolute-container.js";
 
 /**
  * This will create a search input.
@@ -239,6 +239,7 @@ export const SearchDropdown = Jot(
 			}),
 
 			DropdownContainer({
+				updatePosition: this.updatePosition.bind(this),
 				setSelected: this.setSelectedIndexByQuery.bind(this),
 				selectOption: this.selectOption.bind(this),
 			}),
