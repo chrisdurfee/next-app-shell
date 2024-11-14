@@ -1,6 +1,7 @@
 import { Div, Li, Ul } from '@base-framework/atoms';
 import { Atom, Component, Data, Jot } from '@base-framework/base';
 import { Input } from "../../atoms/form/input.js";
+import { AbsoluteContainer } from "../../molecules/absolute-container.js";
 
 /**
  * This will create a search input.
@@ -10,7 +11,7 @@ import { Input } from "../../atoms/form/input.js";
  */
 const SearchInput = Atom((props) => (
 	Input({
-		type: 'text',
+		cache: 'input',
 		placeholder: props.placeholder ?? 'Search...',
 		bind: [props.state, 'searchQuery'],
 		keyup: (e, { state }) =>
@@ -34,7 +35,7 @@ const SearchInput = Atom((props) => (
  * @param {object} props - The properties of the component.
  * @returns {object} - The list item component.
  */
-const ListItem = Atom(( {index, click }, children) => (
+const ListItem = Atom(({ index, click }, children) => (
 	Li({
 		class: `p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground`,
 		onState: [
@@ -43,7 +44,7 @@ const ListItem = Atom(( {index, click }, children) => (
 				'text-white': index
 			}],
 		],
-		click
+		pointerdown: () => click(index)
 	}, children)
 ));
 
@@ -53,24 +54,40 @@ const ListItem = Atom(( {index, click }, children) => (
  * @param {object} props - The properties of the component.
  * @returns {object} - The dropdown component.
  */
-const Dropdown = Atom((props) => (
-	Div({
-		class: `flex fle-auto flex-col`,
-		onState: ['isOpen', (isOpen) =>
-		{
-			if (!isOpen)
-			{
-				return null;
-			}
-
-			return Ul({
-				class: 'absolute top-full left-0 right-0 mt-2 bg-popover border rounded-md shadow-lg z-10 transition list-none m-0 p-0',
-				for: ['filteredOptions', (option, index) =>
-				ListItem({ index, click: () => props.selectOption(index) }, option)]
-			});
-		}]
+const Dropdown = Atom(({ selectOption }) => (
+	Ul({
+		class: 'list-none m-0 p-0',
+		for: ['filteredOptions', (option, index) =>
+		ListItem({ index, click: selectOption }, option)]
 	})
 ));
+
+/**
+ * This will render a dropdown container.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const DropdownContainer = (props) => (
+    Div({
+		class: 'relative flex fle-auto flex-col',
+        onState: ['isOpen', (isOpen, ele, parent) =>
+        {
+            if (isOpen)
+            {
+				props.setSelected();
+
+                return new AbsoluteContainer({
+                    cache: 'dropdown',
+                    parent: parent,
+                    button: parent.input,
+                }, [
+                    Dropdown(props)
+                ]);
+            }
+        }]
+    })
+);
 
 /**
  * SearchDropdown
@@ -93,6 +110,7 @@ export const SearchDropdown = Jot(
 		return new Data({
 			options,
 			filteredOptions: options,
+			position: { y: 0, x: 0 }
 		});
 	},
 
@@ -111,6 +129,22 @@ export const SearchDropdown = Jot(
 	},
 
 	/**
+	 * This will set the selected index by query.
+	 *
+	 * @returns {number|null}
+	 */
+	setSelectedIndexByQuery()
+	{
+		const filteredOptions = this.data.filteredOptions;
+		const { searchQuery } = this.state;
+		const index = filteredOptions.findIndex(option => option === searchQuery);
+		if (index >= 0)
+		{
+			this.state.selectedIndex = index;
+		}
+	},
+
+	/**
 	 * This will filter the options.
 	 *
 	 * @returns {void}
@@ -118,7 +152,6 @@ export const SearchDropdown = Jot(
 	filterOptions()
 	{
 		const query = this.state.searchQuery.toLowerCase();
-		console.log(query === '', query.length === 0)
 		if (query === '' || query.length === 0)
 		{
 			this.data.filteredOptions = this.data.options;
@@ -141,7 +174,26 @@ export const SearchDropdown = Jot(
 	{
 		this.state.searchQuery = this.data.filteredOptions[index];
 		this.state.isOpen = false;
+
+		if (typeof this.onSelect === 'function')
+		{
+			this.onSelect(this.state.searchQuery);
+		}
 	},
+
+	/**
+     * Updates the dropdown position.
+     *
+     * @returns {void}
+     */
+    updatePosition()
+    {
+        const button = this.button;
+        const dropdown = this.dropdown.panel;
+        const position = getPosition(button, dropdown);
+
+        this.data.position = position;
+    },
 
 	/**
 	 * This will handle key down events.
@@ -186,7 +238,8 @@ export const SearchDropdown = Jot(
 				handleKeyDown: this.handleKeyDown.bind(this),
 			}),
 
-			Dropdown({
+			DropdownContainer({
+				setSelected: this.setSelectedIndexByQuery.bind(this),
 				selectOption: this.selectOption.bind(this),
 			}),
 		]);

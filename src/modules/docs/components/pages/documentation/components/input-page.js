@@ -115,7 +115,7 @@ Textarea({
                 description: 'This is a search dropdown.',
                 preview: [
                     Div({ class: 'relative w-full max-w-md' }, [
-                        new SearchDropdown({ options })
+                        new SearchDropdown({ options, onSelect: (item) => console.log(item) })
                     ])
                 ],
                 code: `import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
@@ -131,7 +131,7 @@ const options = [
     'Honeydew'
 ];
 
-new SearchDropdown({ options })
+new SearchDropdown({ options, onSelect: (item) => console.log(item) })
 `
             }),
 
