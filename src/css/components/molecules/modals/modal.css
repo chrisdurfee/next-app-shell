@@ -15,6 +15,13 @@
     padding: calc(16px + env(safe-area-inset-top)) 24px calc(16px + env(safe-area-inset-bottom));
 }
 
+@media (min-width: 1024px) {
+
+    .modal header button.icon {
+        @apply hidden;
+    }
+}
+
 .modal.right,
 .modal.left {
     top: 0;

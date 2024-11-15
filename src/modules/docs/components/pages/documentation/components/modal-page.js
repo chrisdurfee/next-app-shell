@@ -91,6 +91,7 @@ const ModalForm = ({
 }) => (
 	new Modal({
 		title: 'Report an Issue',
+		icon: Icons.warning,
 		description: "What area are you having problems with?",
 		size,
 		type,
@@ -420,6 +421,7 @@ const ModalForm = ({
 				code: `
 import { Modal } from "@components/molecules/modal.js";
 import { Button } from "@components/atoms/atoms.js";
+import { Icons } from "@components/icons/icons.js";
 
 /**
  * This will create a modal form.
@@ -431,6 +433,7 @@ const ModalForm = ({
 }) => (
 	new Modal({
 		title: 'Report an Issue',
+		icon: Icons.warning,
 		description: "What area are you having problems with?",
 		size,
 		type,

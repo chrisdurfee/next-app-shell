@@ -16,7 +16,7 @@ import { Dialog } from "./dialogs/dialog.js";
 const ModalHeader = ({ title, description, icon }) => (
     Header({ class: 'modal-header flex items-center' }, [
         Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
-		icon && Icon({ class: 'mr-2' }, icon),
+		icon && Div({ class: 'mx-2 w-12 h-12 rounded-full bg-muted flex items-center justify-center' }, [ Icon(icon) ]),
         Div({ class: 'flex flex-auto flex-col ml-2' }, [
 			H2({ class: 'text-lg font-semibold m-0' }, title),
 			description && Div({ class: 'text-sm text-muted-foreground' }, description)
@@ -71,6 +71,7 @@ export class Modal extends Dialog
 				description,
 				buttons: this.getButtons(),
 				onSubmit: this.submit,
+				icon: this.icon,
 				aria: { expanded: ['open']}
 			},
 			this.children
