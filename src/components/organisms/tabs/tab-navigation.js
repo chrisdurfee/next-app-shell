@@ -24,6 +24,21 @@ const isLinkActive = (link, url) =>
 };
 
 /**
+ * This will create a link.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const Link = ({ text, href }) => (
+	new NavLink({
+		text,
+		href,
+		dataSet: ['selected', ['state', true, 'active']],
+		class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm'
+	})
+);
+
+/**
  * TabNavigation
  *
  * This will create a tab navigation component.
@@ -121,12 +136,7 @@ export class TabNavigation extends Component
 	 */
 	addLink({ label: text, href })
 	{
-		const link = new NavLink({
-			text,
-			href,
-			dataSet: ['selected', ['state', true, 'active']],
-			class: 'inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm'
-		});
+		const link = Link({ text, href });
 		this.links.push(link);
 		return link;
     }

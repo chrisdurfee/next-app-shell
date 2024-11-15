@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 import { SidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
+import NavigationMenu from "../../../../../../components/organisms/navigation/navigation-menu/navigation-menu.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -23,6 +24,42 @@ export const NavigationPage = () => (
             description: 'Navigations are components that help users move around the website or application.',
         },
         [
+            DocSection({
+                title: 'Navigation Menu',
+                description: 'The navigation menu component is a simple navigation component that will create a horizontal menu.',
+                preview: [
+                    Div({ class: 'flex flex-auto flex-col w-full' }, [
+                        new NavigationMenu({
+                            options: [
+                                { label: 'Examples', href: 'docs/components/navigations/examples' },
+                                { label: 'Mail', href: 'docs/components/navigations/mail' },
+                                { label: 'Dashboard', href: 'docs/components/navigations/dashboard' },
+                                { label: 'Tasks', href: 'docs/components/navigations/tasks' },
+                                { label: 'Playground', href: 'docs/components/navigations/playground' },
+                                { label: 'Forms', href: 'docs/components/navigations/forms' },
+                                { label: 'Music', href: 'docs/components/navigations/music' },
+                                { label: 'Authentication', href: 'docs/components/navigations/authentication' }
+                            ]
+                        })
+                    ])
+                ],
+                code: `import { Button } from '@components/organisms/navigation/inline-navigation.js';
+import { Icons } from "@components/icons/icons.js";
+
+new NavigationMenu({
+    options: [
+        { label: 'Examples', href: '/examples' },
+        { label: 'Mail', href: '/mail' },
+        { label: 'Dashboard', href: '/dashboard' },
+        { label: 'Tasks', href: '/tasks' },
+        { label: 'Playground', href: '/playground' },
+        { label: 'Forms', href: '/forms' },
+        { label: 'Music', href: '/music' },
+        { label: 'Authentication', href: '/authentication' }
+    ]
+})`
+            }),
+
             DocSection({
                 title: 'Inline Navigation',
                 description: 'The inline navigation component is a simple navigation component that can be used in a sidebar or app shell.',
