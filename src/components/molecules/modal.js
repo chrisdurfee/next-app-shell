@@ -3,6 +3,7 @@ import { Atom, Component } from "@base-framework/base";
 import { Form } from "@components/molecules/form/form.js";
 import "../../css/components/molecules/modals/modal.css";
 import { Button } from "../atoms/buttons/buttons.js";
+import { Icon } from "../atoms/icon.js";
 import { Icons } from "../icons/icons";
 import { Dialog } from "./dialogs/dialog.js";
 
@@ -12,9 +13,10 @@ import { Dialog } from "./dialogs/dialog.js";
  * @param {object} props
  * @returns {object}
  */
-const ModalHeader = ({ title, description }) => (
+const ModalHeader = ({ title, description, icon }) => (
     Header({ class: 'modal-header flex items-center' }, [
         Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
+		icon && Icon({ class: 'mr-2' }, icon),
         Div({ class: 'flex flex-auto flex-col ml-2' }, [
 			H2({ class: 'text-lg font-semibold m-0' }, title),
 			description && Div({ class: 'text-sm text-muted-foreground' }, description)
