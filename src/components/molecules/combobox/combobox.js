@@ -110,8 +110,7 @@ export const Combobox = Jot(
     setData()
     {
         return new Data({
-            items: this.items || [],
-            position: { y: 0, x: 0 }
+            items: this.items || []
         });
     },
 

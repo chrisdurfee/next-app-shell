@@ -50,8 +50,7 @@ export const SearchDropdown = Jot(
 		const options = this.options || [];
 		return new Data({
 			options,
-			filteredOptions: options,
-			position: { y: 0, x: 0 }
+			filteredOptions: options
 		});
 	},
 

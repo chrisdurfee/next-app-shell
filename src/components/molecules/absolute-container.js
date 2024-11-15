@@ -52,7 +52,11 @@ export class AbsoluteContainer extends Component
      */
     setData()
     {
-        return this.parent.data;
+        const data = this.parent.data;
+        data.set({
+            position: { x: 0, y: 0 }
+        });
+        return data;
     }
 
     /**

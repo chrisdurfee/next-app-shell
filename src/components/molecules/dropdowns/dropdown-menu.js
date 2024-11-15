@@ -65,8 +65,7 @@ export class DropdownMenu extends Component
     setData()
     {
         return new Data({
-            groups: this.groups || [],
-            position: { y: 0, x: 0 }
+            groups: this.groups || []
         });
     }
 
