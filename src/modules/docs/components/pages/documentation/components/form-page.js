@@ -1,3 +1,5 @@
+import { Div } from "@base-framework/atoms";
+import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from '@components/atoms/form/checkbox.js';
 import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
@@ -8,6 +10,17 @@ import { Form, FormField } from "@components/molecules/form/form.js";
 import Toggle from "@components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
+
+/**
+ * This will create an input preview.
+ *
+ * @param {object} props
+ * @param {object} children
+ * @returns {object}
+ */
+const FormPreview = Atom((props, children) => (
+    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full py-4 space-y-8 max-w-[350px]' }, children)
+));
 
 const frameworks = [
     { value: 'next.js', label: 'Next.js' },
@@ -154,7 +167,9 @@ export const FormPage = () => (
                 title: 'Profile Form',
                 description: 'A simple profile form with username and email fields.',
                 preview: [
-                    ProfileForm()
+                    FormPreview([
+                        ProfileForm()
+                    ])
                 ],
                 code: `import { Button, Input, EmailInput } from "@components/atoms/form/input.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
@@ -184,7 +199,9 @@ Form([
                 title: 'Preferences Form',
                 description: 'A preferences form with a select input and a checkbox.',
                 preview: [
-                    PreferencesForm()
+                    FormPreview([
+                        PreferencesForm()
+                    ])
                 ],
                 code: `import { Button, Checkbox, Select } from "@components/atoms/form/input.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
@@ -214,7 +231,9 @@ Form([
                 title: 'Contact Form',
                 description: 'A contact form with a phone input and a textarea for messages.',
                 preview: [
-                    ContactForm()
+                    FormPreview([
+                        ContactForm()
+                    ])
                 ],
                 code: `import { Button, TelInput, Textarea } from "@components/atoms/form/input.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
@@ -244,7 +263,9 @@ Form([
                 title: 'Settings Form',
                 description: 'A settings form with a toggle and a range slider.',
                 preview: [
-                    SettingsForm()
+                    FormPreview([
+                        SettingsForm()
+                    ])
                 ],
                 code: `import { Button, Toggle, RangeSlider } from "@components/atoms/form/input.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
