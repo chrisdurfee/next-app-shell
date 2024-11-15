@@ -73,6 +73,8 @@ export class AbsoluteContainer extends Component
                 return 'w-[250px]';
             case 'xl':
                 return 'w-96';
+            case '2xl':
+                return 'w-[400px]';
             case 'full':
                 return 'w-full';
         }
