@@ -1,6 +1,5 @@
-import { Div, H1, Header } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
-import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
+import { SidebarMenu as BaseSidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
 
 const PAGE_URL = 'music';
 
@@ -10,37 +9,33 @@ const PAGE_URL = 'music';
  * @returns {object}
  */
 export const SidebarMenu = () => (
-    Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar max-w-[300px] h-full' }, [
-        Header({ class: 'pb-2 px-6 flex flex-col' }, [
-            H1({ class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Discover'),
-        ]),
-        new InlineNavigation({
-            options: [
-                { label: 'Listen Now', href: `${PAGE_URL}`, icon: Icons.playing, exact: true },
-                { label: 'Browse', href: `${PAGE_URL}/browse`, icon: Icons.square.grid },
-                { label: 'Radio', href: `${PAGE_URL}/radio`, icon: Icons.signal },
-                {
-                    group: 'Library',
-                    options: [
-                        { label: 'Playlists', href: `${PAGE_URL}/playlists`, icon: Icons.list.down },
-                        { label: 'Songs', href: `${PAGE_URL}/songs`, icon: Icons.music },
-                        { label: 'Made for You', href: `${PAGE_URL}/made-for-you`, icon: Icons.user.default },
-                        { label: 'Artists', href: `${PAGE_URL}/artists`, icon: Icons.speaker.default },
-                        { label: 'Albums', href: `${PAGE_URL}/albums`, icon: Icons.square.stack }
-                    ]
-                },
-                {
-                    group: 'Playlists',
-                    options: [
-                        { label: 'Recently Added', href: `${PAGE_URL}/recently-added`, icon: Icons.list.down },
-                        { label: 'Recently Played', href: `${PAGE_URL}/recently-played`, icon: Icons.list.down },
-                        { label: 'Top Songs', href: `${PAGE_URL}/top-songs`, icon: Icons.list.down },
-                        { label: 'Top Albums', href: `${PAGE_URL}/top-albums`, icon: Icons.list.down }
-                    ]
-                }
-            ]
-        })
-    ])
+    BaseSidebarMenu({
+        title: 'Discover',
+        options: [
+            { label: 'Listen Now', href: `${PAGE_URL}`, icon: Icons.playing, exact: true },
+            { label: 'Browse', href: `${PAGE_URL}/browse`, icon: Icons.square.grid },
+            { label: 'Radio', href: `${PAGE_URL}/radio`, icon: Icons.signal },
+            {
+                group: 'Library',
+                options: [
+                    { label: 'Playlists', href: `${PAGE_URL}/playlists`, icon: Icons.list.down },
+                    { label: 'Songs', href: `${PAGE_URL}/songs`, icon: Icons.music },
+                    { label: 'Made for You', href: `${PAGE_URL}/made-for-you`, icon: Icons.user.default },
+                    { label: 'Artists', href: `${PAGE_URL}/artists`, icon: Icons.speaker.default },
+                    { label: 'Albums', href: `${PAGE_URL}/albums`, icon: Icons.square.stack }
+                ]
+            },
+            {
+                group: 'Playlists',
+                options: [
+                    { label: 'Recently Added', href: `${PAGE_URL}/recently-added`, icon: Icons.list.down },
+                    { label: 'Recently Played', href: `${PAGE_URL}/recently-played`, icon: Icons.list.down },
+                    { label: 'Top Songs', href: `${PAGE_URL}/top-songs`, icon: Icons.list.down },
+                    { label: 'Top Albums', href: `${PAGE_URL}/top-albums`, icon: Icons.list.down }
+                ]
+            }
+        ]
+    })
 );
 
 export default SidebarMenu;

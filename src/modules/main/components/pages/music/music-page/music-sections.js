@@ -2,7 +2,7 @@ import { Div, H1, Header } from "@base-framework/atoms";
 import { getRandomAlbums } from "../albums.js";
 import MusicHeader from "./music-header.js";
 import { MusicSection } from "./music-section.js";
-import { PodcastSections } from "./podcast-sectionsjs";
+import { PodcastSections } from "./podcast-sections.js";
 
 /**
  * MusicSections
