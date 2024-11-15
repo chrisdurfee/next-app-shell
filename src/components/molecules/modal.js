@@ -14,7 +14,7 @@ import { Dialog } from "./dialogs/dialog.js";
  * @returns {object}
  */
 const ModalHeader = ({ title, description, icon }) => (
-    Header({ class: 'modal-header flex items-center' }, [
+    Header({ class: 'modal-header flex items-center pt-4 px-6' }, [
         Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
 		icon && Div({ class: 'mx-2 w-12 h-12 rounded-full bg-muted flex items-center justify-center' }, [ Icon(icon) ]),
         Div({ class: 'flex flex-auto flex-col ml-2' }, [
@@ -32,11 +32,11 @@ const ModalHeader = ({ title, description, icon }) => (
  * @returns {object}
  */
 export const ModalContainer = Atom((props, children) => (
-    MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden ${props.class}`, click: props.click}, [
+    MainDialog({ class: `modal m-auto fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden p-0 ${props.class}`, click: props.click}, [
         Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
-            Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto' }, children),
-            Footer({ class: 'modal-footer flex justify-between' }, props.buttons)
+            Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto py-0 px-6' }, children),
+            Footer({ class: 'modal-footer flex justify-between pb-4 px-6' }, props.buttons)
         ])
     ])
 ));

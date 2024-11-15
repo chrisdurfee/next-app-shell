@@ -1,22 +1,31 @@
 .modal {
-    max-height: 80vh;
     animation: popIn .2s;
-    @apply bg-background shadow-xl md:rounded-md rounded-md py-4 px-6;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-height: 100vh;
+    @apply bg-background shadow-xl md:rounded-md rounded-md;
 }
 .modal.sm {
     max-width: 425px;
-    max-height: 300px;
+    max-height: 350px;
+    @apply bg-background shadow-xl md:rounded-md rounded-md border;
+}
+.modal.sm .modal-body {
+    height: 300px;
 }
 .modal.lg,
 .modal.xl {
     top: 0;
     bottom: 0;
     max-height: 100vh;
-    padding: calc(16px + env(safe-area-inset-top)) 24px calc(16px + env(safe-area-inset-bottom));
 }
 
 @media (min-width: 1024px) {
 
+    .modal.md {
+        max-height: 80vh;
+    }
     .modal header button.icon {
         @apply hidden;
     }
@@ -27,7 +36,6 @@
     top: 0;
     bottom: 0;
     max-height: 100vh;
-    padding: calc(16px + env(safe-area-inset-top)) 24px calc(16px + env(safe-area-inset-bottom));
     border-radius: 0;
 }
 .modal.right {
