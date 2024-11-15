@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, Jot } from '@base-framework/base';
-import { AbsoluteContainer, getPosition } from "../../molecules/absolute-container.js";
+import { AbsoluteContainer } from "../../molecules/absolute-container.js";
 import { Dropdown } from "./dropdown.js";
 import { SearchInput } from "./search-input.js";
 
@@ -21,6 +21,7 @@ const DropdownContainer = (props) => (
                     cache: 'dropdown',
                     parent: parent,
                     button: parent.input,
+					size: 'xl'
                 }, [
                     Dropdown(props)
                 ]);
@@ -132,22 +133,7 @@ export const SearchDropdown = Jot(
         if (this.state.open)
         {
 			this.setSelectedIndexByQuery();
-            this.updatePosition();
         }
-    },
-
-	/**
-     * Updates the dropdown position.
-     *
-     * @returns {void}
-     */
-    updatePosition()
-    {
-        const input = this.input;
-        const dropdown = this.dropdown.panel;
-        const position = getPosition(input, dropdown);
-
-        this.data.position = position;
     },
 
 	/**
@@ -195,7 +181,6 @@ export const SearchDropdown = Jot(
 
 			DropdownContainer({
 				state: this.state,
-				updatePosition: this.updatePosition.bind(this),
 				setSelected: this.setSelectedIndexByQuery.bind(this),
 				selectOption: this.selectOption.bind(this),
 			}),

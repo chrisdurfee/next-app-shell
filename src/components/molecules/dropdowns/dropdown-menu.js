@@ -1,6 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
 import { Component, Data } from '@base-framework/base';
-import { AbsoluteContainer, getPosition } from '../absolute-container.js';
+import { AbsoluteContainer } from '../absolute-container.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -89,25 +89,6 @@ export class DropdownMenu extends Component
     toggleDropdown()
     {
         this.state.toggle('open');
-
-        if (this.state.open)
-        {
-            this.updatePosition();
-        }
-    }
-
-    /**
-     * Updates the dropdown position.
-     *
-     * @returns {void}
-     */
-    updatePosition()
-    {
-        const button = this.button;
-        const dropdown = this.dropdown.panel;
-        const position = getPosition(button, dropdown);
-
-        this.data.position = position;
     }
 
     /**

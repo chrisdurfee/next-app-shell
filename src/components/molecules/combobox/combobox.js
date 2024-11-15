@@ -1,7 +1,7 @@
 import { Button, Div, I, Input, Li, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
-import { AbsoluteContainer, getPosition } from '../absolute-container.js';
+import { AbsoluteContainer } from '../absolute-container.js';
 
 /**
  * This will create the dropdown button.
@@ -127,20 +127,6 @@ export const Combobox = Jot(
     },
 
     /**
-     * Updates the dropdown position.
-     *
-     * @returns {void}
-     */
-    updatePosition()
-    {
-        const button = this.button;
-        const dropdown = this.dropdown.panel;
-        const position = getPosition(button, dropdown);
-
-        this.data.position = position;
-    },
-
-    /**
      * Handles the selection of an item.
      *
      * @param {object} item
@@ -165,11 +151,6 @@ export const Combobox = Jot(
     toggleDropdown()
     {
         this.state.toggle('open');
-
-        if (this.state.open)
-        {
-            this.updatePosition();
-        }
     },
 
     /**

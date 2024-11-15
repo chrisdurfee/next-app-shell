@@ -89,7 +89,7 @@ export class AbsoluteContainer extends Component
 	{
         const size = this.getSize();
         return Div({
-            class: `absolute mt-2 border rounded-md shadow-lg bg-popover z-30 ${size}`,
+            class: `absolute mt-2 border rounded-md shadow-lg bg-popover min-h-12 r z-30 ${size}`,
             style: 'top: [[position.y]]px; left: [[position.x]]px'
         }, this.children);
 	}
@@ -116,6 +116,30 @@ export class AbsoluteContainer extends Component
                 }
             }
         };
+    }
+
+    /**
+     * Updates the dropdown position.
+     *
+     * @returns {void}
+     */
+    updatePosition()
+    {
+        const input = this.button ?? null;
+        const dropdown = this.panel;
+        const position = getPosition(input, dropdown);
+
+        this.data.position = position;
+    }
+
+    /**
+     * This will run after the setup.
+     *
+     * @returns {void}
+     */
+    afterSetup()
+    {
+        this.updatePosition();
     }
 
     /**
