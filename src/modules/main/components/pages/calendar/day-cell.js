@@ -67,6 +67,14 @@ const getClasses = (isToday, currentDate, isOutsideMonth, date) =>
 };
 
 /**
+ * This will render an event.
+ *
+ * @param {object} event
+ * @returns {object}
+ */
+const Event = (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]' });
+
+/**
  * This will render a day cell in a calendar.
  *
  * @param {object} props - The properties for the day cell.
@@ -87,7 +95,7 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
             P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day)),
             Div({
                 class: 'flex flex-auto flex-row flex-wrap',
-                for: [`events._${removeHyphens(date)}`, (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]' })]
+                for: [`events._${removeHyphens(date)}`, Event]
             })
         ]
     )
