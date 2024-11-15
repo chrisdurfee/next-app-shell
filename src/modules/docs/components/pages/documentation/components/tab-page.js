@@ -3,6 +3,7 @@ import { Atom } from "@base-framework/base";
 import { Panel } from "@components/organisms/panel.js";
 import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
 import { TabGroup } from "@components/organisms/tabs/tab-group.js";
+import { TabNavigation } from "@components/organisms/tabs/tab-navigation.js";
 import { Tab } from "@components/organisms/tabs/tab.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -166,7 +167,8 @@ export const ExampleTab = () => (
                             { label: 'Music', value: 'music' },
                             { label: 'Podcasts', value: 'podcasts' },
                             { label: 'Live', value: 'live' }
-                        ]
+                        ],
+                        onSelect: (value) => console.log(value)
                     })
                 ],
                 code: `import { TabGroup } from "@components/organisms/tabs/tab-group.js";
@@ -176,6 +178,49 @@ new TabGroup({
         { label: 'Music', value: 'music' },
         { label: 'Podcasts', value: 'podcasts' },
         { label: 'Live', value: 'live' }
+    ],
+    onSelect: (value) => console.log(value)
+})`,
+            }),
+
+            // tab navigation
+            DocSection({
+                title: 'Tab Navigation',
+                description: 'This is a tab navigation. The buttons update the state.',
+                preview: [
+                    new TabNavigation({
+                        options: [
+                            {
+                                label: 'Example 1',
+                                href: 'docs/components/tabs/example-1'
+                            },
+                            {
+                                label: 'Example 2',
+                                href: 'docs/components/tabs/example-2'
+                            },
+                            {
+                                label: 'Example 3',
+                                href: 'docs/components/tabs/example-3'
+                            }
+                        ]
+                    })
+                ],
+                code: `import { TabGroup } from "@components/organisms/tabs/tab-navigation.js";
+
+new TabNavigation({
+    options: [
+        {
+            label: 'Example 1',
+            href: 'docs/components/tabs/example-1'
+        },
+        {
+            label: 'Example 2',
+            href: 'docs/components/tabs/example-2'
+        },
+        {
+            label: 'Example 3',
+            href: 'docs/components/tabs/example-3'
+        }
     ]
 })`,
             }),
