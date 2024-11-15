@@ -23,7 +23,7 @@ const CalendarHeader = (props) => (
         Div({ class: 'flex items-center space-x-2' }, [
             Button({ variant: 'icon', icon: Icons.chevron.single.left, click: props.previous }),
             Button({ variant: 'icon', icon: Icons.chevron.single.right, click: props.next }),
-            Tooltip({ content: 'Add Event', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
+            Tooltip({ content: 'Add Event', position: 'left' }, Button({ variant: 'icon', class: 'lg:mr-4', icon: Icons.circlePlus }))
         ])
     ])
 );
