@@ -52,14 +52,14 @@ const NotificationToggle = ({ label, description, active, onChange }) => (
 );
 
 const options = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew'
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' },
+    { label: 'Date', value: 'date' },
+    { label: 'Elderberry', value: 'elderberry' },
+    { label: 'Fig', value: 'fig' },
+    { label: 'Grape', value: 'grape' },
+    { label: 'Honeydew', value: 'honeydew' }
 ];
 
 /**
@@ -121,14 +121,14 @@ Textarea({
                 code: `import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
 
 const options = [
-    'Apple',
-    'Banana',
-    'Cherry',
-    'Date',
-    'Elderberry',
-    'Fig',
-    'Grape',
-    'Honeydew'
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
+    { label: 'Cherry', value: 'cherry' },
+    { label: 'Date', value: 'date' },
+    { label: 'Elderberry', value: 'elderberry' },
+    { label: 'Fig', value: 'fig' },
+    { label: 'Grape', value: 'grape' },
+    { label: 'Honeydew', value: 'honeydew' }
 ];
 
 new SearchDropdown({ options, onSelect: (item) => console.log(item) })

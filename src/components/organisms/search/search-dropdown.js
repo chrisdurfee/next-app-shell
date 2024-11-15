@@ -76,8 +76,10 @@ export const SearchDropdown = Jot(
 	setSelectedIndexByQuery()
 	{
 		const filteredOptions = this.data.filteredOptions;
-		const { searchQuery } = this.state;
-		const index = filteredOptions.findIndex(option => option === searchQuery);
+		let { searchQuery } = this.state;
+		searchQuery = searchQuery.toLowerCase();
+
+		const index = filteredOptions.findIndex(option => option.label.toLowerCase() === searchQuery);
 		if (index >= 0)
 		{
 			this.state.selectedIndex = index;
@@ -100,7 +102,7 @@ export const SearchDropdown = Jot(
 
 		const options = this.data.get('options');
 		this.data.filteredOptions = options.filter(option =>
-			option.toLowerCase().includes(query)
+			option.label.toLowerCase().includes(query)
 		);
 	},
 
@@ -113,12 +115,13 @@ export const SearchDropdown = Jot(
 	selectOption(index)
 	{
 		this.state.selectedIndex = index;
-		this.state.searchQuery = this.data.filteredOptions[index];
+		const selection = this.data.get(`filteredOptions[${index}]`);
+		this.state.searchQuery = selection.label;
 		this.state.open = false;
 
 		if (typeof this.onSelect === 'function')
 		{
-			this.onSelect(this.state.searchQuery);
+			this.onSelect(selection);
 		}
 	},
 

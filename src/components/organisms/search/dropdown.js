@@ -30,7 +30,7 @@ export const Dropdown = Atom(({ selectOption, state }) => (
 	Ul({
 		class: 'list-none m-0 p-0',
 		for: ['filteredOptions', (option, index) =>
-		ListItem({ index, click: selectOption, state }, option)]
+		ListItem({ index, click: selectOption, state }, option.label)]
 	})
 ));
 
