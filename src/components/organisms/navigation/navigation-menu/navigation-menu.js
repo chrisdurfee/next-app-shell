@@ -82,6 +82,7 @@ export class NavigationMenu extends Component
     updateLinks(path)
     {
         let activeLinkSet = false;
+        this.deactivateAllLinks();
 
         for (const link of this.links)
         {
@@ -106,6 +107,19 @@ export class NavigationMenu extends Component
         if (!activeLinkSet && this.links[0])
         {
             this.updateLink(this.links[0], true);
+        }
+    }
+
+    /**
+     * This will deactivate all links.
+     *
+     * @returns {void}
+     */
+    deactivateAllLinks()
+    {
+        for (const link of this.links)
+        {
+            this.updateLink(link, false);
         }
     }
 

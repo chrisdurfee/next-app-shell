@@ -96,6 +96,8 @@ export class TabNavigation extends Component
 		let check = false,
 		firstLink = this.links[0];
 
+		this.deactivateAllLinks();
+
 		for (const link of this.links)
 		{
 			if (link.rendered === false)
@@ -115,6 +117,19 @@ export class TabNavigation extends Component
 			this.updateLink(firstLink, true);
 		}
 	}
+
+	/**
+     * This will deactivate all links.
+     *
+     * @returns {void}
+     */
+    deactivateAllLinks()
+    {
+        for (const link of this.links)
+        {
+            this.updateLink(link, false);
+        }
+    }
 
 	/**
 	 * This will update the link.
