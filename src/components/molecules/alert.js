@@ -20,6 +20,11 @@ const typeStyles = {
         borderColor: 'border-destructive',
         iconColor: 'text-red-500'
     },
+    success: {
+        bgColor: 'bg-muted/10',
+        borderColor: 'border-emerald-500',
+        iconColor: 'text-emerald-500'
+    },
     default: {
         borderColor: 'border',
         bgColor: 'bg-muted/10',

@@ -60,6 +60,26 @@ Alert({
 })`
             }),
 
+            // Success Alert
+            DocSection({
+                title: 'Success Alert',
+                description: 'A success alert to inform the user of a successful action.',
+                preview: [
+                    Alert({
+                        title: 'Success!',
+                        description: 'Your changes have been saved successfully.',
+                        icon: Icons.check,
+                        type: 'success'
+                    })
+                ],
+                code: `Alert({
+    title: 'Success!',
+    description: 'Your changes have been saved successfully.',
+    icon: Icons.check,
+    type: 'success'
+})`
+            }),
+
             // Warning Alert
             DocSection({
                 title: 'Warning Alert',
