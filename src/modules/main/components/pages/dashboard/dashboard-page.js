@@ -1,5 +1,6 @@
 import { Div, H1, H2, H3, Header, P, Span } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Card } from "@components/atoms/cards/card.js";
 import { Icon } from "@components/atoms/icon.js";
 import { Icons } from "@components/icons/icons.js";
 import { Avatar } from "@components/molecules/avatar.js";
@@ -17,7 +18,7 @@ import { BlankPage } from "@components/pages/blank-page.js";
  * @returns {object}
  */
 const DashboardCard = ({ title, value, change, icon }) => (
-    Div({ class: 'rounded-xl border bg-card text-card-foreground shadow-lg' }, [
+    Card({ padding: 'p-0', margin: 'm-0', class: 'rounded-xl border bg-card text-card-foreground shadow-lg' }, [
         Div({ class: 'p-6 flex flex-row items-center justify-between space-y-0 pb-2' }, [
             H2({ class: 'text-lg font-semibold' }, title),
             Icon(icon),
@@ -127,7 +128,7 @@ export const DashboardPage = () => (
                 Div({ class: 'grid gap-4 md:grid-cols-2 lg:grid-cols-7' }, [
 
                     // Overview Chart
-                    Div({ class: 'rounded-xl border bg-card text-card-foreground shadow col-span-4' }, [
+                    Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-4' }, [
                         Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
                             H3({ class: 'font-semibold leading-none tracking-tight' }, 'Overview')
                         ]),
@@ -138,7 +139,7 @@ export const DashboardPage = () => (
                     ]),
 
                     // Recent Sales
-                    Div({ class: 'rounded-xl border bg-card text-card-foreground shadow col-span-3' }, [
+                    Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-3' }, [
                         Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
                             H3({ class: 'font-semibold leading-none tracking-tight' }, 'Recent Sales'),
                             P({ class: 'text-sm text-muted-foreground' }, 'You made 265 sales this month.'),
