@@ -48,10 +48,14 @@ export const AppContent = (props) => (
 		},
 
 		onState: [
-			// this will renderr the app content based on the sign in state.
+			/**
+			 * This will add the login page if the user is not signed in.
+			 */
 			['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)],
 
-			// this will add the authed class to the body if the user is signed in.
+			/**
+			 * This will update the body class based on the sign in state.
+			 */
 			['isSignedIn', updateBodyClass]
 		]
 	})

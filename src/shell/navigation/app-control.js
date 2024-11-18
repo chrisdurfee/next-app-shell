@@ -142,18 +142,6 @@ export class AppControl extends Component
     }
 
     /**
-	 * This will setup and render the component.
-	 *
-	 * @param {object} container
-	 * @returns {void}
-	 */
-	setup(container)
-	{
-		this.container = app.appShell.panel;
-		this.initialize();
-	}
-
-    /**
      * This will ignore the hover.
      *
      * @returns {void}

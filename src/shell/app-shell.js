@@ -9,11 +9,11 @@ import { AppContent } from './app-content.js';
  * @param {array} children
  * @returns {object}
  */
-const AppContainer = Atom((props, children) =>
+const Shell = Atom((props, children) =>
 {
 	return {
 		...props,
-		class: 'flex flex-auto relative z-10',
+		class: 'shell flex flex-auto relative z-10',
 		onState: ['isSignedIn', { authed: true }],
 		children: [
 			new NotificationContainer({
@@ -36,7 +36,7 @@ export const AppShell = Jot({
 	render()
 	{
 		const { options, routes, onCreated } = this;
-		return AppContainer({ onCreated }, [
+		return Shell({ onCreated }, [
 			AppContent({
 				options,
 				routes

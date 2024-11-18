@@ -8,14 +8,32 @@ import AlbumPage from './components/pages/music/album-page/album-page.js';
 
 /**
  * This will set the routes for the module.
+ *
+ * @type {array<object>} routes
  */
 const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
+
+    /**
+     * Dashboard routes
+     */
     { path: '/dashboard/:page?*', component: DashboardPage(), title: 'Dashboard' },
+
+    /**
+     * Music routes
+     */
     { path: '/music/album/:album?*', component: AlbumPage(), title: 'Album' },
     { path: '/music*', import: import('./components/pages/music/music-page/music-page.js'), title: 'Music' },
+
+    /**
+     * Calendar route
+     */
     { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
+
+    /**
+     * Full page routes
+     */
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
     { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
 
@@ -30,7 +48,7 @@ const routes = Module.convertRoutes(
 /**
  * This will set the links for the module.
  *
- * @type {array}
+ * @type {array<object>} links
  */
 const links =
 [
@@ -89,7 +107,7 @@ const links =
 Module.create(
 {
     /**
-     * @param {array} routes
+     * @param {array<object>} routes
      */
     routes,
 
@@ -97,7 +115,7 @@ Module.create(
      * This will get the options to create the app
      * navigation.
      *
-     * @param {array} links
+     * @param {array<object>} links
      */
     links
 });

@@ -1,4 +1,4 @@
-import { Div, Main } from '@base-framework/atoms';
+import { Main } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { AppControl } from './navigation/app-control.js';
 import { MobileHeader } from './navigation/mobile-header.js';
@@ -23,10 +23,10 @@ const ActivePanelContainer = Atom((props, children) =>
  * This will create the main content of the app shell.
  *
  * @param {object} props
- * @returns {object}
+ * @returns {array<object>}
  */
 export const MainContent = (props) => (
-	Div({ class: 'flex flex-auto flex-col' }, [
+	[
 		MobileHeader(),
 
 		/**
@@ -41,5 +41,5 @@ export const MainContent = (props) => (
 			switch: props.routes,
 			cache: 'mainBody'
 		})
-	])
+	]
 );

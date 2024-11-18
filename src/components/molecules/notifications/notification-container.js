@@ -21,7 +21,7 @@ export class NotificationContainer extends Component
      */
     render()
     {
-        return Div({ class: 'pointer-events-none fixed bottom-[80px] right-0 z-50 p-5' }, [
+        return Div({ class: 'notification-container pointer-events-none fixed bottom-[80px] right-0 z-50 p-5' }, [
             new List({
                 cache: 'list',
                 key: 'id',
