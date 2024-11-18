@@ -11,7 +11,7 @@ import { Icon } from "@components/atoms/icon.js";
  * @returns {object}
  */
 export const DashboardCard = ({ title, value, change, icon }) => (
-    Card({ padding: 'p-0', margin: 'm-0', class: 'rounded-xl border bg-card text-card-foreground shadow-lg' }, [
+    Card({ padding: 'p-0', margin: 'm-0', class: 'flex flex-auto flex-col min-w-[300px]' }, [
         Div({ class: 'p-6 flex flex-row items-center justify-between space-y-0 pb-2' }, [
             H2({ class: 'text-lg font-semibold' }, title),
             Icon(icon),
