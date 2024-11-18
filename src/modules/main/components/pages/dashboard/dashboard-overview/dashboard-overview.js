@@ -23,6 +23,25 @@ const DashboardHeader = () => (
 );
 
 /**
+ * This will create the DashboardTabs molecule.
+ *
+ * @returns {object}
+ */
+const DashboardTabs = () => (
+    Div({ class: 'justify-between flex flex-auto items-center' }, [
+        new TabGroup({
+            options: [
+                { label: 'Overview', value: 'overview' },
+                { label: 'Analytics', value: 'analytics' },
+                { label: 'Reports', value: 'reports', disabled: true },
+                { label: 'Notifications', value: 'notifications' },
+            ],
+            onSelect: (value) => console.log("Selected tab:", value)
+        }),
+    ])
+);
+
+/**
  * This will create the DashboardOverview molecule.
  *
  * @returns {object}
@@ -31,23 +50,11 @@ export const DashboardOverview = () => (
     Div({ class: 'flex flex-col p-6 lg:p-8 space-y-4' }, [
 
         DashboardHeader(),
-
-        Div({ class: 'justify-between flex flex-auto items-center' }, [
-            new TabGroup({
-                options: [
-                    { label: 'Overview', value: 'overview' },
-                    { label: 'Analytics', value: 'analytics' },
-                    { label: 'Reports', value: 'reports', disabled: true },
-                    { label: 'Notifications', value: 'notifications' },
-                ],
-                onSelect: (value) => console.log("Selected tab:", value)
-            }),
-        ]),
+        DashboardTabs(),
 
         Div({ class: 'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 space-y-4' }, [
 
             DashboardSummaryCards(),
-
             Div({ class: 'grid gap-4 md:grid-cols-2 lg:grid-cols-7' }, [
                 OverviewCard(),
                 RecentSalesCard(),
