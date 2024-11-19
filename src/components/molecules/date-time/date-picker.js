@@ -1,4 +1,4 @@
-import { Button, Div, I, Span } from '@base-framework/atoms';
+import { Button, Div, I, Input, Span } from '@base-framework/atoms';
 import { DateTime, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
 import { Calendar } from '../../organisms/calendar/calendar.js';
@@ -14,16 +14,32 @@ import { Calendar } from '../../organisms/calendar/calendar.js';
 const isOutsideClick = (element, panel) => (!panel.contains(element));
 
 /**
+ * This will create a hidden input atom.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const HiddenImput = ({ bind, required }) => (
+    Input({
+        cache: 'input',
+        class: 'opacity-0 absolute top-0 left-0 w-full h-full pointer-events-none',
+        bind,
+        required
+    })
+);
+
+/**
  * This will toggle the open state of the calendar.
  *
  * @param {object} props
  * @returns {object}
  */
-const CalendarButton = ({ toggleOpen }) => (
+const CalendarButton = ({ bind, required, toggleOpen }) => (
     Button({
-        class: 'flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
+        class: 'relative flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
         click: toggleOpen,
     }, [
+        HiddenImput({ bind, required }),
         Span({
             onState: ['selectedDate', (value) => value ? DateTime.format('standard', value) : 'Pick a date']
         }),
@@ -109,6 +125,17 @@ export const DatePicker = Jot(
 	},
 
     /**
+     * This is added to check the input after the component is rendered.
+     * to see if the bind updated the input value.
+     *
+     * @returns {void}
+     */
+    after()
+    {
+        this.state.selectedDate = this.input.value;
+    },
+
+    /**
      * Renders the DatePicker component.
      *
      * @returns {object}
@@ -119,11 +146,19 @@ export const DatePicker = Jot(
         const handleDateSelect = (date) => {
             this.state.selectedDate = date;
             this.state.open = false;
+            this.input.value = date;
+
+            if (typeof this.onChange === 'function')
+            {
+                this.onChange(date);
+            }
         };
 
         return Div({ class: 'relative w-full max-w-[320px]' }, [
             CalendarButton({
-                toggleOpen
+                toggleOpen,
+                bind: this.bind,
+                required: this.required
             }),
             CalendarContainer({
                 handleDateSelect
