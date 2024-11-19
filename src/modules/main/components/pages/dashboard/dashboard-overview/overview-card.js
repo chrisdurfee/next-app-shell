@@ -6,7 +6,7 @@ import { Card } from "@components/atoms/cards/card.js";
  * @returns {object}
  */
 export const OverviewCard = () => (
-    Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-4' }, [
+    Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-4 flex flex-auto flex-col' }, [
         Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
             H3({ class: 'font-semibold leading-none tracking-tight' }, 'Overview')
         ]),

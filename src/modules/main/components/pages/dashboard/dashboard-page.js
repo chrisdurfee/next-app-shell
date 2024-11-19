@@ -10,7 +10,7 @@ import { DashboardOverview } from "./dashboard-overview/dashboard-overview.js";
  * @returns {object}
  */
 const MainPageMenu = () => (
-    Div({ class: 'flex h-16 items-center px-4 border-b' }, [
+    Div({ class: 'hidden md:flex h-16 items-center px-4 border-b' }, [
         new NavigationMenu({
             options: [
                 { label: 'Overview', href: 'dashboard', exact: true },
