@@ -1,4 +1,4 @@
-import { Button, Span } from '@base-framework/atoms';
+import { Button, Checkbox, Span } from '@base-framework/atoms';
 import { Jot } from '@base-framework/base';
 
 /**
@@ -15,7 +15,7 @@ export const Toggle = Jot(
     /**
      * The initial state of the Toggle.
      *
-     * @member {object} state
+     * @returns {object}
      */
     state()
     {
@@ -25,19 +25,68 @@ export const Toggle = Jot(
     },
 
     /**
+	 * This will set the component context.
+	 *
+	 * @param {object|null} context
+	 * @returns {object|null}
+	 */
+	setContext(context)
+	{
+        if (this.data)
+        {
+            return null;
+        }
+
+        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
+        if (!data)
+        {
+            return null;
+        }
+
+		return { data };
+	},
+
+    /**
+     * This is added to check the checkbox after the component is rendered.
+     * to see if the bind updated the checked value.
+     *
+     * @returns {void}
+     */
+    after()
+    {
+        this.state.active = this.checkbox.checked;
+    },
+
+    /**
      * Renders the Toggle component.
      *
      * @returns {object}
      */
     render()
     {
-        const toggleActive = (e, { state }) => state.toggle('active');
+        const toggleActive = (e, { state }) =>
+        {
+            state.toggle('active');
+            this.checkbox.checked = state.active;
+        };
 
         return Button({
-            class: 'inline-flex h-6 w-11 min-w-11 items-center rounded-full bg-muted transition-colors focus:outline-none',
+            class: 'relative inline-flex h-6 w-11 min-w-11 items-center rounded-full bg-muted transition-colors focus:outline-none',
             onState: ['active', { 'bg-primary': true, 'bg-muted': false }],
             click: toggleActive
         }, [
+            Checkbox({
+                cache: 'checkbox',
+                class: 'opacity-0 absolute top-0 left-0 bottom-0 right-0 w-full h-full',
+
+                /**
+                 * This will add the default checked before binding.
+                 * If binding it will override the default checked value.
+                 */
+                checked: this.state.active,
+                bind: this.bind,
+                required: this.required
+            }),
             Span({
                 class: 'absolute h-5 w-5 bg-background rounded-full shadow-md transform transition-transform',
                 onState: ['active', { 'translate-x-[22px]' : true, 'translate-x-[2px]': false }]

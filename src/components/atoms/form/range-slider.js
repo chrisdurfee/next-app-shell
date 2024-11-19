@@ -27,6 +27,28 @@ export const RangeSlider = Jot(
     },
 
     /**
+	 * This will set the component context.
+	 *
+	 * @param {object|null} context
+	 * @returns {object|null}
+	 */
+	setContext(context)
+	{
+        if (this.data)
+        {
+            return null;
+        }
+
+        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
+        if (!data)
+        {
+            return null;
+        }
+
+		return { data };
+	},
+
+    /**
      * This will get the fill percentage of the range slider.
      *
      * @param {number} value

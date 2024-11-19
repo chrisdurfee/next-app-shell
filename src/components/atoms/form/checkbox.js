@@ -3,11 +3,89 @@ import { Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons';
 
 /**
- * This will return the id of the checkbox.
+ * This will create a hidden checkbox atom.
  *
- * @returns {string}
+ * @param {object} props
+ * @returns {object}
  */
-const getId = () => `checkbox-${Math.random().toString(36).substring(2, 9)}`;
+const HiddenCheckox = ({ id, checked, bind, required}) => (
+    BaseCheckbox({
+        id,
+        cache: 'checkbox',
+        class: "absolute opacity-0 w-full h-full cursor-pointer pointer-events-none",
+        aria:
+        {
+            checked: ['checked'],
+        },
+        required,
+        checked,
+        bind
+    })
+);
+
+/**
+ * This will create a checkbox icon atom.
+ *
+ * @returns {object}
+ */
+const CheckBoxIcon = () => (
+    Span({ class: "absolute text-xs pointer-events-none", onState: ['checked', (value) =>
+        {
+            if (!value)
+            {
+                return null;
+            }
+
+            return I({
+                class: 'w-2 h-2 pointer-events-none',
+                html: Icons.check,
+            });
+        }]
+    })
+);
+
+/**
+ * This will create a custom checkbox atom.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const CustomCheckbox = ({ id, bind, checked, required, clickHandler }) => (
+    Div({
+        class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border hover:border-accent-foreground`,
+        onState: ['checked',
+        {
+            'bg-primary': true,
+            'text-primary-foreground': true,
+        }],
+        role: 'checkbox',
+        aria:
+        {
+            checked: ['checked'],
+        },
+        tabIndex: 0,
+        click: clickHandler,
+    }, [
+        HiddenCheckox({ bind, checked, id, required }),
+        CheckBoxIcon(),
+    ])
+);
+
+/**
+ * CheckboxLabel
+ *
+ * This will create a checkbox label atom.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const CheckboxLabel = ({ id, label, clickHandler }) => (
+    Label({
+        class: "text-base cursor-pointer",
+        htmlFor: id,
+        click: clickHandler
+    }, label)
+);
 
 /**
  * Checkbox
@@ -32,83 +110,72 @@ export const Checkbox = Jot(
     },
 
     /**
+	 * This will set the component context.
+	 *
+	 * @param {object|null} context
+	 * @returns {object|null}
+	 */
+	setContext(context)
+	{
+        if (this.data)
+        {
+            return null;
+        }
+
+        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
+        if (!data)
+        {
+            return null;
+        }
+
+		return { data };
+	},
+
+    /**
+     * This is added to check the checkbox after the component is rendered.
+     * to see if the bind updated the checked value.
+     *
+     * @returns {void}
+     */
+    after()
+    {
+        this.state.checked = this.checkbox.checked;
+    },
+
+    /**
+     * This will handle the click event for the checkbox.
+     *
+     * @returns {void}
+     */
+    clickHandler()
+    {
+        this.state.toggle('checked');
+        this.checkbox.checked = this.state.checked;
+
+        if (typeof this.onChange === 'function')
+        {
+            this.onChange(this.state.checked);
+        }
+    },
+
+    /**
      * This will render the checkbox component.
      *
      * @returns {object}
      */
     render()
     {
-        const id = getId();
+        const id = this.getId();
 
         return Div({ class: `flex items-center space-x-2 cursor-pointer ${this.class}` }, [
-            Div({
-                class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border hover:border-accent-foreground`,
-                onState: ['checked',
-                {
-                    'bg-primary': true,
-                    'text-primary-foreground': true,
-                }],
-                role: 'checkbox',
-                aria:
-                {
-                    checked: ['checked'],
-                },
-                tabIndex: 0,
-                click: () =>
-                {
-                    this.state.checked = !this.state.checked;
-                    if (typeof this.checked === 'function')
-                    {
-                        this.checked(this.state.checked);
-                    }
-                }
-            }, [
-                BaseCheckbox({
-                    id,
-                    class: "absolute opacity-0 w-full h-full cursor-pointer",
-                    aria:
-                    {
-                        checked: ['checked'],
-                    },
-                    bind: this.bind,
-                    change: (event) =>
-                    {
-                        const checked = event.target.checked;
-                        this.state.checked = checked;
-
-                        if (typeof this.checked === 'function')
-                        {
-                            this.checked(checked);
-                        }
-                    },
-                }),
-                Span({ class: "absolute text-xs pointer-events-none", onState: ['checked', (value) =>
-                    {
-                        if (!value)
-                        {
-                            return null;
-                        }
-
-                        return I({
-                            class: 'w-2 h-2 pointer-events-none',
-                            html: Icons.check,
-                        });
-                    }]
-                }),
-            ]),
-            this.label && Label({
-                class: "text-base cursor-pointer",
-                htmlFor: id,
-                click: () =>
-                {
-                    this.state.toggle('checked');
-
-                    if (typeof this.checked === 'function')
-                    {
-                        this.checked(this.state.checked);
-                    }
-                }
-            }, this.label),
+            CustomCheckbox({
+                id,
+                bind: this.bind,
+                checked: this.state.checked,
+                required: this.required,
+                clickHandler: () => this.clickHandler()
+            }),
+            this.label && CheckboxLabel({ id, label: this.label, clickHandler: () => this.clickHandler() })
         ])
     }
 });

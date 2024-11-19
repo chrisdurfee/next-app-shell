@@ -14,6 +14,55 @@ import { Calendar } from '../../organisms/calendar/calendar.js';
 const isOutsideClick = (element, panel) => (!panel.contains(element));
 
 /**
+ * This will toggle the open state of the calendar.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const CalendarButton = ({ toggleOpen }) => (
+    Button({
+        class: 'flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
+        click: toggleOpen,
+    }, [
+        Span({
+            onState: ['selectedDate', (value) => value ? DateTime.format('standard', value) : 'Pick a date']
+        }),
+        I({ html: Icons.calendar.days })
+    ])
+);
+
+/**
+ * This will create the calendar container.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const CalendarContainer = ({ handleDateSelect }) => (
+    Div({
+        class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
+        addEvent: ['click', document, (e, { state, panel }) =>
+        {
+            if (isOutsideClick(e.target, panel))
+            {
+                state.open = false;
+            }
+        }],
+        onState: ['open', (value, ele, { state} ) =>
+        {
+            if (!value)
+            {
+                return null;
+            }
+
+            return new Calendar({
+                selectedDate: state.selectedDate,
+                selectedCallBack: handleDateSelect
+            });
+        }]
+    })
+);
+
+/**
  * DatePicker Atom
  *
  * This will create a date picker component.
@@ -38,6 +87,28 @@ export const DatePicker = Jot(
     },
 
     /**
+	 * This will set the component context.
+	 *
+	 * @param {object|null} context
+	 * @returns {object|null}
+	 */
+	setContext(context)
+	{
+        if (this.data)
+        {
+            return null;
+        }
+
+        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
+        if (!data)
+        {
+            return null;
+        }
+
+		return { data };
+	},
+
+    /**
      * Renders the DatePicker component.
      *
      * @returns {object}
@@ -51,28 +122,11 @@ export const DatePicker = Jot(
         };
 
         return Div({ class: 'relative w-full max-w-[320px]' }, [
-            Button({
-                class: 'flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
-                click: toggleOpen,
-            }, [
-                Span({
-                    onState: ['selectedDate', (value) => value ? DateTime.format('standard', value) : 'Pick a date']
-                }),
-                I({ html: Icons.calendar.days })
-            ]),
-            Div({
-                class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
-                addEvent: ['click', document, (e, { state, panel }) =>
-                {
-                    if (isOutsideClick(e.target, panel))
-                    {
-                        state.open = false;
-                    }
-                }],
-                onState: ['open', (value) => (value ? new Calendar({
-                    selectedDate: this.state.selectedDate,
-                    selectedCallBack: handleDateSelect
-                }) : null)]
+            CalendarButton({
+                toggleOpen
+            }),
+            CalendarContainer({
+                handleDateSelect
             })
         ]);
     }
