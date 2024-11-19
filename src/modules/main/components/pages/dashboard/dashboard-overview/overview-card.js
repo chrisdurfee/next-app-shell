@@ -10,9 +10,9 @@ export const OverviewCard = () => (
         Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
             H3({ class: 'font-semibold leading-none tracking-tight' }, 'Overview')
         ]),
-        Div({ class: 'p-6 pt-0' }, [
+        Div({ class: 'flex flex-auto flex-col p-6 pt-0' }, [
             // Chart component placeholder
-            Div({ class: 'h-64 bg-muted rounded-md' }) // Placeholder for Chart
+            Div({ class: 'flex flex-auto flex-col min-h-64 bg-muted rounded-md' }) // Placeholder for Chart
         ])
     ])
 );
