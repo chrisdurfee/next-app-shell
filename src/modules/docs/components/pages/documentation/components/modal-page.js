@@ -240,30 +240,30 @@ const ModalButton = (props, children) => Button({
 });`
             }),
 
-            DocSection({
-                title: 'Small Modal',
-                preview: [
-                    ModalButton(Modals[1])
-                ],
-                code: `
-import { Modal } from "@components/molecules/modal.js";
-import { Button } from "@components/atoms/atoms.js";
+//             DocSection({
+//                 title: 'Small Modal',
+//                 preview: [
+//                     ModalButton(Modals[1])
+//                 ],
+//                 code: `
+// import { Modal } from "@components/molecules/modal.js";
+// import { Button } from "@components/atoms/atoms.js";
 
-/**
- * This will create a modal button.
- *
- * @param {object} props
- * @returns {object}
- */
-const ModalButton = (props, children) => Button({
-	text: label,
-    variant: 'primary',
-	click: () => new Modal({
-		size: 'sm',
-		title: 'Are you absolutely sure?'
-	}).open()
-});`
-            }),
+// /**
+//  * This will create a modal button.
+//  *
+//  * @param {object} props
+//  * @returns {object}
+//  */
+// const ModalButton = (props, children) => Button({
+// 	text: label,
+//     variant: 'primary',
+// 	click: () => new Modal({
+// 		size: 'sm',
+// 		title: 'Are you absolutely sure?'
+// 	}).open()
+// });`
+//             }),
 
             DocSection({
                 title: 'Medium Modal',

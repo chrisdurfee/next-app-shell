@@ -6,7 +6,6 @@ import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/in
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import { Combobox } from "@components/molecules/combobox/combobox.js";
-import DatePicker from "@components/molecules/date-time/date-picker.js";
 import { Form, FormField } from "@components/molecules/form/form.js";
 import Toggle from "@components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -75,14 +74,6 @@ export const PreferencesForm = () => (
             description: "Stay updated with our latest news."
         }, [
             new Checkbox({ label: "Yes, sign me up!", required: true, onChange: (checked) => console.log("Newsletter checked:", checked) })
-        ]),
-
-        new FormField({
-            name: "Date",
-            label: "Select Date",
-            description: "Select your preferred date."
-        }, [
-            new DatePicker({ selectedDate: '2024-06-01', required: true })
         ]),
 
         Button({ type: "submit" }, "Save Preferences")

@@ -8,7 +8,7 @@ import { Component, NavLink, router } from "@base-framework/base";
  * @param {string} url
  * @returns {boolean}
  */
-const isPathActive = (path, url) => url.indexOf(path) !== -1;
+const isPathActive = (path, url) => new RegExp(`${path}($|/|\\.).*`).test(url);
 
 /**
  * This will check if a link is active.
@@ -19,8 +19,8 @@ const isPathActive = (path, url) => url.indexOf(path) !== -1;
  */
 const isLinkActive = (link, url) =>
 {
-	const path = link.getLinkPath() ?? '';
-	return isPathActive(path, url);
+	const path = link.getLinkPath();
+	return link.exact? (url === path) : isPathActive(path, url);
 };
 
 /**
@@ -108,6 +108,7 @@ export class TabNavigation extends Component
 			check = isLinkActive(link, value);
 			if (check === true)
 			{
+				this.updateLink(link, true);
 				break;
 			}
 		}

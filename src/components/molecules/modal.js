@@ -13,18 +13,18 @@ import { Dialog } from "./dialogs/dialog.js";
  * @param {object} props
  * @returns {object}
  */
-const ModalHeader = ({ title, description, icon }) => (
+const ModalHeader = ({ title, description, back, icon }) => (
     Header({ class: 'modal-header flex items-center pt-4 px-6' }, [
 
 		/**
 		 * Back Button
 		 */
-        Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
+        back && Button({ variant: 'icon', icon: Icons.arrows.left, class: 'mr-2 p-0 flex sm:hidden', click: (e, parent) => parent.close() }),
 
 		/**
 		 * Icon
 		 */
-		icon && Div({ class: 'mx-2 w-12 h-12 rounded-full bg-muted flex items-center justify-center' }, [ Icon(icon) ]),
+		icon && Div({ class: 'mr-2 w-12 h-12 rounded-full bg-muted flex items-center justify-center' }, [ Icon(icon) ]),
 
 		/**
 		 * Title and Description
@@ -84,6 +84,7 @@ export class Modal extends Dialog
 				buttons: this.getButtons(),
 				onSubmit: this.submit,
 				icon: this.icon,
+				back: this.back ?? false,
 				aria: { expanded: ['open']}
 			},
 			this.children
@@ -112,8 +113,8 @@ export class Modal extends Dialog
 	{
 		switch (this.size)
 		{
-			case 'sm':
-				return 'sm max-w-[646px]';
+			// case 'sm':
+			// 	return 'sm max-w-[646px]';
 			case 'lg':
 				return 'lg max-w-[900px]';
 			case 'xl':
