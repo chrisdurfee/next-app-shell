@@ -63,7 +63,7 @@ export class NavigationMenu extends Component
      */
     render()
     {
-        return Nav({ class: `flex items-center justify-center bg-background p-2 text-muted-foreground rounded-md` }, [
+        return Nav({ class: `flex items-center justify-center bg-background p-2 text-muted-foreground rounded-md ${this.class || ''}` }, [
                 Ul({
                     class: 'flex space-x-4',
                     map: [this.options, (option) => this.addLink(option)],

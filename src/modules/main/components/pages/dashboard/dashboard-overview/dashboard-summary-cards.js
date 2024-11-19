@@ -8,8 +8,8 @@ import { DashboardCard } from "./dashboard-card.js";
  * @returns {object}
  */
 export const DashboardSummaryCards = () => (
-    Div({ class: 'flex flex-auto overflow-x-auto lg:overflow-x-none' }, [
-        Div({ class: 'inline-flex flex-auto space-x-4 mr-6 lg:mr-0' }, [
+    Div({ class: 'flex flex-auto overflow-x-auto' }, [
+        Div({ class: 'inline-flex flex-auto space-x-4 ml-[-24px] pl-6 mr-6 lg:mr-0' }, [
             DashboardCard({
                 title: 'Total Revenue',
                 value: '$45,231.89',
