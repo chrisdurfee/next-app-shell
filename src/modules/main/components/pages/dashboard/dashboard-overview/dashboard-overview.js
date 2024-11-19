@@ -49,7 +49,7 @@ const DashboardTabs = () => (
  * @returns {object}
  */
 export const DashboardOverview = () => (
-    Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-4' }, [
+    Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-6 md:space-y-4' }, [
 
         DashboardHeader(),
         DashboardTabs(),
