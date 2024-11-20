@@ -1,6 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { NavigationMenu } from "@components/organisms/navigation/navigation-menu/navigation-menu.js";
+import { Panel } from "@components/organisms/panel.js";
 import { BlankPage } from "@components/pages/blank-page.js";
+import { DashboardCustomersEmptyState } from "./customers/dashboard-customers.js";
 import { DashboardOverview } from "./dashboard-overview/dashboard-overview.js";
 
 
@@ -23,6 +25,14 @@ const MainPageMenu = () => (
 );
 
 /**
+ * This will wrap the atom in a panel.
+ *
+ * @param {object} atom
+ * @returns {object}
+ */
+const SubRoute = (atom) => new Panel(atom);
+
+/**
  * DashboardPage
  *
  * Main dashboard layout.
@@ -32,7 +42,13 @@ const MainPageMenu = () => (
 export const DashboardPage = () => (
     new BlankPage([
         MainPageMenu(),
-        DashboardOverview(),
+
+        Div({
+            switch: [
+                { uri: 'dashboard/', component: SubRoute(DashboardOverview()) },
+                { uri: 'dashboard/customers', component: SubRoute(DashboardCustomersEmptyState()) },
+            ]
+        })
     ])
 );
 
