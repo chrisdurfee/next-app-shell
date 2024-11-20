@@ -115,6 +115,10 @@ a:active {
 	text-decoration: none;
 }
 
+i.icon-size svg {
+	@apply w-full h-auto;
+}
+
 /*
  * This will set the app padding to support the safe area.
  */

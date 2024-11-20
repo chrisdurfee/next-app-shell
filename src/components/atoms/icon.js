@@ -23,11 +23,11 @@ const sizeClasses = {
  */
 export const Icon = Atom((props, children) =>
 {
-	const sizeClass = sizeClasses[props.size || "md"];
+	const sizeClass = sizeClasses[props.size || "sm"];
 
 	return I({
 		...props,
-		class: `${sizeClass} ${props.class || ""}`,
+		class: `icon-size ${sizeClass} ${props.class || ""}`,
 		html: children[0]?.textContent,
 	});
 });

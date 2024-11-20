@@ -11,7 +11,7 @@ import { Icons } from "@components/icons/icons.js";
  */
 export const AnalyticsEmptyState = () => {
 	return Div({
-			class: "flex flex-col items-center justify-center text-center p-6 space-y-4 bg-background border rounded-lg",
+			class: "flex flex-col items-center justify-center text-center p-6 space-y-4 bg-background border rounded-lg min-h-96",
 		},
 		[
 			Icon({ size: "xl" }, Icons.chart),
