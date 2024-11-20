@@ -2,10 +2,10 @@ import { Div, H1, Header } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
 import { DatePicker } from "@components/molecules/date-time/date-picker.js";
-import { TabGroup } from "@components/organisms/tabs/tab-group.js";
-import { DashboardSummaryCards } from "./dashboard-summary-cards.js";
-import { OverviewCard } from "./overview-card.js";
-import { RecentSalesCard } from "./recent-sales-card.js";
+import { Panel } from "@components/organisms/panel.js";
+import { TabNavigation } from "@components/organisms/tabs/tab-navigation.js";
+import { AnalyticsEmptyState } from "./dashboards/analytics/analytics-dashboard.js";
+import { OverviewDashboard } from "./dashboards/overview/overview-dashboard.js";
 
 /**
  * This will create the DashboardHeader molecule.
@@ -31,12 +31,12 @@ const DashboardHeader = () => (
  */
 const DashboardTabs = () => (
     Div({ class: 'justify-between flex flex-auto items-center' }, [
-        new TabGroup({
+        new TabNavigation({
             options: [
-                { label: 'Overview', value: 'overview' },
-                { label: 'Analytics', value: 'analytics' },
-                { label: 'Reports', value: 'reports', disabled: true },
-                { label: 'Notifications', value: 'notifications' },
+                { label: 'Overview', href: 'dashboard/overview/', exact: true },
+                { label: 'Analytics', href: 'dashboard/overview/analytics' },
+                { label: 'Reports', href: 'dashboard/overview/reports', disabled: true },
+                { label: 'Notifications', href: 'dashboard/overview/notifications' },
             ],
             onSelect: (value) => console.log("Selected tab:", value)
         }),
@@ -44,23 +44,31 @@ const DashboardTabs = () => (
 );
 
 /**
+ * This will wrap the atom in a panel.
+ *
+ * @param {object} atom
+ * @returns {object}
+ */
+const SubRoute = (atom) => new Panel(atom);
+
+/**
  * This will create the DashboardOverview molecule.
  *
  * @returns {object}
  */
 export const DashboardOverview = () => (
-    Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-6 md:space-y-4' }, [
+    Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-4' }, [
 
         DashboardHeader(),
         DashboardTabs(),
 
-        Div({ class: 'mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 space-y-4' }, [
-
-            DashboardSummaryCards(),
-            Div({ class: 'grid md:gap-4 space-y-4 md:space-y-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-7' }, [
-                OverviewCard(),
-                RecentSalesCard(),
-            ])
-        ])
+        Div({
+            switch: [
+                { uri: 'dashboard/overview', component: SubRoute(OverviewDashboard()) },
+                { uri: 'dashboard/overview/analytics', component: SubRoute(AnalyticsEmptyState()) },
+                // { uri: 'reports', component: Div({ class: 'flex flex-auto flex-col' }, 'Reports') },
+                // { uri: 'notifications', component: Div({ class: 'flex flex-auto flex-col' }, 'Notifications') },
+            ]
+        })
     ])
 );

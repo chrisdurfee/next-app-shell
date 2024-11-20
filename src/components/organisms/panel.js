@@ -18,6 +18,6 @@ export class Panel extends Component
 	 */
 	render()
 	{
-		return Div({ class: 'panel-container py-8 px-1' }, this.children);
+		return Div({ class: this.class || '' }, this.children);
 	}
 }

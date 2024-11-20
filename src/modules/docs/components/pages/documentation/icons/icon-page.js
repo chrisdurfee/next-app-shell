@@ -1,4 +1,4 @@
-import { A, Div, H3, H5, I, P } from "@base-framework/atoms";
+import { A, Div, H3, H5, I, P, Span } from "@base-framework/atoms";
 import { Strings } from "@base-framework/base";
 import { Icon } from "@components/atoms/icon.js";
 import { Icons } from "@components/icons/icons.js";
@@ -166,6 +166,61 @@ Icon(Icons.home);`
                 H3({ class: 'text-2xl font-bold' }, 'Default Icons'),
                 P({ class: 'text-muted-foreground' }, 'A few of the icons have been saved to the "Icons" object. You can use these icons in your project. Click to copy the Icon path. Here is a list of the icons that are available:'),
             ]),
+
+            DocSection({
+                title: 'Icon Sizes',
+                description: 'Icons can be rendered in various sizes using the `class` property to apply Tailwind CSS classes. The following sizes are available: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, and `3xl`.',
+                preview: [
+                    Div({ class: 'flex flex-wrap gap-4 items-center' }, [
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: 'xs' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, 'xs'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: 'sm' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, 'sm'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: 'md' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, 'md'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: 'lg' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, 'lg'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: 'xl' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, 'xl'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: '2xl' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, '2xl'),
+                        ]),
+                        Div({ class: 'flex flex-col items-center justify-center' }, [
+                            Icon({ size: '3xl' }, Icons.home),
+                            Span({ class: 'text-sm text-muted-foreground' }, '3xl'),
+                        ]),
+                    ])
+
+                ],
+                code: `
+import { Icon } from '@components/atoms/icon.js';
+
+Icon({ size: 'xs' }, Icons.home),
+Span('Extra Small (4x4)'),
+Icon({ size: 'sm' }, Icons.home),
+Span('Small (6x6)'),
+Icon({ size: 'md' }, Icons.home),
+Span('Medium (8x8)'),
+Icon({ size: 'lg' }, Icons.home),
+Span('Large (10x10)'),
+Icon({ size: 'xl' }, Icons.home),
+Span('Extra Large (12x12)'),
+Icon({ size: '2xl' }, Icons.home),
+Span('2X Large (14x14)'),
+Icon({ size: '3xl' }, Icons.home),
+Span('3X Large (16x16)')`
+            }),
 
             IconGuide(Icons)
         ]

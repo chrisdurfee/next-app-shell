@@ -3,6 +3,7 @@ import { Card } from "@components/atoms/cards/card.js";
 
 /**
  * This will create the OverviewCard molecule.
+ *
  * @returns {object}
  */
 export const OverviewCard = () => (
