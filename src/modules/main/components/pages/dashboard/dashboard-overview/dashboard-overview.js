@@ -33,7 +33,7 @@ const DashboardTabs = () => (
     Div({ class: 'justify-between flex flex-auto items-center' }, [
         new TabNavigation({
             options: [
-                { label: 'Overview', href: 'dashboard/overview/', exact: true },
+                { label: 'Overview', href: 'dashboard/', exact: true },
                 { label: 'Analytics', href: 'dashboard/overview/analytics' },
                 { label: 'Reports', href: 'dashboard/overview/reports', disabled: true },
                 { label: 'Notifications', href: 'dashboard/overview/notifications' },
@@ -64,7 +64,7 @@ export const DashboardOverview = () => (
 
         Div({
             switch: [
-                { uri: 'dashboard/overview', component: SubRoute(OverviewDashboard()) },
+                { uri: 'dashboard/', component: SubRoute(OverviewDashboard()) },
                 { uri: 'dashboard/overview/analytics', component: SubRoute(AnalyticsEmptyState()) },
                 // { uri: 'reports', component: Div({ class: 'flex flex-auto flex-col' }, 'Reports') },
                 // { uri: 'notifications', component: Div({ class: 'flex flex-auto flex-col' }, 'Notifications') },
