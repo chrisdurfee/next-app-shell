@@ -1,5 +1,5 @@
 import { Div, Input } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
+import { VeilJot } from '../veil.js';
 
 /**
  * RangeSlider
@@ -9,7 +9,7 @@ import { Jot } from '@base-framework/base';
  * @param {object} props
  * @returns {object}
  */
-export const RangeSlider = Jot(
+export const RangeSlider = VeilJot(
 {
     /**
      * This will create the initial state of the RangeSlider.
@@ -25,28 +25,6 @@ export const RangeSlider = Jot(
             filledPercentage: this.getFillPercentage(this.value)
         };
     },
-
-    /**
-	 * This will set the component context.
-	 *
-	 * @param {object|null} context
-	 * @returns {object|null}
-	 */
-	setContext(context)
-	{
-        if (this.data)
-        {
-            return null;
-        }
-
-        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
-        if (!data)
-        {
-            return null;
-        }
-
-		return { data };
-	},
 
     /**
      * This will get the fill percentage of the range slider.

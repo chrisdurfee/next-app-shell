@@ -4,14 +4,3 @@
 a.logo {
 	@apply bg-primary rounded-md;
 }
-
-.card {
-    padding: 20px;
-    border-radius: 4px;
-}
-a.card {
-    display: block;
-    font-size: inherit;
-    font-weight: inherit;
-    text-transform: none;
-}

@@ -14,12 +14,14 @@ export const SearchInput = Atom((props) => (
 		cache: 'input',
 		placeholder: props.placeholder ?? 'Search...',
 		bind: [props.state, 'searchQuery'],
-		keyup: () =>
+		keyup: (e, parent) =>
 		{
 			if (typeof props.filterOptions === 'function')
 			{
 				props.filterOptions();
 			}
+
+			parent.dropdown.updatePosition();
 		},
 		focus: (e, parent) => parent.toggleDropdown(),
 		blur: (e, { state }) => setTimeout(() => (state.open = false), CLOSE_DELAY),

@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { VeilJot } from "../../atoms/veil.js";
 import { FormDescription, FormItem, FormLabel, FormMessage } from "./form-atoms.js";
 import { FormControl } from "./form-control.js";
 
@@ -12,30 +12,8 @@ import { FormControl } from "./form-control.js";
  * @param {array} children
  * @returns {object}
  */
-export const FormField = Jot(
+export const FormField = VeilJot(
 {
-    /**
-	 * This will set the component context.
-	 *
-	 * @param {object|null} context
-	 * @returns {object|null}
-	 */
-	setContext(context)
-	{
-        if (this.data)
-        {
-            return null;
-        }
-
-        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
-        if (!data)
-        {
-            return null;
-        }
-
-		return { data };
-	},
-
     /**
      * The initial state of the FormField.
      *

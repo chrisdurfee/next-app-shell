@@ -129,6 +129,149 @@ export const Radio = (props = {}) =>
 };
 
 /**
+ * This will create a date input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const DateInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'date',
+    })
+));
+
+/**
+ * This will create a time input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const TimeInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'time',
+    })
+));
+
+/**
+ * This will create a datetime input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const DateTimeInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'datetime-local',
+    })
+));
+
+/**
+ * This will create a month input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const MonthInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'month',
+    })
+));
+
+/**
+ * This will create a week input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const WeekInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'week',
+    })
+));
+
+/**
+ * This will create a number input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const NumberInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'number',
+    })
+));
+
+/**
+ * This will create a password input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const PasswordInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'password',
+    })
+));
+
+/**
+ * This will create a search input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const SearchInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'search',
+    })
+));
+
+/**
+ * This will create a url input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const UrlInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'url',
+    })
+));
+
+/**
+ * This will create a hidden input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const HiddenInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'hidden',
+    })
+));
+
+/**
+ * This will create a color input.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const ColorInput = Atom((props) => (
+    Input({
+        ...props,
+        type: 'color',
+    })
+));
+
+/**
  * This will create a checkbox.
  *
  * @param {object} props

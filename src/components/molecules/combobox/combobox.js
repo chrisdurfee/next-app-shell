@@ -1,7 +1,7 @@
 import { Button, Div, I, Input, Li, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
-import { AbsoluteContainer } from '../absolute-container.js';
+import { PopOver } from '../popover.js';
 
 /**
  * This will create the dropdown button.
@@ -71,7 +71,7 @@ const DropdownContainer = ({ onSelect }) => (
         {
             if (isOpen)
             {
-                return new AbsoluteContainer({
+                return new PopOver({
                     cache: 'dropdown',
                     parent: parent,
                     button: parent.button,

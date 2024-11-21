@@ -1,6 +1,6 @@
 import { Button, Div, I, Span } from '@base-framework/atoms';
 import { Component, Data } from '@base-framework/base';
-import { AbsoluteContainer } from '../absolute-container.js';
+import { PopOver } from '../popover.js';
 import { Dropdown } from './dropdown.js';
 
 /**
@@ -34,7 +34,7 @@ const DropdownContainer = ({ onSelect }) => (
         {
             if (isOpen)
             {
-                return new AbsoluteContainer({
+                return new PopOver({
                     cache: 'dropdown',
                     parent: parent,
                     button: parent.button,

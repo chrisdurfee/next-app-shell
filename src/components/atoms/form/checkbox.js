@@ -1,6 +1,6 @@
 import { Checkbox as BaseCheckbox, Div, I, Label, Span } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
-import { Icons } from '../../icons/icons';
+import { Icons } from '../../icons/icons.js';
+import { VeilJot } from '../veil.js';
 
 /**
  * This will create a hidden checkbox atom.
@@ -95,7 +95,7 @@ const CheckboxLabel = ({ id, label, clickHandler }) => (
  * @param {object} props
  * @returns {object}
  */
-export const Checkbox = Jot(
+export const Checkbox = VeilJot(
 {
     /**
      * This will initialize the state of the checkbox.
@@ -108,28 +108,6 @@ export const Checkbox = Jot(
             checked: this.checked ?? false
         };
     },
-
-    /**
-	 * This will set the component context.
-	 *
-	 * @param {object|null} context
-	 * @returns {object|null}
-	 */
-	setContext(context)
-	{
-        if (this.data)
-        {
-            return null;
-        }
-
-        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
-        if (!data)
-        {
-            return null;
-        }
-
-		return { data };
-	},
 
     /**
      * This is added to check the checkbox after the component is rendered.

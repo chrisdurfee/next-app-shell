@@ -1,5 +1,5 @@
 import { Button, Checkbox, Span } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
+import { VeilJot } from '../../atoms/veil';
 
 /**
  * Toggle
@@ -10,7 +10,7 @@ import { Jot } from '@base-framework/base';
  * @param {array} children
  * @returns {object}
  */
-export const Toggle = Jot(
+export const Toggle = VeilJot(
 {
     /**
      * The initial state of the Toggle.
@@ -23,28 +23,6 @@ export const Toggle = Jot(
             active: this.active ?? false
         };
     },
-
-    /**
-	 * This will set the component context.
-	 *
-	 * @param {object|null} context
-	 * @returns {object|null}
-	 */
-	setContext(context)
-	{
-        if (this.data)
-        {
-            return null;
-        }
-
-        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
-        if (!data)
-        {
-            return null;
-        }
-
-		return { data };
-	},
 
     /**
      * This is added to check the checkbox after the component is rendered.

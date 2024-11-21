@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, Jot } from '@base-framework/base';
-import { AbsoluteContainer } from "../../molecules/absolute-container.js";
+import { PopOver } from "../../molecules/popover.js";
 import { Dropdown } from "./dropdown.js";
 import { SearchInput } from "./search-input.js";
 
@@ -17,7 +17,7 @@ const DropdownContainer = (props) => (
         {
             if (open)
             {
-				return new AbsoluteContainer({
+				return new PopOver({
                     cache: 'dropdown',
                     parent: parent,
                     button: parent.input,

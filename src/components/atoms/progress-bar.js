@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
+import { VeilJot } from './veil';
 
 /**
  * This will create a progress bar.
@@ -21,7 +21,7 @@ const Progress = () => (
  * @param {object} props
  * @returns {object}
  */
-export const ProgressBar = Jot(
+export const ProgressBar = VeilJot(
 {
     /**
      * This will render the progress bar component.
@@ -45,6 +45,32 @@ export const ProgressBar = Jot(
         return {
             progress: this.progress ?? 0
         };
+    },
+
+    /**
+     * This will reset the progress bar.
+     *
+     * @returns {void}
+     */
+    reset()
+    {
+        this.state.progress = 0;
+    },
+
+    /**
+     * This will update the progress bar from a file upload.
+     *
+     * @param {object} evt
+     * @returns {void}
+     */
+    uploadProgress(evt)
+    {
+        if (evt.lengthComputable)
+        {
+            const PERCENTAGE = 100;
+            const percentComplete = Math.round(evt.loaded * PERCENTAGE / evt.total);
+            this.set(percentComplete);
+        }
     },
 
     /**

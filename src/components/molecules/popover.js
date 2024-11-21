@@ -12,12 +12,20 @@ import { Component } from '@base-framework/base';
  */
 export const getPosition = (button, container) =>
 {
-    const rect = (button)? button.getBoundingClientRect() : { top: 0, bottom: 0, left: 0 };
+    const rect = button ? button.getBoundingClientRect() : { top: 0, bottom: 0, left: 0 };
     const containerRect = container.getBoundingClientRect();
 
-    let x = rect.left + window.scrollX;
-    let y = rect.bottom + window.scrollY;
     const PADDING = 10;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+
+    // Initial position of the dropdown
+    let x = rect.left + scrollX;
+    let y = rect.bottom + scrollY;
+
+    // Space above and below the button
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const spaceAbove = rect.top;
 
     // Adjust position if dropdown overflows on the right of the viewport
     if (x + containerRect.width > window.innerWidth)
@@ -25,25 +33,31 @@ export const getPosition = (button, container) =>
         x = window.innerWidth - containerRect.width - PADDING;
     }
 
-    // Adjust position if dropdown overflows at the bottom of the viewport
-    if (y + containerRect.height > window.innerHeight)
+    // Adjust position based on available space
+    if (spaceBelow < containerRect.height && spaceAbove > spaceBelow)
     {
-        y = rect.top + window.scrollY - containerRect.height - PADDING;
+        // Move the dropdown above the button
+        y = rect.top + scrollY - containerRect.height - PADDING;
+    }
+    else if (spaceBelow < containerRect.height)
+    {
+        // If there's not enough space, force it to fit below
+        y = rect.bottom + scrollY - (containerRect.height - spaceBelow) - PADDING;
     }
 
     return { x, y };
-}
+};
 
 /**
- * AbsoluteContainer
+ * PopOver
  *
  * This will create a absolute cotnainer component.
  *
  * @export
- * @class AbsoluteContainer
+ * @class PopOver
  * @extends {Component}
  */
-export class AbsoluteContainer extends Component
+export class PopOver extends Component
 {
     /**
      * This will set up the data.
@@ -172,7 +186,9 @@ export class AbsoluteContainer extends Component
                 {
                     this.state.open = false;
                 }
-            }]
+            }],
+            ['resize', window, (e) => this.updatePosition()],
+            ['scroll', document, (e) => this.updatePosition()],
         ];
     }
 

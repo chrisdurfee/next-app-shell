@@ -1,5 +1,6 @@
 import { Button, Div, I, Input, Span } from '@base-framework/atoms';
-import { DateTime, Jot } from '@base-framework/base';
+import { DateTime } from '@base-framework/base';
+import { VeilJot } from '../../atoms/veil.js';
 import { Icons } from '../../icons/icons.js';
 import { Calendar } from '../../organisms/calendar/calendar.js';
 
@@ -87,7 +88,7 @@ const CalendarContainer = ({ handleDateSelect }) => (
  * @param {array} children
  * @returns {object}
  */
-export const DatePicker = Jot(
+export const DatePicker = VeilJot(
 {
     /**
      * The initial state of the DatePicker.
@@ -101,28 +102,6 @@ export const DatePicker = Jot(
             open: false
         };
     },
-
-    /**
-	 * This will set the component context.
-	 *
-	 * @param {object|null} context
-	 * @returns {object|null}
-	 */
-	setContext(context)
-	{
-        if (this.data)
-        {
-            return null;
-        }
-
-        const data = (this?.parent?.data ?? this?.parent?.context?.data ?? null);
-        if (!data)
-        {
-            return null;
-        }
-
-		return { data };
-	},
 
     /**
      * This is added to check the input after the component is rendered.
