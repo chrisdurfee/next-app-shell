@@ -3,6 +3,7 @@ import { DateTime } from '@base-framework/base';
 import { VeilJot } from '../../atoms/veil.js';
 import { Icons } from '../../icons/icons.js';
 import { Calendar } from '../../organisms/calendar/calendar.js';
+import { PopOver } from '../popover.js';
 
 /**
  * This will check if the element clicked was in the
@@ -64,17 +65,24 @@ const CalendarContainer = ({ handleDateSelect }) => (
                 state.open = false;
             }
         }],
-        onState: ['open', (value, ele, { state} ) =>
+        onState: ['open', (value, ele, parent ) =>
         {
             if (!value)
             {
                 return null;
             }
 
-            return new Calendar({
-                selectedDate: state.selectedDate,
-                selectedCallBack: handleDateSelect
-            });
+            return new PopOver({
+                cache: 'dropdown',
+                parent: parent,
+                button: parent.panel,
+                size: 'fit'
+            }, [
+                new Calendar({
+                    selectedDate: parent.state.selectedDate,
+                    selectedCallBack: handleDateSelect
+                })
+            ]);
         }]
     })
 );

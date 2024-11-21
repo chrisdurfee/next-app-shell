@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { Component } from '@base-framework/base';
+import { Component, Data } from '@base-framework/base';
 
 /**
  * This will get the position of the element and
@@ -66,7 +66,7 @@ export class PopOver extends Component
      */
     setData()
     {
-        const data = this.parent.data;
+        const data = this.parent.data || new Data();
         data.set({
             position: { x: 0, y: 0 }
         });
@@ -93,6 +93,8 @@ export class PopOver extends Component
                 return 'w-96';
             case '2xl':
                 return 'w-[400px]';
+            case 'fit':
+                return 'w-fit';
             case 'full':
                 return 'w-full';
         }
