@@ -51,7 +51,7 @@ export class NavigationMenu extends Component
     /**
      * This will configure the links.
      */
-    onCreated()
+    beforeSetup()
     {
         this.links = [];
     }
@@ -160,6 +160,16 @@ export class NavigationMenu extends Component
         const link = Link({ text, href, exact });
         this.links.push(link);
         return link;
+    }
+
+    /**
+     * This will clear the links.
+     *
+     * @returns {void}
+     */
+    beforeDestroy()
+    {
+        this.links = [];
     }
 }
 

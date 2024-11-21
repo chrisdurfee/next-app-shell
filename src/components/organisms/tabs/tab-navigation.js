@@ -51,7 +51,7 @@ export class TabNavigation extends Component
 	/**
 	 * This will configure the links.
 	 */
-	onCreated()
+	beforeSetup()
 	{
 		this.links = [];
 	}
@@ -157,4 +157,14 @@ export class TabNavigation extends Component
 		this.links.push(link);
 		return link;
     }
+
+	/**
+	 * This will remove all the links.
+	 *
+	 * @returns {void}
+	 */
+	beforeDestroy()
+	{
+		this.links = [];
+	}
 }
