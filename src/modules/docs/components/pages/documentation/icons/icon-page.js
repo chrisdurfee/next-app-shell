@@ -145,11 +145,6 @@ export const HomeIcon = () => (
 );`
             }),
 
-            Div({ class: 'my-20' }, [
-                H3({ class: 'text-2xl font-bold' }, 'Default Icons'),
-                P({ class: 'text-muted-foreground' }, 'A few of the icons have been saved to the "Icons" object. You can use these icons in your project. Click to copy the Icon path. Here is a list of the icons that are available:'),
-            ]),
-
             DocSection({
                 title: 'Icon Atom',
                 description: 'An Icon is a helper atom that makes it easier to use icons in your project. ',
@@ -161,11 +156,6 @@ import { Icon } from '@components/atoms/icon.js';
 
 Icon(Icons.home);`
             }),
-
-            Div({ class: 'my-20' }, [
-                H3({ class: 'text-2xl font-bold' }, 'Default Icons'),
-                P({ class: 'text-muted-foreground' }, 'A few of the icons have been saved to the "Icons" object. You can use these icons in your project. Click to copy the Icon path. Here is a list of the icons that are available:'),
-            ]),
 
             DocSection({
                 title: 'Icon Sizes',
@@ -221,6 +211,11 @@ Span('2X Large (14x14)'),
 Icon({ size: '3xl' }, Icons.home),
 Span('3X Large (16x16)')`
             }),
+
+            Div({ class: 'my-20' }, [
+                H3({ class: 'text-2xl font-bold' }, 'Default Icons'),
+                P({ class: 'text-muted-foreground' }, 'A few of the icons have been saved to the "Icons" object. You can use these icons in your project. Click to copy the Icon path. Here is a list of the icons that are available:'),
+            ]),
 
             IconGuide(Icons)
         ]
