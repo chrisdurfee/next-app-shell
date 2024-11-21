@@ -2,7 +2,7 @@ import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { EmailInput, FileInput, Input, Radio, TelInput, Textarea } from "@components/atoms/form/input.js";
+import { ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
@@ -250,6 +250,189 @@ import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/at
 EmailInput({
 
 })`
+            }),
+
+            // URL Input
+            DocSection({
+                title: "URL Input",
+                description: "This is a URL input field.",
+                preview: [
+                    InputPreview([
+                        UrlInput({
+                            placeholder: "Enter a valid URL...",
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { UrlInput } from '@components/atoms/form/input.js';
+
+UrlInput({
+    placeholder: 'Enter a valid URL...',
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Color Input
+            DocSection({
+                title: "Color Input",
+                description: "This is a color input field.",
+                preview: [
+                    InputPreview([
+                        ColorInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { ColorInput } from '@components/atoms/form/input.js';
+
+ColorInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Date Input
+            DocSection({
+                title: "Date Input",
+                description: "This is a date input field.",
+                preview: [
+                    InputPreview([
+                        DateInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { DateInput } from '@components/atoms/form/input.js';
+
+DateInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Time Input
+            DocSection({
+                title: "Time Input",
+                description: "This is a time input field.",
+                preview: [
+                    InputPreview([
+                        TimeInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { TimeInput } from '@components/atoms/form/input.js';
+
+TimeInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // DateTime Input
+            DocSection({
+                title: "DateTime Input",
+                description: "This is a datetime input field.",
+                preview: [
+                    InputPreview([
+                        DateTimeInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { DateTimeInput } from '@components/atoms/form/input.js';
+
+DateTimeInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Week Input
+            DocSection({
+                title: "Week Input",
+                description: "This is a week input field.",
+                preview: [
+                    InputPreview([
+                        WeekInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { WeekInput } from '@components/atoms/form/input.js';
+
+WeekInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Month Input
+            DocSection({
+                title: "Month Input",
+                description: "This is a month input field.",
+                preview: [
+                    InputPreview([
+                        MonthInput({
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { MonthInput } from '@components/atoms/form/input.js';
+
+MonthInput({
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            DocSection({
+                title: "Password Input",
+                description: "This is a password input field.",
+                preview: [
+                    InputPreview([
+                        PasswordInput({
+                            class: 'w-12 h-12'
+                        }),
+                    ]),
+                ],
+                code: `import { PasswordInput } from '@components/atoms/form/input.js';
+
+PasswordInput({
+    class: 'w-12 h-12'
+});`,
+            }),
+
+            // Number Input
+            DocSection({
+                title: "Number Input",
+                description: "This is a number input field.",
+                preview: [
+                    InputPreview([
+                        NumberInput({
+                            placeholder: "Enter a number...",
+                            change: (e) => console.log(e.target.value),
+                        }),
+                    ]),
+                ],
+                code: `import { NumberInput } from '@components/atoms/form/input.js';
+
+NumberInput({
+    placeholder: 'Enter a number...',
+    change: (e) => console.log(e.target.value),
+});`,
+            }),
+
+            // Hidden Input
+            DocSection({
+                title: "Hidden Input",
+                description: "This is a hidden input field.",
+                preview: [
+                    InputPreview([
+                        HiddenInput({
+                            value: "hidden-value",
+                        }),
+                    ]),
+                ],
+                code: `import { HiddenInput } from '@components/atoms/form/input.js';
+
+HiddenInput({
+    value: 'hidden-value',
+});`,
             }),
 
             DocSection({

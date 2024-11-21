@@ -265,9 +265,10 @@ export const HiddenInput = Atom((props) => (
  * @returns {object}
  */
 export const ColorInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'color',
+        class: `border rounded-md border-input bg-background text-foreground p-0 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
