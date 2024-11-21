@@ -135,9 +135,10 @@ export const Radio = (props = {}) =>
  * @returns {object}
  */
 export const DateInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'date',
+        class: `rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
@@ -148,9 +149,10 @@ export const DateInput = Atom((props) => (
  * @returns {object}
  */
 export const TimeInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'time',
+        class: `rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
@@ -161,9 +163,10 @@ export const TimeInput = Atom((props) => (
  * @returns {object}
  */
 export const DateTimeInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'datetime-local',
+        class: `rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
