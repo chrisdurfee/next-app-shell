@@ -73,7 +73,6 @@ export const DataTable = Jot(
     setData()
     {
         return new Data({
-            rows: this.rows || [],
             selectedRows: []
         });
     },
@@ -85,14 +84,29 @@ export const DataTable = Jot(
      */
     toggleAllSelectedRows()
     {
-        const select = this.data.selectedRows.length === this.data.rows.length;
+        const tableRows = this.table.getRows();
+        const select = this.data.selectedRows.length === tableRows.length;
         const selectedRows = select
             ? []
-            : this.data.rows;
+            : tableRows;
 
         this.data.selectedRows = selectedRows;
-        this.data.rows.forEach(row => row.selected = !select);
-        this.table.setRows(this.data.get('rows'));
+
+        this.updateTable(!select);
+    },
+
+    /**
+     * This will update the table rows.
+     *
+     * @protected
+     * @param {boolean} selected
+     * @returns {void}
+     */
+    updateTable(selected)
+    {
+        const rows = this.table.getRows();
+        rows.forEach(row => row.selected = selected);
+        this.table.setRows(rows);
     },
 
     /**
@@ -102,10 +116,13 @@ export const DataTable = Jot(
      */
     selectRow(row)
     {
-        row.selected = !row.selected;
+        const isSelected = row.selected ?? false;
+        row.selected = !isSelected;
+
+        const previouslySelected = this.data.get('selectedRows');
         const selectedRows = row.selected
-            ? this.data.selectedRows.filter(selected => selected !== row)
-            : [...this.data.selectedRows, row];
+            ? [...previouslySelected, row]
+            : previouslySelected.filter(selected => selected !== row);
 
         this.data.selectedRows = selectedRows;
     },
@@ -117,7 +134,7 @@ export const DataTable = Jot(
      */
     render()
     {
-        const currentRows = this.data.rows;
+        const currentRows = this.rows;
 
         return Div({ class: 'w-full' }, [
             Div({ class: 'w-full rounded-md border' }, [
@@ -132,5 +149,66 @@ export const DataTable = Jot(
                 ])
             ])
         ]);
+    },
+
+    /**
+     * This will remove items from the list.
+     *
+     * @public
+     * @param {array} items
+     * @returns {void}
+     */
+    remove(items)
+    {
+        this.table.remove(items);
+    },
+
+    /**
+     * This will set the items in the list.
+     *
+     * @public
+     * @param {array} rows
+     * @returns {void}
+     */
+    setRows(rows)
+    {
+        this.table.setRows(rows);
+    },
+
+    /**
+     * This will append items to the list.
+     *
+     * @public
+     * @param {array|object} items
+     * @returns {void}
+     */
+    append(items)
+    {
+        this.table.append(items);
+    },
+
+    /**
+     * This will mingle the new items with the old items.
+     *
+     * @public
+     * @param {Array<Object>} newItems
+     * @param {boolean} withDelete
+     * @returns {void}
+     */
+    mingle(newItems, withDelete = false)
+    {
+        this.table.mingle(newItems, withDelete);
+    },
+
+    /**
+     * This will prepend items to the list.
+     *
+     * @public
+     * @param {array|object} items
+     * @returns {void}
+     */
+    prepend(items)
+    {
+        this.table.prepend(items);
     }
 });
