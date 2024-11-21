@@ -18,7 +18,7 @@
     }
 }
 .fadeIn {
-    animation: fadeIn .2s ease-in;
+    animation: fadeIn .1s ease-in;
     animation-fill-mode: forwards;
 
     backface-visibility: hidden;
@@ -69,6 +69,46 @@
 
 .pullLeftIn {
     animation: pullLeftIn .3s ease-out;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes pullDownIn {
+    0% {
+        transform: translate3d(0, -10%, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.pullDownIn {
+    animation: pullDownIn .3s ease-out;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes pullUpIn {
+    0% {
+        transform: translate3d(0, 10%, 0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.pullUpIn {
+    animation: pullUpIn .3s ease-out;
     animation-fill-mode: forwards;
 
     backface-visibility: hidden;

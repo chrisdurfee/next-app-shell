@@ -109,7 +109,7 @@ export class PopOver extends Component
 	{
         const size = this.getSize();
         return Div({
-            class: `absolute mt-2 border rounded-md shadow-lg bg-popover min-h-12 r z-30 ${size}`,
+            class: `absolute fadeIn mt-2 border rounded-md shadow-lg bg-popover min-h-12 r z-30 ${size}`,
             style: 'top: [[position.y]]px; left: [[position.x]]px'
         }, this.children);
 	}
