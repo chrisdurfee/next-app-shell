@@ -20,7 +20,7 @@ const TableHeader = (props) =>
                 if (header.label === 'checkbox')
                 {
                     return Th({ class: 'cursor-pointer py-3 px-4 text-base' }, [
-                        new Checkbox({ class: 'mr-2' })
+                        new Checkbox({ class: 'mr-2', onChange: props.toggle }),
                     ]);
                 }
 
@@ -47,6 +47,7 @@ const TableHeader = (props) =>
  */
 const Body = ({ key, rows, selectRow, rowItem }) => (
     new TableBody({
+        cache: 'table',
         key,
         items: rows,
         rowItem: (row) => rowItem(row, selectRow),
@@ -78,13 +79,31 @@ export const DataTable = Jot(
     },
 
     /**
+     * This will toggle all selected rows.
+     *
+     * @returns {void}
+     */
+    toggleAllSelectedRows()
+    {
+        const select = this.data.selectedRows.length === this.data.rows.length;
+        const selectedRows = select
+            ? []
+            : this.data.rows;
+
+        this.data.selectedRows = selectedRows;
+        this.data.rows.forEach(row => row.selected = !select);
+        this.table.setRows(this.data.get('rows'));
+    },
+
+    /**
      * Handles row selection.
      *
      * @param {object} row
      */
     selectRow(row)
     {
-        const selectedRows = this.data.selectedRows.includes(row)
+        row.selected = !row.selected;
+        const selectedRows = row.selected
             ? this.data.selectedRows.filter(selected => selected !== row)
             : [...this.data.selectedRows, row];
 
@@ -103,7 +122,7 @@ export const DataTable = Jot(
         return Div({ class: 'w-full' }, [
             Div({ class: 'w-full rounded-md border' }, [
                 Table({ class: 'w-full' }, [
-                    this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
+                    this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key), toggle: () => this.toggleAllSelectedRows() }),
                     Body({
                         key: this.key,
                         rows: currentRows,

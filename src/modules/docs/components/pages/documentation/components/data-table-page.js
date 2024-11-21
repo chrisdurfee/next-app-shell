@@ -34,7 +34,7 @@ const rowItem = (row, onSelect) =>
             new Checkbox({
                 checked: row.selected,
                 class: 'mr-2',
-                click: () => onSelect(row)
+                onChange: () => onSelect(row)
             })
         ]),
         Td({ class: 'p-4 ' }, [

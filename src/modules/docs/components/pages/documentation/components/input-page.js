@@ -441,7 +441,7 @@ HiddenInput({
                 preview: [
                     new Checkbox({
                         label: 'Check me',
-                        check: (checked) => console.log(checked)
+                        onChange: (checked) => console.log(checked)
                     })
                 ],
                 code: `
