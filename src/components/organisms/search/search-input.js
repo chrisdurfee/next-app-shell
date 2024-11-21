@@ -16,6 +16,7 @@ export const SearchInput = Atom((props) => (
 		bind: [props.state, 'searchQuery'],
 		keyup: (e, parent) =>
 		{
+			parent.state.open = true;
 			if (typeof props.filterOptions === 'function')
 			{
 				props.filterOptions();
