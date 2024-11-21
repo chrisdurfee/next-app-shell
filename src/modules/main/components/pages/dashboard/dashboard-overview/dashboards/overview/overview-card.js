@@ -4,13 +4,15 @@ import * as d3 from 'd3';
 
 /**
  * Creates a responsive bar chart in the specified container.
- * @param {string} container - The CSS selector of the container for the chart.
- * @param {Array} data - The data for the bar chart.
+ *
+ * @param {object} container - The html element to append the chart to.
+ * @param {array} data - The data for the bar chart.
  */
-export function createBarChart(container, data) {
+export function createBarChart(container, data)
+{
     const margin = { top: 20, right: 30, bottom: 30, left: 40 };
     const width = 600 - margin.left - margin.right; // Adjust size to fit your gray area
-    const height = 400 - margin.top - margin.bottom;
+    const height = 250 - margin.top - margin.bottom;
 
     const svg = d3
         .select(container)
