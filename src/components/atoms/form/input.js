@@ -177,9 +177,10 @@ export const DateTimeInput = Atom((props) => (
  * @returns {object}
  */
 export const MonthInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'month',
+        class: `rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
@@ -190,9 +191,10 @@ export const MonthInput = Atom((props) => (
  * @returns {object}
  */
 export const WeekInput = Atom((props) => (
-    Input({
+    BaseInput({
         ...props,
         type: 'week',
+        class: `rounded-md border px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 ${props.class || ''}`,
     })
 ));
 
