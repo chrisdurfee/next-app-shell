@@ -4,6 +4,7 @@
     bottom: 0;
     margin: auto;
     max-height: 100vh;
+    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     @apply bg-background shadow-xl md:rounded-md rounded-md;
 }
 .modal.sm {
@@ -19,13 +20,13 @@
     top: 0;
     bottom: 0;
     max-height: 100vh;
-    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
 }
 
 @media (min-width: 1024px) {
 
     .modal.md {
         max-height: 80vh;
+        padding: 0;
     }
     .modal header button.icon {
         @apply hidden;
@@ -37,7 +38,6 @@
     top: 0;
     bottom: 0;
     max-height: 100vh;
-    padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     border-radius: 0;
 }
 .modal.right {

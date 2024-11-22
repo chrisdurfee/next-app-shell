@@ -5,7 +5,8 @@ import { Select } from "@components/atoms/form/select.js";
 import { Icons } from "@components/icons/icons.js";
 import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
 import { FormField } from "@components/molecules/form/form.js";
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
+import DatePicker from "../../../../../../components/molecules/date-time/date-picker.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -57,6 +58,7 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 		type
 	}, [
 		Div({ class: 'flex flex-auto flex-col items-center justify-center p-4' }, [
+			new DatePicker(),
 			Button({
 				click: () =>
 				{
@@ -195,7 +197,7 @@ export const ModalPage = () => (
                     ModalButton(Modals[3])
                 ],
                 code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 
 /**
@@ -221,7 +223,7 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[0])
                 ],
                 code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 
 /**
@@ -246,7 +248,7 @@ const ModalButton = (props, children) => Button({
 //                     ModalButton(Modals[1])
 //                 ],
 //                 code: `
-// import { Modal } from "@components/molecules/modal.js";
+// import { Modal } from "@components/molecules/modals/modal.js";
 // import { Button } from "@components/atoms/atoms.js";
 
 // /**
@@ -271,7 +273,7 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[2])
                 ],
                 code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 
 /**
@@ -296,7 +298,7 @@ const ModalButton = (props, children) => Button({
                     ModalButton(Modals[4])
                 ],
                 code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 
 /**
@@ -325,7 +327,7 @@ const ModalButton = (props, children) => Button({
 					})
 				],
 				code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 
 /**
@@ -419,7 +421,7 @@ const ModalForm = ({
 					})
 				],
 				code: `
-import { Modal } from "@components/molecules/modal.js";
+import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/atoms.js";
 import { Icons } from "@components/icons/icons.js";
 

@@ -109,7 +109,8 @@ export class PopOver extends Component
 	{
         const size = this.getSize();
         return Div({
-            class: `absolute fadeIn mt-2 border rounded-md shadow-lg bg-popover min-h-12 r z-30 ${size}`,
+            class: `absolute inset-auto fadeIn mt-2 rounded-md p-0 shadow-lg bg-popover min-h-12 backdrop:bg-transparent text-inherit r z-30 ${size}`,
+            popover: 'manual',
             style: 'top: [[position.y]]px; left: [[position.x]]px'
         }, this.children);
 	}
@@ -159,6 +160,7 @@ export class PopOver extends Component
      */
     afterSetup()
     {
+        this.panel.showPopover();
         this.updatePosition();
     }
 
@@ -203,5 +205,10 @@ export class PopOver extends Component
     {
         this.container = app.appShell.panel;
         this.initialize();
+    }
+
+    beforeDestroy()
+    {
+        this.panel.hidePopover();
     }
 }
