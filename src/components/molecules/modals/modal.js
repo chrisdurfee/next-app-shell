@@ -1,25 +1,8 @@
-import { Builder, Component } from "@base-framework/base";
+import { Component } from "@base-framework/base";
 import "../../../css/components/molecules/modals/modal.css";
 import { Button } from "../../atoms/buttons/buttons.js";
+import { Dialog } from "../dialogs/dialog.js";
 import { ModalContainer } from "./modal-container.js";
-
-/**
- * This will render the modal component.
- *
- * @param {object} component
- * @returns {object}
- */
-const render = (component) => { return Builder.render(component, app.appShell.panel); };
-
-/**
- * This will check if the element clicked was in the
- * component of the button.
- *
- * @param {object} element
- * @param {object} panel
- * @returns {boolean}
- */
-const isOutsideClick = (element, panel) => (!panel.contains(element));
 
 /**
  * Modal
@@ -30,7 +13,7 @@ const isOutsideClick = (element, panel) => (!panel.contains(element));
  * @class Modal
  * @extends {Component}
  */
-export class Modal extends Component
+export class Modal extends Dialog
 {
 	/**
 	 * This will render the modal component.
@@ -39,6 +22,7 @@ export class Modal extends Component
 	 */
 	render()
 	{
+		const click = (event) => { if (event.target === this.panel) this.close() };
 		const className = this.getMainClass();
 		const title = this.title || '';
 		const description = this.description || null;
@@ -46,6 +30,7 @@ export class Modal extends Component
         return ModalContainer({
 				class: className,
 				title,
+				click,
 				description,
 				buttons: this.getButtons(),
 				onSubmit: this.submit,
@@ -58,48 +43,6 @@ export class Modal extends Component
 	}
 
 	/**
-     * This will setup the states.
-     *
-     * @returns {object}
-     */
-    setupStates()
-    {
-        return {
-            open: {
-				state: false,
-				callBack: (state) =>
-				{
-					if (!state)
-					{
-						this.close();
-					}
-				}
-			}
-        };
-    }
-
-	/**
-	 * This will setup the events.
-	 *
-	 * @returns {array}
-	 */
-	setupEvents()
-	{
-		return [
-			['pointerdown', document, (e) =>
-			{
-				if (isOutsideClick(e.target, this.panel))
-				{
-					e.preventDefault();
-					e.stopPropagation();
-
-					this.state.open = false;
-				}
-			}]
-		];
-	}
-
-    /**
      * This will get the buttons for the modal.
      *
      * @returns {array}
@@ -110,17 +53,6 @@ export class Modal extends Component
             Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
             Button({ variant: 'primary', type: 'submit' }, 'Save')
         ];
-    }
-
-	/**
-     * This will check if the click was outside the component.
-     *
-     * @param {object} element
-     * @returns {boolean}
-     */
-    isOutsideClick(element)
-    {
-        return (!this.panel.contains(element));
     }
 
 	/**
@@ -169,31 +101,5 @@ export class Modal extends Component
 	getMainClass()
 	{
 		return this.getSizeClass() + ' ' + this.getTypeClass();
-	}
-
-	/**
-	 * This will open the modal.
-	 *
-	 * @returns {void}
-	 */
-	open()
-	{
-		render(this);
-		this.events.unset();
-		this.panel.showPopover();
-        this.state.open = true;
-		this.events.set();
-	}
-
-	/**
-	 * This will close the modal.
-	 *
-	 * @returns {void}
-	 */
-	close()
-	{
-        this.state.open = false;
-		this.panel.hidePopover();
-		this.destroy();
 	}
 }

@@ -1,4 +1,4 @@
-import { Div, Footer, H2, Header } from "@base-framework/atoms";
+import { Dialog, Div, Footer, H2, Header } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Form } from "@components/molecules/form/form.js";
 import { Button } from "../../atoms/buttons/buttons.js";
@@ -42,9 +42,8 @@ const ModalHeader = ({ title, description, back, icon }) => (
  * @returns {object}
  */
 export const ModalContainer = Atom((props, children) => (
-    Div({
-            popover: 'manual',
-            class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden p-0 ${props.class}`,
+    Dialog({
+            class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden p-0 ${props.class}`, click: props.click
         }, [
         Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
