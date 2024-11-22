@@ -36,30 +36,52 @@ export function createBarChart(container, data)
         .nice()
         .range([height, 0]);
 
+    const FONT_SIZE = '8px';
+
     // Add X axis
     svg
         .append('g')
         .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(x).tickSizeOuter(0))
-        .classed('text-muted-foreground', true); // Tailwind theme class
+        .call(d3.axisBottom(x).tickSize(0)) // No tick lines
+        .selectAll('text')
+        .attr('font-size', FONT_SIZE)
+        .classed('text-muted-foreground', true);
 
     // Add Y axis
     svg
         .append('g')
-        .call(d3.axisLeft(y).ticks(5))
-        .classed('text-muted-foreground', true); // Tailwind theme class
+        .call(d3.axisLeft(y).ticks(5).tickSize(0)) // No tick lines
+        .selectAll('text')
+        .attr('font-size', FONT_SIZE)
+        .classed('text-muted-foreground', true);
+
+    // Remove Y axis path (line on the edge)
+    svg.selectAll('.domain').remove();
 
     // Bars
     svg
         .selectAll('.bar')
         .data(data)
         .enter()
-        .append('rect')
-        .attr('x', d => x(d.label))
-        .attr('y', d => y(d.value))
-        .attr('width', x.bandwidth())
-        .attr('height', d => height - y(d.value))
-        .classed('fill-primary bg-primary', true); // Tailwind theme classes
+        .append('path')
+        .attr('d', d => {
+            const x0 = x(d.label); // Bar's x position
+            const y0 = y(d.value); // Bar's top y position
+            const barWidth = x.bandwidth();
+            const barHeight = height - y(d.value);
+            const radius = 2; // Corner radius
+
+            return `
+                M${x0},${y0 + radius}
+                Q${x0},${y0} ${x0 + radius},${y0}
+                L${x0 + barWidth - radius},${y0}
+                Q${x0 + barWidth},${y0} ${x0 + barWidth},${y0 + radius}
+                L${x0 + barWidth},${y0 + barHeight}
+                L${x0},${y0 + barHeight}
+                Z
+            `;
+        })
+        .classed('fill-primary bg-primary', true);
 
     // Add labels to bars
     svg
@@ -71,7 +93,8 @@ export function createBarChart(container, data)
         .attr('y', d => y(d.value) - 5)
         .attr('text-anchor', 'middle')
         .text(d => d.value)
-        .classed('text-xs text-muted-foreground', true); // Tailwind theme class
+        .attr('font-size', FONT_SIZE)
+        .classed('text-muted-foreground', true);
 }
 
 // Example Usage:
