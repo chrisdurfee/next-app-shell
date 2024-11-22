@@ -23,10 +23,16 @@ export function createDonutChart(container, data)
         .attr('transform', `translate(${width / 2}, ${height / 2})`);
 
     // Color scale
+    // const color = d3
+    //     .scaleOrdinal()
+    //     .domain(data.map(d => d.label))
+    //     .range(["#4F46E5", "#EC4899", "#FACC15", "#10B981", "#8B5CF6"]);
+
+    // Grayscale Color scale
     const color = d3
         .scaleOrdinal()
         .domain(data.map(d => d.label))
-        .range(["#4F46E5", "#EC4899", "#FACC15", "#10B981", "#8B5CF6"]);
+        .range(["#333333", "#666666", "#999999", "#CCCCCC", "#E6E6E6"]); // Grayscale colors
 
     // Create the pie generator
     const pie = d3.pie().value(d => d.value);
