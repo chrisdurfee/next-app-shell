@@ -50,10 +50,18 @@ export function createBarChart(container, data)
     // Add Y axis
     svg
         .append('g')
-        .call(d3.axisLeft(y).ticks(5).tickSize(0)) // No tick lines
+        .call(
+            d3.axisLeft(y)
+                .ticks(5)
+                .tickSize(0)
+                .tickFormat(d => `$${d.toLocaleString()}`) // Add $ symbol
+        )
         .selectAll('text')
         .attr('font-size', FONT_SIZE)
         .classed('text-muted-foreground', true);
+
+    // Remove Y axis path (line on the edge)
+    svg.selectAll('.domain').remove();
 
     // Remove Y axis path (line on the edge)
     svg.selectAll('.domain').remove();
