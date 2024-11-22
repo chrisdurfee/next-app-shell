@@ -133,7 +133,7 @@ export const OverviewCard = () => (
         ]),
         Div({ class: 'flex flex-auto flex-col p-6 pt-0' }, [
             Div({
-                class: 'flex flex-auto flex-col min-h-64 rounded-md',
+                class: 'flex flex-auto flex-col rounded-md',
                 onCreated(ele)
                 {
                     createBarChart(ele, chartData);
