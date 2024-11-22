@@ -17,7 +17,7 @@ export const OverviewDashboard = () => (
             OverviewCard(),
             RecentSalesCard(),
         ]),
-        Div({ class: 'grid md:gap-4 space-y-4 md:space-y-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-7' }, [
+        Div({ class: 'grid md:gap-4 space-y-4 md:space-y-0 grid-cols-1 md:grid-cols-4 lg:grid-cols-7' }, [
             VisitorsCard()
         ])
     ])
