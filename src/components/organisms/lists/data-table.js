@@ -210,5 +210,15 @@ export const DataTable = Jot(
     prepend(items)
     {
         this.table.prepend(items);
+    },
+
+    /**
+     * This will remove the selected rows.
+     *
+     * @returns {void}
+     */
+    beforeDestroy()
+    {
+        this.data.selectedRows = [];
     }
 });
