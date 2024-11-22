@@ -86,10 +86,7 @@ export const DataTable = Jot(
     {
         const tableRows = this.table.getRows();
         const select = this.data.selectedRows.length === tableRows.length;
-        const selectedRows = select
-            ? []
-            : tableRows;
-
+        const selectedRows = select ? [] : tableRows;
         this.data.selectedRows = selectedRows;
 
         this.updateTable(!select);
