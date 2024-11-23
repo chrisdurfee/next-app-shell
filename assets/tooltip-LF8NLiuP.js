@@ -1,0 +1,4 @@
+import{Q as s,m as e,y as n}from"./index-CsTP_0bD.js";const o={top:"bottom-full left-1/2 transform -translate-x-1/2 mb-2","top-right":"bottom-full left-full transform -translate-x-1 mb-2","top-left":"bottom-full right-full transform translate-x-1 mb-2",bottom:"top-full left-1/2 transform -translate-x-1/2 mt-2","bottom-right":"top-full left-full transform -translate-x-1 mt-2","bottom-left":"top-full right-full transform translate-x-1 mt-2",left:"top-1/2 right-full transform -translate-y-1/2 mr-2",right:"top-1/2 left-full transform -translate-y-1/2 ml-2"},f=t=>o[t]||o.top,p=s(({position:t="top",content:l},r)=>{const a=f(t);return e({class:"relative group inline-block"},[r,n({class:`
+                absolute z-20 px-2 py-1 border text-sm bg-background rounded shadow-md opacity-0 whitespace-nowrap
+                group-hover:opacity-100 transition-opacity duration-200 ${a} pointer-events-none
+            `},l)])});export{p as T};
