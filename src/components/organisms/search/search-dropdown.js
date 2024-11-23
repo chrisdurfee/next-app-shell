@@ -107,6 +107,22 @@ export const SearchDropdown = Jot(
 	},
 
 	/**
+	 * This will get the selected value.
+	 *
+	 * @returns {object}
+	 */
+	getValue()
+	{
+		const { selectedIndex } = this.state;
+		if (selectedIndex < 0)
+		{
+			return null;
+		}
+
+		return this.data.get(`filteredOptions[${selectedIndex}]`);
+	},
+
+	/**
 	 * This will select an option.
 	 *
 	 * @param {number} index - The index of the option.
