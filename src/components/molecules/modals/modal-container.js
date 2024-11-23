@@ -45,6 +45,24 @@ export const ModalContainer = Atom((props, children) => (
     Div({
             popover: 'manual',
             class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden p-0 ${props.class}`,
+            pointerdown: (e, parent) =>
+                {
+                    const rect = parent.panel.getBoundingClientRect();
+                    const isClickOutside = (
+                        e.clientX < rect.left ||
+                        e.clientX > rect.right ||
+                        e.clientY < rect.top ||
+                        e.clientY > rect.bottom
+                    );
+
+                    if (isClickOutside)
+                    {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        parent.state.open = false; // Close the modal
+                    }
+                }
         }, [
         Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),

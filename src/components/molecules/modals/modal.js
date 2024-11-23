@@ -12,16 +12,6 @@ import { ModalContainer } from "./modal-container.js";
 const render = (component) => { return Builder.render(component, app.appShell.panel); };
 
 /**
- * This will check if the element clicked was in the
- * component of the button.
- *
- * @param {object} element
- * @param {object} panel
- * @returns {boolean}
- */
-const isOutsideClick = (element, panel) => (!panel.contains(element));
-
-/**
  * Modal
  *
  * This will create a modal component.
@@ -79,27 +69,6 @@ export class Modal extends Component
     }
 
 	/**
-	 * This will setup the events.
-	 *
-	 * @returns {array}
-	 */
-	setupEvents()
-	{
-		return [
-			['pointerdown', document, (e) =>
-			{
-				if (isOutsideClick(e.target, this.panel))
-				{
-					e.preventDefault();
-					e.stopPropagation();
-
-					this.state.open = false;
-				}
-			}]
-		];
-	}
-
-    /**
      * This will get the buttons for the modal.
      *
      * @returns {array}
@@ -179,10 +148,8 @@ export class Modal extends Component
 	open()
 	{
 		render(this);
-		this.events.unset();
 		this.panel.showPopover();
         this.state.open = true;
-		this.events.set();
 	}
 
 	/**
