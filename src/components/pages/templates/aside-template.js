@@ -12,12 +12,12 @@ import { Template } from "./template.js";
  */
 export const AsideTemplate = Atom((props, children) =>
 {
-	return Template({ class: 'body aside-container flex lg:flex-auto flex-col' }, [
-		Row({ class: 'flex flex-auto flex-col lg:flex-row' }, [
+	return Template({ class: 'body aside-container grid col-span-1 h-full' }, [
+		Row({ class: 'grid grid-cols-1 lg:grid-cols-5' }, [
 			MainColumn({ class: 'drawer control flex flex-auto w-full md:max-w-[320px]' }, [
 				props.left
 			]),
-			MainColumn({ class: 'flex flex-auto w-full' }, [
+			MainColumn({ class: 'col-span-4' }, [
 				props.right
 			])
 		])

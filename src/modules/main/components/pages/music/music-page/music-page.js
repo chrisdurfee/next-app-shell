@@ -12,7 +12,7 @@ import { SidebarMenu } from "./sidebar-menu.js";
  */
 export const MusicPage = () => (
     new BlankPage([
-        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full lg:border-t' }, [
+        Div({ class: 'grid grid-cols-1 lg:grid-cols-5 h-full' }, [
             SidebarMenu(),
             Div({ class: 'col-span-4' }, [
                 MusicSections()

@@ -1,7 +1,3 @@
-.basic-page .row .col:nth-child(2) {
-	flex-grow: 3;
-}
-
 .contained {
 	max-width: 1000px;
 	width: 100%;
@@ -9,9 +5,4 @@
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-}
-
-.basic-page .aside-container .row .col:first-child,
-.basic-page .bside-container .row .col:last-child {
-	flex-grow: 0;
 }
