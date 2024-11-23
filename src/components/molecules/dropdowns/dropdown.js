@@ -26,7 +26,7 @@ const Group = (group, onSelect) =>
 export const Dropdown = (onSelect) => (
     Div({ class: `w-full z-10` }, [
         Div({
-            class: 'max-h-60 overflow-y-auto p-1 grid gap-2 divide-y divide-border',
+            class: 'max-h-60 border rounded-md overflow-y-auto p-1 grid gap-2 divide-y divide-border',
             for: ['groups', (group) => Group(group, onSelect)]
         })
     ])

@@ -13,14 +13,7 @@ const DropdownButton = ({ toggleDropdown }) => (
     Button({
         cache: 'button',
         class: 'relative z-[2] inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 justify-between',
-        click: toggleDropdown,
-        addEvent: ['click', document, (e, { state, panel }) =>
-        {
-            if (isOutsideClick(e.target, panel))
-            {
-                state.open = false;
-            }
-        }]
+        click: toggleDropdown
     },
     [
         Span({ onState: ['selectedLabel', (value) => value || 'Select item...'] }),
@@ -53,7 +46,7 @@ const ComboboxItem = (item, onSelect) => {
  * @returns {object}
  */
 const ComboboxDropdown = (handleSelect) => (
-    Div({ class: 'w-full' }, [
+    Div({ class: 'w-full border rounded-md' }, [
         Ul({ class: 'max-h-60 overflow-y-auto p-2 grid gap-1', for: ['items', (item) => ComboboxItem(item, handleSelect) ] }),
     ])
 );
@@ -82,16 +75,6 @@ const DropdownContainer = ({ onSelect }) => (
         }]
     })
 );
-
-/**
- * This will check if the element clicked was in the
- * component of the button.
- *
- * @param {object} element
- * @param {object} panel
- * @returns {boolean}
- */
-const isOutsideClick = (element, panel) => (!panel.contains(element));
 
 /**
  * Combobox Atom

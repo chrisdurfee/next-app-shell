@@ -110,7 +110,8 @@ export class PopOver extends Component
         const size = this.getSize();
         return Div({
             class: `absolute inset-auto fadeIn mt-2 rounded-md p-0 shadow-lg bg-popover min-h-12 backdrop:bg-transparent text-inherit r z-30 ${size}`,
-            popover: 'manual',
+            popover: 'auto',
+            toggle: (e, { state }) => (e.newState === 'closed')? state.open = false : null,
             style: 'top: [[position.y]]px; left: [[position.x]]px'
         }, this.children);
 	}
@@ -184,13 +185,6 @@ export class PopOver extends Component
     setupEvents()
     {
         return [
-            ['click', document, (e) =>
-            {
-                if (this.isOutsideClick(e.target))
-                {
-                    this.state.open = false;
-                }
-            }],
             ['resize', window, (e) => this.updatePosition()],
             ['scroll', document, (e) => this.updatePosition()],
         ];

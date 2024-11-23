@@ -1,8 +1,5 @@
 .modal {
     animation: popIn .2s;
-    top: 0;
-    bottom: 0;
-    margin: auto;
     max-height: 100vh;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     @apply bg-background shadow-xl md:rounded-md rounded-md;
