@@ -2,12 +2,12 @@
     animation: popIn .2s;
     max-height: 100vh;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
-    @apply bg-background shadow-xl md:rounded-md rounded-md;
+    @apply shadow-xl md:rounded-md rounded-md;
 }
 .modal.sm {
     max-width: 425px;
     max-height: 350px;
-    @apply bg-background shadow-xl md:rounded-md rounded-md border;
+    @apply shadow-xl md:rounded-md rounded-md border;
 }
 .modal.sm .modal-body {
     max-height: 300px;
