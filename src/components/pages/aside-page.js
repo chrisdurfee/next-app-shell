@@ -1,6 +1,6 @@
-import { Div, H1, MainSection } from "../atoms/atoms.js";
-import { InlineNavigation } from '../organisms/navigation/inline-navigation.js';
+import { Div, MainSection } from "../atoms/atoms.js";
 import { MobileNavWrapper } from "../organisms/navigation/mobile-nav-wrapper.js";
+import SidebarMenu from "../organisms/navigation/sidebar-menu/sidebar-menu.js";
 import { BasicPage } from './basic-page.js';
 import { AsideTemplate } from './templates/aside-template.js';
 
@@ -51,10 +51,7 @@ export class AsidePage extends BasicPage
 	 */
 	addAside()
 	{
-		return Div({ class: 'flex flex-auto flex-col lg:border-r' }, [
-			H1({ class: 'p-4 hidden lg:flex' }, this.title),
-			this.addNavigation()
-		]);
+		return Div({ class: 'flex flex-auto flex-col' }, this.addNavigation());
 	}
 
 	/**
@@ -92,9 +89,9 @@ export class AsidePage extends BasicPage
 		const options = this.getLinks();
 
 		return [
-			new InlineNavigation(
+			SidebarMenu(
 			{
-				class: 'hidden lg:flex',
+				title: this.title,
 				options
 			}),
 			MobileNavWrapper({ title: this.title, options })

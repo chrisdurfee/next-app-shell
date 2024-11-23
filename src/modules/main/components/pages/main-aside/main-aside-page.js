@@ -23,7 +23,7 @@ export const MainAsidePage = () => (
 		/**
 		 * @member {string}	title
 		 */
-		title: 'Active Primary Title',
+		title: 'Page Title',
 
 		/**
 		 * @member {string}	basePath

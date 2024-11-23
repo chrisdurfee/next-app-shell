@@ -2,15 +2,6 @@
 	flex-grow: 3;
 }
 
-.aside-container .control h1 {
-	position: relative;
-	font-weight: 600;
-	font-size: 16px;
-	letter-spacing: 0.5px;
-	padding: 20px 16px;
-	margin: 0;
-}
-
 .contained {
 	max-width: 1000px;
 	width: 100%;
