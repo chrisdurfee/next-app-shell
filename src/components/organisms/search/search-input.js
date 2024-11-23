@@ -24,7 +24,7 @@ export const SearchInput = Atom((props) => (
 
 			parent.dropdown.updatePosition();
 		},
-		focus: (e, parent) => parent.toggleDropdown(),
+		pointerup: (e, parent) => parent.toggleDropdown(),
 		blur: (e, { state }) => setTimeout(() => (state.open = false), CLOSE_DELAY),
 		keydown: (e) => (typeof props.handleKeyDown === 'function') && props.handleKeyDown(e),
 	})

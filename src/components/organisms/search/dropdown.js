@@ -14,7 +14,7 @@ const ListItem = Atom(({ index, click, state }, children) => (
 			[state, 'selectedIndex', {
 				'bg-accent': index,
 				'text-white': index
-			}],
+			}]
 		],
 		pointerdown: () => click(index)
 	}, children)
@@ -28,7 +28,7 @@ const ListItem = Atom(({ index, click, state }, children) => (
  */
 export const Dropdown = Atom(({ selectOption, state }) => (
 	Ul({
-		class: 'list-none m-0 p-0',
+		class: 'border rounded-md list-none m-0 p-0',
 		for: ['filteredOptions', (option, index) =>
 		ListItem({ index, click: selectOption, state }, option.label)]
 	})

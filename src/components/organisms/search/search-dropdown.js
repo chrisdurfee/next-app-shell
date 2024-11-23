@@ -185,7 +185,7 @@ export const SearchDropdown = Jot(
 				state: this.state,
 				setSelected: this.setSelectedIndexByQuery.bind(this),
 				selectOption: this.selectOption.bind(this),
-			}),
+			})
 		]);
 	},
 });

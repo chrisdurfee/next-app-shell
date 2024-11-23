@@ -113,7 +113,8 @@ export const DatePicker = VeilJot(
     render()
     {
         const toggleOpen = (e, { state }) => state.toggle('open');
-        const handleDateSelect = (date) => {
+        const handleDateSelect = (date) =>
+        {
             this.state.selectedDate = date;
             this.state.open = false;
             this.input.value = date;
