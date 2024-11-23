@@ -4,6 +4,19 @@
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     @apply shadow-xl md:rounded-md rounded-md;
 }
+.modal::backdrop {
+    all: unset;
+}
+.modal:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+	@apply bg-black/40;
+    z-index: -1;
+}
 .modal.sm {
     max-width: 425px;
     max-height: 350px;

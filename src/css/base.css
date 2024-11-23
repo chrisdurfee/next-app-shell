@@ -76,7 +76,6 @@
 	}
 
 	::backdrop {
-		animation: shadowIn .2s ease forwards;
 		@apply bg-black/40;
 	}
 }
