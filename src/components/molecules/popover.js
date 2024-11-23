@@ -184,13 +184,13 @@ export class PopOver extends Component
     setupEvents()
     {
         return [
-            // ['click', document, (e) =>
-            // {
-            //     if (this.isOutsideClick(e.target))
-            //     {
-            //         this.state.open = false;
-            //     }
-            // }],
+            ['click', document, (e) =>
+            {
+                if (this.isOutsideClick(e.target))
+                {
+                    this.state.open = false;
+                }
+            }],
             ['resize', window, (e) => this.updatePosition()],
             ['scroll', document, (e) => this.updatePosition()],
         ];

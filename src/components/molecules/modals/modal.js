@@ -86,7 +86,7 @@ export class Modal extends Component
 	setupEvents()
 	{
 		return [
-			['pointerdown', document, (e) =>
+			['pointerdown', this.panel, (e) =>
 			{
 				if (isOutsideClick(e.target, this.panel))
 				{
