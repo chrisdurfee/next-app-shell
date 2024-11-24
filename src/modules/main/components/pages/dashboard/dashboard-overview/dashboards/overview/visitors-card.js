@@ -91,12 +91,12 @@ export const VisitorsCard = () => (
         ]),
         Div({ class: 'flex flex-auto flex-col p-6 pt-0' }, [
             Div({
-                class: 'flex flex-auto flex-col items-center justify-center min-h-64 rounded-md',
+                class: 'flex flex-auto flex-col items-center justify-center min-h-64 rounded-md p-8',
                 onCreated(ele) {
                     createDonutChart(ele, donutData);
                 }
             }),
-            P({ class: 'text-center text-sm' }, 'Trending up by 5.2% this month'),
+            P({ class: 'text-center text-sm mt-8' }, 'Trending up by 5.2% this month'),
             P({ class: 'text-center text-sm text-muted-foreground' }, 'Showing total visitors for the last 6 months')
         ])
     ])
