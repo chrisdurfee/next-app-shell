@@ -1,7 +1,4 @@
-/*
- * This will set the app padding to support the safe area.
- */
- .overlay {
+.overlay {
 	@apply bg-background;
 }
 

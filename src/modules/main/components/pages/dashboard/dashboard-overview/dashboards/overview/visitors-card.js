@@ -1,4 +1,4 @@
-import { Div, H3, Header } from "@base-framework/atoms";
+import { Div, H3, Header, P } from "@base-framework/atoms";
 import { Card } from "@components/atoms/cards/card.js";
 import * as d3 from 'd3';
 
@@ -95,7 +95,9 @@ export const VisitorsCard = () => (
                 onCreated(ele) {
                     createDonutChart(ele, donutData);
                 }
-            })
+            }),
+            P({ class: 'text-center text-sm' }, 'Trending up by 5.2% this month'),
+            P({ class: 'text-center text-sm text-muted-foreground' }, 'Showing total visitors for the last 6 months')
         ])
     ])
 );

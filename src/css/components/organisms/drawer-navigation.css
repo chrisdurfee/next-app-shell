@@ -1,8 +1,3 @@
-/* .drawer .navigation li.option>*.selected:after,
-.drawer .navigation:hover li.option>*.selected:after {
-	height: 42px;
-} */
-
 .drawer .navigation li.option,
 .drawer .navigation li.option a,
 .drawer .navigation li.option>div {

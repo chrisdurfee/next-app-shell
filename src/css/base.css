@@ -93,10 +93,6 @@ html {
 	box-sizing: border-box;
 }
 
-input, select, textarea {
-	@apply border-input bg-input rounded-sm p-2;
-}
-
 *:focus-visible {
 	@apply ring ring-ring outline-none;
 }

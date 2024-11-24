@@ -11,6 +11,7 @@
 /* atoms */
 @import url('components/atoms/atoms.css');
 @import url('components/atoms/buttons.css');
+@import url('components/atoms/form.css');
 
 /* molecules */
 @import url('components/molecules/molecules.css');
