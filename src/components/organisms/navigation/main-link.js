@@ -1,6 +1,7 @@
 import { I, Span } from '@base-framework/atoms';
 import { Atom, Component, NavLink } from '@base-framework/base';
 import { Label } from '../../atoms/atoms.js';
+import { Icon } from '../../atoms/icon.js';
 import { Icons } from '../../icons/icons.js';
 import { NavButtonLink } from './nav-button-link.js';
 
@@ -44,7 +45,7 @@ const LinkContent = (label, icon = null, hasChildren = false) => [
 	Label({ class: 'label flex flex-auto text-sm items-center cursor-pointer whitespace-nowrap' }, label),
 	hasChildren && Span(
 		{
-			class: 'flex justify-center items-center px-1 transition-all text-muted-foreground',
+			class: 'flex justify-center items-center px-1 transition-all text-muted-foreground mr-2',
 			onState: [
 				['selected', {
 					rotate: true
@@ -54,7 +55,7 @@ const LinkContent = (label, icon = null, hasChildren = false) => [
 				}]
 			]
 		}, [
-		I({ html: Icons.chevron.single.down })
+		Icon({ size: 'xs' }, Icons.chevron.single.down)
 	])
 ];
 

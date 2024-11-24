@@ -20,6 +20,7 @@
 
 .navigation .rotate {
 	transform: rotate(180deg);
+	transform-origin: 50% 50%;
 }
 
 .app-nav-container .navigation.sub .option>a.selected:before {
