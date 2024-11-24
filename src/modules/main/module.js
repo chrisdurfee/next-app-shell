@@ -32,6 +32,11 @@ const routes = Module.convertRoutes(
     { path: '/calendar/:date?*', import: import('./components/pages/calendar/calendar-page.js'), title: 'Calender' },
 
     /**
+     * List route
+     */
+    { path: '/list/:page?*', import: import('./components/pages/lists/list-page.js'), title: 'List' },
+
+    /**
      * Full page routes
      */
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
@@ -57,6 +62,7 @@ const links =
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
     { label: 'Messages', href: 'aside', icon: Icons.chat.text },
     { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default, mobileOrder: 3 },
+    { label: 'List', href: 'list', icon: Icons.list.four },
     { label: 'Reviews', href: 'full-contain', icon: Icons.star },
     { label: 'Map', href: 'full', icon: Icons.map },
     { label: 'Help', href: 'test', icon: Icons.help },
