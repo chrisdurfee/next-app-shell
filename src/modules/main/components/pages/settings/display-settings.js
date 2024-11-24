@@ -1,4 +1,5 @@
-import { Button, Div, H2, P } from "@base-framework/atoms";
+import { Div, H2, P } from "@base-framework/atoms";
+import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 
 /**

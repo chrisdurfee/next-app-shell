@@ -1,4 +1,6 @@
-import { Button, Div, H2, P, Select } from "@base-framework/atoms";
+import { Div, H2, P } from "@base-framework/atoms";
+import { Button } from "@components/atoms/buttons/buttons.js";
+import { Select } from "@components/atoms/form/select.js";
 
 /**
  * AppearanceSettings
