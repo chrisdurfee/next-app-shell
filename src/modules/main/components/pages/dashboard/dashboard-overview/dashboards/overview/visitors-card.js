@@ -96,7 +96,7 @@ export const VisitorsCard = () => (
                     createDonutChart(ele, donutData);
                 }
             }),
-            P({ class: 'text-center text-sm mt-8' }, 'Trending up by 5.2% this month'),
+            P({ class: 'text-center text-sm' }, 'Trending up by 5.2% this month'),
             P({ class: 'text-center text-sm text-muted-foreground' }, 'Showing total visitors for the last 6 months')
         ])
     ])
