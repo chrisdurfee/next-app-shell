@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { DashboardSummaryCards } from "./dashboard-summary-cards.js";
+import { GradientLineChartCard } from "./gradient-line-chart-card.js";
 import { OverviewCard } from "./overview-card.js";
 import { RecentSalesCard } from "./recent-sales-card.js";
 import { VisitorsCard } from "./visitors-card.js";
@@ -18,7 +19,8 @@ export const OverviewDashboard = () => (
             RecentSalesCard(),
         ]),
         Div({ class: 'grid md:gap-4 space-y-4 md:space-y-0 grid-cols-1 md:grid-cols-4 lg:grid-cols-7' }, [
-            VisitorsCard()
+            VisitorsCard(),
+            GradientLineChartCard(),
         ])
     ])
 );
