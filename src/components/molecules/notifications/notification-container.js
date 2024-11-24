@@ -21,7 +21,7 @@ export class NotificationContainer extends Component
      */
     render()
     {
-        return Div({ class: 'notification-container pointer-events-none fixed bottom-[80px] right-0 z-50 p-5' }, [
+        return Div({ class: 'notification-container pointer-events-none inset-auto bg-transparent backdrop:bg-transparent overflow-visible fixed bottom-[80px] right-0 z-50 p-5', popover: 'manual', }, [
             new List({
                 cache: 'list',
                 key: 'id',
@@ -42,6 +42,13 @@ export class NotificationContainer extends Component
         props.id = id++;
         props.callBack = () => this.removeNotice(props);
         this.list.append([ props ]);
+
+        const DELAY = 10;
+        setTimeout(() =>
+        {
+            this.panel.hidePopover();
+            this.panel.showPopover();
+        }, DELAY);
     }
 
     /**
