@@ -61,7 +61,7 @@ const users = [
  * @returns {BlankPage}
  */
 export const ItemListPage = () => (
-	Div({ class: 'contained py-4' }, [
+	Div({ class: 'flex flex-auto flex-col' }, [
         Div({ class: 'flex flex-auto flex-col mb-2' }, [
             Div({ class: 'flex flex-auto flex-row gap-2' }, [
                 Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
