@@ -1,4 +1,5 @@
 import { Div, Span, Td, Tr } from "@base-framework/atoms";
+import { Button } from '@components/atoms/buttons/buttons.js';
 import { Checkbox } from '@components/atoms/form/checkbox.js';
 import { DataTable } from '@components/organisms/lists/data-table.js';
 import { BlankPage } from '@components/pages/blank-page.js';
@@ -17,6 +18,14 @@ const rows = [
     { id: 4, status: 'Success', email: 'silas22@gmail.com', amount: 874.00, selected: false },
     { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false },
     // Add more rows as needed
+];
+
+const additionalRows = [
+    { id: 6, status: 'Success', email: '', amount: 0.00, selected: false },
+    { id: 7, status: 'Success', email: '', amount: 0.00, selected: false },
+    { id: 8, status: 'Processing', email: '', amount: 0.00, selected: false },
+    { id: 9, status: 'Success', email: '', amount: 0.00, selected: false },
+    { id: 10, status: 'Failed', email: '', amount: 0.00, selected: false }
 ];
 
 /**
@@ -53,7 +62,20 @@ const rowItem = (row, onSelect) =>
  */
 export const DataTablePage = () => (
 	Div({ class: 'flex flex-auto flex-col' }, [
-        new DataTable({ headers, rows, rowItem, key: 'id' })
+        Div({ class: 'flex flex-auto flex-col mb-2' }, [
+            Div({ class: 'flex flex-auto flex-row gap-2' }, [
+                Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(additionalRows) }, 'Prepend'),
+                Button({ variant: 'outline', click: (e, parent) => parent.list.append(additionalRows) }, 'Append'),
+                Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(additionalRows) }, 'Mingle'),
+            ])
+        ]),
+        new DataTable({
+            cache: 'list',
+            headers,
+            rows,
+            rowItem,
+            key: 'id'
+        })
     ])
 );
 
