@@ -185,6 +185,13 @@ export class PopOver extends Component
     setupEvents()
     {
         return [
+            ['click', document, (e) =>
+            {
+                if (this.isOutsideClick(e.target))
+                {
+                    this.state.open = false;
+                }
+            }],
             ['resize', window, (e) => this.updatePosition()],
             ['scroll', document, (e) => this.updatePosition()],
         ];
@@ -197,7 +204,7 @@ export class PopOver extends Component
      */
     setup(container)
     {
-        this.container = document.body;
+        this.container = app.appShell.panel;
         this.initialize();
     }
 
