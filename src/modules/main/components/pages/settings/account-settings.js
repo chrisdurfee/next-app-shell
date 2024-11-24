@@ -1,0 +1,51 @@
+import { Button, Div, H2, Input, P, Select } from "@base-framework/atoms";
+import { Form, FormField } from "@components/molecules/form/form.js";
+
+/**
+ * AccountSettings
+ *
+ * Settings form for updating account-related information.
+ *
+ * @returns {object}
+ */
+export const AccountSettings = () => (
+    Div({ class: 'space-y-6' }, [
+        H2({ class: 'text-xl font-semibold' }, 'Account'),
+        P({ class: 'text-muted-foreground' }, 'Update your account settings, such as language and timezone.'),
+
+        Form({ submit: (e) => { console.log("Account form submitted!"); } }, [
+            new FormField({
+                name: "name",
+                label: "Full Name",
+                description: "This is the name that will appear on your profile."
+            }, [
+                Input({ placeholder: "e.g. John Doe", required: true })
+            ]),
+
+            new FormField({
+                name: "dob",
+                label: "Date of Birth",
+                description: "Your date of birth helps us provide personalized recommendations."
+            }, [
+                Input({ type: "date", required: true })
+            ]),
+
+            new FormField({
+                name: "language",
+                label: "Preferred Language",
+                description: "Select your preferred language for the interface."
+            }, [
+                Select({
+                    options: [
+                        { value: "en", label: "English" },
+                        { value: "es", label: "Spanish" },
+                        { value: "fr", label: "French" },
+                    ],
+                    required: true
+                })
+            ]),
+
+            Button({ type: "submit", class: "mt-4" }, "Update Account")
+        ])
+    ])
+);

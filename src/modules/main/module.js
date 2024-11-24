@@ -37,6 +37,11 @@ const routes = Module.convertRoutes(
     { path: '/list/:page?*', import: import('./components/pages/lists/list-page.js'), title: 'List' },
 
     /**
+     * Settings route
+     */
+    { path: '/settings/:page?*', import: import('./components/pages/settings/settings-page.js'), title: 'Settings' },
+
+    /**
      * Full page routes
      */
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
@@ -98,11 +103,7 @@ const links =
     {
         label: 'Settings',
         icon: Icons.adjustments.veritical,
-        options: [
-            { label: 'irure nostrud', href: 'gallery/irure-nostrud' },
-            { label: 'ipsum dolore', href: 'gallery/ipsum-dolore' },
-            { label: 'enim consectetur', href: 'gallery/enim-consectetur' }
-        ]
+        href: 'settings',
     }
 ];
 
