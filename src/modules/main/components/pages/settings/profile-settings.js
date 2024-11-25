@@ -1,7 +1,8 @@
-import { Div, H2, P } from "@base-framework/atoms";
+import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Input } from "@components/atoms/form/input.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+import { FormField } from "@components/molecules/form/form.js";
+import { SettingsSection } from "./atoms/settings-section.js";
 
 /**
  * ProfileSettings
@@ -11,11 +12,14 @@ import { Form, FormField } from "@components/molecules/form/form.js";
  * @returns {object}
  */
 export const ProfileSettings = () => (
-    Div({ class: 'space-y-6 max-w-[500px]' }, [
-        H2({ class: 'text-2xl font-semibold' }, 'Profile'),
-        P({ class: 'text-muted-foreground' }, 'This is how others will see you on the site.'),
-
-        Form({ submit: (e) => { console.log("Profile form submitted!"); } }, [
+    SettingsSection({
+        title: 'Profile',
+        description: 'This is how others will see you on the site.',
+        class: 'max-w-[500px]',
+        submit: (data) => console.log("Profile Settings:", data)
+    }, [
+        Div({ class: 'space-y-6' }, [
+            // Username
             new FormField({
                 name: "username",
                 label: "Username",
@@ -24,6 +28,7 @@ export const ProfileSettings = () => (
                 Input({ placeholder: "e.g. john_doe", required: true })
             ]),
 
+            // Email
             new FormField({
                 name: "email",
                 label: "Email",
@@ -31,16 +36,7 @@ export const ProfileSettings = () => (
             }, [
                 Input({ type: "email", placeholder: "e.g. john_doe@example.com", required: true })
             ]),
-
-            new FormField({
-                name: "bio",
-                label: "Bio",
-                description: "A short description about yourself."
-            }, [
-                Input({ type: "text", placeholder: "I love coding!" })
-            ]),
-
-            Button({ type: "submit", class: "mt-4" }, "Update Profile")
-        ])
+        ]),
+        Button({ class: 'mt-4' }, "Update Profile")
     ])
 );

@@ -1,7 +1,8 @@
-import { Div, H2, P } from "@base-framework/atoms";
+import { Div, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Select } from "@components/atoms/form/select.js";
 import { ThemeToggle } from "@components/molecules/theme-toggle.js";
+import { SettingsSection } from "./atoms/settings-section.js";
 
 /**
  * AppearanceSettings
@@ -11,11 +12,13 @@ import { ThemeToggle } from "@components/molecules/theme-toggle.js";
  * @returns {object}
  */
 export const AppearanceSettings = () => (
-    Div({ class: 'space-y-6 max-w-[500px]' }, [
-        H2({ class: 'text-2xl font-semibold' }, 'Appearance'),
-        P({ class: 'text-muted-foreground' }, 'Customize the appearance of the app. Automatically switch between day and night themes.'),
-
-        Div({ class: 'space-y-4' }, [
+    SettingsSection({
+        title: 'Appearance',
+        description: 'Customize the appearance of the app. Automatically switch between day and night themes.',
+        class: 'max-w-[500px]',
+        submit: (data) => console.log("Appearance Settings:", data)
+    }, [
+        Div({ class: 'space-y-6' }, [
             // Font Selection
             Div({ class: 'space-y-2' }, [
                 P({ class: 'text-sm font-medium' }, 'Font'),

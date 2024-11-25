@@ -1,6 +1,7 @@
-import { Div, H2, P } from "@base-framework/atoms";
+import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
+import { SettingsSection } from "./atoms/settings-section.js";
 
 /**
  * DisplaySettings
@@ -10,10 +11,12 @@ import { Checkbox } from "@components/atoms/form/checkbox.js";
  * @returns {object}
  */
 export const DisplaySettings = () => (
-    Div({ class: 'space-y-6 max-w-[500px]' }, [
-        H2({ class: 'text-2xl font-semibold' }, 'Display'),
-        P({ class: 'text-muted-foreground' }, 'Turn items on or off to control what’s displayed in the app.'),
-
+    SettingsSection({
+        title: 'Display',
+        description: 'Turn items on or off to control what\'s displayed in the app.',
+        class: 'max-w-[500px]',
+        submit: (data) => console.log("Display Settings:", data)
+    }, [
         Div({ class: 'space-y-4' }, [
             // Sidebar Items
             Div({ class: 'flex flex-col space-y-2' }, [

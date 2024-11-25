@@ -1,6 +1,7 @@
-import { Div, H2, H4, P } from "@base-framework/atoms";
+import { Div, H4, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Toggle } from "@components/molecules/toggle/toggle.js";
+import { SettingsSection } from "./atoms/settings-section.js";
 
 /**
  * NotificationToggle
@@ -31,10 +32,12 @@ const NotificationToggle = ({ label, description, active, onChange }) => (
  * @returns {object}
  */
 export const NotificationSettings = () => (
-    Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-2xl font-semibold' }, 'Notifications'),
-        P({ class: 'text-muted-foreground' }, 'Manage your notification preferences.'),
-
+    SettingsSection({
+        title: 'Notifications',
+        description: 'Manage your notification preferences.',
+        submit: (data) => console.log("Notification Settings:", data),
+    },
+    [
         Div({ class: 'space-y-4' }, [
             // Email Notifications
             NotificationToggle({
