@@ -32,7 +32,7 @@ new ProgressBar({ cache: 'progress', progress: 20 })`
 
             DocSection({
                 title: 'Circle Progress Bar',
-                description: 'The progress bar can also be displayed as a semi circle.',
+                description: 'The progress bar can also be displayed as a circle.',
                 preview: [
                     CircleGraph({ cache: 'progress', progress: 50, class: 'stroke-gray-300' })
                 ],
