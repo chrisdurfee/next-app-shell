@@ -2,6 +2,7 @@ import { Icons } from '@components/icons/icons.js';
 import { Module } from '../module/module.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
+import InboxPage from './components/pages/inbox/inbox-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
@@ -14,6 +15,11 @@ import AlbumPage from './components/pages/music/album-page/album-page.js';
 const routes = Module.convertRoutes(
 [
     { path: '/', component: HomePage(), title: 'Home' },
+
+    /**
+     * Inbox routes
+     */
+    { path: '/inbox/:page?*', component: InboxPage(), title: 'Inbox' },
 
     /**
      * Dashboard routes
@@ -65,7 +71,7 @@ const links =
     { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true },
     { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 },
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
-    { label: 'Messages', href: 'aside', icon: Icons.chat.text },
+    { label: 'Inbox', href: 'inbox', icon: Icons.chat.text },
     { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default, mobileOrder: 3 },
     { label: 'List', href: 'list', icon: Icons.list.four },
     { label: 'Reviews', href: 'full-contain', icon: Icons.star },
