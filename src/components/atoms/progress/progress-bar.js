@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { VeilJot } from './veil';
+import { VeilJot } from '../veil.js';
 
 /**
  * This will create a progress bar.
