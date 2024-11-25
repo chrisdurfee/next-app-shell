@@ -1,4 +1,4 @@
-import { Div, Span } from "@base-framework/atoms";
+import { Div, H1, Header, Span } from "@base-framework/atoms";
 import { NavLink } from "@base-framework/base";
 import { Icon } from "@components/atoms/icon.js";
 import { Icons } from "@components/icons/icons.js";
@@ -60,7 +60,9 @@ const CustomNavLink = ({ label, count, icon, href }) => (
  */
 export const InboxSidebarMenu = () => (
     Div({ class: "flex flex-col space-y-2 w-[240px] p-4 border-r" }, [
-        Div({ class: "font-semibold text-lg mb-4" }, "Messages"),
+        Header({ class: 'pb-2 px-6 flex flex-col' }, [
+            H1({ class: "font-semibold text-lg" }, "Messages"),
+        ]),
         Div({ class: 'flex flex-auto flex-col divide-y divide-border' }, [
             Div({
                 class: "space-y-2 mb-4",

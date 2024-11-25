@@ -6,7 +6,7 @@ import { InboxMessageItem } from "./inbox-message-item.js";
  * This will create the InboxList organism.
  *
  * @param {object} props
- * @param {Array<object>} props.messages - Array of messages to display.
+ * @param {array<object>} props.messages - Array of messages to display.
  */
 export const InboxList = ({ messages }) => (
     Div({ class: "w-full space-y-2" }, [
