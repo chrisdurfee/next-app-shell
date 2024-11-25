@@ -1,5 +1,6 @@
 import { Div, Span } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { DateTime, Jot } from "@base-framework/base";
+import { DynamicTime } from "@base-framework/organisms";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
 /**
@@ -42,14 +43,28 @@ export const InboxMessageItem = Jot({
         setTimeout(() => this.state.loaded = true, 500);
 
         return Div({
-            class: "p-4 border rounded-md flex flex-col space-y-2",
+            class: "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
             onState: ["loaded", (loaded) => {
                 return !loaded
                     ? InboxMessageSkeleton()
-                    : Div({}, [
-                        Div({ class: "flex justify-between items-center" }, [
-                            Span({ class: "font-semibold text-base text-foreground" }, message.name),
-                            Span({ class: "text-xs text-muted-foreground" }, message.time),
+                    : Div({ class: 'flex flex-auto flex-col' }, [
+                        Div({ class: "flex w-full flex-col gap-1" }, [
+                            Div({ class: 'flex items-center' }, [
+                                Div({ class: "flex items-center gap-2" }, [
+                                    Span({ class: "font-semibold text-base text-foreground" }, message.name),
+                                ]),
+                            ]),
+                            Span({ class: "ml-auto text-xs text-foreground" }, [
+                                new DynamicTime({
+                                    dateTime: message.time,
+                                    filter(date)
+                                    {
+                                        // convert to local time
+                                        const localTime = DateTime.getLocalTime(date, true);
+                                        return DateTime.getTimeFrame(localTime);
+                                    }
+                                })
+                            ]),
                         ]),
                         Div({ class: "text-sm font-medium text-muted mt-1" }, message.subject),
                         Div({

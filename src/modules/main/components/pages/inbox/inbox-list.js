@@ -18,7 +18,7 @@ export const InboxList = ({ messages }) => (
                     const setTitle = (value = "Inbox") => console.log(value);
 
                     return [
-                        H4({ class: "font-semibold text-base text-foreground" }, [
+                        H4({ class: "text-xl font-bold" }, [
                             Span({ text: ["[[page]]", route, setTitle] }),
                         ]),
                         new TabGroup({
