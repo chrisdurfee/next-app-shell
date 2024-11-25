@@ -11,8 +11,8 @@ import { Form, FormField } from "@components/molecules/form/form.js";
  * @returns {object}
  */
 export const ProfileSettings = () => (
-    Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-xl font-semibold' }, 'Profile'),
+    Div({ class: 'space-y-6 max-w-[500px]' }, [
+        H2({ class: 'text-2xl font-semibold' }, 'Profile'),
         P({ class: 'text-muted-foreground' }, 'This is how others will see you on the site.'),
 
         Form({ submit: (e) => { console.log("Profile form submitted!"); } }, [

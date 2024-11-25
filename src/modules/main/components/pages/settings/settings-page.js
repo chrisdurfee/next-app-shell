@@ -39,7 +39,7 @@ export const SettingsPage = () => (
 
         // Content Section
         Div({
-            class: 'col-span-4 p-6',
+            class: 'col-span-4 p-6 contained',
             switch: [
                 { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
                 { uri: '/settings/account', component: SubRoute(AccountSettings()) },

@@ -12,8 +12,8 @@ import { Form, FormField } from "@components/molecules/form/form.js";
  * @returns {object}
  */
 export const AccountSettings = () => (
-    Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-xl font-semibold' }, 'Account'),
+    Div({ class: 'space-y-6 max-w-[500px]' }, [
+        H2({ class: 'text-2xl font-semibold' }, 'Account'),
         P({ class: 'text-muted-foreground' }, 'Update your account settings, such as language and timezone.'),
 
         Form({ submit: (e) => { console.log("Account form submitted!"); } }, [

@@ -10,8 +10,8 @@ import { Checkbox } from "@components/atoms/form/checkbox.js";
  * @returns {object}
  */
 export const DisplaySettings = () => (
-    Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-xl font-semibold' }, 'Display'),
+    Div({ class: 'space-y-6 max-w-[500px]' }, [
+        H2({ class: 'text-2xl font-semibold' }, 'Display'),
         P({ class: 'text-muted-foreground' }, 'Turn items on or off to control what’s displayed in the app.'),
 
         Div({ class: 'space-y-4' }, [

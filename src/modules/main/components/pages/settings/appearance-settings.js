@@ -1,6 +1,7 @@
 import { Div, H2, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Select } from "@components/atoms/form/select.js";
+import { ThemeToggle } from "@components/molecules/theme-toggle.js";
 
 /**
  * AppearanceSettings
@@ -10,8 +11,8 @@ import { Select } from "@components/atoms/form/select.js";
  * @returns {object}
  */
 export const AppearanceSettings = () => (
-    Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-xl font-semibold' }, 'Appearance'),
+    Div({ class: 'space-y-6 max-w-[500px]' }, [
+        H2({ class: 'text-2xl font-semibold' }, 'Appearance'),
         P({ class: 'text-muted-foreground' }, 'Customize the appearance of the app. Automatically switch between day and night themes.'),
 
         Div({ class: 'space-y-4' }, [
@@ -30,10 +31,7 @@ export const AppearanceSettings = () => (
             // Theme Selection
             Div({ class: 'space-y-2' }, [
                 P({ class: 'text-sm font-medium' }, 'Theme'),
-                Div({ class: 'flex gap-4 items-center' }, [
-                    Button({ class: 'flex-1 border rounded p-4 text-center', click: () => console.log("Light theme selected") }, "Light"),
-                    Button({ class: 'flex-1 border rounded p-4 text-center', click: () => console.log("Dark theme selected") }, "Dark"),
-                ])
+                new ThemeToggle()
             ]),
         ]),
 

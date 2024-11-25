@@ -32,7 +32,7 @@ const NotificationToggle = ({ label, description, active, onChange }) => (
  */
 export const NotificationSettings = () => (
     Div({ class: 'space-y-6' }, [
-        H2({ class: 'text-xl font-semibold' }, 'Notifications'),
+        H2({ class: 'text-2xl font-semibold' }, 'Notifications'),
         P({ class: 'text-muted-foreground' }, 'Manage your notification preferences.'),
 
         Div({ class: 'space-y-4' }, [
