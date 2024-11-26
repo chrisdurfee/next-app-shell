@@ -1,4 +1,4 @@
-import { Div, Span } from "@base-framework/atoms";
+import { Div, P, Span } from "@base-framework/atoms";
 import { DateTime, Jot } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
 import { Skeleton } from "@components/atoms/skeleton.js";
@@ -43,33 +43,34 @@ export const InboxMessageItem = Jot({
         setTimeout(() => this.state.loaded = true, 500);
 
         return Div({
-            class: "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+            class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
             onState: ["loaded", (loaded) => {
                 return !loaded
                     ? InboxMessageSkeleton()
-                    : Div({ class: 'flex flex-auto flex-col' }, [
+                    : Div({ class: 'flex flex-auto flex-col w-full gap-2' }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
                             Div({ class: 'flex items-center' }, [
                                 Div({ class: "flex items-center gap-2" }, [
                                     Span({ class: "font-semibold text-base text-foreground" }, message.name),
                                 ]),
+                                Span({ class: "ml-auto text-xs text-foreground" }, [
+                                    new DynamicTime({
+                                        dateTime: message.time,
+                                        filter(date)
+                                        {
+                                            // convert to local time
+                                            const localTime = DateTime.getLocalTime(date, true);
+                                            return DateTime.getTimeFrame(localTime);
+                                        }
+                                    })
+                                ])
                             ]),
-                            Span({ class: "ml-auto text-xs text-foreground" }, [
-                                new DynamicTime({
-                                    dateTime: message.time,
-                                    filter(date)
-                                    {
-                                        // convert to local time
-                                        const localTime = DateTime.getLocalTime(date, true);
-                                        return DateTime.getTimeFrame(localTime);
-                                    }
-                                })
-                            ]),
+                            Div({ class: "text-xs font-medium" }, message.subject),
                         ]),
-                        Div({ class: "text-sm font-medium text-muted mt-1" }, message.subject),
+                        P({ class: "line-clamp-2 text-xs text-muted-foreground" }, message.content),
                         Div({
                             class: "flex space-x-2 mt-2",
-                            map: [message.tags, (tag) => Span({ class: "bg-secondary px-2 py-1 rounded text-xs text-background" }, tag)],
+                            map: [message.tags, (tag) => Span({ class: "bg-secondary px-2 py-1 rounded text-xs text-secondary-foreground" }, tag)],
                         }),
                     ]);
             }],
