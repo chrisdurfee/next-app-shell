@@ -3,6 +3,7 @@ import { List } from "@base-framework/organisms";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
+import { ListEmptyState } from "./list-empty-state.js";
 
 /**
  * This will filter messages based on the list.
@@ -86,6 +87,10 @@ export const InboxList = () => (
                         onSet: ['items', (items) =>
                         {
                             items = filterMessages(items, state.list);
+                            if (!items.length)
+                            {
+                                return ListEmptyState({ list: state.list });
+                            }
 
                             return new List({
                                 cache: 'list',
