@@ -1,5 +1,8 @@
 import { Div, H4, Span } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
+import { Button } from "@components/atoms/buttons/buttons.js";
+import { Tooltip } from "@components/atoms/tooltip.js";
+import { Icons } from "@components/icons/icons.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
@@ -41,13 +44,18 @@ export const InboxList = () => (
                             Span({ text: ["[[page]]", route, setTitle] }),
 
                         ]),
-                        new TabGroup({
-                            options: [
-                                { label: "All Mail", value: "all" },
-                                { label: "Unread", value: "unread" },
-                            ],
-                            onSelect: (value) => state.list = value
-                        }),
+                        Div({ class: 'flex' }, [
+                            Div({ class: 'flex mr-2' }, [
+                                Tooltip({ content: 'Add Message', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
+                            ]),
+                            new TabGroup({
+                                options: [
+                                    { label: "All Mail", value: "all" },
+                                    { label: "Unread", value: "unread" },
+                                ],
+                                onSelect: (value) => state.list = value
+                            })
+                        ])
                     ];
                 },
             }),
@@ -104,6 +112,6 @@ export const InboxList = () => (
                     }
                 ]
             }
-        })
+        }),
     ])
 );
