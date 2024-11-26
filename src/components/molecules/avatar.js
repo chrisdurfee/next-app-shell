@@ -10,6 +10,11 @@ import { Atom } from '@base-framework/base';
  */
 const AvatarImage = Atom(({ src, alt }) =>
 {
+    if (!src)
+    {
+        return null;
+    }
+
     return Img({
         class: 'absolute w-full h-full rounded-full object-cover fadeIn',
         src,

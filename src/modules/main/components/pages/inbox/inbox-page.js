@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BlankPage } from "@components/pages/blank-page.js";
-import { EmailDetail } from "./email-detail.js";
+import { EmailDetail } from "./email/email-detail.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
 import { InboxSidebarMenu } from "./inbox-sidebar-menu.js";
 import { InboxList } from "./list/inbox-list.js";

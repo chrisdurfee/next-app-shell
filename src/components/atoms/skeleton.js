@@ -6,7 +6,7 @@ import { Div } from '@base-framework/atoms';
  * @param {object} props
  * @returns {object}
  */
-export const Skeleton = ({ className, shape = 'rectangle', width = 'w-full', height = 'h-4'}) =>
+export const Skeleton = ({ class: className, shape = 'rectangle', width = 'w-full', height = 'h-4'}) =>
 {
     const shapeClass = shape === 'circle' ? 'rounded-full' : 'rounded-md';
 
