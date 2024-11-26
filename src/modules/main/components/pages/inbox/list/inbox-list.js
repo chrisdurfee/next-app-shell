@@ -1,8 +1,8 @@
 import { Div, H4, Span } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
+import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
-import { INBOX_MESSAGES } from "./inbox-messages.js";
 import { ListEmptyState } from "./list-empty-state.js";
 
 /**
