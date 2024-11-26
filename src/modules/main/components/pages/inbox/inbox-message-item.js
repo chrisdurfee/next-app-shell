@@ -9,10 +9,14 @@ import { Skeleton } from "@components/atoms/skeleton.js";
  * @returns {object}
  */
 const InboxMessageSkeleton = () => (
-    Div({ class: "p-4 border rounded-md flex flex-col space-y-2 bg-muted" }, [
-        Skeleton({ width: "w-3/4", height: "h-6", class: "rounded" }), // Skeleton for name
+    Div({ class: "p-4 border rounded-md flex flex-col space-y-3 bg-muted" }, [
+        Skeleton({ width: "w-3/4", height: "h-5", class: "rounded" }), // Skeleton for name
         Skeleton({ width: "w-full", height: "h-4", class: "rounded" }), // Skeleton for subject
         Skeleton({ width: "w-1/2", height: "h-4", class: "rounded" }), // Skeleton for time
+        Div({ class: "flex space-x-2 mt-2" }, [
+            Skeleton({ width: "w-10", height: "h-4", class: "rounded" }), // Tag 1 skeleton
+            Skeleton({ width: "w-12", height: "h-4", class: "rounded" }), // Tag 2 skeleton
+        ])
     ])
 );
 
@@ -51,7 +55,8 @@ const Tag = (tag) => Span({ class: "inline-flex items-center rounded-md border p
  *
  * @class
  */
-export const InboxMessageItem = Jot({
+export const InboxMessageItem = Jot(
+{
     /**
      * This will set up the state.
      *
@@ -64,7 +69,8 @@ export const InboxMessageItem = Jot({
      *
      * @returns {object}
      */
-    render() {
+    render()
+    {
         const { message } = this;
 
         // Simulate loading with a timeout
@@ -72,22 +78,21 @@ export const InboxMessageItem = Jot({
 
         return Div({
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
-            onState: ["loaded", (loaded) => {
+            onState: ["loaded", (loaded) =>
+            {
                 return !loaded
                     ? InboxMessageSkeleton()
                     : Div({ class: 'flex flex-auto flex-col w-full gap-2' }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
-                            Div({ class: 'flex items-center' }, [
-                                Div({ class: "flex items-center gap-2" }, [
-                                    Span({ class: "font-semibold text-base text-foreground" }, message.name),
-                                ]),
+                            Div({ class: 'flex items-center justify-between' }, [
+                                Span({ class: "font-semibold text-base text-foreground" }, message.name),
                                 Time(message.time),
                             ]),
-                            Div({ class: "text-xs font-medium" }, message.subject),
+                            Div({ class: "text-sm font-medium text-muted-foreground" }, message.subject),
                         ]),
                         P({ class: "line-clamp-2 text-sm text-muted-foreground" }, message.content),
                         Div({
-                            class: "flex space-x-2 mt-2",
+                            class: "flex flex-wrap gap-2 mt-2",
                             map: [message.tags, Tag],
                         }),
                     ]);
