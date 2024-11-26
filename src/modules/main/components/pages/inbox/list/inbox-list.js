@@ -37,11 +37,9 @@ export const InboxList = () => (
             Div({
                 class: "flex justify-between",
                 useParent: ({ route, state }) => {
-                    const setTitle = (value = "Inbox") => console.log(value);
-
                     return [
                         H4({ class: "text-xl font-bold" }, [
-                            Span({ text: ["[[page]]", route, setTitle] }),
+                            Span({ class: 'capitalize', text: ["[[page]]", route] }),
 
                         ]),
                         Div({ class: 'flex' }, [
