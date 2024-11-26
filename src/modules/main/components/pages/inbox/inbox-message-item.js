@@ -82,6 +82,7 @@ export const InboxMessageItem = Jot(
     render()
     {
         const { message } = this;
+        const route = this.parent.parent.route;
 
         // Simulate loading with a timeout
         const DELAY = 1500;
@@ -89,10 +90,11 @@ export const InboxMessageItem = Jot(
 
         return Div({
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+            onSet: [route, "id", {
+                'bg-accent': message.id.toString()
+            }],
             onState: ["loaded", (loaded) =>
             {
-                const route = this.parent.parent.route;
-
                 return !loaded
                     ? InboxMessageSkeleton()
                     : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}` }, [
