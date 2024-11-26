@@ -65,9 +65,20 @@ export const InboxPage = () => (
             Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
                 InboxList()
             ]),
-            Div({ class: "flex flex-[4]" }, [
-                EmailDetail({ message: INBOX_MESSAGES[0] })
-            ])
+            Div({
+                class: "flex flex-[4]",
+                useParent({ route })
+                {
+                    console.log(route)
+                    return Div({
+                        class: 'flex flex-col w-full h-full',
+                        onSet: [route, 'messageId', () =>
+                        {
+                            return new EmailDetail();
+                        }]
+                    });
+                }
+            })
         ])
     ])
 );

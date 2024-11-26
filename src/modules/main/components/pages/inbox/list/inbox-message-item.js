@@ -90,9 +90,19 @@ export const InboxMessageItem = Jot(
 
         return Div({
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
-            onSet: [route, "id", {
+
+            /**
+             * This wil add the selected class to the message item
+             * when the message id matches the route id.
+             */
+            onSet: [route, "messageId", {
                 'bg-accent': message.id.toString()
             }],
+
+            /**
+             * This will render the skeleton and message item after
+             * the message is loaded.
+             */
             onState: ["loaded", (loaded) =>
             {
                 return !loaded
