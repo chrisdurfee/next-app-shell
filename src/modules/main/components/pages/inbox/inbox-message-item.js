@@ -37,6 +37,14 @@ const Time = (time) => (
 );
 
 /**
+ * This will create the tag atom.
+ *
+ * @param {string} tag
+ * @returns {object}
+ */
+const Tag = (tag) => Span({ class: "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80" }, tag);
+
+/**
  * InboxMessageItem
  *
  * Displays the skeleton placeholder while the message loads.
@@ -80,7 +88,7 @@ export const InboxMessageItem = Jot({
                         P({ class: "line-clamp-2 text-sm text-muted-foreground" }, message.content),
                         Div({
                             class: "flex space-x-2 mt-2",
-                            map: [message.tags, (tag) => Span({ class: "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80" }, tag)],
+                            map: [message.tags, Tag],
                         }),
                     ]);
             }],
