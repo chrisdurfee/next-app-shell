@@ -41,6 +41,16 @@ const Time = (time) => (
 );
 
 /**
+ * This will create the unread indicator atom.
+ *
+ * @returns {object}
+ */
+const UnreadIndicator = () => Span({
+    class: "w-2 h-2 bg-blue-500 rounded-full",
+    ariaLabel: "Unread message indicator"
+});
+
+/**
  * This will create the tag atom.
  *
  * @param {string} tag
@@ -88,7 +98,10 @@ export const InboxMessageItem = Jot(
                     : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}` }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
                             Div({ class: 'flex items-center justify-between' }, [
-                                Span({ class: "font-semibold text-base text-foreground" }, message.name),
+                                Div({ class: "flex items-center gap-2" }, [
+                                    Span({ class: "font-semibold text-base text-foreground" }, message.name),
+                                    !message.read && UnreadIndicator(),
+                                ]),
                                 Time(message.time),
                             ]),
                             Div({ class: "text-sm font-medium text-muted-foreground" }, message.subject),
