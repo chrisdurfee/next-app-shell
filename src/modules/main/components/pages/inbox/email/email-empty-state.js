@@ -15,7 +15,7 @@ export const EmailEmptyState = () => (
         ]),
         H2({ class: 'text-xl font-semibold text-muted-foreground text-center' }, 'Nothing to see here.'),
         Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
-            P('This email is empty. Click on a message to view it or get started by creating a new message.')
+            P('This view is empty. Click on a message is the list to view it or get started by creating a new message.')
         ]),
         Button({ class: 'my-8' }, 'Create a Message')
     ])

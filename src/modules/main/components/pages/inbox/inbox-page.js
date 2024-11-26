@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { EmailDetail } from "./email/email-detail.js";
+import { EmailEmptyState } from "./email/email-empty-state.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
 import { InboxSidebarMenu } from "./inbox-sidebar-menu.js";
 import { InboxList } from "./list/inbox-list.js";
@@ -60,23 +61,31 @@ const Props =
  */
 export const InboxPage = () => (
     new BlankPage(Props, [
-        Div({ class: "flex w-full data-[panel-group-direction=vertical]:flex-col h-full items-stretch" }, [
+        Div({ class: "flex w-full data-[panel-group-direction=vertical]:flex-col h-full" }, [
             InboxSidebarMenu(),
             Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
                 InboxList()
             ]),
             Div({
-                class: "flex flex-[4]",
+                class: "flex flex-[4] flex-col",
                 useParent({ route })
                 {
-                    console.log(route)
                     return Div({
-                        class: 'flex flex-col w-full h-full',
-                        onSet: [route, 'messageId', () =>
+                        class: 'flex flex-auto flex-col w-full h-full',
+                        onSet: [route, 'messageId', (messageId) =>
                         {
+                            if (!messageId)
+                            {
+                                return EmailEmptyState();
+                            }
+
                             return new EmailDetail();
                         }]
-                    });
+                    }, [
+                        Div({ class: 'flex auto flex-col w-full h-full' }, [
+                            EmailEmptyState()
+                        ])
+                    ]);
                 }
             })
         ])
