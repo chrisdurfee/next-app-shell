@@ -74,13 +74,14 @@ export const InboxMessageItem = Jot(
         const { message } = this;
 
         // Simulate loading with a timeout
-        setTimeout(() => this.state.loaded = true, 3000);
+        const DELAY = 1500;
+        setTimeout(() => this.state.loaded = true, DELAY);
 
         return Div({
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
             onState: ["loaded", (loaded) =>
             {
-                const route = this.route;
+                const route = this.parent.route;
 
                 return !loaded
                     ? InboxMessageSkeleton()

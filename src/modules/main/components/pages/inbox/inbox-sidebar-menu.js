@@ -8,10 +8,10 @@ import { Icons } from "@components/icons/icons.js";
  * Contains all sidebar navigation options with labels, counts, icons, and links.
  */
 const PRIUMARY_BUTTONS = [
-    { label: "Inbox", count: 128, icon: Icons.inbox.default, href: "inbox" },
+    { label: "Inbox", count: 128, icon: Icons.inbox.default, href: "inbox/inbox" },
     { label: "Drafts", count: 9, icon: Icons.document.default, href: "inbox/drafts" },
     { label: "Sent", count: 23, icon: Icons.envelope.open, href: "inbox/sent" },
-    { label: "Junk", count: 23, icon: Icons.archive.box.x, href: "inbox/junk" },
+    { label: "Junk", count: 0, icon: Icons.archive.box.x, href: "inbox/junk" },
     { label: "Trash", count: 0, icon: Icons.trash, href: "inbox/trash" },
     { label: "Archive", count: 0, icon: Icons.archive.box.default, href: "inbox/archive" }
 ];
@@ -20,10 +20,10 @@ const PRIUMARY_BUTTONS = [
  * @type {array} OTHER_BUTTONS
  */
 const OTHER_BUTTONS = [
-    { label: "Social", count: 972, icon: Icons.user.group, href: "inbox/social" },
-    { label: "Updates", count: 342, icon: Icons.bell.alert, href: "inbox/updates" },
-    { label: "Forums", count: 128, icon: Icons.chat.text, href: "inbox/forums" },
-    { label: "Shopping", count: 8, icon: Icons.shoppingBag, href: "inbox/shopping" }
+    { label: "Social", count: 0, icon: Icons.user.group, href: "inbox/social" },
+    { label: "Updates", count: 0, icon: Icons.bell.alert, href: "inbox/updates" },
+    { label: "Forums", count: 0, icon: Icons.chat.text, href: "inbox/forums" },
+    { label: "Shopping", count: 0, icon: Icons.shoppingBag, href: "inbox/shopping" }
 ];
 
 /**
@@ -44,6 +44,7 @@ const CustomNavLink = ({ label, count, icon, href }) => (
             class: "flex items-center justify-between p-2 rounded-md hover:bg-muted transition",
             activeClass: "bg-muted",
             href,
+            exact: false
         }, [
         Div({ class: "flex items-center space-x-2" }, [
             icon && Icon({ class: "text-muted-foreground flex-shrink-0 w-5 h-5" }, icon),
