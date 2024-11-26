@@ -2,20 +2,37 @@ import { Div, H4, Span } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
+import { INBOX_MESSAGES } from "./inbox-messages.js";
+
+/**
+ * This will filter messages based on the list.
+ *
+ * @param {array<object>} messages - Array of messages to filter.
+ * @param {string} list - List type to filter.
+ * @returns {array<object>}
+ */
+const filterMessages = (messages, list) =>
+{
+    if (list === 'unread')
+    {
+        return messages.filter((message) => !message.read);
+    }
+
+    return messages;
+};
 
 /**
  * This will create the InboxList organism.
  *
- * @param {object} props
- * @param {array<object>} props.messages - Array of messages to display.
+ * @returns {object}
  */
-export const InboxList = ({ messages }) => (
+export const InboxList = () => (
     Div({ class: "w-full pt-2 space-y-2 overflow-y-auto max-h-screen" }, [
         // List header
         Div({ class: "p-4 bg-card" }, [
             Div({
                 class: "flex justify-between",
-                useParent: ({ route }) => {
+                useParent: ({ route, state }) => {
                     const setTitle = (value = "Inbox") => console.log(value);
 
                     return [
@@ -28,7 +45,7 @@ export const InboxList = ({ messages }) => (
                                 { label: "All Mail", value: "all" },
                                 { label: "Unread", value: "unread" },
                             ],
-                            onSelect: (value) => console.log(value),
+                            onSelect: (value) => state.list = value
                         }),
                     ];
                 },
@@ -36,27 +53,51 @@ export const InboxList = ({ messages }) => (
         ]),
         // Messages
         Div({
-            useParent: ({ route }) =>
+            useParent: ({ route, data, state }) =>
             {
-                return {
-                    onSet: [route, 'page', (page) =>
+                return [
                     {
-                        let items = messages;
-                        if (page !== 'inbox')
+                        onSet: [route, 'page', (page) =>
                         {
-                            items = [];
-                        }
+                            let items = INBOX_MESSAGES;
+                            if (page !== 'inbox')
+                            {
+                                items = [];
+                            }
 
-                        return new List({
-                            cache: 'list',
-                            key: 'id',
-                            items,
-                            role: 'list',
-                            class: 'space-y-2 px-4 pb-4',
-                            rowItem: (message) => new InboxMessageItem({ message })
-                        });
-                    }]
-                }
+                            items = filterMessages(items, state.list);
+                            return data.items = items;
+                        }]
+                    },
+                    {
+                        onSet: [state, 'list', (list) =>
+                        {
+                            let items = INBOX_MESSAGES;
+                            if (route.page !== 'inbox')
+                            {
+                                items = [];
+                            }
+
+                            items = filterMessages(items, list);
+                            return data.items = items;
+                        }]
+                    },
+                    {
+                        onSet: ['items', (items) =>
+                        {
+                            items = filterMessages(items, state.list);
+
+                            return new List({
+                                cache: 'list',
+                                key: 'id',
+                                items,
+                                role: 'list',
+                                class: 'space-y-2 px-4 pb-4',
+                                rowItem: (message) => new InboxMessageItem({ message })
+                            });
+                        }]
+                    }
+                ]
             }
         }),
     ])

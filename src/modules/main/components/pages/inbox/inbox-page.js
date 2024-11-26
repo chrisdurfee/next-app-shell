@@ -1,4 +1,5 @@
 import { Div } from "@base-framework/atoms";
+import { Data } from "@base-framework/base";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { EmailDetail } from "./email-detail.js";
 import { InboxList } from "./inbox-list.js";
@@ -13,6 +14,18 @@ import { InboxSidebarMenu } from "./inbox-sidebar-menu.js";
 const Props =
 {
     /**
+     * This will set up the page data.
+     *
+     * @returns {object}
+     */
+    setData()
+    {
+        return new Data({
+            items: INBOX_MESSAGES
+        });
+    },
+
+    /**
      * This will check to route to the inbox page if no page is set.
      *
      * @returns {void}
@@ -23,6 +36,18 @@ const Props =
         {
             app.navigate("inbox/inbox", null, true);
         }
+    },
+
+    /**
+     * This will set up the page states.
+     *
+     * @returns {object}
+     */
+    setupStates()
+    {
+        return {
+            list: 'all'
+        };
     }
 };
 
