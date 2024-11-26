@@ -41,10 +41,16 @@ export const InboxList = ({ messages }) => (
                 return {
                     onSet: [route, 'page', (page) =>
                     {
+                        let items = messages;
+                        if (page !== 'inbox')
+                        {
+                            items = [];
+                        }
+
                         return new List({
                             cache: 'list',
                             key: 'id',
-                            items: messages,
+                            items,
                             role: 'list',
                             class: 'space-y-2 px-4 pb-4',
                             rowItem: (message) => new InboxMessageItem({ message })

@@ -8,9 +8,9 @@ import { Icons } from "@components/icons/icons.js";
  * Contains all sidebar navigation options with labels, counts, icons, and links.
  */
 const PRIUMARY_BUTTONS = [
-    { label: "Inbox", count: 128, icon: Icons.inbox.default, href: "inbox/inbox" },
-    { label: "Drafts", count: 9, icon: Icons.document.default, href: "inbox/drafts" },
-    { label: "Sent", count: 23, icon: Icons.envelope.open, href: "inbox/sent" },
+    { label: "Inbox", count: 8, icon: Icons.inbox.default, href: "inbox/inbox" },
+    { label: "Drafts", count: 0, icon: Icons.document.default, href: "inbox/drafts" },
+    { label: "Sent", count: 0, icon: Icons.envelope.open, href: "inbox/sent" },
     { label: "Junk", count: 0, icon: Icons.archive.box.x, href: "inbox/junk" },
     { label: "Trash", count: 0, icon: Icons.trash, href: "inbox/trash" },
     { label: "Archive", count: 0, icon: Icons.archive.box.default, href: "inbox/archive" }
