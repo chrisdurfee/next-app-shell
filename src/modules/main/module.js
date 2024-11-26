@@ -19,7 +19,7 @@ const routes = Module.convertRoutes(
     /**
      * Inbox routes
      */
-    { path: '/inbox/:page?*', component: InboxPage(), title: 'Inbox' },
+    { path: '/inbox/:page?/:id?*', component: InboxPage(), title: 'Inbox' },
 
     /**
      * Dashboard routes

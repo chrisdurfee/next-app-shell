@@ -35,15 +35,23 @@ export const InboxList = ({ messages }) => (
             }),
         ]),
         // Messages
-        Div([
-            new List({
-                cache: 'list',
-                key: 'id',
-                items: messages,
-                role: 'list',
-                class: 'space-y-2 px-4 pb-4',
-                rowItem: (message) => new InboxMessageItem({ message })
-            })
-        ]),
+        Div({
+            useParent: ({ route }) =>
+            {
+                return {
+                    onSet: [route, 'page', (page) =>
+                    {
+                        return new List({
+                            cache: 'list',
+                            key: 'id',
+                            items: messages,
+                            role: 'list',
+                            class: 'space-y-2 px-4 pb-4',
+                            rowItem: (message) => new InboxMessageItem({ message })
+                        });
+                    }]
+                }
+            }
+        }),
     ])
 );
