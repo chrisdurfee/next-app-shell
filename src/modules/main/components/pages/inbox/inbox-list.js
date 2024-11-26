@@ -35,7 +35,7 @@ export const InboxList = ({ messages }) => (
         ]),
         // Messages
         Div({
-            class: "space-y-2 p-4",
+            class: "space-y-2 px-4 pb-4",
             map: [messages, (message) => new InboxMessageItem({ message })],
         }),
     ])
