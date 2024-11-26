@@ -37,7 +37,7 @@ export const InboxPage = () => (
     new BlankPage(Props, [
         Div({ class: "flex w-full data-[panel-group-direction=vertical]:flex-col h-full items-stretch" }, [
             InboxSidebarMenu(),
-            Div({ class: "flex flex-[2] border-r" }, [
+            Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
                 InboxList({ messages: INBOX_MESSAGES })
             ]),
             Div({ class: "flex flex-[4]" }, [
