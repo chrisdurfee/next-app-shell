@@ -9,7 +9,7 @@ import { Skeleton } from "@components/atoms/skeleton.js";
  * @returns {object}
  */
 const InboxMessageSkeleton = () => (
-    Div({ class: "p-4 border rounded-md flex flex-col space-y-3 bg-muted" }, [
+    Div({ class: "flex flex-col flex-auto w-full rounded-md space-y-3" }, [
         Skeleton({ width: "w-3/4", height: "h-5", class: "rounded" }), // Skeleton for name
         Skeleton({ width: "w-full", height: "h-4", class: "rounded" }), // Skeleton for subject
         Skeleton({ width: "w-1/2", height: "h-4", class: "rounded" }), // Skeleton for time
@@ -74,7 +74,7 @@ export const InboxMessageItem = Jot(
         const { message } = this;
 
         // Simulate loading with a timeout
-        setTimeout(() => this.state.loaded = true, 500);
+        setTimeout(() => this.state.loaded = true, 3000);
 
         return Div({
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",

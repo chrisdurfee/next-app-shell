@@ -9,7 +9,7 @@ import { InboxMessageItem } from "./inbox-message-item.js";
  * @param {array<object>} props.messages - Array of messages to display.
  */
 export const InboxList = ({ messages }) => (
-    Div({ class: "w-full space-y-2" }, [
+    Div({ class: "w-full space-y-2 overflow-y-auto max-h-screen" }, [
         // List header
         Div({ class: "p-4 bg-card" }, [
             Div({
@@ -20,6 +20,7 @@ export const InboxList = ({ messages }) => (
                     return [
                         H4({ class: "text-xl font-bold" }, [
                             Span({ text: ["[[page]]", route, setTitle] }),
+
                         ]),
                         new TabGroup({
                             options: [

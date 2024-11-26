@@ -59,8 +59,8 @@ const CustomNavLink = ({ label, count, icon, href }) => (
  * @returns {object}
  */
 export const InboxSidebarMenu = () => (
-    Div({ class: "flex-auto flex-col pb-12 hidden lg:flex p-6 border-r bg-sidebar max-w-[350px] h-full" }, [
-        Header({ class: 'pb-4 px-6 flex flex-col' }, [
+    Div({ class: "flex-auto flex-col pb-12 hidden lg:flex p-6 border-r bg-sidebar max-w-[270px] h-full" }, [
+        Header({ class: 'pb-4 px-2 flex flex-col' }, [
             H1({ class: "scroll-m-20 text-2xl font-bold tracking-tight" }, "Messages"),
         ]),
         Div({ class: 'flex flex-auto flex-col divide-y divide-border' }, [

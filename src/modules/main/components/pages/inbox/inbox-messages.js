@@ -1,5 +1,5 @@
 /**
- * @type {Array<object>} INBOX_MESSAGES
+ * @type {array<object>} INBOX_MESSAGES
  */
 export const INBOX_MESSAGES = [
     {
@@ -9,6 +9,7 @@ export const INBOX_MESSAGES = [
         tags: ["meeting", "work", "important"],
         time: '2024-11-04T18:00:00',
         content: "Hi, let's have a meeting tomorrow to discuss the project. I've been reviewing the project details...",
+        read: false
     },
     {
         id: 2,
@@ -17,6 +18,7 @@ export const INBOX_MESSAGES = [
         tags: ["work", "important"],
         time: '2024-11-04T18:00:00',
         content: "Thank you for the project update. It looks great! I've gone through the report, and the progress...",
+        read: false
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ export const INBOX_MESSAGES = [
         tags: ["personal"],
         time: '2024-11-04T18:00:00',
         content: "Any plans for the weekend? I was thinking of going hiking in the nearby mountains...",
+        read: true
     },
     {
         id: 4,
@@ -33,6 +36,7 @@ export const INBOX_MESSAGES = [
         tags: ["work", "budget"],
         time: '2024-11-04T18:00:00',
         content: "I have a question about the budget for the upcoming project. It seems like there's a discrepancy in...",
+        read: true
     },
     {
         id: 5,
@@ -41,6 +45,7 @@ export const INBOX_MESSAGES = [
         tags: ["meeting", "work", "important"],
         time: '2024-11-04T18:00:00',
         content: "I have an important announcement to make during our team meeting...",
+        read: true
     },
     {
         id: 6,
@@ -49,6 +54,7 @@ export const INBOX_MESSAGES = [
         tags: ["meeting", "work"],
         time: '2024-11-04T18:00:00',
         content: "Let's have a team dinner next week to celebrate our success...",
+        read: true
     },
     {
         id: 7,
@@ -57,6 +63,7 @@ export const INBOX_MESSAGES = [
         tags: ["work", "conference"],
         time: '2024-11-04T18:00:00',
         content: "I've completed the registration for the conference next month...",
+        read: true
     },
     {
         id: 8,
@@ -65,5 +72,6 @@ export const INBOX_MESSAGES = [
         tags: ["personal"],
         time: '2024-11-04T18:00:00',
         content: "Let's plan our vacation for next month. What do you think? I've been thinking of visiting...",
+        read: true
     },
 ];
