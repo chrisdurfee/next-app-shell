@@ -1,4 +1,4 @@
-import { Div, P, Span } from "@base-framework/atoms";
+import { A, Div, P, Span } from "@base-framework/atoms";
 import { DateTime, Jot } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
 import { Skeleton } from "@components/atoms/skeleton.js";
@@ -80,9 +80,11 @@ export const InboxMessageItem = Jot(
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
             onState: ["loaded", (loaded) =>
             {
+                const route = this.route;
+
                 return !loaded
                     ? InboxMessageSkeleton()
-                    : Div({ class: 'flex flex-auto flex-col w-full gap-2' }, [
+                    : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}` }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
                             Div({ class: 'flex items-center justify-between' }, [
                                 Span({ class: "font-semibold text-base text-foreground" }, message.name),
