@@ -1,4 +1,5 @@
 import { Div, H4, Span } from "@base-framework/atoms";
+import { List } from "@base-framework/organisms";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
 
@@ -34,9 +35,15 @@ export const InboxList = ({ messages }) => (
             }),
         ]),
         // Messages
-        Div({
-            class: "space-y-2 px-4 pb-4",
-            map: [messages, (message) => new InboxMessageItem({ message })],
-        }),
+        Div([
+            new List({
+                cache: 'list',
+                key: 'id',
+                items: messages,
+                role: 'list',
+                class: 'space-y-2 px-4 pb-4',
+                rowItem: (message) => new InboxMessageItem({ message })
+            })
+        ]),
     ])
 );

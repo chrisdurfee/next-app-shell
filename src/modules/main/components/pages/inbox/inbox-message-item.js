@@ -91,7 +91,7 @@ export const InboxMessageItem = Jot(
             class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
             onState: ["loaded", (loaded) =>
             {
-                const route = this.parent.route;
+                const route = this.parent.parent.route;
 
                 return !loaded
                     ? InboxMessageSkeleton()
