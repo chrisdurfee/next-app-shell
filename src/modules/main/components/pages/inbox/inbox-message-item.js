@@ -17,6 +17,26 @@ const InboxMessageSkeleton = () => (
 );
 
 /**
+ * This will create the time time atom.
+ *
+ * @param {string} time
+ * @returns {object}
+ */
+const Time = (time) => (
+    Span({ class: "ml-auto text-xs text-foreground" }, [
+        new DynamicTime({
+            dateTime: time,
+            filter(date)
+            {
+                // convert to local time
+                const localTime = DateTime.getLocalTime(date, true);
+                return DateTime.getTimeFrame(localTime);
+            }
+        })
+    ])
+);
+
+/**
  * InboxMessageItem
  *
  * Displays the skeleton placeholder while the message loads.
@@ -53,24 +73,14 @@ export const InboxMessageItem = Jot({
                                 Div({ class: "flex items-center gap-2" }, [
                                     Span({ class: "font-semibold text-base text-foreground" }, message.name),
                                 ]),
-                                Span({ class: "ml-auto text-xs text-foreground" }, [
-                                    new DynamicTime({
-                                        dateTime: message.time,
-                                        filter(date)
-                                        {
-                                            // convert to local time
-                                            const localTime = DateTime.getLocalTime(date, true);
-                                            return DateTime.getTimeFrame(localTime);
-                                        }
-                                    })
-                                ])
+                                Time(message.time),
                             ]),
                             Div({ class: "text-xs font-medium" }, message.subject),
                         ]),
-                        P({ class: "line-clamp-2 text-xs text-muted-foreground" }, message.content),
+                        P({ class: "line-clamp-2 text-sm text-muted-foreground" }, message.content),
                         Div({
                             class: "flex space-x-2 mt-2",
-                            map: [message.tags, (tag) => Span({ class: "bg-secondary px-2 py-1 rounded text-xs text-secondary-foreground" }, tag)],
+                            map: [message.tags, (tag) => Span({ class: "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80" }, tag)],
                         }),
                     ]);
             }],
