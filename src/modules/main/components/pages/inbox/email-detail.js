@@ -50,7 +50,7 @@ export const EmailDetail = Jot(
         const route = this.parent.route;
 
         // Simulate loading with a timeout
-        const DELAY = 1500;
+        const DELAY = 500;
         setTimeout(() => this.state.loaded = true, DELAY);
 
         return Div({
