@@ -15,7 +15,7 @@ import { EmailToolbar } from "./email-toolbar.js";
 const EmailDetailSkeleton = () => (
     Div({ class: "flex flex-col gap-4" }, [
         // Toolbar Skeleton
-        Div({ class: "flex items-center justify-between border-b pb-4" }, [
+        Div({ class: "items-center justify-between border-b pb-4" }, [
             Div({ class: "flex items-center gap-4" }, [
                 Skeleton({ width: "w-8", height: "h-8" }), // Move to Inbox
                 Skeleton({ width: "w-8", height: "h-8" }), // Move to Junk

@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { DockableOverlay } from "@components/organisms/dockable-overlay.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { EmailDetail } from "./email/email-detail.js";
 import { EmailEmptyState } from "./email/email-empty-state.js";
@@ -61,34 +62,43 @@ const Props =
  */
 export const InboxPage = () => (
     new BlankPage(Props, [
-        Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
-            InboxSidebarMenu(),
-            Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
-                InboxList()
-            ]),
-            Div({
-                class: "flex flex-[4] flex-col",
-                useParent({ route })
-                {
-                    return Div({
-                        class: 'flex flex-auto flex-col w-full h-full',
-                        onSet: [route, 'messageId', (messageId) =>
-                        {
-                            if (!messageId)
-                            {
-                                return EmailEmptyState();
-                            }
+        Div({
+            class: "flex w-full flex-col lg:flex-row h-full",
+            useParent: ({ route }) =>
+            {
+                return [
+                    InboxSidebarMenu(),
+                    Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
+                        InboxList()
+                    ]),
+                    {
+                        route: {
+                            uri: 'inbox/:page/:messageId*',
+                            component: new DockableOverlay([
+                                Div({ class: "flex flex-[4] flex-col" }, [
+                                    Div({
+                                        class: 'flex flex-auto flex-col w-full h-full',
+                                        onSet: [route, 'messageId', (messageId) =>
+                                        {
+                                            if (!messageId)
+                                            {
+                                                return EmailEmptyState();
+                                            }
 
-                            return new EmailDetail();
-                        }]
-                    }, [
-                        Div({ class: 'flex auto flex-col w-full h-full' }, [
-                            EmailEmptyState()
-                        ])
-                    ]);
-                }
-            })
-        ])
+                                            return new EmailDetail();
+                                        }]
+                                    }, [
+                                        Div({ class: 'flex auto flex-col w-full h-full' }, [
+                                            EmailEmptyState()
+                                        ])
+                                    ])
+                                ])
+                            ])
+                        }
+                    }
+                ];
+            }
+        })
     ])
 );
 
