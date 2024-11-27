@@ -1,6 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { DockableOverlay } from "@components/organisms/dockable-overlay.js";
+import { Panel } from "@components/organisms/panel.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { EmailDetail } from "./email/email-detail.js";
 import { EmailEmptyState } from "./email/email-empty-state.js";
@@ -72,30 +73,38 @@ export const InboxPage = () => (
                         InboxList()
                     ]),
                     {
-                        class: 'flex flex-[4] flex-col w-full h-full',
-                        route: {
-                            uri: 'inbox/:page/:messageId*',
-                            component: new DockableOverlay([
-                                Div({ class: "flex flex-auto flex-col" }, [
-                                    Div({
-                                        class: 'flex flex-auto flex-col w-full h-full',
-                                        onSet: [route, 'messageId', (messageId) =>
-                                        {
-                                            if (!messageId)
+                        class: 'flex-[4] flex-col w-full h-full hidden lg:flex',
+                        switch: [
+                            {
+                                uri: 'inbox/:page/:messageId*',
+                                component: new DockableOverlay([
+                                    Div({ class: "flex flex-auto flex-col" }, [
+                                        Div({
+                                            class: 'flex flex-auto flex-col w-full h-full',
+                                            onSet: [route, 'messageId', (messageId) =>
                                             {
-                                                return EmailEmptyState();
-                                            }
+                                                if (!messageId)
+                                                {
+                                                    return EmailEmptyState();
+                                                }
 
-                                            return new EmailDetail();
-                                        }]
-                                    }, [
+                                                return new EmailDetail();
+                                            }]
+                                        })
+                                    ])
+                                ])
+                            },
+                            {
+                                uri: 'inbox/:page*',
+                                component: new Panel([
+                                    Div({ class: "flex flex-auto flex-col" }, [
                                         Div({ class: 'flex auto flex-col w-full h-full' }, [
                                             EmailEmptyState()
                                         ])
                                     ])
                                 ])
-                            ])
-                        }
+                            }
+                        ]
                     }
                 ];
             }
