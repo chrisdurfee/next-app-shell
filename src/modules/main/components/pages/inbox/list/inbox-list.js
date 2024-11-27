@@ -66,6 +66,12 @@ export const InboxList = () => (
                     {
                         onSet: [route, 'page', (page) =>
                         {
+                            if (!page)
+                            {
+                                page = 'inbox';
+                                app.navigate('inbox/inbox', null, true);
+                            }
+
                             let items = INBOX_MESSAGES;
                             if (page !== 'inbox')
                             {
