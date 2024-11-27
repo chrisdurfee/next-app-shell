@@ -34,9 +34,7 @@ const DashboardTabs = () => (
         new TabNavigation({
             options: [
                 { label: 'Overview', href: 'dashboard', exact: true },
-                { label: 'Analytics', href: 'dashboard/overview/analytics' },
-                { label: 'Reports', href: 'dashboard/overview/reports' },
-                { label: 'Notifications', href: 'dashboard/overview/notifications' },
+                { label: 'Analytics', href: 'dashboard/overview/analytics' }
             ],
             onSelect: (value) => console.log("Selected tab:", value)
         }),
@@ -65,9 +63,7 @@ export const DashboardOverview = () => (
         Div({
             switch: [
                 { uri: 'dashboard', component: SubRoute(OverviewDashboard()) },
-                { uri: 'dashboard/overview/analytics', component: SubRoute(AnalyticsEmptyState()) },
-                // { uri: 'reports', component: Div({ class: 'flex flex-auto flex-col' }, 'Reports') },
-                // { uri: 'notifications', component: Div({ class: 'flex flex-auto flex-col' }, 'Notifications') },
+                { uri: 'dashboard/overview/analytics', component: SubRoute(AnalyticsEmptyState()) }
             ]
         })
     ])
