@@ -92,7 +92,8 @@ export class AsidePage extends BasicPage
 			SidebarMenu(
 			{
 				title: this.title,
-				options
+				options,
+				class: 'hidden lg:block'
 			}),
 			MobileNavWrapper({ title: this.title, options })
 		];

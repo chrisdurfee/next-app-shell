@@ -9,7 +9,8 @@ import { SidebarMenu as BaseSidebarMenu } from "@components/organisms/navigation
 export const SidebarMenu = (props) => (
     BaseSidebarMenu({
         title: props.title,
-        options: props.options
+        options: props.options,
+        class: 'hidden lg:block'
     })
 );
 

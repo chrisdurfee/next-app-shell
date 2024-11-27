@@ -68,7 +68,7 @@ export const InboxPage = () => (
             {
                 return [
                     InboxSidebarMenu(),
-                    Div({ class: "flex flex-[2] lg:max-w-[550px] border-r" }, [
+                    Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
                         InboxList()
                     ]),
                     {

@@ -11,6 +11,7 @@ const PAGE_URL = 'music';
 export const SidebarMenu = () => (
     BaseSidebarMenu({
         title: 'Discover',
+        class: 'hidden lg:block',
         options: [
             { label: 'Listen Now', href: `${PAGE_URL}`, icon: Icons.playing, exact: true },
             { label: 'Browse', href: `${PAGE_URL}/browse`, icon: Icons.square.grid },
