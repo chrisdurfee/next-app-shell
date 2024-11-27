@@ -17,6 +17,6 @@ export const EmailEmptyState = () => (
         Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
             P('This view is empty. Click on a message is the list to view it or get started by creating a new message.')
         ]),
-        Button({ class: 'my-8' }, 'Create a Message')
+        Button({ variant: 'outline', class: 'my-8' }, 'Create a Message')
     ])
 );

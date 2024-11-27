@@ -18,6 +18,6 @@ export const ListEmptyState = ({ list }) => (
         Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
             P('Let\'s get this thread started. Create a message to begin.')
         ]),
-        Button({ class: 'my-8' }, 'Create a Message')
+        Button({ variant: 'outline',  class: 'my-8' }, 'Create a Message')
     ])
 );
