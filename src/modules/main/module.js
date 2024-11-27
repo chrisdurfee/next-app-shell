@@ -68,11 +68,11 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true },
+    { label: 'Home', href: './', icon: Icons.home, exact: true },
     { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 },
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
     { label: 'Inbox', href: 'inbox', icon: Icons.chat.text, mobileOrder: 3 },
-    { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default },
+    { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default, mobileOrder: 1 },
     { label: 'List', href: 'list', icon: Icons.list.four },
     { label: 'Reviews', href: 'full-contain', icon: Icons.star },
     { label: 'Map', href: 'full', icon: Icons.map },
