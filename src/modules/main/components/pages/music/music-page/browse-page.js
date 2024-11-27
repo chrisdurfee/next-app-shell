@@ -11,7 +11,7 @@ import { Icons } from "@components/icons/icons.js";
  */
 export const BrowsePage = () => {
 	return Div({
-			class: "flex flex-col items-center justify-center text-center p-6 space-y-4 bg-background border rounded-lg min-h-96 mt-4 mr-4",
+			class: "flex flex-col items-center justify-center text-center p-6 space-y-4 bg-background border rounded-lg min-h-96 m-4",
 		},
 		[
 			Icon({ size: "xl" }, Icons.music),
