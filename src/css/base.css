@@ -137,11 +137,6 @@ i.icon-size svg {
 	}
 }
 
-.active-panel-container {
-	padding-left: env(safe-area-inset-left);
-	padding-right: env(safe-area-inset-right);
-}
-
 @media (min-width: 641px) {
 
 	.app-container {
