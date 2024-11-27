@@ -72,10 +72,11 @@ export const InboxPage = () => (
                         InboxList()
                     ]),
                     {
+                        class: 'flex flex-[4] flex-col w-full h-full',
                         route: {
                             uri: 'inbox/:page/:messageId*',
                             component: new DockableOverlay([
-                                Div({ class: "flex flex-[4] flex-col" }, [
+                                Div({ class: "flex flex-auto flex-col" }, [
                                     Div({
                                         class: 'flex flex-auto flex-col w-full h-full',
                                         onSet: [route, 'messageId', (messageId) =>

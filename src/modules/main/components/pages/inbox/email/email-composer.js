@@ -12,7 +12,7 @@ import { Icons } from "@components/icons/icons.js";
  * @returns {object}
  */
 export const EmailComposer = ({ placeholder = "Write a reply here...", charLimit = 1500 }) => (
-    Div({ class: "border-t pt-4" }, [
+    Div({ class: "fadeIn pt-4" }, [
         Div({ class: "relative flex flex-row border rounded-lg p-2" }, [
             // Textarea for reply
             Textarea({
