@@ -17,6 +17,7 @@
  @media (max-width: 640px) {
 
     .overlay {
+		padding-top: env(safe-area-inset-top);
 		padding-bottom: calc(env(safe-area-inset-bottom));
 	}
 }
