@@ -3,6 +3,7 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icon } from "@components/atoms/icon.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
+import { BackButton } from "@components/organisms/overlay.js";
 
 /**
  * Toolbar for Email Actions.
@@ -10,8 +11,13 @@ import { Icons } from "@components/icons/icons.js";
  * @returns {object}
  */
 export const EmailToolbar = () => (
-    Div({ class: "hidden lg:flex items-center justify-between border-b pb-2" }, [
-        Div({ class: "flex items-center gap-2" }, [
+    Div({ class: "flex items-center justify-between border-b pb-2" }, [
+        Div({ class: 'flex lg:hidden' }, [
+            BackButton({
+                margin: 'm-0 ml-0'
+            })
+        ]),
+        Div({ class: "hidden lg:flex items-center gap-2" }, [
             // Move to Inbox
             Tooltip({ content: "Move to inbox", position: "bottom-right" }, [
                 Button({
@@ -45,7 +51,7 @@ export const EmailToolbar = () => (
             ])
         ]),
 
-        Div({ class: "flex items-center gap-2" }, [
+        Div({ class: "hidden lg:flex items-center gap-2" }, [
             // Reply
             Tooltip({ content: "Reply", position: "bottom" }, [
                 Button({

@@ -16,7 +16,7 @@ export const MusicSections = () => (
         Header({ class: 'sm:py-4 sm:pb-0 px-6 flex flex-col lg:hidden' }, [
             H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Discover'),
         ]),
-        Div({ class: 'p-6 px-6 pr-0 md:pr-4 py-6 lg:px-8'}, [
+        Div({ class: 'p-6 px-6 md:pr-4 py-6 lg:px-8'}, [
             MusicHeader(),
             Div({
                 addState() { return { mode: 'music' }},

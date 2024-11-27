@@ -1,7 +1,6 @@
-import { Div, Header, P } from "@base-framework/atoms";
+import { Div, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
-import { BackButton } from "@components/organisms/overlay.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { EmailComposer } from "./email-composer.js";
 import { EmailEmptyState } from "./email-empty-state.js";
@@ -111,12 +110,6 @@ export const EmailDetail = Jot(
                     : Div({ class: "flex flex-auto flex-col space-y-4" }, [
 
                         EmailToolbar(message),
-
-                        Header({ class: 'flex flex-none lg:hidden items-center m-0' }, [
-                            BackButton({
-                                margin: 'm-0 ml-0'
-                            }),
-                        ]),
 
                         // Header Section
                         EmailHeader(message),
