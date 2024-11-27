@@ -62,7 +62,7 @@ const Header = (props) => (
  * @returns {object}
  */
 const PopupHeader = (props) => (
-    Div({ class: 'flex flex-auto flex-row items-center lg:hidden' }, [
+    Div({ class: 'sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-b' }, [
         Button({
 			variant: 'icon',
 			class: 'm-2',
@@ -126,9 +126,12 @@ export class NavigationPopover extends Component
 	render()
 	{
         return Div({
-            class: `fixed fadeIn m-auto rounded-md p-0 shadow-lg bg-popover top-5 bottom-5 left-2 right-2 min-h-[90vh] text-inherit overflow-y-auto hidden data-[expanded=true]:block overflow-hidden data-[expanded=true]:shadow-lg data-[expanded=true]:border z-30`,
+            class: `fixed popIn m-auto rounded-md p-0 shadow-lg overflow-y-auto bg-popover top-5 bottom-5 left-2 right-2 min-h-[90vh] text-inherit block border z-30`,
 			dataSet: ['open', ['expanded', true, 'true']]
-        }, this.children);
+        }, [
+			PopupHeader({ title: this.title }),
+			Div({ class: 'flex flex-auto flex-col' }, this.children)
+		]);
 	}
 
     /**
@@ -148,7 +151,7 @@ export class NavigationPopover extends Component
                 {
                     if (this.state.open === false)
                     {
-                        //this.destroy();
+                        this.destroy();
                     }
                 }
             }
@@ -175,18 +178,28 @@ export class NavigationPopover extends Component
  */
 const MobileNav = (props) =>
 {
-	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
+	const closeCallBack = (e, { parent }) => parent.parent.state.open = false;
 	mapCloseCallBack(props.options, closeCallBack);
 
-	return Div({ class: 'bg-background flex flex-auto flex-col w-full relative' }, [
-		new NavigationPopover([
-			PopupHeader(props),
-			new InlineNavigation(
+	return Div({
+		class: 'bg-background flex flex-auto flex-col w-full relative',
+		onState: ['open', (state) =>
+		{
+			if (!state)
 			{
-				options: props.options
-			})
-		])
-	])
+				return null;
+			}
+
+			return [
+				new NavigationPopover({ title: props.title }, [
+					new InlineNavigation(
+					{
+						options: props.options
+					})
+				])
+			];
+		}]
+	});
 };
 
 /**

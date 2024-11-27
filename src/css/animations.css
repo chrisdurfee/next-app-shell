@@ -35,6 +35,14 @@
     }
 }
 
+.popIn {
+    animation: popIn .2s ease-out;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform;
+}
+
 @keyframes pullRightIn {
     0% {
         transform: translate3d(10%, 0, 0);
