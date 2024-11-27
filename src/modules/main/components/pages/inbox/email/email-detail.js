@@ -1,7 +1,8 @@
-import { Button, Div, P } from "@base-framework/atoms";
+import { Div, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
+import { EmailComposer } from "./email-composer.js";
 import { EmailEmptyState } from "./email-empty-state.js";
 import { EmailHeader } from "./email-header.js";
 import { EmailToolbar } from "./email-toolbar.js";
@@ -14,13 +15,13 @@ import { EmailToolbar } from "./email-toolbar.js";
 const EmailDetailSkeleton = () => (
     Div({ class: "flex flex-col gap-4 p-4" }, [
         Div({ class: "flex items-center gap-4" }, [
-            Skeleton({ width: "w-12", height: "h-12", shape: "circle" }), // Avatar skeleton
+            Skeleton({ width: "w-12", height: "h-12", shape: "circle" }),
             Div({ class: "flex flex-col gap-2 flex-1" }, [
-                Skeleton({ width: "w-1/2", height: "h-6", class: "rounded" }), // Subject skeleton
-                Skeleton({ width: "w-1/3", height: "h-4", class: "rounded" }), // Reply-To skeleton
+                Skeleton({ width: "w-1/2", height: "h-6", class: "rounded" }),
+                Skeleton({ width: "w-1/3", height: "h-4", class: "rounded" }),
             ]),
         ]),
-        Skeleton({ width: "w-full", height: "h-20", class: "rounded" }), // Content skeleton
+        Skeleton({ width: "w-full", height: "h-20", class: "rounded" }),
     ])
 );
 
@@ -63,7 +64,7 @@ export const EmailDetail = Jot(
         setTimeout(() => (this.state.loaded = true), DELAY);
 
         return Div({
-            class: "w-full flex flex-col p-4 space-y-4",
+            class: "w-full flex flex-auto flex-col p-4 space-y-4",
 
             /**
              * This will render the skeleton and message item after
@@ -80,7 +81,7 @@ export const EmailDetail = Jot(
 
                     return !loaded
                     ? EmailDetailSkeleton()
-                    : Div({ class: "space-y-4" }, [
+                    : Div({ class: "flex flex-auto flex-col space-y-4" }, [
 
                         EmailToolbar(message),
 
@@ -88,13 +89,12 @@ export const EmailDetail = Jot(
                         EmailHeader(message),
 
                         // Content Section
-                        P({ class: "text-sm text-foreground mt-2" }, message.content),
-
-                        // Action Buttons
-                        Div({ class: "flex space-x-2 mt-4" }, [
-                            Button({ class: "bg-muted text-sm px-4 py-2 rounded" }, "Reply"),
-                            Button({ class: "bg-muted text-sm px-4 py-2 rounded" }, "Forward"),
+                        Div({ class: 'flex flex-auto flex-col overflow-y-auto' }, [
+                            P({ class: "text-sm text-foreground mt-2 pb-40" }, message.content),
                         ]),
+
+                        // Composer Section
+                        EmailComposer({ placeholder: `Reply to ${message.name}...` }),
                     ]);
                 },
             ],
