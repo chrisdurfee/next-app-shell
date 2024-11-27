@@ -38,7 +38,7 @@ export const InboxList = () => (
                 class: "flex justify-between",
                 useParent: ({ route, state }) => {
                     return [
-                        H4({ class: "text-xl font-bold" }, [
+                        H4({ class: "pl-2 lg:pl-0 text-xl font-bold" }, [
                             Span({ class: 'capitalize', text: ["[[page]]", route] }),
 
                         ]),
