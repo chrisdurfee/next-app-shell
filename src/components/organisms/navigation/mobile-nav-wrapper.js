@@ -1,5 +1,5 @@
 import { H3, I } from "@base-framework/atoms";
-import { Atom } from "@base-framework/base";
+import { Atom, Component } from "@base-framework/base";
 import { Div } from "../../atoms/atoms.js";
 import { Button } from "../../atoms/buttons/buttons.js";
 import { Icons } from "../../icons/icons.js";
@@ -24,7 +24,12 @@ const isMobile = () => window.innerWidth < MOBILE_WIDTH;
  * @returns {object}
  */
 const NavButton = () => (
-    Button({ class: 'm-2', variant: 'ghost', click: (e, { state }) => state.toggle('expanded') }, [
+    Button({ class: 'm-2', variant: 'ghost', addState()
+		{
+			return {
+				open: false
+			};
+		}, click: (e, { state }) => state.toggle('open') }, [
         I({ html: Icons.bar.three })
     ])
 );
@@ -46,6 +51,24 @@ const Title = (title) => H3({ class: 'text-lg ml-2' }, title);
 const Header = (props) => (
     Div({ class: 'flex flex-auto flex-row items-center lg:hidden' }, [
         NavButton(),
+        props.title && Title(props.title)
+    ])
+);
+
+/**
+ * This will create a popup header for the mobile navigation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const PopupHeader = (props) => (
+    Div({ class: 'flex flex-auto flex-row items-center lg:hidden' }, [
+        Button({
+			variant: 'icon',
+			class: 'm-2',
+			click: (e, { state }) => state.toggle('open'),
+			icon: Icons.arrows.left,
+		}),
         props.title && Title(props.title)
     ])
 );
@@ -85,41 +108,63 @@ const mapCloseCallBack = (options, callBack) =>
 const isOutsideClick = (element, panel) => (!panel.contains(element));
 
 /**
- * This will create the expanded navigation.
+ * PopOver
  *
- * @param {object} props
- * @returns {object}
+ * This will create a absolute cotnainer component.
+ *
+ * @export
+ * @class PopOver
+ * @extends {Component}
  */
-const ExapandedNavigation = (props) =>
+export class NavigationPopover extends Component
 {
-	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
-	mapCloseCallBack(props.options, closeCallBack);
+    /**
+	 * This will render the modal component.
+	 *
+	 * @returns {object}
+	 */
+	render()
+	{
+        return Div({
+            class: `fixed fadeIn m-auto rounded-md p-0 shadow-lg bg-popover top-5 bottom-5 left-2 right-2 min-h-[90vh] text-inherit overflow-y-auto hidden data-[expanded=true]:block overflow-hidden data-[expanded=true]:shadow-lg data-[expanded=true]:border z-30`,
+			dataSet: ['open', ['expanded', true, 'true']]
+        }, this.children);
+	}
 
-	return Div(
-		{
-			class: 'bg-popover flex flex-auto flex-col absolute w-full h-0 max-h-[500px] overflow-y-auto data-[expanded=true]:h-fit data-[expanded=false]:h-0 overflow-hidden data-[expanded=true]:shadow-lg data-[expanded=true]:border rounded-md z-20',
-			addState()
-			{
-				return {
-					expanded: false
-				};
-			},
-			addEvent: ['click', document, (e, { state, mobileNav }) =>
-			{
-				if (isOutsideClick(e.target, mobileNav))
-				{
-					state.expanded = false;
-				}
-			}],
-			dataSet: ['expanded', ['expanded', true, 'true']]
-		},
-		[
-			new InlineNavigation(
-			{
-				options: props.options
-			})
-		]
-	);
+    /**
+     * This will setup the states.
+     *
+     * @returns {object}
+     */
+    setupStates()
+    {
+        const parent = this.parent;
+        const id = parent.getId();
+
+        return {
+            open: {
+                id,
+                callBack: (state) =>
+                {
+                    if (this.state.open === false)
+                    {
+                        //this.destroy();
+                    }
+                }
+            }
+        };
+    }
+
+    /**
+     * This will override the set up to use the body.
+     *
+     * @param {object} container
+     */
+    setup(container)
+    {
+        this.container = app.appShell.panel;
+        this.initialize();
+    }
 }
 
 /**
@@ -128,11 +173,21 @@ const ExapandedNavigation = (props) =>
  * @param {object} props
  * @returns {object}
  */
-const MobileNav = (props) => (
-	Div({ class: 'bg-background flex flex-auto flex-col w-full relative' }, [
-		ExapandedNavigation(props)
+const MobileNav = (props) =>
+{
+	const closeCallBack = (e, { parent }) => parent.parent.state.expanded = false;
+	mapCloseCallBack(props.options, closeCallBack);
+
+	return Div({ class: 'bg-background flex flex-auto flex-col w-full relative' }, [
+		new NavigationPopover([
+			PopupHeader(props),
+			new InlineNavigation(
+			{
+				options: props.options
+			})
+		])
 	])
-);
+};
 
 /**
  * This will create a mobile navigation wrapper.
@@ -144,7 +199,9 @@ const MobileNav = (props) => (
 export const MobileNavWrapper = Atom((props, children) =>
 {
 	return Div({ cache: 'mobileNav', class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
-		Div({ class: 'flex flex-auto flex-col w-full' }, [
+		Div({
+				class: 'flex flex-auto flex-col w-full'
+			}, [
 			Header(props),
 			MobileNav(props)
 		])
