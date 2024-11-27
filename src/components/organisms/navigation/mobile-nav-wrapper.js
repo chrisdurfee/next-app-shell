@@ -98,16 +98,6 @@ const mapCloseCallBack = (options, callBack) =>
 };
 
 /**
- * This will check if the element clicked was in the
- * component of the button.
- *
- * @param {object} element
- * @param {object} panel
- * @returns {boolean}
- */
-const isOutsideClick = (element, panel) => (!panel.contains(element));
-
-/**
  * PopOver
  *
  * This will create a absolute cotnainer component.
