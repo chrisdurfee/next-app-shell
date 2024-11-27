@@ -1,4 +1,4 @@
-import { A, Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
+import { Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
 import { ThemeToggle } from "@components/molecules/theme-toggle.js";
 import { DocPage } from "../../doc-page.js";
@@ -143,7 +143,7 @@ export const ThemePage = () => (
             description: 'The theme is using Tailwind CSS and is based on Shadcn UI. The theme is customizable and can be extended. It comes with light and dark theme support.',
         },
         [
-            A({ href: 'https://ui.shadcn.com/docs/theming', target: '_blank', class: 'bttn link' }, 'link: Shadcn'),
+            P({ class: 'text-muted-foreground' }, { html: 'To learn about Shandcn UI, visit the official documentation: <a href="https://ui.shadcn.com/docs/theming" class="underline" target="_blank">Shadcn Documentation' }),
 
             Div({ class: 'my-20' }, [
                 H3({ class: 'text-2xl font-bold' }, 'Default Styles'),
