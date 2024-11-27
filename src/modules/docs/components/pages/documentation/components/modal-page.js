@@ -57,27 +57,37 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
 		size,
 		type
 	}, [
-		Div({ class: 'flex flex-auto flex-col items-center justify-center p-4' }, [
-			new DatePicker(),
-			Button({
-				click: () =>
-				{
-					new Confirmation({
-						title: 'Are you absoultely sure?',
-						description: 'This action cannot be undone. This will permanently delete your account and remove your data from our servers.',
-						confirmTextLabel: 'Save',
-						confirmed: () =>
-						{
-							app.notify({
-								icon: Icons.trash,
-								title: 'Account deleted',
-								description: 'Your account has been successfully deleted.',
-								type: 'destructive'
-							})
-						}
-					}).open()
-				}
-			}, 'Confirm')
+		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
+			new FormField({
+				name: "popover-test",
+				label: "Popover Test",
+			}, [
+				new DatePicker()
+			]),
+			new FormField({
+				name: "dialog-test",
+				label: "Dialog Test",
+			}, [
+				Button({
+					click: () =>
+					{
+						new Confirmation({
+							title: 'Are you absoultely sure?',
+							description: 'This action cannot be undone. This will permanently delete your account and remove your data from our servers.',
+							confirmTextLabel: 'Save',
+							confirmed: () =>
+							{
+								app.notify({
+									icon: Icons.trash,
+									title: 'Account deleted',
+									description: 'Your account has been successfully deleted.',
+									type: 'destructive'
+								})
+							}
+						}).open()
+					}
+				}, 'Confirm')
+			])
 		])
 	]).open()
 });
