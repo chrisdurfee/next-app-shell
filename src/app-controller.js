@@ -3,6 +3,7 @@ import { Configs } from "./configs.js";
 import { modules } from "./modules/modules.js";
 import { setupServiceWorker } from "./service.js";
 import { AppShell } from "./shell/app-shell.js";
+import { UserData } from "./shell/models/user-data.js";
 import { setHtmlThemeBySettings } from "./theme.js";
 
 /**
@@ -32,6 +33,20 @@ export class AppController
 		setHtmlThemeBySettings();
 		this.setupService();
 		this.setupRouter();
+		this.setData();
+	}
+
+	/**
+	 * This will set the data.
+	 *
+	 * @protected
+	 * @returns {void}
+	 */
+	setData()
+	{
+		this.data = {
+			user: new UserData()
+		};
 	}
 
 	/**
@@ -97,6 +112,7 @@ export class AppController
 	signIn()
 	{
 		this.appShell.state.isSignedIn = true;
+		this.setUserData();
 	}
 
 	/**
@@ -107,6 +123,23 @@ export class AppController
 	signOut()
 	{
 		this.appShell.state.isSignedIn = false;
+	}
+
+	/**
+	 * This will set the user data.
+	 *
+	 * @param {object|null} [data]
+	 * @returns {void}
+	 */
+	setUserData(data = null)
+	{
+		data = data ?? {
+			name: "John Doe", // Example default user name
+			avatar: "https://github.com/shadcn.png", // Example avatar image
+			status: "online", // Default status
+		};
+
+		app.data.user.set(data);
 	}
 
 	/**
