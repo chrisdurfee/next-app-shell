@@ -31,7 +31,7 @@ export const CodeCard = Atom((props, children) => (
  * @returns {object}
  */
 export const PreviewCard = Atom((props, children) => (
-    Div({ class: 'flex flex-auto p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-card' }, [
+    Div({ class: 'flex flex-auto p-4 min-h-[350px] max-h-[650px] overflow-x-auto max-w-[100vw] rounded-lg border bg-card' }, [
         Div({ class: 'preview flex flex-auto justify-center items-center' }, children)
     ])
 ));
