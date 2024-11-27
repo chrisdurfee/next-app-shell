@@ -1,6 +1,7 @@
-import { Div, P } from "@base-framework/atoms";
+import { Div, Header, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
+import { BackButton } from "@components/organisms/overlay.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { EmailComposer } from "./email-composer.js";
 import { EmailEmptyState } from "./email-empty-state.js";
@@ -15,7 +16,7 @@ import { EmailToolbar } from "./email-toolbar.js";
 const EmailDetailSkeleton = () => (
     Div({ class: "flex flex-col gap-4" }, [
         // Toolbar Skeleton
-        Div({ class: "flex items-center justify-between border-b pb-4" }, [
+        Div({ class: "hidden lg:flex items-center justify-between border-b pb-4" }, [
             Div({ class: "flex items-center gap-4" }, [
                 Skeleton({ width: "w-8", height: "h-8" }), // Move to Inbox
                 Skeleton({ width: "w-8", height: "h-8" }), // Move to Junk
@@ -28,6 +29,13 @@ const EmailDetailSkeleton = () => (
                 Skeleton({ width: "w-8", height: "h-8" }), // Forward
                 Skeleton({ width: "w-8", height: "h-8" }), // More Options
             ]),
+        ]),
+
+        // back button
+        Div({ class: "flex lg:hidden items-center justify-between border-b pb-4" }, [
+            Div({ class: "flex items-center gap-4" }, [
+                Skeleton({ width: "w-8", height: "h-8" }),
+            ])
         ]),
 
         // Header Skeleton
@@ -103,6 +111,12 @@ export const EmailDetail = Jot(
                     : Div({ class: "flex flex-auto flex-col space-y-4" }, [
 
                         EmailToolbar(message),
+
+                        Header({ class: 'flex flex-none lg:hidden items-center m-0' }, [
+                            BackButton({
+                                margin: 'm-0 ml-0'
+                            }),
+                        ]),
 
                         // Header Section
                         EmailHeader(message),

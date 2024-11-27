@@ -12,7 +12,8 @@ import { Icons } from "../icons/icons.js";
  */
 export const BackButton = Atom((props) =>
 {
-    return Div({ class: 'flex-none m-4 ml-0' }, [
+    const margin = props.margin || 'm-4 ml-0';
+    return Div({ class: `flex-none ${margin}` }, [
         Button({
             variant: 'icon',
             class: 'back-button',

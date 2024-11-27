@@ -10,7 +10,7 @@ import { Icons } from "@components/icons/icons.js";
  * @returns {object}
  */
 export const EmailToolbar = () => (
-    Div({ class: "flex items-center justify-between border-b pb-2" }, [
+    Div({ class: "hidden lg:flex items-center justify-between border-b pb-2" }, [
         Div({ class: "flex items-center gap-2" }, [
             // Move to Inbox
             Tooltip({ content: "Move to inbox", position: "bottom-right" }, [
