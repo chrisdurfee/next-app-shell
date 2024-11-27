@@ -4,6 +4,7 @@ import { Skeleton } from "@components/atoms/skeleton.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { EmailEmptyState } from "./email-empty-state.js";
 import { EmailHeader } from "./email-header.js";
+import { EmailToolbar } from "./email-toolbar.js";
 
 /**
  * Skeleton for Email Details while loading.
@@ -80,6 +81,9 @@ export const EmailDetail = Jot(
                     return !loaded
                     ? EmailDetailSkeleton()
                     : Div({ class: "space-y-4" }, [
+
+                        EmailToolbar(message),
+
                         // Header Section
                         EmailHeader(message),
 

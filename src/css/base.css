@@ -112,7 +112,7 @@ a:active {
 }
 
 i.icon-size svg {
-	@apply w-full h-auto;
+	@apply w-auto h-auto;
 }
 
 /*

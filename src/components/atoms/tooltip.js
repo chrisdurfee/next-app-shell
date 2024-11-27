@@ -32,15 +32,19 @@ const getPositionClass = (position) => POSITION_CLASSES[position] || POSITION_CL
  * @param {object} props
  * @param {string} props.position - The position of the tooltip relative to the target ('top', 'top-right', 'top-left', 'bottom', 'bottom-right', 'bottom-left')
  * @param {string} props.text - The text content of the tooltip.
- * @param {object} props.children - The target element to hover over for showing the tooltip.
+ * @param {array} children - The children
  * @returns {object}
  */
 export const Tooltip = Atom(({ position = 'top', content }, children) =>
 {
     const positionClasses = getPositionClass(position);
+    if (Array.isArray(children) === false)
+    {
+        children = [children];
+    }
 
     return Div({ class: 'relative group inline-block' }, [
-        children,
+        ...children,
 
         // Tooltip box
         Span({

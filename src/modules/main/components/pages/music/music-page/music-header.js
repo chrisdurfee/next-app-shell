@@ -23,7 +23,7 @@ export const MusicHeader = () => (
             Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus }, 'Add music'),
         ]),
         Div({ class: 'flex lg:hidden mr-4' }, [
-            Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
+            Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus }))
         ])
     ])
 );

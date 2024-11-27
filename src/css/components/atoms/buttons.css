@@ -20,7 +20,7 @@ button.warning,
 
 button.outline,
 .btth.outline {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2;
 }
 
 button.ghost,
@@ -35,11 +35,25 @@ button.ghost,
 
 button.icon,
 .bttn.icon {
-    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10;
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10;
 }
 button.icon.primary,
 .bttn.icon.primary {
     @apply bg-primary text-primary-foreground hover:bg-primary/90;
+}
+.bttn.icon.secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+}
+.bttn.icon.destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+}
+.bttn.icon.warning {
+    @apply bg-warning text-warning-foreground hover:bg-warning/90;
+}
+
+button.icon.outline,
+.bttn.icon.outline {
+    @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border bg-background hover:bg-accent hover:text-accent-foreground h-10 w-10;
 }
 
 button.with-icon,
