@@ -31,9 +31,9 @@ const filterMessages = (messages, list) =>
  * @returns {object}
  */
 export const InboxList = () => (
-    Div({ class: "w-full pt-2 space-y-2 overflow-y-auto max-h-screen" }, [
+    Div({ class: "w-full pt-2 space-y-2 lg:overflow-y-auto max-h-screen" }, [
         // List header
-        Div({ class: "p-4 bg-card" }, [
+        Div({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
             Div({
                 class: "flex justify-between",
                 useParent: ({ route, state }) => {
