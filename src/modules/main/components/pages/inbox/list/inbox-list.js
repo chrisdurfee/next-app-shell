@@ -31,14 +31,14 @@ const filterMessages = (messages, list) =>
  * @returns {object}
  */
 export const InboxList = () => (
-    Div({ class: "w-full pt-2 space-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
+    Div({ class: "w-full pt-0 lg:pt-2 space-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
         // List header
         Div({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
             Div({
                 class: "flex justify-between",
                 useParent: ({ route, state }) => {
                     return [
-                        H4({ class: "pl-2 lg:pl-0 text-xl font-bold" }, [
+                        H4({ class: "pl-2 lg:pl-0 text-3xl lg:text-xl font-bold" }, [
                             Span({ class: 'capitalize', text: ["[[page]]", route] }),
 
                         ]),
