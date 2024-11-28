@@ -1,6 +1,6 @@
 import { Div, Span } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
-import { Avatar } from "@components/molecules/avatar";
+import { Avatar } from "@components/molecules/avatar.js";
 
 /**
  * Status Classes
@@ -79,13 +79,3 @@ export const NavigationAvatar = Jot(
         ]);
     }
 });
-
-// Example of dynamically updating user data
-// Simulate status change (use real API calls in a production environment)
-setTimeout(() => {
-    app.data.user.set("status", "busy"); // Update status to busy
-}, 5000);
-
-setTimeout(() => {
-    app.data.user.set("status", "offline"); // Update status to offline
-}, 10000);
