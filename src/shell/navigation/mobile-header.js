@@ -1,5 +1,6 @@
-import { A, Header } from "@base-framework/atoms";
+import { A, Div, Header } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { MobileUserAvatar } from "./avatars/mobile-user-avatar.js";
 
 /**
  * This will create a logo.
@@ -75,7 +76,11 @@ export const MobileHeader = (props = {}) => (
         [
             Logo({
                 src: props.src || '/images/logo.svg'
-            })
+            }),
+
+            Div({ class: 'flex' }, [
+                new MobileUserAvatar({ data: app.data.user })
+            ])
         ]
     )
 );

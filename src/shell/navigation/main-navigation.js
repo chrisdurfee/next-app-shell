@@ -1,8 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
+import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
-import { NavigationAvatar } from "./navigation-avatar.js";
 
 /**
  * This will create the main navigation.
