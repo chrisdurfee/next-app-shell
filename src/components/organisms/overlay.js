@@ -35,16 +35,6 @@ export const BackButton = Atom((props) =>
 export class Overlay extends Component
 {
     /**
-     * This will stop presistence.
-     *
-     * @returns {void}
-     */
-    beforeSetup()
-    {
-        this.persist = false;
-    }
-
-    /**
      * This will render the component.
      *
      * @returns {object}

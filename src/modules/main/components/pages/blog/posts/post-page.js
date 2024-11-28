@@ -14,7 +14,6 @@ import { PostSkeleton } from "./post-skeleton.js";
  */
 export const getPostById = (postId) => POSTS.find((post) => post.id.toString() === postId) || null;
 
-
 /**
  * Toolbar
  *
@@ -37,7 +36,7 @@ const Toolbar = () => (
  *
  * Dynamically displays post details based on the `postId` from the route.
  *
- * @class
+ * @returns {object}
  */
 export const PostPage = () =>
 {
@@ -74,6 +73,16 @@ export const PostPage = () =>
             const DELAY = 500;
             setTimeout(() => this.data.set({ post, loaded: true }), DELAY);
         },
+
+        /**
+         * Deletes the data when the component is destroyed.
+         *
+         * @returns {void}
+         */
+        beforeDestroy()
+        {
+            this.data.delete();
+        }
     };
 
     return new Overlay(props, [
@@ -81,7 +90,7 @@ export const PostPage = () =>
             Div({ class: "flex flex-auto items-center flex-col gap-6 mx-auto w-full max-w-[1024px]" }, [
                 Toolbar(),
                 Div({
-                    class: 'flex flex-auto flex-col',
+                    class: 'flex flex-auto flex-col w-full',
                     onSet: ["loaded", (loaded, ele, { data }) =>
                     {
                         if (!loaded)
@@ -95,7 +104,7 @@ export const PostPage = () =>
                             return Div({ class: "text-center" }, "Post not found.");
                         }
 
-                        return Div({ class: "w-full flex flex-col gap-6" }, [
+                        return Div({ class: "w-full flex flex-auto flex-col gap-6" }, [
                             PostHeader({ post }),
                             PostContent({ post }),
                         ]);

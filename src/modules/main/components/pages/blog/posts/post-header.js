@@ -10,7 +10,7 @@ import { Div, H1, Img, Span } from "@base-framework/atoms";
  * @returns {object}
  */
 export const PostHeader = ({ post }) => (
-    Div({ class: "flex flex-col gap-6 mt-20" }, [
+    Div({ class: "flex flex-col gap-6 mt-10" }, [
         // Post Image
         Img({
             src: post.image,
@@ -26,6 +26,6 @@ export const PostHeader = ({ post }) => (
             Span(post.date),
             Span(`${post.comments} comments`),
             Span(post.category),
-        ]),
+        ])
     ])
 );
