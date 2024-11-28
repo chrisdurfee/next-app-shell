@@ -52,6 +52,16 @@ export class UserLoginStatus
     }
 
     /**
+     * This will stop the timer.
+     *
+     * @returns {void}
+     */
+    stop()
+    {
+        ActionTimer.stop();
+    }
+
+    /**
      * Sets up the AdminStatusModel for linking user data to app state.
      *
      * @returns {void}

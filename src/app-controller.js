@@ -130,6 +130,7 @@ export class AppController
 	signOut()
 	{
 		this.appShell.state.isSignedIn = false;
+		this.status.stop();
 	}
 
 	/**
