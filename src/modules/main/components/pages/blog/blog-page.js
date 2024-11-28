@@ -13,7 +13,7 @@ import { HERO_POSTS, POSTS } from "./posts.js";
  * @returns {object}
  */
 const HeroSection = (props) => (
-    Div({ class: "grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8", map: [HERO_POSTS, (post) => new HeroItem({ post })] })
+    Div({ class: "grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 md:mb-8", map: [HERO_POSTS, (post) => new HeroItem({ post })] })
 );
 
 /**
@@ -29,7 +29,7 @@ const PostList = ({ posts }) => (
             key: "id",
             items: posts,
             role: "list",
-            class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+            class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6",
             rowItem: (post) => new PostItem({ post }),
         })
     ])
