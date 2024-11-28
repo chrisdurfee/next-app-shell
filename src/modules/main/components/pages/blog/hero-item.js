@@ -88,7 +88,7 @@ export const HeroItem = Jot(
         const { post } = this;
 
         return Div({
-            class: "p-4 bg-card shadow-md rounded-lg relative overflow-hidden",
+            class: "p-4 relative overflow-hidden",
             onState: ["loaded", (loaded) =>
                 !loaded
                     ? SkeletonHero()

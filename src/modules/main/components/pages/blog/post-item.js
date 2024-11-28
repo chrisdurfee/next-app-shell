@@ -9,7 +9,7 @@ import { Skeleton } from "@components/atoms/skeleton.js";
  * @returns {object}
  */
 const SkeletonPost = () => (
-    Div({ class: "flex flex-col bg-card p-4 rounded-md shadow-md" }, [
+    Div({ class: "flex flex-col bg-card rounded-md shadow-md" }, [
         Skeleton({
             width: "w-full",
             height: "h-32",
@@ -94,7 +94,7 @@ export const PostItem = Jot(
         const { post } = this;
 
         return Div({
-            class: "bg-card p-4 rounded-md shadow-md hover:shadow-lg transition",
+            class: "p-4 transition",
             onState: ["loaded", (loaded) =>
                 !loaded
                     ? SkeletonPost()
