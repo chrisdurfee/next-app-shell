@@ -41,8 +41,9 @@ export const ActionTimer =
      *
      * @returns {void}
      */
-    setup()
+    setup(userData)
     {
+        this.userData = userData;
         const DURATION = 900000; // 15 minutes of inactivity triggers "away" status
         this.timer = new Timer(DURATION, this.setAsAway.bind(this));
 
@@ -65,12 +66,12 @@ export const ActionTimer =
         });
 
         // Set the default state value from user data
-        const user = app.data.user;
-        const USER_STATUS = user.get('status');
+        const user = this.userData;
+        const USER_STATUS = user.status;
         state.set(STATE_ATTR, USER_STATUS);
 
         // Link state and user data for two-way binding
-        app.data.user.link(state, STATE_ATTR, 'status');
+        user.link(state, STATE_ATTR, 'status');
     },
 
     /**

@@ -4,7 +4,6 @@ import { modules } from "./modules/modules.js";
 import { setupServiceWorker } from "./service.js";
 import { AppShell } from "./shell/app-shell.js";
 import { UserData } from "./shell/models/user-data.js";
-import { UserLoginStatus } from "./shell/user-status/user-login-status.js";
 import { setHtmlThemeBySettings } from "./theme.js";
 
 /**
@@ -117,9 +116,6 @@ export class AppController
 	{
 		this.appShell.state.isSignedIn = true;
 		this.setUserData();
-
-		this.status = new UserLoginStatus();
-		this.status.setup();
 	}
 
 	/**
@@ -130,7 +126,6 @@ export class AppController
 	signOut()
 	{
 		this.appShell.state.isSignedIn = false;
-		this.status.stop();
 	}
 
 	/**

@@ -1,6 +1,7 @@
 import { Div, Span } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
 import { Avatar } from "@components/molecules/avatar.js";
+import { UserLoginStatus } from "../user-status/user-login-status";
 
 /**
  * Status Classes
@@ -46,6 +47,11 @@ const UserDetails = () => (
 );
 
 /**
+ * @type {UserLoginStatus} status
+ */
+const status = new UserLoginStatus();
+
+/**
  * NavigationAvatar
  *
  * This will create the NavigationAvatar molecule.
@@ -55,6 +61,16 @@ const UserDetails = () => (
  */
 export const NavigationAvatar = Jot(
 {
+    /**
+     * This will set up the status tracker.
+     *
+     * @returns {void}
+     */
+    after()
+    {
+        status.setup(this.data);
+    },
+
     /**
      * This will render the component.
      *
@@ -77,5 +93,15 @@ export const NavigationAvatar = Jot(
             ]),
             UserDetails()
         ]);
+    },
+
+    /**
+     * This will destroy the status tracker.
+     *
+     * @returns {void}
+     */
+    destroy()
+    {
+        status.stop();
     }
 });

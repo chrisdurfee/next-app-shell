@@ -40,11 +40,13 @@ export class UserLoginStatus
     /**
      * Initializes the class by setting up state, events, and signing in the user.
      *
+     * @param {object} userData - The user data object.
      * @returns {void}
      */
-    setup()
+    setup(userData)
     {
-        ActionTimer.setup();
+        this.userData = userData;
+        ActionTimer.setup(userData);
 
         this.setupState();
         this.addEvents();
@@ -72,7 +74,7 @@ export class UserLoginStatus
             status: STATES.OFFLINE,
         });
 
-        this.data.link(app.data.user, 'status', STATE_ATTR);
+        //this.data.link(this.userData, 'status', STATE_ATTR);
     }
 
     /**
@@ -86,6 +88,8 @@ export class UserLoginStatus
 
         this.data.link(state, STATE_ATTR, 'status');
         this.watchData();
+
+        this.data.link(this.userData, 'status', STATE_ATTR);
     }
 
     /**
@@ -197,7 +201,7 @@ export class UserLoginStatus
      */
     signIn()
     {
-        this.data.set('userId', app.data.user.id);
+        this.data.set('userId', this.userData.id);
         this.setStatus(STATES.ONLINE);
     }
 
