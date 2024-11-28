@@ -116,11 +116,24 @@ export class NavigationPopover extends Component
 	render()
 	{
         return Div({
-            class: `fixed popIn m-auto rounded-md p-0 shadow-lg overflow-y-auto bg-popover top-5 bottom-5 left-2 right-2 min-h-[90vh] text-inherit block border z-30`,
+			click: (e, parent) =>
+			{
+				const isClickOutside = (e.target === parent.panel);
+				if (isClickOutside)
+				{
+					e.preventDefault();
+					e.stopPropagation();
+
+					parent.state.open = false; // Close the modal
+				}
+			},
+            class: `fixed popIn m-auto rounded-md p-0 shadow-lg bg-popover border top-[5vh] bottom-[5vh] left-2 right-2 max-h-[90vh] text-inherit block z-30 after:content-[''] after:fixed after:-top-[5vh] after:-left-2 after:-right-2 after:-bottom-[5vh] after:-z-[1] after:bg-black/40`,
 			dataSet: ['open', ['expanded', true, 'true']]
         }, [
-			PopupHeader({ title: this.title }),
-			Div({ class: 'flex flex-auto flex-col' }, this.children)
+			Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[90vh] rounded-md bg-popover border' }, [
+				PopupHeader({ title: this.title }),
+				Div({ class: 'flex flex-auto flex-col' }, this.children)
+			])
 		]);
 	}
 
