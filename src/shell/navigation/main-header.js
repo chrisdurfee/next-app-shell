@@ -51,6 +51,6 @@ const PinButton = Atom((props, children) =>
 export const MainHeader = (props) => (
     Div({ class: 'flex flex-row justify-between min-w-[330px]'}, [
         Logo({ src: props.src || '/images/logo.svg' }),
-        PinButton({ click: props.callBack })
+        //PinButton({ click: props.callBack })
     ])
 );
