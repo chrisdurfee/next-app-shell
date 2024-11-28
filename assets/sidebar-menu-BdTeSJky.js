@@ -1,1 +1,0 @@
-import{m as o,U as r,C as e,ai as c}from"./index-CBUmyKGq.js";const n=({title:a,options:l,class:s=""})=>o({class:`pb-12 p-6 border-r bg-sidebar max-w-[300px] h-full ${s}`},[a&&r({class:"pb-2 px-6 flex flex-col"},[e({class:"scroll-m-20 text-2xl font-bold tracking-tight"},a)]),new c({options:l})]);export{n as S};
