@@ -93,7 +93,7 @@ export class MainLink extends Component
 	addLink()
 	{
 		const hasChildren = this.options && this.options.length > 0;
-		const children = LinkContent(this.label, this.icon, hasChildren);
+		const children = this.content || LinkContent(this.label, this.icon, hasChildren);
 
 		if (this.href)
 		{
@@ -103,17 +103,15 @@ export class MainLink extends Component
 				cache: 'link',
 				href: this.href,
 				activeClass: 'selected',
-				exact: this.exact || false,
-				children
-			});
+				exact: this.exact || false
+			}, children);
 		}
 
 		return new NavButtonLink({
 			class: 'flex flex-auto flex-row',
 			cache: 'link',
-			children,
 			checkCallBack: this.checkCallBack
-		});
+		}, children);
 	}
 
 	/**

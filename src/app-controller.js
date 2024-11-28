@@ -34,6 +34,9 @@ export class AppController
 		this.setupService();
 		this.setupRouter();
 		this.setData();
+
+		// remove this if you are setting up the sign in
+		this.setUserData();
 	}
 
 	/**
@@ -135,11 +138,11 @@ export class AppController
 	{
 		data = data ?? {
 			name: "John Doe", // Example default user name
-			avatar: "https://github.com/shadcn.png", // Example avatar image
+			image: "https://github.com/shadcn.png", // Example avatar image
 			status: "online", // Default status
 		};
 
-		app.data.user.set(data);
+		this.data.user.set(data);
 	}
 
 	/**

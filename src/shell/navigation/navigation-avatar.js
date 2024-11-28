@@ -1,77 +1,84 @@
-import { Avatar, Div, Span } from "@base-framework/atoms";
-import { Model } from "@base-framework/base";
+import { Div, Span } from "@base-framework/atoms";
+import { Component, Jot } from "@base-framework/base";
+import { Avatar } from "@components/molecules/avatar";
 
 /**
- * UserData Model
+ * Status Classes
  *
- * This will create a model for user data.
+ * This will create a status class object.
  *
- * @extends Model
- * @class UserData
+ * @type {object} statusClasses
  */
-const UserData = Model.extend({
-    url: '/api', // API endpoint for fetching or updating user data
-});
-
-// Instantiate UserData
-app.data.user = new UserData({
-    name: "John Doe", // Example default user name
-    avatar: "https://github.com/shadcn.png", // Example avatar image
-    status: "online", // Default status
-});
-
-// Status class mapping for dynamic binding
-const statusClasses = {
-    online: "bg-green-500",
-    offline: "bg-gray-500",
-    busy: "bg-red-500",
-    away: "bg-yellow-500",
+const STATUSES = {
+    ONLINE: "bg-green-500",
+    OFFLINE: "bg-gray-500",
+    BUSY: "bg-red-500",
+    AWAY: "bg-yellow-500",
 };
 
-// Navigation Avatar Component
-export const NavigationAvatar = () => {
-    return Div(
-        { class: "absolute bottom-4 left-4 flex items-center gap-4" }, // Align avatar to the bottom of navigation
-        [
-            // Avatar Container
-            Div(
-                { class: "relative" },
-                [
-                    // User Avatar
+/**
+ * This will create the StatusIndicator molecule.
+ *
+ * @returns {object}
+ */
+const StatusIndicator = () => (
+    Div({
+        class: `absolute bottom-0 right-0 w-3 h-3 border-2 rounded-full`,
+        onSet: ['status', {
+            [STATUSES.ONLINE]: 'online',
+            [STATUSES.OFFLINE]: 'offline',
+            [STATUSES.BUSY]: 'busy',
+            [STATUSES.AWAY]: 'away'
+        }]
+    })
+);
+
+/**
+ * This will create the UserDetails molecule.
+ *
+ * @returns {object}
+ */
+const UserDetails = () => (
+    Div([
+        Span({ class: "text-sm text-foreground whitespace-nowrap" }, '[[name]]'),
+        Span({ class: "text-xs text-muted-foreground capitalize whitespace-nowrap" }, ' - [[status]]'),
+    ])
+);
+
+/**
+ * NavigationAvatar
+ *
+ * This will create the NavigationAvatar molecule.
+ *
+ * @extends Component
+ * @class NavigationAvatar
+ */
+export const NavigationAvatar = Jot(
+{
+    /**
+     * This will render the component.
+     *
+     * @returns {object}
+     */
+    render()
+    {
+        return Div({ class: "flex items-center gap-4" }, [
+            Div({ class: "relative" }, [
+                // User Avatar
+                Div({ class: "relative mx-2" }, [
                     Avatar({
-                        src: app.data.user.avatar, // Bind avatar to user data
-                        alt: app.data.user.name, // Use user name for alt text
-                        fallbackText: app.data.user.name.charAt(0).toUpperCase(), // Fallback to initial
-                        size: "lg",
-                    }),
-                    // Status Indicator
-                    Div({
-                        class: `absolute bottom-0 right-0 w-3 h-3 border-2 rounded-full ${
-                            statusClasses[app.data.user.status]
-                        }`, // Dynamically set status color
-                    }),
-                ]
-            ),
-            // User Details
-            Div(
-                {},
-                [
-                    // User Name
-                    Span(
-                        { class: "text-sm text-foreground" },
-                        app.data.user.name // Bind to user name
-                    ),
-                    // User Status
-                    Span(
-                        { class: "text-xs text-muted-foreground" },
-                        app.data.user.status.charAt(0).toUpperCase() +
-                            app.data.user.status.slice(1) // Capitalized status
-                    ),
-                ]
-            ),
-        ]
-    );
-};
+                        src: '[[image]]',
+                        alt: '[[name]]',
+                        fallbackText: '[[name]]',
+                        size: "sm",
+                    })
+                ]),
+                StatusIndicator()
+            ]),
+            UserDetails()
+        ]);
+    }
+});
 
 // Example of dynamically updating user data
 // Simulate status change (use real API calls in a production environment)

@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 import { MainHeader } from "./main-header.js";
+import { NavigationAvatar } from "./navigation-avatar.js";
 
 /**
  * This will create the main navigation.
@@ -45,10 +46,24 @@ export class MainNavigation extends Component
 	{
 		return Navigation([
 			MainHeader({ callBack: () => this.state.toggle('pinned') }),
-			Div({ class: 'nav-container' }, [
+			Div({ class: 'nav-container flex flex-auto flex-col justify-between' }, [
 				PrimaryNavigation({
 					options: this.options
-				})
+				}),
+				Div({ class: '' }, [
+					new InlineNavigation({
+						options: [
+							{
+								href: 'profile',
+								content: [
+									new NavigationAvatar({
+										data: app.data.user
+									})
+								]
+							}
+						]
+					})
+                ])
 			])
 		]);
 	}

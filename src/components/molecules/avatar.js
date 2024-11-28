@@ -24,6 +24,17 @@ const AvatarImage = Atom(({ src, alt }) =>
 });
 
 /**
+ * This will return the initials of the name.
+ *
+ * @param {string} name
+ * @returns {string}
+ */
+const getInitials = (name) =>
+{
+    return name.split(' ').map((n) => n.charAt(0)).join('');
+};
+
+/**
  * AvatarFallback Atom
  *
  * @param {string} fallbackText
@@ -31,6 +42,11 @@ const AvatarImage = Atom(({ src, alt }) =>
  */
 const AvatarFallback = (fallbackText) =>
 {
+    if (fallbackText && fallbackText.length > 2)
+    {
+        fallbackText = getInitials(fallbackText);
+    }
+
     return Div({ class: 'flex items-center justify-center w-full h-full rounded-full bg-muted text-muted-foreground font-medium' }, [
         Span(fallbackText)
     ]);
