@@ -57,7 +57,7 @@ export const ModalContainer = Atom((props, children) => (
                     }
                 }
         }, [
-        Form({ class: 'modal-content flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
+        Form({ class: 'modal-content relative bg-background z-[1] flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
             Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto py-0 px-6' }, children),
             Footer({ class: 'modal-footer flex justify-between pb-4 px-6' }, props.buttons)
