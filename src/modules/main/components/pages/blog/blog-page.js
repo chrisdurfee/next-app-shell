@@ -49,7 +49,7 @@ export const BlogPage = () => (
             HeroSection(),
             PostList({
                 posts: POSTS
-            }),
+            })
         ])
     ])
 );

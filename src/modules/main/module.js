@@ -1,6 +1,7 @@
 import { Icons } from '@components/icons/icons.js';
 import { Module } from '../module/module.js';
 import { BlogPage } from './components/pages/blog/blog-page.js';
+import { PostPage } from './components/pages/blog/posts/post-page.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
@@ -36,7 +37,8 @@ const routes = Module.convertRoutes(
     /**
      * Blog routes
      */
-    { path: '/blog/:post?*', component: BlogPage(), title: 'Blog' },
+    { path: '/blog/posts/:postId?*', component: PostPage(), title: 'Post' },
+    { path: '/blog*', component: BlogPage(), title: 'Blog' },
 
     /**
      * Calendar route

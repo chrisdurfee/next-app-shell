@@ -1,4 +1,4 @@
-import { Div, H2, Img, P } from "@base-framework/atoms";
+import { A, Div, H2, Img, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
@@ -33,16 +33,18 @@ const SkeletonHero = () => (
  * @returns {array<object>}
  */
 const HeroPost = (post) => ([
-    Div({ class: "relative w-full h-56 overflow-hidden rounded-lg mb-4" }, [
-        Img({
-            src: post.image,
-            alt: post.title,
-            class: "w-full h-full object-cover"
-        }),
-    ]),
-    Div({ class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md" }, [
-        H2({ class: "text-xl font-bold" }, post.title),
-        P({ class: "text-sm" }, post.description),
+    A({ href: `blog/posts/${post.id}` }, [
+        Div({ class: "relative w-full h-56 overflow-hidden rounded-lg mb-4" }, [
+            Img({
+                src: post.image,
+                alt: post.title,
+                class: "w-full h-full object-cover"
+            }),
+        ]),
+        Div({ class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md" }, [
+            H2({ class: "text-xl font-bold" }, post.title),
+            P({ class: "text-sm" }, post.description),
+        ])
     ])
 ]);
 

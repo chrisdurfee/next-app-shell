@@ -27,7 +27,7 @@ const EmailDetailSkeleton = () => (
                 Skeleton({ width: "w-8", height: "h-8" }), // Reply All
                 Skeleton({ width: "w-8", height: "h-8" }), // Forward
                 Skeleton({ width: "w-8", height: "h-8" }), // More Options
-            ]),
+            ])
         ]),
 
         // back button
@@ -43,7 +43,7 @@ const EmailDetailSkeleton = () => (
             Div({ class: "flex flex-col gap-2 flex-1" }, [
                 Skeleton({ width: "w-1/2", height: "h-6", class: "rounded" }), // Name
                 Skeleton({ width: "w-1/3", height: "h-4", class: "rounded" }), // Reply-To
-            ]),
+            ])
         ]),
 
         // Content Skeleton
@@ -122,8 +122,8 @@ export const EmailDetail = Jot(
                         // Composer Section
                         EmailComposer({ placeholder: `Reply to ${message.name}...` }),
                     ]);
-                },
-            ],
+                }
+            ]
         });
     },
 });
