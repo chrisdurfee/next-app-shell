@@ -82,6 +82,7 @@ export const PostPage = () =>
         beforeDestroy()
         {
             this.data.delete();
+            this.data.loaded = false;
         }
     };
 
