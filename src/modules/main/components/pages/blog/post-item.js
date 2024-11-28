@@ -1,4 +1,4 @@
-import { Div, H2, Img, P } from "@base-framework/atoms";
+import { A, Div, H2, Img, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
@@ -37,18 +37,20 @@ const SkeletonPost = () => (
  * @returns {array<object>}
  */
 const Post = (post) => ([
-    Div({ class: "w-full h-32 overflow-hidden rounded-lg mb-4" }, [
-        Img({
-            src: post.image,
-            alt: post.title,
-            class: "w-full h-full object-cover",
-        }),
-    ]),
-    H2({ class: "text-lg font-semibold text-foreground mb-2" }, post.title),
-    P({ class: "text-sm text-muted-foreground" }, post.description),
-    Div({ class: "mt-4 flex justify-between items-center" }, [
-        P({ class: "text-xs text-muted-foreground" }, post.category),
-        P({ class: "text-xs text-muted-foreground" }, `${post.comments} comments`),
+    A({ href: `blog/posts/${post.id}` }, [
+        Div({ class: "w-full h-32 overflow-hidden rounded-lg mb-4" }, [
+            Img({
+                src: post.image,
+                alt: post.title,
+                class: "w-full h-full object-cover",
+            }),
+        ]),
+        H2({ class: "text-lg font-semibold text-foreground mb-2" }, post.title),
+        P({ class: "text-sm text-muted-foreground" }, post.description),
+        Div({ class: "mt-4 flex justify-between items-center" }, [
+            P({ class: "text-xs text-muted-foreground" }, post.category),
+            P({ class: "text-xs text-muted-foreground" }, `${post.comments} comments`),
+        ])
     ])
 ]);
 
