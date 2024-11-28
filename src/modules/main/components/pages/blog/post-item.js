@@ -28,6 +28,30 @@ const SkeletonPost = () => (
     ])
 );
 
+/**
+ * Post
+ *
+ * Displays a blog post.
+ *
+ * @param {object} post
+ * @returns {array<object>}
+ */
+const Post = (post) => ([
+    Div({ class: "w-full h-32 overflow-hidden rounded-lg mb-4" }, [
+        Img({
+            src: post.image,
+            alt: post.title,
+            class: "w-full h-full object-cover",
+        }),
+    ]),
+    H2({ class: "text-lg font-semibold text-foreground mb-2" }, post.title),
+    P({ class: "text-sm text-muted-foreground" }, post.description),
+    Div({ class: "mt-4 flex justify-between items-center" }, [
+        P({ class: "text-xs text-muted-foreground" }, post.category),
+        P({ class: "text-xs text-muted-foreground" }, `${post.comments} comments`),
+    ])
+]);
+
 
 /**
  * PostItem
@@ -36,11 +60,13 @@ const SkeletonPost = () => (
  *
  * @class
  */
-export const PostItem = Jot({
+export const PostItem = Jot(
+{
     /**
      * Initial state for the PostItem Jot.
      */
-    state: {
+    state:
+    {
         loaded: false,
     },
 
@@ -49,10 +75,11 @@ export const PostItem = Jot({
      *
      * @returns {void}
      */
-    after() {
-        setTimeout(() => {
-            this.state.loaded = true;
-        }, 500); // Simulate loading for 500ms
+    after()
+    {
+        // Simulate loading for 500ms
+        const DELAY = 500;
+        setTimeout(() => this.state.loaded = true, DELAY);
     },
 
     /**
@@ -60,55 +87,17 @@ export const PostItem = Jot({
      *
      * @returns {object}
      */
-    render() {
+    render()
+    {
         const { post } = this;
 
-        return Div(
-            {
-                class: "bg-card p-4 rounded-md shadow-md hover:shadow-lg transition",
-                onState: ["loaded", (loaded) =>
-                    !loaded
-                        ? SkeletonPost()
-                        : [
-                            Div({
-                                class: "w-full h-32 overflow-hidden rounded-lg mb-4",
-                            }, [
-                                Img({
-                                    src: post.image,
-                                    alt: post.title,
-                                    class: "w-full h-full object-cover",
-                                }),
-                            ]),
-                            H2(
-                                {
-                                    class: "text-lg font-semibold text-foreground mb-2",
-                                },
-                                post.title
-                            ),
-                            P(
-                                { class: "text-sm text-muted-foreground" },
-                                post.description
-                            ),
-                            Div(
-                                { class: "mt-4 flex justify-between items-center" },
-                                [
-                                    P(
-                                        {
-                                            class: "text-xs text-muted-foreground",
-                                        },
-                                        post.category
-                                    ),
-                                    P(
-                                        {
-                                            class: "text-xs text-muted-foreground",
-                                        },
-                                        `${post.comments} comments`
-                                    ),
-                                ]
-                            ),
-                        ]
-                ],
-            }
-        );
-    },
+        return Div({
+            class: "bg-card p-4 rounded-md shadow-md hover:shadow-lg transition",
+            onState: ["loaded", (loaded) =>
+                !loaded
+                    ? SkeletonPost()
+                    : Post(post)
+            ],
+        });
+    }
 });

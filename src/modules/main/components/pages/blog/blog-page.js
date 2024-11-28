@@ -1,6 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
 import { BlankPage } from "@components/pages/blank-page.js";
+import { BlogHeader } from "./blog-header.js";
 import { HeroItem } from "./hero-item.js";
 import { PostItem } from "./post-item.js";
 import { HERO_POSTS, POSTS } from "./posts.js";
@@ -44,6 +45,7 @@ const PostList = ({ posts }) => (
 export const BlogPage = () => (
     new BlankPage([
         Div({ class: "flex flex-col w-full px-4 lg:px-8" }, [
+            BlogHeader(),
             HeroSection(),
             PostList({
                 posts: POSTS

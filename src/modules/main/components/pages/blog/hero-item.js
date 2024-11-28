@@ -13,7 +13,7 @@ const SkeletonHero = () => (
     Div({ class: "flex flex-col gap-4" }, [
         Skeleton({
             width: "w-full",
-            height: "h-48",
+            height: "h-56",
             class: "rounded-lg",
         }),
         Skeleton({
@@ -24,6 +24,28 @@ const SkeletonHero = () => (
     ])
 );
 
+/**
+ * HeroPost
+ *
+ * Displays a hero post.
+ *
+ * @param {object} post
+ * @returns {array<object>}
+ */
+const HeroPost = (post) => ([
+    Div({ class: "relative w-full h-56 overflow-hidden rounded-lg mb-4" }, [
+        Img({
+            src: post.image,
+            alt: post.title,
+            class: "w-full h-full object-cover"
+        }),
+    ]),
+    Div({ class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md" }, [
+        H2({ class: "text-xl font-bold" }, post.title),
+        P({ class: "text-sm" }, post.description),
+    ])
+]);
+
 
 /**
  * HeroItem
@@ -32,11 +54,13 @@ const SkeletonHero = () => (
  *
  * @class
  */
-export const HeroItem = Jot({
+export const HeroItem = Jot(
+{
     /**
      * Initial state for the HeroItem Jot.
      */
-    state: {
+    state:
+    {
         loaded: false,
     },
 
@@ -45,10 +69,11 @@ export const HeroItem = Jot({
      *
      * @returns {void}
      */
-    after() {
-        setTimeout(() => {
-            this.state.loaded = true;
-        }, 500); // Simulate loading for 500ms
+    after()
+    {
+        // Simulate loading for 500ms
+        const DELAY = 500;
+        setTimeout(() => this.state.loaded = true, DELAY);
     },
 
     /**
@@ -56,40 +81,17 @@ export const HeroItem = Jot({
      *
      * @returns {object}
      */
-    render() {
+    render()
+    {
         const { post } = this;
 
-        return Div(
-            {
-                class: "p-4 bg-card shadow-md rounded-lg relative overflow-hidden",
-                onState: ["loaded", (loaded) =>
-                    !loaded
-                        ? SkeletonHero()
-                        : [
-                            Div({
-                                class: "relative w-full h-48 overflow-hidden rounded-lg mb-4",
-                            }, [
-                                Img({
-                                    src: post.image,
-                                    alt: post.title,
-                                    class: "w-full h-full object-cover",
-                                }),
-                            ]),
-                            Div({
-                                class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md",
-                            }, [
-                                H2(
-                                    { class: "text-xl font-bold text-white" },
-                                    post.title
-                                ),
-                                P(
-                                    { class: "text-sm text-gray-200" },
-                                    post.description
-                                ),
-                            ]),
-                        ]
-                ],
-            }
-        );
+        return Div({
+            class: "p-4 bg-card shadow-md rounded-lg relative overflow-hidden",
+            onState: ["loaded", (loaded) =>
+                !loaded
+                    ? SkeletonHero()
+                    : HeroPost(post)
+            ]
+        });
     },
 });
