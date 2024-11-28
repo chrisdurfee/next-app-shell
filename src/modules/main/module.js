@@ -1,5 +1,6 @@
 import { Icons } from '@components/icons/icons.js';
 import { Module } from '../module/module.js';
+import { BlogPage } from './components/pages/blog/blog-page.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
@@ -31,6 +32,11 @@ const routes = Module.convertRoutes(
      */
     { path: '/music/album/:album?*', component: AlbumPage(), title: 'Album' },
     { path: '/music*', import: import('./components/pages/music/music-page/music-page.js'), title: 'Music' },
+
+    /**
+     * Blog routes
+     */
+    { path: '/blog/:post?*', component: BlogPage(), title: 'Blog' },
 
     /**
      * Calendar route
@@ -72,6 +78,7 @@ const links =
     { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 },
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
     { label: 'Inbox', href: 'inbox', icon: Icons.chat.text, mobileOrder: 3 },
+    { label: 'Blog', href: 'blog', icon: Icons.newspaper },
     { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default, mobileOrder: 1 },
     { label: 'List', href: 'list', icon: Icons.list.four },
     { label: 'Reviews', href: 'full-contain', icon: Icons.star },
