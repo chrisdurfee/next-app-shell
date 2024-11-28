@@ -72,6 +72,6 @@ export const NavigationAvatar = Jot(
      */
     destroy()
     {
-        status.stop();
+        //status.stop();
     }
 });
