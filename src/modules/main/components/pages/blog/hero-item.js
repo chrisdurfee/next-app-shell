@@ -38,7 +38,7 @@ const HeroPost = (post) => ([
         ]),
         Div({ class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md" }, [
             H2({ class: "text-xl font-bold" }, post.title),
-            //P({ class: "text-sm" }, post.description),
+            P({ class: "text-sm" }, post.description),
         ])
     ])
 ]);
