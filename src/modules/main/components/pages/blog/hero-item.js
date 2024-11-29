@@ -1,4 +1,4 @@
-import { A, Div, H2, Img, P } from "@base-framework/atoms";
+import { A, Div, H2, Img } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
@@ -15,12 +15,7 @@ const SkeletonHero = () => (
             width: "w-full",
             height: "h-56",
             class: "rounded-lg",
-        }),
-        Skeleton({
-            width: "w-3/4",
-            height: "h-6",
-            class: "rounded-md",
-        }),
+        })
     ])
 );
 
@@ -43,11 +38,10 @@ const HeroPost = (post) => ([
         ]),
         Div({ class: "absolute bottom-4 left-4 bg-black bg-opacity-50 p-2 rounded-md" }, [
             H2({ class: "text-xl font-bold" }, post.title),
-            P({ class: "text-sm" }, post.description),
+            //P({ class: "text-sm" }, post.description),
         ])
     ])
 ]);
-
 
 /**
  * HeroItem

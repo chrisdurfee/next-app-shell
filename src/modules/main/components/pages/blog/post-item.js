@@ -1,5 +1,6 @@
 import { A, Div, H2, Img, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
+import { On } from "@components/atoms/on.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
 /**
@@ -12,7 +13,7 @@ const SkeletonPost = () => (
     Div({ class: "flex flex-col bg-card rounded-md shadow-md" }, [
         Skeleton({
             width: "w-full",
-            height: "h-32",
+            height: "h-[128px]",
             class: "rounded-lg mb-4",
         }),
         Skeleton({
@@ -22,7 +23,7 @@ const SkeletonPost = () => (
         }),
         Skeleton({
             width: "w-full",
-            height: "h-4",
+            height: "h-20",
             class: "rounded-md mb-4",
         }),
     ])
@@ -53,7 +54,6 @@ const Post = (post) => ([
         ])
     ])
 ]);
-
 
 /**
  * PostItem
@@ -93,13 +93,10 @@ export const PostItem = Jot(
     {
         const { post } = this;
 
-        return Div({
-            class: "p-4 transition",
-            onState: ["loaded", (loaded) =>
-                !loaded
-                    ? SkeletonPost()
-                    : Post(post)
-            ],
-        });
+        return Div({ class: "p-4 transition" }, [
+            On('loaded', (loaded) => (!loaded)
+            ? SkeletonPost()
+            : Post(post))
+        ]);
     }
 });
