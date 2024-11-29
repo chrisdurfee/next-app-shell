@@ -16,7 +16,7 @@ import { TrackList } from "./track-list.js";
 const AlbumPageContent = () =>
 {
     return Div({
-        class: 'p-6 2xl:mx-auto w-full 2xl:max-w-[1600px]',
+        class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]',
 
         /**
          * This will get the parent object that has access to the route
