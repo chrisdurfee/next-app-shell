@@ -82,8 +82,7 @@ export const EmailDetail = Jot(
      */
     render()
     {
-        const route = this.parent.route;
-        const message = getMessage(route.messageId);
+        const message = getMessage(this.messageId);
 
         // Simulate loading with a timeout
         const DELAY = 500;

@@ -160,6 +160,13 @@ export const getParentData = (parent) =>
  */
 export const On = (...args) =>
 {
+    const settings = [...args];
+    const callBack = settings.pop();
+    if (typeof callBack !== 'function')
+    {
+        return;
+    }
+
     /**
      * This will create a comment to use as a placeholder
      * to keep the layout in place.
@@ -167,25 +174,18 @@ export const On = (...args) =>
     return Comment({
         onCreated: (ele, parent) =>
         {
-            // last arg is the callBack
-            const callBack = args.pop();
-            if (typeof callBack !== 'function')
-            {
-                return;
-            }
-
-            if (args.length < 2)
+            if (settings.length < 2)
             {
                 /**
                  * This will get the parent data and add it to the
-                 * args array.
+                 * settings array.
                  */
                 const data = getParentData(parent);
-                args.unshift(data);
+                settings.unshift(data);
             }
 
-            const update = updateLayout(callBack, ele, args[1], parent);
-            dataBinder.watch(ele, args[0], args[1], update);
+            const update = updateLayout(callBack, ele, settings[1], parent);
+            dataBinder.watch(ele, settings[0], settings[1], update);
         }
     });
 };
