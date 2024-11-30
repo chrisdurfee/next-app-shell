@@ -1,6 +1,5 @@
-import { A, Div, H2, Img, P } from "@base-framework/atoms";
+import { A, Div, H2, Img, On, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { On } from "@components/atoms/on.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
 
 /**
