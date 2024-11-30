@@ -1,8 +1,8 @@
 import { Div, Span } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
-import { Avatar } from "@components/molecules/avatar.js";
+import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
 import { UserLoginStatus } from "../../user-status/user-login-status.js";
-import { StatusIndicator } from "./statuses.js";
 
 /**
  * This will create the UserDetails molecule.

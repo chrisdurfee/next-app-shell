@@ -2,7 +2,7 @@ import { Div, P, Span } from '@base-framework/atoms';
 import { Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
-import { Avatar } from "@components/molecules/avatar.js";
+import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -129,7 +129,7 @@ Div({ class: 'space-y-4 flex flex-auto flex-col space-x-4 w-full max-w-64' }, [
                     new LoadingAvatar()
                 ],
                 code: `import { Skeleton } from "@components/atoms/skeleton.js";
-import { Avatar } from "@components/molecules/avatar.js";
+import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { Jot } from "@base-framework/base";
 import { Div, P, Span } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";

@@ -1,5 +1,5 @@
 import { Div, P, Span } from "@base-framework/atoms";
-import { Avatar } from "@components/molecules/avatar.js";
+import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 

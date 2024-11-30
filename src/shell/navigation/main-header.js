@@ -1,4 +1,4 @@
-import { A, Div } from "@base-framework/atoms";
+import { A, Div, Img } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
 
@@ -8,13 +8,26 @@ import { Icons } from "@components/icons/icons.js";
  * @param {object} props
  * @returns {object}
  */
-const Logo = Atom((props, children) => (
+const Logo = Atom((props) => (
     A({
         class: 'logo w-[32px] h-[32px] m-[16px] block',
         href: './',
-        ...props,
-        children
-    })
+        ...props
+    }, [
+        /**
+         * This will create the logo image.
+         */
+        props.src && Img({
+            src: props.src,
+            alt: 'Logo',
+            class: 'w-[32px] h-[32px]',
+
+            /**
+             * This will hide the image if there is an error.
+             */
+            error: (e) => e.target.style.display = 'none'
+        })
+    ])
 ));
 
 /**

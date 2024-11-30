@@ -135,6 +135,9 @@ export class AppControl extends Component
                 mouseleave: this.removeIgnore.bind(this)
             },
             [
+                /**
+                 * This will crate a navigation for the main and mobile navigation.
+                 */
                 new MainNavigation({ options: this.options }),
                 new MobileNavigation({ options: mobileOptions })
             ]

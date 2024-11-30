@@ -1,7 +1,7 @@
 import { Div, Img, Li, P, Span, Time } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { List } from '@base-framework/organisms';
-import { Avatar } from '../../molecules/avatar.js';
+import { Avatar } from '../../molecules/avatars/avatar.js';
 
 /**
  * User Image Atom

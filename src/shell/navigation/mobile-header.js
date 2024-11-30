@@ -1,4 +1,4 @@
-import { A, Div, Header } from "@base-framework/atoms";
+import { A, Div, Header, Img } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { MobileUserAvatar } from "./avatars/mobile-user-avatar.js";
 
@@ -8,13 +8,27 @@ import { MobileUserAvatar } from "./avatars/mobile-user-avatar.js";
  * @param {object} props
  * @returns {object}
  */
-const Logo = Atom((props, children) => (
+const Logo = Atom((props) => (
     A({
         class: 'logo w-[24px] h-[24px] block',
         href: './',
-        ...props,
-        children
-    })
+        ...props
+    }, [
+
+        /**
+         * This will create the logo image.
+         */
+        props.src && Img({
+            src: props.src,
+            alt: 'Logo',
+            class: 'w-[24px] h-[24px]',
+
+            /**
+             * This will hide the image if there is an error.
+             */
+            error: (e) => e.target.style.display = 'none'
+        })
+    ])
 ));
 
 /**
@@ -25,6 +39,8 @@ let prevScroll = 0;
 /**
  * This will check when the document is scrolled.
  *
+ * @param {Event} e
+ * @param {object} parent
  * @returns {void}
  */
 const scrollCheck = (e, parent) =>
@@ -47,7 +63,7 @@ const scrollCheck = (e, parent) =>
 /**
  * This will create the mobile header.
  *
- * @param {object} props
+ * @param {object} [props]
  * @returns {object}
  */
 export const MobileHeader = (props = {}) => (
@@ -78,6 +94,9 @@ export const MobileHeader = (props = {}) => (
                 src: props.src || '/images/logo.svg'
             }),
 
+            /**
+             * This will create the user avatar.
+             */
             Div({ class: 'flex' }, [
                 new MobileUserAvatar({ data: app.data.user })
             ])

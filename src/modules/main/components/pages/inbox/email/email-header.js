@@ -1,7 +1,7 @@
 import { Div, Span } from "@base-framework/atoms";
 import { DateTime } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
-import { Avatar } from "@components/molecules/avatar.js";
+import { Avatar } from "@components/molecules/avatars/avatar.js";
 
 /**
  * This will create the time time atom.

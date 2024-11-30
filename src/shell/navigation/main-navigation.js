@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Atom, Component } from "@base-framework/base";
+import { Atom, Jot } from "@base-framework/base";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
@@ -28,6 +28,33 @@ const PrimaryNavigation = ({ options}) => (
 );
 
 /**
+ * This will create the lower navigation.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const LowerNavigation = ({ options }) => (
+	Div([
+		new InlineNavigation({
+			options: [
+				{
+					href: 'profile',
+					content: [
+
+						/**
+						 * This will create the navigation avatar.
+						 */
+						new NavigationAvatar({
+							data: app.data.user
+						})
+					]
+				}
+			]
+		})
+	])
+);
+
+/**
  * MainNavigation
  *
  * This will create the main navigation.
@@ -35,7 +62,7 @@ const PrimaryNavigation = ({ options}) => (
  * @class
  * @extends Component
  */
-export class MainNavigation extends Component
+export const MainNavigation = Jot(
 {
 	/**
 	 * This will render the component.
@@ -50,33 +77,22 @@ export class MainNavigation extends Component
 				PrimaryNavigation({
 					options: this.options
 				}),
-				Div({ class: '' }, [
-					new InlineNavigation({
-						options: [
-							{
-								href: 'profile',
-								content: [
-									new NavigationAvatar({
-										data: app.data.user
-									})
-								]
-							}
-						]
-					})
-                ])
+				LowerNavigation({
+					options: this.options
+				})
 			])
 		]);
-	}
+	},
 
 	/**
 	 * This will link the pinned state to the app control.
 	 *
 	 * @returns {object}
 	 */
-	setupStates()
+	state()
 	{
 		return {
 			pinned: { id: 'app-control' }
 		};
 	}
-}
+});
