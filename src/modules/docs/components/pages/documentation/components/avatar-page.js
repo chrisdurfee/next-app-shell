@@ -1,4 +1,4 @@
-import { Div, P, Span } from "@base-framework/atoms";
+import { Div, H4, P, Span } from "@base-framework/atoms";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -28,6 +28,9 @@ export const AvatarPage = () => (
                 ],
                 code: `Avatar({ src: 'https://github.com/shadcn.png', alt: '@shadcn', fallbackText: 'CN', size: 'xs' })`
             }),
+
+            H4({ class: 'text-2xl font-semibold text-foreground mt-8' }, 'Avatar Fallbacks'),
+            P({ class: 'text-sm text-muted-foreground mb-4' }, `The avatar fallback can be bound to a watcher for dynamic content using the 'watcherFallback' property. The fallback and watcher fallback will convert a name to initials if not set as a two letter string.`),
 
             DocSection({
                 title: 'Small Avatar (sm)',
