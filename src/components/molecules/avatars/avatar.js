@@ -35,20 +35,44 @@ const getInitials = (name) =>
 };
 
 /**
- * AvatarFallback Atom
+ * This will check the length of the fallback text.
  *
  * @param {string} fallbackText
- * @returns {object}
+ * @returns {string}
  */
-const AvatarFallback = (fallbackText) =>
+const checkFallbackLength = (fallbackText) =>
 {
     if (fallbackText && fallbackText.length > 2)
     {
         fallbackText = getInitials(fallbackText);
     }
+    return fallbackText;
+};
+
+/**
+ * This will create a watcher span.
+ *
+ * @param {string} watcherFallback
+ * @returns {object}
+ */
+const WatcherSpan = (watcherFallback) =>
+{
+    return Span([watcherFallback, (value, ele) => ele.textContent = checkFallbackLength(value)]);
+};
+
+/**
+ * AvatarFallback Atom
+ *
+ * @param {string|null} fallbackText
+ * @param {string|null} [watcherFallback=null]
+ * @returns {object}
+ */
+const AvatarFallback = (fallbackText, watcherFallback = null) =>
+{
+    fallbackText = checkFallbackLength(fallbackText);
 
     return Div({ class: 'flex items-center justify-center w-full h-full rounded-full bg-muted text-muted-foreground font-medium' }, [
-        Span(fallbackText)
+        (watcherFallback)? WatcherSpan(watcherFallback) : Span(fallbackText)
     ]);
 };
 
@@ -86,12 +110,12 @@ const getSize = (size) =>
  * @param {object} props
  * @returns {object}
  */
-export const Avatar = Atom(({ src, alt, fallbackText, size }) =>
+export const Avatar = Atom(({ src, alt, fallbackText, watcherFallback, size }) =>
 {
     size = getSize(size);
 
     return Div({ class: `relative flex items-center justify-center ${size}` }, [
         AvatarImage({ src, alt }),
-        AvatarFallback(fallbackText)
+        AvatarFallback(fallbackText, watcherFallback)
     ]);
 });

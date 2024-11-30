@@ -92,7 +92,7 @@ export const PostItem = Jot(
     {
         const { post } = this;
 
-        return Div({ class: "p-4 transition" }, [
+        return Div({ class: "p-4 px-2 lg:px-4 transition" }, [
             On('loaded', (loaded) => (!loaded)
             ? SkeletonPost()
             : Post(post))

@@ -26,7 +26,7 @@ export const MobileUserAvatar = Jot(
                     Avatar({
                         src: '[[image]]',
                         alt: '[[name]]',
-                        fallbackText: '[[name]]',
+                        watcherFallback: '[[name]]',
                         size: "xs",
                     })
                 ]),
