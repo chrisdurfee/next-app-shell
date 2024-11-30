@@ -10,18 +10,20 @@ import { MainContent } from './main-content.js';
  */
 const updateBodyClass = (isSignedIn) =>
 {
-	const className = 'authed';
-	// if the body does not have the class, add it.
-	if (isSignedIn && !document.body.classList.contains(className))
+	const AUTHED_CLASS_NAME = 'authed';
+	const hasClass = document.body.classList.contains(AUTHED_CLASS_NAME);
+
+	// if the body does not have the class and the user is authed, add it.
+	if (isSignedIn && !hasClass)
 	{
-		document.body.classList.add(className);
+		document.body.classList.add(AUTHED_CLASS_NAME);
 		return;
 	}
 
-	// if the body has the class, remove it.
-	else if (!isSignedIn && document.body.classList.contains(className))
+	// if the body has the class and the user is not authed, remove it.
+	if (!isSignedIn && hasClass)
 	{
-		document.body.classList.remove(className);
+		document.body.classList.remove(AUTHED_CLASS_NAME);
 	}
 };
 

@@ -1,3 +1,4 @@
+import { Div } from '@base-framework/atoms';
 import { Atom, Jot } from '@base-framework/base';
 import { NotificationContainer } from '@components/molecules/notifications/notification-container.js';
 import { AppContent } from './app-content.js';
@@ -11,17 +12,22 @@ import { AppContent } from './app-content.js';
  */
 const Shell = Atom((props, children) =>
 {
-	return {
-		...props,
-		class: 'shell flex flex-auto relative z-10',
-		onState: ['isSignedIn', { authed: true }],
-		children: [
+	return Div({
+			...props,
+			class: 'shell flex flex-auto relative z-10',
+
+			// This will add a class of 'authed' if the user is signed in.
+			onState: ['isSignedIn', { authed: true }]
+		}, [
+			/**
+			 * This will set up the notification container so that it can be used
+			 * throughout the app.
+			 */
 			new NotificationContainer({
 				cache: 'notifications'
 			}),
 			...children
-		]
-	};
+	]);
 });
 
 /**
@@ -32,7 +38,13 @@ const Shell = Atom((props, children) =>
  * @param {object} props
  * @returns {object}
  */
-export const AppShell = Jot({
+export const AppShell = Jot(
+{
+	/**
+	 * This will render the component.
+	 *
+	 * @returns {object}
+	 */
 	render()
 	{
 		const { options, routes, onCreated } = this;
