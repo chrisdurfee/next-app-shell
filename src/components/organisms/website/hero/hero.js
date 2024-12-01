@@ -26,8 +26,8 @@ const TopGadientDecoration = Atom(() => (
 const ContentSection = Atom(() => (
     Div({ class: 'mx-auto max-w-2xl py-32 sm:py-48 lg:py-56' }, [
         Div({ class: 'text-center' }, [
-            H1({ class: 'text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl' }, 'Data to enrich your online business'),
-            P({ class: 'mt-6 text-lg leading-8 text-gray-600' }, 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.'),
+            H1({ class: 'text-4xl font-bold tracking-tight sm:text-6xl' }, 'Data to enrich your online business'),
+            P({ class: 'mt-6 text-lg leading-8 text-muted-foreground' }, 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.'),
             Div({ class: 'mt-10 flex items-center justify-center gap-x-6' }, [
                 A({
                     href: '#',
@@ -35,7 +35,7 @@ const ContentSection = Atom(() => (
                 }, 'Get started'),
                 A({
                     href: '#',
-                    class: 'text-sm font-semibold leading-6 text-gray-900'
+                    class: 'text-sm font-semibold leading-6'
                 }, [Span('Learn more '), Span({ 'aria-hidden': 'true' }, '→')])
             ])
         ])
