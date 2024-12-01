@@ -1,7 +1,8 @@
-import { H3, I } from "@base-framework/atoms";
+import { H3 } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
 import { Div } from "../../atoms/atoms.js";
 import { Button } from "../../atoms/buttons/buttons.js";
+import { Icon } from "../../atoms/icon.js";
 import { Icons } from "../../icons/icons.js";
 import { InlineNavigation } from "./inline-navigation.js";
 
@@ -29,8 +30,8 @@ const NavButton = () => (
 			return {
 				open: false
 			};
-		}, click: (e, { state }) => state.toggle('open') }, [
-        I({ html: Icons.bar.three })
+		}, pointerdown: (e, { state }) => state.toggle('open') }, [
+        Icon(Icons.bar.three)
     ])
 );
 
@@ -128,6 +129,7 @@ export class NavigationPopover extends Component
 				}
 			},
             class: `fixed popIn m-auto rounded-md p-0 shadow-lg bg-popover border top-[5vh] bottom-[5vh] left-2 right-2 max-h-[90vh] text-inherit block z-30 after:content-[''] after:fixed after:-top-[5vh] after:-left-2 after:-right-2 after:-bottom-[5vh] after:-z-[1] after:bg-black/40`,
+			style: 'margin: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) 0',
 			dataSet: ['open', ['expanded', true, 'true']]
         }, [
 			Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[90vh] rounded-md bg-popover border' }, [
@@ -215,9 +217,7 @@ const MobileNav = (props) =>
 export const MobileNavWrapper = Atom((props, children) =>
 {
 	return Div({ cache: 'mobileNav', class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
-		Div({
-				class: 'flex flex-auto flex-col w-full'
-			}, [
+		Div({ class: 'flex flex-auto flex-col w-full' }, [
 			Header(props),
 			MobileNav(props)
 		])

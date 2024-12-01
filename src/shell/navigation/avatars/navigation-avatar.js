@@ -20,9 +20,7 @@ const UserDetails = () => (
 /**
  * @type {UserLoginStatus} status
  */
-const status = new UserLoginStatus({
-    apiUrl: Configs.userStatusApi
-});
+const status = new UserLoginStatus(Configs.userStatusApi);
 
 /**
  * NavigationAvatar
@@ -41,7 +39,7 @@ export const NavigationAvatar = Jot(
      */
     after()
     {
-        status.setup(this.data);
+        //status.setup(this.data);
     },
 
     /**
@@ -75,6 +73,6 @@ export const NavigationAvatar = Jot(
      */
     destroy()
     {
-        status.stop();
+        //status.stop();
     }
 });

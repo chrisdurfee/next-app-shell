@@ -10,5 +10,5 @@ import { Configs } from "../../configs.js";
  * @class UserData
  */
 export const UserStatus = Model.extend({
-    url: Configs.userStatusApi, // API endpoint for fetching or updating user status
+    url: Configs.userStatusApi // API endpoint for fetching or updating user status
 });
