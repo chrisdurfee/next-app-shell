@@ -1,5 +1,5 @@
 import { I, Li, Nav, Span, Ul } from "@base-framework/atoms";
-import { Component, NavLink } from "@base-framework/base";
+import { NavLink } from "@base-framework/base";
 
 /**
  * This will create a mobile link.
@@ -26,20 +26,11 @@ const MobileLink = (props) => (
  *
  * This will create the mobile navigation.
  *
- * @class
- * @extends Component
+ * @param {array<object>} options
+ * @returns {object}
  */
-export class MobileNavigation extends Component
-{
-	/**
-	 * This will render the component.
-	 *
-	 * @returns {object}
-	 */
-	render()
-	{
-		return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden' }, [
-			Ul({ class: 'flex flex-auto m-0 p-0 list-none sm:flex-col', map: [this.options, MobileLink] })
-		]);
-	}
-}
+export const MobileNavigation  = ({ options }) => (
+    Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden' }, [
+        Ul({ class: 'flex flex-auto m-0 p-0 list-none sm:flex-col', map: [options, MobileLink] })
+    ])
+);

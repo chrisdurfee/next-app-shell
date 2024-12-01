@@ -1,6 +1,7 @@
 import { Atom, Component, Data } from "@base-framework/base";
 import { MainNavigation } from "./main-navigation.js";
 import { MobileNavigation } from "./mobile-navigation.js";
+import { getMobileOptions } from "./mobile-options.js";
 
 /**
  * This will create the app container.
@@ -14,66 +15,6 @@ const AppContainer = Atom((props, children) => ({
     class: 'app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px] lg:hover:w-[330px] sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r',
     children
 }));
-
-/**
- * This will map the mobile options.
- *
- * @param {array} options
- * @param {array} mobileOptions
- * @param {function} callBack
- * @returns {void}
- */
-const mapMobileOptions = (options, mobileOptions, callBack) =>
-{
-    if (!options || !options.length)
-    {
-        return;
-    }
-
-    options.forEach(option =>
-    {
-        if (option.options)
-        {
-            mapMobileOptions(option.options, mobileOptions, callBack);
-            return;
-        }
-
-        /**
-         * We also want to add a callBack to ignore the hover to the main options.
-         */
-        option.callBack = callBack;
-        if (option.mobileOrder !== undefined)
-        {
-            mobileOptions.push(option);
-        }
-    });
-};
-
-/**
- * This will sort the mobile options.
- *
- * @param {array} options
- * @returns {array}
- */
-const sortMobileOptions = (options) => options.sort((a, b) => a.mobileOrder - b.mobileOrder);
-
-/**
- * This will get the mobile options.
- *
- * @param {array} options
- * @param {function} callBack
- * @returns {object}
- */
-const getMobileOptions = (options, callBack) =>
-{
-    const mobileOptions = [];
-    mapMobileOptions(options, mobileOptions, callBack);
-
-    /**
-     * This will sort the options by the mobile order.
-     */
-    return sortMobileOptions(mobileOptions);
-};
 
 /**
  * AppControl
@@ -139,7 +80,7 @@ export class AppControl extends Component
                  * This will crate a navigation for the main and mobile navigation.
                  */
                 new MainNavigation({ options: this.options }),
-                new MobileNavigation({ options: mobileOptions })
+                MobileNavigation({ options: mobileOptions })
             ]
         );
     }

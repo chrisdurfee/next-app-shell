@@ -30,10 +30,9 @@ const PrimaryNavigation = ({ options}) => (
 /**
  * This will create the lower navigation.
  *
- * @param {object} props
  * @returns {object}
  */
-const LowerNavigation = ({ options }) => (
+const LowerNavigation = () => (
 	Div([
 		new InlineNavigation({
 			options: [
@@ -77,9 +76,7 @@ export const MainNavigation = Jot(
 				PrimaryNavigation({
 					options: this.options
 				}),
-				LowerNavigation({
-					options: this.options
-				})
+				LowerNavigation()
 			])
 		]);
 	},

@@ -25,20 +25,20 @@ const ActivePanelContainer = Atom((props, children) =>
  * @param {object} props
  * @returns {array<object>}
  */
-export const MainContent = (props) => (
+export const MainContent = ({ options, routes}) => (
 	[
 		MobileHeader(),
 
 		/**
 		 * This will add the desktop and mobile navigation.
 		 */
-		new AppControl({ options: props.options }),
+		new AppControl({ options }),
 
 		/**
 		 * This will add the active panel container that will hold the main body.
 		 */
 		ActivePanelContainer({
-			switch: props.routes,
+			switch: routes,
 			cache: 'mainBody'
 		})
 	]
