@@ -1,4 +1,4 @@
-import { Div, H1, Header, P, Section } from '@base-framework/atoms';
+import { Div, H1, Header, OnState, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Icons } from '@components/icons/icons.js';
 import { Alert } from '@components/molecules/alert.js';
@@ -31,32 +31,39 @@ const SuccessMessage = () => (
 );
 
 /**
+ * This will create a form wrapper.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @returns {object}
+ */
+const FormWrapper = Atom((props, children) => (
+	Div({
+		class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
+		addState()
+		{
+			return {
+				showMessage: false
+			};
+		}
+	}, children)
+));
+
+/**
  * This will create the forgot password section.
  *
  * @returns {object}
  */
 export const ForgotPasswordSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Div({
-            class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
-            addState()
-			{
-				return {
-					showMessage: false
-				};
-			},
-			onState: ['showMessage', (state) =>
-			{
-				if (state)
-				{
-					return SuccessMessage();
-				}
-
-				return [
+		FormWrapper([
+			OnState('showMessage', (state) => (state)
+				? SuccessMessage()
+				: [
                     PasswordHeader({ title: 'Forgot Password', description: 'Please enter your email address.' }),
                     ForgotPasswordForm(),
-                ];
-			}]
-        })
+                ]
+			)
+		])
 	])
 );
