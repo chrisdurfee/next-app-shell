@@ -2,6 +2,7 @@ import { Div, Span } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
+import { Configs } from "../../../configs.js";
 import { UserLoginStatus } from "../../user-status/user-login-status.js";
 
 /**
@@ -19,7 +20,9 @@ const UserDetails = () => (
 /**
  * @type {UserLoginStatus} status
  */
-const status = new UserLoginStatus();
+const status = new UserLoginStatus({
+    apiUrl: Configs.userStatusApi
+});
 
 /**
  * NavigationAvatar
