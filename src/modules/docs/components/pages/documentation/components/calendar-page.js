@@ -1,5 +1,6 @@
 import { DateTime } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
+import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
 import { Calendar } from "@components/organisms/calendar/calendar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -40,7 +41,7 @@ new Calendar()`
 
             DocSection({
                 title: 'Dynamic Time',
-                description: 'This is how you can use the calendar component.',
+                description: 'The Dynamic Time class will allow you to create a dynamic time that will update every minute.',
                 preview: [
                     new DynamicTime({
                         filter: () =>
@@ -88,27 +89,16 @@ new DynamicTime({
                 title: 'Dynamic Local Time by Time Frame',
                 description: 'This will show the time frame based on the local time. This will update the time frame every minute to keep the time frame updated.',
                 preview: [
-                    new DynamicTime({
+                    TimeFrame({
                         dateTime: '2024-11-04T18:00:00',
-                        filter(date)
-                        {
-                            // convert to local time
-                            const localTime = DateTime.getLocalTime(date, true);
-                            return DateTime.getTimeFrame(localTime);
-                        }
+                        remoteTimeZone: 'America/Denver'
                     })
                 ],
-                code: `import { DateTime } from "@base-framework/base";
-import { DynamicTime } from "@base-framework/organisms";
+                code: `import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
 
-new DynamicTime({
+TimeFrame({
     dateTime: '2024-11-04T18:00:00',
-    filter(date)
-    {
-        // convert to local time
-        const localTime = DateTime.getLocalTime(date, true);
-        return DateTime.getTimeFrame(localTime);
-    }
+    remoteTimeZone: 'America/Denver'
 })`
             })
         ]

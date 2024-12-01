@@ -77,6 +77,9 @@ const DropdownContainer = ({ onSelect }) => (
  *
  * This will render a combobox component.
  *
+ * @property {array} items - The items to display in the combobox.
+ * @property {string} name - The name of the hidden input.
+ *
  * @class
  * @extends {Component}
  */

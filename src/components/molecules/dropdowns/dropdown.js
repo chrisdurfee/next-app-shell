@@ -8,12 +8,11 @@ import { DropdownItem } from './dropdown-item.js';
  * @param {function} onSelect
  * @returns {object}
  */
-const Group = (group, onSelect) =>
-{
-    return Ul({ class: 'grid gap-2' }, [
+const Group = (group, onSelect) => (
+    Ul({ class: 'grid gap-2' }, [
         group.map((item) => DropdownItem(item, onSelect))
-    ]);
-};
+    ])
+);
 
 /**
  * Dropdown

@@ -5,42 +5,42 @@
  * @returns {string}
  */
 export const pad = (number) =>
+{
+    number *= 1;
+    return (number < 10 ? `0${number}` : number);
+};
+
+/**
+ * This will add time to the date.
+ *
+ * @param {string} date
+ * @returns {string}
+ */
+export const addTime = (date) =>
+{
+    if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
     {
-        number *= 1;
-        return (number < 10 ? `0${number}` : number);
-    };
+        date += 'T00:00:01';
+    }
 
-    /**
-     * This will add time to the date.
-     *
-     * @param {string} date
-     * @returns {string}
-     */
-    export const addTime = (date) =>
-    {
-        if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
-        {
-            date += 'T00:00:01';
-        }
+    date.replace(' ', 'T');
+    return date;
+};
 
-        date.replace(' ', 'T');
-        return date;
-    };
+/**
+ * This will remove the hyphens from the date.
+ *
+ * @param {string} date
+ * @returns {string}
+ */
+export const removeHyphens = (date) => date.replace(/-/g, '_');
 
-    /**
-     * This will remove the hyphens from the date.
-     *
-     * @param {string} date
-     * @returns {string}
-     */
-    export const removeHyphens = (date) => date.replace(/-/g, '_');
-
-    /**
-     * This will format the date.
-     *
-     * @param {number} year
-     * @param {number} month
-     * @param {number} day
-     * @returns {string}
-     */
-    export const FormatDate = (year, month, day) => `${year}-${pad(month + 1)}-${pad(day)}`;
+/**
+ * This will format the date.
+ *
+ * @param {number} year
+ * @param {number} month
+ * @param {number} day
+ * @returns {string}
+ */
+export const FormatDate = (year, month, day) => `${year}-${pad(month + 1)}-${pad(day)}`;

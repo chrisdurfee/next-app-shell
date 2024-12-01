@@ -1,5 +1,4 @@
 import { Builder, Component } from "@base-framework/base";
-import "../../../css/components/molecules/modals/modal.css";
 import { Button } from "../../atoms/buttons/buttons.js";
 import { DialogContainer } from "./dialog-container.js";
 

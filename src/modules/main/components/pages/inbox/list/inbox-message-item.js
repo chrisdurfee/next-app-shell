@@ -1,7 +1,7 @@
 import { A, Div, P, Span } from "@base-framework/atoms";
-import { DateTime, Jot } from "@base-framework/base";
-import { DynamicTime } from "@base-framework/organisms";
+import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
+import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
 
 /**
  * Skeleton for Inbox Message Item while loading.
@@ -28,14 +28,8 @@ const InboxMessageSkeleton = () => (
  */
 const Time = (time) => (
     Span({ class: "ml-auto text-xs text-foreground" }, [
-        new DynamicTime({
-            dateTime: time,
-            filter(date)
-            {
-                // convert to local time
-                const localTime = DateTime.getLocalTime(date, true);
-                return DateTime.getTimeFrame(localTime);
-            }
+        TimeFrame({
+            dateTime: time
         })
     ])
 );

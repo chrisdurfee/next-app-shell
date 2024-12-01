@@ -4,7 +4,7 @@ import { Dialog } from "./dialog.js";
 /**
  * Confirmation
  *
- * This will create a confirmation component.
+ * This will create a confirmation dialog component.
  *
  * @export
  * @class Dialog

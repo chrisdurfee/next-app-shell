@@ -81,6 +81,8 @@ export class DropdownMenu extends Component
 
     /**
      * Toggles the dropdown open state.
+     *
+     * @returns {void}
      */
     toggleDropdown()
     {
@@ -91,6 +93,7 @@ export class DropdownMenu extends Component
      * Handles item selection within the dropdown.
      *
      * @param {object} item - The selected item object
+     * @returns {void}
      */
     handleSelect(item)
     {

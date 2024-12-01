@@ -198,6 +198,11 @@ export const CalendarPage = () => (
             }
         },
 
+        /**
+         * This will render the calendar page.
+         *
+         * @returns {object}
+         */
         render()
         {
             return FullTemplate([

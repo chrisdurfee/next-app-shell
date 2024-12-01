@@ -1,5 +1,8 @@
+import { Data } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
 import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
+import { Dropdown } from "@components/molecules/dropdowns/dropdown.js";
+import { Panel } from "@components/organisms/panel.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -59,7 +62,7 @@ new DropdownMenu({
         [
             { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
             { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
-            { icon: Icons.cog, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+            { icon: Icons.cog.six, label: 'Settings', shortcut: '⌘S', value: 'settings' },
             { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
         ],
         [
@@ -79,6 +82,84 @@ new DropdownMenu({
         // Handle selected item
     },
 })`
+            }),
+
+            DocSection({
+                title: 'Dropdown',
+                description: 'The Dropdown component is used to render a list of items within the dropdown menu. This uses the parent data "groups" to render the items.',
+                preview: [
+                    new Panel({
+                        setData()
+                        {
+                            return new Data({
+                                groups: [
+                                    [
+                                        { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
+                                        { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
+                                        { icon: Icons.cog.six, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+                                        { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
+                                    ],
+                                    [
+                                        { icon: Icons.user.multiple, label: 'Team', value: 'team' },
+                                        { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
+                                        { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
+                                    ],
+                                    [
+                                        { icon: Icons.github, label: 'GitHub', value: 'github' },
+                                        { icon: Icons.helpCircle, label: 'Support', value: 'support' },
+                                        { icon: Icons.api, label: 'API', value: 'api' },
+                                    ]
+                                ]
+                            });
+                        }
+                    }, [
+                        Dropdown({
+                            onSelect: (item) =>
+                            {
+                                console.log("Selected item:", item);
+                                // Handle selected item
+                            }
+                        })
+                    ])
+                ],
+                code: `import { Icons } from "@components/icons/icons.js";
+import { Dropdown } from "@components/molecules/dropdowns/dropdown.js";
+import { Data } from "@base-framework/base";
+import { Panel } from "@components/organisms/panel.js";
+
+new Panel({
+    setData()
+    {
+        return new Data({
+            groups: [
+                [
+                    { icon: Icons.user.default, label: 'Profile', shortcut: '⌘P', value: 'profile' },
+                    { icon: Icons.creditCard, label: 'Billing', shortcut: '⌘B', value: 'billing' },
+                    { icon: Icons.cog.six, label: 'Settings', shortcut: '⌘S', value: 'settings' },
+                    { icon: Icons.computerDesktop, label: 'Keyboard shortcuts', shortcut: '⌘K', value: 'shortcuts' },
+                ],
+                [
+                    { icon: Icons.user.multiple, label: 'Team', value: 'team' },
+                    { icon: Icons.user.plus, label: 'Invite users', value: 'invite' },
+                    { icon: Icons.plus, label: 'New Team', shortcut: '⌘T', value: 'new_team' },
+                ],
+                [
+                    { icon: Icons.github, label: 'GitHub', value: 'github' },
+                    { icon: Icons.helpCircle, label: 'Support', value: 'support' },
+                    { icon: Icons.api, label: 'API', value: 'api' },
+                ]
+            ]
+        });
+    }
+}, [
+    Dropdown({
+        onSelect: (item) =>
+        {
+            console.log("Selected item:", item);
+            // Handle selected item
+        }
+    })
+])`
             })
         ]
     )
