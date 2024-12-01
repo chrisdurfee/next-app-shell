@@ -1,5 +1,6 @@
 import { Div, H4, P, Span } from "@base-framework/atoms";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -133,6 +134,39 @@ export const AvatarPage = () => (
         Span({ class: 'text-lg font-semibold text-foreground' }, 'Leslie Alexander'),
         P({ class: 'text-sm text-muted-foreground' }, 'leslie.alexander@example.com')
     ])
+])`
+            }),
+
+            // Status Indicator
+            DocSection({
+                title: 'Status Indicator',
+                description: 'A small status indicator for online, offline, busy, or away statuses.',
+                preview: [
+                    Div({
+                        class: 'relative',
+                        addState()
+                        {
+                            return {
+                                status: 'online'
+                            };
+                        }
+                    }, [
+                        StatusIndicator()
+                    ])
+                ],
+                code: `import { Div, H4, P, Span } from "@base-framework/atoms";
+import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
+
+Div({
+    class: 'relative',
+    addState()
+    {
+        return {
+            status: 'online'
+        };
+    }
+}, [
+    StatusIndicator()
 ])`
             })
         ]
