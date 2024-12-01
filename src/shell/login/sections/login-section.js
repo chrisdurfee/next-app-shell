@@ -1,4 +1,4 @@
-import { Div, H1, Header, P, Section } from '@base-framework/atoms';
+import { Div, H1, Header, OnState, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { LoginForm } from '../forms/login-form.js';
 
@@ -16,15 +16,48 @@ const LoginHeader = Atom(({ title, description}) => (
 ));
 
 /**
+ * This will create a form wrapper.
+ *
+ * @param {object} props
+ * @param {array} children
+ * @returns {object}
+ */
+const FormWrapper = Atom((props, children) => (
+	Div({
+		class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
+		addState()
+		{
+			return {
+				loading: true
+			};
+		}
+	}, children)
+));
+
+/**
+ * This will create a loading message.
+ *
+ * @returns {object}
+ */
+const LoadingMessage = () => (
+	null
+);
+
+/**
  * This will create the login section.
  *
  * @returns {object}
  */
 export const LoginSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Div({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
-			LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
-			LoginForm(),
+		FormWrapper({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
+			OnState('loading', (state) => (!state)
+				? LoadingMessage()
+				: [
+                    LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
+					LoginForm()
+                ]
+			)
 		])
 	])
 );
