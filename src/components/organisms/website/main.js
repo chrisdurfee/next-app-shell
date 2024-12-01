@@ -8,9 +8,8 @@ import { HeroSection } from './hero/hero.js';
  *
  * @returns {object}
  */
-export const MainLayout = Atom(() =>
-{
-    return Div([Header(), HeroSection()]);
-});
+export const MainLayout = Atom(() => (
+    Div([Header(), HeroSection()])
+));
 
 export default MainLayout;

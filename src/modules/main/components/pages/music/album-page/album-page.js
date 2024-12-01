@@ -1,5 +1,5 @@
 import { Div, H2, Header } from "@base-framework/atoms";
-import { BackButton, Overlay } from "@components/organisms/overlay.js";
+import { BackButton, Overlay } from "@components/organisms/overlays/overlay.js";
 import { getAlbumByTitle } from "../albums.js";
 import { AlbumCard } from "./album-card.js";
 import { AlbumDetails } from "./album-details.js";

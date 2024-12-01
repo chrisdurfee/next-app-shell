@@ -1,8 +1,8 @@
 import { Atom } from "@base-framework/base";
 import { A, Div, H1, H2, Header, P } from "@components/atoms/atoms.js";
 import { GridContainer } from '@components/molecules/molecules.js';
-import { InlineOverlay } from '@components/organisms/inline-overlay.js';
-import { BackButton } from '@components/organisms/overlay.js';
+import { InlineOverlay } from '@components/organisms/overlays/inline-overlay.js';
+import { BackButton } from '@components/organisms/overlays/overlay.js';
 import { Panel } from '@components/organisms/panel.js';
 
 /**

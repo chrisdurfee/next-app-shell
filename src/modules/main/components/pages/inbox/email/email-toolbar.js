@@ -3,7 +3,7 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icon } from "@components/atoms/icon.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
-import { BackButton } from "@components/organisms/overlay.js";
+import { BackButton } from "@components/organisms/overlays/overlay.js";
 
 /**
  * Toolbar for Email Actions.

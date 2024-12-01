@@ -1,4 +1,4 @@
-import { Div } from "../atoms/atoms.js";
+import { Div } from "../../atoms/atoms.js";
 import { Overlay } from "./overlay.js";
 
 /**

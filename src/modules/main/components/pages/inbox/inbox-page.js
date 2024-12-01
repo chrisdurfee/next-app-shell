@@ -1,6 +1,6 @@
 import { Div, On } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { DockableOverlay } from "@components/organisms/dockable-overlay.js";
+import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
 import { Panel } from "@components/organisms/panel.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { EmailDetail } from "./email/email-detail.js";
