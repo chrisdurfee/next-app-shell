@@ -18,10 +18,10 @@ const STATUSES = {
  * This will create the StatusIndicator molecule. This will allow the indicator
  * to bind to the status of the user.
  *
- * @param {object} props
+ * @param {object} [props]
  * @returns {object}
  */
-export const StatusIndicator = ({ propName = 'status' }) => (
+export const StatusIndicator = ({ propName = 'status' } = {}) => (
     Div({
         class: `absolute bottom-0 right-0 w-3 h-3 border-2 rounded-full`,
         onSet: [propName, {

@@ -12,7 +12,7 @@ const BreadcrumbLink = (href, label) => (
     A(
         {
             href,
-            'aria-current': label === 'Breadcrumb' ? 'page' : null, // Only set aria-current on the last item
+            'aria-current': label === 'Breadcrumb' && 'page', // Only set aria-current on the last item
             class: 'text-muted-foreground hover:text-foreground'
         },
         [Span(label)]
@@ -74,6 +74,7 @@ export const Breadcrumb = Jot(
      */
     render()
     {
+        const length = this.data.items.length - 1;
         return Nav(
             {
                 'aria-label': 'Breadcrumb',
@@ -87,7 +88,7 @@ export const Breadcrumb = Jot(
                         BreadcrumbItem({
                             href: item.href,
                             label: item.label,
-                            separator: index < this.data.items.length - 1
+                            separator: index < length
                         })
                     )]
                 })
