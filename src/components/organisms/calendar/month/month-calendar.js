@@ -56,6 +56,6 @@ export const MonthCalendar = (props) => (
                     props.select
                 ))
             ]]
-        }),
+        })
     ])
 );

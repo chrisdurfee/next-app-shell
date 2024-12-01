@@ -41,6 +41,8 @@ export const NotificationPage = () => (
 })`
             }),
 
+            P({ class: 'text-muted-foreground' }, 'The notification can either be a link with an "href" attribute or a button with an "onClick" event.'),
+
             // Info Notification
             DocSection({
                 title: 'Info Notification',

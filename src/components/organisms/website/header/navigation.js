@@ -4,6 +4,8 @@ import { Atom } from '@base-framework/base';
 /**
  * Logo
  *
+ * This will create a logo for the website.
+ *
  * @param {object} props
  * @returns {object}
  */
@@ -20,15 +22,15 @@ const Logo = Atom(({ src = 'https://tailwindui.com/img/logos/mark.svg?color=indi
 });
 
 /**
- * MobileMenuButton
+ * This will create a mobile menu button.
  *
  * @param {object} props
  * @returns {object}
  */
 const MobileMenuButton = Atom((props) =>
 {
-    const className = '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700';
-    return Button({ type: 'button', class: className }, [
+    const className = '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5';
+    return Button({ variant: 'primary', class: className }, [
         Span({ class: 'sr-only' }, 'Open main menu'),
         Div({
             html: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -38,42 +40,46 @@ const MobileMenuButton = Atom((props) =>
     ]);
 });
 
+/**
+ * This will create a link.
+ *
+ * @param {string} link
+ * @returns {object}
+ */
 const Link = (link) => A({
     href: '/' + link.toLowerCase(),
-    class: 'text-sm font-semibold leading-6 text-gray-900'
+    class: 'text-sm font-semibold leading-6'
 }, link);
 
 /**
- * DesktopMenuLinks
+ * This will create a list of links.
  *
  * @param {object} props
  * @returns {object}
  */
-const DesktopMenuLinks = Atom(({ links = ['Product', 'Features', 'Marketplace', 'Company'] }) =>
-{
-    return Div({
+const DesktopMenuLinks = Atom(({ links = ['Product', 'Features', 'Marketplace', 'Company'] }) => (
+    Ul({
         class: 'hidden lg:flex lg:gap-x-12' ,
         map: [links, Link]
-    });
-});
+    })
+));
 
 /**
- * DesktopLogIn
+ * This will create a log in link.
  *
  * @returns {object}
  */
-const DesktopLogIn = Atom(() =>
-{
-    return Div({ class: 'hidden lg:flex lg:flex-1 lg:justify-end' }, [
-        A({ href: '#', class: 'text-sm font-semibold leading-6 text-gray-900' }, [
+const DesktopLogIn = Atom(() => (
+    Div({ class: 'hidden lg:flex lg:flex-1 lg:justify-end' }, [
+        A({ href: '#', class: 'text-sm font-semibold leading-6' }, [
             'Log in ',
             Span({ 'aria-hidden': 'true' }, '→')
         ])
-    ]);
-});
+    ])
+));
 
 /**
- * Navigation
+ * THis will create a navigation molecule.
  *
  * @param {object} props
  * @returns {object}

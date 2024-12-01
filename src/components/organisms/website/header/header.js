@@ -5,9 +5,10 @@ import { Navigation } from './navigation.js';
 /**
  * Header
  *
+ * This will create a header for the website.
+ *
  * @returns {object}
  */
-export const Header = Atom(() =>
-{
-    return Div({ class: 'absolute inset-x-0 top-0 z-50' }, [Navigation()]);
-});
+export const Header = Atom(() => (
+    Div({ class: 'absolute inset-x-0 top-0 z-50' }, [Navigation()])
+));

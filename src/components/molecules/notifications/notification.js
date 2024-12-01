@@ -85,8 +85,6 @@ const NotificationButton = Atom(({ close, class: customClass }, children) => (
  */
 export class Notification extends DelayComponent
 {
-    class = 'notification';
-    text = 'This is a notification.';
     removingClass = 'pullRight';
 
     /**
@@ -111,6 +109,9 @@ export class Notification extends DelayComponent
 
         const notificationContent = this.getChildren(iconColor);
 
+        /**
+         * The notification can be either a link or a button.
+         */
         if (href)
         {
             return NotificationLink({
@@ -212,9 +213,9 @@ export class Notification extends DelayComponent
             this.timer.stop();
         }
 
-        if (this.callBack)
+        if (this.onClick)
         {
-            this.callBack();
+            this.onClick();
         }
 
         this.destroy();

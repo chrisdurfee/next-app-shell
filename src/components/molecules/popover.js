@@ -208,6 +208,11 @@ export class PopOver extends Component
         this.initialize();
     }
 
+    /**
+     * This will hide the popover before destroying.
+     *
+     * @returns {void}
+     */
     beforeDestroy()
     {
         this.panel.hidePopover();

@@ -7,19 +7,6 @@ import { Icons } from "../../icons/icons.js";
 import { InlineNavigation } from "./inline-navigation.js";
 
 /**
- * @constant
- * @type {number} MobileWidth
- */
-const MOBILE_WIDTH = 1024;
-
-/**
- * This will check if the device is mobile.
- *
- * @returns {boolean}
- */
-const isMobile = () => window.innerWidth < MOBILE_WIDTH;
-
-/**
  * This will create a navigation button.
  *
  * @returns {object}
