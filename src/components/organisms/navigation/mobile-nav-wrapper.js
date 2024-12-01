@@ -1,4 +1,4 @@
-import { H3 } from "@base-framework/atoms";
+import { H3, OnState } from "@base-framework/atoms";
 import { Atom, Component } from "@base-framework/base";
 import { Div } from "../../atoms/atoms.js";
 import { Button } from "../../atoms/buttons/buttons.js";
@@ -30,7 +30,7 @@ const NavButton = () => (
 			return {
 				open: false
 			};
-		}, pointerdown: (e, { state }) => state.toggle('open') }, [
+		}, click: (e, { state }) => state.toggle('open') }, [
         Icon(Icons.bar.three)
     ])
 );
@@ -186,25 +186,19 @@ const MobileNav = (props) =>
 	const closeCallBack = (e, { parent }) => parent.parent.state.open = false;
 	mapCloseCallBack(props.options, closeCallBack);
 
-	return Div({
-		class: 'bg-background flex flex-auto flex-col w-full relative',
-		onState: ['open', (state) =>
-		{
-			if (!state)
-			{
-				return null;
-			}
-
-			return [
+	return Div({ class: 'bg-background flex flex-auto flex-col w-full relative' }, [
+		OnState('open', (state) => (!state)
+			? null
+			: [
 				new NavigationPopover({ title: props.title }, [
 					new InlineNavigation(
 					{
 						options: props.options
 					})
 				])
-			];
-		}]
-	});
+			]
+		)
+	]);
 };
 
 /**
