@@ -26,7 +26,7 @@ const SubRoute = (atom) => new Panel(atom);
  * @returns {object}
  */
 export const PageToolbar = () => (
-    Div({ class: "flex items-center justify-between border-b pb-2" }, [
+    Div({ class: "flex items-center justify-between pb-2" }, [
         Div({ class: 'flex lg:hidden' }, [
             BackButton({
                 margin: 'm-0 ml-0'
@@ -48,12 +48,17 @@ const isMObile = () => window.innerWidth < LG_WINDOW_SIZE;
  *
  * @type {object} Props
  */
-const Props =
+const props =
 {
+    /**
+     * This will run after the setup.
+     *
+     * @returns {void}
+     */
     afterSetup()
     {
         const page = this.route.page;
-        if (isMObile() && !page)
+        if (!isMObile() && !page)
         {
             app.navigate('settings/profile');
         }
@@ -68,13 +73,13 @@ const Props =
  * @returns {object}
  */
 export const SettingsPage = () => (
-    new BlankPage([
+    new BlankPage(props, [
         Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
             // Sidebar
             SidebarMenu({
                 title: 'Settings',
                 options: [
-                    { label: 'Profile', href: 'settings', icon: Icons.user.default, exact: true },
+                    { label: 'Profile', href: 'settings/profile', icon: Icons.user.default, exact: true },
                     { label: 'Account', href: 'settings/account', icon: Icons.locked },
                     { label: 'Appearance', href: 'settings/appearance', icon: Icons.sun },
                     { label: 'Notifications', href: 'settings/notifications', icon: Icons.bell.default },

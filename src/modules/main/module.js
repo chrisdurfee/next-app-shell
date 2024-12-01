@@ -8,6 +8,7 @@ import InboxPage from './components/pages/inbox/inbox-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
+import SettingsPage from './components/pages/settings/settings-page.js';
 import WebsitePage from './components/pages/website/website-page.js';
 
 /**
@@ -54,7 +55,7 @@ const routes = Module.convertRoutes(
     /**
      * Settings route
      */
-    { path: '/settings/:page?*', import: import('./components/pages/settings/settings-page.js'), title: 'Settings' },
+    { path: '/settings/:page?*', component: SettingsPage(), title: 'Settings' },
 
     /**
      * website routes
