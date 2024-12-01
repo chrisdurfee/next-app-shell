@@ -35,7 +35,7 @@ const updateBodyClass = (isSignedIn) =>
  */
 export const AppContent = (props) => (
 	Div({
-		class: 'app-content flex flex-auto flex-col',
+		class: 'app-content flex flex-auto flex-col will-change-contents',
 
 		/**
 		 * This will add a state to sign in.
