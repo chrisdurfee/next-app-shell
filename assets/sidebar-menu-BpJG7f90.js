@@ -1,1 +1,0 @@
-import{I as e,e as o,j as r,aj as t}from"./index-DguvM6IP.js";const n=({title:l,options:a,class:s=""})=>e({class:`pb-12 p-4 lg:p-6 lg:border-r bg-sidebar lg:max-w-[300px] h-full ${s}`},[l&&o({class:"pb-2 px-6 flex flex-col"},[r({class:"scroll-m-20 text-2xl font-bold tracking-tight"},l)]),new t({options:a})]);export{n as S};
