@@ -1,4 +1,4 @@
-import { Button, Div, I, Input, Li, Span, Ul } from '@base-framework/atoms';
+import { Button, Div, I, Input, Li, OnState, Span, Ul } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
 import { PopOver } from '../popover.js';
@@ -58,22 +58,18 @@ const ComboboxDropdown = (handleSelect) => (
  * @returns {object}
  */
 const DropdownContainer = ({ onSelect }) => (
-    Div({
-        class: 'flex flex-auto flex-col',
-        onState: ['open', (isOpen, ele, parent) =>
-        {
-            if (isOpen)
-            {
-                return new PopOver({
-                    cache: 'dropdown',
-                    parent: parent,
-                    button: parent.button,
-                }, [
-                    ComboboxDropdown(onSelect)
-                ]);
-            }
-        }]
-    })
+    Div({ class: 'flex flex-auto flex-col' }, [
+        OnState('open', (isOpen, ele, parent) => (!isOpen)
+            ? null
+            : new PopOver({
+                cache: 'dropdown',
+                parent: parent,
+                button: parent.button,
+            }, [
+                ComboboxDropdown(onSelect)
+            ])
+        )
+    ])
 );
 
 /**

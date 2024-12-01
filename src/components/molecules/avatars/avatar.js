@@ -1,7 +1,6 @@
 import { Div, Img, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
-
 /**
  * AvatarImage Atom
  *

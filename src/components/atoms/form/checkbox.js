@@ -1,4 +1,4 @@
-import { Checkbox as BaseCheckbox, Div, I, Label, Span } from '@base-framework/atoms';
+import { Checkbox as BaseCheckbox, Div, I, Label, OnState, Span } from '@base-framework/atoms';
 import { Icons } from '../../icons/icons.js';
 import { VeilJot } from '../veil.js';
 
@@ -29,19 +29,15 @@ const HiddenCheckox = ({ id, checked, bind, required}) => (
  * @returns {object}
  */
 const CheckBoxIcon = () => (
-    Span({ class: "absolute text-xs pointer-events-none", onState: ['checked', (value) =>
-        {
-            if (!value)
-            {
-                return null;
-            }
-
-            return I({
+    Span({ class: "absolute text-xs pointer-events-none" }, [
+        OnState('checked', (value) => (!value)
+            ? null
+            : I({
                 class: 'w-2 h-2 pointer-events-none',
                 html: Icons.check,
-            });
-        }]
-    })
+            })
+        )
+    ])
 );
 
 /**

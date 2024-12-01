@@ -1,4 +1,4 @@
-import { Button, Div, I, Input, Span } from '@base-framework/atoms';
+import { Button, Div, I, Input, OnState, Span } from '@base-framework/atoms';
 import { DateTime } from '@base-framework/base';
 import { VeilJot } from '../../atoms/veil.js';
 import { Icons } from '../../icons/icons.js';
@@ -46,16 +46,10 @@ const CalendarButton = ({ bind, required, toggleOpen }) => (
  * @returns {object}
  */
 const CalendarContainer = ({ handleDateSelect }) => (
-    Div({
-        class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg',
-        onState: ['open', (value, ele, parent ) =>
-        {
-            if (!value)
-            {
-                return null;
-            }
-
-            return new PopOver({
+    Div({ class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg' }, [
+        OnState('open', (value, ele, parent ) => (!value)
+            ? null
+            : new PopOver({
                 cache: 'dropdown',
                 parent: parent,
                 button: parent.panel,
@@ -65,9 +59,9 @@ const CalendarContainer = ({ handleDateSelect }) => (
                     selectedDate: parent.state.selectedDate,
                     selectedCallBack: handleDateSelect
                 })
-            ]);
-        }]
-    })
+            ])
+        )
+    ])
 );
 
 /**

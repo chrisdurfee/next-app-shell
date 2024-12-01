@@ -198,7 +198,7 @@ export class PopOver extends Component
     }
 
     /**
-     * This will override the set up to use the body.
+     * This will override the set up to use the app shell.
      *
      * @param {object} container
      */

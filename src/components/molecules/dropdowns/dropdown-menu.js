@@ -1,4 +1,4 @@
-import { Button, Div, I, Span } from '@base-framework/atoms';
+import { Button, Div, I, OnState, Span } from '@base-framework/atoms';
 import { Component, Data } from '@base-framework/base';
 import { PopOver } from '../popover.js';
 import { Dropdown } from './dropdown.js';
@@ -29,21 +29,18 @@ const DropdownButton = ({ label, icon, toggleDropdown }) => (
  * @returns {object}
  */
 const DropdownContainer = ({ onSelect }) => (
-    Div({
-        onState: ['open', (isOpen, ele, parent) =>
-        {
-            if (isOpen)
-            {
-                return new PopOver({
-                    cache: 'dropdown',
-                    parent: parent,
-                    button: parent.button,
-                }, [
-                    Dropdown(onSelect)
-                ]);
-            }
-        }]
-    })
+    Div([
+        OnState('open', (isOpen, ele, parent) => (!isOpen)
+            ? null
+            : new PopOver({
+                cache: 'dropdown',
+                parent: parent,
+                button: parent.button,
+            }, [
+                Dropdown(onSelect)
+            ])
+        )
+    ])
 );
 
 /**

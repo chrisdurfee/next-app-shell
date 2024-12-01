@@ -1,4 +1,4 @@
-import { Atom, Import } from "@base-framework/base";
+import { Atom } from "@base-framework/base";
 import { A, Div, H1, H2, Header, P } from "@components/atoms/atoms.js";
 import { GridContainer } from '@components/molecules/molecules.js';
 import { InlineOverlay } from '@components/organisms/inline-overlay.js';
@@ -17,25 +17,6 @@ const PageHeader = Atom(({ title, description}) => (
 		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
 	])
 ));
-
-/**
- * This will create an import buttons.
- *
- * @returns {object}
- */
-const ImportButtons = () => (
-	new Panel([
-		Div([
-			PageHeader({
-				title: 'Main Title',
-			}),
-			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm my-5 mx-5 p-4' }, [
-				Import({ src: import('@components/atoms/import-buttons.js') })
-			]),
-			GridContainer()
-		])
-	])
-);
 
 /**
  * This will create an example page.
@@ -102,10 +83,7 @@ const MarketingPage = () => (
  * @returns {array}
  */
 export const AsideSwitch = (basePath) => ([
-	{
-		uri: basePath,
-		component: ImportButtons()
-	},
+	ExamplePage(basePath + '/tempor-nulla'),
 	{
 		uri: basePath + '/marketing*',
 		component: MarketingPage()
