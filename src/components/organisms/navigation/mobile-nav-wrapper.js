@@ -63,7 +63,7 @@ const Header = (props) => (
  * @returns {object}
  */
 const PopupHeader = (props) => (
-    Div({ class: 'sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-b' }, [
+    Div({ class: 'sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-0 border-b' }, [
         Button({
 			variant: 'icon',
 			class: 'm-2',
@@ -128,7 +128,7 @@ export class NavigationPopover extends Component
 					parent.state.open = false; // Close the modal
 				}
 			},
-            class: `fixed popIn m-auto rounded-md p-0 shadow-lg bg-popover border top-[5vh] bottom-[5vh] left-2 right-2 max-h-[90vh] text-inherit block z-30 after:content-[''] after:fixed after:-top-[5vh] after:-left-2 after:-right-2 after:-bottom-[5vh] after:-z-[1] after:bg-black/40`,
+            class: `fixed popIn m-auto rounded-md p-0 shadow-lg bg-popover top-[5vh] bottom-[5vh] left-2 right-2 max-h-[90vh] text-inherit block z-30 after:content-[''] after:fixed after:-top-[5vh] after:-left-2 after:-right-2 after:-bottom-[5vh] after:-z-[1] after:bg-black/40`,
 			style: 'margin: env(safe-area-inset-top) 0 env(safe-area-inset-bottom) 0',
 			dataSet: ['open', ['expanded', true, 'true']]
         }, [
