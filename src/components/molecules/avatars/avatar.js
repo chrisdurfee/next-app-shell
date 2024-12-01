@@ -2,7 +2,7 @@ import { Div, Img, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
- * AvatarImage Atom
+ * This creates an image element to be used as an avatar.
  *
  * @param {object} props
  * @returns {object}
@@ -18,6 +18,10 @@ const AvatarImage = Atom(({ src, alt }) =>
         class: 'absolute w-full h-full rounded-full object-cover fadeIn',
         src,
         alt,
+
+        /**
+         * This will remove the image if there is an error.
+         */
         error: (event) => event.target.style.display = 'none'
     });
 });
@@ -104,7 +108,9 @@ const getSize = (size) =>
 };
 
 /**
- * Avatar Component
+ * Avatar
+ *
+ * This creates an avatar component.
  *
  * @param {object} props
  * @returns {object}

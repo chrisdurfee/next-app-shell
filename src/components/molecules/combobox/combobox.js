@@ -1,5 +1,5 @@
 import { Button, Div, I, Input, Li, OnState, Span, Ul } from '@base-framework/atoms';
-import { Data, Jot } from '@base-framework/base';
+import { Component, Data, Jot } from '@base-framework/base';
 import { Icons } from '../../icons/icons.js';
 import { PopOver } from '../popover.js';
 
@@ -73,11 +73,12 @@ const DropdownContainer = ({ onSelect }) => (
 );
 
 /**
- * Combobox Atom
+ * Combobox
  *
- * @param {object} props
- * @param {array} children
- * @returns {object}
+ * This will render a combobox component.
+ *
+ * @class
+ * @extends {Component}
  */
 export const Combobox = Jot(
 {
@@ -125,6 +126,8 @@ export const Combobox = Jot(
 
     /**
      * Toggles the dropdown open state.
+     *
+     * @returns {void}
      */
     toggleDropdown()
     {

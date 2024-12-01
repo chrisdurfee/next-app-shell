@@ -65,7 +65,7 @@ export class DockableOverlay extends Overlay
      */
     getDockedClassName()
     {
-        return 'flex flex-auto flex-col bg-background flex ' + (this.class || '');
+        return 'flex flex-auto flex-col bg-background flex will-change-contents ' + (this.class || '');
     }
 
     /**

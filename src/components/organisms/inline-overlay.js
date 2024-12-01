@@ -17,7 +17,7 @@ export class InlineOverlay extends Overlay
      */
     getClassName()
     {
-        return 'overlay relative inline top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 ' + (this.class || '');
+        return 'overlay relative inline top-[0px] left-0 bottom-0 right-0 flex-col bg-background z-20 lg:left-[64px] lg:top-0 will-change-contents ' + (this.class || '');
     }
 
     /**
