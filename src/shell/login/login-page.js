@@ -1,5 +1,5 @@
+import { BlankPage } from '@components/pages/blank-page.js';
 import { FullPage } from '@components/pages/full-page.js';
-import { FullscreenPage } from '../../components/pages/fullscreen-page.js';
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
@@ -32,7 +32,7 @@ const PageProps =
 	{
 		this.state.step = step;
 	}
-}
+};
 
 /**
  * LoginPage
@@ -42,7 +42,7 @@ const PageProps =
  * @returns {FullPage}
  */
 export const LoginPage = () => (
-	new FullscreenPage(PageProps, [
+	new BlankPage(PageProps, [
 		PageStepContainer()
 	])
 );
