@@ -15,6 +15,12 @@ export { FormControl, FormField, FormItem };
 const submit = (e, callBack = null) =>
 {
     const form = e.target;
+
+    /**
+     * If the form is not valid, this will prevent it
+     * from perventing the default to allow the browser to
+     * display the validation messages.
+     */
     const isValid = form.checkValidity();
     if (!isValid)
     {

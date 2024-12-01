@@ -55,7 +55,7 @@ const enhanceChildren = (children, handleInput, handleInvalid) =>
 };
 
 /**
- * FormControl Component
+ * FormControl
  *
  * Wrapper around form control elements that automatically handles validation events.
  *

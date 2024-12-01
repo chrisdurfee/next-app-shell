@@ -21,6 +21,10 @@ export class NotificationContainer extends Component
      */
     render()
     {
+        /**
+         * The container needs to be set as a popover to allow it
+         * to be shown over modals and popups.
+         */
         return Div({ class: 'notification-container pointer-events-none inset-auto bg-transparent backdrop:bg-transparent overflow-visible fixed bottom-[80px] right-0 z-50 p-5', popover: 'manual', }, [
             new List({
                 cache: 'list',
@@ -39,16 +43,24 @@ export class NotificationContainer extends Component
      */
     addNotice(props = {})
     {
+        /**
+         * The list requires an id on the itme to keep track of the items.
+         */
         props.id = id++;
+
+        /**
+         * The notice needs to have the remove callback set to remove the notice.
+         */
         props.callBack = () => this.removeNotice(props);
         this.list.append([ props ]);
 
-        const DELAY = 10;
-        setTimeout(() =>
-        {
-            this.panel.hidePopover();
-            this.panel.showPopover();
-        }, DELAY);
+        /**
+         * The popup needs to be hidden first incase we have
+         * multiple notifications at the same time to show it
+         * all content.
+         */
+        this.panel.hidePopover();
+        this.panel.showPopover();
     }
 
     /**

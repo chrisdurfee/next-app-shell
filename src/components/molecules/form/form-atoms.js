@@ -2,7 +2,7 @@ import { Div, Label, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 
 /**
- * FormItem Component
+ * FormItem
  *
  * Groups form elements like label, control, description, and message.
  *
@@ -13,7 +13,7 @@ import { Atom } from "@base-framework/base";
 export const FormItem = Atom((props, children) => Div({ ...props, class: "flex flex-auto flex-col space-y-2" }, children));
 
 /**
- * FormLabel Component
+ * FormLabel
  *
  * Accessible label for form inputs.
  *
@@ -24,7 +24,7 @@ export const FormItem = Atom((props, children) => Div({ ...props, class: "flex f
 export const FormLabel = Atom((props, children) => Label({ ...props, class: "flex auto text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" }, children));
 
 /**
- * FormDescription Component
+ * FormDescription
  *
  * Provides additional information for form controls.
  *
@@ -35,7 +35,7 @@ export const FormLabel = Atom((props, children) => Label({ ...props, class: "fle
 export const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm text-muted-foreground" }, children));
 
 /**
- * FormMessage Component
+ * FormMessage
  *
  * Displays validation error messages.
  *
@@ -43,6 +43,6 @@ export const FormDescription = Atom((props, children) => P({ ...props, class: "t
  * @param {array} children
  * @returns {object}
  */
-export const FormMessage = Atom((props, children) => {
-    return P({ ...props, class: "text-sm text-destructive" }, children);
-});
+export const FormMessage = Atom((props, children) => (
+    P({ ...props, class: "text-sm text-destructive" }, children)
+));

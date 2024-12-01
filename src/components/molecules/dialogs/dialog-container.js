@@ -1,6 +1,5 @@
 import { Div, Footer, H2, Header, Dialog as MainDialog, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import "../../../css/components/molecules/modals/modal.css";
 
 /**
  * This will create a dialog header.
