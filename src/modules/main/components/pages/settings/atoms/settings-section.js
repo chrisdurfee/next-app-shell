@@ -8,7 +8,7 @@ import { Form } from "@components/molecules/form/form.js";
  * @param {object} props
  * @returns {object}
  */
-const Title = (props) => H2({ class: 'text-2xl font-semibold' }, props.title);
+const Title = (props) => H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, props.title);
 
 /**
  * SettingsSection
@@ -19,14 +19,14 @@ const Title = (props) => H2({ class: 'text-2xl font-semibold' }, props.title);
  * @returns {object}
  */
 export const SettingsSection = Atom((props, children) => (
-    Div({ class: `space-y-6 ${props.class || '' }` }, [
+    Div({ class: `${props.class || '' }` }, [
 
         /**
          * Set up the title and description.
          */
         props.title && Title({ title: props.title }),
-        props.description && P({ class: 'text-muted-foreground' }, props.description),
+        props.description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, props.description),
 
-        Form({ submit: props.submit }, children)
+        Form({ class: 'space-y-6 py-10', submit: props.submit }, children)
     ])
 ));

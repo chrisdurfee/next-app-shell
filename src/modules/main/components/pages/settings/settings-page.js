@@ -24,7 +24,7 @@ const SubRoute = (atom) => new Panel(atom);
  * @returns {object}
  */
 export const SettingsPage = () => (
-    Div({ class: 'w-full grid grid-cols-1 lg:grid-cols-5 h-full' }, [
+    Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
         // Sidebar
         SidebarMenu({
             title: 'Settings',
@@ -38,16 +38,18 @@ export const SettingsPage = () => (
         }),
 
         // Content Section
-        Div({
-            class: 'col-span-4 p-6 contained',
-            switch: [
-                { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
-                { uri: '/settings/account', component: SubRoute(AccountSettings()) },
-                { uri: '/settings/appearance', component: SubRoute(AppearanceSettings()) },
-                { uri: '/settings/notifications', component: SubRoute(NotificationSettings()) },
-                { uri: '/settings/display', component: SubRoute(DisplaySettings()) },
-            ]
-        })
+        Div({ class: 'flex flex-auto flex-col p-4 lg:p-6' }, [
+            Div({
+                class: 'flex flex-auto flex-col contained',
+                switch: [
+                    { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
+                    { uri: '/settings/account', component: SubRoute(AccountSettings()) },
+                    { uri: '/settings/appearance', component: SubRoute(AppearanceSettings()) },
+                    { uri: '/settings/notifications', component: SubRoute(NotificationSettings()) },
+                    { uri: '/settings/display', component: SubRoute(DisplaySettings()) },
+                ]
+            })
+        ])
     ])
 );
 
