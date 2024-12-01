@@ -38,7 +38,7 @@ export const NavigationAvatar = Jot(
      */
     after()
     {
-        //status.setup(this.data);
+        status.setup(this.data);
     },
 
     /**
@@ -72,6 +72,6 @@ export const NavigationAvatar = Jot(
      */
     destroy()
     {
-        //status.stop();
+        status.stop();
     }
 });

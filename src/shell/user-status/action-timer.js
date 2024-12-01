@@ -39,6 +39,7 @@ export const ActionTimer =
     /**
      * Sets up the ActionTimer by initializing the state and activity events.
      *
+     * @param {object} userData - The user data object.
      * @returns {void}
      */
     setup(userData)
@@ -130,6 +131,7 @@ export const ActionTimer =
      * Updates the user's state.
      *
      * @param {string} state - The new state to set.
+     * @returns {void}
      */
     setState(state)
     {

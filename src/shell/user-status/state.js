@@ -1,4 +1,3 @@
-
 /**
  * @const {string} APP_STATE
  *

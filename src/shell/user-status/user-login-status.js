@@ -31,10 +31,30 @@ export class UserLoginStatus
 {
     /**
      * Constructor initializes user data binding.
+     *
+     * @param {string} apiUrl - The API endpoint URL.
      */
-    constructor()
+    constructor(apiUrl  = '/api/user-status')
     {
-        this.setupData();
+        /**
+         * @member {string} apiUrl
+         */
+        this.apiUrl = apiUrl;
+
+        /**
+         * @member {object|null} data
+         */
+        this.data = null;
+
+        /**
+         * @member {object|null} data
+         */
+        this.state = null;
+
+        /**
+         * @member {object|null} data
+         */
+        this.userData = null;
     }
 
     /**
@@ -46,6 +66,8 @@ export class UserLoginStatus
     setup(userData)
     {
         this.userData = userData;
+        this.setupData();
+
         ActionTimer.setup(userData);
 
         this.setupState();
@@ -74,7 +96,7 @@ export class UserLoginStatus
             status: STATES.OFFLINE,
         });
 
-        //this.data.link(this.userData, 'status', STATE_ATTR);
+        this.data.link(this.userData, 'status', STATE_ATTR);
     }
 
     /**
@@ -171,7 +193,7 @@ export class UserLoginStatus
             userId: data.userId,
         }).toString();
 
-        sendRequest('/api/', params);
+        sendRequest(this.apiUrl, params);
     }
 
     /**
