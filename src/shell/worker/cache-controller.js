@@ -15,6 +15,13 @@ class CacheController
 		this.hasUpdate = false;
 	}
 
+	/**
+	 * This will open the cache.
+	 *
+	 * @param {string} cacheName
+	 * @param {function} callBack
+	 * @returns {Promise}
+	 */
 	open(cacheName, callBack)
 	{
 		return caches.open(cacheName).then(callBack);
@@ -78,6 +85,12 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will add files to the cache.
+	 *
+	 * @param {array} files
+	 * @returns {Promise}
+	 */
 	addFiles(files)
 	{
 		return this.open(this.cacheName, (cache) =>
@@ -86,6 +99,11 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will delete files from the cache.
+	 *
+	 * @returns {void}
+	 */
 	deleteFiles()
 	{
 		caches.delete(this.cacheName).then((success) =>
@@ -94,6 +112,13 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will add data to the cache.
+	 *
+	 * @param {string} key
+	 * @param {*} data
+	 * @returns {Promise}
+	 */
 	addData(key, data)
 	{
 		return this.open(this.dataCacheName, (cache) =>
@@ -102,6 +127,12 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will remove data from the cache.
+	 *
+	 * @param {string} key
+	 * @returns {Promise}
+	 */
 	removeData(key)
 	{
 		return this.open(this.dataCacheName, (cache) =>
@@ -110,6 +141,12 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will get data from the cache.
+	 *
+	 * @param {string} key
+	 * @returns {Promise}
+	 */
 	fetchData(e)
 	{
 		const request = e.request,
@@ -125,6 +162,12 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will get files from the cache.
+	 *
+	 * @param {object} e
+	 * @returns {Promise}
+	 */
 	fetchFile(e)
 	{
 		const request = e.request;
