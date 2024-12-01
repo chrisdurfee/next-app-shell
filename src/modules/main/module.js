@@ -8,6 +8,7 @@ import InboxPage from './components/pages/inbox/inbox-page.js';
 import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
 import { MainBsidePage } from './components/pages/main-bside-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
+import WebsitePage from './components/pages/website/website-page.js';
 
 /**
  * This will set the routes for the module.
@@ -56,6 +57,11 @@ const routes = Module.convertRoutes(
     { path: '/settings/:page?*', import: import('./components/pages/settings/settings-page.js'), title: 'Settings' },
 
     /**
+     * website routes
+     */
+    { path: '/website/:page?*', component: WebsitePage(), title: 'Inbox' },
+
+    /**
      * Full page routes
      */
     { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
@@ -83,38 +89,39 @@ const links =
     { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 },
     { label: 'Calendar', href: 'calendar', icon: Icons.calendar.default },
     { label: 'List', href: 'list', icon: Icons.list.four },
-    { label: 'Reviews', href: 'full-contain', icon: Icons.star },
-    { label: 'Map', href: 'full', icon: Icons.map },
-    { label: 'Help', href: 'test', icon: Icons.help },
-    {
-        label: 'Photo',
-        icon: Icons.photo,
-        options: [
-            {
-                group: 'Synopsis',
-                options: [
-                    { label: 'Story', href: 'synopsis/story' },
-                    {
-                        label: 'Book',
-                        options: [
-                            { label: 'irure nostrud 1', href: 'synopsis/Book/irure-nostrud' },
-                            { label: 'ipsum dolore 2', href: 'synopsis/Book/ipsum-dolore' },
-                            { label: 'enim consectetur 3', href: 'synopsis/Book/enim-consectetur' }
-                        ]
-                    },
-                    {
-                        label: 'Concepts',
-                        options: [
-                            { label: 'irure nostrud', href: 'synopsis/concepts/irure-nostrud' },
-                            { label: 'ipsum dolore', href: 'synopsis/concepts/ipsum-dolore' },
-                            { label: 'enim consectetur', href: 'synopsis/concepts/enim-consectetur' }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    { label: 'Archive', href: 'cast', icon: Icons.newspaper },
+    { label: 'Website', href: 'website', icon: Icons.global },
+    // { label: 'Reviews', href: 'full-contain', icon: Icons.star },
+    // { label: 'Map', href: 'full', icon: Icons.map },
+    // { label: 'Help', href: 'test', icon: Icons.help },
+    // {
+    //     label: 'Photo',
+    //     icon: Icons.photo,
+    //     options: [
+    //         {
+    //             group: 'Synopsis',
+    //             options: [
+    //                 { label: 'Story', href: 'synopsis/story' },
+    //                 {
+    //                     label: 'Book',
+    //                     options: [
+    //                         { label: 'irure nostrud 1', href: 'synopsis/Book/irure-nostrud' },
+    //                         { label: 'ipsum dolore 2', href: 'synopsis/Book/ipsum-dolore' },
+    //                         { label: 'enim consectetur 3', href: 'synopsis/Book/enim-consectetur' }
+    //                     ]
+    //                 },
+    //                 {
+    //                     label: 'Concepts',
+    //                     options: [
+    //                         { label: 'irure nostrud', href: 'synopsis/concepts/irure-nostrud' },
+    //                         { label: 'ipsum dolore', href: 'synopsis/concepts/ipsum-dolore' },
+    //                         { label: 'enim consectetur', href: 'synopsis/concepts/enim-consectetur' }
+    //                     ]
+    //                 }
+    //             ]
+    //         }
+    //     ]
+    // },
+    // { label: 'Archive', href: 'cast', icon: Icons.newspaper },
     {
         label: 'Settings',
         icon: Icons.adjustments.veritical,

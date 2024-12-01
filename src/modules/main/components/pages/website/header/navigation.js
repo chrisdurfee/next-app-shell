@@ -1,6 +1,6 @@
-import { A, Button, Div, Nav, Span } from '@base-framework/atoms';
+import { A, Button, Div, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import NavigationMenu from '../../navigation/navigation-menu/navigation-menu.js';
+import NavigationMenu from '@components/organisms/navigation/navigation-menu/navigation-menu.js';
 import { Logo } from './logo.js';
 
 /**
@@ -11,7 +11,7 @@ import { Logo } from './logo.js';
  */
 const MobileMenuButton = Atom((props) =>
 {
-    const className = '-m-2.5 inline-flex items-center justify-center rounded-md p-2.5';
+    const className = '-m-2.5 inline-flex lg:hidden items-center justify-center rounded-md p-2.5';
     return Button({ variant: 'primary', class: className }, [
         Span({ class: 'sr-only' }, 'Open main menu'),
         Div({
@@ -23,17 +23,6 @@ const MobileMenuButton = Atom((props) =>
 });
 
 /**
- * This will create a link.
- *
- * @param {string} link
- * @returns {object}
- */
-const Link = (link) => A({
-    href: '/' + link.toLowerCase(),
-    class: 'text-sm font-semibold leading-6'
-}, link);
-
-/**
  * This will create a list of links.
  *
  * @returns {object}
@@ -41,10 +30,10 @@ const Link = (link) => A({
 const DesktopMenuLinks = Atom(() => (
     new NavigationMenu({
         options: [
-            { href: '/about', label: 'About' },
-            { href: '/services', label: 'Services' },
-            { href: '/contact', label: 'Contact' },
-            { href: '/blog', label: 'Blog' }
+            { href: '/website/about', label: 'About' },
+            { href: '/website/services', label: 'Services' },
+            { href: '/website/contact', label: 'Contact' },
+            { href: '/website/blog', label: 'Blog' }
         ]
     })
 ));
@@ -56,7 +45,7 @@ const DesktopMenuLinks = Atom(() => (
  */
 const DesktopLogIn = Atom(() => (
     Div({ class: 'hidden lg:flex lg:flex-1 lg:justify-end' }, [
-        A({ href: '#', class: 'text-sm font-semibold leading-6' }, [
+        A({ href: '/website#', class: 'text-sm font-semibold leading-6' }, [
             Span('Log in '),
             Span({ 'aria-hidden': 'true' }, '→')
         ])
@@ -71,7 +60,7 @@ const DesktopLogIn = Atom(() => (
  */
 export const Navigation = Atom((props) =>
 {
-    return Nav({
+    return Div({
             class: 'relative flex items-center justify-between p-6 lg:px-8 z-40',
             'aria-label': 'Global'
         }, [
