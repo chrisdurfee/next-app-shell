@@ -62,6 +62,23 @@ const props =
         {
             app.navigate('settings/profile');
         }
+    },
+
+    /**
+     * This will setup the events for the settings page.
+     * @returns {array}
+     */
+    setupEvents()
+    {
+        return [
+            ['resize', window, () => {
+                const page = this.route.page;
+                if (!isMObile() && !page)
+                {
+                    app.navigate('settings/profile');
+                }
+            }]
+        ];
     }
 };
 
