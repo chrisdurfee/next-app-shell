@@ -14,7 +14,7 @@ const PAGE_URL = 'music';
  */
 const TrackItem = (track) => (
     Div({ class: "flex items-center min-w-[380px] pr-8" }, [
-        A({ class: 'flex flex-auto space-x-4', href: `${PAGE_URL}/album/${track.title.replace(/\s+/g, '-').toLowerCase()}`}, [
+        A({ class: 'flex flex-auto space-x-4', href: `${PAGE_URL}/album/${track.albumTitle.replace(/\s+/g, '-').toLowerCase()}`}, [
             Img({
                 src: track.src,
                 alt: track.albumTitle,
@@ -74,7 +74,7 @@ const Title = () => (
  * @returns {object}
  */
 export const QuickPicksSection = () => (
-    Section({ class: "my-8" }, [
+    Section([
         Title(),
         Div({ class: "overflow-x-auto -mx-6 pl-6" }, [
             Div({ class: "min-w-[1200px]" }, [
