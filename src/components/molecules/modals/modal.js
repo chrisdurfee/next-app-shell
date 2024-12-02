@@ -38,7 +38,15 @@ export class Modal extends Component
 				title,
 				description,
 				buttons: this.getButtons(),
-				onSubmit: this.submit,
+				onSubmit: () =>
+				{
+					if (this.onSubmit)
+					{
+						this.onSubmit();
+					}
+
+					this.close();
+				},
 				icon: this.icon,
 				back: this.back ?? false,
 				aria: { expanded: ['open']}

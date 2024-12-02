@@ -18,6 +18,7 @@ export const MusicModal = (props) => (
 		size: 'sm',
 		type: 'right',
 		onSubmit: () => app.notify({
+			type: "success",
 			title: "Music Added",
 			description: "The code has been copied to your clipboard.",
 			icon: Icons.check
