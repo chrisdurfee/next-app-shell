@@ -105,6 +105,7 @@ export const SettingsPage = () => (
                     { label: 'Appearance', href: 'settings/appearance', icon: Icons.sun },
                     { label: 'Notifications', href: 'settings/notifications', icon: Icons.bell.default },
                     { label: 'Display', href: 'settings/display', icon: Icons.window },
+                    { label: 'Sign Out', icon: Icons.signOut, callBack: () => app.signOut() }
                 ]
             }),
 
