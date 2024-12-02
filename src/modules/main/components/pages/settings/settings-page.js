@@ -26,7 +26,7 @@ const SubRoute = (atom) => new Panel(atom);
  * @returns {object}
  */
 export const PageToolbar = () => (
-    Div({ class: "flex items-center justify-between pb-2" }, [
+    Div({ class: "flex items-center justify-between pb-2 mt-2" }, [
         Div({ class: 'flex lg:hidden' }, [
             BackButton({
                 margin: 'm-0 ml-0'
@@ -93,7 +93,7 @@ export const SettingsPage = () => (
                     route: [
                         {
                             uri: 'settings/:page*',
-                            component: new DockableOverlay([
+                            component: new DockableOverlay({ class: 'px-2' }, [
                                 PageToolbar(),
                                 Div({
                                     class: 'flex flex-auto flex-col contained p-4 lg:p-6',
