@@ -41,7 +41,7 @@ export const PageToolbar = () => (
  * @returns {boolean}
  */
 const LG_WINDOW_SIZE = 1024;
-const isMObile = () => window.innerWidth < LG_WINDOW_SIZE;
+const isMobile = () => window.innerWidth < LG_WINDOW_SIZE;
 
 /**
  * Props for the settings page.
@@ -58,7 +58,7 @@ const props =
     checkPage()
     {
         const page = this.route.page;
-        if (!isMObile() && !page)
+        if (!isMobile() && !page)
         {
             app.navigate('settings/profile');
         }
