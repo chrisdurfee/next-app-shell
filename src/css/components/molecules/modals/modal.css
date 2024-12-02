@@ -46,6 +46,10 @@
     max-height: 100vh;
     border-radius: 0;
 }
+.modal.right.md,
+.modal.left.md {
+    @apply max-w-[640px];
+}
 .modal.right {
     margin-right: 0;
     animation-name: pullRightIn;

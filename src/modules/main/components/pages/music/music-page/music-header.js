@@ -3,6 +3,7 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
+import { MusicModal } from "./music-modal";
 
 /**
  * This will create a music header with tabs and add music button.
@@ -20,10 +21,10 @@ export const MusicHeader = () => (
             onSelect: (value, { state }) => state.mode = value
         }),
         Div({ class: 'hidden lg:inline-flex' }, [
-            Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus }, 'Add music'),
+            Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus, click: MusicModal }, 'Add music'),
         ]),
         Div({ class: 'flex lg:hidden mr-4' }, [
-            Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus }))
+            Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: MusicModal }))
         ])
     ])
 );
