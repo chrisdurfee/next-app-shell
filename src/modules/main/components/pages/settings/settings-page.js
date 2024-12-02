@@ -51,11 +51,11 @@ const isMObile = () => window.innerWidth < LG_WINDOW_SIZE;
 const props =
 {
     /**
-     * This will run after the setup.
+     * This will check the page.
      *
      * @returns {void}
      */
-    afterSetup()
+    checkPage()
     {
         const page = this.route.page;
         if (!isMObile() && !page)
@@ -71,14 +71,18 @@ const props =
     setupEvents()
     {
         return [
-            ['resize', window, () => {
-                const page = this.route.page;
-                if (!isMObile() && !page)
-                {
-                    app.navigate('settings/profile');
-                }
-            }]
+            ['resize', window, () => this.checkPage()]
         ];
+    },
+
+    /**
+     * This will run after the update.
+     *
+     * @returns {void}
+     */
+    update()
+    {
+        this.checkPage();
     }
 };
 
