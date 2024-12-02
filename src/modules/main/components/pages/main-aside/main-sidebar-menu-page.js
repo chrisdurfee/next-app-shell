@@ -1,4 +1,4 @@
-import { AsidePage } from "@components/pages/aside-page.js";
+import { SidebarMenuPage } from "@components/pages/sidebar-menu-page.js";
 import { AsideSwitch } from "./aside-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";
@@ -12,14 +12,14 @@ import { Routes } from "./routes.js";
 const basePath = 'aside';
 
 /**
- * MainAsidePage
+ * MainSidebarMenuPage
  *
- * This will create an a side page.
+ * This will create an a sidebar menu page.
  *
  * @returns {AsidePage}
  */
-export const MainAsidePage = () => (
-	new AsidePage({
+export const MainSidebarMenuPage = () => (
+	new SidebarMenuPage({
 		/**
 		 * @member {string}	title
 		 */
@@ -47,4 +47,4 @@ export const MainAsidePage = () => (
 	})
 );
 
-export default MainAsidePage;
+export default MainSidebarMenuPage;

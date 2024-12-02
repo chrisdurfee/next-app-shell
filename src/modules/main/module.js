@@ -6,8 +6,6 @@ import CalendarPage from './components/pages/calendar/calendar-page.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
-import { MainAsideBsidePage } from './components/pages/main-aside-bside-page.js';
-import { MainBsidePage } from './components/pages/main-bside-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
 import SettingsPage from './components/pages/settings/settings-page.js';
 import WebsitePage from './components/pages/website/website-page.js';
@@ -63,17 +61,11 @@ const routes = Module.convertRoutes(
      */
     { path: '/website/:page?*', component: WebsitePage(), title: 'Inbox' },
 
-    /**
-     * Full page routes
-     */
-    { path: '/aside-bside', component: MainAsideBsidePage(), title: 'Aside Bside Example' },
-    { path: '/bside', component: MainBsidePage(), title: 'Bside Example' },
-
     // Dynamically loaded route
     {
         path: '/aside/:page?/:marketing?/:label?/:name?*',
-        import: import('./components/pages/main-aside/main-aside-page.js'),
-        title: 'Aside Example'
+        import: import('./components/pages/main-aside/main-sidebar-menu-page.js'),
+        title: 'Sidebar Menu Example'
     }
 ]);
 

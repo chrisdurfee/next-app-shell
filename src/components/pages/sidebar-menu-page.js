@@ -5,14 +5,14 @@ import { BasicPage } from './basic-page.js';
 import { AsideTemplate } from './templates/aside-template.js';
 
 /**
- * AsidePage
+ * SidebarMenuPage
  *
  * This will create an a side page.
  *
  * @class
  * @extends BasicPage
  */
-export class AsidePage extends BasicPage
+export class SidebarMenuPage extends BasicPage
 {
 	/**
 	 * This will render the page.
@@ -109,3 +109,5 @@ export class AsidePage extends BasicPage
 		return this.links || [];
 	}
 }
+
+export default SidebarMenuPage;

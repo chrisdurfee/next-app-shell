@@ -1,4 +1,4 @@
-import { AsidePage } from "@components/pages/aside-page.js";
+import { SidebarMenuPage } from "@components/pages/sidebar-menu-page.js";
 import { DocumentationSwitch } from "./documentation-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";
@@ -19,7 +19,7 @@ const basePath = 'docs';
  * @returns {AsidePage}
  */
 export const DocumentationPage = () => (
-	new AsidePage({
+	new SidebarMenuPage({
 		/**
 		 * @member {string}	title
 		 */
