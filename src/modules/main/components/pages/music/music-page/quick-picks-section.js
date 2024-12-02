@@ -40,8 +40,8 @@ const QuickPickGrid = () =>
     // 10 albums, 1-2 tracks each
     const tracks = getRandomTracks();
 
-    const columnNumber = 5; // Number of columns
-    const rowNumber = 3; // Tracks per column
+    const columnNumber = 5;
+    const rowNumber = 3;
 
     return Div(
         { class: "grid grid-cols-5 gap-6" },
