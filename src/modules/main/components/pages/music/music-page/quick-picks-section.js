@@ -1,5 +1,8 @@
-import { Div, H2, Img, P, Section } from "@base-framework/atoms";
+import { A, Div, H2, Img, P, Section } from "@base-framework/atoms";
+import { Strings } from "@base-framework/base";
 import { getRandomTracks } from "../albums.js";
+
+const PAGE_URL = 'music';
 
 /**
  * TrackItem
@@ -10,18 +13,19 @@ import { getRandomTracks } from "../albums.js";
  * @returns {object}
  */
 const TrackItem = (track) => (
-    Div({ class: "flex flex-auto items-center space-x-4 w-full max-w-[380px]" }, [
-        // Album Cover
-        Img({
-            src: track.src,
-            alt: track.albumTitle,
-            class: "w-12 h-12 object-cover rounded",
-        }),
-        // Track Details
-        Div({ class: "flex flex-col" }, [
-            P({ class: "text-sm font-medium" }, track.title),
-            P({ class: "text-xs text-muted-foreground" }, `${track.artist} • ${track.albumTitle}`),
-            P({ class: "text-xs text-muted-foreground" }, track.duration),
+    Div({ class: "flex items-center min-w-[380px] pr-8" }, [
+        A({ class: 'flex flex-auto space-x-4', href: `${PAGE_URL}/album/${track.title.replace(/\s+/g, '-').toLowerCase()}`}, [
+            Img({
+                src: track.src,
+                alt: track.albumTitle,
+                class: "w-12 h-12 object-cover rounded",
+            }),
+            // Track Details
+            Div({ class: "flex flex-col" }, [
+                P({ class: "text-sm font-medium" }, track.title),
+                P({ class: "text-xs text-muted-foreground" }, `${track.artist} • ${Strings.limit(track.albumTitle, 10)}`),
+                P({ class: "text-xs text-muted-foreground" }, track.duration),
+            ])
         ])
     ])
 );
@@ -36,17 +40,19 @@ const QuickPickGrid = () =>
     // 10 albums, 1-2 tracks each
     const tracks = getRandomTracks();
 
-    const columnNumber = 5;
-    const rowNumber = 3;
+    const columnNumber = 5; // Number of columns
+    const rowNumber = 3; // Tracks per column
 
-    return Div({ class: "grid grid-cols-5 gap-4" }, [
-        // Map tracks into columns
-        ...Array.from({ length: columnNumber }).map((_, columnIndex) =>
-        {
-            const columnTracks = tracks.slice(columnIndex * rowNumber, (columnIndex + 1) * rowNumber);
-            return Div({ class: "space-y-4", map: [columnTracks, TrackItem] });
-        })
-    ]);
+    return Div(
+        { class: "grid grid-cols-5 gap-6" },
+        [
+            // Map tracks into columns
+            ...Array.from({ length: columnNumber }).map((_, columnIndex) => {
+                const columnTracks = tracks.slice(columnIndex * rowNumber, (columnIndex + 1) * rowNumber);
+                return Div({ class: "space-y-4", map: [columnTracks, TrackItem] });
+            }),
+        ]
+    );
 };
 
 /**
@@ -68,10 +74,12 @@ const Title = () => (
  * @returns {object}
  */
 export const QuickPicksSection = () => (
-    Section([
+    Section({ class: "my-8" }, [
         Title(),
-        Div({ class: 'overflow-x-auto lg:overflow-x-none -mx-6 pl-6' }, [
-            QuickPickGrid()
+        Div({ class: "overflow-x-auto -mx-6 pl-6" }, [
+            Div({ class: "min-w-[1200px]" }, [
+                QuickPickGrid()
+            ])
         ])
     ])
 );
