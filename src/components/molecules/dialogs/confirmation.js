@@ -37,3 +37,5 @@ export class Confirmation extends Dialog
         this.close();
     }
 }
+
+export default Confirmation;

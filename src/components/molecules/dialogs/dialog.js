@@ -32,7 +32,13 @@ export class Dialog extends Component
 		const className = this.getMainClass();
         const title = this.title || 'Dialog Title';
 
-        return DialogContainer({ class: className, title, click, description: this.description, buttons: this.getButtons() }, this.children);
+        return DialogContainer({
+			class: className,
+			title,
+			click,
+			description: this.description,
+			buttons: this.getButtons()
+		}, this.children);
 	}
 
     /**

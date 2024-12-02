@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Icons } from "@components/icons/icons.js";
+import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
 import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
 import { BackButton } from "@components/organisms/overlays/overlay.js";
 import { Panel } from "@components/organisms/panel.js";
@@ -105,7 +106,16 @@ export const SettingsPage = () => (
                     { label: 'Appearance', href: 'settings/appearance', icon: Icons.sun },
                     { label: 'Notifications', href: 'settings/notifications', icon: Icons.bell.default },
                     { label: 'Display', href: 'settings/display', icon: Icons.window },
-                    { label: 'Sign Out', icon: Icons.signOut, callBack: () => app.signOut() }
+                    { label: 'Sign Out', icon: Icons.signOut, callBack: () => {
+
+                        new Confirmation({
+                            icon: Icons.signOut,
+                            title: 'Are you absoultely sure?',
+                            description: 'This will sign you out of the application.',
+                            confirmTextLabel: 'Sign Out',
+                            confirmed: () => app.signOut()
+                        }).open()
+                    } }
                 ]
             }),
 
