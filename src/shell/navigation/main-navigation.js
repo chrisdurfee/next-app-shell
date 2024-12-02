@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
+import { Icons } from "@components/icons/icons.js";
 import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
 import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
@@ -37,7 +38,6 @@ const LowerNavigation = () => (
 		new InlineNavigation({
 			options: [
 				{
-					href: 'profile',
 					content: [
 
 						/**
@@ -46,7 +46,13 @@ const LowerNavigation = () => (
 						new NavigationAvatar({
 							data: app.data.user
 						})
-					]
+					],
+					callBack: () => app.navigate('settings/profile')
+				},
+				{
+					href: 'settings',
+					label: 'Settings',
+					icon: Icons.cog.eight
 				}
 			]
 		})
