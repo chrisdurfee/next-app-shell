@@ -3,6 +3,7 @@ import { getRandomAlbums } from "../albums.js";
 import MusicHeader from "./music-header.js";
 import { MusicSection } from "./music-section.js";
 import { PodcastSections } from "./podcast-sections.js";
+import QuickPicksSection from "./quick-picks-section.js";
 
 /**
  * MusicSections
@@ -43,6 +44,7 @@ export const MusicSections = () => (
                                 albums: getRandomAlbums(8),
                                 cardType: 'small'
                             }),
+                            QuickPicksSection(),
                             MusicSection({
                                 title: 'Popular Playlists',
                                 description: 'Popular playlists from around the world.',

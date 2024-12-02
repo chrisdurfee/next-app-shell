@@ -487,3 +487,32 @@ export const getAlbumByTitle = (title = '') =>
         return albumTitle === preparedTitle;
     });
 };
+
+/**
+ * This will get random tracks from random albums.
+ *
+ * @param {number} [albumCount=10] - Number of random albums to select.
+ * @param {number} [tracksPerAlbum=2] - Number of tracks to select from each album.
+ * @returns {array} - Array of random tracks with album details.
+ */
+export const getRandomTracks = (albumCount = 10, tracksPerAlbum = 2) =>
+{
+    const albums = getRandomAlbums(albumCount);
+    const tracks = [];
+
+    albums.forEach((album) => {
+        const selectedTracks = album.tracks
+            .sort(() => Math.random() - 0.5)
+            .slice(0, tracksPerAlbum)
+            .map((track) => ({
+                title: track.title,
+                duration: track.duration,
+                albumTitle: album.title,
+                artist: album.artist,
+                src: album.src,
+            }));
+        tracks.push(...selectedTracks);
+    });
+
+    return tracks;
+};
