@@ -1,7 +1,7 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Toggle } from "@components/molecules/toggle/toggle.js";
-import { SettingsSection } from "./atoms/settings-section.js";
+import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
  * NotificationToggle

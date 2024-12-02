@@ -2,7 +2,7 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Input } from "@components/atoms/form/input.js";
 import { Select } from "@components/atoms/form/select.js";
 import { FormField } from "@components/molecules/form/form.js";
-import { SettingsSection } from "./atoms/settings-section.js";
+import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
  * AccountSettings

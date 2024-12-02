@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { SettingsSection } from "./atoms/settings-section.js";
+import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
  * DisplaySettings

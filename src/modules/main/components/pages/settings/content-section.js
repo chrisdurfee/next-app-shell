@@ -2,11 +2,11 @@ import { Div } from "@base-framework/atoms";
 import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
 import { BackButton } from "@components/organisms/overlays/overlay.js";
 import { Panel } from "@components/organisms/panel.js";
-import { AccountSettings } from "./account-settings.js";
-import { AppearanceSettings } from "./appearance-settings.js";
-import { DisplaySettings } from "./display-settings.js";
-import { NotificationSettings } from "./notification-settings.js";
-import { ProfileSettings } from "./profile-settings.js";
+import { AccountSettings } from "./sections/account-settings.js";
+import { AppearanceSettings } from "./sections/appearance-settings.js";
+import { DisplaySettings } from "./sections/display-settings.js";
+import { NotificationSettings } from "./sections/notification-settings.js";
+import { ProfileSettings } from "./sections/profile-settings.js";
 
 /**
  * This will wrap the atom in a panel.

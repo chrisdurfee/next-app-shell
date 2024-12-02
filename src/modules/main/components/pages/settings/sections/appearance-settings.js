@@ -2,7 +2,7 @@ import { Div, P } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Select } from "@components/atoms/form/select.js";
 import { ThemeToggle } from "@components/molecules/theme-toggle.js";
-import { SettingsSection } from "./atoms/settings-section.js";
+import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
  * AppearanceSettings
