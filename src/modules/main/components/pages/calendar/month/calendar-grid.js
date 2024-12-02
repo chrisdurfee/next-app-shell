@@ -1,6 +1,6 @@
 import { Div, P } from "@base-framework/atoms";
+import { FormatDate } from "../utils.js";
 import { DayCell } from "./day-cell.js";
-import { FormatDate } from "./utils.js";
 
 /**
  * This will check if the date is today.

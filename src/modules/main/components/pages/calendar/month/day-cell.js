@@ -1,5 +1,5 @@
 import { Button, Div, P, Span } from "@base-framework/atoms";
-import { removeHyphens } from "./utils.js";
+import { removeHyphens } from "../utils.js";
 
 /**
  * This will get the class for today.
