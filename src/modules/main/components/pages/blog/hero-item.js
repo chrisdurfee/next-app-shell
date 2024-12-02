@@ -36,7 +36,7 @@ const HeroPost = (post) => ([
                 class: "w-full h-full object-cover"
             }),
         ]),
-        Div({ class: "absolute bottom-4 left-4 bg-background/50 p-2 rounded-md" }, [
+        Div({ class: "absolute bottom-8 left-4 bg-background/80 p-2 rounded-md" }, [
             H2({ class: "text-xl font-bold" }, post.title),
             P({ class: "text-sm" }, post.description),
         ])
