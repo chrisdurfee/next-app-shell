@@ -76,7 +76,7 @@ const Title = () => (
 export const QuickPicksSection = () => (
     Section([
         Title(),
-        Div({ class: "overflow-x-auto -mx-6 pl-6" }, [
+        Div({ class: "overflow-x-auto -mx-6 pl-6 pb-2" }, [
             Div({ class: "min-w-[1200px]" }, [
                 QuickPickGrid()
             ])
