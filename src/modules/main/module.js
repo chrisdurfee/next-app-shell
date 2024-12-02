@@ -122,12 +122,7 @@ const links =
     //         }
     //     ]
     // },
-    // { label: 'Archive', href: 'cast', icon: Icons.newspaper },
-    {
-        label: 'Settings',
-        icon: Icons.adjustments.veritical,
-        href: 'settings',
-    }
+    // { label: 'Archive', href: 'cast', icon: Icons.newspaper }
 ];
 
 /**
