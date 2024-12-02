@@ -27,7 +27,7 @@ export const MusicModal = (props) => (
 		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
 			// Row for Area and Security Level
 			Div({ class: "flex flex-auto w-full gap-4" }, [
-				new FormField({ name: "artist", label: "Artists" }, [
+				new FormField({ name: "artist", label: "Artists", description: "The name of the Artist." }, [
 					Input({
                         type: "text",
                         placeholder: "Artist name",
