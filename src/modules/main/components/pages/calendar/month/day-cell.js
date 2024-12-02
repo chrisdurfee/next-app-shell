@@ -1,4 +1,4 @@
-import { Button, Div, P, Span } from "@base-framework/atoms";
+import { A, Div, P, Span } from "@base-framework/atoms";
 import { removeHyphens } from "../utils.js";
 
 /**
@@ -81,8 +81,9 @@ const Event = (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]'
  * @returns {object}
  */
 export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, select }) => (
-    Button(
+    A(
         {
+            href: '/calendar/month/' + date,
             class: `
         flex flex-auto flex-col p-2 rounded-md
         hover:bg-accent hover:text-accent-foreground focus:z-10 lg:items-center
