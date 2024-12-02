@@ -17,7 +17,11 @@ export const MusicModal = (props) => (
 		description: "What album would you like to add?",
 		size: 'sm',
 		type: 'right',
-		onSubmit: () => console.log('Form submitted')
+		onSubmit: () => app.notify({
+			title: "Music Added",
+			description: "The code has been copied to your clipboard.",
+			icon: Icons.check
+		})
 	}, [
 		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
 			// Row for Area and Security Level
@@ -26,6 +30,7 @@ export const MusicModal = (props) => (
 					Input({
                         type: "text",
                         placeholder: "Artist name",
+						required: true
                     })
 				])
 			])

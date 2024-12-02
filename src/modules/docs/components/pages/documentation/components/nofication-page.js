@@ -109,6 +109,28 @@ export const NotificationPage = () => (
 })`
             }),
 
+            // Success Notification
+            DocSection({
+                title: 'Success Notification',
+                description: 'A success notification to confirm a successful action or process.',
+                preview: [
+                    new Notification({
+                        title: 'Success!',
+                        description: 'The action was successful.',
+                        icon: Icons.check,
+                        type: 'success',
+                        duration: 'infinite',
+                    })
+                ],
+                code: `app.notify({
+    title: 'Success!',
+    description: 'The action was successful.',
+    icon: Icons.check,
+    type: 'success',
+    duration: 'infinite'
+})`
+            }),
+
             // Notification with Primary and Secondary Buttons
             DocSection({
                 title: 'Notification with Actions',
