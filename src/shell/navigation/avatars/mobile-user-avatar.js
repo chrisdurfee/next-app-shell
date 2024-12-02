@@ -13,7 +13,7 @@ import { StatusIndicator } from "@components/molecules/avatars/status-indicator.
  */
 export const MobileUserAvatar = Jot(() =>
     Div({ class: "flex items-center gap-4" }, [
-        A({ class: "relative", href: 'profile' }, [
+        A({ class: "relative", href: 'settings/profile' }, [
             Div({ class: "relative mx-2" }, [
                 Avatar({
                     src: '[[image]]',

@@ -38,7 +38,6 @@ const LowerNavigation = () => (
 		new InlineNavigation({
 			options: [
 				{
-					href: 'profile',
 					content: [
 
 						/**
@@ -47,7 +46,8 @@ const LowerNavigation = () => (
 						new NavigationAvatar({
 							data: app.data.user
 						})
-					]
+					],
+					callBack: () => app.navigate('settings/profile')
 				},
 				{
 					href: 'settings',
