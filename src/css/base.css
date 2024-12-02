@@ -119,7 +119,14 @@ i.icon-size svg {
  * This will set the app padding to support the safe area.
  */
 .app-container {
+	backface-visibility: hidden;
+	transform: translateZ(0);
 	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+.active-panel-container {
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 
 /**

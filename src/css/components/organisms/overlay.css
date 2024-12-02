@@ -1,5 +1,7 @@
 .overlay {
 	@apply bg-background;
+	backface-visibility: hidden;
+	transform: translateZ(0);
 }
 
 .overlay > * {
