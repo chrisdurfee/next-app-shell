@@ -20,7 +20,7 @@ export const MusicModal = (props) => (
 		onSubmit: () => app.notify({
 			type: "success",
 			title: "Music Added",
-			description: "The code has been copied to your clipboard.",
+			description: "The music has been added.",
 			icon: Icons.check
 		})
 	}, [

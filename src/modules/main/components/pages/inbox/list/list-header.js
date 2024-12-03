@@ -19,6 +19,19 @@ const Title = () => (
 );
 
 /**
+ * This will create the AddMessageButton organism.
+ *
+ * @returns {object}
+ */
+const AddMessageButton = () => (
+    Div({ class: 'flex mr-2' }, [
+        Tooltip({ content: 'Add Message', position: 'left' }, [
+            Button({ variant: 'icon', icon: Icons.circlePlus })
+        ])
+    ])
+);
+
+/**
  * This will create the ListHeader organism.
  *
  * @returns {object}
@@ -28,9 +41,10 @@ export const ListHeaer = () => (
         Div({ class: "flex justify-between" }, [
             Title(),
             Div({ class: 'flex' }, [
-                Div({ class: 'flex mr-2' }, [
-                    Tooltip({ content: 'Add Message', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
-                ]),
+
+                AddMessageButton(),
+
+                // Message filter tabs
                 new TabGroup({
                     options: [
                         { label: "All Mail", value: "all" },

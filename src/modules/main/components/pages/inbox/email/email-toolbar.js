@@ -39,6 +39,21 @@ export const EmailToolbar = () => (
                 Button({
                     variant: "icon",
                     icon: Icon({ size: "sm", class: "text-foreground" }, Icons.trash),
+                    click: () =>
+                    {
+                        new Confirmation({
+                            icon: Icons.trash,
+                            title: 'Delete Message',
+                            description: 'Are you sure you want to delete this message?',
+                            confirmTextLabel: 'Delete',
+                            confirmed: () => app.notify({
+                                type: "success",
+                                title: "Email Deleted",
+                                description: "The email has been deleted.",
+                                icon: Icons.check
+                            })
+                        }).open()
+                    }
                 }),
             ]),
 
