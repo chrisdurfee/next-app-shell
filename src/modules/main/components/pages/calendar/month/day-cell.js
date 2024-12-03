@@ -85,7 +85,7 @@ const DesktopEvent = (event, index) =>
     const MAX_EVENTS = 3;
     if(index === MAX_EVENTS)
     {
-        return Span({ class: 'px-1 border rounded-md m-[2px] text-muted-foreground bg-secondary' }, '...');
+        return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, '...');
     }
 
     if (index > MAX_EVENTS)
@@ -93,7 +93,7 @@ const DesktopEvent = (event, index) =>
         return null;
     }
 
-    return Span({ class: 'px-1 border rounded-md m-[2px] text-muted-foreground bg-secondary' }, event);
+    return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, event);
 };
 
 /**
