@@ -16,7 +16,7 @@ import { DocPage } from "../../doc-page.js";
 const IconCard = (icon, iconName, path) =>
 {
     path = 'Icons' + ((path) ? '.' + path : '');
-    return Div({ class: 'flex flex-auto flex-col items-center gap-2 max-w-[150px] h-[8.5rem] cursor-pointer' }, [
+    return Div({ class: 'flex flex-auto flex-col items-center gap-2 w-full max-w-[150px] h-[8.5rem] cursor-pointer' }, [
         Div({ class: 'flex flex-auto w-full h-full justify-center items-center flex-wrap rounded-lg border bg-card text-base shadow-sm hover:bg-accent hover:text-accent-foreground',
             click: () =>
             {
