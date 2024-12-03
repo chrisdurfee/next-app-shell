@@ -1,10 +1,7 @@
-import { Div, On } from "@base-framework/atoms";
+import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
-import { Panel } from "@components/organisms/panel.js";
 import { BlankPage } from "@components/pages/blank-page.js";
-import { EmailDetail } from "./email/email-detail.js";
-import { EmailEmptyState } from "./email/email-empty-state.js";
+import { ContentSwitch } from "./content-switch.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
 import { InboxSidebarMenu } from "./inbox-sidebar-menu.js";
 import { InboxList } from "./list/inbox-list.js";
@@ -63,44 +60,13 @@ const Props =
  */
 export const InboxPage = () => (
     new BlankPage(Props, [
-        Div({
-            class: "flex w-full flex-col lg:flex-row h-full",
-            useParent: ({ route }) =>
-            {
-                return [
-                    InboxSidebarMenu(),
-                    Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
-                        InboxList()
-                    ]),
-                    {
-                        class: 'flex-[4] flex-col w-full h-full hidden lg:flex',
-                        switch: [
-                            {
-                                uri: 'inbox/:page/:messageId*',
-                                component: new DockableOverlay([
-                                    On(route, 'messageId', (messageId) => (!messageId)
-                                        ? EmailEmptyState()
-                                        : new EmailDetail({
-                                            messageId
-                                        })
-                                    )
-                                ])
-                            },
-                            {
-                                uri: 'inbox/:page*',
-                                component: new Panel([
-                                    Div({ class: "flex flex-auto flex-col" }, [
-                                        Div({ class: 'flex auto flex-col w-full h-full' }, [
-                                            EmailEmptyState()
-                                        ])
-                                    ])
-                                ])
-                            }
-                        ]
-                    }
-                ];
-            }
-        })
+        Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
+            InboxSidebarMenu(),
+            Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
+                InboxList()
+            ]),
+            ContentSwitch()
+        ])
     ])
 );
 

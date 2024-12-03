@@ -1,12 +1,9 @@
-import { Div, H4, Span } from "@base-framework/atoms";
+import { Div, On, OnRoute, OnState } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
-import { Icons } from "@components/icons/icons.js";
-import TabGroup from "@components/organisms/tabs/tab-group.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
 import { ListEmptyState } from "./list-empty-state.js";
+import { ListHeaer } from "./list-header.js";
 
 /**
  * This will filter messages based on the list.
@@ -32,90 +29,53 @@ const filterMessages = (messages, list) =>
  */
 export const InboxList = () => (
     Div({ class: "w-full pt-0 lg:pt-2 space-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
-        // List header
-        Div({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
-            Div({
-                class: "flex justify-between",
-                useParent: ({ route, state }) => {
-                    return [
-                        H4({ class: "pl-2 lg:pl-0 text-3xl lg:text-xl font-bold" }, [
-                            Span({ class: 'capitalize', text: ["[[page]]", route] }),
-
-                        ]),
-                        Div({ class: 'flex' }, [
-                            Div({ class: 'flex mr-2' }, [
-                                Tooltip({ content: 'Add Message', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
-                            ]),
-                            new TabGroup({
-                                options: [
-                                    { label: "All Mail", value: "all" },
-                                    { label: "Unread", value: "unread" },
-                                ],
-                                onSelect: (value) => state.list = value
-                            })
-                        ])
-                    ];
-                },
-            }),
-        ]),
-        // Messages
-        Div({
-            useParent: ({ route, data, state }) =>
+        ListHeaer(),
+        Div([
+            OnRoute('page', (page, ele, { data, state }) =>
             {
-                return [
-                    {
-                        onSet: [route, 'page', (page) =>
-                        {
-                            if (!page)
-                            {
-                                page = 'inbox';
-                                app.navigate('inbox/inbox', null, true);
-                            }
+                if (!page)
+                {
+                    page = 'inbox';
+                    app.navigate('inbox/inbox', null, true);
+                }
 
-                            let items = INBOX_MESSAGES;
-                            if (page !== 'inbox')
-                            {
-                                items = [];
-                            }
+                let items = INBOX_MESSAGES;
+                if (page !== 'inbox')
+                {
+                    items = [];
+                }
 
-                            items = filterMessages(items, state.list);
-                            return data.items = items;
-                        }]
-                    },
-                    {
-                        onSet: [state, 'list', (list) =>
-                        {
-                            let items = INBOX_MESSAGES;
-                            if (route.page !== 'inbox')
-                            {
-                                items = [];
-                            }
+                items = filterMessages(items, state.list);
+                data.items = items;
+            }),
+            OnState('list', (list, ele, { route, data }) =>
+            {
+                let items = INBOX_MESSAGES;
+                if (route.page !== 'inbox')
+                {
+                    items = [];
+                }
 
-                            items = filterMessages(items, list);
-                            return data.items = items;
-                        }]
-                    },
-                    {
-                        onSet: ['items', (items) =>
-                        {
-                            items = filterMessages(items, state.list);
-                            if (!items.length)
-                            {
-                                return ListEmptyState({ list: state.list });
-                            }
+                items = filterMessages(items, list);
+                data.items = items;
+            }),
+            On('items', (items, ele, { state }) =>
+            {
+                items = filterMessages(items, state.list);
+                if (!items.length)
+                {
+                    return ListEmptyState({ list: state.list });
+                }
 
-                            return new List({
-                                cache: 'list',
-                                key: 'id',
-                                items,
-                                role: 'list',
-                                class: 'space-y-2 px-4 pb-4',
-                                rowItem: (message) => new InboxMessageItem({ message })
-                            });
-                        }]
-                    }
-                ]
-            }
-        }),
+                return new List({
+                    cache: 'list',
+                    key: 'id',
+                    items,
+                    role: 'list',
+                    class: 'space-y-2 px-4 pb-4',
+                    rowItem: (message) => new InboxMessageItem({ message })
+                });
+            })
+        ]),
     ])
 );
