@@ -7,13 +7,15 @@ import TabGroup from "@components/organisms/tabs/tab-group.js";
 /**
  * This will create the Title organism.
  *
- * @param {object} route
  * @returns {object}
  */
-const Title = ({ route }) => (
-    H4({ class: "pl-2 lg:pl-0 text-3xl lg:text-xl font-bold" }, [
-        Span({ class: 'capitalize', text: ["[[page]]", route] }),
-    ])
+const Title = () => (
+    H4({
+        class: "pl-2 lg:pl-0 text-3xl lg:text-xl font-bold",
+        useParent: ({ route }) => (
+            Span({ class: 'capitalize', text: ["[[page]]", route] })
+        )
+    })
 );
 
 /**
@@ -23,26 +25,20 @@ const Title = ({ route }) => (
  */
 export const ListHeaer = () => (
     Header({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
-        Div({
-            class: "flex justify-between",
-            useParent: ({ route, state }) =>
-            {
-                return [
-                    Title({ route }),
-                    Div({ class: 'flex' }, [
-                        Div({ class: 'flex mr-2' }, [
-                            Tooltip({ content: 'Add Message', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
-                        ]),
-                        new TabGroup({
-                            options: [
-                                { label: "All Mail", value: "all" },
-                                { label: "Unread", value: "unread" },
-                            ],
-                            onSelect: (value) => state.list = value
-                        })
-                    ])
-                ];
-            },
-        }),
+        Div({ class: "flex justify-between" }, [
+            Title(),
+            Div({ class: 'flex' }, [
+                Div({ class: 'flex mr-2' }, [
+                    Tooltip({ content: 'Add Message', position: 'left' }, Button({ variant: 'icon', icon: Icons.circlePlus }))
+                ]),
+                new TabGroup({
+                    options: [
+                        { label: "All Mail", value: "all" },
+                        { label: "Unread", value: "unread" },
+                    ],
+                    onSelect: (value, { state }) => state.list = value
+                })
+            ])
+        ]),
     ])
 );
