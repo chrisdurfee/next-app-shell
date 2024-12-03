@@ -75,6 +75,14 @@ const getClasses = (isToday, currentDate, isOutsideMonth, date) =>
 const Event = (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]' });
 
 /**
+ * This will render a desktop event.
+ *
+ * @param {object} event
+ * @returns {object}
+ */
+const DesktopEvent = (event) => Span({ class: 'px-1 border rounded-md m-[2px] text-muted-foreground bg-secondary' }, event);
+
+/**
  * This will render a day cell in a calendar.
  *
  * @param {object} props - The properties for the day cell.
@@ -86,17 +94,23 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
             href: '/calendar/month/' + date,
             class: `
         flex flex-auto flex-col p-2 rounded-md
-        hover:bg-accent hover:text-accent-foreground focus:z-10 lg:items-center
+        hover:bg-accent hover:text-accent-foreground focus:z-10 items-center lg:items-start
       `,
             disabled: day === null,
             'aria-label': day ? `Day ${day}` : null,
             click: () => select(date),
         },
         [
-            P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day)),
+            Div({ class: 'flex items-center justify-center w-full' }, [
+                P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
+            ]),
             Div({
-                class: 'flex flex-auto flex-row flex-wrap',
+                class: 'flex lg:hidden flex-auto flex-row flex-wrap',
                 for: [`events._${removeHyphens(date)}`, Event]
+            }),
+            Div({
+                class: 'hidden lg:flex flex-auto flex-col space-y-1',
+                for: [`events._${removeHyphens(date)}`, DesktopEvent]
             })
         ]
     )
