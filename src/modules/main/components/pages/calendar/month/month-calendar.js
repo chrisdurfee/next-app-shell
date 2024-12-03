@@ -1,4 +1,4 @@
-import { Div, H2 } from "@base-framework/atoms";
+import { Div, H2, Header, Span } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
@@ -14,7 +14,10 @@ import { CalendarGrid } from "./calendar-grid.js";
  */
 const CalendarHeader = (props) => (
     Div({ class: 'justify-between flex items-center mb-4' }, [
-        H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight md:pl-4' }, '[[monthName]] [[current.year]]'),
+        Header({ class: 'inline-flex items-end'}, [
+            H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight md:pl-4' }, '[[monthName]]'),
+            Span({ class: 'text-muted-foreground text-base ml-2 font-bold' }, '[[current.year]]')
+        ]),
         Div({ class: 'flex items-center space-x-2' }, [
             Button({ variant: 'icon', icon: Icons.chevron.single.left, click: props.previous }),
             Button({ variant: 'icon', icon: Icons.chevron.single.right, click: props.next }),
