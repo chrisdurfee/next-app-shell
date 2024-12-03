@@ -119,7 +119,7 @@ export class NavigationPopover extends Component
 			style: 'margin: calc(5vh + env(safe-area-inset-top)) 0 calc(5vh + env(safe-area-inset-bottom)) 0',
 			dataSet: ['open', ['expanded', true, 'true']]
         }, [
-			Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[90vh] rounded-md bg-popover border' }, [
+			Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[85vh] rounded-md bg-popover border' }, [
 				PopupHeader({ title: this.title }),
 				Div({ class: 'flex flex-auto flex-col' }, this.children)
 			])
