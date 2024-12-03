@@ -13,7 +13,7 @@ import QuickPicksSection from "./quick-picks-section.js";
  * @returns {object}
  */
 export const MusicSections = () => (
-    Div({ class: 'col-span-4 2xl:mx-auto 2xl:max-w-[1400px]' }, [
+    Div({ class: 'mx-auto lg:max-w-[70vw]' }, [
         Header({ class: 'sm:py-4 sm:pb-0 px-6 flex flex-col lg:hidden' }, [
             H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Discover'),
         ]),

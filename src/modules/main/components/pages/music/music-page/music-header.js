@@ -21,7 +21,7 @@ export const MusicHeader = () => (
             onSelect: (value, { state }) => state.mode = value
         }),
         Div({ class: 'hidden lg:inline-flex' }, [
-            Button({ variant: 'withIcon', class: 'text-muted-foreground mb-8 hidden', icon: Icons.circlePlus, click: MusicModal }, 'Add music'),
+            Button({ variant: 'withIcon', class: 'text-muted-foreground hidden', icon: Icons.circlePlus, click: MusicModal }, 'Add music'),
         ]),
         Div({ class: 'flex lg:hidden mr-4' }, [
             Tooltip({ content: 'Add music', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: MusicModal }))

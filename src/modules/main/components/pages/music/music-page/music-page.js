@@ -20,7 +20,7 @@ export const MusicPage = () => (
                 class: 'flex flex-auto flex-col',
                 switch: [
                     {
-                        uri: '/music',
+                        uri: 'music',
                         component: new Panel([
                             MusicSections()
                         ])
