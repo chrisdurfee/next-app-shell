@@ -10,12 +10,12 @@ import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
  */
 const InboxMessageSkeleton = () => (
     Div({ class: "flex flex-col flex-auto w-full rounded-md space-y-3" }, [
-        Skeleton({ width: "w-3/4", height: "h-5", class: "rounded" }), // Skeleton for name
-        Skeleton({ width: "w-full", height: "h-4", class: "rounded" }), // Skeleton for subject
-        Skeleton({ width: "w-1/2", height: "h-4", class: "rounded" }), // Skeleton for time
-        Div({ class: "flex space-x-2 mt-2" }, [
-            Skeleton({ width: "w-10", height: "h-4", class: "rounded" }), // Tag 1 skeleton
-            Skeleton({ width: "w-12", height: "h-4", class: "rounded" }), // Tag 2 skeleton
+        Skeleton({ width: "w-3/4", height: "h-6", class: "rounded" }), // Skeleton for name
+        Skeleton({ width: "w-1/2", height: "h-5", class: "rounded" }), // Skeleton for subject
+        Skeleton({ width: "w-full", height: "h-8", class: "rounded" }), // Skeleton for content
+        Div({ class: "flex space-x-2 mt-4 pb-[2px]" }, [
+            Skeleton({ width: "w-12", height: "h-5", class: "rounded" }), // Tag 1 skeleton
+            Skeleton({ width: "w-14", height: "h-5", class: "rounded" }), // Tag 2 skeleton
         ])
     ])
 );
