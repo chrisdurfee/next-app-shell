@@ -69,13 +69,30 @@ export const InboxMessageItem = Jot(
     state: { loaded: false },
 
     /**
+     * This will mark as read.
+     *
+     * @returns {void}
+     */
+    markRead()
+    {
+        let { message } = this;
+        message = { ...message };
+
+        if (!message.read)
+        {
+            message.read = true;
+            this.parent.mingle([message]);
+        }
+    },
+
+    /**
      * This will render the InboxMessageItem component.
      *
      * @returns {object}
      */
     render()
     {
-        const { message } = this;
+        const message = { ...this.message };
         const route = this.parent.parent.route;
 
         // Simulate loading with a timeout
@@ -101,7 +118,7 @@ export const InboxMessageItem = Jot(
             {
                 return !loaded
                     ? InboxMessageSkeleton()
-                    : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}` }, [
+                    : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}`, click: () => this.markRead() }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
                             Div({ class: 'flex items-center justify-between' }, [
                                 Div({ class: "flex items-center gap-2" }, [
