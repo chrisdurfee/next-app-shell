@@ -18,7 +18,6 @@ export class DockableOverlay extends Overlay
      */
     onCreated()
     {
-        this.persist = false;
         this.dockSize = this.maxSize || 1024;
     }
 

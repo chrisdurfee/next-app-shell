@@ -22,6 +22,7 @@ export const BackButton = Atom((props) =>
                 if (window.history.length > 2)
                 {
                     window.history.back();
+                    return;
                 }
 
                 if (props.backUrl)
@@ -63,23 +64,6 @@ export class Overlay extends Component
                 this.addBody()
             ]
         );
-    }
-
-    /**
-     * This will get the referral path if set by a route.
-     *
-     * @returns {string|null}
-     */
-    getReferralPath()
-    {
-        let route = this.route;
-        if(!route)
-        {
-            return null;
-        }
-
-        let referralPath = route.referralPath;
-        return (referralPath !== window.location.pathname)? referralPath : null;
     }
 
     /**
