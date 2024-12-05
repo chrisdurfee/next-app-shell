@@ -3,6 +3,7 @@ import { Module } from '../module/module.js';
 import { BlogPage } from './components/pages/blog/blog-page.js';
 import { PostPage } from './components/pages/blog/posts/post-page.js';
 import CalendarPage from './components/pages/calendar/calendar-page.js';
+import ClientListPage from './components/pages/clients/client-list-page.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
@@ -52,6 +53,11 @@ const routes = Module.convertRoutes(
     { path: '/list/:page?*', import: import('./components/pages/lists/list-page.js'), title: 'List' },
 
     /**
+     * Clients route
+     */
+    { path: '/clients/:clientId?*', import: ClientListPage(), title: 'Clients' },
+
+    /**
      * Settings route
      */
     { path: '/settings/:page?*', component: SettingsPage(), title: 'Settings' },
@@ -83,6 +89,7 @@ const links =
     { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 },
     { label: 'Calendar', href: 'calendar/month', icon: Icons.calendar.default },
     { label: 'List', href: 'list', icon: Icons.list.four },
+    { label: 'Clients', href: 'clients', icon: Icons.user.group },
     { label: 'Website', href: 'website', icon: Icons.global },
     // { label: 'Reviews', href: 'full-contain', icon: Icons.star },
     // { label: 'Map', href: 'full', icon: Icons.map },
