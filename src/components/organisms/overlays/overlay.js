@@ -17,7 +17,18 @@ export const BackButton = Atom((props) =>
         Button({
             variant: 'icon',
             class: 'back-button',
-            click: () => window.history.back()
+            click: () => {
+
+                if (window.history.length > 2)
+                {
+                    window.history.back();
+                }
+
+                if (props.backUrl)
+                {
+                    app.navigate(props.backUrl);
+                }
+            }
         }, [
             Icon(Icons.arrows.left)
         ])

@@ -16,7 +16,8 @@ export const EmailToolbar = (props) => (
     Div({ class: "flex items-center justify-between border-b pb-2" }, [
         Div({ class: 'flex lg:hidden' }, [
             BackButton({
-                margin: 'm-0 ml-0'
+                margin: 'm-0 ml-0',
+                backUrl: '/inbox'
             })
         ]),
         Div({ class: "hidden lg:flex items-center gap-2" }, [

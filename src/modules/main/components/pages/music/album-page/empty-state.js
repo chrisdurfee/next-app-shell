@@ -24,7 +24,9 @@ const album = getAlbumByTitle(title);
 export const EmptyState = () => (
     Div({ class: 'w-full lg:w-1/3' }, [
         Header({ class: 'flex flex-auto items-center mb-2' }, [
-            BackButton(),
+            BackButton({
+                backUrl: 'music'
+            }),
             H2({ class: 'text-2xl font-bold tracking-tight' }, 'Hmmm?'),
         ]),
         Div({ class: 'space-y-4 mt-4' }, [

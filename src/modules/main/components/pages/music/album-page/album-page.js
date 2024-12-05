@@ -35,7 +35,9 @@ const AlbumPageContent = () =>
                 return [
                     Div({ class: 'w-full lg:w-1/3' }, [
                         Header({ class: 'flex flex-auto items-center mb-2' }, [
-                            BackButton(),
+                            BackButton({
+                                backUrl: 'music'
+                            }),
                             H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, album.artist),
                         ]),
                         new AlbumCard({ src: album.src, title: album.title }),

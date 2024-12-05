@@ -25,7 +25,8 @@ const Toolbar = () => (
     Div({ class: "flex w-full items-center justify-between pb-2 mt-2" }, [
         Div({ class: 'flex' }, [
             BackButton({
-                margin: 'm-0 ml-0'
+                margin: 'm-0 ml-0',
+                backUrl: '/blog'
             })
         ])
     ])

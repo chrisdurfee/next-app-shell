@@ -11,7 +11,9 @@ const ExampleOverlay = () => (
 		Div({ class: 'p-6 2xl:mx-auto 2xl:max-w-[1600px]' }, [
 			Div({ class: 'w-full lg:w-1/3' }, [
 				Header({ class: 'flex flex-auto items-center mb-2' }, [
-					BackButton(),
+					BackButton({
+						backUrl: 'aside/marketing/'
+					}),
 					H1({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, 'Overlay'),
 				])
 			])
