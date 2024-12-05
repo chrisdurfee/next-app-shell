@@ -122,7 +122,7 @@ export const EmailDetail = Jot(
                         ]),
 
                         // Composer Section
-                        EmailComposer({ placeholder: `Reply to ${message.name}...` }),
+                        new EmailComposer({ placeholder: `Reply to ${message.name}...` }),
                     ]);
                 }
             ]
