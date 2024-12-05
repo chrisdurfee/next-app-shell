@@ -34,8 +34,7 @@ const SendButton = () => (
             variant: "icon",
             click: () => console.log("Send email"),
             icon: Icons.airplane,
-            class: "text-foreground hover:text-accent",
-            disabled: '[[isOverLimit]]',
+            class: "text-foreground hover:text-accent"
         })
     ])
 );
