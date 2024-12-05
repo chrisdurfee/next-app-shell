@@ -10,7 +10,7 @@ import { Icons } from "@components/icons/icons.js";
  * @param {number} limit
  * @returns {boolean}
  */
-const isOverLimit = (count, limit) => count > limit;
+const isOverLimit = (count, limit) => count > limit? true : null;
 
 /**
  * This will display the character count.
@@ -90,7 +90,6 @@ export const EmailComposer = Jot(
                     input: updateCharCount,
                     bind: this.bind
                 }),
-                // Send button and character count
                 Div({ class: 'flex flex-col items-end justify-end' }, [
                     TextCount(),
                     SendButton()
