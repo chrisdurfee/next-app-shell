@@ -90,7 +90,7 @@ export const EmailComposer = Jot(
                     input: updateCharCount,
                     bind: this.bind
                 }),
-                // Character counter
+                // Send button and character count
                 Div({ class: 'flex flex-col items-end justify-end' }, [
                     TextCount(),
                     SendButton()
