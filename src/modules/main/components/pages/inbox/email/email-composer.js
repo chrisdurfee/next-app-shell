@@ -26,8 +26,8 @@ export const EmailComposer = ({ placeholder = "Write a reply here...", charLimit
                     click: () => console.log("Send email"),
                     icon: Icons.airplane,
                     class: "text-foreground hover:text-accent",
-                }),
-            ]),
-        ]),
+                })
+            ])
+        ])
     ])
 );
