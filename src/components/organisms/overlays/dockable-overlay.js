@@ -16,7 +16,7 @@ export class DockableOverlay extends Overlay
      *
      * @returns {void}
      */
-    beforeSetup()
+    onCreated()
     {
         this.persist = false;
         this.dockSize = this.maxSize || 1024;
@@ -89,7 +89,7 @@ export class DockableOverlay extends Overlay
     {
         return {
             loading: false,
-            docked: false
+            docked: this.canDock()
         };
     }
 
@@ -116,13 +116,23 @@ export class DockableOverlay extends Overlay
     }
 
     /**
+     * This will check if the overlay can dock.
+     *
+     * @returns {boolean}
+     */
+    canDock()
+    {
+        return (window.innerWidth >= this.dockSize);
+    }
+
+    /**
      * This will handle the overlay resize.
      *
      * @returns {void}
      */
     onResize()
     {
-        this.state.docked = window.innerWidth >= this.dockSize;
+        this.state.docked = this.canDock();
     }
 }
 
