@@ -9,9 +9,10 @@ import { BackButton } from "@components/organisms/overlays/overlay.js";
 /**
  * Toolbar for Email Actions.
  *
+ * @param {object} props
  * @returns {object}
  */
-export const EmailToolbar = () => (
+export const EmailToolbar = (props) => (
     Div({ class: "flex items-center justify-between border-b pb-2" }, [
         Div({ class: 'flex lg:hidden' }, [
             BackButton({
@@ -40,20 +41,18 @@ export const EmailToolbar = () => (
                 Button({
                     variant: "icon",
                     icon: Icon({ size: "sm", class: "text-foreground" }, Icons.trash),
-                    click: () =>
+                    click: (e, parent) =>
                     {
                         new Confirmation({
                             icon: Icons.trash,
                             title: 'Delete Message',
                             description: 'Are you sure you want to delete this message?',
                             confirmTextLabel: 'Delete',
-                            confirmed: () => app.notify({
-                                type: "success",
-                                title: "Email Deleted",
-                                description: "The email has been deleted.",
-                                icon: Icons.check
-                            })
-                        }).open()
+                            confirmed: () =>
+                            {
+                                props.delete(props.message.id);
+                            }
+                        }).open();
                     }
                 }),
             ]),

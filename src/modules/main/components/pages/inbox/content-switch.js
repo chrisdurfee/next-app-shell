@@ -7,9 +7,10 @@ import { EmailEmptyState } from "./email/email-empty-state.js";
 /**
  * This will create the ContentSwitch.
  *
+ * @param {object} props
  * @returns {object}
  */
-export const ContentSwitch = () => (
+export const ContentSwitch = (props) => (
     Div({
         class: 'flex-[4] flex-col w-full h-full hidden lg:flex',
         switch: [
@@ -19,7 +20,8 @@ export const ContentSwitch = () => (
                     OnRoute('messageId', (messageId) => (!messageId)
                         ? EmailEmptyState()
                         : new EmailDetail({
-                            messageId
+                            messageId,
+                            delete: props.delete
                         })
                     )
                 ])

@@ -108,7 +108,10 @@ export const EmailDetail = Jot(
                     ? EmailDetailSkeleton()
                     : Div({ class: "flex flex-auto flex-col space-y-4" }, [
 
-                        EmailToolbar(message),
+                        EmailToolbar({
+                            message,
+                            delete: this.delete,
+                        }),
 
                         // Header Section
                         EmailHeader(message),

@@ -1,5 +1,6 @@
-import { Div } from "@base-framework/atoms";
+import { Div, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { Icons } from "@components/icons/icons.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { ContentSwitch } from "./content-switch.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
@@ -65,7 +66,29 @@ export const InboxPage = () => (
             Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
                 InboxList()
             ]),
-            ContentSwitch()
+            UseParent(({ list, route }) =>
+            {
+                return ContentSwitch({
+
+                    /**
+                     * This will delete the email.
+                     *
+                     * @param {number} id
+                     */
+                    delete: (id) =>
+                    {
+                        list.delete(id);
+                        app.navigate(`inbox/${route.page}`);
+
+                        app.notify({
+                            type: "success",
+                            title: "Email Deleted",
+                            description: "The email has been deleted.",
+                            icon: Icons.check
+                        });
+                    }
+                });
+            })
         ])
     ])
 );

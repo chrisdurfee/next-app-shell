@@ -92,7 +92,7 @@ export const InboxMessageItem = Jot(
      */
     render()
     {
-        const message = { ...this.message };
+        const message = this.message;
         const route = this.parent.parent.route;
 
         // Simulate loading with a timeout
