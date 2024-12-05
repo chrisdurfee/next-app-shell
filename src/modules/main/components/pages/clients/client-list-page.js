@@ -12,10 +12,10 @@ import { PageHeader } from "./page-header.js";
  */
 export const ClientListPage = () => (
     new BlankPage([
-        Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-4' }, [
+        Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-6' }, [
             PageHeader(),
             ClientSummaryCards(),
-            Div({ class: 'flex flex-col' }, [
+            Div({ class: 'flex flex-col overflow-x-auto' }, [
                 ClientTable({ clients })
             ])
         ])

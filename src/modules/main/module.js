@@ -55,7 +55,7 @@ const routes = Module.convertRoutes(
     /**
      * Clients route
      */
-    { path: '/clients/:clientId?*', import: ClientListPage(), title: 'Clients' },
+    { path: '/clients/:clientId?*', component: ClientListPage(), title: 'Clients' },
 
     /**
      * Settings route

@@ -13,7 +13,7 @@ import { DataTable } from "@components/organisms/lists/data-table.js";
 export const ClientRow = (row, onSelect) => (
     Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
         Td({ class: 'p-4' }, [
-            Checkbox({
+            new Checkbox({
                 checked: row.selected,
                 class: 'mr-2',
                 onChange: () => onSelect(row)
@@ -42,8 +42,10 @@ export const ClientRow = (row, onSelect) => (
  */
 export const ClientTable = ({ clients }) => (
     new DataTable({
+        cache: 'list',
+        class: 'overflow-x-auto',
         headers: [
-            { label: 'Checkbox', key: '' },
+            { label: 'checkbox', key: '' },
             { label: 'Name', key: 'name' },
             { label: 'Status', key: 'status' },
             { label: 'Role', key: 'role' },
