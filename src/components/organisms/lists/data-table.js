@@ -19,7 +19,7 @@ const TableHeader = (props) =>
             {
                 if (header.label === 'checkbox')
                 {
-                    return Th({ class: 'cursor-pointer py-3 px-4 text-base' }, [
+                    return Th({ class: 'cursor-pointer py-3 px-4 text-base w-10' }, [
                         new Checkbox({ class: 'mr-2', onChange: props.toggle }),
                     ]);
                 }
