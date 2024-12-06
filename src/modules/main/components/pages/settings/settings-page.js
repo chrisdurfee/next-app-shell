@@ -55,7 +55,7 @@ const props =
         const page = this.route.page;
         if (!isMobile() && !page)
         {
-            app.navigate('settings/profile');
+            app.navigate('settings/profile', null, true);
         }
     },
 
