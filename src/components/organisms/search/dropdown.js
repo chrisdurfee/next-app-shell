@@ -28,7 +28,7 @@ const ListItem = Atom(({ index, click, state }, children) => (
  */
 export const Dropdown = Atom(({ selectOption, state }) => (
 	Ul({
-		class: 'border rounded-md list-none m-0 p-0',
+		class: 'border rounded-md list-none m-0 p-0 max-h-[400px] overflow-y-auto',
 		for: ['filteredOptions', (option, index) =>
 		ListItem({ index, click: selectOption, state }, option.label)]
 	})
