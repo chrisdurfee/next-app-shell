@@ -1,4 +1,4 @@
-import { Div, P, Td, Tr } from "@base-framework/atoms";
+import { A, Div, P, Td, Tr } from "@base-framework/atoms";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { DataTable } from "@components/organisms/lists/data-table.js";
@@ -20,7 +20,10 @@ export const ClientRow = (row, onSelect) => (
             })
         ]),
         Td({ class: 'p-4' }, [
-            Div({ class: 'flex min-w-0 gap-x-4' }, [
+            A({
+                href: `clients/${row.id}`,
+                class: 'flex items-center gap-x-4 no-underline text-inherit hover:text-primary',
+            }, [
                 Avatar({ src: row.image, alt: row.name, fallbackText: row.name }),
                 Div({ class: 'min-w-0 flex-auto' }, [
                     P({ class: 'text-base font-semibold leading-6 m-0' }, row.name),
@@ -28,9 +31,24 @@ export const ClientRow = (row, onSelect) => (
                 ])
             ])
         ]),
-        Td({ class: 'p-4' }, row.status),
-        Td({ class: 'p-4' }, row.role),
-        Td({ class: 'p-4 text-right' }, `$${row.totalAmount}`)
+        Td({ class: 'p-4' }, [
+            A({
+                href: `clients/${row.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, row.status)
+        ]),
+        Td({ class: 'p-4' }, [
+            A({
+                href: `clients/${row.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, row.role)
+        ]),
+        Td({ class: 'p-4 text-right' }, [
+            A({
+                href: `clients/${row.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, `$${row.totalAmount}`)
+        ])
     ])
 );
 
