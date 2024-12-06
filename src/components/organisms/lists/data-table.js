@@ -104,7 +104,8 @@ export const DataTable = Jot(
     setData()
     {
         return new Data({
-            selectedRows: []
+            selectedRows: [],
+            selected: false
         });
     },
 
@@ -120,7 +121,19 @@ export const DataTable = Jot(
         const selectedRows = select ? [] : tableRows;
         this.data.selectedRows = selectedRows;
 
+        this.updateSelected();
         this.updateTable(!select);
+    },
+
+    /**
+     * This will update the selected state.
+     *
+     * @returns {void}
+     */
+    updateSelected()
+    {
+        const selectedRows = this.data.get('selectedRows');
+        this.data.selected = (selectedRows.length > 0);
     },
 
     /**
@@ -149,10 +162,15 @@ export const DataTable = Jot(
 
         const previouslySelected = this.data.get('selectedRows');
         const selectedRows = row.selected
+
+            // This will add the row to the selected rows.
             ? [...previouslySelected, row]
+
+            // This will remove the row from the selected rows.
             : previouslySelected.filter(selected => selected !== row);
 
         this.data.selectedRows = selectedRows;
+        this.updateSelected();
     },
 
     /**
