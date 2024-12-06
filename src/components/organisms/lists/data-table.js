@@ -134,7 +134,7 @@ export const DataTable = Jot(
         const currentRows = this.rows;
 
         return Div({ class: 'w-full' }, [
-            Div({ class: 'w-full rounded-md border' }, [
+            Div({ class: 'w-full rounded-md border overflow-x-auto' }, [
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key), toggle: () => this.toggleAllSelectedRows() }),
                     Body({

@@ -43,13 +43,12 @@ export const ClientRow = (row, onSelect) => (
 export const ClientTable = ({ clients }) => (
     new DataTable({
         cache: 'list',
-        class: 'overflow-x-auto',
         headers: [
             { label: 'checkbox', key: '' },
             { label: 'Name', key: 'name' },
             { label: 'Status', key: 'status' },
             { label: 'Role', key: 'role' },
-            { label: 'Total Amount', key: 'totalAmount', align: 'justify-end' }
+            { label: 'Total', key: 'totalAmount', align: 'justify-end' }
         ],
         rows: clients,
         rowItem: ClientRow,
