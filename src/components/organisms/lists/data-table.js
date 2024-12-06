@@ -1,4 +1,4 @@
-import { Div, I, Span, Table, Th, Thead, Tr } from '@base-framework/atoms';
+import { Div, I, Span, Table, Th, Thead, Tr, UseParent } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
 import { TableBody } from '@base-framework/organisms';
 import { Checkbox } from '../../atoms/form/checkbox.js';
@@ -12,9 +12,9 @@ import { Icons } from '../../icons/icons.js';
  * @param {object} props
  * @returns {object}
  */
-export const CheckboxCol = ({ toggle }) => (
+export const CheckboxCol = (props) => (
     Th({ class: 'cursor-pointer py-3 px-4 text-base w-10' }, [
-        new Checkbox({ class: 'mr-2', onChange: toggle }),
+        UseParent((parent) => new Checkbox({ class: 'mr-2', onChange: () => parent.toggleAllSelectedRows() })),
     ])
 );
 
@@ -185,7 +185,7 @@ export const DataTable = Jot(
         return Div({ class: 'w-full' }, [
             Div({ class: 'w-full rounded-md border overflow-x-auto' }, [
                 Table({ class: 'w-full' }, [
-                    this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key), toggle: () => this.toggleAllSelectedRows() }),
+                    this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
                     Body({
                         key: this.key,
                         rows: currentRows,
