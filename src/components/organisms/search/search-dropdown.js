@@ -192,6 +192,7 @@ export const SearchDropdown = Jot(
 
 			SearchInput({
 				state: this.state,
+				icon: this.icon,
 				placeholder: this.placeholder,
 				filterOptions: this.filterOptions.bind(this),
 				handleKeyDown: this.handleKeyDown.bind(this),
