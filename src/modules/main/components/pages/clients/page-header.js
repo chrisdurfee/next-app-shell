@@ -3,6 +3,7 @@ import { Button } from "@components/atoms/buttons/buttons.js";
 import { Tooltip } from "@components/atoms/tooltip.js";
 import { Icons } from "@components/icons/icons.js";
 import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
+import { ClientModal } from "./client-modal.js";
 import { clients } from "./clients.js";
 
 /**
@@ -39,10 +40,10 @@ export const PageHeader = () => (
             ]),
             Div({ class: 'flex items-center gap-2' }, [
                 Div({ class: 'hidden lg:flex' }, [
-                    Button({ variant: 'withIcon', class: 'text-muted-foreground', icon: Icons.circlePlus, click: () => console.log('Add Client') }, 'Add Client')
+                    Button({ variant: 'withIcon', class: 'text-muted-foreground', icon: Icons.circlePlus, click: () => ClientModal() }, 'Add Client')
                 ]),
                 Div({ class: 'flex lg:hidden mr-0' }, [
-                    Tooltip({ content: 'Add Client', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus }))
+                    Tooltip({ content: 'Add Client', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: () => ClientModal() }))
                 ])
             ])
         ]),
