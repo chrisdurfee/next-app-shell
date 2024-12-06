@@ -15,9 +15,11 @@ export const ClientListPage = () => (
         Div({ class: 'grid grid-cols-1' }, [
             Div({ class: 'flex flex-auto flex-col p-6 pt-0 space-y-6 md:pt-6 lg:p-8 w-full mx-auto lg:max-w-[70vw]' }, [
                 PageHeader(),
-                ClientSummaryCards(),
-                Div({ class: 'flex flex-col overflow-x-auto' }, [
-                    ClientTable({ clients })
+                Div({ class: 'flex flex-auto flex-col space-y-8 lg:space-y-12' }, [
+                    ClientSummaryCards(),
+                    Div({ class: 'flex flex-col overflow-x-auto' }, [
+                        ClientTable({ clients })
+                    ])
                 ])
             ])
         ])
