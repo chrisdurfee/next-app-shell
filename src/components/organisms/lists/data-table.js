@@ -28,7 +28,7 @@ export const CheckboxCol = ({ toggle }) => (
  */
 export const HeaderCol = ({ align, sortable, key, label, sort}) =>
 {
-    const alignClass = align || 'items-center justify-start';
+    const alignClass = align || 'justify-start';
     return Th({
         class: 'cursor-pointer py-3 px-4 text-base',
         click: sortable && (() => sort(key))
