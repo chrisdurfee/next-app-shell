@@ -19,7 +19,7 @@ const convertClientsToOptions = (clients) => clients.map((client) => ({ label: c
  * @returns {object}
  */
 export const PageHeader = () => (
-    Header({ class: 'flex items-center justify-between' }, [
+    Header({ class: 'flex lg:items-center md:justify-between flex-col md:flex-row' }, [
         H1({ class: 'text-3xl font-bold' }, 'Clients'),
         new SearchDropdown({ options: convertClientsToOptions(clients), onSelect: (item) => console.log(item) }),
         Div({ class: 'flex items-center gap-2' }, [
