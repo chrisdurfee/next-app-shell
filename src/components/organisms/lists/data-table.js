@@ -5,6 +5,42 @@ import { Checkbox } from '../../atoms/form/checkbox.js';
 import { Icons } from '../../icons/icons.js';
 
 /**
+ * CheckboxCol Atom
+ *
+ * Renders a checkbox column for the table.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const CheckboxCol = ({ toggle }) => (
+    Th({ class: 'cursor-pointer py-3 px-4 text-base w-10' }, [
+        new Checkbox({ class: 'mr-2', onChange: toggle }),
+    ])
+);
+
+/**
+ * HeaderCol Atom
+ *
+ * Renders a header column for the table.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const HeaderCol = ({ align, sortable, key, label, sort}) =>
+{
+    const alignClass = align || 'items-center justify-start';
+    return Th({
+        class: 'cursor-pointer py-3 px-4 text-base',
+        click: sortable && (() => sort(key))
+    }, [
+        Div({ class: `flex flex-auto w-full items-center ${alignClass}` }, [
+            Span(label),
+            sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
+        ])
+    ]);
+};
+
+/**
  * TableHeader Atom
  *
  * Renders the table headers with sorting capability.
@@ -12,28 +48,23 @@ import { Icons } from '../../icons/icons.js';
  * @param {object} props
  * @returns {object}
  */
-const TableHeader = (props) =>
+export const TableHeader = (props) =>
 {
     return Thead([
         Tr({ class: 'text-muted-foreground border-b', map: [props.headers, header =>
             {
                 if (header.label === 'checkbox')
                 {
-                    return Th({ class: 'cursor-pointer py-3 px-4 text-base w-10' }, [
-                        new Checkbox({ class: 'mr-2', onChange: props.toggle }),
-                    ]);
+                    return CheckboxCol({ toggle: props.toggle });
                 }
 
-                const align = header.align || 'items-center justify-start';
-                return Th({
-                    class: 'cursor-pointer py-3 px-4 text-base',
-                    click: header.sortable && (() => props.sort(header.key))
-                }, [
-                    Div({ class: `flex flex-auto w-full items-center ${align}` }, [
-                        Span(header.label),
-                        header.sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
-                    ])
-                ]);
+                return HeaderCol({
+                    align: header.align,
+                    sortable: header.sortable,
+                    key: header.key,
+                    label: header.label,
+                    sort: props.sort
+                });
             }]
         })
     ]);
