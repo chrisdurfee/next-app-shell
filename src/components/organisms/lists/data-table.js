@@ -186,6 +186,7 @@ export const DataTable = Jot(
             Div({ class: 'w-full rounded-md border overflow-x-auto' }, [
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
+                    this.customHeader ?? null,
                     Body({
                         key: this.key,
                         rows: currentRows,
