@@ -8,7 +8,7 @@ import { NavLink } from "@base-framework/base";
  * @returns {object}
  */
 export const MobileLink = (props) => (
-    Li({ class: 'mobile-link flex flex-auto items-center justify-center max-h-[80px]' }, [
+    Li({ class: 'mobile-link flex flex-auto items-center justify-center max-h-[80px]', click: props.click }, [
         new NavLink({
             class: 'p-[4px] flex flex-col items-center justify-center',
             href: props.href,

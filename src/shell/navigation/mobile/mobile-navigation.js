@@ -78,9 +78,10 @@ export const MobileNavigation = Jot(
     render()
     {
         const options = this.options || [];
+        options.map(option => option.click = this.handleSelect.bind(this));
         const { primaryOptions, additionalOptions } = separateOptions(options);
 
-        return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden' }, [
+        return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden z-50' }, [
             Ul({ class: 'flex flex-auto m-0 p-0 list-none sm:flex-col' }, [
 
                 // Add the primary options and the additional options button.

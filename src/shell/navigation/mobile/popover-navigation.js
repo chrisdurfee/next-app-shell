@@ -23,13 +23,10 @@ export class PopOverNavigation extends Component
         const options = this.options || [];
         return Div({
             class: `
-                fixed bottom-[56px] w-full min-h-80 left-0 right-0 z-50 inset-auto
+                fixed fadeIn bottom-[56px] w-full min-h-80 left-0 right-0 z-50 inset-auto
                 bg-background/80 backdrop-blur-md rounded-t-lg shadow-lg
-                border border-border-light
-                p-4 space-y-3 text-sm text-inherit
-            `,
-            popover: 'auto',
-            toggle: (e, { state }) => (e.newState === 'closed' ? state.open = false : null),
+                p-4 space-y-3 text-sm text-inherit border
+            `
         }, [
             Span({ class: 'text-muted-foreground font-medium mb-2 block' }, 'More Options'),
             Ul({
@@ -60,16 +57,6 @@ export class PopOverNavigation extends Component
                 }
             }
         };
-    }
-
-    /**
-     * This will run after the setup.
-     *
-     * @returns {void}
-     */
-    afterSetup()
-    {
-        this.panel.showPopover();
     }
 
     /**
@@ -111,15 +98,5 @@ export class PopOverNavigation extends Component
     {
         this.container = app.appShell.panel;
         this.initialize();
-    }
-
-    /**
-     * This will hide the popover before destroying.
-     *
-     * @returns {void}
-     */
-    beforeDestroy()
-    {
-        this.panel.hidePopover();
     }
 }
