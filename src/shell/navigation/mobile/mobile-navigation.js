@@ -92,7 +92,7 @@ export const MobileNavigation = Jot(
                     click: () => this.state.toggle('open')
                 })
             ]),
-            PopOverContainer({ options: [...additionalOptions, ...additionalOptions] })
+            PopOverContainer({ options: additionalOptions })
         ]);
     }
 });

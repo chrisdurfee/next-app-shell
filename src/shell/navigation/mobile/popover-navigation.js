@@ -28,7 +28,7 @@ export class PopOverNavigation extends Component
             // Backdrop
             Div({
                 class: `
-                    absolute inset-0 bg-black/40 z-[-1]
+                    absolute inset-0 bg-black/40 z-[-1] fadeIn
                     transition-opacity duration-200
                 `,
                 click: () => this.state.open = false
