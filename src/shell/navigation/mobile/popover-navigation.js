@@ -1,4 +1,4 @@
-import { Div, Ul } from "@base-framework/atoms";
+import { Div, Span, Ul } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
 import { MobileLink } from "./mobile-link.js";
 
@@ -22,11 +22,19 @@ export class PopOverNavigation extends Component
 	{
         const options = this.options || [];
         return Div({
-            class: `absolute inset-auto fadeIn bottom-full left-0 w-full bg-background/80 backdrop-blur-md shadow-md rounded-md text-inherit r z-50`,
+            class: `
+                fixed bottom-[56px] w-full min-h-80 left-0 right-0 z-50 inset-auto
+                bg-background/80 backdrop-blur-md rounded-t-lg shadow-lg
+                border border-border-light
+                p-4 space-y-3 text-sm text-inherit
+            `,
             popover: 'auto',
-            toggle: (e, { state }) => (e.newState === 'closed')? state.open = false : null,
+            toggle: (e, { state }) => (e.newState === 'closed' ? state.open = false : null),
         }, [
-            Ul({ class: 'flex flex-row flex-wrap justify-start m-0 p-4 list-none' }, options.map(option => MobileLink(option)))
+            Span({ class: 'text-muted-foreground font-medium mb-2 block' }, 'More Options'),
+            Ul({
+                class: 'grid grid-cols-5 gap-4 list-none p-0 m-0',
+            }, options.map(option => MobileLink(option)))
         ]);
 	}
 
