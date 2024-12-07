@@ -41,7 +41,7 @@
 
 .navigation li.option:hover,
 .navigation li.option:active,
-.mobile-navigation .active i {
+.mobile-link .active i {
 	@apply bg-muted;
 }
 
@@ -53,7 +53,7 @@
 
 .navigation li .icon.selected,
 .navigation li i.selected,
-.mobile-navigation .active i {
+.mobile-link .active i {
 	@apply text-primary;
 }
 
