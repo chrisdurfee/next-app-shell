@@ -89,7 +89,7 @@ const links =
     { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 },
     { label: 'Calendar', href: 'calendar/month', icon: Icons.calendar.default },
     { label: 'List', href: 'list', icon: Icons.list.four },
-    { label: 'Clients', href: 'clients', icon: Icons.user.group },
+    { label: 'Clients', href: 'clients', icon: Icons.user.group, mobileOrder: 6 },
     { label: 'Website', href: 'website', icon: Icons.global },
     // { label: 'Reviews', href: 'full-contain', icon: Icons.star },
     // { label: 'Map', href: 'full', icon: Icons.map },
