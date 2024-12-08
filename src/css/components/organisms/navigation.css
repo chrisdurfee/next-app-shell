@@ -69,6 +69,10 @@
 	margin-left: 0;
 }
 
+.mobile-popover-navigation {
+	backface-visibility: hidden;
+	transform: translateZ(0);
+}
 .navigation li.option .selected .label,
 .mobile-navigation .active span,
 .navigation li.option .active .label {
