@@ -1,4 +1,4 @@
-import { Span, Td, Tr } from '@base-framework/atoms';
+import { P, Span, Td, Tr } from '@base-framework/atoms';
 import { Checkbox } from '@components/atoms/form/checkbox.js';
 import { DataTable } from "@components/organisms/lists/data-table.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
@@ -188,7 +188,9 @@ export const CustomHeaderTable = () =>
         ])
     ]);
 };`
-            })
+            }),
+
+            P({ class: 'text-muted-foreground' }, 'The Data Table allows items to be selected. The selected elements can be retrieved by calling the "getSelectedRows" method on the DataTable instance. The method returns an array of selected rows.')
         ]
     )
 );
