@@ -38,7 +38,7 @@ export class PopOverNavigation extends Component
             Div({
                 class: `
                     absolute pullUpIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50 inset-auto
-                    bg-background/80 backdrop-blur-md rounded-t-lg shadow-lg border
+                    bg-background/80 backdrop-blur-md rounded-t-lg sm:rounded-t-none sm:rounded-r-md shadow-lg border
                     p-4 space-y-3 text-sm text-inherit
                 `,
             }, [

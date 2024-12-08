@@ -80,7 +80,7 @@ export class AppControl extends Component
                  * This will create a navigation for the main and mobile navigation.
                  */
                 new MainNavigation({ options: this.options }),
-                new MobileNavigation({ options: mobileOptions })
+                new MobileNavigation({ options: [...mobileOptions, ...mobileOptions] })
             ]
         );
     }
