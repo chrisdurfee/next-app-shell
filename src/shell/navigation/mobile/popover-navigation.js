@@ -45,7 +45,8 @@ export class PopOverNavigation extends Component
                 Span({ class: 'text-muted-foreground font-medium mb-2 block' }, 'More Options'),
                 Ul({
                     class: 'grid grid-cols-5 gap-4 list-none p-0 m-0',
-                }, options.map(option => MobileLink(option)))
+                    map: [options, MobileLink]
+                })
             ])
         ]);
     }
