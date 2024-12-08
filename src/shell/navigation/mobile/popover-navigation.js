@@ -65,42 +65,13 @@ export class PopOverNavigation extends Component
                 id,
                 callBack: (state) =>
                 {
-                    if (this.state.open === false)
+                    if (state === false)
                     {
                         this.destroy();
                     }
                 }
             }
         };
-    }
-
-    /**
-     * Checks if the click is outside the component.
-     *
-     * @param {HTMLElement} element
-     * @returns {boolean}
-     */
-    isOutsideClick(element)
-    {
-        return !this.panel.contains(element) && !this.button?.contains(element);
-    }
-
-    /**
-     * Sets up the events for click handling.
-     *
-     * @returns {array}
-     */
-    setupEvents()
-    {
-        return [
-            ['click', document, (e) =>
-            {
-                // if (this.isOutsideClick(e.target))
-                // {
-                //     this.state.open = false;
-                // }
-            }]
-        ];
     }
 
     /**
