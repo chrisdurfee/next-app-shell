@@ -103,27 +103,32 @@ export class NavigationPopover extends Component
 	 */
 	render()
 	{
-        return Div({
-			click: (e, parent) =>
-			{
-				const isClickOutside = (e.target === parent.panel);
-				if (isClickOutside)
-				{
-					e.preventDefault();
-					e.stopPropagation();
-
-					parent.state.open = false; // Close the modal
-				}
-			},
-            class: `fixed popIn m-auto rounded-md p-0 shadow-lg bg-popover top-0 bottom-0 left-2 right-2 text-inherit block z-30 after:content-[''] after:fixed after:-top-[5vh] after:-left-2 after:-right-2 after:-bottom-[5vh] after:-z-[1] after:bg-black/40`,
-			style: 'margin: calc(5vh + env(safe-area-inset-top)) 0 calc(5vh + env(safe-area-inset-bottom)) 0',
-			dataSet: ['open', ['expanded', true, 'true']]
+		return Div({
+            class: `mobile-popover-navigation fixed inset-0 z-50`,
+            //style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
         }, [
-			Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[85vh] rounded-md bg-popover border' }, [
-				PopupHeader({ title: this.title }),
-				Div({ class: 'flex flex-auto flex-col' }, this.children)
-			])
-		]);
+            // Backdrop
+            Div({
+                class: `
+                    absolute inset-0 bg-black/40 z-[-1] fadeIn
+                    transition-opacity duration-200
+                `,
+                click: () => this.state.open = false
+            }),
+
+            // Popover Content
+            Div({
+                class: `
+                    absolute popIn w-auto p-0 shadow-lg bg-popover m-auto top-0 bottom-0 left-2 right-2 max-h-[85vh] text-inherit block
+                `,
+				dataSet: ['open', ['expanded', true, 'true']]
+            }, [
+                Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[85vh] rounded-md bg-popover border' }, [
+					PopupHeader({ title: this.title }),
+					Div({ class: 'flex flex-auto flex-col' }, this.children)
+				])
+            ])
+        ]);
 	}
 
     /**
