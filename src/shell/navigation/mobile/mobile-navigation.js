@@ -1,4 +1,4 @@
-import { Div, I, Nav, Span, Ul } from "@base-framework/atoms";
+import { Button, I, Li, Nav, Span, Ul } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
 import { MobileLink } from "./mobile-link.js";
@@ -13,11 +13,11 @@ import { PopOverContainer } from "./popover-container.js";
  * @returns {object}
  */
 export const AdditionalOptionsButton = ({ click }) => (
-    Div({
-        class: 'flex flex-auto items-center justify-center cursor-pointer max-h-[80px]',
+    Li({
+        class: 'mobile-link flex flex-auto items-center justify-center cursor-pointer max-h-[80px]',
         click
     }, [
-        Div({ class: 'p-[4px] flex flex-col items-center justify-center' }, [
+        Button({ class: 'p-[4px] flex flex-col items-center justify-center', onState: ['open', { active: true }] }, [
             I({ class: 'flex items-center justify-center py-[2px] px-3 rounded-md', html: Icons.ellipsis.vertical }),
             Span({ class: 'text-[10px]' }, 'More')
         ])
