@@ -13,7 +13,7 @@ import { Icons } from '../../icons/icons.js';
  * @returns {object}
  */
 export const CheckboxCol = (props) => (
-    Th({ class: 'cursor-pointer py-3 px-4 text-base w-10' }, [
+    Th({ class: `cursor-pointer py-3 px-4 text-base w-10 ${props.class || '' }` }, [
         UseParent((parent) => new Checkbox({ class: 'mr-2', onChange: () => parent.toggleAllSelectedRows() })),
     ])
 );
@@ -30,10 +30,10 @@ export const HeaderCol = ({ align, sortable, key, label, sort, class: className}
 {
     const alignClass = align || 'justify-start';
     return Th({
-        class: 'cursor-pointer py-3 px-4 text-base',
+        class: `cursor-pointer py-3 px-4 text-base ${className || ''}`,
         click: sortable && (() => sort(key))
     }, [
-        Div({ class: `flex flex-auto w-full items-center ${alignClass} ${className || ''}` }, [
+        Div({ class: `flex flex-auto w-full items-center ${alignClass}` }, [
             Span(label),
             sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
         ])

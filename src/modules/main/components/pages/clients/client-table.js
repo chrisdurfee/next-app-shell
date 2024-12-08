@@ -29,7 +29,7 @@ const ClientHeaderRow = () => (
  */
 export const ClientRow = (row, onSelect) => (
     Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
-        Td({ class: 'p-4' }, [
+        Td({ class: 'p-4 hidden md:table-cell' }, [
             new Checkbox({
                 checked: row.selected,
                 class: 'mr-2',
@@ -48,19 +48,19 @@ export const ClientRow = (row, onSelect) => (
                 ])
             ])
         ]),
-        Td({ class: 'p-4' }, [
+        Td({ class: 'p-4 hidden md:table-cell' }, [
             A({
                 href: `clients/${row.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, row.status)
         ]),
-        Td({ class: 'p-4' }, [
+        Td({ class: 'p-4 hidden md:table-cell' }, [
             A({
                 href: `clients/${row.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, row.role)
         ]),
-        Td({ class: 'p-4 text-right' }, [
+        Td({ class: 'p-4 text-right justify-end' }, [
             A({
                 href: `clients/${row.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
