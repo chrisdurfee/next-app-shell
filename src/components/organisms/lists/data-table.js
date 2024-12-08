@@ -26,14 +26,14 @@ export const CheckboxCol = (props) => (
  * @param {object} props
  * @returns {object}
  */
-export const HeaderCol = ({ align, sortable, key, label, sort}) =>
+export const HeaderCol = ({ align, sortable, key, label, sort, class: className}) =>
 {
     const alignClass = align || 'justify-start';
     return Th({
         class: 'cursor-pointer py-3 px-4 text-base',
         click: sortable && (() => sort(key))
     }, [
-        Div({ class: `flex flex-auto w-full items-center ${alignClass}` }, [
+        Div({ class: `flex flex-auto w-full items-center ${alignClass} ${className || ''}` }, [
             Span(label),
             sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
         ])
