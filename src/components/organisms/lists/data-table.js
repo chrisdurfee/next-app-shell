@@ -137,6 +137,16 @@ export const DataTable = Jot(
     },
 
     /**
+     * This will get the selected rows.
+     *
+     * @returns {array<object>}
+     */
+    getSelectedRows()
+    {
+        return this.data.get('selectedRows');
+    },
+
+    /**
      * This will update the table rows.
      *
      * @protected

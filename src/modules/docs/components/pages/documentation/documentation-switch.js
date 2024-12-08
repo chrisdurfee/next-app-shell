@@ -6,7 +6,7 @@ import { ButtonPage } from "./components/buttons/button-page.js";
 import { CalendarPage } from "./components/calendar-page.js";
 import CardPage from "./components/cards/card-page.js";
 import ComboboxPage from "./components/comboxbox-page.js";
-import DataTablePage from "./components/data-table-page.js";
+import DataTablePage from "./components/data-table/data-table-page.js";
 import { DialogPage } from "./components/dialog-page.js";
 import DropdownMenuPage from "./components/dropdown-menu-page.js";
 import { FormPage } from "./components/form-page.js";
