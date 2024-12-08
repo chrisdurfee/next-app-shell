@@ -18,7 +18,7 @@
     }
 }
 .fadeIn {
-    animation: fadeIn .1s ease-in;
+    animation: fadeIn .1s ease;
     animation-fill-mode: forwards;
 
     backface-visibility: hidden;
@@ -116,7 +116,7 @@
 }
 
 .pullUpIn {
-    animation: pullUpIn .3s ease-out;
+    animation: pullUpIn .2s ease;
     animation-fill-mode: forwards;
 
     backface-visibility: hidden;
