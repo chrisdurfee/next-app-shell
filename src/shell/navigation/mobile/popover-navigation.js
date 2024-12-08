@@ -22,8 +22,8 @@ export class PopOverNavigation extends Component
     {
         const options = this.options || [];
         return Div({
-            class: `fixed inset-0 z-50`,
-            style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
+            class: `fixed inset-0 z-50 bottom-[56px] sm:bottom-0 sm:left-[60px]`,
+            //style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
         }, [
             // Backdrop
             Div({
@@ -37,7 +37,7 @@ export class PopOverNavigation extends Component
             // Popover Content
             Div({
                 class: `
-                    absolute pullUpIn bottom-0 w-full min-h-80 left-0 right-0 z-50 inset-auto
+                    absolute pullUpIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50 inset-auto
                     bg-background/80 backdrop-blur-md rounded-t-lg shadow-lg border
                     p-4 space-y-3 text-sm text-inherit
                 `,
