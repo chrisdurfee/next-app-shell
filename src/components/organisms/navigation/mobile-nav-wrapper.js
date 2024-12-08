@@ -104,7 +104,7 @@ export class NavigationPopover extends Component
 	render()
 	{
 		return Div({
-            class: `mobile-popover-navigation fixed inset-0 z-50`,
+            class: `fixed inset-0 z-50`,
             //style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
         }, [
             // Backdrop
