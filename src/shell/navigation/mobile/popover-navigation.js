@@ -22,7 +22,7 @@ export class PopOverNavigation extends Component
     {
         const options = this.options || [];
         return Div({
-            class: `mobile-popover-navigation fixed inset-0 z-50 bottom-[56px] sm:bottom-0 sm:left-[60px]`,
+            class: `mobile-popover-navigation fixed inset-0 z-50 bottom-[56px] sm:bottom-0 sm:left-[60px] flex lg:hidden`,
             //style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
         }, [
             // Backdrop
