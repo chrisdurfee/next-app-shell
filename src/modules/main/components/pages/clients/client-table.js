@@ -1,7 +1,24 @@
-import { A, Div, P, Td, Tr } from "@base-framework/atoms";
+import { A, Div, P, Td, Thead, Tr } from "@base-framework/atoms";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { DataTable } from "@components/organisms/lists/data-table.js";
+import { CheckboxCol, DataTable, HeaderCol } from "@components/organisms/lists/data-table.js";
+
+/**
+ * This will render a header row in the clients table.
+ *
+ * @returns {object}
+ */
+const ClientHeaderRow = () => (
+    Thead([
+        Tr({ class: 'text-muted-foreground border-b' }, [
+            CheckboxCol({ class: 'hidden md:table-cell' }),
+            HeaderCol({ key: 'name', label: 'Name'}),
+            HeaderCol({ key: 'status', label: 'Status', class: 'hidden md:table-cell'  }),
+            HeaderCol({ key: 'role', label: 'Role', class: 'hidden md:table-cell'  }),
+            HeaderCol({ key: 'totalAmount', label: 'Total', align: 'justify-end' })
+        ])
+    ])
+);
 
 /**
  * This will render a row in the clients table.
@@ -61,13 +78,7 @@ export const ClientRow = (row, onSelect) => (
 export const ClientTable = ({ clients }) => (
     new DataTable({
         cache: 'list',
-        headers: [
-            { label: 'checkbox', key: '' },
-            { label: 'Name', key: 'name' },
-            { label: 'Status', key: 'status' },
-            { label: 'Role', key: 'role' },
-            { label: 'Total', key: 'totalAmount', align: 'justify-end' }
-        ],
+        customHeader: ClientHeaderRow(),
         rows: clients,
         rowItem: ClientRow,
         key: 'id',
