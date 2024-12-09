@@ -1,6 +1,7 @@
 import { Div, Span, Ul } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
 import { MobileLink } from "./mobile-link.js";
+import { checkTypeBySize, getTypeClass } from "./utils.js";
 
 /**
  * PopOverNavigation
@@ -23,7 +24,7 @@ export class PopOverNavigation extends Component
         const options = this.options || [];
         return Div({
             class: `mobile-popover-navigation fixed inset-0 z-50 bottom-[56px] sm:bottom-0 sm:left-[60px] flex lg:hidden`,
-            //style: 'bottom: calc(56px + env(safe-area-inset-bottom));'
+            style: '[[typeClass]]'
         }, [
             // Backdrop
             Div({
@@ -60,8 +61,17 @@ export class PopOverNavigation extends Component
     {
         const parent = this.parent;
         const id = parent.getId();
+        const type = checkTypeBySize();
 
         return {
+            type: {
+				state: type,
+				callBack: (type) =>
+				{
+					this.state.typeClass = getTypeClass(type);
+				}
+			},
+			typeClass: getTypeClass(type),
             open: {
                 id,
                 callBack: (state) =>
@@ -73,6 +83,18 @@ export class PopOverNavigation extends Component
                 }
             }
         };
+    }
+
+    /**
+     * Sets up the events.
+     *
+     * @returns {array}
+     */
+    setupEvents()
+    {
+        return [
+            ['resize', window, () => this.state.type = checkTypeBySize()]
+        ];
     }
 
     /**

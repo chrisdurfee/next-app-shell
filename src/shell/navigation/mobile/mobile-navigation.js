@@ -39,57 +39,6 @@ const separateOptions = (options) =>
 };
 
 /**
- * This is the types for the navigation.
- *
- * @type {object} TYPES
- */
-const TYPES = {
-	PHONE: 'phone',
-	TABLET: 'tablet',
-	DESKTOP: 'desktop'
-};
-
-/**
- * This will check the type by size.
- *
- * @returns {string}
- */
-const checkTypeBySize = () =>
-{
-	const width = window.innerWidth;
-	if (width >= 1024)
-	{
-		return TYPES.DESKTOP;
-	}
-
-	if (width >= 640)
-	{
-		return TYPES.TABLET;
-	}
-
-	return TYPES.PHONE;
-};
-
-/**
- * This will get the type class.
- *
- * @param {string} type
- * @returns {string}
- */
-const getTypeClass = (type) =>
-{
-	switch (type)
-	{
-		case TYPES.PHONE:
-			return 'bottom: calc(56px + env(safe-area-inset-bottom));';
-		case TYPES.TABLET:
-			return 'left: calc(64px + env(safe-area-inset-left));';
-		case TYPES.DESKTOP:
-			return '';
-	}
-};
-
-/**
  * MobileNavigation
  *
  * A mobile navigation component that displays a list of links in a dropdown.
@@ -106,41 +55,9 @@ export const MobileNavigation = Jot(
      */
     state()
     {
-        const type = checkTypeBySize();
-
         return {
-            open: false,
-            type: {
-				state: type,
-				callBack: (type) =>
-				{
-					this.state.typeClass = getTypeClass(type);
-				}
-			},
-			typeClass: getTypeClass(type)
+            open: false
         };
-    },
-
-    /**
-	 * This will setup the events.
-	 *
-	 * @returns {array}
-	 */
-	setupEvents()
-	{
-		return [
-			['resize', window, checkTypeBySize]
-		];
-	},
-
-    /**
-     * Handles item selection within the dropdown.
-     *
-     * @returns {void}
-     */
-    handleSelect()
-    {
-        this.state.open = false;
     },
 
     /**
@@ -151,7 +68,16 @@ export const MobileNavigation = Jot(
     render()
     {
         const options = this.options || [];
-        options.map(option => option.click = this.handleSelect.bind(this));
+
+        /**
+         * Add a click event to dismiss the dropdown when an option is selected.
+         */
+        const callback = () => this.state.open = false;
+        options.map(option => option.click = callback);
+
+        /**
+         * Separate the options into primary options and additional options.
+         */
         const { primaryOptions, additionalOptions } = separateOptions(options);
 
         return Nav({ class: 'mobile-navigation flex flex-auto flex-col w-full h-full lg:hidden z-50' }, [
