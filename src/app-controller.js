@@ -128,7 +128,7 @@ export class AppController
 		this.appShell.state.isSignedIn = false;
 
 		// remove this comment after the sign in is set up
-		//window.location = this.router.baseUrl;
+		//window.location = Configs.router.baseUrl;
 	}
 
 	/**
