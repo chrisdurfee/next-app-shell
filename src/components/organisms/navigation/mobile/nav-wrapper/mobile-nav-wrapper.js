@@ -58,10 +58,9 @@ const MobileNav = (props) =>
  * This will create a mobile navigation wrapper.
  *
  * @param {object} props
- * @param {array} children
  * @return {object}
  */
-export const MobileNavWrapper = Atom((props, children) =>
+export const MobileNavWrapper = Atom((props) =>
 {
 	return Div({ cache: 'mobileNav', class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
 		Div({ class: 'flex flex-auto flex-col w-full' }, [

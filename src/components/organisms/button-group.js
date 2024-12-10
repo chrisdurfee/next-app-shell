@@ -1,6 +1,5 @@
-import { Button } from '@base-framework/atoms';
+import { Button, Div, P } from '@base-framework/atoms';
 import { Atom, Component } from '@base-framework/base';
-import { Div, P } from '../atoms/atoms.js';
 
 /**
  * This will create a button group.

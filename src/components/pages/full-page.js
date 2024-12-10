@@ -1,7 +1,7 @@
-import { P } from "@base-framework/atoms";
+import { H1, Header, P } from "@base-framework/atoms";
 import { Atom } from '@base-framework/base';
-import { H1, Header, MainSection } from "../atoms/atoms.js";
 import { BasicPage } from './basic-page.js';
+import { MainSection } from "./main-section.js";
 import { FullTemplate } from './templates/full-template.js';
 
 /**

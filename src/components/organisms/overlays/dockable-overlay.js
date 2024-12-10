@@ -1,4 +1,4 @@
-import { Div } from "../../atoms/atoms.js";
+import { Div } from "@base-framework/atoms";
 import { Overlay } from "./overlay.js";
 
 /**

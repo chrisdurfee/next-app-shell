@@ -1,6 +1,5 @@
-import { I, Span } from '@base-framework/atoms';
+import { I, Label, Span } from '@base-framework/atoms';
 import { Atom, Component, NavLink } from '@base-framework/base';
-import { Label } from '../../atoms/atoms.js';
 import { Icon } from '../../atoms/icon.js';
 import { Icons } from '../../icons/icons.js';
 import { NavButtonLink } from './nav-button-link.js';

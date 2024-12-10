@@ -1,5 +1,5 @@
+import { Div } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
-import { Div } from "../atoms/atoms.js";
 
 /**
  * Panel

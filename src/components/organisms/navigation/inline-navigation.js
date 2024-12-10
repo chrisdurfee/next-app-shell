@@ -1,5 +1,5 @@
+import { Nav, Ul } from '@base-framework/atoms';
 import { router } from '@base-framework/base';
-import { Nav, Ul } from '../../atoms/atoms.js';
 import { MainLink } from './main-link.js';
 import { Navigation } from './navigation.js';
 

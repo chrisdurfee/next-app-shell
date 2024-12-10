@@ -1,7 +1,8 @@
-import { Div, MainSection } from "../atoms/atoms.js";
+import { Div } from "@base-framework/atoms";
 import { MobileNavWrapper } from "../organisms/navigation/mobile/nav-wrapper/mobile-nav-wrapper.js";
 import SidebarMenu from "../organisms/navigation/sidebar-menu/sidebar-menu.js";
 import { BasicPage } from './basic-page.js';
+import { MainSection } from "./main-section.js";
 import { AsideTemplate } from './templates/aside-template.js';
 
 /**
@@ -27,7 +28,7 @@ export class SidebarMenuPage extends BasicPage
 			},
 			[
 				AsideTemplate({
-					left: this.addAside(),
+					left: this.addSidebar(),
 					right: this.addBody()
 				})
 			]
@@ -45,11 +46,11 @@ export class SidebarMenuPage extends BasicPage
 	}
 
 	/**
-	 * This will add the aside of the page.
+	 * This will add the sidebar of the page.
 	 *
 	 * @returns {object}
 	 */
-	addAside()
+	addSidebar()
 	{
 		return Div({ class: 'flex flex-auto flex-col' }, this.addNavigation());
 	}

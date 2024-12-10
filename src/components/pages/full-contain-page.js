@@ -1,5 +1,6 @@
-import { Div, MainSection } from "../atoms/atoms.js";
+import { Div } from "@base-framework/atoms";
 import { BasicPage } from './basic-page.js';
+import { MainSection } from "./main-section.js";
 import { FullTemplate } from './templates/full-template.js';
 
 /**
