@@ -1,4 +1,4 @@
-import { Div, Span, Ul } from "@base-framework/atoms";
+import { Div, Ul } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
 import { MobileLink } from "./mobile-link.js";
 import { checkTypeBySize, getTypeClass } from "./utils.js";
@@ -32,7 +32,6 @@ const PopOverContent = ({ options }) => (
             p-4 space-y-3 text-sm text-inherit
         `,
     }, [
-        Span({ class: 'text-muted-foreground font-medium mb-2 block' }, 'More Options'),
         Ul({
             class: 'grid grid-cols-5 gap-4 list-none p-0 m-0',
             map: [options, MobileLink]
@@ -48,7 +47,7 @@ const PopOverContent = ({ options }) => (
  */
 const PopOver = ({ options }) => (
     Div({
-        class: `mobile-popover-navigation fixed inset-0 z-50 flex lg:hidden`,
+        class: `mobile-popover-navigation fixed inset-0 z-50 lg:hidden`,
         style: '[[typeClass]]'
     }, [
         Backdrop(),
