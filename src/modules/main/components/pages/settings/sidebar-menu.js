@@ -8,9 +8,9 @@ import { SidebarMenu as BaseSidebarMenu } from "@components/organisms/navigation
  */
 export const SidebarMenu = (props) => (
     BaseSidebarMenu({
+        mobileBorder: true,
         title: props.title,
         options: props.options,
-        mobileBorder: true,
         class: 'lg:block w-full'
     })
 );
