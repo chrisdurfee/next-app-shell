@@ -1,90 +1,8 @@
-import { Div, I, Span, Table, Th, Thead, Tr, UseParent } from '@base-framework/atoms';
+import { Div, Table } from '@base-framework/atoms';
 import { Data, Jot } from '@base-framework/base';
-import { TableBody } from '@base-framework/organisms';
-import { Checkbox } from '../../atoms/form/checkbox.js';
-import { Icons } from '../../icons/icons.js';
-
-/**
- * CheckboxCol Atom
- *
- * Renders a checkbox column for the table.
- *
- * @param {object} props
- * @returns {object}
- */
-export const CheckboxCol = (props) => (
-    Th({ class: `cursor-pointer py-3 px-4 text-base w-10 ${props.class || '' }` }, [
-        UseParent((parent) => new Checkbox({ class: 'mr-2', onChange: () => parent.toggleAllSelectedRows() })),
-    ])
-);
-
-/**
- * HeaderCol Atom
- *
- * Renders a header column for the table.
- *
- * @param {object} props
- * @returns {object}
- */
-export const HeaderCol = ({ align, sortable, key, label, sort, class: className}) =>
-{
-    const alignClass = align || 'justify-start';
-    return Th({
-        class: `cursor-pointer py-3 px-4 text-base ${className || ''}`,
-        click: sortable && (() => sort(key))
-    }, [
-        Div({ class: `flex flex-auto w-full items-center ${alignClass}` }, [
-            Span(label),
-            sortable && I({ class: 'ml-2', html: Icons.arrows.upDown })
-        ])
-    ]);
-};
-
-/**
- * TableHeader Atom
- *
- * Renders the table headers with sorting capability.
- *
- * @param {object} props
- * @returns {object}
- */
-export const TableHeader = (props) =>
-{
-    return Thead([
-        Tr({ class: 'text-muted-foreground border-b', map: [props.headers, header =>
-            {
-                if (header.label === 'checkbox')
-                {
-                    return CheckboxCol({ toggle: props.toggle });
-                }
-
-                return HeaderCol({
-                    align: header.align,
-                    sortable: header.sortable,
-                    key: header.key,
-                    label: header.label,
-                    sort: props.sort
-                });
-            }]
-        })
-    ]);
-};
-
-/**
- * This will creatw the table body.
- *
- * @param {object} props
- * @returns {object}
- */
-const Body = ({ key, rows, selectRow, rowItem }) => (
-    new TableBody({
-        cache: 'table',
-        key,
-        items: rows,
-        rowItem: (row) => rowItem(row, selectRow),
-        class: 'divide-y divide-border'
-    })
-);
+import { DataTableBody } from './data-table-body.js';
+import { CheckboxCol, HeaderCol, TableHeader } from './table-header.js';
+export { CheckboxCol, HeaderCol, TableHeader };
 
 /**
  * DataTable Component
@@ -197,7 +115,7 @@ export const DataTable = Jot(
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
                     this.customHeader ?? null,
-                    Body({
+                    DataTableBody({
                         key: this.key,
                         rows: currentRows,
                         selectRow: this.selectRow.bind(this),
