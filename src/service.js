@@ -72,7 +72,7 @@ export const setupServiceWorker = () =>
 
         if (Configs.push && Configs.push.publicId)
         {
-            setupPush(serviceWorker, Configs.push.publicId);
+            //setupPush(serviceWorker, Configs.push.publicId);
         }
     });
 }
