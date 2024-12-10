@@ -45,7 +45,7 @@ export const CustomHeaderTable = () =>
      */
     const rowItem = (row, onSelect) =>
     {
-        return Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
+        return Tr({ class: 'items-center px-4 py-2 hover:bg-accent' }, [
             Td({ class: 'p-4' }, [
                 new Checkbox({
                     checked: row.selected,
