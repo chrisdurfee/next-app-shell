@@ -1,7 +1,21 @@
-import { A, Button, Div, Span } from '@base-framework/atoms';
+import { A, Div, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { MobileNavButton } from '@components/organisms/navigation/mobile/nav-wrapper/mobile-nav-wrapper.js';
 import NavigationMenu from '@components/organisms/navigation/navigation-menu/navigation-menu.js';
 import { Logo } from './logo.js';
+
+/**
+ * This will create a list of options.
+ *
+ * @constant
+ * @type {array}
+ */
+const Options = [
+    { href: '/website/about', label: 'About' },
+    { href: '/website/services', label: 'Services' },
+    { href: '/website/contact', label: 'Contact' },
+    { href: '/website/blog', label: 'Blog' }
+];
 
 /**
  * This will create a mobile menu button.
@@ -11,15 +25,10 @@ import { Logo } from './logo.js';
  */
 const MobileMenuButton = Atom((props) =>
 {
-    const className = '-m-2.5 inline-flex lg:hidden items-center justify-center rounded-md p-2.5';
-    return Button({ variant: 'primary', class: className }, [
-        Span({ class: 'sr-only' }, 'Open main menu'),
-        Div({
-            html: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>`
-        })
-    ]);
+    return MobileNavButton({
+        title: 'Menu',
+        options: Options
+    });
 });
 
 /**
@@ -28,14 +37,11 @@ const MobileMenuButton = Atom((props) =>
  * @returns {object}
  */
 const DesktopMenuLinks = Atom(() => (
-    new NavigationMenu({
-        options: [
-            { href: '/website/about', label: 'About' },
-            { href: '/website/services', label: 'Services' },
-            { href: '/website/contact', label: 'Contact' },
-            { href: '/website/blog', label: 'Blog' }
-        ]
-    })
+    Div({ class: 'hidden lg:flex lg:flex-1 lg:justify-center' }, [
+        new NavigationMenu({
+            options: Options
+        })
+    ])
 ));
 
 /**
