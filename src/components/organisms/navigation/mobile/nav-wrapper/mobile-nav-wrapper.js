@@ -1,6 +1,5 @@
-import { OnState } from "@base-framework/atoms";
+import { Div, OnState } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Div } from "../../../../atoms/atoms.js";
 import { InlineNavigation } from "../../inline-navigation.js";
 import { NavigationPopover } from "./navigation-popover.js";
 import { TitleHeader } from "./title-header.js";

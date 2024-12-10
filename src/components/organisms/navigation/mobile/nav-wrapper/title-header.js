@@ -1,5 +1,4 @@
-import { H3 } from "@base-framework/atoms";
-import { Div } from "../../../../atoms/atoms.js";
+import { Div, H3 } from "@base-framework/atoms";
 import { Button } from "../../../../atoms/buttons/buttons.js";
 import { Icon } from "../../../../atoms/icon.js";
 import { Icons } from "../../../../icons/icons.js";
