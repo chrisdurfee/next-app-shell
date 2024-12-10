@@ -1,5 +1,6 @@
 import { State } from "@base-framework/base";
 import { Configs } from "./configs.js";
+import { Push } from "./shell/push/push.js";
 
 /**
  * @type {string} protocol
