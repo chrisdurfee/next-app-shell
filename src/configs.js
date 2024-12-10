@@ -21,6 +21,13 @@ export const Configs =
 	},
 
 	/**
+	 * The push settings.
+	 */
+	push: {
+		publicId: ''
+	},
+
+	/**
 	 * This will set the API endpoints for the user status.
 	 *
 	 * @type {string} userStatusApi
