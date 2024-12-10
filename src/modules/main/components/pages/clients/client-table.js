@@ -28,7 +28,7 @@ const ClientHeaderRow = () => (
  * @returns {object}
  */
 export const ClientRow = (row, onSelect) => (
-    Tr({ class: 'items-center px-4 py-2 hover:bg-muted' }, [
+    Tr({ class: 'items-center px-4 py-2 hover:bg-accent' }, [
         Td({ class: 'p-4 hidden md:table-cell' }, [
             new Checkbox({
                 checked: row.selected,
