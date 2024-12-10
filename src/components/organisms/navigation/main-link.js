@@ -14,7 +14,7 @@ import { NavButtonLink } from './nav-button-link.js';
 const Li = Atom(({ options, click }, children) =>
 {
 	const settings = {
-		class: `relative flex flex-row w-auto text-left border-none p-0 overflow-hidden transition-all cursor-pointer min-w-[48px] rounded-md option${options ? ' sub' : ''}`,
+		class: `relative flex flex-row w-auto text-left p-0 overflow-hidden transition-all cursor-pointer min-w-[48px] rounded-md option${options ? ' sub' : ''}`,
 		click
 	};
 

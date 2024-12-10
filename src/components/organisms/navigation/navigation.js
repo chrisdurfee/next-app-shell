@@ -23,10 +23,11 @@ export class Navigation extends Component
 		 */
 		const map = this.mapOptions(this.options);
 		const className = this.class || '';
+		const mobileBorder = this.mobileBorder ? 'border md:border-0 rounded-md' : '';
 
 		return Nav({ class: `navigation flex flex-auto flex-col ${className}` }, [
 			Ul({
-				class: 'relative group flex flex-col gap-2 py-2 px-2 list-none m-0',
+				class: `relative group flex flex-col gap-2 py-2 px-2 list-none m-0 ${mobileBorder}`,
 				map
 			}),
 			...this.addSubs()

@@ -7,12 +7,12 @@ import { InlineNavigation } from "../inline-navigation.js";
  * @param {object} props
  * @returns {object}
  */
-export const SidebarMenu = ({ title, options, class: className = '' }) => (
+export const SidebarMenu = ({ title, options, class: className = '', mobileBorder = false }) => (
     Div({ class: `pb-12 p-4 pt-0 lg:p-6 lg:border-r w-full lg:max-w-[300px] h-full ${className}` }, [
-        title && Header({ class: 'pb-2 px-6 flex flex-col' }, [
+        title && Header({ class: 'pb-4 md:pb-2 px-6 flex flex-col' }, [
             H1({ class: 'scroll-m-20 text-3xl lg:text-2xl font-bold tracking-tight' }, title),
         ]),
-        new InlineNavigation({ options })
+        new InlineNavigation({ options, mobileBorder })
     ])
 );
 

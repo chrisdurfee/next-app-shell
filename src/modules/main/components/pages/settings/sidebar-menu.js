@@ -10,6 +10,7 @@ export const SidebarMenu = (props) => (
     BaseSidebarMenu({
         title: props.title,
         options: props.options,
+        mobileBorder: true,
         class: 'lg:block w-full'
     })
 );

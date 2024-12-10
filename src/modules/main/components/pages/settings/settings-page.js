@@ -1,17 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { BackButton } from "@components/organisms/overlays/overlay.js";
-import { Panel } from "@components/organisms/panel.js";
 import { BlankPage } from "@components/pages/blank-page.js";
 import { ContentSection } from "./content-section.js";
 import { Sidebar } from "./sidebar.js";
-
-/**
- * This will wrap the atom in a panel.
- *
- * @param {object} atom
- * @returns {object}
- */
-const SubRoute = (atom) => new Panel(atom);
 
 /**
  * This will create the back button.
