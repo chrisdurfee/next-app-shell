@@ -27,7 +27,7 @@ const setupServiceMessages = (serviceWorker) =>
         // this will check to route the push notifiction to the page url
         if (data.url)
         {
-            this.navigate(data.url);
+            app.navigate(data.url);
         }
 
         // this will set the app to notify there is an updated version
