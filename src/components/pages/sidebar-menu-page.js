@@ -1,5 +1,5 @@
 import { Div, MainSection } from "../atoms/atoms.js";
-import { MobileNavWrapper } from "../organisms/navigation/mobile-nav-wrapper.js";
+import { MobileNavWrapper } from "../organisms/navigation/mobile/nav-wrapper/mobile-nav-wrapper.js";
 import SidebarMenu from "../organisms/navigation/sidebar-menu/sidebar-menu.js";
 import { BasicPage } from './basic-page.js';
 import { AsideTemplate } from './templates/aside-template.js';
