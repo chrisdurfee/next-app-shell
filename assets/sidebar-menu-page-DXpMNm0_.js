@@ -1,4 +1,4 @@
-import{$ as a,B as n,a as c,s as r,o as u,I as f,Q as s,a8 as h,ax as x,aD as g,y as p,aE as b,f as w}from"./index-CeKmihVE.js";const m=e=>r({class:"text-lg ml-2"},e),v=e=>a({class:"sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-0 border-b"},[n({variant:"icon",class:"m-2",click:(t,{state:l})=>l.toggle("open"),icon:c.arrows.left}),e.title&&m(e.title)]),k=()=>a({class:`
+import{$ as a,B as n,a as c,s as r,o as u,I as f,Q as s,a8 as h,ax as x,aD as g,y as p,aE as b,f as w}from"./index-Bq2oaw-u.js";const m=e=>r({class:"text-lg ml-2"},e),v=e=>a({class:"sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-0 border-b"},[n({variant:"icon",class:"m-2",click:(t,{state:l})=>l.toggle("open"),icon:c.arrows.left}),e.title&&m(e.title)]),k=()=>a({class:`
             absolute inset-0 bg-black/40 z-[-1] fadeIn
             transition-opacity duration-200
         `,click:(e,{state:t})=>t.open=!1});class S extends u{render(){return a({class:"fixed inset-0 z-50",style:"[[typeClass]]"},[k(),a({class:`
