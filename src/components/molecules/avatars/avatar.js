@@ -45,11 +45,12 @@ const getInitials = (name) =>
  */
 const checkFallbackLength = (fallbackText) =>
 {
-    if (fallbackText && fallbackText.length > 2)
+    if (!fallbackText || fallbackText.length < 2)
     {
-        fallbackText = getInitials(fallbackText);
+        return fallbackText;
     }
-    return fallbackText;
+
+    return getInitials(fallbackText);
 };
 
 /**
@@ -80,32 +81,28 @@ const AvatarFallback = (fallbackText, watcherFallback = null) =>
 };
 
 /**
- * This will return the size of the avatar.
+ * This will store the sizes for the avatar.
+ *
+ * @type {object} sizeMap
+ */
+const sizeMap = {
+    xs: 'h-6 w-6',
+    sm: 'h-8 w-8',
+    md: 'h-12 w-12',
+    lg: 'h-16 w-16',
+    xl: 'h-24 w-24',
+    '2xl': 'h-32 w-32',
+    '3xl': 'h-48 w-48',
+    default: 'h-12 w-12'
+};
+
+/**
+ * This will get the size of the avatar.
  *
  * @param {string} size
  * @returns {string}
  */
-const getSize = (size) =>
-{
-    switch(size) {
-        case 'xs':
-            return 'h-6 w-6';
-        case 'sm':
-            return 'h-8 w-8';
-        case 'md':
-            return 'h-12 w-12';
-        case 'lg':
-            return 'h-16 w-16';
-        case 'xl':
-            return 'h-24 w-24';
-        case '2xl':
-            return 'h-32 w-32';
-        case '3xl':
-            return 'h-48 w-48';
-        default:
-            return 'h-12 w-12';
-    }
-};
+const getSize = (size) => sizeMap[size] || sizeMap.default;
 
 /**
  * Avatar
