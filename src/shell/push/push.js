@@ -103,7 +103,7 @@ export class Push
 		.then((subscription) =>
 		{
 			const subscribed = !(subscription === null);
-			if(!subscribed)
+			if (!subscribed)
 			{
 				this.subscribe();
 			}
