@@ -58,7 +58,16 @@ class Service extends CacheController
 		self.addEventListener('activate', (e) =>
 		{
 			e.waitUntil(
-				this.refresh()
+				this.refresh().then(() =>
+				{
+					return self.clients.matchAll({ includeUncontrolled: true }).then((clients) =>
+					{
+						clients.forEach((client) =>
+						{
+							client.postMessage({ action: 'reload' });
+						});
+					});
+				})
 			);
 
 			return self.clients.claim();

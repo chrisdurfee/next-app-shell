@@ -31,6 +31,12 @@ const setupServiceMessages = (serviceWorker) =>
             app.navigate(data.url);
         }
 
+        // this will reload the page
+        if (data.action === 'reload')
+        {
+            window.location.reload();
+        }
+
         // this will set the app to notify there is an updated version
         if (data.update)
         {
@@ -72,7 +78,7 @@ export const setupServiceWorker = () =>
 
         if (Configs.push && Configs.push.publicId)
         {
-            //setupPush(serviceWorker, Configs.push.publicId);
+            setupPush(serviceWorker, Configs.push.publicId);
         }
     });
 }
