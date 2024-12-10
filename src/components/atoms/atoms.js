@@ -55,41 +55,11 @@ export const Img = Atom((props, children) =>
 	};
 });
 
-export const MainSection = Atom((props, children) =>
-{
-	props.class = 'basic-page pt-[80px] sm:pt-0 flex flex-auto flex-col ' + (props.class || '');
-
-	return {
-		tag: 'section',
-		...props,
-		children
-	};
-});
-
 export const Message = Atom((props, children) =>
 {
 	props.class = 'messeage ' + props.class;
 	return Div(props, children);
 });
-
-/**
- * This will create a label.
- *
- * @param {object} props
- * @param {array} children
- * @returns {object}
- */
-export const Row = Atom((props, children) =>
-{
-	props.class = 'row ' + (props.class || '');
-
-	return {
-		...props,
-		children
-	};
-});
-
-/* template tests */
 
 export const GridPanel = Atom((props, children) =>
 {
