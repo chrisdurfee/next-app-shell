@@ -2,7 +2,7 @@ import { Div, OnState } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { InlineNavigation } from "../../inline-navigation.js";
 import { NavigationPopover } from "./navigation-popover.js";
-import { TitleHeader } from "./title-header.js";
+import { NavButton, TitleHeader } from "./title-header.js";
 
 /**
  * This will map the mobile options.
@@ -55,6 +55,22 @@ const MobileNav = (props) =>
 };
 
 /**
+ * This will create a mobile navigation button.
+ *
+ * @param {object} props
+ * @return {object}
+ */
+export const MobileNavButton = Atom((props) =>
+{
+	return Div({ cache: 'mobileNav', class: 'inline-flex relative lg:hidden' }, [
+		Div([
+			NavButton(props),
+			MobileNav(props)
+		])
+	]);
+});
+
+/**
  * This will create a mobile navigation wrapper.
  *
  * @param {object} props
@@ -62,7 +78,7 @@ const MobileNav = (props) =>
  */
 export const MobileNavWrapper = Atom((props) =>
 {
-	return Div({ cache: 'mobileNav', class: 'bg-background flex flex-auto flex-col w-full relative lg:hidden' }, [
+	return Div({ cache: 'mobileNav', class: 'flex flex-auto flex-col w-full relative lg:hidden' }, [
 		Div({ class: 'flex flex-auto flex-col w-full' }, [
 			TitleHeader(props),
 			MobileNav(props)

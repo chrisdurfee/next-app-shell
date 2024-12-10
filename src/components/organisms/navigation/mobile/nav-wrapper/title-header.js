@@ -8,7 +8,7 @@ import { Icons } from "../../../../icons/icons.js";
  *
  * @returns {object}
  */
-const NavButton = () => (
+export const NavButton = () => (
     Button({ class: 'm-2', variant: 'ghost', addState()
 		{
 			return {
