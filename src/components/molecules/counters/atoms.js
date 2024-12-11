@@ -63,8 +63,7 @@ export const CountDisplay = ({ bind, min, max, readonly = false }) => (
 
             state.count = newValue;
         },
-        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border min-w-0 appearance-none',
-        style: "-webkit-appearance: none; -moz-appearance: textfield;",
+        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border min-w-0',
         readonly,
         min,
         max,
