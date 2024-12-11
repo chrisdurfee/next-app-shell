@@ -4,7 +4,7 @@
  *
  * @type {object} TYPES
  */
-const TYPES = {
+export const TYPES = {
 	PHONE: 'phone',
 	TABLET: 'tablet',
 	DESKTOP: 'desktop'

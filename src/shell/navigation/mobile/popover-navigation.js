@@ -1,7 +1,7 @@
 import { Div, Ul } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
 import { MobileLink } from "./mobile-link.js";
-import { checkTypeBySize, getTypeClass } from "./utils.js";
+import { checkTypeBySize, getTypeClass, TYPES } from "./utils.js";
 
 /**
  * This will create a backdrop for the popover.
@@ -27,10 +27,14 @@ const Backdrop = () => (
 const PopOverContent = ({ options }) => (
     Div({
         class: `
-            absolute pullUpIn sm:pullRightIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50
+            absolute sm:pullRightIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50
             bg-background rounded-t-lg sm:rounded-t-none sm:rounded-r-md shadow-md border
             p-4 space-y-3 text-sm text-inherit
         `,
+        onState: ['type', {
+            pullUpIn: TYPES.PHONE,
+            pullLeftIn: TYPES.TABLET
+        }]
     }, [
         Ul({
             class: 'grid grid-cols-5 gap-4 list-none p-0 m-0',
