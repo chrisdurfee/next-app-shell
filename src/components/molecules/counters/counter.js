@@ -41,9 +41,9 @@ export const Counter = VeilJot(
     render()
     {
         const className = this.class ?? '';
-        return Div({ class: `flex items-center space-x-4 p-4 bg-background rounded-md shadow-md ${className}` }, [
+        return Div({ class: `flex flex-auto items-center justify-between space-x-4 p-4 ${className}` }, [
             MinusButton({ click: () => this.state.decrement('count') }),
-            CountDisplay({ bind: this.bind }),
+            CountDisplay({ bind: this.bind, readonly: this.readonly }),
             PlusButton({ click: () => this.state.increment('count') })
         ]);
     }

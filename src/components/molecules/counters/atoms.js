@@ -1,5 +1,5 @@
-import { Button, Div, Input, OnState } from '@base-framework/atoms';
-import { Icon } from '../../atoms/icon.js';
+import { Input, OnState } from '@base-framework/atoms';
+import { Button } from '../../atoms/buttons/buttons.js';
 import { Icons } from '../../icons/icons.js';
 
 /**
@@ -10,11 +10,11 @@ import { Icons } from '../../icons/icons.js';
  */
 export const MinusButton = ({ click }) => (
     Button({
-        class: 'flex items-center justify-center w-10 h-10 bg-muted rounded-full hover:bg-accent',
-        click
-    }, [
-        Icon(Icons.circleMinus)
-    ])
+        variant: 'icon',
+        class: 'flex flex-none',
+        click,
+        icon: Icons.circleMinus
+    })
 );
 
 /**
@@ -25,11 +25,11 @@ export const MinusButton = ({ click }) => (
  */
 export const PlusButton = ({ click }) => (
     Button({
-        class: 'flex items-center justify-center w-10 h-10 bg-muted rounded-full hover:bg-accent',
-        click
-    }, [
-        Icon(Icons.circlePlus)
-    ])
+        variant: 'icon',
+        class: 'flex flex-none',
+        click,
+        icon: Icons.circlePlus
+    })
 );
 
 /**
@@ -38,15 +38,14 @@ export const PlusButton = ({ click }) => (
  * @param {object} props
  * @returns {object}
  */
-export const CountDisplay = ({ bind }) => (
-    Div({ class: 'flex-grow text-center' }, [
-        OnState('count', (value) =>
-            Input({
-                value,
-                bind,
-                class: 'text-lg font-medium bg-transparent text-center border-none pointer-events-none',
-                readonly: true
-            })
-        )
-    ])
+export const CountDisplay = ({ bind, readonly = false }) => (
+    OnState('count', (value) =>
+        Input({
+            value,
+            bind,
+            blur: (e, {state}) => state.count = e.target.value,
+            class: 'flex flex-auto text-lg font-medium bg-transparent text-center border-none min-w-0',
+            readonly
+        })
+    )
 );

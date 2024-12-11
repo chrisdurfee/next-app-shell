@@ -538,12 +538,15 @@ new RangeSlider({
             }),
 
             DocSection({
-                title: 'Range Slider',
-                description: 'This is a range slider input.',
+                title: 'Counter',
+                description: 'This is a counter input.',
                 preview: [
                     InputPreview([
                         new Counter({
+                            class: 'max-w-[300px]',
                             initialCount: 5,
+                            readonly: false,
+                            bind: 'count',
                             change: (value) => console.log(value)
                         })
                     ])
@@ -552,7 +555,10 @@ new RangeSlider({
 import { Counter } from '@components/molecules/counters/counter.js';
 
 new Counter({
+    class: 'max-w-[300px]',
     initialCount: 5,
+    readonly: false,
+    bind: 'count',
     change: (value) => console.log(value)
 })`
             }),
