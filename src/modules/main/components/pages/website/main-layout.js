@@ -5,6 +5,12 @@ import { Header } from './header/header.js';
 import { CookieConsentBar } from './home/hero/cookie-concent-bar.js';
 import { HeroSection } from './home/hero/hero.js';
 
+// Importing our new sections
+import { CTASection } from './home/cta/cta-section.js';
+import { FeaturesSection } from './home/features/features-section.js';
+import { FooterSection } from './home/footer/footer-section.js';
+import { TestimonialsSection } from './home/testimonials/testimonials-section.js';
+
 /**
  * This will create a page.
  *
@@ -30,7 +36,11 @@ export const MainLayout = Atom(() => (
                 {
                     uri: 'website',
                     component: Page([
-                        HeroSection()
+                        HeroSection(),
+                        FeaturesSection(),
+                        TestimonialsSection(),
+                        CTASection(),
+                        FooterSection()
                     ])
                 },
                 {

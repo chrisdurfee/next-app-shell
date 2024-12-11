@@ -11,11 +11,11 @@ import { Logo } from './logo.js';
  * @type {array}
  */
 const Options = [
-    { href: '/website', label: 'Home', exact: true, hidden: true },
-    { href: '/website/about', label: 'About' },
-    { href: '/website/services', label: 'Services' },
-    { href: '/website/contact', label: 'Contact' },
-    { href: '/website/blog', label: 'Blog' }
+    { href: 'website', label: 'Home', exact: true, hidden: true },
+    { href: 'website/about', label: 'About' },
+    { href: 'website/services', label: 'Services' },
+    { href: 'website/contact', label: 'Contact' },
+    { href: 'website/blog', label: 'Blog' }
 ];
 
 /**
@@ -68,7 +68,7 @@ const DesktopLogIn = Atom(() => (
 export const Navigation = Atom((props) =>
 {
     return Div({
-            class: 'relative flex items-center justify-between p-6 lg:px-8 z-40',
+            class: 'relative flex items-center justify-between px-4 md:p-6 lg:px-8 z-40',
             'aria-label': 'Global'
         }, [
         Div({ class: 'flex lg:flex-1' }, [

@@ -1,24 +1,30 @@
-import { A, Img, Span } from '@base-framework/atoms';
+import { A, Img } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
- * Logo
- *
- * This will create a logo for the website.
+ * This will create a logo.
  *
  * @param {object} props
  * @returns {object}
  */
-export const Logo = Atom(({ src = 'https://tailwindui.com/img/logos/mark.svg', name = 'Your Company' }) =>
-{
-    return A({ href: '/website', class: '-m-1.5 p-1.5' }, [
-        Span({ class: 'sr-only' }, name),
-        Img({
-            class: 'h-8 w-auto',
-            src,
-            alt: name,
+export const Logo = Atom((props) => (
+    A({
+        class: 'logo w-[32px] h-[32px] m-[8px] block',
+        href: 'website',
+        ...props
+    }, [
+        /**
+         * This will create the logo image.
+         */
+        props.src && Img({
+            src: props.src,
+            alt: 'Logo',
+            class: 'w-[32px] h-[32px]',
 
-            error: (e) => e.target.style.display = 'none',
+            /**
+             * This will hide the image if there is an error.
+             */
+            error: (e) => e.target.style.display = 'none'
         })
-    ]);
-});
+    ])
+));

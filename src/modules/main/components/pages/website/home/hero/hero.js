@@ -24,7 +24,7 @@ const TopGadientDecoration = Atom(() => (
  * @returns {object}
  */
 const ContentSection = Atom(() => (
-    Div({ class: 'mx-auto max-w-2xl py-32 sm:py-48 lg:py-56' }, [
+    Div({ class: 'mx-auto mt-20 max-w-2xl py-32 sm:py-48 lg:py-56' }, [
         Div({ class: 'text-center' }, [
             H1({ class: 'text-4xl font-bold tracking-tight sm:text-6xl' }, 'Data to enrich your online business'),
             P({ class: 'mt-6 text-lg leading-8 text-muted-foreground' }, 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.'),
@@ -65,7 +65,7 @@ const BottomGadientDecoration = Atom(() => (
  * @returns {object}
  */
 export const HeroSection = Atom(() => (
-    Div({ class: 'relative isolate px-6 pt-14 lg:px-8' }, [
+    Div({ class: 'relative isolate px-6 pt-14 lg:px-8 min-h-[70vh]' }, [
         TopGadientDecoration(),
         ContentSection(),
         BottomGadientDecoration(),
