@@ -35,7 +35,7 @@ export const DialogContainer = Atom((props, children) => (
                 props.description && P({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, props.description),
                 Div({ class: 'flex flex-auto flex-col text-sm text-muted-foreground' }, children),
             ]),
-            Footer({ class: 'flex flex-col-reverse sm:flex-row sm:justify-end mt-6 gap-2 sm:gap-0 sm:space-x-2' }, props.buttons)
+            props.buttons && Footer({ class: 'flex flex-col-reverse sm:flex-row sm:justify-end mt-6 gap-2 sm:gap-0 sm:space-x-2' }, props.buttons)
         ])
     ])
 ));

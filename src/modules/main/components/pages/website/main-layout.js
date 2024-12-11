@@ -1,6 +1,7 @@
 import { Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Header } from './header/header.js';
+import { CookieConsentBar } from './hero/cookie-concent-bar.js';
 import { HeroSection } from './hero/hero.js';
 
 /**
@@ -9,7 +10,11 @@ import { HeroSection } from './hero/hero.js';
  * @returns {object}
  */
 export const MainLayout = Atom(() => (
-    Div([Header(), HeroSection()])
+    Div({ class: 'flex flex-auto flex-col relative' }, [
+        new CookieConsentBar(),
+        Header(),
+        HeroSection()
+    ])
 ));
 
 export default MainLayout;

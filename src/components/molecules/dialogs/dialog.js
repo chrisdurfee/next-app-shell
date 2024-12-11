@@ -48,6 +48,16 @@ export class Dialog extends Component
      */
     getButtons()
     {
+		if (this.hideFooter)
+		{
+			return null;
+		}
+
+		if (this.buttons)
+		{
+			return this.buttons;
+		}
+
         return [
             Button({ variant: 'outline', click: () => this.close() }, 'Close')
         ];
