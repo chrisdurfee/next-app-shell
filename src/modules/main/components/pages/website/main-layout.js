@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Panel } from '../../../../../components/organisms/panel.js';
+import { Panel } from '@components/organisms/panel.js';
 import { Header } from './header/header.js';
 import { CookieConsentBar } from './home/hero/cookie-concent-bar.js';
 import { HeroSection } from './home/hero/hero.js';
