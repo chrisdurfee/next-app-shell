@@ -1,4 +1,4 @@
-import { Input, OnState } from '@base-framework/atoms';
+import { Input } from '@base-framework/atoms';
 import { Button } from '../../atoms/buttons/buttons.js';
 import { Icons } from '../../icons/icons.js';
 
@@ -48,13 +48,11 @@ export const PlusButton = ({ click }) => (
  * @returns {object}
  */
 export const CountDisplay = ({ bind, readonly = false }) => (
-    OnState('count', (value) =>
-        Input({
-            value,
-            bind,
-            blur: (e, {state}) => state.count = e.target.value,
-            class: 'flex flex-auto text-lg font-medium bg-transparent text-center border-none min-w-0',
-            readonly
-        })
-    )
+    Input({
+        value: '[[count]]',
+        bind,
+        blur: (e, {state}) => state.count = e.target.value,
+        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border-none min-w-0',
+        readonly
+    })
 );
