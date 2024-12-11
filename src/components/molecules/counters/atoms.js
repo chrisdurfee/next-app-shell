@@ -52,7 +52,7 @@ export const CountDisplay = ({ bind, readonly = false }) => (
         value: '[[count]]',
         bind,
         blur: (e, {state}) => state.count = e.target.value,
-        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border-none min-w-0',
+        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border min-w-0',
         readonly
     })
 );
