@@ -3,17 +3,28 @@ import { Button } from '../../atoms/buttons/buttons.js';
 import { Icons } from '../../icons/icons.js';
 
 /**
+ * This will create an icon button.
+ *
+ * @param {object} props - The properties of the component.
+ * @returns {object} - The icon button component.
+ */
+const IconButton = ({ icon, click }) => Button({
+    variant: 'icon',
+    class: 'flex flex-none',
+    click,
+    icon
+});
+
+/**
  * Button for decrementing the counter.
  *
  * @param {object} props
  * @returns {object}
  */
 export const MinusButton = ({ click }) => (
-    Button({
-        variant: 'icon',
-        class: 'flex flex-none',
-        click,
-        icon: Icons.circleMinus
+    IconButton({
+        icon: Icons.circleMinus,
+        click
     })
 );
 
@@ -24,11 +35,9 @@ export const MinusButton = ({ click }) => (
  * @returns {object}
  */
 export const PlusButton = ({ click }) => (
-    Button({
-        variant: 'icon',
-        class: 'flex flex-none',
-        click,
-        icon: Icons.circlePlus
+    IconButton({
+        icon: Icons.circlePlus,
+        click
     })
 );
 
