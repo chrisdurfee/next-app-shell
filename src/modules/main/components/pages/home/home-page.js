@@ -1,147 +1,70 @@
-import { Div, H2, P } from "@base-framework/atoms";
-import { Data } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { GridContainer } from '@components/molecules/molecules.js';
-import { Calendar } from "@components/organisms/calendar/calendar.js";
-import { FullPage } from '@components/pages/full-page.js';
-import { GreetingCard } from './greeting-card.js';
+import { A, Div, H1, Header, P } from '@base-framework/atoms';
+import { Atom } from '@base-framework/base';
+import { BlankPage } from '@components/pages/blank-page.js';
 
 /**
- * This will get the data for the test.
+ * This will create a main button container.
  *
  * @returns {object}
  */
-const getData = () => ({
-	name: 'name',
-	class: 'active',
-	other: {
-		name: 'name',
-		class: 'active'
-	},
-	items: [
-		{
-			name: 'name',
-		}
-	]
-});
-
-/**
- * This will test the deep data binding [[other.name]]
- *
- * @param {object} data
- * @returns {void}
- */
-const testData = (data) =>
-{
-	// test setter
-	data.set('name', 'Home');
-
-	const DURATION = 5000; // five seconds
-
-	/**
-	 * This will test the deep data binding [[other.name]]
-	 * for five seconds to see if it updates.
-	 */
-	setTimeout(() =>
-	{
-		// test first level
-		data.name = 'Update';
-		data.class = 'inactive';
-
-		// test deep level
-		data.other.name = 'test';
-		data.other.class = 'inactive';
-
-		// test array level
-		data.items[0].name = 'test';
-		data.items[0].class = 'inactive';
-		console.log(data)
-	}, DURATION);
-};
-
-/**
- * 	This will set up the component props.
- *
- * @returns {object}
- */
-const FullProps = () => (
-{
-	/**
-	 * @member {string} title
-	 */
-	title: 'Main Page [[name]]',
-
-	/**
-	 * @member {string} title
-	 */
-	description: 'This is the main page.',
-
-	/**
-	 * This will add the data to the component.
-	 *
-	 * @override
-	 * @returns {void}
-	 */
-	setData()
-	{
-		const settings = getData();
-		return new Data(settings);
-	},
-
-	/**
-	 * This will run after the setup.
-	 *
-	 * @override
-	 * @returns {void}
-	 */
-	afterSetup()
-	{
-		const data = this.data;
-		testData(data);
-	}
-});
-
-/**
- * This will create a bind card.
- *
- * @returns {object}
- */
-const BindCard = () => (
-	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
-		H2({ cache: 'header', class: 'scroll-m-20 text-2xl font-bold tracking-tight' }, 'Binding Test'),
-		P({ class: 'my-2' }, 'This will test the deep data binding [[other.name]]'),
-		new Calendar()
+const MainButtonContainer = Atom(() => (
+    Div({ class: 'mt-10 flex items-center justify-start gap-x-4' }, [
+		A({
+			href: '/docs',
+			class: 'bttn primary'
+		}, 'Get started'),
+		A({
+			href: 'https://github.com/chrisdurfee/base',
+			target: '_blank',
+			class: 'bttn ghost gap-2'
+		}, 'Github')
 	])
-);
+));
 
 /**
- * This will create a sign out card.
+ * This will create a header for the documentation.
  *
+ * @param {object} props
  * @returns {object}
  */
-const SignOutCard = () => (
-	Div({ class: 'flex flex-col rounded-lg border bg-card text-card-foreground shadow-sm my-4 mx-5 p-4' }, [
-		H2({ cache: 'header', class: 'scroll-m-20 text-lg font-bold tracking-tight' }, 'Sign Out Test'),
-		P({ class: 'text-muted-foreground my-2' }, 'This will test the app sign out.'),
-		Button({ variant: 'outline', click: () => app.signOut() }, 'Sign Out')
+const PageHeader = Atom(({ title, description}) => (
+	Header({ class: 'flex flex-col' }, [
+		H1({ class: 'text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]' }, title),
+		description && P({ class: 'max-w-2xl text-lg font-light text-foreground' }, description),
 	])
-);
+));
+
+/**
+ * This will create a main section.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const MainSection = Atom((props) => (
+	Div({ class: 'flex flex-auto flex-col' }, [
+		Div({
+			class: 'contained sm:pt-8'
+		}, [
+			PageHeader({
+				title: 'Build faster with Base and Tailwind CSS',
+				description: 'Beautifully designed components inpired by the genius at Shadcn and tailored to work with Base. Base is easy to use and open source.'
+			}),
+			MainButtonContainer()
+		])
+	])
+));
 
 /**
  * HomePage
  *
  * This will create a home page.
  *
- * @returns {FullPage}
+ * @returns {BlankPage}
  */
 export const HomePage = () => (
-	new FullPage(
-		FullProps(),
-		[
-			GreetingCard(),
-			BindCard(),
-			SignOutCard(),
-			GridContainer()
-		]
-	)
+	new BlankPage([
+		MainSection([
+
+		])
+	])
 );
