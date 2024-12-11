@@ -3,20 +3,7 @@ import { Atom } from '@base-framework/base';
 import { MobileNavButton } from '@components/organisms/navigation/mobile/nav-wrapper/mobile-nav-wrapper.js';
 import NavigationMenu from '@components/organisms/navigation/navigation-menu/navigation-menu.js';
 import { Logo } from './logo.js';
-
-/**
- * This will create a list of options.
- *
- * @constant
- * @type {array}
- */
-const Options = [
-    { href: 'website', label: 'Home', exact: true, hidden: true },
-    { href: 'website/about', label: 'About' },
-    { href: 'website/services', label: 'Services' },
-    { href: 'website/contact', label: 'Contact' },
-    { href: 'website/blog', label: 'Blog' }
-];
+import { Options } from './options.js';
 
 /**
  * This will create a mobile menu button.
