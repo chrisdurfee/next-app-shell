@@ -11,7 +11,7 @@ import { Options } from './options.js';
  * @param {object} props
  * @returns {object}
  */
-const MobileMenuButton = Atom((props) =>
+export const MobileMenuButton = Atom((props) =>
 {
     return MobileNavButton({
         title: 'Menu',
@@ -24,7 +24,7 @@ const MobileMenuButton = Atom((props) =>
  *
  * @returns {object}
  */
-const DesktopMenuLinks = Atom(() => (
+export const DesktopMenuLinks = Atom(() => (
     Div({ class: 'hidden lg:flex lg:flex-1 lg:justify-center' }, [
         new NavigationMenu({
             options: Options
