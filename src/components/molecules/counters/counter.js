@@ -22,13 +22,7 @@ export const Counter = VeilJot(
         return {
             count: {
                 state: this.initialCount ?? 0,
-                callBack(value)
-                {
-                    if (this.change)
-                    {
-                        this.change(value);
-                    }
-                }
+                callBack: (value) => (this.change && this.change(value))
             }
         };
     },
