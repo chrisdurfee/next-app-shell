@@ -27,7 +27,7 @@ const Backdrop = () => (
 const PopOverContent = ({ options }) => (
     Div({
         class: `
-            absolute pullUpIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50
+            absolute pullUpIn sm:pullRightIn bottom-0 sm:top-0 w-full sm:max-w-96 min-h-80 left-0 right-0 z-50
             bg-background rounded-t-lg sm:rounded-t-none sm:rounded-r-md shadow-md border
             p-4 space-y-3 text-sm text-inherit
         `,
