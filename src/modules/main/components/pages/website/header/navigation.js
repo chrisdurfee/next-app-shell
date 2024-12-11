@@ -11,6 +11,7 @@ import { Logo } from './logo.js';
  * @type {array}
  */
 const Options = [
+    { href: '/website', label: 'Home', exact: true, hidden: true },
     { href: '/website/about', label: 'About' },
     { href: '/website/services', label: 'Services' },
     { href: '/website/contact', label: 'Contact' },

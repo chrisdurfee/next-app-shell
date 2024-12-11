@@ -29,13 +29,13 @@ const isLinkActive = (link, path, url) =>
  * @param {object} props
  * @returns {object}
  */
-const Link = ({ text, href, exact }) => (
+const Link = ({ text, href, exact, hidden }) => (
     new NavLink({
         text,
         href,
         exact,
         dataSet: ['selected', ['state', true, 'active']],
-        class: 'inline-flex items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium transition-all rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring focus-visible:ring-offset-background hover:bg-primary hover:text-primary-foreground disabled:opacity-50 disabled:pointer-events-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm'
+        class: `${(hidden? 'hidden' : 'inline-flex')} items-center justify-center whitespace-nowrap px-3 py-1.5 text-sm font-medium transition-all rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-ring focus-visible:ring-offset-background hover:bg-primary hover:text-primary-foreground disabled:opacity-50 disabled:pointer-events-none data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm`
     })
 );
 
@@ -155,9 +155,9 @@ export class NavigationMenu extends Component
      * @param {object} option
      * @returns {object}
      */
-    addLink({ label: text, href, exact })
+    addLink({ label: text, href, exact, hidden })
     {
-        const link = Link({ text, href, exact });
+        const link = Link({ text, href, exact, hidden });
         this.links.push(link);
         return link;
     }
