@@ -99,7 +99,8 @@ export const DialogPage = () => (
                 preview: [
                     DialogButton({
                         title: 'Title',
-                        description: 'this is the description.'
+                        description: 'this is the description.',
+                        hideFooter: false
                     }, [
 
                     ])
@@ -108,7 +109,8 @@ export const DialogPage = () => (
 
 new Dialog({
     title: '',
-    description: ''
+    description: '',
+    hideFooter: false
 }, [
 
 ]).open()`
