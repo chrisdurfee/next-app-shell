@@ -8,11 +8,12 @@ import { Icons } from '../../icons/icons.js';
  * @param {object} props - The properties of the component.
  * @returns {object} - The icon button component.
  */
-const IconButton = ({ icon, click }) => Button({
+const IconButton = ({ icon, click, ariaLabel }) => Button({
     variant: 'icon',
     class: 'flex flex-none',
     click,
-    icon
+    icon,
+    'aria-label': ariaLabel
 });
 
 /**
@@ -24,7 +25,8 @@ const IconButton = ({ icon, click }) => Button({
 export const MinusButton = ({ click }) => (
     IconButton({
         icon: Icons.circleMinus,
-        click
+        click,
+        ariaLabel: 'Decrement'
     })
 );
 
@@ -37,7 +39,8 @@ export const MinusButton = ({ click }) => (
 export const PlusButton = ({ click }) => (
     IconButton({
         icon: Icons.circlePlus,
-        click
+        click,
+        ariaLabel: 'Increment'
     })
 );
 
@@ -47,12 +50,25 @@ export const PlusButton = ({ click }) => (
  * @param {object} props
  * @returns {object}
  */
-export const CountDisplay = ({ bind, readonly = false }) => (
+export const CountDisplay = ({ bind, min, max, readonly = false }) => (
     Input({
         value: '[[count]]',
         bind,
-        blur: (e, {state}) => state.count = e.target.value,
-        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border min-w-0',
-        readonly
+        blur: (e, {state}) =>
+        {
+            let newValue = parseInt(e.target.value, 10);
+            if (isNaN(newValue)) newValue = min ?? 0;
+            if (min !== undefined) newValue = Math.max(newValue, min);
+            if (max !== undefined) newValue = Math.min(newValue, max);
+
+            state.count = newValue;
+        },
+        class: 'flex flex-auto text-lg font-medium bg-transparent text-center border min-w-0 appearance-none',
+        style: "-webkit-appearance: none; -moz-appearance: textfield;",
+        readonly,
+        min,
+        max,
+        type: 'number',
+        'aria-label': 'Counter'
     })
 );

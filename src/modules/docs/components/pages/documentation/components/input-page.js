@@ -545,6 +545,8 @@ new RangeSlider({
                         new Counter({
                             class: 'max-w-[300px]',
                             initialCount: 5,
+                            min: 0,
+                            max: 100000,
                             readonly: false,
                             bind: 'count',
                             change: (value) => console.log(value)
@@ -557,6 +559,8 @@ import { Counter } from '@components/molecules/counters/counter.js';
 new Counter({
     class: 'max-w-[300px]',
     initialCount: 5,
+    min: 0,
+    max: 100000,
     readonly: false,
     bind: 'count',
     change: (value) => console.log(value)
