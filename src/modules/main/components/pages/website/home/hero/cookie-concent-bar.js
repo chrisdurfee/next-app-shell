@@ -1,7 +1,6 @@
 import { Div, OnState, Span } from '@base-framework/atoms';
 import { Jot } from '@base-framework/base';
 import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
 import { CookieDialog } from './cookie-dialog.js';
 
 /**
@@ -49,12 +48,12 @@ export const CookieConsentBar = Jot(
                         click: () =>
                         {
                             this.state.show = false;
-                            app.notify({
-                                type: 'success',
-                                title: 'Cookies Accepted',
-                                description: 'You have accepted the use of cookies.',
-                                icon: Icons.check
-                            });
+                            // app.notify({
+                            //     type: 'success',
+                            //     title: 'Cookies Accepted',
+                            //     description: 'You have accepted the use of cookies.',
+                            //     icon: Icons.check
+                            // });
                         }
                     }, 'Accept'),
 
