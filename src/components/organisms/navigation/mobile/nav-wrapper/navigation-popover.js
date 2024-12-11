@@ -48,7 +48,7 @@ export class NavigationPopover extends Component
                 `,
 				dataSet: ['open', ['expanded', true, 'true']]
             }, [
-                Div({ class: 'flex flex-auto flex-col w-full overflow-y-auto max-h-[85vh] rounded-md bg-popover border' }, [
+                Div({ class: 'flex flex-auto flex-col w-full h-full overflow-y-auto max-h-[85vh] rounded-md bg-popover border' }, [
 					PopupHeader({ title: this.title }),
 					Div({ class: 'flex flex-auto flex-col' }, this.children)
 				])

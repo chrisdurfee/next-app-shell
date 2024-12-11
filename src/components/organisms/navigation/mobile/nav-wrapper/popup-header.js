@@ -17,7 +17,7 @@ const Title = (title) => H3({ class: 'text-lg ml-2' }, title);
  * @returns {object}
  */
 export const PopupHeader = (props) => (
-    Div({ class: 'sticky flex flex-auto flex-row items-center bg-popover lg:hidden top-0 z-10 border-0 border-b' }, [
+    Div({ class: 'sticky flex flex-row items-center bg-popover lg:hidden top-0 z-10 border-0 border-b' }, [
         Button({
 			variant: 'icon',
 			class: 'm-2',
