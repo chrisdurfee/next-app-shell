@@ -30,21 +30,32 @@ const CookieToggle = ({ title, description, defaultState, onChange }) => (
 );
 
 /**
- * This will create the cookie form.
+ * This will submit the form.
  *
- * @param {object} props
- * @returns {object}
+ * @param {object} e
+ * @param {object} parent
+ * @returns {function}
  */
-const CookieForm = (props) => (
-    Form({ class: 'flex flex-auto flex-col space-y-8 mt-8', submit: (e, parent) =>
+const onSubmit = (props) =>
+{
+    return (e, parent) =>
     {
         e.preventDefault();
         e.stopPropagation();
 
         parent.close();
         props.onClose();
-    }
-     }, [
+    };
+};
+
+/**
+ * This will create the cookie form.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const CookieForm = (props) => (
+    Form({ class: 'flex flex-auto flex-col space-y-8 mt-8', submit: onSubmit(props) }, [
         Div({ class: 'pt-0 grid gap-6' }, [
             // Cookie Settings Options
             CookieToggle({
