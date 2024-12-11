@@ -5,9 +5,10 @@ import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@components/atoms/form/input.js";
 import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
+import Counter from "@components/molecules/counters/counter.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
+import Toggle from "@components/molecules/toggle/toggle.js";
 import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
-import Toggle from "../../../../../../components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -532,6 +533,26 @@ new RangeSlider({
     min: 0,
     max: 100,
     value: 50,
+    change: (value) => console.log(value)
+})`
+            }),
+
+            DocSection({
+                title: 'Range Slider',
+                description: 'This is a range slider input.',
+                preview: [
+                    InputPreview([
+                        new Counter({
+                            initialCount: 5,
+                            change: (value) => console.log(value)
+                        })
+                    ])
+                ],
+                code: `
+import { Counter } from '@components/molecules/counters/counter.js';
+
+new Counter({
+    initialCount: 5,
     change: (value) => console.log(value)
 })`
             }),
