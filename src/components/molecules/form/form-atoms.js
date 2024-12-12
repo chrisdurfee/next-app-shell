@@ -32,7 +32,7 @@ export const FormLabel = Atom((props, children) => Label({ ...props, class: "fle
  * @param {array} children
  * @returns {object}
  */
-export const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm text-muted-foreground" }, children));
+export const FormDescription = Atom((props, children) => P({ ...props, class: "text-sm text-muted-foreground italic" }, children));
 
 /**
  * FormMessage

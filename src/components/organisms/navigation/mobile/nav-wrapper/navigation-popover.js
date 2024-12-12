@@ -44,7 +44,7 @@ export class NavigationPopover extends Component
             // Popover Content
             Div({
                 class: `
-                    absolute popIn w-auto p-0 shadow-lg bg-popover m-auto top-0 bottom-0 left-2 right-2 max-h-[85vh] text-inherit block
+                    absolute popIn w-auto p-0 bg-popover m-auto shadow-lg rounded-md top-0 bottom-0 left-2 right-2 max-h-[85vh] text-inherit block
                 `,
 				dataSet: ['open', ['expanded', true, 'true']]
             }, [
