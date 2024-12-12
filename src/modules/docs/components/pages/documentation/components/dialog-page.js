@@ -1,4 +1,4 @@
-import { Div } from "@base-framework/atoms";
+import { Div, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Input } from "@components/atoms/form/input.js";
@@ -31,6 +31,25 @@ const ConfirmationButton = (props) => Button({
 	class: `m-1`,
 	click: () => new Confirmation(props).open()
 });
+
+/**
+ * This will create a type dialog button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const TypeDialogButton = Atom((props, children) => Button({
+    text: 'Open',
+    class: `m-1`,
+    click: () => new Confirmation({
+        icon: Icons.signOut,
+        type: 'destructive',
+        title: 'Are you absoultely sure?',
+        description: 'This will sign you out of the application.',
+        confirmTextLabel: 'Sign Out',
+        confirmed: () => console.log('Confirmed!')
+    }).open()
+}));
 
 /**
  * ShareLink Component
@@ -154,7 +173,31 @@ new Confirmation({
     confirmTextLabel: 'Save',
     confirmed: () => console.log('Confirmed!')
 }).open()`
-            })
+            }),
+
+            // the dialog types
+            DocSection({
+                title: 'Types',
+                description: 'There are different types of dialogs.',
+                preview: [
+                    TypeDialogButton()
+                ],
+                code: `import { Dialog } from '@components/molecules/dialogue.js';
+import { Confirmation } from '@components/molecules/dialogs/confirmation.js';
+import { Icons } from '@components/icons/icons.js';
+
+new Confirmation({
+    icon: Icons.signOut,
+    type: 'destructive',
+    title: 'Are you absoultely sure?',
+    description: 'This will sign you out of the application.',
+    confirmTextLabel: 'Sign Out',
+    confirmed: () => console.log('Confirmed!')
+}).open()
+`
+            }),
+
+            P('The types are `destructive`, `warning`, `info`, `success`, and `default`.'),
         ]
     )
 );

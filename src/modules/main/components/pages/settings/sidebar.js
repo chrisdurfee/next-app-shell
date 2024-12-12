@@ -20,6 +20,7 @@ export const Sidebar = () =>(
 
                 new Confirmation({
                     icon: Icons.signOut,
+                    type: 'destructive',
                     title: 'Are you absoultely sure?',
                     description: 'This will sign you out of the application.',
                     confirmTextLabel: 'Sign Out',
