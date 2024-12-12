@@ -1,5 +1,6 @@
-import { Fieldset as BaseFieldset } from '@base-framework/atoms';
+import { Fieldset as BaseFieldset, Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Legend } from './legend';
 
 /**
  * This will create a select component.
@@ -12,6 +13,9 @@ export const Fieldset = Atom((props, children) =>
 {
     return BaseFieldset({
         ...props,
-        class: `text-sm font-medium text-foreground ${props.class || ''}`,
-    }, children)
+        class: `p-6 border rounded-md ${props.class || ''}`,
+    }, [
+        props.legend && Legend(props.legend),
+        Div({ class: 'flex flex-auto flex-col space-y-8' }, children)
+    ])
 });

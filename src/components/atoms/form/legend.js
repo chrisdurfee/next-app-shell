@@ -12,6 +12,6 @@ export const Legend = Atom((props, children) =>
 {
     return BaseLegend({
         ...props,
-        class: `text-sm font-medium text-foreground ${props.class || ''}`,
+        class: `text-sm font-medium text-foreground bg-background -mt-4 px-4 py-2 ${props.class || ''}`,
     }, children)
 });

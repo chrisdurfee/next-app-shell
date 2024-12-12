@@ -2,7 +2,6 @@ import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Fieldset } from "@components/atoms/form/fieldset.js";
 import { Input, Textarea } from "@components/atoms/form/input.js";
-import { Legend } from "@components/atoms/form/legend.js";
 import { Select } from "@components/atoms/form/select.js";
 import { Icons } from "@components/icons/icons.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
@@ -112,8 +111,7 @@ const ModalForm = ({
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
-			Fieldset([
-				Legend('Issue Details'),
+			Fieldset({ legend: 'Issue Details' }, [
 				// Row for Area and Security Level
 				Div({ class: "flex flex-auto w-full gap-4" }, [
 					// Area field
