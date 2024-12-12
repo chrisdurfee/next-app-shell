@@ -29,7 +29,7 @@ export const MusicModal = (props) => (
 		Div({ class: 'flex flex-col lg:p-4 space-y-8' }, [
 			// Row for Area and Security Level
 			Div({ class: "flex flex-auto flex-col w-full gap-4" }, [
-				Fieldset({ legend: "Artist Settings", class: 'w-full' }, [
+				Fieldset({ legend: "Artist Settings" }, [
 					new FormField({ name: "artist", label: "Artists", description: "The name of the Artist." }, [
 						Input({
 							type: "text",
@@ -38,7 +38,7 @@ export const MusicModal = (props) => (
 						})
 					]),
 				]),
-				Fieldset({ legend: "Album Details", class: 'w-full' }, [
+				Fieldset({ legend: "Album Details" }, [
 					new FormField({ name: "album", label: "Album", description: "The name of the Album." }, [
 						Input({
 							type: "text",
