@@ -203,7 +203,8 @@ Builder.render(ToDoApp(), document.body);`)
 						target: '_blank',
 						class: 'bttn ghost gap-2'
 					}, 'Shadcn UI')
-				])
+				]),
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "Each page is an different type of example of what you can build with, and common for most application and websites. "),
 			])
 		])
 	])
