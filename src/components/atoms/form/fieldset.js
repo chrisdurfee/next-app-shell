@@ -1,6 +1,6 @@
 import { Fieldset as BaseFieldset, Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Legend } from './legend';
+import { Legend } from './legend.js';
 
 /**
  * This will create a select component.
