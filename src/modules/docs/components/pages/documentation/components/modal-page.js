@@ -110,7 +110,7 @@ const ModalForm = ({
 		type,
 		onSubmit: () => console.log('Form submitted')
 	}, [
-		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
+		Div({ class: 'flex flex-col lg:p-4 space-y-8' }, [
 			Fieldset({ legend: 'Issue Details' }, [
 				// Row for Area and Security Level
 				Div({ class: "flex flex-auto w-full gap-4" }, [
