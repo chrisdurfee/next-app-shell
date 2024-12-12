@@ -48,7 +48,7 @@ const CheckBoxIcon = () => (
  */
 const CustomCheckbox = ({ id, bind, checked, required, clickHandler }) => (
     Div({
-        class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border hover:border-accent-foreground`,
+        class: `relative flex items-center justify-center w-5 h-5 rounded-md transition-colors duration-200 border border-primary hover:border-accent-foreground`,
         onState: ['checked',
         {
             'bg-primary': true,
