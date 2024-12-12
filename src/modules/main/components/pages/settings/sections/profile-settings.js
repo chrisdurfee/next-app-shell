@@ -1,5 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
 import { Input } from "@components/atoms/form/input.js";
 import { FormField } from "@components/molecules/form/form.js";
 import { SettingsSection } from "../atoms/settings-section.js";
@@ -18,25 +19,27 @@ export const ProfileSettings = () => (
         class: 'max-w-[500px]',
         submit: (data) => console.log("Profile Settings:", data)
     }, [
-        Div({ class: 'space-y-6' }, [
-            // Username
-            new FormField({
-                name: "username",
-                label: "Username",
-                description: "This is your public display name."
-            }, [
-                Input({ placeholder: "e.g. john_doe", required: true })
-            ]),
+        Fieldset({ legend: 'Profile Information' }, [
+            Div({ class: 'space-y-6' }, [
+                // Username
+                new FormField({
+                    name: "username",
+                    label: "Username",
+                    description: "This is your public display name."
+                }, [
+                    Input({ placeholder: "e.g. john_doe", required: true })
+                ]),
 
-            // Email
-            new FormField({
-                name: "email",
-                label: "Email",
-                description: "Select a verified email to display."
-            }, [
-                Input({ type: "email", placeholder: "e.g. john_doe@example.com", required: true })
+                // Email
+                new FormField({
+                    name: "email",
+                    label: "Email",
+                    description: "Select a verified email to display."
+                }, [
+                    Input({ type: "email", placeholder: "e.g. john_doe@example.com", required: true })
+                ]),
             ]),
-        ]),
-        Button({ class: 'mt-4' }, "Update Profile")
+            Button({ class: 'mt-4' }, "Update Profile")
+        ])
     ])
 );

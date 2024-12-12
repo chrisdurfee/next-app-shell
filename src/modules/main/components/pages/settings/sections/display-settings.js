@@ -1,6 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Checkbox } from "@components/atoms/form/checkbox.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
 import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
@@ -20,13 +21,15 @@ export const DisplaySettings = () => (
         Div({ class: 'space-y-4' }, [
             // Sidebar Items
             Div({ class: 'flex flex-col space-y-2' }, [
-                new Checkbox({ label: 'Recents', checked: true, onChange: (checked) => console.log('Recents:', checked) }),
-                new Checkbox({ label: 'Home', checked: true, onChange: (checked) => console.log('Home:', checked) }),
-                new Checkbox({ label: 'Applications', checked: false, onChange: (checked) => console.log('Applications:', checked) }),
-                new Checkbox({ label: 'Desktop', checked: false, onChange: (checked) => console.log('Desktop:', checked) }),
-                new Checkbox({ label: 'Downloads', checked: false, onChange: (checked) => console.log('Downloads:', checked) }),
-                new Checkbox({ label: 'Documents', checked: false, onChange: (checked) => console.log('Documents:', checked) }),
-            ]),
+                Fieldset({ legend: 'Sidebar Items' }, [
+                    new Checkbox({ label: 'Recents', checked: true, onChange: (checked) => console.log('Recents:', checked) }),
+                    new Checkbox({ label: 'Home', checked: true, onChange: (checked) => console.log('Home:', checked) }),
+                    new Checkbox({ label: 'Applications', checked: false, onChange: (checked) => console.log('Applications:', checked) }),
+                    new Checkbox({ label: 'Desktop', checked: false, onChange: (checked) => console.log('Desktop:', checked) }),
+                    new Checkbox({ label: 'Downloads', checked: false, onChange: (checked) => console.log('Downloads:', checked) }),
+                    new Checkbox({ label: 'Documents', checked: false, onChange: (checked) => console.log('Documents:', checked) }),
+                ]),
+            ])
         ]),
 
         Button({ class: 'mt-4' }, "Update Display")
