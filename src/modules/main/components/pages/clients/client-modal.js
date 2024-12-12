@@ -1,4 +1,5 @@
 import { Div } from "@base-framework/atoms";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
 import { Input } from "@components/atoms/form/input.js";
 import { Icons } from "@components/icons/icons.js";
 import { FormField } from "@components/molecules/form/form.js";
@@ -24,15 +25,17 @@ export const ClientModal = (props) => (
 			icon: Icons.check
 		})
 	}, [
-		Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
+		Div({ class: 'flex flex-col lg:p-4 space-y-8' }, [
 			// Row for Area and Security Level
-			Div({ class: "flex flex-auto w-full gap-4" }, [
-				new FormField({ name: "client", label: "Client", description: "The name of the client." }, [
-					Input({
-                        type: "text",
-                        placeholder: "Client name",
-						required: true
-                    })
+			Div({ class: "flex flex-auto flex-col w-full gap-4" }, [
+				Fieldset({ legend: "Client Details" }, [
+					new FormField({ name: "client", label: "Client", description: "The name of the client." }, [
+						Input({
+							type: "text",
+							placeholder: "Client name",
+							required: true
+						})
+					])
 				])
 			])
 		])

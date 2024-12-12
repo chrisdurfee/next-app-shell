@@ -37,6 +37,20 @@ export const MusicModal = (props) => (
 							required: true
 						})
 					]),
+					new FormField({ name: "location", label: "Location", description: "The location of the artist." }, [
+						Input({
+							type: "text",
+							placeholder: "Location",
+							required: true
+						})
+					]),
+					new FormField({ name: "website", label: "Website", description: "The website of the artist." }, [
+						Input({
+							type: "text",
+							placeholder: "Website",
+							required: true
+						})
+					]),
 				]),
 				Fieldset({ legend: "Album Details" }, [
 					new FormField({ name: "album", label: "Album", description: "The name of the Album." }, [
