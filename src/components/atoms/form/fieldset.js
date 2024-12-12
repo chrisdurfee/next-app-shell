@@ -11,7 +11,7 @@ import { Legend } from './legend.js';
  */
 export const Fieldset = Atom((props, children) =>
 {
-    const border = props.border !== 'full' ? 'border rounded-md' : 'border-t';
+    const border = props.border === 'full' ? 'border rounded-md' : 'border-t';
     return BaseFieldset({
         ...props,
         class: `p-6 ${border} ${props.class || ''}`,
