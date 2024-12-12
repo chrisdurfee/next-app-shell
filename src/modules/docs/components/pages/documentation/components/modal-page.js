@@ -342,6 +342,10 @@ const ModalButton = (props, children) => Button({
 				code: `
 import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Icons } from "@components/icons/icons.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
+import { Div } from "@base-framework/atoms";
+import { Input, Textarea } from "@components/atoms/form/input.js";
 
 /**
  * This will create a modal form.
@@ -360,63 +364,65 @@ const ModalForm = ({
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
-			// Row for Area and Security Level
-			Div({ class: "flex flex-auto w-full gap-4" }, [
-				// Area field
-				new FormField({ name: "area", label: "Area" }, [
-					Select({
+			Fieldset({ legend: 'Issue Details' }, [
+				// Row for Area and Security Level
+				Div({ class: "flex flex-auto w-full gap-4" }, [
+					// Area field
+					new FormField({ name: "area", label: "Area" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "billing", label: "Billing" },
+								{ value: "technical", label: "Technical" },
+								{ value: "account", label: "Account" },
+								{ value: "other", label: "Other" }
+							],
+							defaultValue: "billing",
+							change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						})
+					]),
+
+					// Security Level field
+					new FormField({ name: "security_level", label: "Security Level" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "severity_1", label: "Severity 1" },
+								{ value: "severity_2", label: "Severity 2" },
+								{ value: "severity_3", label: "Severity 3" }
+							],
+							defaultValue: "severity_2",
+							change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						})
+					])
+				]),
+
+				// Subject field
+				new FormField({
+					name: "subject",
+					label: "Subject",
+				}, [
+					Input({
+						type: "text",
+						placeholder: "I need help with...",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "billing", label: "Billing" },
-							{ value: "technical", label: "Technical" },
-							{ value: "account", label: "Account" },
-							{ value: "other", label: "Other" }
-						],
-						defaultValue: "billing",
-						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				]),
 
-				// Security Level field
-				new FormField({ name: "security_level", label: "Security Level" }, [
-					Select({
+				// Description field
+				new FormField({
+					name: "description",
+					label: "Description",
+				}, [
+					Textarea({
+						placeholder: "Please include all information relevant to your issue.",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "severity_1", label: "Severity 1" },
-							{ value: "severity_2", label: "Severity 2" },
-							{ value: "severity_3", label: "Severity 3" }
-						],
-						defaultValue: "severity_2",
-						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				])
-			]),
-
-			// Subject field
-			new FormField({
-				name: "subject",
-				label: "Subject",
-			}, [
-				Input({
-					type: "text",
-					placeholder: "I need help with...",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
-			]),
-
-			// Description field
-			new FormField({
-				name: "description",
-				label: "Description",
-			}, [
-				Textarea({
-					placeholder: "Please include all information relevant to your issue.",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
 			])
 		])
 	])
@@ -437,6 +443,9 @@ const ModalForm = ({
 import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
+import { Div } from "@base-framework/atoms";
+import { Input, Textarea } from "@components/atoms/form/input.js";
 
 /**
  * This will create a modal form.
@@ -455,63 +464,65 @@ const ModalForm = ({
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
-			// Row for Area and Security Level
-			Div({ class: "flex flex-auto w-full gap-4" }, [
-				// Area field
-				new FormField({ name: "area", label: "Area" }, [
-					Select({
+			Fieldset({ legend: 'Issue Details' }, [
+				// Row for Area and Security Level
+				Div({ class: "flex flex-auto w-full gap-4" }, [
+					// Area field
+					new FormField({ name: "area", label: "Area" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "billing", label: "Billing" },
+								{ value: "technical", label: "Technical" },
+								{ value: "account", label: "Account" },
+								{ value: "other", label: "Other" }
+							],
+							defaultValue: "billing",
+							change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						})
+					]),
+
+					// Security Level field
+					new FormField({ name: "security_level", label: "Security Level" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "severity_1", label: "Severity 1" },
+								{ value: "severity_2", label: "Severity 2" },
+								{ value: "severity_3", label: "Severity 3" }
+							],
+							defaultValue: "severity_2",
+							change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						})
+					])
+				]),
+
+				// Subject field
+				new FormField({
+					name: "subject",
+					label: "Subject",
+				}, [
+					Input({
+						type: "text",
+						placeholder: "I need help with...",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "billing", label: "Billing" },
-							{ value: "technical", label: "Technical" },
-							{ value: "account", label: "Account" },
-							{ value: "other", label: "Other" }
-						],
-						defaultValue: "billing",
-						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				]),
 
-				// Security Level field
-				new FormField({ name: "security_level", label: "Security Level" }, [
-					Select({
+				// Description field
+				new FormField({
+					name: "description",
+					label: "Description",
+				}, [
+					Textarea({
+						placeholder: "Please include all information relevant to your issue.",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "severity_1", label: "Severity 1" },
-							{ value: "severity_2", label: "Severity 2" },
-							{ value: "severity_3", label: "Severity 3" }
-						],
-						defaultValue: "severity_2",
-						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				])
-			]),
-
-			// Subject field
-			new FormField({
-				name: "subject",
-				label: "Subject",
-			}, [
-				Input({
-					type: "text",
-					placeholder: "I need help with...",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
-			]),
-
-			// Description field
-			new FormField({
-				name: "description",
-				label: "Description",
-			}, [
-				Textarea({
-					placeholder: "Please include all information relevant to your issue.",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
 			])
 		])
 	])
