@@ -20,7 +20,7 @@ import { DocPage } from '../../doc-page.js';
  * @returns {object}
  */
 const FormPreview = Atom((props, children) => (
-    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full py-4 space-y-8 max-w-[350px]' }, children)
+    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full py-4 space-y-8 max-w-[450px]' }, children)
 ));
 
 const frameworks = [
