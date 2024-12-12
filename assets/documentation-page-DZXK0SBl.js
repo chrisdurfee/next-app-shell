@@ -1,4 +1,4 @@
-import{G as qe,S as Ue}from"./molecules-DQXrmMXY.js";import{n as ae,Y as o,u as T,o as be,Z as se,p as ne,q as W,Q as g,w as We,N as Oe,a as n,l as H,s as re,G as c,x as _e,y as Ge,r as he,E as $,A as y,H as v,z as r,K as Ve,_ as O,L as _,J as S,B as l,b as xe,R as Je,U as Ye,V as Qe,W as Ke,X as Ze,$ as A,I as h,a0 as P,F as u,a1 as M,a2 as G,a3 as ie,c as j,a4 as C,a5 as N,a6 as V,a7 as we,a8 as ve,a9 as Xe,D as ye,aa as et,i as X,ab as tt,ac as Y,j as B,C as J,ad as Te,ae as ke,P as E,af as le,ag as ee,ah as te,ai as ot,aj as at,ak as Q,al as st,am as nt,an as rt,ao as it,ap as lt,aq as ct,ar as dt,as as ut,at as mt,au as pt,av as ft,aw as gt,M as Se,ax as bt,ay as ht,f as xt,az as L,S as I,k as Ce,T as wt,d as D,aA as oe,v as vt,aB as yt,O as Tt}from"./index-DWBmNH4l.js";import{U as kt}from"./user-list--Xe8l8se.js";const St=e=>ne({class:"inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",dataSet:["selected",["state",e.value,"active"]]},[W({class:"flex flex-auto justify-center items-center px-3 py-1.5",onSet:["selected",{selected:e.value}],click:t=>e.callBack(e.value)},e.label)]),Ct=(e,t)=>(e.callBack=t,St(e)),It=e=>be({class:`tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${e.class}`},[se({class:"flex flex-auto flex-row",map:[e.options,t=>Ct(t,e.callBack)]})]);class Ie extends ae{render(){const t=this.select.bind(this);return o({class:""},[It({class:this.class,options:this.options,callBack:t}),T({class:"tab-content",onState:["selected",this.updateContent.bind(this)]})])}getFirstValue(){var t;return(t=this.options[0])==null?void 0:t.value}update(){const t=this.state.get("selected");this.select(null),this.select(t)}select(t){this.state.selected=t}updateContent(t){const s=this.options;if(!s||s.length<1)return;const i=s[0];for(const d of s)if(d.value===t)return d.layout;return i.layout}setupStates(){const t=this.callBack,s=typeof t;return{selected:{state:this.getFirstValue(),callBack(i){s==="function"&&t(i)}}}}}const je=g((e,t)=>We({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces break-all cursor-pointer"},[Oe({class:"font-mono flex-auto text-sm text-wrap",click:()=>{navigator.clipboard.writeText(t[0].textContent),app.notify({title:"Code copied",description:"The code has been copied to your clipboard.",icon:n.clipboard.checked})}},t)])),jt=g((e,t)=>o({class:"flex flex-auto p-4 min-h-[350px] max-h-[650px] overflow-x-auto max-w-[90vw] rounded-lg border bg-card"},[o({class:"preview flex flex-auto justify-center items-center"},t)])),ce=g((e,t)=>o({class:"py-4"},t)),At=e=>new Ie({class:"mt-4 max-w-[400px]",options:[{label:"Preview",value:"preview",layout:ce([jt(e.preview)])},{label:"Code",value:"code",layout:ce([je(e.code)])}]}),Dt=g(({title:e,description:t})=>H({class:"flex flex-col"},[re({class:"scroll-m-20 text-2xl font-bold tracking-tight"},e),t&&c({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),a=g((e,t)=>T({class:"grid py-4"},[Dt({title:e.title,description:e.description}),At({preview:e.preview,code:e.code})]));class Bt extends _e{render(){return Ge([o({class:"contained px-4 flex flex-auto flex-col"},this.children)])}}const Pt=g(({title:e,description:t})=>H({class:"flex flex-col"},[he({class:"scroll-m-20 text-3xl font-bold tracking-tight"},e),c({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),Ft=g((e,t)=>o({class:"contained py-8"},[Pt(e),T({class:"pb-12 pt-8"},t)])),p=g((e,t)=>new Bt([Ft(e,t)])),Lt=()=>p({title:"Alerts",description:"Alerts are used to provide feedback to the user about the outcome of an action or to inform them of important information."},[a({title:"Default Alert",description:"This is a standard alert without any specific type.",preview:[$({title:"Notice",description:"This is a default alert without a specific type.",icon:n.information})],code:`import { Alert } from "@components/molecules/alert.js";
+import{G as qe,S as Ue}from"./molecules-DtAI_2qq.js";import{n as ae,Y as o,u as T,o as be,Z as se,p as ne,q as W,Q as g,w as We,N as Oe,a as n,l as H,s as re,G as c,x as _e,y as Ge,r as he,E as $,A as y,H as v,z as r,K as Ve,_ as O,L as _,J as S,B as l,b as xe,R as Je,U as Ye,V as Qe,W as Ke,X as Ze,$ as A,I as h,a0 as P,F as u,a1 as M,a2 as G,a3 as ie,c as j,a4 as C,a5 as N,a6 as V,a7 as we,a8 as ve,a9 as Xe,D as ye,aa as et,i as X,ab as tt,ac as Y,j as B,C as J,ad as Te,ae as ke,P as E,af as le,ag as ee,ah as te,ai as ot,aj as at,ak as Q,al as st,am as nt,an as rt,ao as it,ap as lt,aq as ct,ar as dt,as as ut,at as mt,au as pt,av as ft,aw as gt,M as Se,ax as bt,ay as ht,f as xt,az as L,S as I,k as Ce,T as wt,d as D,aA as oe,v as vt,aB as yt,O as Tt}from"./index-CTAu_XVG.js";import{U as kt}from"./user-list-BRX8OKG8.js";const St=e=>ne({class:"inline-flex flex-auto items-center justify-center whitespace-nowrap rounded-sm text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm",dataSet:["selected",["state",e.value,"active"]]},[W({class:"flex flex-auto justify-center items-center px-3 py-1.5",onSet:["selected",{selected:e.value}],click:t=>e.callBack(e.value)},e.label)]),Ct=(e,t)=>(e.callBack=t,St(e)),It=e=>be({class:`tab items-center justify-center rounded-md bg-muted p-1 text-muted-foreground ${e.class}`},[se({class:"flex flex-auto flex-row",map:[e.options,t=>Ct(t,e.callBack)]})]);class Ie extends ae{render(){const t=this.select.bind(this);return o({class:""},[It({class:this.class,options:this.options,callBack:t}),T({class:"tab-content",onState:["selected",this.updateContent.bind(this)]})])}getFirstValue(){var t;return(t=this.options[0])==null?void 0:t.value}update(){const t=this.state.get("selected");this.select(null),this.select(t)}select(t){this.state.selected=t}updateContent(t){const s=this.options;if(!s||s.length<1)return;const i=s[0];for(const d of s)if(d.value===t)return d.layout;return i.layout}setupStates(){const t=this.callBack,s=typeof t;return{selected:{state:this.getFirstValue(),callBack(i){s==="function"&&t(i)}}}}}const je=g((e,t)=>We({class:"flex p-4 min-h-[350px] max-h-[650px] overflow-x-auto rounded-lg border bg-muted whitespace-break-spaces break-all cursor-pointer"},[Oe({class:"font-mono flex-auto text-sm text-wrap",click:()=>{navigator.clipboard.writeText(t[0].textContent),app.notify({title:"Code copied",description:"The code has been copied to your clipboard.",icon:n.clipboard.checked})}},t)])),jt=g((e,t)=>o({class:"flex flex-auto p-4 min-h-[350px] max-h-[650px] overflow-x-auto max-w-[90vw] rounded-lg border bg-card"},[o({class:"preview flex flex-auto justify-center items-center"},t)])),ce=g((e,t)=>o({class:"py-4"},t)),At=e=>new Ie({class:"mt-4 max-w-[400px]",options:[{label:"Preview",value:"preview",layout:ce([jt(e.preview)])},{label:"Code",value:"code",layout:ce([je(e.code)])}]}),Dt=g(({title:e,description:t})=>H({class:"flex flex-col"},[re({class:"scroll-m-20 text-2xl font-bold tracking-tight"},e),t&&c({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),a=g((e,t)=>T({class:"grid py-4"},[Dt({title:e.title,description:e.description}),At({preview:e.preview,code:e.code})]));class Bt extends _e{render(){return Ge([o({class:"contained px-4 flex flex-auto flex-col"},this.children)])}}const Pt=g(({title:e,description:t})=>H({class:"flex flex-col"},[he({class:"scroll-m-20 text-3xl font-bold tracking-tight"},e),c({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t)])),Ft=g((e,t)=>o({class:"contained py-8"},[Pt(e),T({class:"pb-12 pt-8"},t)])),p=g((e,t)=>new Bt([Ft(e,t)])),Lt=()=>p({title:"Alerts",description:"Alerts are used to provide feedback to the user about the outcome of an action or to inform them of important information."},[a({title:"Default Alert",description:"This is a standard alert without any specific type.",preview:[$({title:"Notice",description:"This is a default alert without a specific type.",icon:n.information})],code:`import { Alert } from "@components/molecules/alert.js";
 import { Icons } from "@components/icons/icons.js";
 
 Alert({
@@ -778,6 +778,10 @@ const ModalButton = (props, children) => Button({
 });`}),a({title:"Form Modal",preview:[me({label:"Form Modal",buttonStyle:"primary"})],code:`
 import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/buttons/buttons.js";
+import { Icons } from "@components/icons/icons.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
+import { Div } from "@base-framework/atoms";
+import { Input, Textarea } from "@components/atoms/form/input.js";
 
 /**
  * This will create a modal form.
@@ -796,63 +800,65 @@ const ModalForm = ({
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
-			// Row for Area and Security Level
-			Div({ class: "flex flex-auto w-full gap-4" }, [
-				// Area field
-				new FormField({ name: "area", label: "Area" }, [
-					Select({
+			Fieldset({ legend: 'Issue Details' }, [
+				// Row for Area and Security Level
+				Div({ class: "flex flex-auto w-full gap-4" }, [
+					// Area field
+					new FormField({ name: "area", label: "Area" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "billing", label: "Billing" },
+								{ value: "technical", label: "Technical" },
+								{ value: "account", label: "Account" },
+								{ value: "other", label: "Other" }
+							],
+							defaultValue: "billing",
+							change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						})
+					]),
+
+					// Security Level field
+					new FormField({ name: "security_level", label: "Security Level" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "severity_1", label: "Severity 1" },
+								{ value: "severity_2", label: "Severity 2" },
+								{ value: "severity_3", label: "Severity 3" }
+							],
+							defaultValue: "severity_2",
+							change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						})
+					])
+				]),
+
+				// Subject field
+				new FormField({
+					name: "subject",
+					label: "Subject",
+				}, [
+					Input({
+						type: "text",
+						placeholder: "I need help with...",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "billing", label: "Billing" },
-							{ value: "technical", label: "Technical" },
-							{ value: "account", label: "Account" },
-							{ value: "other", label: "Other" }
-						],
-						defaultValue: "billing",
-						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				]),
 
-				// Security Level field
-				new FormField({ name: "security_level", label: "Security Level" }, [
-					Select({
+				// Description field
+				new FormField({
+					name: "description",
+					label: "Description",
+				}, [
+					Textarea({
+						placeholder: "Please include all information relevant to your issue.",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "severity_1", label: "Severity 1" },
-							{ value: "severity_2", label: "Severity 2" },
-							{ value: "severity_3", label: "Severity 3" }
-						],
-						defaultValue: "severity_2",
-						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				])
-			]),
-
-			// Subject field
-			new FormField({
-				name: "subject",
-				label: "Subject",
-			}, [
-				Input({
-					type: "text",
-					placeholder: "I need help with...",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
-			]),
-
-			// Description field
-			new FormField({
-				name: "description",
-				label: "Description",
-			}, [
-				Textarea({
-					placeholder: "Please include all information relevant to your issue.",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
 			])
 		])
 	])
@@ -860,6 +866,9 @@ const ModalForm = ({
 import { Modal } from "@components/molecules/modals/modal.js";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
+import { Fieldset } from "@components/atoms/form/fieldset.js";
+import { Div } from "@base-framework/atoms";
+import { Input, Textarea } from "@components/atoms/form/input.js";
 
 /**
  * This will create a modal form.
@@ -878,63 +887,65 @@ const ModalForm = ({
 		onSubmit: () => console.log('Form submitted')
 	}, [
 		Div({ class: 'flex flex-col max-w-lg p-4 space-y-8' }, [
-			// Row for Area and Security Level
-			Div({ class: "flex flex-auto w-full gap-4" }, [
-				// Area field
-				new FormField({ name: "area", label: "Area" }, [
-					Select({
+			Fieldset({ legend: 'Issue Details' }, [
+				// Row for Area and Security Level
+				Div({ class: "flex flex-auto w-full gap-4" }, [
+					// Area field
+					new FormField({ name: "area", label: "Area" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "billing", label: "Billing" },
+								{ value: "technical", label: "Technical" },
+								{ value: "account", label: "Account" },
+								{ value: "other", label: "Other" }
+							],
+							defaultValue: "billing",
+							change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						})
+					]),
+
+					// Security Level field
+					new FormField({ name: "security_level", label: "Security Level" }, [
+						Select({
+							required: true,
+							class: "border p-2 rounded-md w-full bg-background text-foreground",
+							options: [
+								{ value: "severity_1", label: "Severity 1" },
+								{ value: "severity_2", label: "Severity 2" },
+								{ value: "severity_3", label: "Severity 3" }
+							],
+							defaultValue: "severity_2",
+							change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						})
+					])
+				]),
+
+				// Subject field
+				new FormField({
+					name: "subject",
+					label: "Subject",
+				}, [
+					Input({
+						type: "text",
+						placeholder: "I need help with...",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "billing", label: "Billing" },
-							{ value: "technical", label: "Technical" },
-							{ value: "account", label: "Account" },
-							{ value: "other", label: "Other" }
-						],
-						defaultValue: "billing",
-						change: (e) => console.log(\`Area selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				]),
 
-				// Security Level field
-				new FormField({ name: "security_level", label: "Security Level" }, [
-					Select({
+				// Description field
+				new FormField({
+					name: "description",
+					label: "Description",
+				}, [
+					Textarea({
+						placeholder: "Please include all information relevant to your issue.",
 						required: true,
-						class: "border p-2 rounded-md w-full bg-background text-foreground",
-						options: [
-							{ value: "severity_1", label: "Severity 1" },
-							{ value: "severity_2", label: "Severity 2" },
-							{ value: "severity_3", label: "Severity 3" }
-						],
-						defaultValue: "severity_2",
-						change: (e) => console.log(\`Security Level selected: \${e.target.value}\`)
+						class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
 					})
 				])
-			]),
-
-			// Subject field
-			new FormField({
-				name: "subject",
-				label: "Subject",
-			}, [
-				Input({
-					type: "text",
-					placeholder: "I need help with...",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
-			]),
-
-			// Description field
-			new FormField({
-				name: "description",
-				label: "Description",
-			}, [
-				Textarea({
-					placeholder: "Please include all information relevant to your issue.",
-					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground placeholder-muted-foreground"
-				})
 			])
 		])
 	])
