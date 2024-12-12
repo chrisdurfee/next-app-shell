@@ -30,7 +30,7 @@ const MainButtonContainer = Atom(() => (
 const PageHeader = Atom(({ title, description}) => (
 	Header({ class: 'flex flex-col' }, [
 		H1({ class: 'text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]' }, title),
-		description && P({ class: 'max-w-2xl text-lg font-light text-foreground' }, description),
+		description && P({ class: 'max-w-2xl text-lg font-light text-foreground mt-2' }, description),
 	])
 ));
 
@@ -43,7 +43,7 @@ const PageHeader = Atom(({ title, description}) => (
 const MainSection = Atom((props) => (
 	Div({ class: 'flex flex-auto flex-col' }, [
 		Div({
-			class: 'contained sm:pt-8'
+			class: 'flex flex-auto flex-col w-full max-w-[1400px] m-auto sm:pt-8 px-6 lg:border-r lg:border-l'
 		}, [
 			PageHeader({
 				title: 'Build faster with Base and Tailwind CSS',
