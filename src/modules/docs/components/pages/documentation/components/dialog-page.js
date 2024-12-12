@@ -197,7 +197,7 @@ new Confirmation({
 `
             }),
 
-            P('The types are `destructive`, `warning`, `info`, `success`, and `default`.'),
+            P('The types are `destructive`, `warning`, `info`, `success`, and `default`. Dialogs can also have an icon in the header. The icon can be any icon from the icon library.'),
         ]
     )
 );
