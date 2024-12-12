@@ -12,7 +12,7 @@ import { Icons } from "../../icons/icons.js";
  * @returns {object}
  */
 const ModalHeader = ({ title, description, back, icon }) => (
-    Header({ class: 'modal-header flex items-center pt-4 px-6' }, [
+    Header({ class: 'modal-header bg-background/80 backdrop-blur-md sticky top-0 flex flex-none items-center py-4 px-6' }, [
 
 		/**
 		 * Back Button
@@ -44,7 +44,7 @@ const ModalHeader = ({ title, description, back, icon }) => (
 export const ModalContainer = Atom((props, children) => (
     Div({
             popover: 'manual',
-            class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full gap-4 lg:border bg-background text-foreground shadow-xl break-words overflow-hidden p-0 ${props.class}`,
+            class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full max-h-screen gap-2 lg:border bg-background text-foreground shadow-xl break-words p-0 ${props.class}`,
             pointerdown: (e, parent) =>
             {
                 const isClickOutside = (e.target === parent.panel);
@@ -53,14 +53,14 @@ export const ModalContainer = Atom((props, children) => (
                     e.preventDefault();
                     e.stopPropagation();
 
-                    parent.state.open = false; // Close the modal
+                    parent.state.open = false;
                 }
             }
         }, [
-        Form({ class: 'modal-content relative bg-background z-[1] flex flex-auto flex-col', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
+        Form({ class: 'modal-content relative bg-background z-[1] flex flex-auto flex-col space-y-4', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
-            Div({ class: 'modal-body flex flex-auto flex-col overflow-y-auto py-0 px-6' }, children),
-            Footer({ class: 'modal-footer flex justify-between pb-4 px-6' }, props.buttons)
+            Div({ class: 'modal-body flex flex-grow flex-col overflow-y-auto py-0 px-6' }, children),
+            Footer({ class: 'modal-footer sticky bottom-0 bg-background/80 backdrop-blur-md flex flex-none justify-between py-4 px-6' }, props.buttons)
         ])
     ])
 ));
