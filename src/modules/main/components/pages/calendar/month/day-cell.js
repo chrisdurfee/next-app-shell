@@ -108,7 +108,7 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
             href: '/calendar/month/' + date,
             class: `
         flex flex-auto flex-col p-2 rounded-md
-        hover:bg-accent hover:text-accent-foreground focus:z-10 items-center lg:items-start
+        hover:bg-muted/50 focus:z-10 items-center lg:items-start
       `,
             disabled: day === null,
             'aria-label': day ? `Day ${day}` : null,

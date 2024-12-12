@@ -41,7 +41,7 @@ const OTHER_BUTTONS = [
  */
 const CustomNavLink = ({ label, count, icon, href }) => (
     new NavLink({
-            class: "flex items-center justify-between p-2 rounded-md hover:bg-accent transition",
+            class: "flex items-center justify-between p-2 rounded-md hover:bg-muted transition",
             activeClass: "bg-muted",
             href,
             exact: false

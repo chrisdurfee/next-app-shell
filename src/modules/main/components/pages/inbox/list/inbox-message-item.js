@@ -100,7 +100,7 @@ export const InboxMessageItem = Jot(
         setTimeout(() => this.state.loaded = true, DELAY);
 
         return Div({
-            class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
+            class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-muted",
 
             /**
              * This wil add the selected class to the message item

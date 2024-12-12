@@ -12,7 +12,7 @@ import { PopOver } from '../popover.js';
 const DropdownButton = ({ toggleDropdown }) => (
     Button({
         cache: 'button',
-        class: 'relative z-[2] inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 justify-between',
+        class: 'relative z-[2] inline-flex items-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-muted h-10 px-4 py-2 justify-between',
         click: toggleDropdown
     },
     [
@@ -30,7 +30,7 @@ const DropdownButton = ({ toggleDropdown }) => (
  */
 const ComboboxItem = (item, onSelect) => {
     return Li({
-        class: 'flex flex-auto items-center cursor-pointer p-2 hover:bg-secondary rounded-sm',
+        class: 'flex flex-auto items-center cursor-pointer p-2 hover:bg-muted/50 rounded-sm',
         click: () => onSelect(item),
         onState: ['selectedValue', { 'bg-secondary': item.value }]
     }, [

@@ -10,7 +10,7 @@ import { Div, Li, P, Span } from "@base-framework/atoms";
  * @returns {object}
  */
 const TrackListItem = ({ title, plays, duration }, index) => (
-    Li({ class: 'flex justify-between items-center py-5 px-2 hover:bg-accent rounded-md' }, [
+    Li({ class: 'flex justify-between items-center py-5 px-2 hover:bg-muted/50 rounded-md' }, [
         Div({ class: 'flex flex-row' }, [
             Span({ class: 'text-sm font-bold text-muted-foreground mr-2 min-w-5' }, String(index + 1)),
             Div({ class: 'flex flex-col' }, [

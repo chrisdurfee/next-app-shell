@@ -17,7 +17,7 @@ import { CardHeader } from "./card-atoms.js";
  */
 const MethodButton = Atom(({ value, label, icon }) => (
 	BaseButton({
-		class: 'text-sm gap-1 font-medium leading-none disabled:cursor-not-allowed disabled:opacity-70 flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground data-[state="active"]:border-primary [&:has([data-state="active"])]:border-primary',
+		class: 'text-sm gap-1 font-medium leading-none disabled:cursor-not-allowed disabled:opacity-70 flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-muted data-[state="active"]:border-primary [&:has([data-state="active"])]:border-primary',
 		onState: ['method', { active: value}],
 		dataSet: ['method', ['state', value, 'active']],
 		click: (e, {state}) => state.method = value

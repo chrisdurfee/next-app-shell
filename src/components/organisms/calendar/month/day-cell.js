@@ -77,7 +77,7 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
             class: `
         flex items-center justify-center h-9 w-auto p-0 font-normal text-sm rounded-md
         ${getClasses(isToday, currentDate, isOutsideMonth, date)}
-        hover:bg-accent hover:text-accent-foreground focus:z-10
+        hover:bg-muted/50 focus:z-10
       `,
             disabled: day === null,
             'aria-label': day ? `Day ${day}` : null,

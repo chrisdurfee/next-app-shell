@@ -9,7 +9,7 @@ import { Atom } from '@base-framework/base';
  */
 const ListItem = Atom(({ index, click, state }, children) => (
 	Li({
-		class: `p-2 cursor-pointer hover:bg-accent hover:text-accent-foreground`,
+		class: `p-2 cursor-pointer hover:bg-muted/50`,
 		onState: [
 			[state, 'selectedIndex', {
 				'bg-accent': index,

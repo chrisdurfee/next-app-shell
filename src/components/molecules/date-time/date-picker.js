@@ -28,7 +28,7 @@ const HiddenImput = ({ bind, required }) => (
  */
 const CalendarButton = ({ bind, required, toggleOpen }) => (
     Button({
-        class: 'relative flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md h-10 px-4 py-2',
+        class: 'relative flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-muted rounded-md h-10 px-4 py-2',
         click: toggleOpen,
     }, [
         HiddenImput({ bind, required }),
