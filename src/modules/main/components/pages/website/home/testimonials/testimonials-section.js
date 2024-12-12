@@ -1,5 +1,6 @@
-import { Div, H2, Img, P } from '@base-framework/atoms';
+import { Div, H2, P } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Avatar } from '@components/molecules/avatars/avatar.js';
 
 /**
  * This will create a testimonial.
@@ -7,10 +8,10 @@ import { Atom } from '@base-framework/base';
  * @param {object} props
  * @returns {object}
  */
-const Testimonial = ({ avatar, quote, author }) => (
+const Testimonial = ({ image, quote, author }) => (
     Div({ class: 'flex flex-col items-center text-center p-6 rounded-lg bg-background shadow-sm' }, [
-        Img({ class: 'h-16 w-16 rounded-full mb-4', src: avatar, alt: author }),
-        P({ class: 'text-sm text-muted-foreground italic' }, quote),
+        Avatar({ src: image, alt: author, size: 'xl', fallbackText: author }),
+        P({ class: 'text-sm text-muted-foreground italic mt-4' }, quote),
         P({ class: 'mt-2 text-sm text-foreground font-semibold' }, `— ${author}`)
     ])
 );
@@ -28,17 +29,17 @@ export const TestimonialsSection = Atom(() => (
         ]),
         Div({ class: 'mt-10 grid gap-8 max-w-5xl mx-auto md:grid-cols-3 px-6 lg:px-0' }, [
             Testimonial({
-                avatar: '/path/to/avatar1.jpg',
+                image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
                 quote: '"This platform transformed our online presence. Our sales skyrocketed!"',
                 author: 'Jane D.'
             }),
             Testimonial({
-                avatar: '/path/to/avatar2.jpg',
+                image: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
                 quote: '"The features are intuitive, and the support team is exceptional."',
                 author: 'Mark R.'
             }),
             Testimonial({
-                avatar: '/path/to/avatar3.jpg',
+                image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
                 quote: '"We\'ve never looked back. Highly recommend this service."',
                 author: 'Lisa K.'
             })
