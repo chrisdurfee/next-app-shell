@@ -44,7 +44,7 @@ const PostList = ({ posts }) => (
  */
 export const BlogPage = () => (
     new BlankPage([
-        Div({ class: "flex flex-col w-full px-4 lg:px-8" }, [
+        Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] m-auto" }, [
             BlogHeader(),
             HeroSection(),
             PostList({
