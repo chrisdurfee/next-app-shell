@@ -12,7 +12,7 @@ import { Icons } from "../../icons/icons.js";
  * @returns {object}
  */
 const ModalHeader = ({ title, description, back, icon }) => (
-    Header({ class: 'modal-header bg-background/80 backdrop-blur-md sticky top-0 flex flex-none items-center py-4 px-6' }, [
+    Header({ class: 'modal-header bg-background/80 backdrop-blur-md sticky top-0 flex flex-none items-center py-4 px-6 z-10' }, [
 
 		/**
 		 * Back Button
@@ -59,8 +59,8 @@ export const ModalContainer = Atom((props, children) => (
         }, [
         Form({ class: 'modal-content relative bg-background z-[1] flex flex-auto flex-col space-y-4', submit: (e) => (props.onSubmit && props.onSubmit()) }, [
             ModalHeader(props),
-            Div({ class: 'modal-body flex flex-grow flex-col overflow-y-auto py-0 px-6' }, children),
-            Footer({ class: 'modal-footer sticky bottom-0 bg-background/80 backdrop-blur-md flex flex-none justify-between py-4 px-6' }, props.buttons)
+            Div({ class: 'modal-body flex flex-grow flex-col overflow-y-auto py-0 px-6 z-0' }, children),
+            Footer({ class: 'modal-footer sticky bottom-0 bg-background/80 backdrop-blur-md flex flex-none justify-between py-4 px-6 z-10' }, props.buttons)
         ])
     ])
 ));
