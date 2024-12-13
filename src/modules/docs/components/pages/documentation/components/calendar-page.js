@@ -2,6 +2,7 @@ import { DateTime } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
 import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
 import { Calendar } from "@components/organisms/calendar/calendar.js";
+import { WeekCalendar } from "@components/organisms/calendar/week/week-calendar.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -33,6 +34,17 @@ export const CalendarPage = () => (
                 description: 'This is how you can use the calendar component.',
                 preview: [
                     new Calendar()
+                ],
+                code: `@components/organisms/calendar/calendar.js';
+
+new Calendar()`
+            }),
+
+            DocSection({
+                title: 'Week Calendar',
+                description: 'This is how you can use the week calendar component.',
+                preview: [
+                    new WeekCalendar()
                 ],
                 code: `@components/organisms/calendar/calendar.js';
 
