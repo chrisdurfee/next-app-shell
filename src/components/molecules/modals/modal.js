@@ -158,6 +158,7 @@ export class Modal extends Component
 		render(this);
 		this.panel.showPopover();
         this.state.open = true;
+		document.documentElement.style.overflowY = 'hidden';
 	}
 
 	/**
@@ -170,5 +171,6 @@ export class Modal extends Component
         this.state.open = false;
 		this.panel.hidePopover();
 		this.destroy();
+		document.documentElement.style.overflowY = 'auto';
 	}
 }
