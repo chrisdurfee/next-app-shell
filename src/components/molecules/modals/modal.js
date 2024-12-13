@@ -162,7 +162,7 @@ export class Modal extends Component
 		/**
 		 * This will prevent the body from scrolling when the modal is open.
 		 */
-		document.documentElement.style.overflowY = 'hidden';
+		//document.documentElement.style.overflowY = 'hidden';
 	}
 
 	/**
@@ -179,6 +179,6 @@ export class Modal extends Component
 		/**
 		 * This will allow the body to scroll when the modal is closed.
 		 */
-		document.documentElement.style.overflowY = 'auto';
+		//document.documentElement.style.overflowY = 'auto';
 	}
 }
