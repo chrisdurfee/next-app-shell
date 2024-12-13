@@ -56,6 +56,7 @@ export class WeekCalendar extends Component {
         data.month = month;
         data.currentWeek = 0; // Reset to the first week
         data.currentDate = 1; // Reset to the first day of the month
+        data.monthName = this.getMonthName(month);
     }
 
     /**
@@ -76,6 +77,7 @@ export class WeekCalendar extends Component {
         data.month = month;
         data.currentWeek = 0; // Reset to the first week
         data.currentDate = 1; // Reset to the first day of the month
+        data.monthName = this.getMonthName(month);
     }
 
     /**
