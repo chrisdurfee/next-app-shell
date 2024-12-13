@@ -18,17 +18,29 @@ export class WeekCalendar extends Component {
      */
     setData() {
         const today = new Date();
+        const current = this.getSelectedDate(today);
         return new Data({
-            monthName: this.getMonthName(today.getMonth()),
-            year: today.getFullYear(),
-            month: today.getMonth(),
-            currentWeek: 0,
-            currentDate: today.getDate(),
+            monthName: this.getMonthName(current.getMonth()),
+            year: current.getFullYear(),
+            month: current.getMonth(),
+            currentDate: current.getDate(),
+            currentWeek: this.calculateCurrentWeek(current.getFullYear(), current.getMonth(), current.getDate()),
         });
     }
 
     /**
-     * This will get the name of the month.
+     * Determines the current selected date.
+     *
+     * @param {Date} today
+     * @returns {Date}
+     */
+    getSelectedDate(today) {
+        const selectedDate = this.selectedDate ? new Date(this.selectedDate) : today;
+        return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+    }
+
+    /**
+     * Gets the name of the month.
      *
      * @param {number} month
      * @returns {string}
@@ -36,6 +48,20 @@ export class WeekCalendar extends Component {
     getMonthName(month) {
         const monthNames = DateTime.monthNames;
         return monthNames[month];
+    }
+
+    /**
+     * Calculates the current week index for a given date.
+     *
+     * @param {number} year
+     * @param {number} month
+     * @param {number} date
+     * @returns {number}
+     */
+    calculateCurrentWeek(year, month, date) {
+        const firstDay = new Date(year, month, 1).getDay();
+        const weekIndex = Math.floor((date + firstDay - 1) / 7);
+        return weekIndex;
     }
 
     /**
