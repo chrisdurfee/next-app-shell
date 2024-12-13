@@ -67,7 +67,7 @@ export const InboxPage = () =>
             Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
                 InboxList()
             ]),
-            UseParent(({ list, route }) =>
+            UseParent((parent) =>
             {
                 return ContentSwitch({
 
@@ -78,8 +78,8 @@ export const InboxPage = () =>
                      */
                     delete: (id) =>
                     {
-                        list.delete(id);
-                        app.navigate(`inbox/${route.page}`);
+                        parent.list.delete(id);
+                        app.navigate(`inbox/${parent.route.page}`);
 
                         app.notify({
                             type: "success",
