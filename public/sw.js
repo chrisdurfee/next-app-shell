@@ -7,7 +7,7 @@ importScripts('./worker/cache-controller.js', './worker/service.js', '.worker/pu
  * @const
  * @type {string} appName
  */
-const appName = 'base-example',
+const APP_NAME = 'base-example',
 
 /**
  * This is the version of the app. This is used to create the cache
@@ -20,8 +20,11 @@ version = '0.0.109';
 /**
  * This will add these files to cache. Add any files you want to
  * cache here. As files are fetched, they will be added to the cache.
+ *
+ * @const
+ * @type {array} DEFAULT_FILES
  */
-const files =
+const DEFAULT_FILES =
 [
 	'./',
 	'./index.html'
@@ -31,11 +34,11 @@ const files =
  * This will set up the service worker controller with
  * the app name and the files to cache.
  */
-const appNameId = `${appName}-${version}`;
-const service = new Service(appNameId, files);
+const appNameId = `${APP_NAME}-${version}`;
+const service = new Service(appNameId, DEFAULT_FILES);
 
 /**
  * Push needs to be added to the service to allow for push
  * notifications to be received.
  */
-const push = new PushController(appName);
+const push = new PushController(APP_NAME);
