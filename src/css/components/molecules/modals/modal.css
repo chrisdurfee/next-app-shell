@@ -29,11 +29,11 @@
 }
 .modal .modal-header {
     padding-top: calc(1rem + env(safe-area-inset-top));
-    margin-top: - calc(0 + env(safe-area-inset-top));
+    top: calc( - env(safe-area-inset-top));
 }
 .modal .modal-footer {
     padding-bottom: calc(1rem + env(safe-area-inset-bottom));
-    margin-bottom: - calc(0 + env(safe-area-inset-bottom));
+    bottom: calc( - env(safe-area-inset-bottom));
 }
 
 @media (min-width: 1024px) {
