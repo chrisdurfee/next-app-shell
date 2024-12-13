@@ -158,6 +158,10 @@ export class Modal extends Component
 		render(this);
 		this.panel.showPopover();
         this.state.open = true;
+
+		/**
+		 * This will prevent the body from scrolling when the modal is open.
+		 */
 		document.documentElement.style.overflowY = 'hidden';
 	}
 
@@ -171,6 +175,10 @@ export class Modal extends Component
         this.state.open = false;
 		this.panel.hidePopover();
 		this.destroy();
+
+		/**
+		 * This will allow the body to scroll when the modal is closed.
+		 */
 		document.documentElement.style.overflowY = 'auto';
 	}
 }
