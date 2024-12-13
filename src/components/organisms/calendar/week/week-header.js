@@ -35,7 +35,7 @@ export const NavigationButton = ({ label, click }) => (
  */
 export const WeekHeader = ({ next, previous }) => (
     Div({ class: 'flex flex-auto min-h-12 text-sm font-medium relative justify-center items-center' }, [
-        Span('[[monthName]] [[current.year]]'),
+        Span('[[monthName]] [[year]]'),
         NavigationButton({
             label: 'Previous',
             click: previous
