@@ -75,7 +75,7 @@ export const WeekCells = ({ selectWeek }) => {
                             month,
                             day: day ? day.getDate() : null,
                             week,
-                            currentWeek,
+                            weekNumber,
                             currentDate,
                             selectWeek,
                         })

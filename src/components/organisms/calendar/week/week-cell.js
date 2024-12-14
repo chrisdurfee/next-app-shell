@@ -22,7 +22,7 @@ const isDayCurrentDay = (day, month, year) =>
  * @param {object} props
  * @returns {object}
  */
-export const WeekCell = ({ day, week, month, year, currentWeek, currentDate, selectWeek }) =>
+export const WeekCell = ({ day, week, month, year, weekNumber, currentDate, selectWeek }) =>
 {
     const isCurrentDay = isDayCurrentDay(day, month, year);
     const isCurrentWeek = week.some((date) => date?.getDate() === currentDate);
@@ -36,6 +36,6 @@ export const WeekCell = ({ day, week, month, year, currentWeek, currentDate, sel
             ${isCurrentWeek && !isCurrentDay ? 'border border-accent' : ''}
             hover:bg-primary hover:text-primary-foreground
         `,
-        click: () => selectWeek(currentWeek),
+        click: () => selectWeek(weekNumber),
     });
 };
