@@ -1,5 +1,7 @@
 import { A, Div, Nav, Span } from '@base-framework/atoms';
 import { Component, Data, Jot } from '@base-framework/base';
+import { Icon } from '../../atoms/icon.js';
+import { Icons } from '../../icons/icons.js';
 
 /**
  * BreadcrumbLink Atom
@@ -25,11 +27,11 @@ const BreadcrumbLink = (href, label) => (
  * @returns {object}
  */
 const BreadcrumbSeparator = () => (
-    Span({
+    Icon({
         class: 'mx-2 text-muted-foreground',
         'aria-hidden': true,
-        html: '>'
-    })
+        size: 'xs'
+    }, Icons.chevron.single.right)
 );
 
 /**
