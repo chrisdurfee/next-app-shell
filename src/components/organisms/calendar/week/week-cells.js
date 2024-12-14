@@ -40,18 +40,18 @@ export const WeekCells = ({ year, month, currentDate, currentWeek, selectWeek })
         class: 'grid grid-cols-8 gap-1 text-sm px-4 py-2',
     }, [
         // Header for week numbers
-        Div({ class: 'font-medium text-center bg-muted col-span-1' }, 'Week'),
+        Div({ class: 'text-xs text-center col-span-1 text-muted-foreground flex items-center' }, 'Week'),
         Div({
-            class: 'grid grid-cols-7 col-span-7 text-center font-medium bg-muted',
+            class: 'grid grid-cols-7 col-span-7 text-center text-muted-foreground items-center',
         }, ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) =>
             Span({ class: 'px-1 py-1', text: day })
         )),
 
         // Render each week's row
-        ...weeks.map((week, index) => Div({ class: 'grid grid-cols-8 col-span-8' }, [
+        ...weeks.map((week, index) => Div({ class: 'grid grid-cols-8 col-span-8 items-center' }, [
             Div({ class: `font-medium text-center col-span-1 cursor-pointer ${currentWeek === index ? 'bg-primary text-white' : ''}`, click: () => selectWeek(index) }, `W${index + 1}`),
             Div({
-                class: 'grid grid-cols-7 col-span-7 text-center font-medium',
+                class: 'grid grid-cols-7 col-span-7 text-center',
             }, week.map((day) =>
                 WeekCell({
                     day,
