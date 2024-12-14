@@ -8,9 +8,9 @@ import { Button } from '@base-framework/atoms';
  * @param {object} props
  * @returns {object}
  */
-export const WeekCell = ({ day, index, week, currentWeek, currentDate, selectWeek }) => {
+export const WeekCell = ({ day, week, currentWeek, currentDate, selectWeek }) => {
     const isCurrentDay = day === currentDate;
-    const isCurrentWeek = week.includes(currentDate);
+    const isCurrentWeek = week.some((date) => date?.getDate() === currentDate);
 
     return Button({
         text: day || '',
@@ -21,6 +21,6 @@ export const WeekCell = ({ day, index, week, currentWeek, currentDate, selectWee
             ${isCurrentWeek && !isCurrentDay ? 'border border-accent' : ''}
             hover:bg-primary hover:text-primary-foreground
         `,
-        click: () => selectWeek(index),
+        click: () => selectWeek(day),
     });
 };

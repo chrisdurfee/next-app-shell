@@ -1,4 +1,5 @@
 import { Div, On, Span } from '@base-framework/atoms';
+import { calculateWeekNumber } from './utils.js';
 import { WeekCell } from './week-cell.js';
 
 /**
@@ -15,7 +16,8 @@ const generateWeeks = (year, month) => {
     let week = [];
 
     for (let day = 1 - firstDay; day <= daysInMonth; day++) {
-        week.push(day > 0 ? day : null);
+        const currentDate = new Date(year, month, day);
+        week.push(day > 0 ? currentDate : null);
         if (week.length === 7 || day === daysInMonth) {
             weeks.push([...week]);
             week = [];
@@ -33,16 +35,17 @@ const generateWeeks = (year, month) => {
  * @param {object} props
  * @returns {object}
  */
-export const WeekCells = ({ year, month, currentDate, currentWeek, selectWeek }) => {
+export const WeekCells = ({ selectWeek }) => {
+
     return On('month', (value, ele, {data}) =>
     {
-        const { year, month, currentDate, currentWeek } = data;
+        const { year, month, currentWeek, currentDate } = data;
         const weeks = generateWeeks(year, month);
 
         return Div({
             class: 'grid grid-cols-8 gap-1 text-sm px-4 py-2',
         }, [
-            // Header for week numbers
+            // Header row for week numbers and days
             Div({ class: 'text-xs text-center col-span-1 text-muted-foreground flex items-center' }, 'Week'),
             Div({
                 class: 'grid grid-cols-7 col-span-7 text-center text-muted-foreground items-center',
@@ -51,21 +54,28 @@ export const WeekCells = ({ year, month, currentDate, currentWeek, selectWeek })
             )),
 
             // Render each week's row
-            ...weeks.map((week, index) => Div({ class: 'grid grid-cols-8 col-span-8 items-center' }, [
-                Div({ class: `font-medium text-center col-span-1 cursor-pointer ${currentWeek === index ? 'bg-primary text-white' : ''}`, click: () => selectWeek(index) }, `W${index + 1}`),
-                Div({
-                    class: 'grid grid-cols-7 col-span-7 text-center',
-                }, week.map((day) =>
-                    WeekCell({
-                        day,
-                        index,
-                        week,
-                        currentWeek,
-                        currentDate,
-                        selectWeek,
-                    })
-                ))
-            ]))
-        ])
+            ...weeks.map((week, index) => {
+                const weekNumber = calculateWeekNumber(week.find((day) => day) || new Date(year, month, 1));
+
+                return Div({ class: 'grid grid-cols-8 col-span-8 items-center' }, [
+                    Div({
+                        class: `font-medium text-center col-span-1 cursor-pointer ${currentWeek === weekNumber ? 'bg-primary text-white' : ''}`,
+                        click: () => selectWeek(weekNumber),
+                        text: `W${weekNumber}`,
+                    }),
+                    Div({
+                        class: 'grid grid-cols-7 col-span-7 text-center',
+                    }, week.map((day) =>
+                        WeekCell({
+                            day: day ? day.getDate() : null,
+                            week,
+                            currentWeek,
+                            currentDate,
+                            selectWeek,
+                        })
+                    )),
+                ]);
+            }),
+        ]);
     });
 };

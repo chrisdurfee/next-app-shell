@@ -1,5 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
+import { calculateWeekNumber } from './utils.js';
 import { WeekCells } from './week-cells.js';
 import { WeekHeader } from './week-header.js';
 
@@ -24,7 +25,7 @@ export class WeekCalendar extends Component {
             year: current.getFullYear(),
             month: current.getMonth(),
             currentDate: current.getDate(),
-            currentWeek: this.calculateCurrentWeek(current.getFullYear(), current.getMonth(), current.getDate()),
+            currentWeek: this.calculateCurrentWeek(current),
         });
     }
 
@@ -51,17 +52,13 @@ export class WeekCalendar extends Component {
     }
 
     /**
-     * Calculates the current week index for a given date.
+     * Calculates the ISO week number for the current date.
      *
-     * @param {number} year
-     * @param {number} month
-     * @param {number} date
+     * @param {Date} date
      * @returns {number}
      */
-    calculateCurrentWeek(year, month, date) {
-        const firstDay = new Date(year, month, 1).getDay();
-        const weekIndex = Math.floor((date + firstDay - 1) / 7);
-        return weekIndex;
+    calculateCurrentWeek(date) {
+        return calculateWeekNumber(date);
     }
 
     /**
@@ -105,13 +102,13 @@ export class WeekCalendar extends Component {
     /**
      * Handles week selection.
      *
-     * @param {number} index
+     * @param {number} weekNumber
      */
-    selectWeek(index) {
-        this.data.currentWeek = index;
+    selectWeek(weekNumber) {
+        this.data.currentWeek = weekNumber;
 
         if (typeof this.selectedCallBack === 'function') {
-            this.selectedCallBack(index);
+            this.selectedCallBack(weekNumber);
         }
     }
 
@@ -127,7 +124,7 @@ export class WeekCalendar extends Component {
                 previous: () => this.goToPreviousMonth(),
             }),
             WeekCells({
-                selectWeek: (index) => this.selectWeek(index),
+                selectWeek: (weekNumber) => this.selectWeek(weekNumber),
             }),
         ]);
     }
