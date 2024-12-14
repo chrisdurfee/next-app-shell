@@ -1,4 +1,5 @@
 import { Button, Div, I, Input, OnState, Span } from '@base-framework/atoms';
+import { DateTime } from '@base-framework/base';
 import { Veil, VeilJot } from '../../atoms/veil.js';
 import { Icons } from '../../icons/icons.js';
 import { PopOver } from '../popover.js';
@@ -114,12 +115,15 @@ export const TimePicker = VeilJot(
      */
     state()
     {
+        const selectedTime = this.selectedTime ?? null;
+        const { hour, minute, meridian } = this.parseAndSetTime(selectedTime);
+
         return {
-            selectedTime: this.selectedTime ?? null,
+            selectedTime,
             open: false,
-            hour: null,
-            minute: null,
-            meridian: null
+            hour,
+            minute,
+            meridian
         };
     },
 
@@ -130,7 +134,68 @@ export const TimePicker = VeilJot(
      */
     after()
     {
-        this.state.selectedTime = this.input.value;
+        if (this.input.value)
+        {
+            const { hour, minute, meridian } = this.parseAndSetTime(selectedTime);
+            this.state.set({
+                hour,
+                minute,
+                meridian,
+                selectedTime: this.input.value
+            });
+        }
+    },
+
+    /**
+     * Parses a time string (e.g., "02:30 PM") and assigns hour, minute, and meridian to the state.
+     *
+     * @param {string|null} time - The time string to parse.
+     * @returns {void}
+     */
+    parseAndSetTime(time)
+    {
+        if (!time)
+        {
+            return {
+                hour: null,
+                minute: null,
+                meridian: null
+            };
+        }
+
+        time = DateTime.formatTime('standard', time);
+        const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i; // Regex to match "HH:MM AM/PM" format
+        const match = time.match(timeRegex);
+        if (!match)
+        {
+            return {
+                hour: null,
+                minute: null,
+                meridian: null
+            };
+        }
+
+        const [, hour, minute, meridian] = match;
+
+        // Validate hour, minute, and meridian
+        const validHour = parseInt(hour, 10);
+        const validMinute = parseInt(minute, 10);
+        const validMeridian = meridian.toUpperCase();
+
+        if (validHour >= 1 && validHour <= 12 && validMinute >= 0 && validMinute <= 59)
+        {
+            return {
+                hour: validHour.toString().padStart(2, '0'),
+                minute: validMinute.toString().padStart(2, '0'),
+                meridian: validMeridian
+            };
+        }
+
+        return {
+            hour: null,
+            minute: null,
+            meridian: null
+        };
     },
 
     /**

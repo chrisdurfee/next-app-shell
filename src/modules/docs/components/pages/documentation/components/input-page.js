@@ -123,9 +123,11 @@ Textarea({
                     ])
                 ],
                 code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import TimePicker from "@components/molecules/date-time/time-picker.js";
 
-TelInput({
+new TimePicker({
+    selectedTime: '12:00 am',
+    change: (time) => console.log(time)
 })`
             }),
 
