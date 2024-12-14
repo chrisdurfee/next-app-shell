@@ -1,5 +1,4 @@
 import { Button, Div, I, Input, OnState, Span } from '@base-framework/atoms';
-import { DateTime } from '@base-framework/base';
 import { Veil, VeilJot } from '../../atoms/veil.js';
 import { Icons } from '../../icons/icons.js';
 import { PopOver } from '../popover.js';
@@ -163,7 +162,6 @@ export const TimePicker = VeilJot(
             };
         }
 
-        time = DateTime.formatTime('standard', time);
         const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i; // Regex to match "HH:MM AM/PM" format
         const match = time.match(timeRegex);
         if (!match)
