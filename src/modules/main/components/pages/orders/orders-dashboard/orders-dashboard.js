@@ -1,57 +1,105 @@
-import { Div, H1, H2, P, Table, Td, Tr } from '@base-framework/atoms';
+import { A, Div, H1, H2, P, Td, Thead, Tr } from '@base-framework/atoms';
 import { Card } from '@components/atoms/cards/card.js';
+import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { Icon } from '@components/atoms/icon.js';
+import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
 import { DataTable } from '@components/organisms/lists/data-table';
+import { CheckboxCol, HeaderCol } from "@components/organisms/lists/data-table.js";
 import { TabNavigation } from '@components/organisms/tabs/tab-navigation.js';
 import { BlankPage } from '@components/pages/blank-page.js';
 
 /**
- * Recent Orders Table Row Component
+ * This will render a header row in the orders table.
  *
- * @param {object} order
  * @returns {object}
  */
-const OrderRow = (order) => (
-    Tr({
-        class: 'hover:bg-muted/50 cursor-pointer'
-    }, [
-        Td({ class: 'font-medium' }, order.customerName),
-        Td({ class: 'text-sm text-muted-foreground' }, order.email),
-        Td(order.type),
-        Td({
-            class: `font-medium ${order.status === 'Fulfilled' ? 'text-green-500' : 'text-red-500'}`
-        }, order.status),
-        Td(order.date),
-        Td({ class: 'text-right' }, `$${order.amount.toFixed(2)}`),
+const OrdersHeaderRow = () => (
+    Thead([
+        Tr({ class: 'text-muted-foreground border-b' }, [
+            CheckboxCol({ class: 'hidden md:table-cell' }),
+            HeaderCol({ key: 'customerName', label: 'Customer', class: 'w-1/4' }),
+            HeaderCol({ key: 'type', label: 'Type', class: 'hidden md:table-cell' }),
+            HeaderCol({ key: 'status', label: 'Status', class: 'hidden md:table-cell' }),
+            HeaderCol({ key: 'date', label: 'Date', class: 'hidden md:table-cell' }),
+            HeaderCol({ key: 'amount', label: 'Amount', align: 'justify-end' })
+        ])
     ])
 );
 
 /**
- * Recent Orders Table
+ * This will render a row in the orders table.
  *
- * @param {array} orders
+ * @param {object} order - Row data
+ * @param {function} onSelect - Selection callback
  * @returns {object}
  */
-const RecentOrdersTable = ({ orders }) => (
-    Table({
-        class: 'w-full text-sm text-left border-spacing-0 border-collapse'
-    }, [
-        new DataTable({
-            cache: 'list',
-            headers: [
-                'Customer Name',
-                'Email',
-                'Type',
-                'Status',
-                'Date',
-                'Amount'
-            ],
-            rows: orders,
-            rowItem: OrderRow,
-            key: 'id',
-        })
+const OrdersRow = (order, onSelect) => (
+    Tr({ class: 'items-center px-4 py-2 hover:bg-muted/50' }, [
+        Td({ class: 'p-4 hidden md:table-cell' }, [
+            new Checkbox({
+                checked: order.selected,
+                class: 'mr-2',
+                onChange: () => onSelect(order)
+            })
+        ]),
+        Td({ class: 'p-4' }, [
+            A({
+                href: `orders/${order.id}`,
+                class: 'flex items-center gap-x-4 no-underline text-inherit hover:text-primary',
+            }, [
+                Avatar({
+                    src: order.image || '',
+                    alt: order.customerName,
+                    fallbackText: order.customerName
+                }),
+                Div({ class: 'min-w-0 flex-auto' }, [
+                    P({ class: 'text-base font-semibold leading-6 m-0' }, order.customerName),
+                    P({ class: 'truncate text-sm leading-5 text-muted-foreground m-0' }, order.email)
+                ])
+            ])
+        ]),
+        Td({ class: 'p-4 hidden md:table-cell' }, [
+            A({
+                href: `orders/${order.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, order.type)
+        ]),
+        Td({ class: `p-4 hidden md:table-cell font-medium ${order.status === 'Fulfilled' ? 'text-green-500' : 'text-red-500'}` }, [
+            A({
+                href: `orders/${order.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, order.status)
+        ]),
+        Td({ class: 'p-4 hidden md:table-cell' }, [
+            A({
+                href: `orders/${order.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, order.date)
+        ]),
+        Td({ class: 'p-4 text-right justify-end' }, [
+            A({
+                href: `orders/${order.id}`,
+                class: 'no-underline text-inherit hover:text-primary',
+            }, `$${order.amount.toFixed(2)}`)
+        ])
     ])
+);
+
+/**
+ * This will create an orders table for the orders page.
+ *
+ * @param {array} orders - List of orders
+ * @returns {object}
+ */
+export const RecentOrdersTable = ({ orders }) => (
+    new DataTable({
+        cache: 'list',
+        customHeader: OrdersHeaderRow(),
+        rows: orders,
+        rowItem: OrdersRow,
+        key: 'id',
+    })
 );
 
 /**
