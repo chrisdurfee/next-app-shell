@@ -17,6 +17,29 @@ export const calculateWeekNumber = (date) => {
 };
 
 /**
+ * Calculates the first date of the given ISO week number.
+ *
+ * @param {number} week
+ * @param {number} year
+ * @returns {Date}
+ */
+export const getDateFromWeek = (week, year) =>
+{
+    const simple = new Date(year, 0, 1 + (week - 1) * 7);
+    const dayOfWeek = simple.getDay();
+    const ISOweekStart = simple;
+    if (dayOfWeek <= 4)
+    {
+        ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
+    }
+    else
+    {
+        ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
+    }
+    return ISOweekStart;
+};
+
+/**
  * Generate weeks for the given month and year.
  *
  * @param {number} year
