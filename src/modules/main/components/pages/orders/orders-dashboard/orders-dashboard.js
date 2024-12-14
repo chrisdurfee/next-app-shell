@@ -226,8 +226,9 @@ const DashboardContent = () => {
         Div({ class: 'space-y-4' }, [
             DashboardCards(),
             DashboardTabs(),
-            Div({ class: 'border-t pt-4' }, [
+            Div({ class: 'border rounded-md shadow-md pt-4 p-4' }, [
                 H1({ class: 'text-lg font-semibold' }, 'Orders'),
+                P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
                 RecentOrdersTable({ orders })
             ])
         ])
