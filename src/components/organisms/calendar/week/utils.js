@@ -70,3 +70,71 @@ export const generateWeeks = (year, month) =>
 
     return weeks;
 };
+
+/**
+ * Gets the days from the previous month needed to fill the first week of the grid.
+ *
+ * @param {number} year
+ * @param {number} month
+ * @param {number} firstDay - The weekday of the first day of the month (0 = Sunday, 1 = Monday, etc.).
+ * @returns {Array<Date>} - Array of Date objects for the previous month's days.
+ */
+export const getPreviousMonthDays = (year, month, firstDay) =>
+{
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    const days = [];
+    for (let i = firstDay - 1; i >= 0; i--)
+    {
+        days.push(new Date(year, month - 1, prevMonthDays - i));
+    }
+    return days;
+};
+
+/**
+ * Gets the days from the next month needed to fill the last week of the grid.
+ *
+ * @param {number} year
+ * @param {number} month
+ * @param {number} remainingDays - The number of days needed to fill the week.
+ * @returns {Array<Date>} - Array of Date objects for the next month's days.
+ */
+export const getNextMonthDays = (year, month, remainingDays) =>
+{
+    const days = [];
+    for (let i = 1; i <= remainingDays; i++)
+    {
+        days.push(new Date(year, month + 1, i));
+    }
+    return days;
+};
+
+/**
+ * Splits the days of a month into weeks.
+ *
+ * @param {number} year
+ * @param {number} month
+ * @returns {Array<Array<Date>>} - Array of weeks, where each week is an array of Date objects.
+ */
+export const getMonthDays = (year, month) =>
+{
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const weeks = [];
+    let week = [];
+
+    for (let day = 1; day <= daysInMonth; day++)
+    {
+        week.push(new Date(year, month, day));
+        if (week.length === 7)
+        {
+            weeks.push(week);
+            week = [];
+        }
+    }
+
+    if (week.length > 0)
+    {
+        weeks.push(week);
+    }
+
+    return weeks;
+};
