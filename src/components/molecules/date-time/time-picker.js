@@ -54,38 +54,38 @@ const TimeContainer = ({ handleTimeSelect }) => (
                 size: 'fit'
             }, [
                 Div({ class: 'flex flex-auto flex-col border rounded-md shadow-md' }, [
-                    Div({ class: 'grid grid-cols-3 gap-2 p-4 text-center max-h-[200px] overflow-y-auto' }, [
+                    Div({ class: 'grid grid-cols-3 gap-2 p-4 text-center max-h-[220px] min-w-[240px]' }, [
                         // Hours column
-                        Div({ class: 'flex flex-col' }, Array.from({ length: 12 }, (_, i) => {
+                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, Array.from({ length: 12 }, (_, i) => {
                             const hour = (i + 1).toString().padStart(2, '0');
                             return Button({
                                 text: hour,
                                 class: 'hover:bg-muted/50 rounded-md px-2 py-1',
                                 click: () => handleTimeSelect({ hour }),
-                                onState: ['hour', {
+                                onState: [parent.state, 'hour', {
                                     'bg-muted': hour
                                 }]
                             });
                         })),
                         // Minutes column
-                        Div({ class: 'flex flex-col' }, Array.from({ length: 60 }, (_, i) => {
+                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, Array.from({ length: 60 }, (_, i) => {
                             const minute = i.toString().padStart(2, '0');
                             return Button({
                                 text: minute,
                                 class: 'hover:bg-muted/50 rounded-md px-2 py-1',
                                 click: () => handleTimeSelect({ minute }),
-                                onState: ['minute', {
+                                onState: [parent.state, 'minute', {
                                     'bg-muted': minute
                                 }]
                             });
                         })),
                         // AM/PM column
-                        Div({ class: 'flex flex-col' }, ['AM', 'PM'].map((meridian) =>
+                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, ['AM', 'PM'].map((meridian) =>
                             Button({
                                 text: meridian,
                                 class: 'hover:bg-muted/50 rounded-md px-2 py-1',
                                 click: () => handleTimeSelect({ meridian }),
-                                onState: ['meridian', {
+                                onState: [parent.state, 'meridian', {
                                     'bg-muted': meridian
                                 }]
                             })
