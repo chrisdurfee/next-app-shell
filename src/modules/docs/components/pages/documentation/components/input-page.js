@@ -111,26 +111,6 @@ Textarea({
 })`
             }),
 
-            DocSection({
-                title: 'Time Picker',
-                description: 'This is a time picker input.',
-                preview: [
-                    InputPreview([
-                        new TimePicker({
-                            selectedTime: '12:00 am',
-                            change: (time) => console.log(time)
-                        })
-                    ])
-                ],
-                code: `
-import TimePicker from "@components/molecules/date-time/time-picker.js";
-
-new TimePicker({
-    selectedTime: '12:00 am',
-    change: (time) => console.log(time)
-})`
-            }),
-
             // Search Dropdown
             DocSection({
                 title: 'Search Dropdown',
@@ -515,6 +495,26 @@ import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/at
 
 Textarea({
     placeholder: 'Enter your text here...'
+})`
+            }),
+
+            DocSection({
+                title: 'Time Picker',
+                description: 'This is a time picker input.',
+                preview: [
+                    InputPreview([
+                        new TimePicker({
+                            selectedTime: '12:00 am',
+                            change: (time) => console.log(time)
+                        })
+                    ])
+                ],
+                code: `
+import TimePicker from "@components/molecules/date-time/time-picker.js";
+
+new TimePicker({
+    selectedTime: '12:00 am',
+    change: (time) => console.log(time)
 })`
             }),
 
