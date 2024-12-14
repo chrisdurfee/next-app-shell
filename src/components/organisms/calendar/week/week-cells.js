@@ -14,24 +14,28 @@ const generateWeeks = (year, month) =>
     const firstDayOfMonth = new Date(year, month, 1).getDay(); // Day of the week (0 = Sunday, 1 = Monday, etc.)
     const previousMonthDays = getPreviousMonthDays(year, month, firstDayOfMonth); // Previous month's trailing days
     const monthDays = getMonthDays(year, month); // Current month's days
-    const allWeeks = [...monthDays];
 
-    // Add previous month's trailing days to the first week
-    if (previousMonthDays.length > 0)
+    // Combine previous, current, and next month's days into a flat array
+    const allDays = [...previousMonthDays, ...monthDays.flat()];
+
+    // Split days into weeks of 7
+    const weeks = [];
+    for (let i = 0; i < allDays.length; i += 7)
     {
-        allWeeks[0] = [...previousMonthDays, ...allWeeks[0]];
+        const week = allDays.slice(i, i + 7);
+        weeks.push(week);
     }
 
-    // Ensure all weeks are 7 days long by appending next month's days if needed
-    const lastWeek = allWeeks[allWeeks.length - 1];
+    // Add next month's days to fill the last week if necessary
+    const lastWeek = weeks[weeks.length - 1];
     if (lastWeek.length < 7)
     {
         const nextMonthDays = getNextMonthDays(year, month, 7 - lastWeek.length);
-        allWeeks[allWeeks.length - 1] = [...lastWeek, ...nextMonthDays];
+        weeks[weeks.length - 1] = [...lastWeek, ...nextMonthDays];
     }
 
-    // Map weeks to include the week number
-    return allWeeks.map((days) =>
+    // Assign week numbers
+    return weeks.map((days) =>
     {
         const weekNumber = calculateWeekNumber(days.find((day) => day) || new Date(year, month, 1));
         return { weekNumber, days };

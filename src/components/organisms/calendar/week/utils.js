@@ -7,16 +7,16 @@
 export const calculateWeekNumber = (date) =>
 {
     const target = new Date(date.valueOf());
-    const dayNr = (date.getDay() + 6) % 7;
-    target.setDate(target.getDate() - dayNr + 3);
+    const dayNr = (date.getDay() + 6) % 7; // Adjust so Monday = 0, Sunday = 6
+    target.setDate(target.getDate() - dayNr + 3); // Move to the nearest Thursday
     const firstThursday = target.valueOf();
 
-    target.setMonth(0, 1);
+    target.setMonth(0, 1); // Set to January 1st
     if (target.getDay() !== 4)
     {
-        target.setMonth(0, 1 + ((4 - target.getDay() + 7) % 7));
+        target.setMonth(0, 1 + ((4 - target.getDay() + 7) % 7)); // Adjust to the first Thursday of the year
     }
-    return 1 + Math.ceil((firstThursday - target) / 604800000);
+    return 1 + Math.ceil((firstThursday - target) / 604800000); // 604800000ms = 7 days
 };
 
 /**
@@ -81,7 +81,9 @@ export const generateWeeks = (year, month) =>
  */
 export const getPreviousMonthDays = (year, month, firstDay) =>
 {
-    const prevMonthDays = new Date(year, month, 0).getDate();
+    if (firstDay === 0) return []; // No previous days needed if the month starts on Sunday
+
+    const prevMonthDays = new Date(year, month, 0).getDate(); // Days in the previous month
     const days = [];
     for (let i = firstDay - 1; i >= 0; i--)
     {
