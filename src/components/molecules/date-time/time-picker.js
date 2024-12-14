@@ -146,10 +146,10 @@ export const TimePicker = VeilJot(
     },
 
     /**
-     * Parses a time string (e.g., "02:30 PM") and assigns hour, minute, and meridian to the state.
+     * Parses a time string (e.g., "02:30 PM", "14:00:00") and assigns hour, minute, and meridian to the state.
      *
      * @param {string|null} time - The time string to parse.
-     * @returns {void}
+     * @returns {object} - An object with parsed hour, minute, and meridian values.
      */
     parseAndSetTime(time)
     {
@@ -162,7 +162,8 @@ export const TimePicker = VeilJot(
             };
         }
 
-        const timeRegex = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i; // Regex to match "HH:MM AM/PM" format
+        // Regex to match "HH:MM AM/PM", "HH:MM:SS AM/PM", or 24-hour time "HH:MM:SS" or "HH:MM"
+        const timeRegex = /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s?(AM|PM)?$/i;
         const match = time.match(timeRegex);
         if (!match)
         {
@@ -173,26 +174,64 @@ export const TimePicker = VeilJot(
             };
         }
 
-        const [, hour, minute, meridian] = match;
+        let [, hour, minute, , meridian] = match; // Extract components
+        hour = parseInt(hour, 10);
+        minute = parseInt(minute, 10);
 
-        // Validate hour, minute, and meridian
-        const validHour = parseInt(hour, 10);
-        const validMinute = parseInt(minute, 10);
-        const validMeridian = meridian.toUpperCase();
-
-        if (validHour >= 1 && validHour <= 12 && validMinute >= 0 && validMinute <= 59)
+        // Validate hour and minute
+        if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
         {
             return {
-                hour: validHour.toString().padStart(2, '0'),
-                minute: validMinute.toString().padStart(2, '0'),
-                meridian: validMeridian
+                hour: null,
+                minute: null,
+                meridian: null
             };
         }
 
+        // Handle 24-hour format
+        if (!meridian)
+        {
+            if (hour === 0)
+            {
+                // 24-hour midnight (00:00)
+                meridian = 'AM';
+                hour = 12;
+            }
+            else if (hour < 12)
+            {
+                // Morning in 24-hour format
+                meridian = 'AM';
+            }
+            else if (hour === 12)
+            {
+                // Noon in 24-hour format
+                meridian = 'PM';
+            }
+            else
+            {
+                // Convert PM in 24-hour format
+                meridian = 'PM';
+                hour -= 12;
+            }
+        }
+        else
+        {
+            // Handle 12-hour format with AM/PM
+            meridian = meridian.toUpperCase();
+            if (meridian === 'PM' && hour < 12)
+            {
+                hour += 12; // Convert to 24-hour PM format
+            }
+            else if (meridian === 'AM' && hour === 12)
+            {
+                hour = 0; // Convert to 24-hour midnight
+            }
+        }
+
         return {
-            hour: null,
-            minute: null,
-            meridian: null
+            hour: hour.toString().padStart(2, '0'),
+            minute: minute.toString().padStart(2, '0'),
+            meridian
         };
     },
 
@@ -217,9 +256,9 @@ export const TimePicker = VeilJot(
                 this.state.open = false;
                 this.input.value = formattedTime;
 
-                if (typeof this.onChange === 'function')
+                if (typeof this.change === 'function')
                 {
-                    this.onChange(formattedTime);
+                    this.change(formattedTime);
                 }
             }
         };
