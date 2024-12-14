@@ -125,18 +125,12 @@ export class WeekCalendar extends Component {
      * @returns {object}
      */
     render() {
-        const { year, month, currentDate, currentWeek } = this.data;
-
         return Div({ class: 'week-calendar-container border rounded-md bg-background p-3' }, [
             WeekHeader({
                 next: () => this.goToNextMonth(),
                 previous: () => this.goToPreviousMonth(),
             }),
             WeekCells({
-                year,
-                month,
-                currentDate,
-                currentWeek,
                 selectWeek: (index) => this.selectWeek(index),
             }),
         ]);
