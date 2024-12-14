@@ -49,16 +49,19 @@ export const getDateFromWeek = (week, year) =>
  * @param {number} month
  * @returns {array}
  */
-export const generateWeeks = (year, month) => {
+export const generateWeeks = (year, month) =>
+{
     const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const weeks = [];
     let week = [];
 
-    for (let day = 1 - firstDay; day <= daysInMonth; day++) {
+    for (let day = 1 - firstDay; day <= daysInMonth; day++)
+    {
         const currentDate = new Date(year, month, day);
         week.push(day > 0 ? currentDate : null);
-        if (week.length === 7 || day === daysInMonth) {
+        if (week.length === 7 || day === daysInMonth)
+        {
             weeks.push([...week]);
             week = [];
         }
