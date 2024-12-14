@@ -80,8 +80,6 @@ export class WeekCalendar extends Component {
 
         data.year = year;
         data.month = month;
-        data.currentWeek = 0;
-        data.currentDate = 1;
         data.monthName = this.getMonthName(month);
     }
 
@@ -101,8 +99,6 @@ export class WeekCalendar extends Component {
 
         data.year = year;
         data.month = month;
-        data.currentWeek = 0;
-        data.currentDate = 1;
         data.monthName = this.getMonthName(month);
     }
 
