@@ -1,5 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
+import { calculateCurrentWeek, getDateFromWeek } from './utils.js';
 import { WeekCells } from './week-cells.js';
 import { WeekHeader } from './week-header.js';
 
@@ -16,10 +17,11 @@ export class WeekCalendar extends Component {
      *
      * @returns {Data}
      */
-    setData() {
+    setData()
+    {
         const today = new Date();
-        const currentWeek = this.selectedWeek || this.calculateCurrentWeek(today);
-        const currentDate = this.getDateFromWeek(currentWeek, today.getFullYear());
+        const currentWeek = this.selectedWeek || calculateCurrentWeek(today);
+        const currentDate = getDateFromWeek(currentWeek, today.getFullYear());
 
         return new Data({
             monthName: this.getMonthName(currentDate.getMonth()),
@@ -36,7 +38,8 @@ export class WeekCalendar extends Component {
      * @param {Date} today
      * @returns {Date}
      */
-    getSelectedDate(today) {
+    getSelectedDate(today)
+    {
         const selectedDate = this.selectedDate ? new Date(this.selectedDate) : today;
         return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
     }
@@ -47,69 +50,39 @@ export class WeekCalendar extends Component {
      * @param {number} month
      * @returns {string}
      */
-    getMonthName(month) {
+    getMonthName(month)
+    {
         const monthNames = DateTime.monthNames;
         return monthNames[month];
     }
 
     /**
-     * Calculates the ISO week number for a given date.
-     *
-     * @param {Date} date
-     * @returns {number}
-     */
-    calculateCurrentWeek(date) {
-        const target = new Date(date.valueOf());
-        const dayNr = (date.getDay() + 6) % 7;
-        target.setDate(target.getDate() - dayNr + 3);
-        const firstThursday = target.valueOf();
-        target.setMonth(0, 1);
-        if (target.getDay() !== 4) {
-            target.setMonth(0, 1 + ((4 - target.getDay() + 7) % 7));
-        }
-        return 1 + Math.ceil((firstThursday - target) / 604800000);
-    }
-
-    /**
-     * Calculates the first date of the given ISO week number.
-     *
-     * @param {number} week
-     * @param {number} year
-     * @returns {Date}
-     */
-    getDateFromWeek(week, year) {
-        const simple = new Date(year, 0, 1 + (week - 1) * 7);
-        const dayOfWeek = simple.getDay();
-        const ISOweekStart = simple;
-        if (dayOfWeek <= 4) {
-            ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
-        } else {
-            ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-        }
-        return ISOweekStart;
-    }
-
-    /**
      * Updates the calendar to show the previous month.
+     *
+     * @returns {void}
      */
-    goToPreviousMonth() {
+    goToPreviousMonth()
+    {
         const data = this.data;
         let { year, month } = data;
 
-        if (month === 0) {
+        if (month === 0)
+        {
             month = 11;
             year--;
-        } else {
+        }
+        else
+        {
             month--;
         }
 
-        data.year = year;
-        data.month = month;
-        data.monthName = this.getMonthName(month);
+        this.setDate(month, year);
     }
 
     /**
      * Updates the calendar to show the next month.
+     *
+     * @returns {void}
      */
     goToNextMonth() {
         const data = this.data;
@@ -122,20 +95,45 @@ export class WeekCalendar extends Component {
             month++;
         }
 
-        data.year = year;
-        data.month = month;
-        data.monthName = this.getMonthName(month);
+        this.setDate(month, year);
+    }
+
+    /**
+     * Sets the selected date.
+     *
+     * @param {number} month
+     * @param {number} year
+     * @param {number|null} [date=null]
+     * @returns {void}
+     */
+    setDate(month, year, date)
+    {
+        this.data.set({
+            year,
+            month,
+            monthName: this.getMonthName(month),
+        });
+
+        if (date)
+        {
+            this.data.currentDate = date;
+        }
     }
 
     /**
      * Handles week selection.
      *
      * @param {number} weekNumber
+     * @returns {void}
      */
-    selectWeek(weekNumber) {
-        this.data.currentWeek = weekNumber;
+    selectWeek(weekNumber)
+    {
+        this.currentWeek = weekNumber;
+        const currentDate = getDateFromWeek(weekNumber, today.getFullYear());
+        this.setDate(currentDate.getMonth(), currentDate.getFullYear(), currentDate.getDate());
 
-        if (typeof this.selectedCallBack === 'function') {
+        if (typeof this.selectedCallBack === 'function')
+        {
             this.selectedCallBack(weekNumber);
         }
     }
