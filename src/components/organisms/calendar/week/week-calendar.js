@@ -154,7 +154,7 @@ export class WeekCalendar extends Component
      */
     selectWeek(weekNumber)
     {
-        this.currentWeek = weekNumber;
+        this.data.currentWeek = weekNumber;
         const currentDate = getDateFromWeek(weekNumber, this.data.year);
         this.setDate(currentDate.getMonth(), currentDate.getFullYear(), currentDate.getDate());
 

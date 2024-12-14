@@ -28,18 +28,19 @@ export const calculateWeekNumber = (date) =>
  */
 export const getDateFromWeek = (week, year) =>
 {
-    const simple = new Date(year, 0, 1 + (week - 1) * 7);
-    const dayOfWeek = simple.getDay();
-    const ISOweekStart = simple;
-    if (dayOfWeek <= 4)
-    {
-        ISOweekStart.setDate(simple.getDate() - simple.getDay() + 1);
-    }
-    else
-    {
-        ISOweekStart.setDate(simple.getDate() + 8 - simple.getDay());
-    }
-    return ISOweekStart;
+    // Set the date to January 4th of the given year (always in ISO week 1)
+    const jan4 = new Date(year, 0, 4);
+
+    // Find the start of ISO week 1 (the Monday of the week containing January 4th)
+    const jan4DayOfWeek = jan4.getDay(); // 0 = Sunday, 1 = Monday, etc.
+    const isoWeek1Start = new Date(jan4);
+    isoWeek1Start.setDate(jan4.getDate() - ((jan4DayOfWeek + 6) % 7)); // Adjust to the previous Monday
+
+    // Calculate the first day of the desired ISO week
+    const targetDate = new Date(isoWeek1Start);
+    targetDate.setDate(isoWeek1Start.getDate() + (week - 1) * 7);
+
+    return targetDate;
 };
 
 /**
