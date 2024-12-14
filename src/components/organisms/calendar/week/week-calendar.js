@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Component, Data, DateTime } from '@base-framework/base';
-import { calculateCurrentWeek, getDateFromWeek } from './utils.js';
+import { getDateFromWeek } from './utils.js';
 import { WeekCells } from './week-cells.js';
 import { WeekHeader } from './week-header.js';
 
@@ -21,7 +21,7 @@ export class WeekCalendar extends Component
     setData()
     {
         const today = new Date();
-        const currentWeek = this.selectedWeek || calculateCurrentWeek(today);
+        const currentWeek = this.selectedWeek || this.calculateCurrentWeek(today);
         const currentDate = getDateFromWeek(currentWeek, today.getFullYear());
 
         return new Data({
@@ -43,6 +43,27 @@ export class WeekCalendar extends Component
     {
         const selectedDate = this.selectedDate ? new Date(this.selectedDate) : today;
         return new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate());
+    }
+
+    /**
+     * Calculates the ISO week number for a given date.
+     *
+     * @param {Date} date
+     * @returns {number}
+     */
+    calculateCurrentWeek(date)
+    {
+        const target = new Date(date.valueOf());
+        const dayNr = (date.getDay() + 6) % 7;
+        target.setDate(target.getDate() - dayNr + 3);
+        const firstThursday = target.valueOf();
+
+        target.setMonth(0, 1);
+        if (target.getDay() !== 4)
+        {
+            target.setMonth(0, 1 + ((4 - target.getDay() + 7) % 7));
+        }
+        return 1 + Math.ceil((firstThursday - target) / 604800000);
     }
 
     /**
