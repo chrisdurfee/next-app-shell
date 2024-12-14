@@ -1,6 +1,20 @@
 import { Button } from '@base-framework/atoms';
 
 /**
+ * Determines if the given date is the current day.
+ *
+ * @param {number} day
+ * @param {number} month
+ * @param {number} year
+ * @returns {boolean}
+ */
+const isDayCurrentDay = (day, month, year) =>
+{
+    const current = new Date();
+    return current.getDate() === day && current.getMonth() === month && current.getFullYear() === year;
+};
+
+/**
  * WeekCell
  *
  * A single button representing a day in the week.
@@ -8,9 +22,9 @@ import { Button } from '@base-framework/atoms';
  * @param {object} props
  * @returns {object}
  */
-export const WeekCell = ({ day, week, currentWeek, currentDate, selectWeek }) =>
+export const WeekCell = ({ day, week, month, year, currentWeek, currentDate, selectWeek }) =>
 {
-    const isCurrentDay = day === currentDate;
+    const isCurrentDay = isDayCurrentDay(day, month, year);
     const isCurrentWeek = week.some((date) => date?.getDate() === currentDate);
 
     return Button({

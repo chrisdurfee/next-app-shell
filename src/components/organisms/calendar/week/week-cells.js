@@ -67,6 +67,8 @@ export const WeekCells = ({ selectWeek }) => {
                         class: 'grid grid-cols-7 col-span-7 text-center',
                     }, week.map((day) =>
                         WeekCell({
+                            year,
+                            month,
                             day: day ? day.getDate() : null,
                             week,
                             currentWeek,
