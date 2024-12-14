@@ -80,8 +80,8 @@ export class WeekCalendar extends Component {
 
         data.year = year;
         data.month = month;
-        data.currentWeek = 0; // Reset to the first week
-        data.currentDate = 1; // Reset to the first day of the month
+        data.currentWeek = 0;
+        data.currentDate = 1;
         data.monthName = this.getMonthName(month);
     }
 
@@ -101,8 +101,8 @@ export class WeekCalendar extends Component {
 
         data.year = year;
         data.month = month;
-        data.currentWeek = 0; // Reset to the first week
-        data.currentDate = 1; // Reset to the first day of the month
+        data.currentWeek = 0;
+        data.currentDate = 1;
         data.monthName = this.getMonthName(month);
     }
 
@@ -127,7 +127,7 @@ export class WeekCalendar extends Component {
     render() {
         const { year, month, currentDate, currentWeek } = this.data;
 
-        return Div({ class: 'week-calendar-container p-4 rounded-md border' }, [
+        return Div({ class: 'week-calendar-container border rounded-md bg-background p-3' }, [
             WeekHeader({
                 next: () => this.goToNextMonth(),
                 previous: () => this.goToPreviousMonth(),

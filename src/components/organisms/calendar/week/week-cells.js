@@ -1,4 +1,4 @@
-import { Div } from '@base-framework/atoms';
+import { Div, Span } from '@base-framework/atoms';
 import { WeekCell } from './week-cell.js';
 
 /**
@@ -37,15 +37,31 @@ export const WeekCells = ({ year, month, currentDate, currentWeek, selectWeek })
     const weeks = generateWeeks(year, month);
 
     return Div({
-        class: 'week-selector grid grid-cols-7 gap-2 px-4 py-2',
-        map: [weeks, (week, index) =>
-            WeekCell({
-                index,
-                week,
-                currentWeek,
-                currentDate,
-                selectWeek,
-            }),
-        ],
-    });
+        class: 'grid grid-cols-8 gap-1 text-sm px-4 py-2',
+    }, [
+        // Header for week numbers
+        Div({ class: 'font-medium text-center bg-muted col-span-1' }, 'Week'),
+        Div({
+            class: 'grid grid-cols-7 col-span-7 text-center font-medium bg-muted',
+        }, ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day) =>
+            Span({ class: 'px-1 py-1', text: day })
+        )),
+
+        // Render each week's row
+        ...weeks.map((week, index) => Div({ class: 'grid grid-cols-8 col-span-8' }, [
+            Div({ class: `font-medium text-center col-span-1 cursor-pointer ${currentWeek === index ? 'bg-primary text-white' : ''}`, click: () => selectWeek(index) }, `W${index + 1}`),
+            Div({
+                class: 'grid grid-cols-7 col-span-7 text-center font-medium',
+            }, week.map((day) =>
+                WeekCell({
+                    day,
+                    index,
+                    week,
+                    currentWeek,
+                    currentDate,
+                    selectWeek,
+                })
+            ))
+        ]))
+    ]);
 };
