@@ -7,6 +7,7 @@ import { RangeSlider } from '@components/atoms/form/range-slider.js';
 import { Select } from "@components/atoms/form/select.js";
 import Counter from "@components/molecules/counters/counter.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
+import TimePicker from "@components/molecules/date-time/time-picker.js";
 import Toggle from "@components/molecules/toggle/toggle.js";
 import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -107,6 +108,24 @@ EmailInput({}),
 TelInput({}),
 Textarea({
     placeholder: 'Enter your text here...'
+})`
+            }),
+
+            DocSection({
+                title: 'Time Picker',
+                description: 'This is a time picker input.',
+                preview: [
+                    InputPreview([
+                        new TimePicker({
+                            selectedTime: '12:00 am',
+                            change: (time) => console.log(time)
+                        })
+                    ])
+                ],
+                code: `
+import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+
+TelInput({
 })`
             }),
 
