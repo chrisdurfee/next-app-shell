@@ -59,9 +59,9 @@ export const WeekCells = ({ selectWeek }) => {
 
                 return Div({ class: 'grid grid-cols-8 col-span-8 items-center' }, [
                     Div({
-                        class: `font-medium text-center col-span-1 cursor-pointer ${currentWeek === weekNumber ? 'bg-primary text-white' : ''}`,
+                        class: `font-medium text-center col-span-1 rounded-sm cursor-pointer ${currentWeek === weekNumber ? 'bg-primary text-primary-foreground' : ''}`,
                         click: () => selectWeek(weekNumber),
-                        text: `W${weekNumber}`,
+                        text: `${weekNumber}`,
                     }),
                     Div({
                         class: 'grid grid-cols-7 col-span-7 text-center',
