@@ -152,10 +152,10 @@ export class WeekCalendar extends Component
      * @param {number} weekNumber
      * @returns {void}
      */
-    selectWeek(weekNumber)
+    selectWeek(weekNumber, year)
     {
         this.data.currentWeek = weekNumber;
-        const currentDate = getDateFromWeek(weekNumber, this.data.year);
+        const currentDate = getDateFromWeek(weekNumber, year);
         this.setDate(currentDate.getMonth(), currentDate.getFullYear(), currentDate.getDate());
 
         if (typeof this.selectedCallBack === 'function')
@@ -177,7 +177,7 @@ export class WeekCalendar extends Component
                 previous: () => this.goToPreviousMonth(),
             }),
             WeekCells({
-                selectWeek: (weekNumber) => this.selectWeek(weekNumber),
+                selectWeek: (weekNumber, year) => this.selectWeek(weekNumber, year),
             }),
         ]);
     }

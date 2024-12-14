@@ -36,6 +36,6 @@ export const WeekCell = ({ day, week, month, year, weekNumber, currentDate, sele
             ${isCurrentWeek && !isCurrentDay ? 'border border-accent' : ''}
             hover:bg-primary hover:text-primary-foreground
         `,
-        click: () => selectWeek(weekNumber),
+        click: () => selectWeek(weekNumber, year),
     });
 };

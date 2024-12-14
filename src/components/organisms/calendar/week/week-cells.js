@@ -1,5 +1,5 @@
 import { Div, On, Span } from '@base-framework/atoms';
-import { calculateWeekNumber, getMonthDays, getNextMonthDays, getPreviousMonthDays } from './utils.js';
+import { calculateWeekNumber, getNextMonthDays, getPreviousMonthDays } from './utils.js';
 import { WeekCell } from './week-cell.js';
 
 /**
@@ -12,34 +12,29 @@ import { WeekCell } from './week-cell.js';
 const generateWeeks = (year, month) =>
 {
     const firstDayOfMonth = new Date(year, month, 1).getDay(); // Day of the week (0 = Sunday, 1 = Monday, etc.)
-    const previousMonthDays = getPreviousMonthDays(year, month, firstDayOfMonth); // Previous month's trailing days
-    const monthDays = getMonthDays(year, month); // Current month's days
+    const daysInMonth = new Date(year, month + 1, 0).getDate(); // Total days in the month
 
-    // Combine previous, current, and next month's days into a flat array
-    const allDays = [...previousMonthDays, ...monthDays.flat()];
+    // Gather all days (including from previous and next months) into a flat array
+    const previousMonthDays = getPreviousMonthDays(year, month, firstDayOfMonth);
+    const currentMonthDays = Array.from({ length: daysInMonth }, (_, i) => new Date(year, month, i + 1));
+    const remainingDays = 7 - ((previousMonthDays.length + currentMonthDays.length) % 7 || 7);
+    const nextMonthDays = getNextMonthDays(year, month, remainingDays);
 
-    // Split days into weeks of 7
+    // Combine all days into a flat array
+    const allDays = [...previousMonthDays, ...currentMonthDays, ...nextMonthDays];
+
+    // Split the flat array into weeks of 7 days
     const weeks = [];
     for (let i = 0; i < allDays.length; i += 7)
     {
         const week = allDays.slice(i, i + 7);
-        weeks.push(week);
+        weeks.push({
+            weekNumber: calculateWeekNumber(week.find((day) => day) || new Date(year, month, 1)),
+            days: week,
+        });
     }
 
-    // Add next month's days to fill the last week if necessary
-    const lastWeek = weeks[weeks.length - 1];
-    if (lastWeek.length < 7)
-    {
-        const nextMonthDays = getNextMonthDays(year, month, 7 - lastWeek.length);
-        weeks[weeks.length - 1] = [...lastWeek, ...nextMonthDays];
-    }
-
-    // Assign week numbers
-    return weeks.map((days) =>
-    {
-        const weekNumber = calculateWeekNumber(days.find((day) => day) || new Date(year, month, 1));
-        return { weekNumber, days };
-    });
+    return weeks;
 };
 
 /**
@@ -54,7 +49,7 @@ export const WeekCells = ({ selectWeek }) =>
 {
     return On('month', (value, ele, { data }) =>
     {
-        const { year, month, currentDate, currentWeek } = data;
+        const { year, month, currentDate } = data;
         const weeks = generateWeeks(year, month);
 
         return Div(
@@ -81,7 +76,7 @@ export const WeekCells = ({ selectWeek }) =>
                     Div(
                     {
                         class: `font-medium text-center col-span-1 rounded-sm cursor-pointer`,
-                        click: () => selectWeek(weekNumber),
+                        click: () => selectWeek(weekNumber, year),
                         onSet: ['currentWeek', {
                             'text-primary-foreground': weekNumber,
                             'bg-primary': weekNumber,
