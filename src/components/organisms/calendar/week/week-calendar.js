@@ -11,7 +11,8 @@ import { WeekHeader } from './week-header.js';
  *
  * @class
  */
-export class WeekCalendar extends Component {
+export class WeekCalendar extends Component
+{
     /**
      * Initializes the calendar data.
      *
