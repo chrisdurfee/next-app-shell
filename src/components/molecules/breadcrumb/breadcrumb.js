@@ -98,3 +98,5 @@ export const Breadcrumb = Jot(
         );
     }
 });
+
+export default Breadcrumb;

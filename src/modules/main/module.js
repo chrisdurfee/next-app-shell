@@ -8,6 +8,7 @@ import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
+import OrdersDashboard from './components/pages/orders/orders-dashboard/orders-dashboard.js';
 import SettingsPage from './components/pages/settings/settings-page.js';
 import WebsitePage from './components/pages/website/website-page.js';
 
@@ -29,6 +30,11 @@ const routes = Module.convertRoutes(
      * Dashboard routes
      */
     { path: '/dashboard/:page?*', component: DashboardPage(), title: 'Dashboard' },
+
+    /**
+     * Orders routes
+     */
+    { path: '/orders/orders-dashboard/:page?*', component: OrdersDashboard(), title: 'Orders' },
 
     /**
      * Music routes
@@ -85,6 +91,7 @@ const links =
     { label: 'Home', href: './', icon: Icons.home, exact: true },
     { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 },
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
+    { label: 'Orders', href: 'orders/orders-dashboard', icon: Icons.shoppingCart, mobileOrder: 10 },
     { label: 'Inbox', href: 'inbox', icon: Icons.chat.text, mobileOrder: 3 },
     { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 },
     { label: 'Calendar', href: 'calendar/month', icon: Icons.calendar.default, mobileOrder: 9 },
