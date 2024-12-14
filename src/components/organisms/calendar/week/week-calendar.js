@@ -85,14 +85,18 @@ export class WeekCalendar extends Component
      *
      * @returns {void}
      */
-    goToNextMonth() {
+    goToNextMonth()
+    {
         const data = this.data;
         let { year, month } = data;
 
-        if (month === 11) {
+        if (month === 11)
+        {
             month = 0;
             year++;
-        } else {
+        }
+        else
+        {
             month++;
         }
 
@@ -144,7 +148,8 @@ export class WeekCalendar extends Component
      *
      * @returns {object}
      */
-    render() {
+    render()
+    {
         return Div({ class: 'week-calendar-container border rounded-md bg-background p-3' }, [
             WeekHeader({
                 next: () => this.goToNextMonth(),
