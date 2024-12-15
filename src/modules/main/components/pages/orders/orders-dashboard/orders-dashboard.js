@@ -231,7 +231,7 @@ const DashboardContent = () => {
 				DashboardTabs(),
 				Div({ class: 'flex gap-2'}, [
 					Button({ variant: 'withIcon', class: 'outline', icon: Icons.download }, 'Download'),
-					Button({ variant: 'withIcon', icon: Icons.funnel }, 'Filter'),
+					Button({ variant: 'withIcon', class: 'outline', icon: Icons.funnel }, 'Filter'),
 				])
 			]),
             Div({ class: 'border rounded-md shadow-md pt-4 p-4' }, [
