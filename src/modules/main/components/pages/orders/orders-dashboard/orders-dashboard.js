@@ -1,7 +1,9 @@
 import { A, Div, H1, H2, P, Td, Thead, Tr } from '@base-framework/atoms';
+import { Button } from '@components/atoms/buttons/buttons.js';
 import { Card } from '@components/atoms/cards/card.js';
 import { Checkbox } from "@components/atoms/form/checkbox.js";
 import { Icon } from '@components/atoms/icon.js';
+import { Icons } from '@components/icons/icons.js';
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
 import { DataTable } from '@components/organisms/lists/data-table';
@@ -225,7 +227,13 @@ const DashboardContent = () => {
         }),
         Div({ class: 'space-y-4' }, [
             DashboardCards(),
-            DashboardTabs(),
+			Div({ class: 'flex flex-auto flex-row justify-between items-center' }, [
+				DashboardTabs(),
+				Div({ class: 'flex gap-2'}, [
+					Button({ variant: 'withIcon', class: 'outline', icon: Icons.download }, 'Download'),
+					Button({ variant: 'withIcon', icon: Icons.funnel }, 'Filter'),
+				])
+			]),
             Div({ class: 'border rounded-md shadow-md pt-4 p-4' }, [
                 H1({ class: 'text-lg font-semibold' }, 'Orders'),
                 P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
