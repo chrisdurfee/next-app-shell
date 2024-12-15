@@ -1,7 +1,7 @@
 import { Div } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Icons } from '@components/icons/icons.js';
-import { TabNavigation } from '@components/organisms/tabs/tab-navigation.js';
+import { TabGroup } from '@components/organisms/tabs/tab-group.js';
 
 /**
  * This will create the DashboardTabs molecule.
@@ -10,12 +10,12 @@ import { TabNavigation } from '@components/organisms/tabs/tab-navigation.js';
  */
 export const DashboardTabs = () => (
     Div({ class: 'flex justify-between items-center w-full md:w-auto' }, [
-        new TabNavigation({
+        new TabGroup({
 			class: 'w-full md:w-auto',
             options: [
-                { label: 'Week', href: 'orders/orders-dashboard/week', exact: true },
-                { label: 'Month', href: 'orders/orders-dashboard/month' },
-                { label: 'Year', href: 'orders/orders-dashboard/year' }
+                { label: 'Week', value: 'week', exact: true },
+                { label: 'Month', value: 'month' },
+                { label: 'Year', value: 'year' }
             ],
             onSelect: (value) => console.log("Selected tab:", value)
         }),
