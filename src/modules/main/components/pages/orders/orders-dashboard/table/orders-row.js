@@ -20,7 +20,7 @@ export const OrdersRow = (order, onSelect) => (
         ]),
         Td({ class: 'p-4' }, [
             A({
-                href: `orders/${order.id}`,
+                href: `orders/orders-dashboard/${order.id}`,
                 class: 'flex items-center gap-x-4 no-underline text-inherit hover:text-primary',
             }, [
                 Avatar({
@@ -36,25 +36,25 @@ export const OrdersRow = (order, onSelect) => (
         ]),
         Td({ class: 'p-4 hidden md:table-cell' }, [
             A({
-                href: `orders/${order.id}`,
+                href: `orders/orders-dashboard/${order.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, order.type)
         ]),
         Td({ class: `p-4 hidden md:table-cell font-medium ${order.status === 'Fulfilled' ? 'text-green-500' : 'text-red-500'}` }, [
             A({
-                href: `orders/${order.id}`,
+                href: `orders/orders-dashboard/${order.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, order.status)
         ]),
         Td({ class: 'p-4 hidden md:table-cell' }, [
             A({
-                href: `orders/${order.id}`,
+                href: `orders/orders-dashboard/${order.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, order.date)
         ]),
         Td({ class: 'p-4 text-right justify-end' }, [
             A({
-                href: `orders/${order.id}`,
+                href: `orders/orders-dashboard/${order.id}`,
                 class: 'no-underline text-inherit hover:text-primary',
             }, `$${order.amount.toFixed(2)}`)
         ])
