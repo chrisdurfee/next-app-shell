@@ -4,114 +4,196 @@ import { Icons } from '../../icons/icons.js';
 import { PopOver } from '../popover.js';
 
 /**
- * This will create a hidden input atom for the TimePicker.
+ * Hidden input for the TimePicker.
  *
  * @param {object} props
  * @returns {object}
  */
-const HiddenInput = ({ bind, required }) => (
-    Input({
+function HiddenInput({ bind, required })
+{
+    return Input({
         cache: 'input',
         class: 'opacity-0 absolute top-0 left-0 w-full h-full pointer-events-none',
         bind,
         required
-    })
-);
+    });
+}
 
 /**
- * This will toggle the open state of the time picker.
+ * Button that toggles the time picker popover.
  *
  * @param {object} props
  * @returns {object}
  */
-const TimeButton = ({ bind, required, toggleOpen }) => (
-    Button({
+function TimeButton({ bind, required, toggleOpen })
+{
+    return Button({
         class: 'relative flex items-center gap-2 w-full justify-between border border-input bg-background hover:bg-muted rounded-md h-10 px-4 py-2',
         click: toggleOpen,
-    }, [
+    },
+    [
         HiddenInput({ bind, required }),
         Span({
             onState: ['selectedTime', (value) => value || 'Pick a time']
         }),
         I({ html: Icons.clock })
-    ])
-);
+    ]);
+}
 
 /**
- * This will create a column for the time picker.
+ * A generic time-column that lists hours, minutes, or meridians.
  *
  * @param {object} props
  * @returns {object}
  */
-const TimeColumn = ({ items, handleTimeSelect, state, stateValue, pad = false }) => (
-    Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, items.map((item) =>
+function TimeColumn({ items, handleTimeSelect, state, stateValue, pad = false })
+{
+    return Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' },
+        items.map((item) =>
         {
-            if (pad)
-            {
-                item = item.toString().padStart(2, '0');
-            }
+            let displayItem = pad
+                ? item.toString().padStart(2, '0')
+                : item.toString();
 
             return Button({
-                text: item,
+                text: displayItem,
                 class: 'hover:bg-muted/50 rounded-md px-2 py-1',
-                click: () => handleTimeSelect({
-                    [stateValue]: item
-                }),
-                onState: [state, stateValue, {
-                    'bg-muted': item
-                }]
+                click: () => handleTimeSelect({ [stateValue]: displayItem }),
+                onState: [state, stateValue, { 'bg-muted': displayItem }]
             });
-        }
-    ))
-);
+        })
+    );
+}
 
 /**
- * This will create the time picker container.
+ * Container and wrapper logic for the time columns (Hours, Minutes, AM/PM).
  *
  * @param {object} props
  * @returns {object}
  */
-const TimeContainer = ({ handleTimeSelect }) => (
-    Div({ class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg' }, [
-        OnState('open', (value, ele, parent) => (!value)
-            ? null
-            : new PopOver({
-                cache: 'dropdown',
-                parent: parent,
-                button: parent.panel,
-                size: 'fit'
-            }, [
-                Div({ class: 'flex flex-auto flex-col border rounded-md shadow-md' }, [
-                    Div({ class: 'grid grid-cols-3 gap-2 p-4 text-center max-h-[220px] min-w-[240px]' }, [
-                        // Hours column
-                        TimeColumn({
-                            items: Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0')),
-                            handleTimeSelect,
-                            state: parent.state,
-                            stateValue: 'hour',
-                            pad: true
-                        }),
-                        // Minutes column
-                        TimeColumn({
-                            items: Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')),
-                            handleTimeSelect,
-                            state: parent.state,
-                            stateValue: 'minute',
-                            pad: true
-                        }),
-                        // AM/PM column
-                        TimeColumn({
-                            items: ['AM', 'PM'],
-                            handleTimeSelect,
-                            state: parent.state,
-                            stateValue: 'meridian'
-                        })
+function TimeContainer({ handleTimeSelect })
+{
+    return Div({ class: 'absolute mt-1 z-10 bg-background rounded-md shadow-lg' },
+    [
+        OnState('open', (value, ele, parent) =>
+            !value
+                ? null
+                : new PopOver({
+                    cache: 'dropdown',
+                    parent: parent,
+                    button: parent.panel,
+                    size: 'fit'
+                },
+                [
+                    Div({ class: 'flex flex-auto flex-col border rounded-md shadow-md' },
+                    [
+                        Div({ class: 'grid grid-cols-3 gap-2 p-4 text-center max-h-[220px] min-w-[240px]' },
+                        [
+                            // Hours column
+                            TimeColumn({
+                                items: Array.from({ length: 12 }, (_, i) => i + 1),
+                                handleTimeSelect,
+                                state: parent.state,
+                                stateValue: 'hour',
+                                pad: true
+                            }),
+                            // Minutes column
+                            TimeColumn({
+                                items: Array.from({ length: 60 }, (_, i) => i),
+                                handleTimeSelect,
+                                state: parent.state,
+                                stateValue: 'minute',
+                                pad: true
+                            }),
+                            // AM/PM column
+                            TimeColumn({
+                                items: ['AM', 'PM'],
+                                handleTimeSelect,
+                                state: parent.state,
+                                stateValue: 'meridian'
+                            })
+                        ])
                     ])
-                ])
-            ])
+                ]
+            )
         )
-    ])
-);
+    ]);
+}
+
+/**
+ * Parses a time string (e.g., "02:30 PM", "14:00:00") and returns hour, minute, meridian.
+ *
+ * @param {string|null} time
+ * @returns {{ hour: string|null, minute: string|null, meridian: string|null }}
+ */
+function parseAndSetTime(time)
+{
+    if (!time)
+    {
+        return { hour: null, minute: null, meridian: null };
+    }
+
+    // Regex to match "HH:MM AM/PM", "HH:MM:SS AM/PM", or 24-hour time "HH:MM:SS" or "HH:MM"
+    const timeRegex = /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s?(AM|PM)?$/i;
+    const match = time.match(timeRegex);
+
+    if (!match)
+    {
+        return { hour: null, minute: null, meridian: null };
+    }
+
+    let [, parsedHour, parsedMinute, , parsedMeridian] = match;
+    let hour = parseInt(parsedHour, 10);
+    let minute = parseInt(parsedMinute, 10);
+
+    // Validate hour and minute
+    if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
+    {
+        return { hour: null, minute: null, meridian: null };
+    }
+
+    // If meridian is missing, convert from 24-hour format
+    if (!parsedMeridian)
+    {
+        if (hour === 0)
+        {
+            parsedMeridian = 'AM';
+            hour = 12;
+        }
+        else if (hour < 12)
+        {
+            parsedMeridian = 'AM';
+        }
+        else if (hour === 12)
+        {
+            parsedMeridian = 'PM';
+        }
+        else
+        {
+            parsedMeridian = 'PM';
+            hour -= 12;
+        }
+    }
+    else
+    {
+        // Handle user-provided AM/PM
+        parsedMeridian = parsedMeridian.toUpperCase();
+        if (parsedMeridian === 'PM' && hour < 12)
+        {
+            hour += 12;
+        }
+        else if (parsedMeridian === 'AM' && hour === 12)
+        {
+            hour = 12;
+        }
+    }
+
+    return {
+        hour: hour.toString().padStart(2, '0'),
+        minute: minute.toString().padStart(2, '0'),
+        meridian: parsedMeridian
+    };
+}
 
 /**
  * TimePicker Atom
@@ -131,7 +213,7 @@ export const TimePicker = VeilJot(
     state()
     {
         const selectedTime = this.selectedTime ?? null;
-        const { hour, minute, meridian } = this.parseAndSetTime(selectedTime);
+        const { hour, minute, meridian } = parseAndSetTime(selectedTime);
 
         return {
             selectedTime,
@@ -151,7 +233,8 @@ export const TimePicker = VeilJot(
     {
         if (this.input.value)
         {
-            const { hour, minute, meridian } = this.parseAndSetTime(selectedTime);
+            const { hour, minute, meridian } = parseAndSetTime(this.input.value);
+
             this.state.set({
                 hour,
                 minute,
@@ -159,96 +242,6 @@ export const TimePicker = VeilJot(
                 selectedTime: this.input.value
             });
         }
-    },
-
-    /**
-     * Parses a time string (e.g., "02:30 PM", "14:00:00") and assigns hour, minute, and meridian to the state.
-     *
-     * @param {string|null} time - The time string to parse.
-     * @returns {object} - An object with parsed hour, minute, and meridian values.
-     */
-    parseAndSetTime(time)
-    {
-        if (!time)
-        {
-            return {
-                hour: null,
-                minute: null,
-                meridian: null
-            };
-        }
-
-        // Regex to match "HH:MM AM/PM", "HH:MM:SS AM/PM", or 24-hour time "HH:MM:SS" or "HH:MM"
-        const timeRegex = /^(\d{1,2}):(\d{2})(?::(\d{2}))?\s?(AM|PM)?$/i;
-        const match = time.match(timeRegex);
-        if (!match)
-        {
-            return {
-                hour: null,
-                minute: null,
-                meridian: null
-            };
-        }
-
-        let [, hour, minute, , meridian] = match; // Extract components
-        hour = parseInt(hour, 10);
-        minute = parseInt(minute, 10);
-
-        // Validate hour and minute
-        if (hour < 0 || hour > 23 || minute < 0 || minute > 59)
-        {
-            return {
-                hour: null,
-                minute: null,
-                meridian: null
-            };
-        }
-
-        // Handle 24-hour format
-        if (!meridian)
-        {
-            if (hour === 0)
-            {
-                // 24-hour midnight (00:00)
-                meridian = 'AM';
-                hour = 12;
-            }
-            else if (hour < 12)
-            {
-                // Morning in 24-hour format
-                meridian = 'AM';
-            }
-            else if (hour === 12)
-            {
-                // Noon in 24-hour format
-                meridian = 'PM';
-            }
-            else
-            {
-                // Convert PM in 24-hour format
-                meridian = 'PM';
-                hour -= 12;
-            }
-        }
-        else
-        {
-            // Handle 12-hour format with AM/PM
-            meridian = meridian.toUpperCase();
-            if (meridian === 'PM' && hour < 12)
-            {
-                hour += 12; // Convert to 24-hour PM format
-            }
-            else if (meridian === 'AM' && hour === 12)
-            {
-                hour = 12; // Convert to 24-hour midnight
-            }
-        }
-
-        return {
-            hour: hour.toString().padStart(2, '0'),
-            minute: minute.toString().padStart(2, '0'),
-            meridian
-        };
     },
 
     /**
@@ -279,7 +272,8 @@ export const TimePicker = VeilJot(
             }
         };
 
-        return Div({ class: 'relative w-full max-w-[320px]' }, [
+        return Div({ class: 'relative w-full max-w-[320px]' },
+        [
             TimeButton({
                 toggleOpen,
                 bind: this.bind,
