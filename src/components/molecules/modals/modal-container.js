@@ -53,7 +53,7 @@ export const ModalContainer = Atom((props, children) => (
                     e.preventDefault();
                     e.stopPropagation();
 
-                    parent.state.open = false;
+                    parent.close();
                 }
             }
         }, [

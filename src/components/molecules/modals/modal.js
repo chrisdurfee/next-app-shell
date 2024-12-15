@@ -85,7 +85,7 @@ export class Modal extends Component
     {
         return [
             Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
-            Button({ variant: 'primary', type: 'submit' }, 'Save')
+            this.hidePrimaryButton !== true && Button({ variant: 'primary', type: 'submit' }, 'Save')
         ];
     }
 
@@ -175,6 +175,11 @@ export class Modal extends Component
         this.state.open = false;
 		this.panel.hidePopover();
 		this.destroy();
+
+		if (typeof this.onClose === 'function')
+		{
+			this.onClose();
+		}
 
 		/**
 		 * This will allow the body to scroll when the modal is closed.

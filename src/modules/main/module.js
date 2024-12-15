@@ -34,7 +34,7 @@ const routes = Module.convertRoutes(
     /**
      * Orders routes
      */
-    { path: '/orders/orders-dashboard/:page?*', component: OrdersDashboard(), title: 'Orders' },
+    { path: '/orders/orders-dashboard/:orderId?*', component: OrdersDashboard(), title: 'Orders' },
 
     /**
      * Music routes

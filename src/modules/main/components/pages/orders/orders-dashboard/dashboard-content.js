@@ -1,8 +1,10 @@
-import { Div, H1, Header, P } from '@base-framework/atoms';
+import { Div, H1, Header, OnRoute, P } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Icons } from '@components/icons/icons.js';
 import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
 import { DashboardCards } from './dasboard-cards.js';
+import { OrderDetailsModal } from './modals/order-details-modal.js';
+import { OrderModal } from './modals/order-modal.js';
 import { OrderOptions } from './order-options.js';
 import { orders } from './orders.js';
 import { RecentOrdersTable } from './table/recent-orders-table.js';
@@ -22,7 +24,7 @@ export const DashboardHeader = () => (
 			]
 		}),
         Div({ class: 'hidden md:flex gap-2'}, [
-            Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus }, 'Add Order'),
+            Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus, click: OrderModal }, 'Add Order'),
         ])
 	])
 );
@@ -43,7 +45,16 @@ export const DashboardContent = () => {
 					H1({ class: 'text-lg font-semibold' }, 'Orders'),
                 	P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
 				]),
-                RecentOrdersTable({ orders })
+                RecentOrdersTable({ orders }),
+                OnRoute('orderId', (orderId) =>
+                {
+                    if (orderId === undefined)
+                    {
+                        return null;
+                    }
+
+                    return OrderDetailsModal({ orderId })
+                })
             ])
         ])
     ]);
