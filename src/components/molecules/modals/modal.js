@@ -37,6 +37,7 @@ export class Modal extends Component
 				class: className,
 				title,
 				description,
+				options: this.headerOptions(),
 				buttons: this.getButtons(),
 				onSubmit: () =>
 				{
@@ -75,6 +76,16 @@ export class Modal extends Component
 			}
         };
     }
+
+	/**
+	 * This will get the header options.
+	 *
+	 * @returns {array<object>}
+	 */
+	headerOptions()
+	{
+		return [];
+	}
 
 	/**
      * This will get the buttons for the modal.

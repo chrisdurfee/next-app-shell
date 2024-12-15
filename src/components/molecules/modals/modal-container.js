@@ -11,7 +11,7 @@ import { Icons } from "../../icons/icons.js";
  * @param {object} props
  * @returns {object}
  */
-const ModalHeader = ({ title, description, back, icon }) => (
+const ModalHeader = ({ title, description, back, icon, options = [] }) => (
     Header({ class: 'modal-header bg-background/80 backdrop-blur-md sticky flex flex-none items-center py-4 px-6 z-10' }, [
 
 		/**
@@ -27,9 +27,12 @@ const ModalHeader = ({ title, description, back, icon }) => (
 		/**
 		 * Title and Description
 		 */
-        Div({ class: 'flex flex-auto flex-col ml-2' }, [
-			H2({ class: 'text-lg font-semibold m-0' }, title),
-			description && Div({ class: 'text-sm text-muted-foreground' }, description)
+        Div({ class: 'flex flex-auto flex-row justify-between w-full ml-2 gap-2' }, [
+			Div({ class: 'flex flex-auto flex-col' }, [
+                H2({ class: 'text-lg font-semibold m-0' }, title),
+			    description && Div({ class: 'text-sm text-muted-foreground' }, description)
+            ]),
+            ...options
 		])
     ])
 );

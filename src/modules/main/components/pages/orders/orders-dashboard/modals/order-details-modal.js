@@ -1,6 +1,7 @@
 import { Div, H2, H3, P, Span } from "@base-framework/atoms";
 import { DateTime } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
+import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
 import { Modal } from "@components/molecules/modals/modal.js";
 import { getOrderById } from "../orders.js";
 
@@ -139,6 +140,25 @@ export const OrderDetailsModal = (props) =>
         showClose: true,
         closeOnOutsideClick: true,
         hidePrimaryButton: true,
+        headerOptions()
+        {
+            return [
+                new DropdownMenu({
+                    icon: Icons.ellipsis.vertical,
+                    groups: [
+                        [
+                            { icon: Icons.mapPin, label: 'Track Order', value: 'track-order' },
+                            { icon: Icons.trash, label: 'Delete Order', value: 'delete-order' }
+                        ]
+                    ],
+                    onSelect: (item) =>
+                    {
+                        console.log("Selected item:", item);
+                        // Handle selected item
+                    },
+                })
+            ];
+        },
         onClose: () => app.navigate('/orders/orders-dashboard')
     },
     [
