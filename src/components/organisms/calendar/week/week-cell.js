@@ -22,10 +22,9 @@ const isDayCurrentDay = (day, month, year) =>
  * @param {object} props
  * @returns {object}
  */
-export const WeekCell = ({ day, week, month, year, weekNumber, currentDate, selectWeek }) =>
+export const WeekCell = ({ day, month, year, weekNumber, selectWeek }) =>
 {
     const isCurrentDay = isDayCurrentDay(day, month, year);
-    const isCurrentWeek = week.some((date) => date?.getDate() === currentDate);
 
     return Button({
         text: day || '',
@@ -33,7 +32,6 @@ export const WeekCell = ({ day, week, month, year, weekNumber, currentDate, sele
         class: `
             px-2 py-1 text-center rounded-md
             ${isCurrentDay ? 'bg-accent text-accent-foreground' : ''}
-            ${isCurrentWeek && !isCurrentDay ? 'border border-accent' : ''}
             hover:bg-primary hover:text-primary-foreground
         `,
         click: () => selectWeek(weekNumber, year),
