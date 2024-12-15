@@ -132,27 +132,29 @@ export const DashboardCard = ({ title, value, change, icon }) => (
  * @returns {object}
  */
 const DashboardCards = () => (
-    Div({ class: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12' }, [
-        DashboardCard({
-            title: 'This Week',
-            value: '$1,329',
-            change: '+25% from last week',
-        }),
-        DashboardCard({
-            title: 'This Month',
-            value: '$5,329',
-            change: '+10% from last month',
-        }),
-        DashboardCard({
-            title: 'Total Revenue',
-            value: '$12,329',
-            change: '+15% overall',
-        }),
-        DashboardCard({
-            title: 'New Orders',
-            value: '452',
-            change: '+12% increase',
-        })
+    Div({ class: 'flex flex-auto overflow-x-auto -mx-6 px-6 mb-12' }, [
+        Div({ class: 'inline-flex flex-auto space-x-4 ml-[-24px] pl-6 mr-6 lg:mr-0' }, [
+            DashboardCard({
+                title: 'This Week',
+                value: '$1,329',
+                change: '+25% from last week',
+            }),
+            DashboardCard({
+                title: 'This Month',
+                value: '$5,329',
+                change: '+10% from last month',
+            }),
+            DashboardCard({
+                title: 'Total Revenue',
+                value: '$12,329',
+                change: '+15% overall',
+            }),
+            DashboardCard({
+                title: 'New Orders',
+                value: '452',
+                change: '+12% increase',
+            })
+        ])
     ])
 );
 
@@ -210,6 +212,78 @@ const orders = [
 		status: 'Fulfilled',
 		date: '2023-06-26',
 		amount: 450
+	},
+	{
+		id: 5,
+		customerName: 'Ava Davis',
+		email: 'ava@example.com',
+		type: 'Sale',
+		status: 'Pending',
+		date: '2023-06-27',
+		amount: 120
+	},
+	{
+		id: 6,
+		customerName: 'William Garcia',
+		email: 'williamg@example.com',
+		type: 'Subscription',
+		status: 'Fulfilled',
+		date: '2023-06-28',
+		amount: 399
+	},
+	{
+		id: 7,
+		customerName: 'Sophia Martinez',
+		email: 'sophia@example.com',
+		type: 'Refund',
+		status: 'Declined',
+		date: '2023-06-29',
+		amount: 175
+	},
+	{
+		id: 8,
+		customerName: 'Mason Lee',
+		email: 'mason@example.com',
+		type: 'Sale',
+		status: 'Pending',
+		date: '2023-06-30',
+		amount: 220
+	},
+	{
+		id: 9,
+		customerName: 'Amelia Taylor',
+		email: 'amelia@example.com',
+		type: 'Sale',
+		status: 'Fulfilled',
+		date: '2023-07-01',
+		amount: 550
+	},
+	{
+		id: 10,
+		customerName: 'Benjamin Clark',
+		email: 'benjamin@example.com',
+		type: 'Subscription',
+		status: 'Fulfilled',
+		date: '2023-07-02',
+		amount: 499
+	},
+	{
+		id: 11,
+		customerName: 'Charlotte Hall',
+		email: 'charlotte@example.com',
+		type: 'Refund',
+		status: 'Declined',
+		date: '2023-07-03',
+		amount: 200
+	},
+	{
+		id: 12,
+		customerName: 'Ethan Adams',
+		email: 'ethan@example.com',
+		type: 'Sale',
+		status: 'Fulfilled',
+		date: '2023-07-04',
+		amount: 275
 	}
 ];
 
@@ -223,7 +297,7 @@ const DashboardContent = () => {
         Div({ class: 'flex items-center justify-between ml-2 mb-8' }, [
 			new Breadcrumb({
 				items: [
-					{ href: "orders", label: "Orders" },
+					{ href: "orders/orders-dashboard", label: "Orders" },
 					{ href: 'orders/orders-dashboard', label: 'Dashboard' },
 					{ label: 'Recent' }
 				]
@@ -254,7 +328,7 @@ const DashboardContent = () => {
  */
 export const OrdersDashboard = () => (
     new BlankPage([
-        Div({ class: 'relative w-full max-w-7xl mx-auto' }, [
+        Div({ class: 'grid grid-cols-1 relative w-full max-w-7xl mx-auto' }, [
             DashboardContent()
         ])
     ])
