@@ -38,6 +38,34 @@ const TimeButton = ({ bind, required, toggleOpen }) => (
 );
 
 /**
+ * This will create a column for the time picker.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const TimeColumn = ({ items, handleTimeSelect, state, stateValue, pad = false }) => (
+    Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, items.map((item) =>
+        {
+            if (pad)
+            {
+                item = item.toString().padStart(2, '0');
+            }
+
+            return Button({
+                text: item,
+                class: 'hover:bg-muted/50 rounded-md px-2 py-1',
+                click: () => handleTimeSelect({
+                    [stateValue]: item
+                }),
+                onState: [state, stateValue, {
+                    'bg-muted': item
+                }]
+            });
+        }
+    ))
+);
+
+/**
  * This will create the time picker container.
  *
  * @param {object} props
@@ -56,40 +84,28 @@ const TimeContainer = ({ handleTimeSelect }) => (
                 Div({ class: 'flex flex-auto flex-col border rounded-md shadow-md' }, [
                     Div({ class: 'grid grid-cols-3 gap-2 p-4 text-center max-h-[220px] min-w-[240px]' }, [
                         // Hours column
-                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, Array.from({ length: 12 }, (_, i) => {
-                            const hour = (i + 1).toString().padStart(2, '0');
-                            return Button({
-                                text: hour,
-                                class: 'hover:bg-muted/50 rounded-md px-2 py-1',
-                                click: () => handleTimeSelect({ hour }),
-                                onState: [parent.state, 'hour', {
-                                    'bg-muted': hour
-                                }]
-                            });
-                        })),
+                        TimeColumn({
+                            items: Array.from({ length: 12 }, (_, i) => (i + 1).toString().padStart(2, '0')),
+                            handleTimeSelect,
+                            state: parent.state,
+                            stateValue: 'hour',
+                            pad: true
+                        }),
                         // Minutes column
-                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, Array.from({ length: 60 }, (_, i) => {
-                            const minute = i.toString().padStart(2, '0');
-                            return Button({
-                                text: minute,
-                                class: 'hover:bg-muted/50 rounded-md px-2 py-1',
-                                click: () => handleTimeSelect({ minute }),
-                                onState: [parent.state, 'minute', {
-                                    'bg-muted': minute
-                                }]
-                            });
-                        })),
+                        TimeColumn({
+                            items: Array.from({ length: 60 }, (_, i) => i.toString().padStart(2, '0')),
+                            handleTimeSelect,
+                            state: parent.state,
+                            stateValue: 'minute',
+                            pad: true
+                        }),
                         // AM/PM column
-                        Div({ class: 'flex flex-col max-h-[200px] overflow-y-auto' }, ['AM', 'PM'].map((meridian) =>
-                            Button({
-                                text: meridian,
-                                class: 'hover:bg-muted/50 rounded-md px-2 py-1',
-                                click: () => handleTimeSelect({ meridian }),
-                                onState: [parent.state, 'meridian', {
-                                    'bg-muted': meridian
-                                }]
-                            })
-                        )),
+                        TimeColumn({
+                            items: ['AM', 'PM'],
+                            handleTimeSelect,
+                            state: parent.state,
+                            stateValue: 'meridian'
+                        })
                     ])
                 ])
             ])
@@ -224,7 +240,7 @@ export const TimePicker = VeilJot(
             }
             else if (meridian === 'AM' && hour === 12)
             {
-                hour = 0; // Convert to 24-hour midnight
+                hour = 12; // Convert to 24-hour midnight
             }
         }
 
