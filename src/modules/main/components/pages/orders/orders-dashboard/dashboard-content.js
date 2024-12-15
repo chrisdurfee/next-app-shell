@@ -1,4 +1,6 @@
 import { Div, H1, Header, P } from '@base-framework/atoms';
+import { Button } from '@components/atoms/buttons/buttons.js';
+import { Icons } from '@components/icons/icons.js';
 import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
 import { DashboardCards } from './dasboard-cards.js';
 import { OrderOptions } from './order-options.js';
@@ -18,7 +20,10 @@ export const DashboardHeader = () => (
 				{ href: 'orders/orders-dashboard', label: 'Dashboard' },
 				{ label: 'Recent' }
 			]
-		})
+		}),
+        Div({ class: 'hidden md:flex gap-2'}, [
+            Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus }, 'Add Order'),
+        ])
 	])
 );
 
