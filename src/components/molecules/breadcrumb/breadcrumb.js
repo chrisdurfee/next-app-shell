@@ -15,7 +15,7 @@ const BreadcrumbLink = (href, label) => (
         {
             href,
             'aria-current': label === 'Breadcrumb' && 'page', // Only set aria-current on the last item
-            class: 'text-muted-foreground hover:text-foreground'
+            class: 'text-muted-foreground font-medium hover:text-foreground'
         },
         [Span(label)]
     )
@@ -28,7 +28,7 @@ const BreadcrumbLink = (href, label) => (
  */
 const BreadcrumbSeparator = () => (
     Icon({
-        class: 'mx-2 text-muted-foreground',
+        class: 'mx-3 text-muted-foreground',
         'aria-hidden': true,
         size: 'xs'
     }, Icons.chevron.single.right)

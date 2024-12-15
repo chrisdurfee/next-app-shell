@@ -131,7 +131,7 @@ export const DashboardCard = ({ title, value, change, icon }) => (
  * @returns {object}
  */
 const DashboardCards = () => (
-    Div({ class: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4' }, [
+    Div({ class: 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12' }, [
         DashboardCard({
             title: 'This Week',
             value: '$1,329',
@@ -161,7 +161,7 @@ const DashboardCards = () => (
  * @returns {object}
  */
 const DashboardTabs = () => (
-    Div({ class: 'flex justify-between items-center mt-4' }, [
+    Div({ class: 'flex justify-between items-center' }, [
         new TabNavigation({
             options: [
                 { label: 'Week', href: 'orders/orders-dashboard/week', exact: true },
@@ -173,58 +173,61 @@ const DashboardTabs = () => (
     ])
 );
 
+const orders = [
+	{
+		id: 1,
+		customerName: 'Liam Johnson',
+		email: 'liam@example.com',
+		type: 'Sale',
+		status: 'Fulfilled',
+		date: '2023-06-23',
+		amount: 250
+	},
+	{
+		id: 2,
+		customerName: 'Olivia Smith',
+		email: 'olivia@example.com',
+		type: 'Refund',
+		status: 'Declined',
+		date: '2023-06-24',
+		amount: 150
+	},
+	{
+		id: 3,
+		customerName: 'Noah Williams',
+		email: 'noah@example.com',
+		type: 'Subscription',
+		status: 'Fulfilled',
+		date: '2023-06-25',
+		amount: 350
+	},
+	{
+		id: 4,
+		customerName: 'Emma Brown',
+		email: 'emma@example.com',
+		type: 'Sale',
+		status: 'Fulfilled',
+		date: '2023-06-26',
+		amount: 450
+	}
+];
+
 /**
  * Main Dashboard Content
  *
  * @returns {object}
  */
 const DashboardContent = () => {
-    const orders = [
-        {
-            id: 1,
-            customerName: 'Liam Johnson',
-            email: 'liam@example.com',
-            type: 'Sale',
-            status: 'Fulfilled',
-            date: '2023-06-23',
-            amount: 250
-        },
-        {
-            id: 2,
-            customerName: 'Olivia Smith',
-            email: 'olivia@example.com',
-            type: 'Refund',
-            status: 'Declined',
-            date: '2023-06-24',
-            amount: 150
-        },
-        {
-            id: 3,
-            customerName: 'Noah Williams',
-            email: 'noah@example.com',
-            type: 'Subscription',
-            status: 'Fulfilled',
-            date: '2023-06-25',
-            amount: 350
-        },
-        {
-            id: 4,
-            customerName: 'Emma Brown',
-            email: 'emma@example.com',
-            type: 'Sale',
-            status: 'Fulfilled',
-            date: '2023-06-26',
-            amount: 450
-        }
-    ];
-
-    return Div({ class: 'p-6 space-y-4' }, [
-        new Breadcrumb({
-            items: [
-                { href: '/dashboard', label: 'Dashboard' },
-                { label: 'Recent Orders' }
-            ]
-        }),
+    return Div({ class: 'flex flex-auto flex-col p-6' }, [
+        Div({ class: 'flex items-center justify-between ml-2 mb-8' }, [
+			new Breadcrumb({
+				items: [
+					{ href: "orders", label: "Orders" },
+					{ href: 'orders/orders-dashboard', label: 'Dashboard' },
+					{ label: 'Recent' }
+				]
+			})
+		]),
         Div({ class: 'space-y-4' }, [
             DashboardCards(),
 			Div({ class: 'flex flex-auto flex-row justify-between items-center' }, [
@@ -234,7 +237,7 @@ const DashboardContent = () => {
 					Button({ variant: 'withIcon', class: 'outline', icon: Icons.funnel }, 'Filter'),
 				])
 			]),
-            Div({ class: 'border rounded-md shadow-md pt-4 p-4' }, [
+            Div({ class: 'border rounded-md shadow-md p-6' }, [
                 H1({ class: 'text-lg font-semibold' }, 'Orders'),
                 P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
                 RecentOrdersTable({ orders })
