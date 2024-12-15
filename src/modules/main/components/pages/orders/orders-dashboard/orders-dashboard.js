@@ -1,4 +1,4 @@
-import { A, Div, H1, H2, P, Td, Thead, Tr } from '@base-framework/atoms';
+import { A, Div, H1, H2, Header, P, Td, Thead, Tr } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Card } from '@components/atoms/cards/card.js';
 import { Checkbox } from "@components/atoms/form/checkbox.js";
@@ -132,7 +132,7 @@ export const DashboardCard = ({ title, value, change, icon }) => (
  * @returns {object}
  */
 const DashboardCards = () => (
-    Div({ class: 'flex flex-auto overflow-x-auto -mx-6 px-6 mb-12' }, [
+    Div({ class: 'flex flex-auto overflow-x-auto -mx-6 px-6 md:mb-12' }, [
         Div({ class: 'inline-flex flex-auto space-x-4 ml-[-24px] pl-6 mr-6 lg:mr-0' }, [
             DashboardCard({
                 title: 'This Week',
@@ -164,8 +164,9 @@ const DashboardCards = () => (
  * @returns {object}
  */
 const DashboardTabs = () => (
-    Div({ class: 'flex justify-between items-center' }, [
+    Div({ class: 'flex justify-between items-center w-full md:w-auto' }, [
         new TabNavigation({
+			class: 'w-full md:w-auto',
             options: [
                 { label: 'Week', href: 'orders/orders-dashboard/week', exact: true },
                 { label: 'Month', href: 'orders/orders-dashboard/month' },
@@ -293,7 +294,7 @@ const orders = [
  * @returns {object}
  */
 const DashboardContent = () => {
-    return Div({ class: 'flex flex-auto flex-col p-6' }, [
+    return Div({ class: 'flex flex-auto flex-col pt-0 px-6 md:p-6' }, [
         Div({ class: 'flex items-center justify-between ml-2 mb-8' }, [
 			new Breadcrumb({
 				items: [
@@ -307,14 +308,16 @@ const DashboardContent = () => {
             DashboardCards(),
 			Div({ class: 'flex flex-auto flex-row justify-between items-center' }, [
 				DashboardTabs(),
-				Div({ class: 'flex gap-2'}, [
+				Div({ class: 'hidden md:flex gap-2'}, [
 					Button({ variant: 'withIcon', class: 'outline', icon: Icons.download }, 'Download'),
 					Button({ variant: 'withIcon', class: 'outline', icon: Icons.funnel }, 'Filter'),
 				])
 			]),
-            Div({ class: 'border rounded-md shadow-md p-6' }, [
-                H1({ class: 'text-lg font-semibold' }, 'Orders'),
-                P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
+            Div({ class: 'border rounded-md shadow-md p-4 md:p-6' }, [
+                Header({ class: 'flex flex-auto flex-col pl-4 md:pl-0' }, [
+					H1({ class: 'text-lg font-semibold' }, 'Orders'),
+                	P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
+				]),
                 RecentOrdersTable({ orders })
             ])
         ])
