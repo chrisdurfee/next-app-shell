@@ -99,6 +99,7 @@ export const RecentOrdersTable = ({ orders }) => (
         cache: 'list',
         customHeader: OrdersHeaderRow(),
         rows: orders,
+		border: false,
         rowItem: OrdersRow,
         key: 'id',
     })

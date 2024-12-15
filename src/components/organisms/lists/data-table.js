@@ -109,9 +109,10 @@ export const DataTable = Jot(
     render()
     {
         const currentRows = this.rows;
+        const border = this.border !== false ? 'border' : '';
 
         return Div({ class: 'w-full' }, [
-            Div({ class: 'w-full rounded-md border overflow-x-auto' }, [
+            Div({ class: `w-full rounded-md ${border} overflow-x-auto` }, [
                 Table({ class: 'w-full' }, [
                     this.headers && TableHeader({ headers: this.headers, sort: (key) => this.sortRows(key) }),
                     this.customHeader ?? null,
