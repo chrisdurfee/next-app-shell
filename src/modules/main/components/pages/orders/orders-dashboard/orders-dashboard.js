@@ -294,7 +294,7 @@ const orders = [
  * @returns {object}
  */
 const DashboardContent = () => {
-    return Div({ class: 'flex flex-auto flex-col pt-0 px-6 md:p-6' }, [
+    return Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 md:p-6' }, [
         Div({ class: 'flex items-center justify-between ml-2 mb-8' }, [
 			new Breadcrumb({
 				items: [
