@@ -2,7 +2,7 @@
  * Calculate the ISO 8601 week number for a given date.
  *
  * @param {Date} date - The date for which to calculate the week number.
- * @returns {number} - The ISO 8601 week number.
+ * @returns {object} - The ISO 8601 week number and year.
  */
 export const calculateWeekNumber = (date) =>
 {
@@ -16,16 +16,24 @@ export const calculateWeekNumber = (date) =>
     target.setDate(target.getDate() - dayNr + 3);
 
     // Get the first Thursday of the year
-    const firstThursday = new Date(target.getFullYear(), 0, 4);
+    const targetYear = target.getFullYear();
+    const firstThursday = new Date(targetYear, 0, 4);
     firstThursday.setDate(firstThursday.getDate() - ((firstThursday.getDay() + 6) % 7));
 
     // Calculate the difference in weeks
     const weekNumber = Math.ceil((target - firstThursday) / 604800000) + 1; // 604800000ms = 7 days
-    if (weekNumber > 52 && !has53Weeks(target.getFullYear()))
+    if (weekNumber > 52 && !has53Weeks(targetYear))
     {
-        return 1;
+        return {
+            weekNumber: 1,
+            year: targetYear + 1
+        };
     }
-    return weekNumber;
+
+    return {
+        weekNumber,
+        year: targetYear
+    };
 };
 
 /**
