@@ -20,11 +20,17 @@ This app uses components and atoms to create layouts. Components are reusable la
 
 ## Screenshots
 
-![Aside Layout](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-buttons.png)
-![Aside Navigation](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-sub-nav.png)
-![Aside Inline Overlay](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-inline-overlay.png)
-![Aside Overlay](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/aside-overlay.png)
-![Modal](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/modal.png)
+![Music Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/music-page.png)
+![Mobile Music Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/mobile-music-page.png)
+![Dashboard Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/dashboard-page.png)
+![Orders Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/orders-page.png)
+![Inbox Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/inbox-page.png)
+![Blog Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/blog-page.png)
+![Client List Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/client-list-page.png)
+![Documentation Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/documentation-page.png)
+![Calendar Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/calendar-page.png)
+![Notification Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/notification-page.png)
+![Website Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/website-page.png)
 
 ## Getting Started
 
