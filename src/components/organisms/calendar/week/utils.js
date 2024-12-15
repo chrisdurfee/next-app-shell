@@ -1,12 +1,28 @@
 /**
+ * Determines if the given year has 53 weeks.
+ *
+ * @param {number} year - The year to check.
+ * @returns {boolean} - True if the year has 53 weeks, false otherwise.
+ */
+const has53Weeks = (year) =>
+{
+    const dec31 = new Date(year, 11, 31); // December 31
+    const jan1 = new Date(year, 0, 1);    // January 1
+    return (
+        dec31.getDay() === 4 || // December 31 is a Thursday
+        jan1.getDay() === 4     // January 1 is a Thursday
+    );
+};
+
+/**
  * Calculate the ISO 8601 week number for a given date.
+ * Also returns the ISO year for that week.
  *
  * @param {Date} date - The date for which to calculate the week number.
- * @returns {object} - The ISO 8601 week number and year.
+ * @returns {object} - An object { weekNumber, year } for the ISO week.
  */
 export const calculateWeekNumber = (date) =>
 {
-    // Clone the date to avoid modifying the original
     const target = new Date(date.valueOf());
 
     // Adjust so that Monday = 0, Sunday = 6
@@ -15,13 +31,17 @@ export const calculateWeekNumber = (date) =>
     // Move date to the nearest Thursday to align with ISO 8601
     target.setDate(target.getDate() - dayNr + 3);
 
-    // Get the first Thursday of the year
+    // Year might be different from the date's actual .getFullYear()
     const targetYear = target.getFullYear();
+
+    // First Thursday of that year
     const firstThursday = new Date(targetYear, 0, 4);
     firstThursday.setDate(firstThursday.getDate() - ((firstThursday.getDay() + 6) % 7));
 
-    // Calculate the difference in weeks
+    // Calculate difference in weeks
     const weekNumber = Math.ceil((target - firstThursday) / 604800000) + 1; // 604800000ms = 7 days
+
+    // If we exceed 52 weeks and the year doesn't have 53 weeks, the ISO week belongs to next year
     if (weekNumber > 52 && !has53Weeks(targetYear))
     {
         return {
@@ -37,20 +57,38 @@ export const calculateWeekNumber = (date) =>
 };
 
 /**
- * Determines if the given year has 53 weeks.
+ * Gets the days from the previous month needed to fill the first row in a Sunday-based 7-day grid.
  *
- * @param {number} year - The year to check.
- * @returns {boolean} - True if the year has 53 weeks, false otherwise.
+ * @param {number} year
+ * @param {number} month
+ * @param {number} firstDay - Day of week for the 1st of the month (0=Sun,1=Mon,...)
+ * @returns {Date[]}
  */
-const has53Weeks = (year) =>
+export const getPreviousMonthDays = (year, month, firstDay) =>
 {
-    const dec31 = new Date(year, 11, 31); // December 31st
-    const jan1 = new Date(year, 0, 1);   // January 1st
-    return (
-        (dec31.getDay() === 4) || // If December 31 is a Thursday
-        (jan1.getDay() === 4)     // OR January 1 is a Thursday
+    // If first day is Sunday (0), there are no "previous" month days needed
+    if (firstDay === 0) return [];
+
+    const prevMonthDaysCount = new Date(year, month, 0).getDate(); // Days in the previous month
+    // e.g. if month is 8 (September), month-1 is 7 (August)
+    return Array.from({ length: firstDay }, (_, i) =>
+        new Date(year, month - 1, prevMonthDaysCount - firstDay + i + 1)
     );
 };
+
+/**
+ * Gets the days from the next month needed to fill the last row in a Sunday-based 7-day grid.
+ *
+ * @param {number} year
+ * @param {number} month
+ * @param {number} remainingDays - The number of days needed to fill the grid row.
+ * @returns {Date[]}
+ */
+export const getNextMonthDays = (year, month, remainingDays) =>
+{
+    return Array.from({ length: remainingDays }, (_, i) => new Date(year, month + 1, i + 1));
+};
+
 
 /**
  * Calculates the first date of the given ISO week number.
@@ -102,34 +140,6 @@ export const generateWeeks = (year, month) =>
     }
 
     return weeks;
-};
-
-/**
- * Gets the days from the previous month needed to fill the first week of the grid.
- *
- * @param {number} year
- * @param {number} month
- * @param {number} firstDay - The weekday of the first day of the month (0 = Sunday, 1 = Monday, etc.).
- * @returns {Array<Date>} - Array of Date objects for the previous month's days.
- */
-export const getPreviousMonthDays = (year, month, firstDay) =>
-{
-    if (firstDay === 0) return []; // No trailing days if the first day is Sunday
-    const prevMonthDays = new Date(year, month, 0).getDate(); // Total days in the previous month
-    return Array.from({ length: firstDay }, (_, i) => new Date(year, month - 1, prevMonthDays - firstDay + i + 1));
-};
-
-/**
- * Gets the days from the next month needed to fill the last week of the grid.
- *
- * @param {number} year
- * @param {number} month
- * @param {number} remainingDays - The number of days needed to fill the week.
- * @returns {Array<Date>} - Array of Date objects for the next month's days.
- */
-export const getNextMonthDays = (year, month, remainingDays) =>
-{
-    return Array.from({ length: remainingDays }, (_, i) => new Date(year, month + 1, i + 1));
 };
 
 /**
