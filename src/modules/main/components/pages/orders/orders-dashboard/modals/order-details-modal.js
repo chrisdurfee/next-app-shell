@@ -171,13 +171,29 @@ export const OrderDetailsModal = (props) =>
         size: 'md',
         type: 'right',
         showClose: true,
-        closeOnOutsideClick: true,
         hidePrimaryButton: true,
+
+        /**
+         * Header options for the modal.
+         */
         headerOptions: HeaderOptions,
+
+        /**
+         * This will modal is being created by a route
+         * so we need to show it after setup.
+         *
+         * @returns {void}
+         */
         afterSetup()
         {
             this.showModal();
         },
+
+        /**
+         * This will navigate back to the orders dashboard.
+         *
+         * @returns {void}
+         */
         onClose: () => app.navigate('orders/orders-dashboard')
     },
     [
