@@ -181,5 +181,5 @@ export const OrderDetailsModal = (props) =>
             // Payment Info
             renderPaymentInfo(paymentMethod)
         ])
-    ]);
+    ]).open();
 };

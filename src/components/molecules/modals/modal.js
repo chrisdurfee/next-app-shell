@@ -167,13 +167,41 @@ export class Modal extends Component
 	open()
 	{
 		render(this);
-		this.panel.showPopover();
-        this.state.open = true;
+		this.showModal();
 
 		/**
 		 * This will prevent the body from scrolling when the modal is open.
 		 */
 		document.documentElement.style.overflowY = 'hidden';
+	}
+
+	/**
+	 * This will show the modal.
+	 *
+	 * @protected
+	 * @returns {void}
+	 */
+	showModal()
+	{
+		/**
+		 * This will delay calling to show modal to make sure
+		 * it is added to the DOM.
+		 */
+		const DELAY = 10;
+		window.setTimeout(() => this.panel.showPopover(), DELAY);
+        this.state.open = true;
+	}
+
+	/**
+	 * This will hide the modal.
+	 *
+	 * @protected
+	 * @returns {void}
+	 */
+	hideModal()
+	{
+		this.panel.hidePopover();
+		this.state.open = false;
 	}
 
 	/**
@@ -183,8 +211,7 @@ export class Modal extends Component
 	 */
 	close()
 	{
-        this.state.open = false;
-		this.panel.hidePopover();
+        this.hideModal();
 		this.destroy();
 
 		if (typeof this.onClose === 'function')

@@ -38,13 +38,16 @@ export const DashboardContent = () => {
     return Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 md:p-6' }, [
         DashboardHeader(),
         Div({ class: 'space-y-4' }, [
+
             DashboardCards(),
 			OrderOptions(),
-            Div({ class: 'border rounded-md shadow-md p-4 md:p-6' }, [
+
+            Div({ class: 'border rounded-md bg-card shadow-md p-4 md:p-6' }, [
                 Header({ class: 'flex flex-auto flex-col pl-4 md:pl-0' }, [
 					H1({ class: 'text-lg font-semibold' }, 'Orders'),
                 	P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
 				]),
+
                 RecentOrdersTable({ orders }),
                 OnRoute('orderId', (orderId) =>
                 {
@@ -53,7 +56,11 @@ export const DashboardContent = () => {
                         return null;
                     }
 
-                    return OrderDetailsModal({ orderId })
+                    /**
+                     * We want to wrap the order modal in a panel to
+                     * allow it to render to the app shell.
+                     */
+                    return OrderDetailsModal({ orderId });
                 })
             ])
         ])
