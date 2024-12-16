@@ -48,12 +48,6 @@ export const CookieConsentBar = Jot(
                         click: () =>
                         {
                             this.state.show = false;
-                            // app.notify({
-                            //     type: 'success',
-                            //     title: 'Cookies Accepted',
-                            //     description: 'You have accepted the use of cookies.',
-                            //     icon: Icons.check
-                            // });
                         }
                     }, 'Accept'),
 
