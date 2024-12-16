@@ -1,4 +1,4 @@
-import { Div, P } from "@base-framework/atoms";
+import { Div, Pre } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
@@ -13,7 +13,7 @@ import { EmailToolbar } from "./email-toolbar.js";
  * @returns {object}
  */
 const EmailDetailSkeleton = () => (
-    Div({ class: "flex flex-col gap-4" }, [
+    Div({ class: "flex flex-col gap-4 p-4" }, [
         // Toolbar Skeleton
         Div({ class: "hidden lg:flex items-center justify-between border-b pb-4" }, [
             Div({ class: "flex items-center gap-4" }, [
@@ -89,7 +89,7 @@ export const EmailDetail = Jot(
         setTimeout(() => (this.state.loaded = true), DELAY);
 
         return Div({
-            class: "w-full flex flex-auto flex-col p-4 space-y-4",
+            class: "w-full flex flex-auto flex-col space-y-4",
 
             /**
              * This will render the skeleton and message item after
@@ -106,7 +106,7 @@ export const EmailDetail = Jot(
 
                     return !loaded
                     ? EmailDetailSkeleton()
-                    : Div({ class: "flex flex-auto flex-col space-y-4" }, [
+                    : Div({ class: "flex flex-auto flex-col space-y-4 max-h-screen p-4" }, [
 
                         EmailToolbar({
                             message,
@@ -117,8 +117,8 @@ export const EmailDetail = Jot(
                         EmailHeader(message),
 
                         // Content Section
-                        Div({ class: 'flex flex-auto flex-col overflow-y-auto' }, [
-                            P({ class: "text-sm text-foreground mt-2 pb-40" }, message.content),
+                        Div({ class: 'flex flex-grow flex-col overflow-y-auto' }, [
+                            Pre({ class: "text-sm text-foreground mt-2 pb-40 whitespace-pre-line" }, message.content),
                         ]),
 
                         // Composer Section

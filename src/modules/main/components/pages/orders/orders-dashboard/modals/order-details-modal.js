@@ -22,7 +22,7 @@ const SplitDetailRow = (label, value) =>
  *
  * @param {Array} items - An array of { label, price }.
  */
-const renderItemLines = (items) =>
+const ItemLines = (items) =>
     items.map((item) =>
         SplitDetailRow(item.label, `$${item.price.toFixed(2)}`)
     );
@@ -35,7 +35,7 @@ const renderItemLines = (items) =>
  * @param {number} tax
  * @param {number} total
  */
-const renderCostBreakdown = (subtotal, shipping, tax, total) => [
+const CostBreakdown = (subtotal, shipping, tax, total) => [
     SplitDetailRow('Subtotal', `$${subtotal.toFixed(2)}`),
     SplitDetailRow('Shipping', `$${shipping.toFixed(2)}`),
     SplitDetailRow('Tax', `$${tax.toFixed(2)}`),
@@ -51,7 +51,7 @@ const renderCostBreakdown = (subtotal, shipping, tax, total) => [
  * @param {object} shippingInfo
  * @param {object} billingInfo
  */
-const renderShippingBilling = (shippingInfo, billingInfo) =>
+const ShippingBilling = (shippingInfo, billingInfo) =>
     Div({ class: 'flex flex-col md:flex-row gap-4 pb-4 pt-6' }, [
         // Shipping
         Div({ class: 'flex flex-auto flex-col' }, [
@@ -74,7 +74,7 @@ const renderShippingBilling = (shippingInfo, billingInfo) =>
  * @param {string} date
  * @param {object} customerInfo - { name, email, phone }
  */
-const renderCustomerInfo = (orderId, date, customerInfo) =>
+const CustomerInfo = (orderId, date, customerInfo) =>
     Div({ class: 'pb-4' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Customer Information'),
         Div({ class: 'text-sm space-y-3' }, [
@@ -90,7 +90,7 @@ const renderCustomerInfo = (orderId, date, customerInfo) =>
  *
  * @param {string} paymentMethod
  */
-const renderPaymentInfo = (paymentMethod) =>
+const PaymentInfo = (paymentMethod) =>
     Div({ class: 'pb-2' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Payment Information'),
         SplitDetailRow('Payment Method', paymentMethod)
@@ -167,19 +167,19 @@ export const OrderDetailsModal = (props) =>
             // Order Details Section
             Div({ class: 'space-y-3 pb-4' }, [
                 H2({ class: 'font-semibold' }, 'Order Details'),
-                ...renderItemLines(items),
+                ...ItemLines(items),
                 Div({ class: 'my-2 border-t' }),
-                ...renderCostBreakdown(subtotal, shipping, tax, total)
+                ...CostBreakdown(subtotal, shipping, tax, total)
             ]),
 
             // Shipping / Billing Info
-            renderShippingBilling(shippingInfo, billingInfo),
+            ShippingBilling(shippingInfo, billingInfo),
 
             // Customer Info
-            renderCustomerInfo(orderId, date, customerInfo),
+            CustomerInfo(orderId, date, customerInfo),
 
             // Payment Info
-            renderPaymentInfo(paymentMethod)
+            PaymentInfo(paymentMethod)
         ])
     ]).open();
 };

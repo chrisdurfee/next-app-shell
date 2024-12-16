@@ -39,7 +39,7 @@ export const EmailHeader = (message) => (
                 fallbackText: `${message.name.split(" ")[0][0]}${
                     message.name.split(" ")[1][0]
                 }`,
-                size: "lg",
+                size: "md",
             }),
             Div({ class: "flex flex-col" }, [
                 Span({ class: "font-semibold text-lg text-foreground" }, message.name),
