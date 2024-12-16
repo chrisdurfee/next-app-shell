@@ -51,7 +51,7 @@ export const DashboardContent = () => {
                 RecentOrdersTable({ orders }),
                 OnRoute('orderId', (orderId) =>
                 {
-                    if (orderId === undefined)
+                    if (typeof orderId === 'undefined')
                     {
                         return null;
                     }

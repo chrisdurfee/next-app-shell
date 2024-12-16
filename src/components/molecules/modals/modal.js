@@ -202,6 +202,11 @@ export class Modal extends Component
 	{
 		this.panel.hidePopover();
 		this.state.open = false;
+
+		if (typeof this.onClose === 'function')
+		{
+			this.onClose();
+		}
 	}
 
 	/**
@@ -213,11 +218,6 @@ export class Modal extends Component
 	{
         this.hideModal();
 		this.destroy();
-
-		if (typeof this.onClose === 'function')
-		{
-			this.onClose();
-		}
 
 		/**
 		 * This will allow the body to scroll when the modal is closed.
