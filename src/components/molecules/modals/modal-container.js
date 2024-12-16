@@ -48,7 +48,7 @@ export const ModalContainer = Atom((props, children) => (
     Div({
             popover: 'manual',
             class: `modal m-auto top-0 right-0 bottom-0 left-0 fixed z-20 grid w-full h-full max-h-screen gap-2 lg:border bg-background text-foreground shadow-xl break-words p-0 ${props.class}`,
-            pointerdown: (e, parent) =>
+            click: (e, parent) =>
             {
                 const isClickOutside = (e.target === parent.panel);
                 if (isClickOutside)
