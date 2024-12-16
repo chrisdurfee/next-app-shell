@@ -71,13 +71,31 @@ export class NavigationPopover extends Component
                 id,
                 callBack: (state) =>
                 {
-                    if (this.state.open === false)
+                    if (state === false)
                     {
+                        /**
+                         * This will allow the body to scroll when the modal is closed.
+                         */
+                        document.documentElement.style.overflowY = 'auto';
+
                         this.destroy();
                     }
                 }
             }
         };
+    }
+
+    /**
+     * This will add the body scroll lock.
+     *
+     * @returns {void}
+     */
+    afterSetup()
+    {
+        /**
+         * This will prevent the body from scrolling when the modal is open.
+         */
+        document.documentElement.style.overflowY = 'hidden';
     }
 
 	/**
