@@ -142,6 +142,12 @@ export class Dialog extends Component
 	{
         this.state.open = false;
 		this.panel.close();
+
+        if (typeof this.onClose === 'function')
+        {
+            this.onClose();
+        }
+
 		this.destroy();
 	}
 }

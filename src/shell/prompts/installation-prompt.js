@@ -73,7 +73,7 @@ function PWAInstallFooter({ onCancel, onInstall, isIOSFallback, promptEvent })
  */
 export const InstallPrompt = (props) =>
 {
-    const { onCancel, onInstall } = props;
+    const { onCancel, onInstall, onClose } = props;
     const promptEvent = props.promptEvent || null;
     const isIOSFallback = promptEvent;
 
@@ -85,7 +85,8 @@ export const InstallPrompt = (props) =>
             : "Install this app on your device for quick and easy access.",
         hideFooter: true,
         size: 'sm',
-        closeOnOutsideClick: true
+        closeOnOutsideClick: true,
+        onClose
     },
     [
         PWAInstallBody(isIOSFallback),
