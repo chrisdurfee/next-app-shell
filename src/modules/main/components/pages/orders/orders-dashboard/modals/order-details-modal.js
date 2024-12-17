@@ -158,7 +158,6 @@ export const OrderDetailsModal = (props) =>
         description: `Date: ${formattedDate}`,
         size: 'md',
         type: 'right',
-        showClose: true,
         hidePrimaryButton: true,
 
         /**
