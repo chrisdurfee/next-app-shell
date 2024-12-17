@@ -1,4 +1,5 @@
 import { Div } from '@base-framework/atoms';
+import { openInstallPrompt } from './installation/install.js';
 import { LoginPage } from './login/login-page.js';
 import { MainContent } from './main-content.js';
 
@@ -36,6 +37,17 @@ const updateBodyClass = (isSignedIn) =>
 export const AppContent = (props) => (
 	Div({
 		class: 'app-content flex flex-auto flex-col will-change-contents',
+
+		/**
+		 * This will open the install prompt when the app is created.
+		 *
+		 * @returns {void}
+		 */
+		onCreated()
+		{
+			const WAIT_TIME = 1000;
+			window.setTimeout(() => openInstallPrompt(), WAIT_TIME);
+		},
 
 		/**
 		 * This will add a state to sign in.
