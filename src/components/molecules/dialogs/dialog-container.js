@@ -39,7 +39,7 @@ export const DialogContainer = Atom((props, children) => (
         {
             class: `fixed pullUpIn z-30 w-[98%] border md:w-full max-w-lg bg-popover text-foreground shadow-lg duration-200
                 rounded-lg flex flex-auto flex-col
-                bottom-4 top-auto md:m-auto md:bottom-auto md:top-1/2 md:left-0 md:right-0 md:-translate-y-1/2 ${props.class}`,
+                bottom-4 top-auto inset-auto m-auto md:bottom-0 md:top-0 left-0 right-0 ${props.class}`,
             click: props.click,
             aria: { expanded: ['open'] }
         }, [
