@@ -39,9 +39,7 @@ const iOSInstructions = () =>
  */
 const getDescription = (isIOSFallback) =>
 {
-    return isIOSFallback
-        ? "Would you like to install this app and add it to your home screen?"
-        : "Would you like to install this app and add it to your home screen?";
+    return "Would you like to install this app and add it to your home screen?";
 };
 
 /**
