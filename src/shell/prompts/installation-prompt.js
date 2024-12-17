@@ -28,11 +28,10 @@ const PromptButtons = (props) =>
     const isIOSFallback = !promptEvent;
 
     return [
-        Button({ variant: 'outline', click: (e, parent) => parent.close() }, 'Cancel'),
+        Button({ variant: 'outline', click: (e, parent) => parent.close() }, 'Not Now'),
         Button({
             variant: 'primary',
-            disabled: !promptEvent,
-            click: () =>
+            click: (e, parent) =>
             {
                 if (isIOSFallback)
                 {
