@@ -40,7 +40,7 @@ export const openInstallPrompt = () =>
 
     const setToStorage = () => localStorage.setItem(STORAGE_KEY, 'true');
     InstallPrompt({
-        promptEvent: deferredPrompt,
+        //promptEvent: deferredPrompt,
         onInstall: setToStorage,
         onCancel: setToStorage,
         onClose: setToStorage
