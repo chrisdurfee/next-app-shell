@@ -6,12 +6,18 @@ import { Dialog } from "@components/molecules/dialogs/dialog.js";
 import { Icon } from "../../components/atoms/icon.js";
 import { Configs } from "../../configs.js";
 
+/**
+ * This will get the step for the install prompt.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
 const Step = (props) => (
     Div({ class: 'flex items-center gap-2' }, [
         P({ class: 'text-sm' }, props.step),
         props.icon && Icon(props.icon)
     ])
-)
+);
 
 /**
  * This will get the iOS instructions for the install prompt.

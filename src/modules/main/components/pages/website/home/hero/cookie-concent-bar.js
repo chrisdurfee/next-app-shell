@@ -4,6 +4,12 @@ import { Button } from '@components/atoms/buttons/buttons.js';
 import { CookieDialog } from './cookie-dialog.js';
 
 /**
+ * @type {string} STORAGE_KEY
+ * @constant
+ */
+const STORAGE_KEY = 'cookieConsent';
+
+/**
  * CookieConsentBar
  *
  * Displays a bottom bar for cookie consent with options to accept or manage cookies.
@@ -20,7 +26,10 @@ export const CookieConsentBar = Jot(
     state()
     {
         return {
-            show: true
+            show: {
+                state: !localStorage.getItem(STORAGE_KEY),
+                callBack: (value) => localStorage.setItem(STORAGE_KEY, value)
+            }
         };
     },
 
