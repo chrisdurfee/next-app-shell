@@ -1,32 +1,20 @@
-import { Div, H2, H3, P, Span } from "@base-framework/atoms";
+import { Div, H3, P, Span } from "@base-framework/atoms";
 import { DateTime } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
 import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
+import { DetailBody, DetailSection, SplitRow } from "@components/molecules/modals/atoms.js";
 import { Modal } from "@components/molecules/modals/modal.js";
 import { getOrderById } from "../orders.js";
 
 /**
- * Renders a two-column row with a left label and right value.
- *
- * @param {string} label - The left-hand text.
- * @param {string} value - The right-hand text.
- * @returns {object}
- */
-const SplitDetailRow = (label, value) =>
-    Div({ class: 'flex justify-between' }, [
-        Span({ class: 'text-muted-foreground' }, label),
-        Span(value)
-    ]);
-
-/**
- * Renders all the ordered items as a series of SplitDetailRow's.
+ * Renders all the ordered items as a series of SplitRow's.
  *
  * @param {Array} items - An array of { label, price }.
  * @returns {Array}
  */
 const ItemLines = (items) =>
     items.map((item) =>
-        SplitDetailRow(item.label, `$${item.price.toFixed(2)}`)
+        SplitRow(item.label, `$${item.price.toFixed(2)}`)
     );
 
 /**
@@ -39,9 +27,9 @@ const ItemLines = (items) =>
  * @returns {Array}
  */
 const CostBreakdown = (subtotal, shipping, tax, total) => [
-    SplitDetailRow('Subtotal', `$${subtotal.toFixed(2)}`),
-    SplitDetailRow('Shipping', `$${shipping.toFixed(2)}`),
-    SplitDetailRow('Tax', `$${tax.toFixed(2)}`),
+    SplitRow('Subtotal', `$${subtotal.toFixed(2)}`),
+    SplitRow('Shipping', `$${shipping.toFixed(2)}`),
+    SplitRow('Tax', `$${tax.toFixed(2)}`),
     Div({ class: 'flex justify-between font-semibold text-primary' }, [
         Span('Total'),
         Span(`$${total.toFixed(2)}`)
@@ -83,10 +71,10 @@ const CustomerInfo = (orderId, date, customerInfo) =>
     Div({ class: 'pb-4' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Customer Information'),
         Div({ class: 'text-sm space-y-3' }, [
-            SplitDetailRow('Customer ID', orderId),
-            SplitDetailRow('Date', date),
-            SplitDetailRow('Customer', customerInfo.name),
-            SplitDetailRow('Email', customerInfo.email)
+            SplitRow('Customer ID', orderId),
+            SplitRow('Date', date),
+            SplitRow('Customer', customerInfo.name),
+            SplitRow('Email', customerInfo.email)
         ])
     ]);
 
@@ -99,7 +87,7 @@ const CustomerInfo = (orderId, date, customerInfo) =>
 const PaymentInfo = (paymentMethod) =>
     Div({ class: 'pb-2' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Payment Information'),
-        SplitDetailRow('Payment Method', paymentMethod)
+        SplitRow('Payment Method', paymentMethod)
     ]);
 
 /**
@@ -197,11 +185,10 @@ export const OrderDetailsModal = (props) =>
         onClose: () => app.navigate('orders/orders-dashboard')
     },
     [
-        Div({ class: 'space-y-6 p-4 md:p-6 bg-card text-card-foreground divide-y' }, [
+        DetailBody([
 
             // Order Details Section
-            Div({ class: 'space-y-3 pb-4' }, [
-                H2({ class: 'font-semibold' }, 'Order Details'),
+            DetailSection({ title: 'Order Details' }, [
                 ...ItemLines(items),
                 Div({ class: 'my-2 border-t' }),
                 ...CostBreakdown(subtotal, shipping, tax, total)

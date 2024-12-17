@@ -2,6 +2,7 @@ import { Div, H1, Header, OnRoute, P } from '@base-framework/atoms';
 import { Button } from '@components/atoms/buttons/buttons.js';
 import { Icons } from '@components/icons/icons.js';
 import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
+import { Panel } from '../../../../../../components/organisms/panel.js';
 import { DashboardCards } from './dasboard-cards.js';
 import { OrderDetailsModal } from './modals/order-details-modal.js';
 import { OrderModal } from './modals/order-modal.js';
@@ -60,7 +61,9 @@ export const DashboardContent = () => {
                      * We want to wrap the order modal in a panel to
                      * allow it to render to the app shell.
                      */
-                    return OrderDetailsModal({ orderId });
+                    return new Panel([
+                        OrderDetailsModal({ orderId })
+                    ]);
                 })
             ])
         ])
