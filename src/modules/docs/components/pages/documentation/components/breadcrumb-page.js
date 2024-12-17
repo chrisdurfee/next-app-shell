@@ -47,6 +47,7 @@ new Breadcrumb({ items: [
                     new DotsIndicator({
                         count: 6,
                         size: 'sm',
+                        gap: 'gap-2',
                         onClick: (index) => console.log('Clicked dot', index)
                     }),
                 ],
@@ -55,6 +56,7 @@ new Breadcrumb({ items: [
 new DotsIndicator({
     count: 6,
     size: 'sm',
+    gap: 'gap-2',
     onClick: (index) => console.log('Clicked dot', index)
 })`
             })
