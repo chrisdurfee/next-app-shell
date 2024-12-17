@@ -1,4 +1,5 @@
 import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
+import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -37,6 +38,25 @@ new Breadcrumb({ items: [
     { href: '/components', label: 'Components' },
     { label: 'Breadcrumb' } // Last item, no href needed
 ] })`
+            }),
+
+            DocSection({
+                title: 'Dots Indicator',
+                description: 'The Dots Indicator component is used to display a row of circular dots, one of which is "active." The dots can be set to a specific size and count. The sizes are xs, sm, md, lg, xl, 2xl, and 3xl.',
+                preview: [
+                    new DotsIndicator({
+                        count: 6,
+                        size: 'sm',
+                        onClick: (index) => console.log('Clicked dot', index)
+                    }),
+                ],
+                code: `import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
+
+new DotsIndicator({
+    count: 6,
+    size: 'sm',
+    onClick: (index) => console.log('Clicked dot', index)
+})`
             })
         ]
     )
