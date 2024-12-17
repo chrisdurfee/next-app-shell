@@ -10,7 +10,7 @@ import { Icon } from "../../atoms/icon.js";
  * @returns {object}
  */
 const DialogIcon = (icon, iconColor) => (
-    Div({ class: `flex items-start justify-center w-6 h-6 mr-3 ${iconColor}` }, [
+    Div({ class: `hidden md:flex items-start justify-center w-6 h-6 mr-3 ${iconColor}` }, [
         Icon({ size: 'lg' }, icon)
     ])
 );
