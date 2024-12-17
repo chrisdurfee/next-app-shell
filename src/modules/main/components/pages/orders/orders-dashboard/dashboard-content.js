@@ -35,7 +35,7 @@ export const DashboardHeader = () => (
  * @returns {object}
  */
 export const DashboardContent = () => {
-    return Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 md:p-6' }, [
+    return Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 sm:p-6' }, [
         DashboardHeader(),
         Div({ class: 'space-y-4' }, [
 
