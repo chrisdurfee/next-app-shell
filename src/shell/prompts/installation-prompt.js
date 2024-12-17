@@ -22,47 +22,6 @@ function PWAInstallBody(isIOSFallback)
 }
 
 /**
- * Creates the footer row with Cancel/Install buttons.
- *
- * @param {object} props
- * @returns {object}
- */
-function PWAInstallFooter({ onCancel, onInstall, isIOSFallback, promptEvent })
-{
-    return Div({ class: 'flex justify-end gap-2' }, [
-        Button({
-            variant: 'outline',
-            click: () => {
-                onCancel();
-            }
-        }, 'Cancel'),
-        Button({
-            variant: 'primary',
-            disabled: isIOSFallback,  // iOS fallback can't trigger a prompt
-            click: () =>
-            {
-                if (!isIOSFallback && promptEvent)
-                {
-                    // If we have a real promptEvent, show install prompt
-                    promptEvent.prompt();
-                    promptEvent.userChoice.then((choiceResult) =>
-                    {
-                        if (choiceResult.outcome === 'accepted')
-                        {
-                            onInstall();
-                        }
-                        else
-                        {
-                            onCancel();
-                        }
-                    });
-                }
-            }
-        }, isIOSFallback ? 'OK' : 'Install')
-    ]);
-}
-
-/**
  * This will get the description for the install prompt.
  *
  * @param {boolean} isIOSFallback
@@ -104,11 +63,7 @@ export const InstallPrompt = (props) =>
         getButtons()
         {
             return [
-                Button({ variant: 'outline', click: () =>
-                    {
-                        this.close();
-                    }
-                }, 'Cancel'),
+                Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
                 Button({
                     variant: 'primary',
                     disabled: isIOSFallback,  // iOS fallback can't trigger a prompt
