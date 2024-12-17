@@ -16,7 +16,7 @@ window.addEventListener('beforeinstallprompt', (e) =>
     // If we've already shown the prompt or the user dismissed/installed before, skip.
     if (localStorage.getItem(STORAGE_KEY) === 'true')
     {
-        return;
+        //return;
     }
 
     // Prevent the default mini-infobar from appearing on mobile
@@ -35,7 +35,7 @@ export const openInstallPrompt = () =>
      // If localStorage says user previously dismissed or installed,
     if (localStorage.getItem(STORAGE_KEY) === 'true')
     {
-        return;
+        //return;
     }
 
     const setToStorage = () => localStorage.setItem(STORAGE_KEY, 'true');
