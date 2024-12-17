@@ -24,7 +24,7 @@ export const TopBar = Atom((props, children) =>
  */
 export const MainColumn = Atom((props, children) =>
 {
-	props.class = 'col ' + (props.class || '');
+	props.class = 'col flex flex-auto flex-col ' + (props.class || '');
 
 	return {
 		...props,
