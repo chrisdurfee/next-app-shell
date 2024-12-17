@@ -7,7 +7,7 @@
  */
 export const Configs =
 {
-	appName: 'Example',
+	APP_NAME: 'Example App',
 
 	/**
 	 * This will set the base URL for the app.

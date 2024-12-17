@@ -1,7 +1,29 @@
+import { Div, P } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Icons } from "@components/icons/icons.js";
 import { Dialog } from "@components/molecules/dialogs/dialog.js";
+import { Icon } from "../../components/atoms/icon.js";
+import { Configs } from "../../configs.js";
+
+const Step = (props) => (
+    Div({ class: 'flex items-center gap-2' }, [
+        P({ class: 'text-sm' }, props.step),
+        props.icon && Icon(props.icon)
+    ])
+)
+
+/**
+ * This will get the iOS instructions for the install prompt.
+ *
+ * @returns {object}
+ */
+const iOSInstructions = () =>
+    Div({ class: 'space-y-4 p-4' }, [
+        Div({ class: 'border-t my-2' }),
+        Step({ step: '1. Tap the Share button', icon: Icons.apple.share }),
+        Step({ step: '2. Select "Add to Home Screen"', icon: Icons.circlePlus }),
+    ]);
 
 /**
  * This will get the description for the install prompt.
@@ -12,7 +34,7 @@ import { Dialog } from "@components/molecules/dialogs/dialog.js";
 const getDescription = (isIOSFallback) =>
 {
     return isIOSFallback
-        ? "On iOS, tap the share icon in Safari, then choose 'Add to Home Screen.'"
+        ? "Would you like to install this app and add it to your home screen?"
         : "Would you like to install this app and add it to your home screen?";
 };
 
@@ -29,16 +51,10 @@ const PromptButtons = (props) =>
 
     return [
         Button({ variant: 'outline', click: (e, parent) => parent.close() }, 'Not Now'),
-        Button({
+        (!isIOSFallback) && Button({
             variant: 'primary',
             click: (e, parent) =>
             {
-                if (isIOSFallback)
-                {
-                    parent.close();
-                    return;
-                }
-
                 promptEvent.prompt();
                 promptEvent.userChoice.then((choiceResult) =>
                 {
@@ -53,7 +69,7 @@ const PromptButtons = (props) =>
                     parent.close();
                 });
             }
-        }, isIOSFallback ? 'OK' : 'Install')
+        }, 'Install')
     ];
 };
 
@@ -74,7 +90,7 @@ export const InstallPrompt = (props) =>
 
     return new Dialog({
         icon: Icons.download,
-        title: "Install App",
+        title: `Install ${Configs.APP_NAME}`,
         description: getDescription(isIOSFallback),
         size: 'sm',
 
@@ -88,5 +104,7 @@ export const InstallPrompt = (props) =>
             return PromptButtons(props);
         },
         onClose
-    });
+    }, [
+        isIOSFallback && iOSInstructions()
+    ]);
 }
