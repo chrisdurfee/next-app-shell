@@ -19,7 +19,7 @@ const Step = (props) => (
  * @returns {object}
  */
 const iOSInstructions = () =>
-    Div({ class: 'space-y-4 p-4' }, [
+    Div({ class: 'space-y-4' }, [
         Div({ class: 'border-t my-2' }),
         Step({ step: '1. Tap the Share button', icon: Icons.apple.share }),
         Step({ step: '2. Select "Add to Home Screen"', icon: Icons.circlePlus }),
