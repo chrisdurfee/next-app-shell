@@ -3,11 +3,6 @@
 	pointer-events: none !important;
 }
 
-.app-nav-container.ignoreHover,
-.app-nav-container.ignoreHover * {
-	pointer-events: none !important;
-}
-
 @media (max-width: 640px) {
 
 	.app-nav-container {
