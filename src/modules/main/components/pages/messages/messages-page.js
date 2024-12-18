@@ -1,7 +1,7 @@
 import { Div, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BlankPage } from "@components/pages/blank-page.js";
-import { MESSAGES_THREAD } from "./messages-thread.js";
+import { MESSAGES_THREADS } from "./messages-threads.js";
 import { ThreadContentSwitch } from "./thread/thread-content-switch.js";
 import { ThreadList } from "./thread/thread-list.js";
 
@@ -29,7 +29,7 @@ export const MessagesPage = () =>
         setData()
         {
             return new Data({
-                items: MESSAGES_THREAD
+                items: MESSAGES_THREADS
             });
         },
 
