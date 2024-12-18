@@ -1,7 +1,6 @@
 import { Div, Span } from "@base-framework/atoms";
-import { DateTime } from "@base-framework/base";
-import { DynamicTime } from "@base-framework/organisms";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
 
 /**
  * This will create the time time atom.
@@ -11,14 +10,8 @@ import { Avatar } from "@components/molecules/avatars/avatar.js";
  */
 const Time = (time) => (
     Span({ class: "ml-auto text-xs text-foreground" }, [
-        new DynamicTime({
-            dateTime: time,
-            filter(date)
-            {
-                // convert to local time
-                const localTime = DateTime.getLocalTime(date, true);
-                return DateTime.getTimeFrame(localTime);
-            }
+        TimeFrame({
+            dateTime: time
         })
     ])
 );

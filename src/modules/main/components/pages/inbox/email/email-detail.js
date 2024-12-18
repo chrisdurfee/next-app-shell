@@ -118,7 +118,7 @@ export const EmailDetail = Jot(
 
                         // Content Section
                         Div({ class: 'flex flex-grow flex-col overflow-y-auto' }, [
-                            Pre({ class: "text-sm text-foreground mt-2 pb-40 whitespace-pre-line" }, message.content),
+                            Pre({ class: "text-sm text-foreground mt-2 pb-40 whitespace-pre-line font-sans" }, message.content),
                         ]),
 
                         // Composer Section
