@@ -141,7 +141,7 @@ export const AvatarPage = () => (
             // Status Indicator
             DocSection({
                 title: 'Status Indicator',
-                description: 'A small status indicator for online, offline, busy, or away statuses.',
+                description: 'A small status indicator for online, offline, busy, or away statuses. This will bind to the data or state status of the parent component.',
                 preview: [
                     Div({
                         class: 'relative',
