@@ -29,9 +29,8 @@ export const STATUS_CLASS = {
  * @param {string} status
  * @returns {string}
  */
-export const getStatusClass = (status) =>
+export const getStatusClass = (status = '') =>
 {
     status = status.toUpperCase();
-    console.log(status);
     return STATUS_CLASS[status] || STATUS_CLASS.OFFLINE;
 };
