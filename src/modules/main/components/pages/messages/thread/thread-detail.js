@@ -1,4 +1,4 @@
-import { Div, OnState, Span } from "@base-framework/atoms";
+import { Div, Span } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
@@ -76,22 +76,11 @@ export const ThreadDetail = Jot(
 
         return Div({ class: "flex flex-auto flex-col w-full min-h-screen bg-background" },
         [
-            OnState("loaded", (loaded) =>
-            {
-                if (!loaded || !currentThread)
-                {
-                    return Div([
-                        HeaderSkeleton(),
-                        ThreadSkeleton()
-                    ]);
-                }
-
-                return Div({ class: "flex flex-col flex-auto" }, [
-                    ConversationHeader(currentThread),
-                    ConversationMessages(currentThread),
-                    new ThreadComposer({ placeholder: "Type something..." })
-                ]);
-            })
+            Div({ class: "flex flex-col flex-auto" }, [
+                ConversationHeader(currentThread),
+                ConversationMessages(currentThread),
+                new ThreadComposer({ placeholder: "Type something..." })
+            ])
         ]);
     }
 });
