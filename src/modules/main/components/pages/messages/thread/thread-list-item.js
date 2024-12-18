@@ -13,11 +13,11 @@ import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
  * - Two lines of text and a small time skeleton on the right
  */
 const ThreadListItemSkeleton = () =>
-    Div({ class: "flex items-center gap-3 p-3 hover:bg-muted rounded-md" }, [
+    Div({ class: "flex items-center gap-3 p-4 lg:p-5 hover:bg-muted rounded-md" }, [
         Skeleton({ shape: "circle", width: "w-12", height: "h-12", class: "flex-none" }),
         Div({ class: "flex flex-col flex-1 gap-1" }, [
             Skeleton({ width: "w-1/2", height: "h-4", class: "rounded" }),  // Name
-            Skeleton({ width: "w-2/3", height: "h-3", class: "rounded" })   // Message snippet
+            Skeleton({ width: "w-2/3", height: "h-3", class: "rounded mt-1" })   // Message snippet
         ]),
         Skeleton({ width: "w-10", height: "h-3", class: "rounded" })        // Timestamp
     ]);
@@ -59,7 +59,7 @@ export const ThreadListItem = Jot(
                 return A({
                     href: `messages/${route.page}/${msg.id}`,
                     class: `
-                        flex items-center gap-3 p-3 rounded-md hover:bg-muted/50
+                        flex items-center gap-3 p-4 lg:p-5 rounded-md hover:bg-muted/50
                         focus:outline-none focus:ring-2 focus:ring-offset-2
                     `,
 
