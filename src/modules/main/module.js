@@ -7,6 +7,7 @@ import ClientListPage from './components/pages/clients/client-list-page.js';
 import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 import { HomePage } from './components/pages/home/home-page.js';
 import InboxPage from './components/pages/inbox/inbox-page.js';
+import MessagesPage from './components/pages/messages/messages-page.js';
 import AlbumPage from './components/pages/music/album-page/album-page.js';
 import OrdersDashboard from './components/pages/orders/orders-dashboard/orders-dashboard.js';
 import SettingsPage from './components/pages/settings/settings-page.js';
@@ -25,6 +26,11 @@ const routes = Module.convertRoutes(
      * Inbox routes
      */
     { path: '/inbox/:page?/:messageId?*', component: InboxPage(), title: 'Inbox' },
+
+    /**
+     * Messages routes
+     */
+    { path: '/messages/:page?/:messageId?*', component: MessagesPage(), title: 'Messages' },
 
     /**
      * Dashboard routes
@@ -92,7 +98,8 @@ const links =
     { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 },
     { label: 'Dashboard', href: 'dashboard', icon: Icons.barChart, mobileOrder: 4 },
     { label: 'Orders', href: 'orders/orders-dashboard', icon: Icons.shoppingCart, mobileOrder: 10 },
-    { label: 'Inbox', href: 'inbox', icon: Icons.chat.text, mobileOrder: 3 },
+    { label: 'Inbox', href: 'inbox', icon: Icons.envelope.default, mobileOrder: 3 },
+    { label: 'Messages', href: 'messages', icon: Icons.chat.text, mobileOrder: 3 },
     { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 },
     { label: 'Calendar', href: 'calendar/month', icon: Icons.calendar.default, mobileOrder: 9 },
     { label: 'List', href: 'list', icon: Icons.list.four, mobileOrder: 8 },

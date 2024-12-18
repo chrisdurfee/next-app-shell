@@ -1,6 +1,7 @@
 import { Div, H4, P, Span } from "@base-framework/atoms";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
+import { StaticStatusIndicator } from "../../../../../../components/molecules/avatars/static-status-indicator.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -167,6 +168,22 @@ Div({
     }
 }, [
     StatusIndicator()
+])`
+            }),
+
+            DocSection({
+                title: 'Static Status Indicator',
+                description: 'A small status indicator for online, offline, busy, or away statuses.',
+                preview: [
+                    Div({ class: 'relative' }, [
+                        StaticStatusIndicator('online')
+                    ])
+                ],
+                code: `import { Div, H4, P, Span } from "@base-framework/atoms";
+import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
+
+Div({ class: 'relative' }, [
+    StaticStatusIndicator('online')
 ])`
             })
         ]
