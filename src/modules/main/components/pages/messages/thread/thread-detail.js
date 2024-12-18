@@ -201,6 +201,6 @@ const MessageBubble = (msg) =>
  */
 const AudioBubble = (url, duration) =>
     Div({ class: "flex items-center gap-3 mt-1" }, [
-        Div({ class: "bg-background p-2 rounded-md text-sm" }, "Audio wave placeholder"),
+        Div({ class: "bg-background/50 p-2 rounded-md text-sm" }, "Audio wave placeholder"),
         Span({ class: "text-xs" }, duration || "00:00")
     ]);
