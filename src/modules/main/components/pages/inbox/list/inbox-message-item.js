@@ -100,14 +100,14 @@ export const InboxMessageItem = Jot(
         setTimeout(() => this.state.loaded = true, DELAY);
 
         return Div({
-            class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-muted",
+            class: "flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-muted/50",
 
             /**
              * This wil add the selected class to the message item
              * when the message id matches the route id.
              */
             onSet: [route, "messageId", {
-                'bg-accent': message.id.toString()
+                'bg-muted/50': message.id.toString()
             }],
 
             /**
