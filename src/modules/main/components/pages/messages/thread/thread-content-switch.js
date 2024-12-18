@@ -19,8 +19,7 @@ export const ThreadContentSwitch = (props) =>
             {
                 uri: 'messages/:page/:messageId*',
                 component: new DockableOverlay([
-                    OnRoute('messageId', (messageId) =>
-                        (!messageId)
+                    OnRoute('messageId', (messageId) => (!messageId)
                         ? ThreadEmptyState()
                         : new ThreadDetail({
                             messageId,

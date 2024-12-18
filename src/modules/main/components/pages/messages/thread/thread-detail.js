@@ -1,5 +1,6 @@
-import { Div, Img, OnState, Span } from "@base-framework/atoms";
+import { Div, OnState, Span } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
+import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { Icons } from "@components/icons/icons.js";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
@@ -132,13 +133,13 @@ const ConversationHeader = (thread) =>
 
         // Right side icons (video/call)
         Div({ class: "ml-auto flex items-center gap-4" }, [
-            Img({
-                src: Icons.videoCamera,
-                class: "w-5 h-5 cursor-pointer text-muted-foreground hover:text-foreground"
+            Button({
+                variant: "icon",
+                icon: Icons.videoCamera.default
             }),
-            Img({
-                src: Icons.phone,
-                class: "w-5 h-5 cursor-pointer text-muted-foreground hover:text-foreground"
+            Button({
+                variant: "icon",
+                icon: Icons.phone.default
             })
         ])
     ]);
