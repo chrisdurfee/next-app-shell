@@ -1,4 +1,4 @@
-import { Div, Img, Span } from "@base-framework/atoms";
+import { Div, Img, OnState, Span } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { Icons } from "@components/icons/icons.js";
@@ -38,7 +38,7 @@ const HeaderSkeleton = () =>
  * Skeleton placeholders for the chat messages.
  */
 const ThreadSkeleton = () =>
-    Div({ class: "flex flex-col gap-2 p-4" }, [
+    Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto p-4" }, [
         Skeleton({ width: "w-1/2", height: "h-8", class: "rounded" }),
         Skeleton({ width: "w-2/3", height: "h-8", class: "rounded self-end" }),
         Skeleton({ width: "w-1/4", height: "h-8", class: "rounded" }),
@@ -69,28 +69,23 @@ export const ThreadDetail = Jot(
         const LOADING_DELAY = 500;
         setTimeout(() => (this.state.loaded = true), LOADING_DELAY);
 
-        return Div({ class: "flex flex-auto flex-col w-full bg-background" },
+        return Div({ class: "flex flex-auto flex-col w-full min-h-screen bg-background" },
         [
-            Div({
-                onState: [
-                    "loaded",
-                    (loaded) =>
-                    {
-                        if (!loaded || !currentThread)
-                        {
-                            return Div({}, [
-                                HeaderSkeleton(),
-                                ThreadSkeleton()
-                            ]);
-                        }
+            OnState("loaded", (loaded) =>
+            {
+                if (!loaded || !currentThread)
+                {
+                    return Div([
+                        HeaderSkeleton(),
+                        ThreadSkeleton()
+                    ]);
+                }
 
-                        return Div({ class: "flex flex-col flex-auto" }, [
-                            ConversationHeader(currentThread),
-                            ConversationMessages(currentThread),
-                            new ThreadComposer({ placeholder: "Type something..." })
-                        ]);
-                    }
-                ]
+                return Div({ class: "flex flex-col flex-auto" }, [
+                    ConversationHeader(currentThread),
+                    ConversationMessages(currentThread),
+                    new ThreadComposer({ placeholder: "Type something..." })
+                ]);
             })
         ]);
     }
@@ -120,12 +115,9 @@ const ConversationHeader = (thread) =>
             ])
         ]),
 
-        // Sender name + possibly a label (here we keep "PRO" as example, could be dynamic)
         Div({ class: "flex flex-col" }, [
             Span({ class: "font-semibold text-base text-foreground" }, thread.sender),
-            // For demonstration, if needed you can show a label:
-            // Span({ class: "text-xs text-primary" }, "PRO")
-            // Or remove if not applicable:
+            Span({ class: "text-xs text-muted-foreground" }, "PRO")
         ]),
 
         // Right side icons (video/call)
@@ -150,8 +142,9 @@ const ConversationHeader = (thread) =>
  * @returns {object}
  */
 const ConversationMessages = (thread) =>
-    Div({ class: "flex flex-col flex-auto overflow-y-auto p-4 gap-4" },
-    thread.thread.map((msg) => MessageBubble(msg)));
+    Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
+        Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto" }, thread.thread.map((msg) => MessageBubble(msg)))
+    ]);
 
 /**
  * MessageBubble

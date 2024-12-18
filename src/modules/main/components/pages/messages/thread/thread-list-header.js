@@ -12,7 +12,7 @@ import TabGroup from "@components/organisms/tabs/tab-group.js";
 const AddMessageButton = () => (
     Div({ class: 'flex mr-2' }, [
         Tooltip({ content: 'Add Message', position: 'left' }, [
-            Button({ variant: 'icon', class: 'primary', icon: Icons.circlePlus })
+            Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus })
         ])
     ])
 );

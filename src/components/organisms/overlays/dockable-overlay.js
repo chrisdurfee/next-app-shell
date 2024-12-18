@@ -42,11 +42,21 @@ export class DockableOverlay extends Overlay
                         {
                             ele.className = this.getDockedClassName();
                             originalContainer.appendChild(ele);
+
+                            /**
+                             * This will resume page scrolling.
+                             */
+                            document.documentElement.style.overflow = 'auto';
                         }
                         else
                         {
                             ele.className = this.getClassName();
                             app.appShell.panel.appendChild(ele);
+
+                            /**
+                             * This will hide the scroll bar so the page doesn't jump.
+                             */
+                            document.documentElement.style.overflow = 'hidden';
                         }
                     }]
                 ]
@@ -132,6 +142,16 @@ export class DockableOverlay extends Overlay
     onResize()
     {
         this.state.docked = this.canDock();
+    }
+
+    /**
+     * This will resume scrolling when the overlay is being removed.
+     *
+     * @returns {void}
+     */
+    breforeDestroy()
+    {
+        document.documentElement.style.overflow = 'auto';
     }
 }
 
