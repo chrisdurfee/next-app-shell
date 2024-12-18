@@ -1,6 +1,6 @@
 import { Div, On, OnRoute, OnState } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { MESSAGES_THREAD } from "../messages-thread.js";
+import { MESSAGES_THREADS } from "../messages-threads.js";
 import { ListEmptyState } from "./list-empty-state.js";
 import { ThreadListHeader } from "./thread-list-header.js";
 import { ThreadListItem } from "./thread-list-item.js";
@@ -42,7 +42,7 @@ export const ThreadList = () => (
                     app.navigate('messages/all', null, true);
                 }
 
-                let items = MESSAGES_THREAD;
+                let items = MESSAGES_THREADS;
                 if (page !== 'all')
                 {
                     items = [];
@@ -53,7 +53,7 @@ export const ThreadList = () => (
             }),
             OnState('filter', (filter, ele, { route, data }) =>
             {
-                let items = MESSAGES_THREAD;
+                let items = MESSAGES_THREADS;
                 if (route.page !== 'all')
                 {
                     items = [];

@@ -5,17 +5,20 @@ import { Icons } from "@components/icons/icons.js";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
 import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
-import { MESSAGES_THREAD } from "../messages-thread.js";
+import { MESSAGES_THREADS } from "../messages-threads.js";
 import { ThreadComposer } from "./thread-composer.js";
 
 /**
- * Finds all messages for a specific conversation.
- * For now, we treat MESSAGES_THREAD as a single conversation.
+ * Finds the thread object for a given threadId.
+ *
+ * @param {string|number} threadId - The ID of the selected thread.
+ * @returns {object|null} The full thread object or null if not found.
  */
-const getConversation = (routeId) =>
-    // If we had multiple threads, we’d filter by a threadId.
-    // Here, we just return the entire array as the "conversation."
-    MESSAGES_THREAD;
+const getThreadById = (threadId) =>
+{
+    const idNum = parseInt(threadId, 10);
+    return MESSAGES_THREADS.find((t) => t.id === idNum) || null;
+};
 
 /**
  * HeaderSkeleton
@@ -44,7 +47,10 @@ const ThreadSkeleton = () =>
 /**
  * ThreadDetail
  *
- * Displays a conversation with a header and list of messages.
+ * Displays a conversation with a header and list of messages based on the new structure:
+ * Each thread object has top-level fields for the sender/avatar and a .thread array for messages.
+ *
+ * @class
  */
 export const ThreadDetail = Jot(
 {
@@ -57,20 +63,20 @@ export const ThreadDetail = Jot(
      */
     render()
     {
-        const conversation = getConversation(this.messageId);
-        // If you had multiple threads, you'd filter by a "threadId" param.
+        // Get the full thread object by messageId
+        const currentThread = getThreadById(this.messageId);
 
-        setTimeout(() => (this.state.loaded = true), 500);
+        const LOADING_DELAY = 500;
+        setTimeout(() => (this.state.loaded = true), LOADING_DELAY);
 
         return Div({ class: "flex flex-auto flex-col w-full bg-background" },
         [
-            // onState for skeleton logic
             Div({
                 onState: [
                     "loaded",
                     (loaded) =>
                     {
-                        if (!loaded)
+                        if (!loaded || !currentThread)
                         {
                             return Div({}, [
                                 HeaderSkeleton(),
@@ -79,8 +85,8 @@ export const ThreadDetail = Jot(
                         }
 
                         return Div({ class: "flex flex-col flex-auto" }, [
-                            ConversationHeader(),
-                            ConversationMessages({ conversation }),
+                            ConversationHeader(currentThread),
+                            ConversationMessages(currentThread),
                             new ThreadComposer({ placeholder: "Type something..." })
                         ]);
                     }
@@ -94,28 +100,35 @@ export const ThreadDetail = Jot(
  * ConversationHeader
  *
  * A top bar: avatar, name, and right-side icons (call, video).
+ * Now uses `thread` object fields: avatar, sender, status, etc.
+ *
+ * @param {object} thread - The full thread object.
+ * @returns {object}
  */
-const ConversationHeader = () =>
+const ConversationHeader = (thread) =>
     Div({ class: "flex items-center gap-3 p-4 border-b" }, [
-        // Left side avatar and name
+        // Left side avatar + status
         Div({ class: "relative" }, [
             Avatar({
-                src: "https://example.com/avatar-frances.jpg",
-                alt: "Frances Swann",
-                fallbackText: "FS",
+                src: thread.avatar,
+                alt: thread.sender,
+                fallbackText: thread.sender,
                 size: "md"
             }),
             Div({ class: "absolute bottom-0 right-0" }, [
-                StaticStatusIndicator("online") // or a dynamic status
+                StaticStatusIndicator(thread.status)
             ])
         ]),
-        // Name + "Pro" indicator
+
+        // Sender name + possibly a label (here we keep "PRO" as example, could be dynamic)
         Div({ class: "flex flex-col" }, [
-            Span({ class: "font-semibold text-base text-foreground" }, "Frances Swann"),
-            Span({ class: "text-xs text-primary" }, "PRO")
+            Span({ class: "font-semibold text-base text-foreground" }, thread.sender),
+            // For demonstration, if needed you can show a label:
+            // Span({ class: "text-xs text-primary" }, "PRO")
+            // Or remove if not applicable:
         ]),
 
-        // Right side icons
+        // Right side icons (video/call)
         Div({ class: "ml-auto flex items-center gap-4" }, [
             Img({
                 src: Icons.videoCamera,
@@ -131,22 +144,19 @@ const ConversationHeader = () =>
 /**
  * ConversationMessages
  *
- * Renders the actual chat bubble UI for each message (sent or received).
+ * Renders the chat bubble UI for each message in thread.thread array.
  *
- * @param {object} props
- * @param {array} props.conversation
+ * @param {object} thread - The full thread object with a .thread array.
  * @returns {object}
  */
-const ConversationMessages = ({ conversation }) =>
+const ConversationMessages = (thread) =>
     Div({ class: "flex flex-col flex-auto overflow-y-auto p-4 gap-4" },
-    conversation.map((msg) => MessageBubble(msg)));
+    thread.thread.map((msg) => MessageBubble(msg)));
 
 /**
  * MessageBubble
  *
- * A single message bubble.
- * - If direction is "sent", bubble on right. If "received", bubble on left.
- * - Might show audio wave, images, etc.
+ * A single message bubble from thread.thread array.
  *
  * @param {object} msg
  * @returns {object}
@@ -179,16 +189,14 @@ const MessageBubble = (msg) =>
 /**
  * AudioBubble
  *
- * Renders a fake audio player row for demonstration.
+ * A placeholder for audio messages.
  *
  * @param {string} url
  * @param {string} duration
  * @returns {object}
  */
 const AudioBubble = (url, duration) =>
-    Div({ class: "flex items-center gap-3" }, [
-        Div({ class: "bg-background p-2 rounded-md text-sm" }, [
-            "Audio wave placeholder"
-        ]),
+    Div({ class: "flex items-center gap-3 mt-1" }, [
+        Div({ class: "bg-background p-2 rounded-md text-sm" }, "Audio wave placeholder"),
         Span({ class: "text-xs" }, duration || "00:00")
     ]);
