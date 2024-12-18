@@ -46,7 +46,7 @@ export class DockableOverlay extends Overlay
                             /**
                              * This will resume page scrolling.
                              */
-                            document.documentElement.style.overflow = 'auto';
+                            document.documentElement.style.overflowY = 'auto';
                         }
                         else
                         {
@@ -56,7 +56,7 @@ export class DockableOverlay extends Overlay
                             /**
                              * This will hide the scroll bar so the page doesn't jump.
                              */
-                            document.documentElement.style.overflow = 'hidden';
+                            document.documentElement.style.overflowY = 'hidden';
                         }
                     }]
                 ]
@@ -149,9 +149,9 @@ export class DockableOverlay extends Overlay
      *
      * @returns {void}
      */
-    breforeDestroy()
+    beforeDestroy()
     {
-        document.documentElement.style.overflow = 'auto';
+        document.documentElement.style.overflowY = 'auto';
     }
 }
 

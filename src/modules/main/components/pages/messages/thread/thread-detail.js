@@ -5,6 +5,7 @@ import { Icons } from "@components/icons/icons.js";
 import { Avatar } from "@components/molecules/avatars/avatar.js";
 import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
 import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
+import { BackButton } from "@components/organisms/overlays/overlay.js";
 import { MESSAGES_THREADS } from "../messages-threads.js";
 import { ThreadComposer } from "./thread-composer.js";
 
@@ -27,6 +28,9 @@ const getThreadById = (threadId) =>
  */
 const HeaderSkeleton = () =>
     Div({ class: "flex items-center gap-3 p-4 border-b" }, [
+        Div({ class: "flex lg:hidden" }, [
+            Skeleton({ width: "w-10", height: "h-10" })
+        ]),
         Skeleton({ shape: "circle", width: "w-12", height: "h-12" }),
         Skeleton({ width: "w-32", height: "h-4" }),
         Skeleton({ width: "w-16", height: "h-4", class: "ml-auto" })
@@ -103,6 +107,12 @@ export const ThreadDetail = Jot(
 const ConversationHeader = (thread) =>
     Div({ class: "flex items-center gap-3 p-4 border-b" }, [
         // Left side avatar + status
+        Div({ class: 'flex lg:hidden' }, [
+            BackButton({
+                margin: 'm-0 ml-0',
+                backUrl: 'messages',
+            })
+        ]),
         Div({ class: "relative" }, [
             Avatar({
                 src: thread.avatar,
