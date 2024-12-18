@@ -11,7 +11,7 @@ import TabGroup from "@components/organisms/tabs/tab-group.js";
 export const ThreadListHeader = () => (
     Header({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
         Div({ class: "flex justify-between items-center" }, [
-            H2({ class: "text-xl font-bold" }, "Messages"),
+            H2({ class: "pl-2 lg:pl-0 text-3xl lg:text-xl font-bold" }, "Messages"),
 
             // Filter tabs: All / Unread
             new TabGroup({

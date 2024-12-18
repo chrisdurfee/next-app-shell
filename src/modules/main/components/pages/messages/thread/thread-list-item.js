@@ -87,13 +87,13 @@ export const ThreadListItem = Jot(
                     // Text content
                     Div({ class: "flex flex-col flex-1" }, [
                         Div({ class: "flex items-center justify-between" }, [
-                            P({ class: "text-sm font-semibold text-foreground" }, msg.sender),
+                            P({ class: "font-semibold text-base text-foreground" }, msg.sender),
                             Div({ class: "text-xs text-muted-foreground" },
                                 TimeFrame({ dateTime: msg.time })
                             )
                         ]),
-                        Div({ class: "flex items-center justify-between" }, [
-                            P({ class: "text-xs text-muted-foreground line-clamp-1" }, msg.content),
+                        Div({ class: "flex items-center justify-between mt-1" }, [
+                            P({ class: "text-sm text-muted-foreground line-clamp-1" }, msg.content),
 
                             // Unread count badge if any
                             (msg.unreadCount > 0) && Div({
