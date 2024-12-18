@@ -74,7 +74,7 @@ export const ThreadListItem = Jot(
                      * Highlights the current item if selected (based on route messageId).
                      */
                     onSet: [route, "messageId", {
-                        'bg-accent/muted': thread.id.toString()
+                        'bg-muted/50': thread.id.toString()
                     }],
                 }, [
                     // Avatar + status
