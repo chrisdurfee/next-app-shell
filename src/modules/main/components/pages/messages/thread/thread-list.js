@@ -18,7 +18,7 @@ const filterMessages = (messages, filter) =>
 {
     if (filter === 'unread')
     {
-        return messages.filter(msg => !msg.read);
+        return messages.filter(msg => msg.unreadCount >= 1);
     }
     return messages;
 };
