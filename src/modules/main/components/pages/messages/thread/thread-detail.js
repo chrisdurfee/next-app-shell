@@ -1,4 +1,4 @@
-import { Div, Span } from "@base-framework/atoms";
+import { Div, OnState, Span } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
@@ -28,13 +28,15 @@ const getThreadById = (threadId) =>
  * Skeleton for the conversation header while loading.
  */
 const HeaderSkeleton = () =>
-    Div({ class: "flex items-center gap-3 p-4 border-b" }, [
-        Div({ class: "flex lg:hidden" }, [
-            Skeleton({ width: "w-10", height: "h-10" })
-        ]),
-        Skeleton({ shape: "circle", width: "w-12", height: "h-12" }),
-        Skeleton({ width: "w-32", height: "h-4" }),
-        Skeleton({ width: "w-16", height: "h-4", class: "ml-auto" })
+    Div({ class: "flex items-center p-4 border-b" }, [
+        Div({ class: 'flex flex-auto items-center gap-3 lg:max-w-5xl m-auto' }, [
+            Div({ class: "flex lg:hidden" }, [
+                Skeleton({ width: "w-10", height: "h-10" })
+            ]),
+            Skeleton({ shape: "circle", width: "w-12", height: "h-12" }),
+            Skeleton({ width: "w-32", height: "h-4" }),
+            Skeleton({ width: "w-16", height: "h-4", class: "ml-auto" })
+        ])
     ]);
 
 /**
@@ -76,11 +78,22 @@ export const ThreadDetail = Jot(
 
         return Div({ class: "flex flex-auto flex-col w-full min-h-screen bg-background" },
         [
-            Div({ class: "flex flex-col flex-auto" }, [
-                ConversationHeader(currentThread),
-                ConversationMessages(currentThread),
-                new ThreadComposer({ placeholder: "Type something..." })
-            ])
+            OnState("loaded", (loaded) =>
+            {
+                if (!loaded || !currentThread)
+                {
+                    return Div([
+                        HeaderSkeleton(),
+                        ThreadSkeleton()
+                    ]);
+                }
+
+                return Div({ class: "flex flex-col flex-auto" }, [
+                    ConversationHeader(currentThread),
+                    ConversationMessages(currentThread),
+                    new ThreadComposer({ placeholder: "Type something..." })
+                ]);
+            })
         ]);
     }
 });
@@ -95,41 +108,43 @@ export const ThreadDetail = Jot(
  * @returns {object}
  */
 const ConversationHeader = (thread) =>
-    Div({ class: "flex items-center gap-3 p-4 border-b" }, [
-        // Left side avatar + status
-        Div({ class: 'flex lg:hidden' }, [
-            BackButton({
-                margin: 'm-0 ml-0',
-                backUrl: 'messages',
-            })
-        ]),
-        Div({ class: "relative" }, [
-            Avatar({
-                src: thread.avatar,
-                alt: thread.sender,
-                fallbackText: thread.sender,
-                size: "md"
-            }),
-            Div({ class: "absolute bottom-0 right-0" }, [
-                StaticStatusIndicator(thread.status)
+    Div({ class: "flex items-center p-4 border-b" }, [
+        Div({ class: 'flex flex-auto items-center gap-3 lg:max-w-5xl m-auto' }, [
+            // Left side avatar + status
+            Div({ class: 'flex lg:hidden' }, [
+                BackButton({
+                    margin: 'm-0 ml-0',
+                    backUrl: 'messages',
+                })
+            ]),
+            Div({ class: "relative" }, [
+                Avatar({
+                    src: thread.avatar,
+                    alt: thread.sender,
+                    fallbackText: thread.sender,
+                    size: "md"
+                }),
+                Div({ class: "absolute bottom-0 right-0" }, [
+                    StaticStatusIndicator(thread.status)
+                ])
+            ]),
+
+            Div({ class: "flex flex-col" }, [
+                Span({ class: "font-semibold text-base text-foreground" }, thread.sender),
+                Span({ class: "text-xs text-muted-foreground" }, "PRO")
+            ]),
+
+            // Right side icons (video/call)
+            Div({ class: "ml-auto flex items-center gap-4" }, [
+                Button({
+                    variant: "icon",
+                    icon: Icons.videoCamera.default
+                }),
+                Button({
+                    variant: "icon",
+                    icon: Icons.phone.default
+                })
             ])
-        ]),
-
-        Div({ class: "flex flex-col" }, [
-            Span({ class: "font-semibold text-base text-foreground" }, thread.sender),
-            Span({ class: "text-xs text-muted-foreground" }, "PRO")
-        ]),
-
-        // Right side icons (video/call)
-        Div({ class: "ml-auto flex items-center gap-4" }, [
-            Button({
-                variant: "icon",
-                icon: Icons.videoCamera.default
-            }),
-            Button({
-                variant: "icon",
-                icon: Icons.phone.default
-            })
         ])
     ]);
 
