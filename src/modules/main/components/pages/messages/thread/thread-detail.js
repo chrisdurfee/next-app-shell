@@ -1,5 +1,6 @@
 import { Div, OnState, Span } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { DateTime, Jot } from "@base-framework/base";
+import { List } from "@base-framework/organisms";
 import { Button } from "@components/atoms/buttons/buttons.js";
 import { Skeleton } from "@components/atoms/skeleton.js";
 import { Icons } from "@components/icons/icons.js";
@@ -26,6 +27,8 @@ const getThreadById = (threadId) =>
  * HeaderSkeleton
  *
  * Skeleton for the conversation header while loading.
+ *
+ * @returns {object}
  */
 const HeaderSkeleton = () =>
     Div({ class: "flex items-center p-4 border-b" }, [
@@ -43,6 +46,8 @@ const HeaderSkeleton = () =>
  * ThreadSkeleton
  *
  * Skeleton placeholders for the chat messages.
+ *
+ * @returns {object}
  */
 const ThreadSkeleton = () =>
     Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto p-4" }, [
@@ -149,6 +154,20 @@ const ConversationHeader = (thread) =>
     ]);
 
 /**
+ * This will create a date divider row.
+ *
+ * @param {string} date
+ * @returns {object}
+ */
+const DateDivider = (date) => (
+    Div({ class: "flex items-center justify-center mt-4" }, [
+        Span({ class: "text-xs text-muted-foreground bg-background px-2" }, [
+            TimeFrame({ dateTime: date })
+        ])
+    ])
+);
+
+/**
  * ConversationMessages
  *
  * Renders the chat bubble UI for each message in thread.thread array.
@@ -158,7 +177,21 @@ const ConversationHeader = (thread) =>
  */
 const ConversationMessages = (thread) =>
     Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
-        Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto" }, thread.thread.map((msg) => MessageBubble(msg)))
+        Div({ class: "flex flex-col w-full h-full max-w-none lg:max-w-5xl m-auto" }, [
+            new List({
+                cache: 'thread-list',
+                key: 'id',
+                items: thread.thread,
+                role: 'list',
+                divider: {
+                    itemProperty: 'time',
+                    layout: DateDivider,
+                    customCompare: (lastValue, value) => DateTime.format('standard', lastValue) !== DateTime.format('standard', value)
+                },
+                class: 'flex flex-col gap-4 ',
+                rowItem: (message) => MessageBubble(message)
+            })
+        ])
     ]);
 
 /**
