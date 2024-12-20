@@ -100,8 +100,8 @@ const UserList = Atom((props) =>
                         divider: {
                             itemProperty: 'name',
                             layout: (name) => (
-                                Div({ class: "flex items-center justify-center mt-4" }, [
-                                    Span({ class: "text-xs text-muted-foreground bg-background px-2" }, name[0])
+                                Div({ class: "flex mt-4" }, [
+                                    Span({ class: "text-sm font-bold text-muted-foreground px-2" }, name[0])
                                 ])
                             ),
                             customCompare: (lastValue, value) => lastValue[0] !== value[0]
@@ -110,34 +110,24 @@ const UserList = Atom((props) =>
                         rowItem: UserListItem
                     }),
                 ],
-                code: `import { UserListItem } from "@components/organisms/lists/user-list.js";
-import { List } from "@base-framework/organisms";
+                code: `import { List } from "@base-framework/organisms";
 
-/**
- * User List Atom
- *
- * @param {object} props
- * @returns {object}
- */
-const UserList = Atom((props) =>
-{
-    return new List({
-        cache: 'list',
-        key: 'name',
-        items: [
-        {
-            name: 'Leslie Alexander',
-            email: 'leslie.alexander@example.com',
-            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-            role: 'Co-Founder / CEO',
-            lastSeen: '2023-01-23T13:23Z',
-            status: 'offline'
-        }],
-        role: 'list',
-        class: 'divide-y divide-border',
-        rowItem: UserListItem
-    });
-});`
+new List({
+    key: 'id',
+    items: users,
+    role: 'list',
+    divider: {
+        itemProperty: 'name',
+        layout: (name) => (
+            Div({ class: "flex mt-4" }, [
+                Span({ class: "text-sm font-bold text-muted-foreground px-2" }, name[0])
+            ])
+        ),
+        customCompare: (lastValue, value) => lastValue[0] !== value[0]
+    },
+    class: 'flex flex-col gap-4 ',
+    rowItem: UserListItem
+})`
             })
         ]
     )
