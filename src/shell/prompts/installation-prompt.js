@@ -39,7 +39,7 @@ const iOSInstructions = () =>
  */
 const getDescription = (isIOSFallback) =>
 {
-    return "Would you like to install this app and add it to your home screen?";
+    return `Add ${Configs.APP_NAME} to your home screen for quick and easy access.`;
 };
 
 /**
@@ -73,7 +73,7 @@ const PromptButtons = (props) =>
                     parent.close();
                 });
             }
-        }, 'Install')
+        }, 'Add to homescreen')
     ];
 };
 
