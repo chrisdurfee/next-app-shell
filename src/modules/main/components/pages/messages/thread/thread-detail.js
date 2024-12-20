@@ -161,9 +161,7 @@ const ConversationHeader = (thread) =>
  */
 const DateDivider = (date) => (
     Div({ class: "flex items-center justify-center mt-4" }, [
-        Span({ class: "text-xs text-muted-foreground bg-background px-2" }, [
-            TimeFrame({ dateTime: date })
-        ])
+        Span({ class: "text-xs text-muted-foreground bg-background px-2" }, DateTime.format('standard', date))
     ])
 );
 
@@ -209,11 +207,15 @@ const MessageBubble = (msg) =>
         ? "bg-primary text-primary-foreground self-end rounded-tr-none"
         : "bg-muted text-foreground self-start rounded-tl-none";
 
-    return Div({ class: "flex flex-col max-w-[80%]" + (isSent ? " ml-auto" : " mr-auto") }, [
-        // Name + time
+    return Div({ class: `group flex flex-col max-w-[80%]` + (isSent ? " ml-auto" : " mr-auto") }, [
+        // Name + time (with hover effect for time)
         Div({ class: "mb-1 flex items-center" }, [
-            Span({ class: "text-xs text-muted-foreground" }, isSent ? "You" : msg.sender),
-            Span({ class: "text-xs text-muted-foreground ml-2" }, TimeFrame({ dateTime: msg.time }))
+            isSent
+                ? Span({ class: "text-xs text-muted-foreground mr-2 opacity-0 group-hover:opacity-100 transition-opacity" }, "You")
+                : Span({ class: "text-xs text-muted-foreground mr-2" }, msg.sender),
+            Span({
+                class: "opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out text-xs text-muted-foreground ml-2",
+            }, TimeFrame({ dateTime: msg.time }))
         ]),
         // The bubble
         Div({ class: `rounded-md p-3 ${bubbleClasses}` }, [
