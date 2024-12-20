@@ -67,7 +67,6 @@ export const ThreadListItem = Jot(
                     href: `messages/${route.page}/${thread.id}`,
                     class: `
                         flex items-center gap-3 p-4 lg:p-5 rounded-md hover:bg-muted/50
-                        focus:outline-none focus:ring-2 focus:ring-offset-2
                     `,
 
                     /**
