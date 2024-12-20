@@ -30,7 +30,7 @@ const TextCount = () => (
  * @returns {object}
  */
 const SendButton = () => (
-    Div({ class: "flex justify-between items-center mt-3" }, [
+    Div({ class: "flex justify-between" }, [
         Button({
             variant: "icon",
             click: () => console.log("Send email"),
@@ -99,8 +99,8 @@ export const ThreadComposer = Jot(
                     input: updateCharCount,
                     bind: this.bind
                 }),
-                Div({ class: 'flex flex-col items-end justify-end' }, [
-                    TextCount(),
+                Div({ class: 'flex flex-col' }, [
+                    //TextCount(),
                     SendButton()
                 ])
             ]),
