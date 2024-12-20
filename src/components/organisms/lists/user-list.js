@@ -110,7 +110,7 @@ export const UserListItem = Atom((user) =>
  * @param {object} props
  * @returns {object}
  */
-const UserList = Atom((props) =>
+export const UserList = Atom((props) =>
 {
     return new List({
         cache: 'list',

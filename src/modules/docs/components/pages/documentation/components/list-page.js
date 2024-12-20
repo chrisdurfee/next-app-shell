@@ -1,5 +1,6 @@
 import { H4, P } from "@base-framework/atoms";
-import UserList from "@components/organisms/lists/user-list.js";
+import { List } from "@base-framework/organisms";
+import { UserList, UserListItem } from "@components/organisms/lists/user-list.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -87,6 +88,57 @@ const UserList = Atom((props) =>
 
             H4({ class: 'text-lg font-bold' }, 'Performance'),
             P({ class: 'text-muted-foreground' }, 'The list will only update or re-render the items that have changed, improving performance. It uses a key to know when to update an item.'),
+
+            DocSection({
+                title: 'Row Dividers',
+                description: 'You can add dividers between rows to separate them visually. The List component supports custom dividers and can be used to group items by date or other properties.',
+                preview: [
+                    new List({
+                        key: 'id',
+                        items: users,
+                        role: 'list',
+                        divider: {
+                            itemProperty: 'name',
+                            layout: (name) => (
+                                Div({ class: "flex items-center justify-center mt-4" }, [
+                                    Span({ class: "text-xs text-muted-foreground bg-background px-2" }, name[0])
+                                ])
+                            ),
+                            customCompare: (lastValue, value) => lastValue[0] !== value[0]
+                        },
+                        class: 'flex flex-col gap-4 ',
+                        rowItem: UserListItem
+                    }),
+                ],
+                code: `import { UserListItem } from "@components/organisms/lists/user-list.js";
+import { List } from "@base-framework/organisms";
+
+/**
+ * User List Atom
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const UserList = Atom((props) =>
+{
+    return new List({
+        cache: 'list',
+        key: 'name',
+        items: [
+        {
+            name: 'Leslie Alexander',
+            email: 'leslie.alexander@example.com',
+            image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+            role: 'Co-Founder / CEO',
+            lastSeen: '2023-01-23T13:23Z',
+            status: 'offline'
+        }],
+        role: 'list',
+        class: 'divide-y divide-border',
+        rowItem: UserListItem
+    });
+});`
+            })
         ]
     )
 );
