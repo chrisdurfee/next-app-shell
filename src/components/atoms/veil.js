@@ -14,6 +14,16 @@ import { Jot } from "@base-framework/base";
 export const Veil = Jot(
 {
     /**
+	 * This will get the child scope instance of the component.
+	 *
+	 * @returns {object}
+	 */
+	getChildScope()
+	{
+		return this.parent ?? this;
+	},
+
+    /**
 	 * This will set the component context.
 	 *
 	 * @param {object|null} context
