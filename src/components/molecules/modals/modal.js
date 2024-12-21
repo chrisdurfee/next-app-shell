@@ -160,6 +160,17 @@ export class Modal extends Component
 	}
 
 	/**
+     * This will override the set up to use the app shell.
+     *
+     * @param {object} container
+     */
+    setup(container)
+    {
+        this.container = app.appShell.panel;
+        this.initialize();
+    }
+
+	/**
 	 * This will open the modal.
 	 *
 	 * @returns {void}
