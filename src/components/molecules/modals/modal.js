@@ -168,11 +168,6 @@ export class Modal extends Component
 	{
 		render(this);
 		this.showModal();
-
-		/**
-		 * This will prevent the body from scrolling when the modal is open.
-		 */
-		document.documentElement.style.overflowY = 'hidden';
 	}
 
 	/**
@@ -190,6 +185,11 @@ export class Modal extends Component
 		const DELAY = 10;
 		window.setTimeout(() => this.panel.showPopover(), DELAY);
         this.state.open = true;
+
+		/**
+		 * This will prevent the body from scrolling when the modal is open.
+		 */
+		document.documentElement.style.overflowY = 'hidden';
 	}
 
 	/**
@@ -207,6 +207,11 @@ export class Modal extends Component
 		{
 			this.onClose();
 		}
+
+		/**
+		 * This will allow the body to scroll when the modal is closed.
+		 */
+		document.documentElement.style.overflowY = 'auto';
 	}
 
 	/**
@@ -218,10 +223,5 @@ export class Modal extends Component
 	{
         this.hideModal();
 		this.destroy();
-
-		/**
-		 * This will allow the body to scroll when the modal is closed.
-		 */
-		document.documentElement.style.overflowY = 'auto';
 	}
 }
