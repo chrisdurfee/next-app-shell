@@ -22,7 +22,7 @@ const ModalHeader = ({ title, description, back, icon, options = [] }) => (
 		/**
 		 * Icon
 		 */
-		icon && Div({ class: 'mr-2 w-12 h-12 rounded-full bg-muted flex items-center justify-center' }, [ Icon(icon) ]),
+		icon && Div({ class: 'mr-2 w-12 h-12 rounded-full bg-muted flex flex-none items-center justify-center' }, [ Icon(icon) ]),
 
 		/**
 		 * Title and Description

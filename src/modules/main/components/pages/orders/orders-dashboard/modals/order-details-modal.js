@@ -1,5 +1,5 @@
 import { Div, H3, P, Span } from "@base-framework/atoms";
-import { DateTime } from "@base-framework/base";
+import { Data, DateTime } from "@base-framework/base";
 import { Icons } from "@components/icons/icons.js";
 import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
 import { DetailBody, DetailSection, SplitRow } from "@components/molecules/modals/atoms.js";
@@ -9,85 +9,78 @@ import { getOrderById } from "../orders.js";
 /**
  * Renders all the ordered items as a series of SplitRow's.
  *
- * @param {Array} items - An array of { label, price }.
- * @returns {Array}
+ * @returns {object}
  */
-const ItemLines = (items) =>
-    items.map((item) =>
-        SplitRow(item.label, `$${item.price.toFixed(2)}`)
-    );
+const ItemLines = () =>
+    Div({
+        class: 'fex flex-auto flex-col space-y-3',
+        for: ['items', (item) =>
+            SplitRow(item.label, `$${item.price.toFixed(2)}`)
+        ]
+    });
 
 /**
  * Renders cost breakdown lines (subtotal/shipping/tax) and total.
  *
- * @param {number} subtotal
- * @param {number} shipping
- * @param {number} tax
- * @param {number} total
- * @returns {Array}
+ * @returns {object}
  */
-const CostBreakdown = (subtotal, shipping, tax, total) => [
-    SplitRow('Subtotal', `$${subtotal.toFixed(2)}`),
-    SplitRow('Shipping', `$${shipping.toFixed(2)}`),
-    SplitRow('Tax', `$${tax.toFixed(2)}`),
-    Div({ class: 'flex justify-between font-semibold text-primary' }, [
-        Span('Total'),
-        Span(`$${total.toFixed(2)}`)
-    ])
-];
+const CostBreakdown = () =>
+    Div({ class: 'flex flex-auto flex-col space-y-3' }, [
+        SplitRow('Subtotal', `$[[subtotal]]`),
+        SplitRow('Shipping', `$[[shipping]]`),
+        SplitRow('Tax', `$[[tax]]`),
+        Div({ class: 'flex justify-between font-semibold text-primary' }, [
+            Span('Total'),
+            Span(`$[[total]]`)
+        ])
+    ]);
 
 /**
  * Renders shipping + billing information side by side.
  *
- * @param {object} shippingInfo
- * @param {object} billingInfo
  * @returns {object}
  */
-const ShippingBilling = (shippingInfo, billingInfo) =>
+const ShippingBilling = () =>
     Div({ class: 'flex flex-col md:flex-row gap-4 pb-4 pt-6' }, [
         // Shipping
         Div({ class: 'flex flex-auto flex-col' }, [
             H3({ class: 'text-sm font-semibold mb-1' }, 'Shipping Information'),
             P({ class: 'text-sm whitespace-pre-line text-muted-foreground' },
-                `${shippingInfo.name}\n${shippingInfo.address}`
+                `[[shippingInfo.name]]\n[[shippingInfo.address]]`
             )
         ]),
         // Billing
         Div({ class: 'flex flex-auto flex-col' }, [
             H3({ class: 'text-sm font-semibold mb-1' }, 'Billing Information'),
-            P({ class: 'text-sm text-muted-foreground' }, billingInfo.name)
+            P({ class: 'text-sm text-muted-foreground' }, '[[billingInfo.name]]')
         ])
     ]);
 
 /**
  * Renders the customer info section.
  *
- * @param {string} orderId
- * @param {string} date
- * @param {object} customerInfo - { name, email, phone }
  * @returns {object}
  */
-const CustomerInfo = (orderId, date, customerInfo) =>
+const CustomerInfo = () =>
     Div({ class: 'pb-4' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Customer Information'),
         Div({ class: 'text-sm space-y-3' }, [
-            SplitRow('Customer ID', orderId),
-            SplitRow('Date', date),
-            SplitRow('Customer', customerInfo.name),
-            SplitRow('Email', customerInfo.email)
+            SplitRow('Customer ID', '[[orderId]]'),
+            SplitRow('Date', '[[date]]'),
+            SplitRow('Customer', '[[customerInfo.name]]'),
+            SplitRow('Email', '[[customerInfo.email]]')
         ])
     ]);
 
 /**
  * Renders payment info (just a single row in this design).
  *
- * @param {string} paymentMethod
  * @returns {object}
  */
-const PaymentInfo = (paymentMethod) =>
+const PaymentInfo = () =>
     Div({ class: 'pb-2' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Payment Information'),
-        SplitRow('Payment Method', paymentMethod)
+        SplitRow('Payment Method', '[[paymentMethod]]')
     ]);
 
 /**
@@ -113,6 +106,44 @@ const HeaderOptions = () => [
 ];
 
 /**
+ * Retrieves order details by ID.
+ *
+ * @param {string} orderId
+ * @returns {object}
+ */
+const getOrderDetails = (orderId) =>
+{
+    const order = getOrderById(orderId);
+    const date = order.date;
+
+    // Extract data with default fallbacks
+    return Object.assign({}, {
+        orderId: "Oe31b70H",
+        date,
+        formattedDate: DateTime.format('standard', date),
+        items: [
+            { label: "Glimmer Lamps x 2", price: 250.00 },
+            { label: "Aqua Filters x 1", price: 49.00 }
+        ],
+        subtotal: 299.00,
+        shipping: 5.00,
+        tax: 25.00,
+        total: 329.00,
+        shippingInfo: {
+            name: order.customerName || "Liam Johnson",
+            address: order.address || "1234 Main St.\nAnytown, CA 12345"
+        },
+        billingInfo: { name: "Same as shipping address" },
+        customerInfo: {
+            name: order.customerName || "Liam Johnson",
+            email: order.email || "liam@acme.com",
+            phone: "+1 234 567 890"
+        },
+        paymentMethod: "Visa **** **** **** 4532"
+    }, order);
+};
+
+/**
  * OrderDetailsModal
  *
  * A read-only modal showing summarized order details, pulling from your `getOrderById(orderId)`.
@@ -120,45 +151,37 @@ const HeaderOptions = () => [
  * @param {object} props
  * @returns {object}
  */
-export const OrderDetailsModal = (props) =>
+export const OrderDetailsModal = () =>
 {
-    // Retrieve the order object from your data source
-    const order = getOrderById(props.orderId);
-
-    // Extract data with default fallbacks
-    const {
-        orderId = "Oe31b70H",
-        date = order.date || "2023-06-23",
-        items = [
-            { label: "Glimmer Lamps x 2", price: 250.00 },
-            { label: "Aqua Filters x 1", price: 49.00 }
-        ],
-        subtotal = 299.00,
-        shipping = 5.00,
-        tax = 25.00,
-        total = 329.00,
-        shippingInfo = {
-            name: order.customerName || "Liam Johnson",
-            address: order.address || "1234 Main St.\nAnytown, CA 12345"
-        },
-        billingInfo = { name: "Same as shipping address" },
-        customerInfo = {
-            name: order.customerName || "Liam Johnson",
-            email: order.email || "liam@acme.com",
-            phone: "+1 234 567 890"
-        },
-        paymentMethod = "Visa **** **** **** 4532"
-    } = order;
-
-    const formattedDate = DateTime.format('standard', date);
-
-    const modal = new Modal({
-        title: `Order ID: ${orderId}`,
+    return new Modal({
+        title: `Order ID: [[orderId]]`,
         icon: Icons.shoppingCart,
-        description: `Date: ${formattedDate}`,
+        description: `Date: [[formattedDate]]`,
         size: 'md',
         type: 'right',
         hidePrimaryButton: true,
+
+        /**
+         * This will setup the data for the modal.
+         *
+         * @returns {Data}
+         */
+        setData()
+        {
+            return new Data();
+        },
+
+        /**
+         * This will set the order details before setup.
+         *
+         * @returns {void}
+         */
+        beforeSetup()
+        {
+            const orderId = this.route.orderId;
+            const order = getOrderDetails(orderId);
+            this.data.set(order);
+        },
 
         /**
          * Header options for the modal.
@@ -188,21 +211,20 @@ export const OrderDetailsModal = (props) =>
 
             // Order Details Section
             DetailSection({ title: 'Order Details' }, [
-                ...ItemLines(items),
+                ItemLines(),
                 Div({ class: 'my-2 border-t' }),
-                ...CostBreakdown(subtotal, shipping, tax, total)
+                CostBreakdown()
             ]),
 
             // Shipping / Billing Info
-            ShippingBilling(shippingInfo, billingInfo),
+            ShippingBilling(),
 
             // Customer Info
-            CustomerInfo(orderId, formattedDate, customerInfo),
+            CustomerInfo(),
 
             // Payment Info
-            PaymentInfo(paymentMethod)
+            PaymentInfo()
         ])
     ]);
 
-    return modal;
 };

@@ -1,10 +1,12 @@
-import { P, Span, Td, Tr } from '@base-framework/atoms';
+import { H4, P, Section, Span, Td, Tr } from '@base-framework/atoms';
 import { Checkbox } from '@components/atoms/form/checkbox.js';
 import { DataTable } from "@components/organisms/lists/data-table.js";
+import { CodeCard } from "../../../../molecules/cards.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 import { CustomHeaderTable } from './custom-header-table.js';
 
+/** Example table configuration */
 const headers = [
     { label: 'checkbox', key: '' },
     { label: 'Status', key: 'status' },
@@ -12,17 +14,17 @@ const headers = [
     { label: 'Amount', key: 'amount', align: 'justify-end' }
 ];
 
+/** Example row data */
 const rows = [
     { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
     { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00, selected: false },
     { id: 3, status: 'Processing', email: 'monserrat44@gmail.com', amount: 837.00, selected: false },
     { id: 4, status: 'Success', email: 'silas22@gmail.com', amount: 874.00, selected: false },
-    { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false },
-    // Add more rows as needed
+    { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false }
 ];
 
 /**
- * This will create a row item.
+ * Creates a row item (TR) with a checkbox for selection.
  *
  * @param {object} row - Row data
  * @param {function} onSelect - Callback to handle row selection
@@ -31,7 +33,7 @@ const rows = [
 const rowItem = (row, onSelect) =>
 {
     return Tr({ class: 'items-center px-4 py-2 hover:bg-muted/50' }, [
-        Td({ class: 'p-4 ' }, [
+        Td({ class: 'p-4' }, [
             new Checkbox({
                 checked: row.selected,
                 class: 'mr-2',
@@ -49,150 +51,169 @@ const rowItem = (row, onSelect) =>
 /**
  * DataTablePage
  *
- * This will create a data table page.
+ * Documents DataTable usage, including advanced row manipulation (selecting, removing, etc.).
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
-export const DataTablePage = () => (
-	DocPage(
-        {
-            title: 'Data Tables',
-            description: 'Data tables are used to display data in a structured format. They can be used to display a list of items, a grid of items, or a table of items.',
-        },
-        [
-            DocSection({
-                title: 'Usage',
-                description: 'The data table component is used to display data in a structured format. It can be used to display a list of items, a grid of items, or a table of items.',
-                preview: [
-                    new DataTable({ headers, rows, rowItem, key: 'id' }),
-                ],
-                code: `import { DataTable } from "@components/organisms/lists/data-table.js";
-import { Div, I, Span, Table, Td, Th, Thead, Tr } from '@base-framework/atoms';
+export const DataTablePage = () =>
+    DocPage(
+    {
+        title: 'Data Tables',
+        description: 'Data tables are used to display or manipulate lists of items in tabular form.'
+    },
+    [
+        // 1) Basic usage with a preview
+        DocSection({
+            title: 'Usage',
+            description: 'The DataTable component displays items in a structured format, supporting selection, custom row items, and more.',
+            preview: [
+                new DataTable({ headers, rows, rowItem, key: 'id' }),
+            ],
+            code: `import { DataTable } from "@components/organisms/lists/data-table.js";
 import { Checkbox } from '@components/atoms/form/checkbox.js';
+import { Tr, Td } from '@base-framework/atoms';
+
+const headers = [
+    { label: 'checkbox', key: '' },
+    { label: 'Status', key: 'status' },
+    { label: 'Email', key: 'email' },
+    { label: 'Amount', key: 'amount', align: 'justify-end' }
+];
+
+const rows = [
+    { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
+    // ...
+];
+
+const rowItem = (row, onSelect) =>
+{
+    return Tr({ class: 'items-center px-4 py-2 hover:bg-muted/50' }, [
+        Td({ class: 'p-4' }, [
+            new Checkbox({
+                checked: row.selected,
+                onChange: () => onSelect(row)
+            })
+        ]),
+        Td({ class: 'p-4 ' }, row.status),
+        Td({ class: 'p-4 ' }, row.email),
+        Td({ class: 'p-4 text-right' }, \`$\${row.amount.toFixed(2)}\`)
+    ]);
+};
 
 new DataTable({
     key: 'id',
-    headers: [
-        { label: 'checkbox', key: '' },
-        { label: 'Status', key: 'status' },
-        { label: 'Email', key: 'email' },
-        { label: 'Amount', key: 'amount', align: 'justify-end' }
-    ],
-    rows: [
-        { id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
-        { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00, selected: false },
-        { id: 3, status: 'Processing', email: 'monserrat44@gmail.com', amount: 837.00, selected: false },
-        { id: 4, status: 'Success', email: 'silas22@gmail.com', amount: 874.00, selected: false },
-        { id: 5, status: 'Failed', email: 'carmella@hotmail.com', amount: 721.00, selected: false },
-        // Add more rows as needed
-    ],
-    rowItem: (row, onSelect) =>
-    {
-        return Tr({ class: 'items-center px-4 py-2 hover:bg-muted/50' }, [
-            Td({ class: 'p-4 ' }, [
-                new Checkbox({
-                    checked: row.selected,
-                    class: 'mr-2',
-                    click: () => onSelect(row)
-                })
-            ]),
-            Td({ class: 'p-4 ' }, [
-                Span({ class: 'text-muted-foreground' }, row.status)
-            ]),
-            Td({ class: 'p-4 ' }, row.email),
-            Td({ class: 'p-4 text-right' }, \`$\${row.amount.toFixed(2)}\`)
-        ]);
-    }
-})`
-            }),
+    headers,
+    rows,
+    rowItem
+});`
+        }),
 
-            DocSection({
-                title: 'Custom Header Data Table',
-                description: 'This demonstrates a data table with custom headers and row rendering using the DataTable component.',
-                preview: [
-                    CustomHeaderTable()
-                ],
-                code: `import { Div, Table, Td, Thead, Tr } from '@base-framework/atoms';
-import { Checkbox } from '@components/atoms/form/checkbox.js';
-import { CheckboxCol, DataTable, HeaderCol } from "@components/organisms/lists/data-table.js";
+        // 2) Custom header usage with a preview
+        DocSection({
+            title: 'Custom Header Data Table',
+            description: 'Demonstrates a data table with custom headers and row rendering using the DataTable component.',
+            preview: [
+                CustomHeaderTable()
+            ],
+            code: `// custom-header-table.js
+import { CheckboxCol, HeaderCol } from "@components/organisms/lists/data-table.js";
+import { DataTable } from "@components/organisms/lists/data-table.js";
+import { Tr, Td, Thead } from '@base-framework/atoms';
 
-/**
- * CustomHeaderTable Component
- *
- * Demonstrates a data table with a custom header row and custom rows using existing components.
- *
- * @param {object} props
- * @returns {object}
- */
-export const CustomHeaderTable = () =>
-{
-    // Define row data
-    const customRows = [
-        { id: 1, status: 'Active', email: 'user1@example.com', amount: 500.50 },
-        { id: 2, status: 'Inactive', email: 'user2@example.com', amount: 250.75 },
-        { id: 3, status: 'Active', email: 'user3@example.com', amount: 300.00 },
-    ];
-
-    /**
-     * Custom Header Row using HeaderCol and CheckboxCol
-     *
-     * @returns {object}
-     */
-    const customHeaderRow = () =>
-    {
-        return Thead([
-            Tr({ class: 'text-muted-foreground border-b' }, [
-                CheckboxCol({}),
-                HeaderCol({ key: 'status', label: 'Custom Status'}),
-                HeaderCol({ key: 'email', label: 'User Email' }),
-                HeaderCol({ key: 'amount', label: 'Amount (USD)', align: 'justify-end' })
-            ])
-        ]);
-    };
-
-    /**
-     * Renders a row item.
-     *
-     * @param {object} row - Row data
-     * @param {function} onSelect - Callback to handle row selection
-     * @returns {object}
-     */
-    const rowItem = (row, onSelect) =>
-    {
-        return Tr({ class: 'items-center px-4 py-2 hover:bg-muted/50' }, [
-            Td({ class: 'p-4' }, [
-                new Checkbox({
-                    checked: row.selected,
-                    class: 'mr-2',
-                    click: () => onSelect(row)
-                })
-            ]),
-            Td({ class: 'p-4 justify-center' }, row.status),
-            Td({ class: 'p-4' }, row.email),
-            Td({ class: 'p-4 text-right' }, \`$\${row.amount.toFixed(2)}\`)
-        ]);
-    };
-
-    return Div({ class: 'w-full mt-4' }, [
-        Div({ class: 'w-full rounded-md border overflow-x-auto' }, [
-            Table({ class: 'w-full' }, [
-                new DataTable({
-                    key: 'id',
-                    customHeader: customHeaderRow(),
-                    rows: customRows,
-                    rowItem: rowItem
-                })
-            ])
-        ])
-    ]);
+// Showcases a custom header with CheckboxCol and HeaderCol, plus a custom rowItem.
+export const CustomHeaderTable = () => {
+   // define custom rows, rowItem, etc.
+   return new DataTable({
+       key: 'id',
+       customHeader: ...,
+       rows: ...,
+       rowItem
+   });
 };`
-            }),
+        }),
 
-            P({ class: 'text-muted-foreground' }, 'The Data Table allows items to be selected. The selected elements can be retrieved by calling the "getSelectedRows" method on the DataTable instance. The method returns an array of selected rows.')
-        ]
-    )
+        // 3) Using sections with code cards for advanced usage
+
+        // Selecting & resetting
+        Section({ class: 'space-y-4 mt-8' }, [
+            H4({ class: 'text-lg font-bold' }, 'Selecting and Resetting Rows'),
+            P({ class: 'text-muted-foreground' }, 'DataTable supports toggling all rows, clearing selections, and retrieving selected rows.'),
+            CodeCard(`// Suppose 'dt' is your DataTable instance
+
+// Select or reset selection
+dt.toggleAllSelectedRows(); // toggles between all selected or none
+
+// Retrieve selected rows
+const selectedItems = dt.getSelectedRows();
+console.log('Selected Rows:', selectedItems);
+
+// Clear the selection entirely
+dt.data.selectedRows = [];
+dt.updateSelected(); // updates the internal 'selected' boolean
+`)
+        ]),
+
+        // Removing items
+        Section({ class: 'space-y-4 mt-8' }, [
+            H4({ class: 'text-lg font-bold' }, 'Removing Items'),
+            P({ class: 'text-muted-foreground' }, 'Use remove() to delete rows by passing an array of items (or a single item).'),
+            CodeCard(`// dt is your DataTable instance
+
+// Removing a single row
+dt.remove([ rowToRemove ]);
+
+// or removing multiple
+dt.remove(selectedItems); // e.g. dt.getSelectedRows()
+`)
+        ]),
+
+        // Appending items
+        Section({ class: 'space-y-4 mt-8' }, [
+            H4({ class: 'text-lg font-bold' }, 'Appending Items'),
+            P({ class: 'text-muted-foreground' }, 'Use append() to add rows at the end of the list. Accepts an array or single object.'),
+            CodeCard(`// dt is your DataTable instance
+const newRow = { id: 6, status: 'New', email: 'newuser@example.com', amount: 100 };
+dt.append(newRow);
+
+// or multiple
+dt.append([
+    { id: 7, status: 'Queued', email: 'queue@example.com', amount: 200 },
+    { id: 8, status: 'Processing', email: 'process@example.com', amount: 350 }
+]);
+`)
+        ]),
+
+        // Mingling
+        Section({ class: 'space-y-4 mt-8' }, [
+            H4({ class: 'text-lg font-bold' }, 'Mingling Items'),
+            P({ class: 'text-muted-foreground' }, 'Mingle merges new items with existing items by matching keys. If withDelete = true, items not in newItems are removed.'),
+            CodeCard(`// dt is your DataTable instance
+const newItems = [
+    { id: 2, status: 'Success', email: 'abe45@gmail.com', amount: 242.00 },
+    { id: 9, status: 'Pending', email: 'another@example.com', amount: 500.00 }
+];
+
+// withDelete=true removes items not in newItems
+dt.mingle(newItems, true);
+`)
+        ]),
+
+        // Prepending items
+        Section({ class: 'space-y-4 mt-8' }, [
+            H4({ class: 'text-lg font-bold' }, 'Prepending Items'),
+            P({ class: 'text-muted-foreground' }, 'Use prepend() to add new rows at the beginning of the list, shifting existing rows down.'),
+            CodeCard(`// dt is your DataTable instance
+const topRow = { id: 0, status: 'Top', email: 'top@example.com', amount: 999.99 };
+dt.prepend(topRow);
+
+// or multiple
+dt.prepend([
+    { id: -1, status: 'Urgent', email: 'urgent@example.com', amount: 777 },
+    { id: -2, status: 'Priority', email: 'priority@example.com', amount: 555 }
+]);
+`)
+        ])
+    ]
 );
 
 export default DataTablePage;

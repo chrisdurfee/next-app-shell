@@ -20,7 +20,7 @@ export const DetailBody = Atom((props, children) => (
  * @returns {object}
  */
 export const DetailSection = Atom((props, children = []) => (
-	Div({ class: 'space-y-3 pb-4' }, [
+	Div({ class: 'space-y-3 py-4' }, [
 		props.title && H2({ class: 'font-semibold' }, props.title),
 		...children
 	])

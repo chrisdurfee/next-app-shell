@@ -24,20 +24,22 @@ export const IntroPage = () => (
     DocPage(
         {
             title: 'Introduction',
-            description: 'The App Shell is a versatile and modular framework, designed to speed up front-end application development using Tailwind CSS and Shadcn-inspired themes. It provides a comprehensive set of components and atoms, created with the Base framework.'
+            description: 'The App Shell project is an open-source versatile and modular platform, designed to speed up front-end application development using Tailwind CSS and Shadcn-inspired themes. It provides a comprehensive set of components and atoms created with the Base framework.'
         },
         [
             // About the App Shell
             Section({ class: 'space-y-4' }, [
                 H4({ class: 'text-lg font-bold' }, 'The App Shell'),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`The App Shell project is built to streamline front-end application development. As a modular and scalable PWA (Progressive Web App), it offers easy installation across devices, making it suitable as a foundational framework for new projects.`)
-                ]),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
-                ])
+                P({ class: 'text-muted-foreground' }, `The App Shell is the core that sets up the Configs, router, Service Worker, ENV, gloabl "app" variable, and renders the "shell" that is used to add the additional pages.`),
+                P({ class: 'text-muted-foreground' }, `As a modular and scalable PWA (Progressive Web App), it offers easy installation across devices, making it suitable as a foundational framework for new projects. The project comes with PWA installation prompts for all devices.`),
+                P({ class: 'text-muted-foreground' }, `Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
             ]),
 
+            H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
+            P(`The shell supports auth flows and has a "signed in" and signed out" mode. It has a few default page types including a login page. The implentation of the auth flow is up to the developer.`),
+
+            H4({ class: 'text-lg font-bold mt-12' }, 'Examples'),
+            P({ class: 'text-muted-foreground' }, `The following examples demonstrate the use of various components and atoms within the App Shell framework that are designs from Shadcn.`),
             Div({ class: 'items-start justify-center gap-6 rounded-lg pt-0 md:p-8 md:mt-6 md:grid lg:grid-cols-2 xl:grid-cols-2' }, [
                 Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
                     AccountCard(),
