@@ -1,6 +1,7 @@
 import { Div, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BlankPage } from "@components/pages/blank-page.js";
+import { MessagesSidebar } from "./messages-sidebar.js";
 import { MESSAGES_THREADS } from "./messages-threads.js";
 import { ThreadContentSwitch } from "./thread/thread-content-switch.js";
 import { ThreadList } from "./thread/thread-list.js";
@@ -61,8 +62,6 @@ export const MessagesPage = () =>
 
     return new BlankPage(Props, [
         Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
-            // Left sidebar (list of threads/contacts)
-            //MessagesSidebar(),
 
             // Middle: ThreadList
             Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
@@ -85,7 +84,9 @@ export const MessagesPage = () =>
                         });
                     }
                 });
-            })
+            }),
+
+            MessagesSidebar()
         ])
     ]);
 };

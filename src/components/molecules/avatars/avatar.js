@@ -2,7 +2,9 @@ import { Div, Img, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
- * This creates an image element to be used as an avatar.
+ * AvatarImage
+ *
+ * Creates an image element for the avatar, hiding it on error.
  *
  * @param {object} props
  * @returns {object}
@@ -20,14 +22,14 @@ const AvatarImage = Atom(({ src, alt }) =>
         alt,
 
         /**
-         * This will remove the image if there is an error.
+         * If there's an error loading the image, hide it.
          */
         error: (event) => event.target.style.display = 'none'
     });
 });
 
 /**
- * This will return the initials of the name.
+ * Returns the initials of the name (e.g., "John Doe" => "JD").
  *
  * @param {string} name
  * @returns {string}
@@ -38,7 +40,7 @@ const getInitials = (name) =>
 };
 
 /**
- * This will check the length of the fallback text.
+ * Ensures fallback text is at most 2 characters (initials).
  *
  * @param {string} fallbackText
  * @returns {string}
@@ -49,41 +51,26 @@ const checkFallbackLength = (fallbackText) =>
     {
         return fallbackText;
     }
-
     return getInitials(fallbackText);
 };
 
 /**
- * This will create a watcher span.
+ * WatcherSpan
  *
- * @param {string} watcherFallback
+ * A span that dynamically updates to display fallback text or initials.
+ *
+ * @param {string} watcherFallback - the property to watch
  * @returns {object}
  */
 const WatcherSpan = (watcherFallback) =>
 {
-    return Span([watcherFallback, (value, ele) => ele.textContent = checkFallbackLength(value)]);
+    return Span([watcherFallback, (value, ele) => {
+        ele.textContent = checkFallbackLength(value);
+    }]);
 };
 
 /**
- * AvatarFallback Atom
- *
- * @param {string|null} fallbackText
- * @param {string|null} [watcherFallback=null]
- * @returns {object}
- */
-const AvatarFallback = (fallbackText, watcherFallback = null) =>
-{
-    fallbackText = checkFallbackLength(fallbackText);
-
-    return Div({ class: 'flex items-center justify-center w-full h-full rounded-full bg-muted text-muted-foreground font-medium' }, [
-        (watcherFallback)? WatcherSpan(watcherFallback) : Span(fallbackText)
-    ]);
-};
-
-/**
- * This will store the sizes for the avatar.
- *
- * @type {object} sizeMap
+ * Maps avatar size to a specific height/width class.
  */
 const sizeMap = {
     xs: 'h-6 w-6',
@@ -97,7 +84,21 @@ const sizeMap = {
 };
 
 /**
- * This will get the size of the avatar.
+ * Maps avatar size to a font-size class for fallback text.
+ */
+const fontSizeMap = {
+    xs: 'text-[7px]',
+    sm: 'text-xs',
+    md: 'text-base',
+    lg: 'text-xl',
+    xl: 'text-2xl',
+    '2xl': 'text-3xl',
+    '3xl': 'text-4xl',
+    default: 'text-base'
+};
+
+/**
+ * Returns the appropriate class for the avatar size (height/width).
  *
  * @param {string} size
  * @returns {string}
@@ -105,19 +106,66 @@ const sizeMap = {
 const getSize = (size) => sizeMap[size] || sizeMap.default;
 
 /**
+ * Returns the appropriate class for the fallback font size.
+ *
+ * @param {string} size
+ * @returns {string}
+ */
+const getFontSizeClass = (size) => fontSizeMap[size] || fontSizeMap.default;
+
+/**
+ * AvatarFallback
+ *
+ * Creates the fallback element (initials or watcherspan) with
+ * background color, text color, etc., plus a dynamic font size.
+ *
+ * @param {string|null} fallbackText
+ * @param {string|null} [watcherFallback=null]
+ * @param {string} [size='md']
+ * @returns {object}
+ */
+const AvatarFallback = (fallbackText, watcherFallback = null, size = 'md') =>
+{
+    const finalText = checkFallbackLength(fallbackText);
+    const fontSizeClass = getFontSizeClass(size);
+
+    return Div({
+        class: `
+            flex items-center justify-center w-full h-full rounded-full
+            bg-muted text-muted-foreground font-medium
+            ${fontSizeClass}
+        `
+    },
+    [
+        (watcherFallback)
+            ? WatcherSpan(watcherFallback)
+            : Span(finalText)
+    ]);
+};
+
+/**
  * Avatar
  *
- * This creates an avatar component.
+ * Creates an avatar with optional image. If the image fails or is absent,
+ * shows fallback text/initials, with font size based on the avatar size.
  *
  * @param {object} props
+ *   @prop {string|null} src
+ *   @prop {string|null} alt
+ *   @prop {string|null} fallbackText
+ *   @prop {string|null} watcherFallback
+ *   @prop {string} size
  * @returns {object}
  */
 export const Avatar = Atom(({ src, alt, fallbackText, watcherFallback, size }) =>
 {
-    size = getSize(size);
+    const sizeClass = getSize(size);
 
-    return Div({ class: `relative flex items-center justify-center ${size}` }, [
+    return Div({
+        class: `relative flex items-center justify-center ${sizeClass}`
+    },
+    [
         AvatarImage({ src, alt }),
-        AvatarFallback(fallbackText, watcherFallback)
+        AvatarFallback(fallbackText, watcherFallback, size)
     ]);
 });
