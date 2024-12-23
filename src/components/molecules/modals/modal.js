@@ -46,7 +46,7 @@ export class Modal extends Component
 						this.onSubmit();
 					}
 
-					this.close();
+					this.destroy();
 				},
 				icon: this.icon,
 				back: this.back ?? false,
@@ -70,7 +70,7 @@ export class Modal extends Component
 				{
 					if (!state)
 					{
-						this.close();
+						this.destroy();
 					}
 				}
 			}
@@ -95,7 +95,7 @@ export class Modal extends Component
     getButtons()
     {
         return [
-            Button({ variant: 'outline', click: () => this.close() }, 'Cancel'),
+            Button({ variant: 'outline', click: () => this.destroy() }, 'Cancel'),
             this.hidePrimaryButton !== true && Button({ variant: 'primary', type: 'submit' }, 'Save')
         ];
     }
@@ -209,7 +209,7 @@ export class Modal extends Component
 	 * @protected
 	 * @returns {void}
 	 */
-	hideModal()
+	beforeDestroy()
 	{
 		this.panel.hidePopover();
 		this.state.open = false;
@@ -223,16 +223,5 @@ export class Modal extends Component
 		 * This will allow the body to scroll when the modal is closed.
 		 */
 		document.documentElement.style.overflowY = 'auto';
-	}
-
-	/**
-	 * This will close the modal.
-	 *
-	 * @returns {void}
-	 */
-	close()
-	{
-        this.hideModal();
-		this.destroy();
 	}
 }
