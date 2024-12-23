@@ -52,7 +52,8 @@ export const DashboardContent = () => {
                 Div({
                     route: {
                         uri: 'orders/orders-dashboard/:orderId*',
-                        component: OrderDetailsModal()
+                        component: OrderDetailsModal(),
+                        preventScroll: true
                     }
                 })
             ])
