@@ -56,10 +56,22 @@ export class Module
 		{
 			if (route.import)
 			{
-				return routeCreator.load(route.path, route.import, route.title);
+				return routeCreator.load(
+					route.path,
+					route.import,
+					route.title,
+					route.persist,
+					route.preventScroll
+				);
 			}
 
-			return routeCreator.add(route.path, route.component, route.title);
+			return routeCreator.add(
+				route.path,
+				route.component,
+				route.title,
+				route.persist,
+				route.preventScroll
+			);
 		});
 	}
 

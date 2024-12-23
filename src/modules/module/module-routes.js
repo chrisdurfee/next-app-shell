@@ -13,19 +13,24 @@ export class ModuleRoutes
 	 * @param {string} uri
 	 * @param {object} component
 	 * @param {string} [title]
-	 * @param {bool} [persist]
-	 * @param {bool} [module]
+	 * @param {boolean} [persist]
+	 * @param {boolean} [preventScroll]
 	 * @returns {object}
 	 */
-	add(uri, component, title, persist)
+	add(
+		uri,
+		component,
+		title,
+		persist = true,
+		preventScroll = false
+	)
 	{
-		persist = (persist !== false);
-
 		return {
 			uri,
 			component,
 			title,
-			persist
+			preventScroll: preventScroll || false,
+			persist: (persist !== false)
 		};
 	}
 
@@ -47,9 +52,10 @@ export class ModuleRoutes
 	 * @param {object|string} loader
 	 * @param {string} [title]
 	 * @param {boolean} [persist]
+	 * @param {boolean} [preventScroll]
 	 * @returns {object}
 	 */
-	load(uri, loader, title, persist = true)
+	load(uri, loader, title, persist = true, preventScroll = false)
 	{
 		if (typeof loader === 'string')
 		{
@@ -73,6 +79,7 @@ export class ModuleRoutes
                 callBack
 			},
 			title,
+			preventScroll,
 			persist
 		};
 	}
