@@ -26,6 +26,16 @@ export class AppController
 	appShell = null;
 
 	/**
+	 * @member {object} data
+	 */
+	data = {};
+
+	/**
+	 * @member {object|null} root
+	 */
+	root = null;
+
+	/**
 	 * This will setup the main controller.
 	 */
 	constructor()
@@ -105,6 +115,13 @@ export class AppController
 		const { routes, links: options } = modules;
 		const main = this.appShell = new AppShell({ options, routes });
 		Builder.render(main, document.body);
+
+		/**
+		 * This will create an alias to make accessing the app shell root panel easier.
+		 *
+		 * This property should be used to add popovers, modals, overlays, etc.
+		 */
+		this.root = main.panel;
 	}
 
 	/**

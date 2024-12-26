@@ -9,7 +9,7 @@ import { ModalContainer } from "./modal-container.js";
  * @param {object} component
  * @returns {object}
  */
-const render = (component) => { return Builder.render(component, app.appShell.panel); };
+const render = (component) => { return Builder.render(component, app.root); };
 
 /**
  * Modal
@@ -166,7 +166,7 @@ export class Modal extends Component
      */
     setup(container)
     {
-        this.container = app.appShell.panel;
+        this.container = app.root;
         this.initialize();
     }
 

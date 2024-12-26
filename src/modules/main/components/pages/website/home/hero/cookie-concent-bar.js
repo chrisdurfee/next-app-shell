@@ -80,7 +80,7 @@ export const CookieConsentBar = Jot(
      */
     setup(container)
     {
-        this.container = app.appShell.panel;
+        this.container = app.root;
         this.initialize();
     }
 });

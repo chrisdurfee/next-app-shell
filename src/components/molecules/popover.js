@@ -204,7 +204,7 @@ export class PopOver extends Component
      */
     setup(container)
     {
-        this.container = app.appShell.panel;
+        this.container = app.root;
         this.initialize();
     }
 

@@ -51,7 +51,7 @@ export class DockableOverlay extends Overlay
                         else
                         {
                             ele.className = this.getClassName();
-                            app.appShell.panel.appendChild(ele);
+                            app.root.appendChild(ele);
 
                             /**
                              * This will hide the scroll bar so the page doesn't jump.

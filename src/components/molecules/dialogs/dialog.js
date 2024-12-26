@@ -8,7 +8,7 @@ import { DialogContainer } from "./dialog-container.js";
  * @param {object} component
  * @returns {object}
  */
-const render = (component) => { return Builder.render(component, app.appShell.panel); };
+const render = (component) => { return Builder.render(component, app.root); };
 
 /**
  * Type styles mapping for Confirmation.
