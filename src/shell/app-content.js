@@ -61,6 +61,10 @@ export const AppContent = (props) => (
 			};
 		},
 
+		/**
+		 * This will add the app content or the login page. It will also update the body class
+		 * based on the sign in state.
+		 */
 		onState: [
 			/**
 			 * This will add the login page if the user is not signed in.
