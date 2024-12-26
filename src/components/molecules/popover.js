@@ -202,10 +202,9 @@ export class PopOver extends Component
      *
      * @param {object} container
      */
-    setup(container)
+    setContainer(container)
     {
         this.container = app.root;
-        this.initialize();
     }
 
     /**

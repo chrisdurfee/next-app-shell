@@ -82,11 +82,10 @@ export class Overlay extends Component
 	 * @param {object} container
 	 * @returns {void}
 	 */
-	setup(container)
-	{
-		this.container = app.root;
-		this.initialize();
-	}
+	setContainer(container)
+    {
+        this.container = app.root;
+    }
 
     /**
      * This will setup the overlay states.

@@ -78,9 +78,8 @@ export const CookieConsentBar = Jot(
      *
      * @param {object} container
      */
-    setup(container)
+    setContainer(container)
     {
         this.container = app.root;
-        this.initialize();
     }
 });

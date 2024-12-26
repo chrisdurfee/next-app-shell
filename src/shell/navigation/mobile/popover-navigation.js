@@ -131,9 +131,8 @@ export class PopOverNavigation extends Component
      *
      * @param {HTMLElement} container
      */
-    setup(container)
+    setContainer(container)
     {
         this.container = app.root;
-        this.initialize();
     }
 }
