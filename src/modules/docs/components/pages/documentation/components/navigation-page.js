@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import NavigationMenu, { InlineNavigation, SidebarMenu } from "@base-framework/ui/organisms";
+import { InlineNavigation, NavigationMenu, SidebarMenu } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 

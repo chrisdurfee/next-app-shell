@@ -1,4 +1,4 @@
-import DotsIndicator, { Breadcrumb } from "@base-framework/ui/molecules";
+import { Breadcrumb, DotsIndicator } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 

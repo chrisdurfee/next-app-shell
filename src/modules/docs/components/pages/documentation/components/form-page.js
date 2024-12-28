@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Checkbox, EmailInput, Fieldset, Input, RangeSlider, Select, TelInput, Textarea } from "@base-framework/ui/atoms";
-import Toggle, { Combobox, Form, FormField } from "@base-framework/ui/molecules";
+import { Combobox, Form, FormField, Toggle } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
