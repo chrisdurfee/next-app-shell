@@ -40,7 +40,7 @@ export const ComboboxPage = () => (
                         })
                     ])
                 ],
-                code: `@components/molecules/combobox/combobox.js';
+                code: `@base-framework/ui/molecules;
 import {  Icons  } from "@base-framework/ui/icons";
 
 new Combobox({

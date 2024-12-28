@@ -1,5 +1,4 @@
-import { Breadcrumb } from "@base-framework/ui/molecules";
-import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
+import DotsIndicator, { Breadcrumb } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -51,7 +50,7 @@ new Breadcrumb({ items: [
                         onClick: (index) => console.log('Clicked dot', index)
                     }),
                 ],
-                code: `import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
+                code: `import DotsIndicator from "@base-framework/ui/molecules";
 
 new DotsIndicator({
     count: 6,

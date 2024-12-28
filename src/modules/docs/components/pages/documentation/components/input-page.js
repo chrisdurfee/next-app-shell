@@ -1,11 +1,8 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
+import { Counter, DatePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
 import { SearchDropdown } from "@base-framework/ui/organisms";
-import Counter from "@components/molecules/counters/counter.js";
-import DatePicker from "@components/molecules/date-time/date-picker.js";
-import TimePicker from "@components/molecules/date-time/time-picker.js";
-import Toggle from "@components/molecules/toggle/toggle.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -506,7 +503,7 @@ Textarea({
                     ])
                 ],
                 code: `
-import TimePicker from "@components/molecules/date-time/time-picker.js";
+import TimePicker from "@base-framework/ui/molecules/date-time/time-picker.js";
 
 new TimePicker({
     selectedTime: '12:00 am',
@@ -525,7 +522,7 @@ new TimePicker({
                     ])
                 ],
                 code: `
-import DatePicker from "@components/molecules/date-time/date-picker.js";
+import DatePicker from "@base-framework/ui/molecules/date-time/date-picker.js";
 
 new DatePicker()`
             }),
