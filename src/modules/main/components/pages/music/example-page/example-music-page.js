@@ -1,7 +1,7 @@
 import { Div, H2, H3, Img, P } from "@base-framework/atoms";
 import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import TabGroup, { InlineNavigation } from "@base-framework/ui/organisms";
+import { InlineNavigation, TabGroup } from "@base-framework/ui/organisms";
 import { FullPage } from "@base-framework/ui/pages";
 
 const PAGE_URL = 'music';
