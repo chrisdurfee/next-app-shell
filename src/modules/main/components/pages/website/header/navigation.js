@@ -41,3 +41,5 @@ export const Navigation = Atom((props) =>
         DesktopLogIn()
     ]);
 });
+
+export default Navigation;

@@ -1,7 +1,7 @@
 import { Div, H4, Header, Span } from "@base-framework/atoms";
 import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import TabGroup from "@components/organisms/tabs/tab-group.js";
+import { TabGroup } from "@base-framework/ui/organisms";
 
 /**
  * This will create the Title organism.

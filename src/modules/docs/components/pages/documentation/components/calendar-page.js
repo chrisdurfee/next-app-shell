@@ -34,7 +34,7 @@ export const CalendarPage = () => (
                 preview: [
                     new Calendar()
                 ],
-                code: `@components/organisms/calendar/calendar.js';
+                code: `@base-framework/ui/organisms;
 
 new Calendar()`
             }),
@@ -45,7 +45,7 @@ new Calendar()`
                 preview: [
                     new WeekCalendar()
                 ],
-                code: `@components/organisms/calendar/calendar.js';
+                code: `@base-framework/ui/organisms;
 
 new Calendar()`
             }),

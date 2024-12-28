@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import NavigationMenu from '@components/organisms/navigation/navigation-menu/navigation-menu.js';
+import { NavigationMenu } from '@base-framework/ui/organisms';
 import { Options } from './options.js';
 
 /**
@@ -15,3 +15,5 @@ export const DesktopMenuLinks = Atom(() => (
         })
     ])
 ));
+
+export default DesktopMenuLinks;

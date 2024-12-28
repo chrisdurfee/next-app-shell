@@ -1,8 +1,7 @@
 import { Div, H2, Header } from "@base-framework/atoms";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Tooltip  } from "@base-framework/ui/atoms";
-import {  Icons  } from "@base-framework/ui/icons";
-import TabGroup from "@components/organisms/tabs/tab-group.js";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { TabGroup } from "@base-framework/ui/organisms";
 
 /**
  * This will create the AddMessageButton organism.

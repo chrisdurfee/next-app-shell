@@ -28,3 +28,5 @@ export const Logo = Atom((props) => (
         })
     ])
 ));
+
+export default Logo;

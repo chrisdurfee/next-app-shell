@@ -1,6 +1,5 @@
 import { Div, H4, P, Span } from "@base-framework/atoms";
-import { Avatar, StatusIndicator } from "@base-framework/ui/molecules";
-import { StaticStatusIndicator } from "../../../../../../components/molecules/avatars/static-status-indicator.js";
+import { Avatar, StaticStatusIndicator, StatusIndicator } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 

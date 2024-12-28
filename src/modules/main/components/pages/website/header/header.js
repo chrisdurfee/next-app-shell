@@ -12,3 +12,5 @@ import { Navigation } from './navigation.js';
 export const Header = Atom(() => (
     Div({ class: 'inset-x-0 top-0 z-50' }, [Navigation()])
 ));
+
+export default Header;

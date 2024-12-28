@@ -15,3 +15,5 @@ export const MobileMenuButton = Atom((props) =>
         options: Options
     });
 });
+
+export default MobileMenuButton;
