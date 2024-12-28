@@ -1,6 +1,6 @@
 import { Div, Table, Td, Thead, Tr } from '@base-framework/atoms';
-import { Checkbox } from '@components/atoms/form/checkbox.js';
-import { CheckboxCol, DataTable, HeaderCol } from "@components/organisms/lists/data-table.js";
+import { Checkbox } from "@base-framework/ui/atoms";
+import { CheckboxCol, DataTable, HeaderCol } from "@base-framework/ui/organisms";
 
 /**
  * CustomHeaderTable Component

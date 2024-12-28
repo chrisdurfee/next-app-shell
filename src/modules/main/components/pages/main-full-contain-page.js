@@ -1,9 +1,8 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import { Button } from "@base-framework/ui/atoms";
+import { Panel, Tab } from "@base-framework/ui/organisms";
+import { FullContainPage } from "@base-framework/ui/pages";
 import UserList from "@components/organisms/lists/user-list.js";
-import { Panel } from '@components/organisms/panel.js';
-import { Tab } from "@components/organisms/tabs/tab.js";
-import { FullContainPage } from '@components/pages/full-contain-page.js';
 
 // Sample User Data (this could come from a backend or be passed as props)
 const users = [

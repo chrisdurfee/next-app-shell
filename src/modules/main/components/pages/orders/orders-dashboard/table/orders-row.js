@@ -1,6 +1,6 @@
 import { A, Div, P, Td, Tr } from '@base-framework/atoms';
-import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { Checkbox } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
 
 /**
  * This will render a row in the orders table.

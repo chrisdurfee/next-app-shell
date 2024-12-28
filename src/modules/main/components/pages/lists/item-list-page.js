@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import { Button } from "@base-framework/ui/atoms";
+import { BlankPage } from "@base-framework/ui/pages";
 import UserList from '@components/organisms/lists/user-list.js';
-import { BlankPage } from '@components/pages/blank-page.js';
 
 // Sample User Data (this could come from a backend or be passed as props)
 const users = [

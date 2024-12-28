@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { BackButton, Overlay } from "@components/organisms/overlays/overlay.js";
+import { BackButton, Overlay } from "@base-framework/ui/organisms";
 import { POSTS } from "../posts.js";
 import { PostContent } from "./post-content.js";
 import { PostHeader } from "./post-header.js";

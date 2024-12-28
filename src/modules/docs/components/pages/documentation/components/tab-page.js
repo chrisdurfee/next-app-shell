@@ -1,10 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Panel } from "@components/organisms/panel.js";
-import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
-import { TabGroup } from "@components/organisms/tabs/tab-group.js";
-import { TabNavigation } from "@components/organisms/tabs/tab-navigation.js";
-import { Tab } from "@components/organisms/tabs/tab.js";
+import { ButtonTab, Panel, Tab, TabGroup, TabNavigation } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -56,7 +52,7 @@ export const TabPage = () => (
                     })
                 ],
                 code: `
-import { ButtonTab } from "@components/organisms/tabs/button-tab.js";
+import {  ButtonTab  } from "@base-framework/ui/organisms";
 
 /**
  * This will create a tab content.
@@ -124,8 +120,8 @@ export const PreviewTab = (props) => (
                     })
                 ],
                 code: `
-import { LinkTab } from "@components/organisms/tabs/link-tab.js";
-import { Panel } from "@components/organisms/panel.js";
+import {  LinkTab  } from "@base-framework/ui/organisms";
+import {  Panel  } from "@base-framework/ui/organisms";
 
 /**
  * ExampleTab
@@ -171,7 +167,7 @@ export const ExampleTab = () => (
                         onSelect: (value) => console.log(value)
                     })
                 ],
-                code: `import { TabGroup } from "@components/organisms/tabs/tab-group.js";
+                code: `import {  TabGroup  } from "@base-framework/ui/organisms";
 
 new TabGroup({
     options: [
@@ -205,7 +201,7 @@ new TabGroup({
                         ]
                     })
                 ],
-                code: `import { TabGroup } from "@components/organisms/tabs/tab-navigation.js";
+                code: `import {  TabGroup  } from "@base-framework/ui/organisms";
 
 new TabNavigation({
     options: [

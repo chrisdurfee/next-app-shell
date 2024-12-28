@@ -1,6 +1,6 @@
 import { Div, H2, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Form } from "@components/molecules/form/form.js";
+import { Form } from "@base-framework/ui/molecules";
 
 /**
  * This will create the Title atom.

@@ -1,10 +1,9 @@
 import { Div, P, Span, Td, Tr } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { Checkbox } from '@components/atoms/form/checkbox.js';
-import { Avatar } from '@components/molecules/avatars/avatar.js';
-import { DataTable } from '@components/organisms/lists/data-table.js';
-import { BlankPage } from '@components/pages/blank-page.js';
+import { Button, Checkbox } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
+import { DataTable } from "@base-framework/ui/organisms";
+import { BlankPage } from "@base-framework/ui/pages";
 
 const headers = [
     { label: 'checkbox', key: '' },

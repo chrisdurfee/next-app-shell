@@ -1,15 +1,11 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@components/atoms/form/input.js";
-import { RangeSlider } from '@components/atoms/form/range-slider.js';
-import { Select } from "@components/atoms/form/select.js";
+import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
+import { SearchDropdown } from "@base-framework/ui/organisms";
 import Counter from "@components/molecules/counters/counter.js";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
 import TimePicker from "@components/molecules/date-time/time-picker.js";
 import Toggle from "@components/molecules/toggle/toggle.js";
-import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -97,7 +93,7 @@ export const InputPage = () => (
                         })
                     ])
                 ],
-                code: `import { Input, EmailInput, TelInput, Textarea } from '@components/atoms/form/input.js';
+                code: `import {  Input, EmailInput, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 Input({
     type: 'text',
@@ -120,7 +116,7 @@ Textarea({
                         new SearchDropdown({ options, onSelect: (item) => console.log(item) })
                     ])
                 ],
-                code: `import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
+                code: `import {  SearchDropdown  } from "@base-framework/ui/organisms";
 
 const options = [
     { label: 'Apple', value: 'apple' },
@@ -148,7 +144,7 @@ new SearchDropdown({ options, onSelect: (item) => console.log(item) })
                         })
                     ])
                 ],
-                code: `import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+                code: `import {  EmailInput, FileInput, Input, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 FileInput({
     multiple: true,
@@ -178,7 +174,7 @@ FileInput({
                         })
                     ])
                 ],
-                code: `import { Radio } from "@components/atoms/form/input.js";
+                code: `import {  Radio  } from "@base-framework/ui/atoms";
 import { Div } from "@base-framework/atoms";
 
 Div({ class: 'grid gap-2' }, [
@@ -212,7 +208,7 @@ Div({ class: 'grid gap-2' }, [
                     ])
                 ],
                 code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import {  EmailInput, FileInput, Input, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 Input({
     type: 'text',
@@ -230,7 +226,7 @@ Input({
                     ])
                 ],
                 code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import {  EmailInput, FileInput, Input, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 TelInput({
 })`
@@ -247,7 +243,7 @@ TelInput({
                     ])
                 ],
                 code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import {  EmailInput, FileInput, Input, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 EmailInput({
 
@@ -266,7 +262,7 @@ EmailInput({
                         }),
                     ]),
                 ],
-                code: `import { UrlInput } from '@components/atoms/form/input.js';
+                code: `import {  UrlInput  } from "@base-framework/ui/atoms";
 
 UrlInput({
     placeholder: 'Enter a valid URL...',
@@ -285,7 +281,7 @@ UrlInput({
                         }),
                     ]),
                 ],
-                code: `import { ColorInput } from '@components/atoms/form/input.js';
+                code: `import {  ColorInput  } from "@base-framework/ui/atoms";
 
 ColorInput({
     change: (e) => console.log(e.target.value),
@@ -303,7 +299,7 @@ ColorInput({
                         }),
                     ]),
                 ],
-                code: `import { DateInput } from '@components/atoms/form/input.js';
+                code: `import {  DateInput  } from "@base-framework/ui/atoms";
 
 DateInput({
     change: (e) => console.log(e.target.value),
@@ -321,7 +317,7 @@ DateInput({
                         }),
                     ]),
                 ],
-                code: `import { TimeInput } from '@components/atoms/form/input.js';
+                code: `import {  TimeInput  } from "@base-framework/ui/atoms";
 
 TimeInput({
     change: (e) => console.log(e.target.value),
@@ -339,7 +335,7 @@ TimeInput({
                         }),
                     ]),
                 ],
-                code: `import { DateTimeInput } from '@components/atoms/form/input.js';
+                code: `import {  DateTimeInput  } from "@base-framework/ui/atoms";
 
 DateTimeInput({
     change: (e) => console.log(e.target.value),
@@ -357,7 +353,7 @@ DateTimeInput({
                         }),
                     ]),
                 ],
-                code: `import { WeekInput } from '@components/atoms/form/input.js';
+                code: `import {  WeekInput  } from "@base-framework/ui/atoms";
 
 WeekInput({
     change: (e) => console.log(e.target.value),
@@ -375,7 +371,7 @@ WeekInput({
                         }),
                     ]),
                 ],
-                code: `import { MonthInput } from '@components/atoms/form/input.js';
+                code: `import {  MonthInput  } from "@base-framework/ui/atoms";
 
 MonthInput({
     change: (e) => console.log(e.target.value),
@@ -392,7 +388,7 @@ MonthInput({
                         }),
                     ]),
                 ],
-                code: `import { PasswordInput } from '@components/atoms/form/input.js';
+                code: `import {  PasswordInput  } from "@base-framework/ui/atoms";
 
 PasswordInput({
     class: 'w-12 h-12'
@@ -411,7 +407,7 @@ PasswordInput({
                         }),
                     ]),
                 ],
-                code: `import { NumberInput } from '@components/atoms/form/input.js';
+                code: `import {  NumberInput  } from "@base-framework/ui/atoms";
 
 NumberInput({
     placeholder: 'Enter a number...',
@@ -430,7 +426,7 @@ NumberInput({
                         }),
                     ]),
                 ],
-                code: `import { HiddenInput } from '@components/atoms/form/input.js';
+                code: `import {  HiddenInput  } from "@base-framework/ui/atoms";
 
 HiddenInput({
     value: 'hidden-value',
@@ -447,7 +443,7 @@ HiddenInput({
                     })
                 ],
                 code: `
-import { Checkbox } from '@components/atoms/form/checkbox.js';
+import {  Checkbox  } from "@base-framework/ui/atoms";
 
 new Checkbox({
     label: 'Check me',
@@ -466,7 +462,7 @@ new Checkbox({
                         })
                     ])
                 ],
-                code: `import { Select } from "@components/atoms/form/select.js";
+                code: `import {  Select  } from "@base-framework/ui/atoms";
 
 Select({
     options: [
@@ -491,7 +487,7 @@ Select({
                     ])
                 ],
                 code: `
-import { EmailInput, FileInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
+import {  EmailInput, FileInput, Input, TelInput, Textarea  } from "@base-framework/ui/atoms";
 
 Textarea({
     placeholder: 'Enter your text here...'
@@ -548,7 +544,7 @@ new DatePicker()`
                     ])
                 ],
                 code: `
-import { RangeSlider } from '@components/atoms/form/range-slider.js';
+import {  RangeSlider  } from "@base-framework/ui/atoms";
 
 new RangeSlider({
     min: 0,
@@ -575,7 +571,7 @@ new RangeSlider({
                     ])
                 ],
                 code: `
-import { Counter } from '@components/molecules/counters/counter.js';
+import {  Counter  } from "@base-framework/ui/molecules";
 
 new Counter({
     class: 'max-w-[300px]',
@@ -600,7 +596,7 @@ new Counter({
                     ])
                 ],
                 code: `
-import { RangeSlider } from '@components/atoms/form/range-slider.js';
+import {  RangeSlider  } from "@base-framework/ui/atoms";
 
 new RangeSlider({
     min: 0,
@@ -635,7 +631,7 @@ new RangeSlider({
                     ])
                 ],
                 code: `
-import { Toggle } from '@components/atoms/form/toggle.js';
+import {  Toggle  } from "@base-framework/ui/atoms";
 
 const NotificationToggle = ({ label, description, active, onChange }) => (
     Div({ class: 'flex items-center justify-between p-4 border rounded-md bg-muted/10 border-muted-foreground/20 mb-4' }, [

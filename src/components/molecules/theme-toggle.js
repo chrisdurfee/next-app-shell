@@ -1,7 +1,7 @@
 import { Button, Div, Span } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 const match = window.matchMedia;
 

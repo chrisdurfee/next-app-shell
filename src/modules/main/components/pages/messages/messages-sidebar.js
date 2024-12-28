@@ -1,7 +1,6 @@
 import { A, Div, H3, Header, Span, UseParent } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
+import { Avatar, StaticStatusIndicator } from "@base-framework/ui/molecules";
 import { MESSAGES_THREADS } from "./messages-threads.js";
 
 /**

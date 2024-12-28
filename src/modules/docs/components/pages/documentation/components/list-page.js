@@ -1,6 +1,6 @@
 import { Div, H4, P, Section, Span } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { UserList, UserListItem } from "@components/organisms/lists/user-list.js";
+import { UserList, UserListItem } from "@base-framework/ui/organisms";
 import { CodeCard } from "../../../molecules/cards.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from "../../doc-page.js";

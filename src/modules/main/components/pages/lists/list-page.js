@@ -1,10 +1,9 @@
 import { Div, H1, Header } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Panel } from '@components/organisms/panel.js';
-import { TabNavigation } from '@components/organisms/tabs/tab-navigation.js';
-import { BlankPage } from '@components/pages/blank-page.js';
-import { ItemListPage } from './item-list-page.js';
+import { Button } from "@base-framework/ui/atoms";
+import { Panel, TabNavigation } from "@base-framework/ui/organisms";
+import { BlankPage } from "@base-framework/ui/pages";
 import { DataTablePage } from './data-table-page.js';
+import { ItemListPage } from './item-list-page.js';
 
 /**
  * This will create the PageHeader molecule.

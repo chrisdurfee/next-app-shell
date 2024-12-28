@@ -1,7 +1,7 @@
 import { Div } from '@base-framework/atoms';
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
-import { TabGroup } from '@components/organisms/tabs/tab-group.js';
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { TabGroup } from "@base-framework/ui/organisms";
 
 /**
  * This will create the DashboardTabs molecule.

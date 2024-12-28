@@ -1,6 +1,6 @@
 import { Div, Pre } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Skeleton } from "@components/atoms/skeleton.js";
+import { Skeleton } from "@base-framework/ui/atoms";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { EmailComposer } from "./email-composer.js";
 import { EmailEmptyState } from "./email-empty-state.js";

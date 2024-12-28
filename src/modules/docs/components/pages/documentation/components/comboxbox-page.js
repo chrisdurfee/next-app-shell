@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Icons } from "@components/icons/icons.js";
-import { Combobox } from "@components/molecules/combobox/combobox.js";
+import { Icons } from "@base-framework/ui/icons";
+import { Combobox } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -41,7 +41,7 @@ export const ComboboxPage = () => (
                     ])
                 ],
                 code: `@components/molecules/combobox/combobox.js';
-import { Icons } from "@components/icons/icons.js";
+import {  Icons  } from "@base-framework/ui/icons";
 
 new Combobox({
     items: [

@@ -1,7 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
-import { BackButton } from "@components/organisms/overlays/overlay.js";
-import { Panel } from "@components/organisms/panel.js";
+import { BackButton, DockableOverlay, Panel } from "@base-framework/ui/organisms";
 import { AccountSettings } from "./sections/account-settings.js";
 import { AppearanceSettings } from "./sections/appearance-settings.js";
 import { DisplaySettings } from "./sections/display-settings.js";

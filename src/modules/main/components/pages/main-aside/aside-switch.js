@@ -1,9 +1,7 @@
+import { A, Div, H1, H2, Header, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { A, Div, H1, H2, Header, P } from "@components/atoms/atoms.js";
-import { GridContainer } from '@components/molecules/molecules.js';
-import { InlineOverlay } from '@components/organisms/overlays/inline-overlay.js';
-import { BackButton } from '@components/organisms/overlays/overlay.js';
-import { Panel } from '@components/organisms/panel.js';
+import { BackButton, InlineOverlay, Panel } from "@base-framework/ui/organisms";
+import { GridContainer } from "@components/molecules/molecules.js";
 
 /**
  * This will create a header for the documentation.

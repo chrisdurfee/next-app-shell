@@ -1,7 +1,6 @@
 import { Div, Form, Span } from '@base-framework/atoms';
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { Dialog } from '@components/molecules/dialogs/dialog.js';
-import { Toggle } from '@components/molecules/toggle/toggle.js';
+import { Button } from "@base-framework/ui/atoms";
+import { Dialog, Toggle } from "@base-framework/ui/molecules";
 
 /**
  * CookieToggle

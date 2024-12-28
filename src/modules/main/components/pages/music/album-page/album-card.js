@@ -1,6 +1,6 @@
 import { Div, Img } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Skeleton } from "@components/atoms/skeleton.js";
+import {  Skeleton  } from "@base-framework/ui/atoms";
 
 /**
  * Skeleton for Album Cover while loading.

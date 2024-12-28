@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { BackButton } from "@components/organisms/overlays/overlay.js";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { BackButton } from "@base-framework/ui/organisms";
+import { BlankPage } from "@base-framework/ui/pages";
 import { ContentSection } from "./content-section.js";
 import { Sidebar } from "./sidebar.js";
 

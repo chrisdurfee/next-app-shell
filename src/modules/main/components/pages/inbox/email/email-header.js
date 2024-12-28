@@ -1,6 +1,5 @@
 import { Div, Span } from "@base-framework/atoms";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
+import { Avatar, TimeFrame } from "@base-framework/ui/molecules";
 
 /**
  * This will create the time time atom.

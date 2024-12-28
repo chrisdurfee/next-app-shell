@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
+import { Breadcrumb } from "@base-framework/ui/molecules";
 import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -31,7 +31,7 @@ export const BreadcrumbPage = () => (
                 preview: [
                     new Breadcrumb( { items } ),
                 ],
-                code: `import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
+                code: `import {  Breadcrumb  } from "@base-framework/ui/molecules";
 
 new Breadcrumb({ items: [
     { href: '/', label: 'Home' },

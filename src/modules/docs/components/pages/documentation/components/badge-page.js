@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Badge } from "@components/atoms/badges/badge.js";
+import { Badge } from "@base-framework/ui/atoms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -42,7 +42,7 @@ export const BadgePage = () => (
                     ])
                 ],
                 code: `
-import { Button } from '@components/atoms/badges/badges.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const PrimaryBadge = Atom((props, children)) => (

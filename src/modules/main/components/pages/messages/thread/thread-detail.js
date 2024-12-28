@@ -1,13 +1,13 @@
 import { Div, OnState, Span } from "@base-framework/atoms";
 import { DateTime, Jot } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Skeleton } from "@components/atoms/skeleton.js";
-import { Icons } from "@components/icons/icons.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
-import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
-import { BackButton } from "@components/organisms/overlays/overlay.js";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Skeleton  } from "@base-framework/ui/atoms";
+import {  Icons  } from "@base-framework/ui/icons";
+import {  Avatar  } from "@base-framework/ui/molecules";
+import {  StaticStatusIndicator  } from "@base-framework/ui/molecules";
+import {  TimeFrame  } from "@base-framework/ui/molecules";
+import {  BackButton  } from "@base-framework/ui/organisms";
 import { MESSAGES_THREADS } from "../messages-threads.js";
 import { ThreadComposer } from "./thread-composer.js";
 

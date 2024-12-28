@@ -1,7 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { NavigationMenu } from "@components/organisms/navigation/navigation-menu/navigation-menu.js";
-import { Panel } from "@components/organisms/panel.js";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { NavigationMenu, Panel } from "@base-framework/ui/organisms";
+import { BlankPage } from "@base-framework/ui/pages";
 import { DashboardCustomersEmptyState } from "./customers/dashboard-customers.js";
 import { DashboardOverview } from "./dashboard-overview/dashboard-overview.js";
 

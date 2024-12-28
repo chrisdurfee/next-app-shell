@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Checkbox  } from "@base-framework/ui/atoms";
+import {  Fieldset  } from "@base-framework/ui/atoms";
 import { SettingsSection } from "../atoms/settings-section.js";
 
 /**

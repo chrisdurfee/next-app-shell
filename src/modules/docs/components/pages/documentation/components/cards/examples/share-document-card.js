@@ -1,9 +1,7 @@
 import { Div, Input, Span } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Card } from "@components/atoms/cards/card.js";
-import { Select } from "@components/atoms/form/select.js";
-import { Icons } from "@components/icons/icons.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { Button, Card, Select } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Avatar } from "@base-framework/ui/molecules";
 import { CardHeader } from "./card-atoms.js";
 
 /**

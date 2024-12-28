@@ -1,8 +1,5 @@
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Input } from "@components/atoms/form/input.js";
-import { Select } from "@components/atoms/form/select.js";
-import { FormField } from "@components/molecules/form/form.js";
+import { Button, Fieldset, Input, Select } from "@base-framework/ui/atoms";
+import { FormField } from "@base-framework/ui/molecules";
 import { SettingsSection } from "../atoms/settings-section.js";
 
 /**

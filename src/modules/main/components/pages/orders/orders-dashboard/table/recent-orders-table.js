@@ -1,6 +1,5 @@
 import { Thead, Tr } from '@base-framework/atoms';
-import { DataTable } from '@components/organisms/lists/data-table';
-import { CheckboxCol, HeaderCol } from "@components/organisms/lists/data-table.js";
+import { CheckboxCol, DataTable, HeaderCol } from "@base-framework/ui/organisms";
 import { OrdersRow } from './orders-row.js';
 
 /**

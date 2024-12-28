@@ -1,7 +1,7 @@
 import { A, Button, Div, H2, Header, P } from "@base-framework/atoms";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
-import { BackButton } from "@components/organisms/overlays/overlay.js";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { BackButton } from "@base-framework/ui/organisms";
 import { getAlbumByTitle } from "../albums.js";
 import { AlbumCard } from "./album-card.js";
 import { AlbumDetails } from "./album-details.js";

@@ -1,9 +1,7 @@
 import { Div, H3, P, Span } from "@base-framework/atoms";
 import { Data, DateTime } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
-import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
-import { DetailBody, DetailSection, SplitRow } from "@components/molecules/modals/atoms.js";
-import { Modal } from "@components/molecules/modals/modal.js";
+import { Icons } from "@base-framework/ui/icons";
+import { DetailBody, DetailSection, DropdownMenu, Modal, SplitRow } from "@base-framework/ui/molecules";
 import { getOrderById } from "../orders.js";
 
 /**

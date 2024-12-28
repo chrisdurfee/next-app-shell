@@ -1,7 +1,7 @@
 import { Div, H1, Header, P } from '@base-framework/atoms';
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
-import { Breadcrumb } from '@components/molecules/breadcrumb/breadcrumb.js';
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Breadcrumb } from "@base-framework/ui/molecules";
 import { DashboardCards } from './dasboard-cards.js';
 import { OrderDetailsModal } from './modals/order-details-modal.js';
 import { OrderModal } from './modals/order-modal.js';

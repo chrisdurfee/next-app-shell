@@ -1,9 +1,7 @@
 import { Div } from "@base-framework/atoms";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Input } from "@components/atoms/form/input.js";
-import { Icons } from "@components/icons/icons.js";
-import { FormField } from "@components/molecules/form/form.js";
-import { Modal } from "@components/molecules/modals/modal.js";
+import { Fieldset, Input } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { FormField, Modal } from "@base-framework/ui/molecules";
 
 /**
  * This will create a modal for adding music.

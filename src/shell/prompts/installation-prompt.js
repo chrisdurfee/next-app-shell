@@ -1,8 +1,8 @@
 import { Div, P } from "@base-framework/atoms";
 import { Component } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
-import { Dialog } from "@components/molecules/dialogs/dialog.js";
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Dialog } from "@base-framework/ui/molecules";
 import { Icon } from "../../components/atoms/icon.js";
 import { Configs } from "../../configs.js";
 

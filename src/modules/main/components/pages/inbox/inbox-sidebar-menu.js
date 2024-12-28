@@ -1,7 +1,7 @@
 import { Div, H1, Header, Span } from "@base-framework/atoms";
 import { NavLink } from "@base-framework/base";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * @type {array} PRIUMARY_BUTTONS

@@ -1,6 +1,6 @@
 import { Div, H2, P } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Avatar } from '@components/molecules/avatars/avatar.js';
+import { Avatar } from "@base-framework/ui/molecules";
 
 /**
  * This will create a testimonial.

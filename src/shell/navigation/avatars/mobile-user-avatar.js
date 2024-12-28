@@ -1,7 +1,6 @@
 import { A, Div } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
+import { Avatar, StatusIndicator } from "@base-framework/ui/molecules";
 
 /**
  * MobileUserAvatar

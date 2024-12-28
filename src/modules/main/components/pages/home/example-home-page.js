@@ -1,9 +1,9 @@
 import { Div, H2, P } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { GridContainer } from '@components/molecules/molecules.js';
-import { Calendar } from "@components/organisms/calendar/calendar.js";
-import { FullPage } from '@components/pages/full-page.js';
+import { Button } from "@base-framework/ui/atoms";
+import { GridContainer } from "@base-framework/ui/molecules";
+import { Calendar } from "@base-framework/ui/organisms";
+import { FullPage } from "@base-framework/ui/pages";
 import { GreetingCard } from './greeting-card.js';
 
 /**

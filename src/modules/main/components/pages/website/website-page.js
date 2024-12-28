@@ -1,4 +1,4 @@
-import { BlankPage } from "@components/pages/blank-page.js";
+import { BlankPage } from "@base-framework/ui/pages";
 import { MainLayout } from "./main-layout.js";
 
 /**

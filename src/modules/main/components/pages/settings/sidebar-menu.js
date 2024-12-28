@@ -1,4 +1,4 @@
-import { SidebarMenu as BaseSidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
+import { SidebarMenu as BaseSidebarMenu } from "@base-framework/ui/organisms";
 
 /**
  * SidebarMenu for the Settings Page

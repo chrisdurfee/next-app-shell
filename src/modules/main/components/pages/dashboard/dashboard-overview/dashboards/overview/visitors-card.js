@@ -1,5 +1,5 @@
 import { Div, H3, Header, P } from "@base-framework/atoms";
-import { Card } from "@components/atoms/cards/card.js";
+import { Card } from "@base-framework/ui/atoms";
 import * as d3 from 'd3';
 
 /**

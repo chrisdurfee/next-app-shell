@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
-import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
+import { Icons } from "@base-framework/ui/icons";
+import { InlineNavigation } from "@base-framework/ui/organisms";
 import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
 

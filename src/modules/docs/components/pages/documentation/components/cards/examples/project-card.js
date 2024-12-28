@@ -1,8 +1,6 @@
 import { Div, Span } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Card } from "@components/atoms/cards/card.js";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
+import { Button, Card, Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * ProjectRow Component

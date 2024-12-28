@@ -1,15 +1,8 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Input, Textarea } from "@components/atoms/form/input.js";
-import { Select } from "@components/atoms/form/select.js";
-import { Icons } from "@components/icons/icons.js";
+import { Button, Fieldset, Input, Select, Textarea } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Confirmation, DetailBody, DetailSection, DropdownMenu, FormField, Modal, SplitRow } from "@base-framework/ui/molecules";
 import DatePicker from "@components/molecules/date-time/date-picker.js";
-import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
-import { DropdownMenu } from "@components/molecules/dropdowns/dropdown-menu.js";
-import { FormField } from "@components/molecules/form/form.js";
-import { DetailBody, DetailSection, SplitRow } from "@components/molecules/modals/atoms.js";
-import { Modal } from "@components/molecules/modals/modal.js";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -232,9 +225,9 @@ export const ModalPage = () =>
             ],
             code: `
 // detail-modal-example.js
-import { DetailBody, DetailSection, SplitRow } from '@components/molecules/modals/atoms.js';
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Icons } from "@components/icons/icons.js";
+import {  DetailBody, DetailSection, SplitRow  } from "@base-framework/ui/molecules";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Icons  } from "@base-framework/ui/icons";
 
 const DemoDetailModal = () =>
     new Modal({
@@ -279,9 +272,9 @@ const DemoDetailModal = () =>
             ],
             code: `
 // header-options-example.js
-import { Modal } from "@components/molecules/modals/modal.js";
-import { DropdownMenu } from "@components/molecules/dropdowns/dropdown-menu.js";
-import { Icons } from "@components/icons/icons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  DropdownMenu  } from "@base-framework/ui/molecules";
+import {  Icons  } from "@base-framework/ui/icons";
 
 // Example header options
 const DemoHeaderOptions = () => [
@@ -319,8 +312,8 @@ new Modal({
                 ModalButton(Modals[3])
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
 
 /**
  * This creates a button that opens an XL modal.
@@ -340,8 +333,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[0])
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, size }) => Button({
     text: label,
@@ -358,8 +351,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[2])
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, size }) => Button({
     text: label,
@@ -376,8 +369,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[4])
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, type }) => Button({
     text: label,
@@ -398,12 +391,12 @@ const ModalButton = ({ label, type }) => Button({
                 })
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Fieldset  } from "@base-framework/ui/atoms";
 import { Div } from "@base-framework/atoms";
-import { Input, Textarea } from "@components/atoms/form/input.js";
-import { FormField } from "@components/molecules/form/form.js";
+import {  Input, Textarea  } from "@base-framework/ui/atoms";
+import {  FormField  } from "@base-framework/ui/molecules";
 
 const ModalForm = ({ size = 'lg', type = 'center' }) => (
     new Modal({
@@ -429,8 +422,8 @@ const ModalForm = ({ size = 'lg', type = 'center' }) => (
                 })
             ],
             code: `
-import { Modal } from "@components/molecules/modals/modal.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Modal  } from "@base-framework/ui/molecules";
+import {  Button  } from "@base-framework/ui/atoms";
 
 const ModalForm = ({ type = 'right', size = 'md' }) => (
     new Modal({

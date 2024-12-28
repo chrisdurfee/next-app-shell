@@ -1,6 +1,5 @@
 import { Div, P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -30,8 +29,8 @@ export const TooltipPage = () => (
                         ])
                     ])
                 ],
-                code: `import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
+                code: `import {  Button  } from "@base-framework/ui/atoms";
+import {  Tooltip  } from "@base-framework/ui/atoms";
 
 Tooltip({ content: 'This is a tooltip.' }, [
     Button('Hover me')

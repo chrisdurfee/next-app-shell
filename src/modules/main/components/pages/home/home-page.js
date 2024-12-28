@@ -1,7 +1,7 @@
 import { A, Code, Div, H1, H3, Header, P, Pre, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Icons } from '@components/icons/icons.js';
-import { BlankPage } from '@components/pages/blank-page.js';
+import { Icons } from "@base-framework/ui/icons";
+import { BlankPage } from "@base-framework/ui/pages";
 
 /**
  * This will create a main button container.

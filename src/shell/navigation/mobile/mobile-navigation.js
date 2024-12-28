@@ -1,6 +1,6 @@
 import { Button, I, Li, Nav, Span, Ul } from "@base-framework/atoms";
 import { Component, Jot } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
+import { Icons } from "@base-framework/ui/icons";
 import { MobileLink } from "./mobile-link.js";
 import { PopOverContainer } from "./popover-container.js";
 

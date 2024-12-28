@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { BlankPage } from "@base-framework/ui/pages";
 import { ClientSummaryCards } from "./client-summary-cards.js";
 import { ClientTable } from "./client-table.js";
 import { clients } from "./clients.js"; // Import fake data

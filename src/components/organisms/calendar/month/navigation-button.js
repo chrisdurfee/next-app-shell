@@ -1,5 +1,5 @@
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * This will create a navigation button for the calendar.

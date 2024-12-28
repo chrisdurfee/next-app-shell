@@ -1,7 +1,6 @@
 import { Div, H4, Header, Span } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
-import { Icons } from "@components/icons/icons.js";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import TabGroup from "@components/organisms/tabs/tab-group.js";
 
 /**

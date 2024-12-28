@@ -1,8 +1,7 @@
 import { DateTime } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
-import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
-import { Calendar } from "@components/organisms/calendar/calendar.js";
-import { WeekCalendar } from "@components/organisms/calendar/week/week-calendar.js";
+import { TimeFrame } from "@base-framework/ui/molecules";
+import { Calendar, WeekCalendar } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -106,7 +105,7 @@ new DynamicTime({
                         remoteTimeZone: 'America/Denver'
                     })
                 ],
-                code: `import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
+                code: `import {  TimeFrame  } from "@base-framework/ui/molecules";
 
 TimeFrame({
     dateTime: '2024-11-04T18:00:00',

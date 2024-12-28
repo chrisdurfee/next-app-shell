@@ -1,9 +1,9 @@
 import { A, Div, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Skeleton } from "@components/atoms/skeleton.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
-import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
+import {  Skeleton  } from "@base-framework/ui/atoms";
+import {  Avatar  } from "@base-framework/ui/molecules";
+import {  StaticStatusIndicator  } from "@base-framework/ui/molecules";
+import {  TimeFrame  } from "@base-framework/ui/molecules";
 
 /**
  * ThreadListItemSkeleton

@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Panel } from "@components/organisms/panel.js";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { Panel } from "@base-framework/ui/organisms";
+import { BlankPage } from "@base-framework/ui/pages";
 import { BrowsePage } from "./browse-page.js";
 import { MusicSections } from "./music-sections.js";
 import { SidebarMenu } from "./sidebar-menu.js";
