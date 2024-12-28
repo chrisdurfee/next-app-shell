@@ -82,7 +82,7 @@ const PaymentMethodSelector = () => (
  * @returns {object}
  */
 const PaymentForm = () => (
-    Form({ submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
+    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
         // Name on Card field
         new FormField({
             name: "name",

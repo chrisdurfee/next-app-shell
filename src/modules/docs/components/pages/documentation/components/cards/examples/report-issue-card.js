@@ -11,7 +11,7 @@ import { CardHeader } from "./card-atoms.js";
  * @returns {object} - The report issue form.
  */
 const ReportIssueForm = () => (
-    Form({ submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
+    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
         // Row for Area and Security Level
         Div({ class: "flex flex-auto w-full gap-4" }, [
             // Area field

@@ -42,7 +42,7 @@ const SocialSignIn = () => (
  * @returns {object}
  */
 const AccountForm = () => (
-    Form({ submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
+    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
         // Email field
         new FormField({
             name: "email",
