@@ -95,6 +95,9 @@ export const ThreadDetail = Jot(
                     ConversationMessages(currentThread),
                     new ThreadComposer({ placeholder: "Type something...", add: (msg) =>
                         {
+                            /**
+                             * This is a placeholder for adding a new message to the thread.
+                             */
                             const timeStamp = new Date().toISOString();
                             const row = {
                                 id: Math.random() * 1000,
@@ -104,7 +107,11 @@ export const ThreadDetail = Jot(
                             };
 
                             parent.thread.append(row);
-                            //parent.mingle(msg);
+
+                            // This will update the list with the new message.
+                            this.mingle([
+                                { ...currentThread, content: msg }
+                            ]);
                         }
                     })
                 ]);

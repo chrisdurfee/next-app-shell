@@ -1,6 +1,5 @@
 import { Div, OnRoute } from "@base-framework/atoms";
-import {  DockableOverlay  } from "@base-framework/ui/organisms";
-import {  Panel  } from "@base-framework/ui/organisms";
+import { DockableOverlay, Panel } from "@base-framework/ui/organisms";
 import { ThreadDetail } from "./thread-detail.js";
 import { ThreadEmptyState } from "./thread-empty-state.js";
 
@@ -23,7 +22,8 @@ export const ThreadContentSwitch = (props) =>
                         ? ThreadEmptyState()
                         : new ThreadDetail({
                             messageId,
-                            delete: props.delete
+                            delete: props.delete,
+                            mingle: props.mingle
                         })
                     )
                 ])
