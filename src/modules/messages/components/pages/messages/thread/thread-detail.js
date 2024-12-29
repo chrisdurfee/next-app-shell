@@ -1,13 +1,10 @@
 import { Div, OnState, Span } from "@base-framework/atoms";
 import { DateTime, Jot } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Skeleton  } from "@base-framework/ui/atoms";
-import {  Icons  } from "@base-framework/ui/icons";
-import {  Avatar  } from "@base-framework/ui/molecules";
-import {  StaticStatusIndicator  } from "@base-framework/ui/molecules";
-import {  TimeFrame  } from "@base-framework/ui/molecules";
-import {  BackButton  } from "@base-framework/ui/organisms";
+import { Button, Skeleton } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Avatar, StaticStatusIndicator, TimeFrame } from "@base-framework/ui/molecules";
+import { BackButton } from "@base-framework/ui/organisms";
 import { MESSAGES_THREADS } from "../messages-threads.js";
 import { ThreadComposer } from "./thread-composer.js";
 
@@ -83,7 +80,7 @@ export const ThreadDetail = Jot(
 
         return Div({ class: "flex flex-auto flex-col w-full max-h-screen bg-background" },
         [
-            OnState("loaded", (loaded) =>
+            OnState("loaded", (loaded, ele, parent) =>
             {
                 if (!loaded || !currentThread)
                 {
@@ -96,7 +93,25 @@ export const ThreadDetail = Jot(
                 return Div({ class: "flex flex-col flex-auto" }, [
                     ConversationHeader(currentThread),
                     ConversationMessages(currentThread),
-                    new ThreadComposer({ placeholder: "Type something..." })
+                    new ThreadComposer({ placeholder: "Type something...", add: (msg) =>
+                        {
+                            const timeStamp = new Date().toISOString();
+                            const row = {
+                                id: Math.random() * 1000,
+                                sender: "Angelina Froster",
+                                avatar: "https://example.com/avatars/angelina.png",
+                                status: "online",
+
+                                // get current datetime string
+                                time: timeStamp,
+                                direction: "sent",
+                                content: msg
+                            };
+
+                            parent.thread.append(row);
+                            //parent.mingle(msg);
+                        }
+                    })
                 ]);
             })
         ]);
@@ -177,7 +192,7 @@ const ConversationMessages = (thread) =>
     Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
         Div({ class: "flex flex-col w-full h-full max-w-none lg:max-w-5xl m-auto" }, [
             new List({
-                cache: 'thread-list',
+                cache: 'thread',
                 key: 'id',
                 items: thread.thread,
                 role: 'list',

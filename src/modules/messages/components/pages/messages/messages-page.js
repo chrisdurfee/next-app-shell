@@ -82,6 +82,10 @@ export const MessagesPage = () =>
                             title: "Message Deleted",
                             description: "The message has been deleted.",
                         });
+                    },
+                    mingle(row)
+                    {
+                        parent.list.mingle(row);
                     }
                 });
             }),

@@ -79,6 +79,8 @@ export const ThreadComposer = Jot(
     {
         console.log('message sent');
 
+        this.add(this.textarea.value);
+
         this.textarea.value = '';
         this.state.charCount = 0;
         this.state.isOverLimit = false;

@@ -71,7 +71,7 @@ export const ThreadList = () => (
                 }
 
                 return new List({
-                    cache: 'thread-list',
+                    cache: 'list',
                     key: 'id',
                     items,
                     role: 'list',
