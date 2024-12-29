@@ -1,7 +1,7 @@
 import { A, Div, H3, H5, I, P, Span } from "@base-framework/atoms";
 import { Strings } from "@base-framework/base";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from "../../doc-page.js";
 
@@ -137,7 +137,7 @@ export const IconPage = () => (
                     I({ html: Icons.home} )
                 ],
                 code: `
-import { Icons } from '@components/icons/icons.js';
+import {  Icons  } from "@base-framework/ui/icons";
 import { I } from '@base-framework/atoms';
 
 export const HomeIcon = () => (
@@ -152,7 +152,7 @@ export const HomeIcon = () => (
                     Icon(Icons.home)
                 ],
                 code: `
-import { Icon } from '@components/atoms/icon.js';
+import {  Icon  } from "@base-framework/ui/atoms";
 
 Icon(Icons.home);`
             }),
@@ -194,7 +194,7 @@ Icon(Icons.home);`
 
                 ],
                 code: `
-import { Icon } from '@components/atoms/icon.js';
+import {  Icon  } from "@base-framework/ui/atoms";
 
 Icon({ size: 'xs' }, Icons.home),
 Span('Extra Small (4x4)'),

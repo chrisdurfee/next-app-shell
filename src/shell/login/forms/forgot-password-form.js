@@ -1,6 +1,5 @@
 import { Div, Form } from '@base-framework/atoms';
-import { Button } from '@components/atoms/buttons/buttons.js';
-import { EmailInput } from '@components/atoms/form/input.js';
+import { Button, EmailInput } from "@base-framework/ui/atoms";
 import { STEPS } from '../steps';
 
 /**

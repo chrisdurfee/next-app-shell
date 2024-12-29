@@ -1,4 +1,4 @@
-import { SidebarMenuPage } from "@components/pages/sidebar-menu-page.js";
+import { SidebarMenuPage } from "@base-framework/ui/pages";
 import { DocumentationSwitch } from "./documentation-switch.js";
 import { Links } from "./links.js";
 import { Routes } from "./routes.js";

@@ -1,8 +1,7 @@
 import { Data } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
-import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
-import { Dropdown } from "@components/molecules/dropdowns/dropdown.js";
-import { Panel } from "@components/organisms/panel.js";
+import { Icons } from "@base-framework/ui/icons";
+import { Dropdown, DropdownMenu } from "@base-framework/ui/molecules";
+import { Panel } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -53,8 +52,8 @@ export const DropdownMenuPage = () => (
                         }
                     })
                 ],
-                code: `import { Icons } from "@components/icons/icons.js";
-import { DropdownMenu } from '@components/molecules/dropdowns/dropdown-menu.js';
+                code: `import {  Icons  } from "@base-framework/ui/icons";
+import {  DropdownMenu  } from "@base-framework/ui/molecules";
 
 new DropdownMenu({
     icon: Icons.ellipsis.vertical,
@@ -122,10 +121,10 @@ new DropdownMenu({
                         })
                     ])
                 ],
-                code: `import { Icons } from "@components/icons/icons.js";
-import { Dropdown } from "@components/molecules/dropdowns/dropdown.js";
+                code: `import {  Icons  } from "@base-framework/ui/icons";
+import {  Dropdown  } from "@base-framework/ui/molecules";
 import { Data } from "@base-framework/base";
-import { Panel } from "@components/organisms/panel.js";
+import {  Panel  } from "@base-framework/ui/organisms";
 
 new Panel({
     setData()

@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Icons } from "@components/icons/icons.js";
+import { Icons } from "@base-framework/ui/icons";
 import { DashboardCard } from "./dashboard-card.js";
 
 /**

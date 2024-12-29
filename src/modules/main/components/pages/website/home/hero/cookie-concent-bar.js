@@ -1,6 +1,6 @@
 import { Div, OnState, Span } from '@base-framework/atoms';
 import { Jot } from '@base-framework/base';
-import { Button } from '@components/atoms/buttons/buttons.js';
+import { Button } from "@base-framework/ui/atoms";
 import { CookieDialog } from './cookie-dialog.js';
 
 /**

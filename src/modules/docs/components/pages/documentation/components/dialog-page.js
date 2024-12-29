@@ -1,10 +1,8 @@
 import { Div, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Input } from "@components/atoms/form/input.js";
-import { Icons } from "@components/icons/icons.js";
-import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
-import { Dialog } from "@components/molecules/dialogs/dialog.js";
+import { Button, Input } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Confirmation, Dialog } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -124,7 +122,7 @@ export const DialogPage = () => (
 
                     ])
                 ],
-                code: `import { Dialog } from '@components/molecules/dialogue.js';
+                code: `import {  Dialog  } from "@base-framework/ui/molecules";
 
 new Dialog({
     title: '',
@@ -146,7 +144,7 @@ new Dialog({
                         confirmed: () => console.log('Confirmed!')
                     })
                 ],
-                code: `import { Confirmation } from '@components/molecules/dialogs/confirmation.js';
+                code: `import {  Confirmation  } from "@base-framework/ui/molecules";
 
 new Confirmation({
     title: 'Are you absoultely sure?',
@@ -165,7 +163,7 @@ new Confirmation({
                         description: 'Share this link with others.',
                     })
                 ],
-                code: `import { Confirmation } from '@components/molecules/dialogs/confirmation.js';
+                code: `import {  Confirmation  } from "@base-framework/ui/molecules";
 
 new Confirmation({
     title: 'Are you absoultely sure?',
@@ -182,9 +180,9 @@ new Confirmation({
                 preview: [
                     TypeDialogButton()
                 ],
-                code: `import { Dialog } from '@components/molecules/dialogue.js';
-import { Confirmation } from '@components/molecules/dialogs/confirmation.js';
-import { Icons } from '@components/icons/icons.js';
+                code: `import {  Dialog  } from "@base-framework/ui/molecules";
+import {  Confirmation  } from "@base-framework/ui/molecules";
+import {  Icons  } from "@base-framework/ui/icons";
 
 new Confirmation({
     icon: Icons.signOut,

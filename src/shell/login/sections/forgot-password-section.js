@@ -1,7 +1,7 @@
 import { Div, H1, Header, OnState, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Icons } from '@components/icons/icons.js';
-import { Alert } from '@components/molecules/alert.js';
+import { Icons } from "@base-framework/ui/icons";
+import { Alert } from "@base-framework/ui/molecules";
 import { ForgotPasswordForm } from '../forms/forgot-password-form.js';
 
 /**

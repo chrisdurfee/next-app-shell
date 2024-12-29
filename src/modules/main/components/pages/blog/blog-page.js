@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { BlankPage } from "@base-framework/ui/pages";
 import { BlogHeader } from "./blog-header.js";
 import { HeroItem } from "./hero-item.js";
 import { PostItem } from "./post-item.js";

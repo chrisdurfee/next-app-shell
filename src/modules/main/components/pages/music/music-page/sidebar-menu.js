@@ -1,5 +1,5 @@
-import { Icons } from "@components/icons/icons.js";
-import { SidebarMenu as BaseSidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
+import { Icons } from "@base-framework/ui/icons";
+import { SidebarMenu as BaseSidebarMenu } from "@base-framework/ui/organisms";
 
 const PAGE_URL = 'music';
 

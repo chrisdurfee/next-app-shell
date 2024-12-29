@@ -1,6 +1,5 @@
 import { Div, OnRoute } from "@base-framework/atoms";
-import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
-import { Panel } from "@components/organisms/panel.js";
+import { DockableOverlay, Panel } from "@base-framework/ui/organisms";
 import { EmailDetail } from "./email/email-detail.js";
 import { EmailEmptyState } from "./email/email-empty-state.js";
 

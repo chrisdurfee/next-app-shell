@@ -1,7 +1,7 @@
 import { P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
-import { Notification } from "@components/molecules/notifications/notification.js";
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Notification } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 

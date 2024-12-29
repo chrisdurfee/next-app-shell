@@ -1,6 +1,5 @@
 import { Div, H2, P } from "@base-framework/atoms";
-import { Card } from "@components/atoms/cards/card.js";
-import { Icon } from "@components/atoms/icon.js";
+import { Card, Icon } from "@base-framework/ui/atoms";
 
 /**
  * ClientSummaryCard

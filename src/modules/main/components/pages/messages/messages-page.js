@@ -1,6 +1,6 @@
 import { Div, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { BlankPage } from "@base-framework/ui/pages";
 import { MessagesSidebar } from "./messages-sidebar.js";
 import { MESSAGES_THREADS } from "./messages-threads.js";
 import { ThreadContentSwitch } from "./thread/thread-content-switch.js";

@@ -1,7 +1,7 @@
 import { A, Div, P, Td, Thead, Tr } from "@base-framework/atoms";
-import { Checkbox } from "@components/atoms/form/checkbox.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { CheckboxCol, DataTable, HeaderCol } from "@components/organisms/lists/data-table.js";
+import { Checkbox } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
+import { CheckboxCol, DataTable, HeaderCol } from "@base-framework/ui/organisms";
 
 /**
  * This will render a header row in the clients table.

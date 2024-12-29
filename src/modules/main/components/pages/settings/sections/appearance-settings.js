@@ -1,8 +1,8 @@
 import { Div, P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Select } from "@components/atoms/form/select.js";
-import { ThemeToggle } from "@components/molecules/theme-toggle.js";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Fieldset  } from "@base-framework/ui/atoms";
+import {  Select  } from "@base-framework/ui/atoms";
+import {  ThemeToggle  } from "@base-framework/ui/molecules";
 import { SettingsSection } from "../atoms/settings-section.js";
 
 /**

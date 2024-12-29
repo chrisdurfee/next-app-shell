@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { BlankPage } from '@components/pages/blank-page.js';
+import { BlankPage } from "@base-framework/ui/pages";
 import { DashboardContent } from './dashboard-content.js';
 
 /**

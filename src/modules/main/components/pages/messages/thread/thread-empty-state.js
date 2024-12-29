@@ -1,5 +1,5 @@
 import { Div, H2, P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Button  } from "@base-framework/ui/atoms";
 
 /**
  * ThreadEmptyState

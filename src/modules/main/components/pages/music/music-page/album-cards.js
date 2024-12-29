@@ -1,6 +1,6 @@
 import { A, Div, H3, Img, P } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Skeleton } from "@components/atoms/skeleton.js";
+import { Skeleton } from "@base-framework/ui/atoms";
 
 const PAGE_URL = 'music';
 

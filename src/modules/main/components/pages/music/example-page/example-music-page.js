@@ -1,10 +1,8 @@
 import { Div, H2, H3, Img, P } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
-import { Icons } from "@components/icons/icons.js";
-import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
-import TabGroup from "@components/organisms/tabs/tab-group.js";
-import { FullPage } from "@components/pages/full-page.js";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { InlineNavigation, TabGroup } from "@base-framework/ui/organisms";
+import { FullPage } from "@base-framework/ui/pages";
 
 const PAGE_URL = 'music';
 

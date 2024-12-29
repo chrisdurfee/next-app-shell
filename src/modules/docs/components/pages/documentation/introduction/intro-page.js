@@ -163,7 +163,7 @@ export const IntroPage = () => (
                     Span(`Each module includes its own routes, links, and options, as demonstrated in the example provided. This architecture ensures that modules are self-contained and can be easily integrated into any project using the App Shell framework.`)
                 ]),
 
-                CodeCard(`import { Icons } from '@components/icons/icons.js';
+                CodeCard(`import {  Icons  } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
 
 /**

@@ -1,8 +1,7 @@
 import { Div, P, Span } from '@base-framework/atoms';
 import { Jot } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Skeleton } from "@components/atoms/skeleton.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { Button, Skeleton } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -80,7 +79,7 @@ export const SkeletonPage = () => (
                         ])
                     ])
                 ],
-                code: `import { Skeleton } from "@components/atoms/skeleton.js";
+                code: `import {  Skeleton  } from "@base-framework/ui/atoms";
 import { Div } from '@base-framework/atoms';
 
 Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
@@ -107,7 +106,7 @@ Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
                         ])
                     ])
                 ],
-                code: `import { Skeleton } from "@components/atoms/skeleton.js";
+                code: `import {  Skeleton  } from "@base-framework/ui/atoms";
 import { Div } from '@base-framework/atoms';
 
 Div({ class: 'space-y-4 flex flex-auto flex-col space-x-4 w-full max-w-64' }, [
@@ -128,11 +127,11 @@ Div({ class: 'space-y-4 flex flex-auto flex-col space-x-4 w-full max-w-64' }, [
                 preview: [
                     new LoadingAvatar()
                 ],
-                code: `import { Skeleton } from "@components/atoms/skeleton.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
+                code: `import {  Skeleton  } from "@base-framework/ui/atoms";
+import {  Avatar  } from "@base-framework/ui/molecules";
 import { Jot } from "@base-framework/base";
 import { Div, P, Span } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Button  } from "@base-framework/ui/atoms";
 
 /**
  * LoadingAvatar Component

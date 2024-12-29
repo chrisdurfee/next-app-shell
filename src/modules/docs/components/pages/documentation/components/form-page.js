@@ -1,14 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Checkbox } from '@components/atoms/form/checkbox.js';
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { EmailInput, Input, TelInput, Textarea } from "@components/atoms/form/input.js";
-import { RangeSlider } from '@components/atoms/form/range-slider.js';
-import { Select } from "@components/atoms/form/select.js";
-import { Combobox } from "@components/molecules/combobox/combobox.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
-import Toggle from "@components/molecules/toggle/toggle.js";
+import { Button, Checkbox, EmailInput, Fieldset, Input, RangeSlider, Select, TelInput, Textarea } from "@base-framework/ui/atoms";
+import { Combobox, Form, FormField, Toggle } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -180,12 +173,12 @@ export const FormPage = () => (
                         ProfileForm()
                     ])
                 ],
-                code: `import { Button, Input, EmailInput } from "@components/atoms/form/input.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+                code: `import {  Button, Input, EmailInput  } from "@base-framework/ui/atoms";
+import {  Form, FormField  } from "@base-framework/ui/molecules";
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Fieldset  } from "@base-framework/ui/atoms";
+import {  Button  } from "@base-framework/ui/atoms";
 
 Fieldset({ legend: 'Profile' }, [
     new FormField({
@@ -216,12 +209,12 @@ Fieldset({ legend: 'Profile' }, [
                         PreferencesForm()
                     ])
                 ],
-                code: `import { Button, Checkbox, Select } from "@components/atoms/form/input.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+                code: `import {  Button, Checkbox, Select  } from "@base-framework/ui/atoms";
+import {  Form, FormField  } from "@base-framework/ui/molecules";
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
+import {  Fieldset  } from "@base-framework/ui/atoms";
+import {  Button  } from "@base-framework/ui/atoms";
 
 Form({ submit: (e) => { console.log("Preferences Form submitted"); } }, [
     Fieldset({ legend: 'Preferences' }, [
@@ -254,13 +247,13 @@ Form({ submit: (e) => { console.log("Preferences Form submitted"); } }, [
                         ContactForm()
                     ])
                 ],
-                code: `import { Button, TelInput, Textarea } from "@components/atoms/form/input.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+                code: `import {  Button, TelInput, Textarea  } from "@base-framework/ui/atoms";
+import {  Form, FormField  } from "@base-framework/ui/molecules";
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Combobox } from "@components/molecules/combobox/combobox.js";
+import {  Fieldset  } from "@base-framework/ui/atoms";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Combobox  } from "@base-framework/ui/molecules";
 
 Form({ submit: (e) => { console.log("Contact Form submitted"); } }, [
     Fieldset({ legend: 'Contact Us' }, [
@@ -310,14 +303,14 @@ Form({ submit: (e) => { console.log("Contact Form submitted"); } }, [
                         SettingsForm()
                     ])
                 ],
-                code: `import { Button, Toggle, RangeSlider } from "@components/atoms/form/input.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+                code: `import {  Button, Toggle, RangeSlider  } from "@base-framework/ui/atoms";
+import {  Form, FormField  } from "@base-framework/ui/molecules";
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Fieldset } from "@components/atoms/form/fieldset.js";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Toggle } from "@components/molecules/toggle/toggle.js";
-import { RangeSlider } from '@components/atoms/form/range-slider.js';
+import {  Fieldset  } from "@base-framework/ui/atoms";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Toggle  } from "@base-framework/ui/molecules";
+import {  RangeSlider  } from "@base-framework/ui/atoms";
 
 Form({ submit: (e) => { console.log("Settings Form submitted"); } }, [
     Fieldset({ legend: 'Settings' }, [

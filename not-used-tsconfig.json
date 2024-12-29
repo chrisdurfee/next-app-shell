@@ -18,7 +18,8 @@
         "baseUrl": "./",
         "paths": {
             "@base-framework/base": ["node_modules/@base-framework/base/dist/base.js"],
-            "@base-framework/atoms": ["node_modules/@base-framework/atoms/dist/atoms.js"]
+            "@base-framework/atoms": ["node_modules/@base-framework/atoms/dist/atoms.js"],
+            "@base-framework/ui": ["node_modules/@base-framework/atoms/dist/ui.js"]
         }
     },
     "include": [

@@ -1,7 +1,6 @@
 import { Div, H1, Header } from "@base-framework/atoms";
-import { GridContainer } from '@components/molecules/molecules.js';
-import { Overlay } from '@components/organisms/overlays/overlay.js';
-import { Panel } from '@components/organisms/panel.js';
+import { Overlay, Panel } from "@base-framework/ui/organisms";
+import { GridContainer } from "@components/molecules/molecules.js";
 
 /**
  * This will create an example overlay.

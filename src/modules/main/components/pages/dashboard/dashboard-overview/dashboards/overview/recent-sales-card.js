@@ -1,6 +1,6 @@
 import { Div, H3, Header, P, Span } from "@base-framework/atoms";
-import { Card } from "@components/atoms/cards/card.js";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
+import { Card } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
 
 /**
  * RecentSalesItem

@@ -1,6 +1,6 @@
 import { Div, H3, H4, H5, P, Section } from "@base-framework/atoms";
-import { Icons } from "@components/icons/icons.js";
-import { ThemeToggle } from "@components/molecules/theme-toggle.js";
+import { Icons } from "@base-framework/ui/icons";
+import { ThemeToggle } from "@base-framework/ui/molecules";
 import { DocPage } from "../../doc-page.js";
 
 /**

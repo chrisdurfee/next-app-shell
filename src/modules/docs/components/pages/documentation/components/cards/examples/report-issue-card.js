@@ -1,9 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Card } from "@components/atoms/cards/card.js";
-import { Input, Textarea } from "@components/atoms/form/input.js";
-import { Select } from "@components/atoms/form/select.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+import { Button, Card, Input, Select, Textarea } from "@base-framework/ui/atoms";
+import { Form, FormField } from "@base-framework/ui/molecules";
 import { CardHeader } from "./card-atoms.js";
 
 /**
@@ -14,7 +11,7 @@ import { CardHeader } from "./card-atoms.js";
  * @returns {object} - The report issue form.
  */
 const ReportIssueForm = () => (
-    Form({ submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
+    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
         // Row for Area and Security Level
         Div({ class: "flex flex-auto w-full gap-4" }, [
             // Area field

@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Card } from "@components/atoms/cards/card.js";
-import DatePicker from "@components/molecules/date-time/date-picker.js";
+import { Card } from "@base-framework/ui/atoms";
+import { DatePicker } from "@base-framework/ui/molecules";
 import { CardHeader } from "./card-atoms.js";
 
 /**

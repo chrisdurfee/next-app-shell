@@ -1,5 +1,4 @@
-import { CircleGraph } from "@components/atoms/progress/circle-graph.js";
-import { ProgressBar } from "@components/atoms/progress/progress-bar.js";
+import { CircleGraph, ProgressBar } from "@base-framework/ui/atoms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -25,7 +24,7 @@ export const ProgressBarPage = () => (
                 preview: [
                     new ProgressBar({ cache: 'progress', progress: 20 })
                 ],
-                code: `import { ProgressBar } from "@components/atoms/progress/progress-bar.js";
+                code: `import {  ProgressBar  } from "@base-framework/ui/atoms";
 
 new ProgressBar({ cache: 'progress', progress: 20 })`
             }),
@@ -36,7 +35,7 @@ new ProgressBar({ cache: 'progress', progress: 20 })`
                 preview: [
                     CircleGraph({ cache: 'progress', progress: 50, class: 'stroke-gray-300' })
                 ],
-                code: `import { ProgressBar } from "@components/atoms/progress/progress-bar.js";
+                code: `import {  ProgressBar  } from "@base-framework/ui/atoms";
 
 new ProgressBar({ cache: 'progress', progress: 20 })`
             })

@@ -1,5 +1,5 @@
 import { H4, P } from "@base-framework/atoms";
-import { Card } from "@components/atoms/cards/card.js";
+import { Card } from "@base-framework/ui/atoms";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 import AccountCard from "./examples/account-card.js";
@@ -33,7 +33,7 @@ export const CardPage = () => (
                 preview: [
                     Card()
                 ],
-                code: `import { Button } from '@components/atoms/cards/card.js';
+                code: `import {  Button  } from "@base-framework/ui/atoms";
 
 Card()`
             }),

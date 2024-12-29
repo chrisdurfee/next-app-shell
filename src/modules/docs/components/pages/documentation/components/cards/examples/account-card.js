@@ -1,9 +1,7 @@
 import { Div, Input, Span } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Card } from "@components/atoms/cards/card.js";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
-import { Form, FormField } from "@components/molecules/form/form.js";
+import { Button, Card, Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Form, FormField } from "@base-framework/ui/molecules";
 import { CardHeader } from "./card-atoms.js";
 
 /**
@@ -44,7 +42,7 @@ const SocialSignIn = () => (
  * @returns {object}
  */
 const AccountForm = () => (
-    Form({ submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
+    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
         // Email field
         new FormField({
             name: "email",

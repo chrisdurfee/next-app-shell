@@ -1,7 +1,7 @@
 import { A, Div, P, Span } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Skeleton } from "@components/atoms/skeleton.js";
-import { TimeFrame } from "@components/molecules/date-time/time-frame.js";
+import { Skeleton } from "@base-framework/ui/atoms";
+import { TimeFrame } from "@base-framework/ui/molecules";
 
 /**
  * Skeleton for Inbox Message Item while loading.

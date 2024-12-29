@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Atom, Jot } from '@base-framework/base';
-import { NotificationContainer } from '@components/molecules/notifications/notification-container.js';
+import { NotificationContainer } from "@base-framework/ui/molecules";
 import { AppContent } from './app-content.js';
 
 /**

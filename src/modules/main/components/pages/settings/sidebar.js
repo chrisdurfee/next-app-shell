@@ -1,5 +1,5 @@
-import { Icons } from "@components/icons/icons.js";
-import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
+import { Icons } from "@base-framework/ui/icons";
+import { Confirmation } from "@base-framework/ui/molecules";
 import { SidebarMenu } from "./sidebar-menu.js";
 
 /**

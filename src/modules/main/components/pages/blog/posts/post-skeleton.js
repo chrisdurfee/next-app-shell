@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Skeleton } from "@components/atoms/skeleton.js";
+import { Skeleton } from "@base-framework/ui/atoms";
 
 /**
  * PostSkeleton

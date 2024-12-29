@@ -1,6 +1,6 @@
 import { H4, P, Section, Span, Td, Tr } from '@base-framework/atoms';
-import { Checkbox } from '@components/atoms/form/checkbox.js';
-import { DataTable } from "@components/organisms/lists/data-table.js";
+import { Checkbox } from "@base-framework/ui/atoms";
+import { DataTable } from "@base-framework/ui/organisms";
 import { CodeCard } from "../../../../molecules/cards.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -69,8 +69,8 @@ export const DataTablePage = () =>
             preview: [
                 new DataTable({ headers, rows, rowItem, key: 'id' }),
             ],
-            code: `import { DataTable } from "@components/organisms/lists/data-table.js";
-import { Checkbox } from '@components/atoms/form/checkbox.js';
+            code: `import {  DataTable  } from "@base-framework/ui/organisms";
+import {  Checkbox  } from "@base-framework/ui/atoms";
 import { Tr, Td } from '@base-framework/atoms';
 
 const headers = [
@@ -116,8 +116,8 @@ new DataTable({
                 CustomHeaderTable()
             ],
             code: `// custom-header-table.js
-import { CheckboxCol, HeaderCol } from "@components/organisms/lists/data-table.js";
-import { DataTable } from "@components/organisms/lists/data-table.js";
+import {  CheckboxCol, HeaderCol  } from "@base-framework/ui/organisms";
+import {  DataTable  } from "@base-framework/ui/organisms";
 import { Tr, Td, Thead } from '@base-framework/atoms';
 
 // Showcases a custom header with CheckboxCol and HeaderCol, plus a custom rowItem.

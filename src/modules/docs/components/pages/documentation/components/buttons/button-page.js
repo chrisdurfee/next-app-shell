@@ -1,6 +1,6 @@
 import { H2, Header } from "@base-framework/atoms";
-import { Button, LoadingButton } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
+import { Button, LoadingButton } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
 
@@ -26,7 +26,7 @@ export const ButtonPage = () => (
                 preview: [
                     Button({ variant: 'primary' }, 'Click Me')
                 ],
-                code: `import { Button } from '@components/atoms/buttons/buttons.js';
+                code: `import {  Button  } from "@base-framework/ui/atoms";
 
 Button({ ...props, variant: 'secondary' }, primary)`
             }),
@@ -42,7 +42,7 @@ Button({ ...props, variant: 'secondary' }, primary)`
                     Button({ variant: 'primary' }, 'Click Me')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const PrimaryButton = Atom((props, children) => (
@@ -56,7 +56,7 @@ export const PrimaryButton = Atom((props, children) => (
                     Button({ variant: 'secondary' }, 'Secondary')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const SecondaryButton = Atom((props, children) => (
@@ -70,7 +70,7 @@ export const SecondaryButton = Atom((props, children) => (
                     Button({ variant: 'destructive' }, 'Destructive')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const DestructiveButton = Atom((props, children) => (
@@ -83,7 +83,7 @@ export const DestructiveButton = Atom((props, children) => (
                 preview: [
                     Button({ variant: 'warning' }, 'Warning')
                 ],
-                code: `import { Button } from '@components/atoms/buttons/buttons.js';
+                code: `import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const WarningButton = Atom((props, children) => (
@@ -97,7 +97,7 @@ export const WarningButton = Atom((props, children) => (
                     Button({ variant: 'outline' }, 'Outline')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const OutlineButton = Atom((props, children) => (
@@ -111,7 +111,7 @@ export const OutlineButton = Atom((props, children) => (
                     Button({ variant: 'ghost' }, 'Ghost')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const GhostButton = Atom((props, children) => (
@@ -125,7 +125,7 @@ export const GhostButton = Atom((props, children) => (
                     Button({ variant: 'link' }, 'Link')
                 ],
                 code: `
-import { Button } from '@components/atoms/buttons/buttons.js';
+import {  Button  } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const LinkButton = Atom((props, children) => (
@@ -139,8 +139,8 @@ export const LinkButton = Atom((props, children) => (
                 preview: [
                     Button({ variant: 'icon', icon: Icons.home })
                 ],
-                code: `import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
+                code: `import {  Button  } from "@base-framework/ui/atoms";
+import {  Icons  } from "@base-framework/ui/icons";
 import { Atom } from '@base-framework/base';
 
 export const IconButton = Atom((props) => (
@@ -153,8 +153,8 @@ export const IconButton = Atom((props) => (
                 preview: [
                     Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')
                 ],
-                code: `import { Button } from '@components/atoms/buttons/buttons.js';
-import { Icons } from '@components/icons/icons.js';
+                code: `import {  Button  } from "@base-framework/ui/atoms";
+import {  Icons  } from "@base-framework/ui/icons";
 
 Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')`
             }),
@@ -164,7 +164,7 @@ Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')`
                 preview: [
                     LoadingButton('With Icon')
                 ],
-                code: `import { LoadingButton } from '@components/atoms/buttons/buttons.js';
+                code: `import {  LoadingButton  } from "@base-framework/ui/atoms";
 
 LoadingButton('With Icon')`
             })

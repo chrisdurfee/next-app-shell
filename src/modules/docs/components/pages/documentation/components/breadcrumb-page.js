@@ -1,5 +1,4 @@
-import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
-import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
+import { Breadcrumb, DotsIndicator } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -31,7 +30,7 @@ export const BreadcrumbPage = () => (
                 preview: [
                     new Breadcrumb( { items } ),
                 ],
-                code: `import { Breadcrumb } from "@components/molecules/breadcrumb/breadcrumb.js";
+                code: `import {  Breadcrumb  } from "@base-framework/ui/molecules";
 
 new Breadcrumb({ items: [
     { href: '/', label: 'Home' },
@@ -51,7 +50,7 @@ new Breadcrumb({ items: [
                         onClick: (index) => console.log('Clicked dot', index)
                     }),
                 ],
-                code: `import DotsIndicator from "@components/molecules/breadcrumb/dots-indicator.js";
+                code: `import DotsIndicator from "@base-framework/ui/molecules";
 
 new DotsIndicator({
     count: 6,

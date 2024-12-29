@@ -1,5 +1,5 @@
-import { Div, H1, Header } from "@components/atoms/atoms.js";
-import { BackButton, Overlay } from '@components/organisms/overlays/overlay.js';
+import { Div, H1, Header } from "@base-framework/atoms";
+import { BackButton, Overlay } from "@base-framework/ui/organisms";
 
 /**
  * This will create an example overlay.

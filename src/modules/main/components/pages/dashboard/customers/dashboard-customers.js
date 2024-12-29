@@ -1,6 +1,6 @@
 import { Div, H2, P } from "@base-framework/atoms";
-import { Icon } from "@components/atoms/icon.js";
-import { Icons } from "@components/icons/icons.js";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * DashboardCustomersEmptyState

@@ -1,7 +1,7 @@
 import { Div, On } from "@base-framework/atoms";
 import { Data, DateTime } from "@base-framework/base";
-import { BlankPage } from "@components/pages/blank-page.js";
-import { FullTemplate } from "@components/pages/templates/full-template.js";
+import { BlankPage } from "@base-framework/ui/pages";
+import { FullTemplate } from "@base-framework/ui/templates";
 import { createDynamicEvents } from "./events.js";
 import { MonthCalendar } from "./month/month-calendar.js";
 import { pad } from "./utils.js";

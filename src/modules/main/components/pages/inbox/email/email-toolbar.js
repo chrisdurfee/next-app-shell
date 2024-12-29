@@ -1,10 +1,8 @@
 import { Div } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icon } from "@components/atoms/icon.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
-import { Icons } from "@components/icons/icons.js";
-import { Confirmation } from "@components/molecules/dialogs/confirmation.js";
-import { BackButton } from "@components/organisms/overlays/overlay.js";
+import { Button, Icon, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Confirmation } from "@base-framework/ui/molecules";
+import { BackButton } from "@base-framework/ui/organisms";
 
 /**
  * Toolbar for Email Actions.

@@ -1,5 +1,5 @@
-import { Icons } from "@components/icons/icons.js";
-import { Alert } from "@components/molecules/alert.js";
+import { Icons } from "@base-framework/ui/icons";
+import { Alert } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -30,8 +30,8 @@ export const AlertPage = () => (
                         icon: Icons.information
                     })
                 ],
-                code: `import { Alert } from "@components/molecules/alert.js";
-import { Icons } from "@components/icons/icons.js";
+                code: `import {  Alert  } from "@base-framework/ui/molecules";
+import {  Icons  } from "@base-framework/ui/icons";
 
 Alert({
     title: 'Notice',

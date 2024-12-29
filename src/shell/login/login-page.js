@@ -1,5 +1,4 @@
-import { BlankPage } from '@components/pages/blank-page.js';
-import { FullPage } from '@components/pages/full-page.js';
+import { BlankPage, FullPage } from "@base-framework/ui/pages";
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 

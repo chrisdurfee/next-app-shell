@@ -1,8 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { Icons } from "@components/icons/icons.js";
-import { InlineNavigation } from "@components/organisms/navigation/inline-navigation.js";
-import { SidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
-import NavigationMenu from "../../../../../../components/organisms/navigation/navigation-menu/navigation-menu.js";
+import { Icons } from "@base-framework/ui/icons";
+import { InlineNavigation, NavigationMenu, SidebarMenu } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -43,8 +41,8 @@ export const NavigationPage = () => (
                         })
                     ])
                 ],
-                code: `import { Button } from '@components/organisms/navigation/inline-navigation.js';
-import { Icons } from "@components/icons/icons.js";
+                code: `import {  Button  } from "@base-framework/ui/organisms";
+import {  Icons  } from "@base-framework/ui/icons";
 
 new NavigationMenu({
     options: [
@@ -94,8 +92,8 @@ new NavigationMenu({
                         })
                     ])
                 ],
-                code: `import { Button } from '@components/organisms/navigation/inline-navigation.js';
-import { Icons } from "@components/icons/icons.js";
+                code: `import {  Button  } from "@base-framework/ui/organisms";
+import {  Icons  } from "@base-framework/ui/icons";
 
 new InlineNavigation({
     options: [
@@ -148,8 +146,8 @@ new InlineNavigation({
                         })
                     ])
                 ],
-                code: `import { Icons } from "@components/icons/icons.js";
-import { SidebarMenu } from "@components/organisms/navigation/sidebar-menu/sidebar-menu.js";
+                code: `import {  Icons  } from "@base-framework/ui/icons";
+import {  SidebarMenu  } from "@base-framework/ui/organisms";
 
 const PAGE_URL = 'music';
 

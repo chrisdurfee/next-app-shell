@@ -1,7 +1,5 @@
 import { Div, H4, P, Span } from "@base-framework/atoms";
-import { Avatar } from "@components/molecules/avatars/avatar.js";
-import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
-import { StaticStatusIndicator } from "../../../../../../components/molecules/avatars/static-status-indicator.js";
+import { Avatar, StaticStatusIndicator, StatusIndicator } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -156,7 +154,7 @@ export const AvatarPage = () => (
                     ])
                 ],
                 code: `import { Div, H4, P, Span } from "@base-framework/atoms";
-import { StatusIndicator } from "@components/molecules/avatars/status-indicator.js";
+import {  StatusIndicator  } from "@base-framework/ui/molecules";
 
 Div({
     class: 'relative',
@@ -180,7 +178,7 @@ Div({
                     ])
                 ],
                 code: `import { Div, H4, P, Span } from "@base-framework/atoms";
-import { StaticStatusIndicator } from "@components/molecules/avatars/static-status-indicator.js";
+import {  StaticStatusIndicator  } from "@base-framework/ui/molecules";
 
 Div({ class: 'relative' }, [
     StaticStatusIndicator('online')

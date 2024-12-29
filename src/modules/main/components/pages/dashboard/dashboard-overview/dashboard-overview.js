@@ -1,9 +1,8 @@
 import { Div, H1, Header } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
-import { DatePicker } from "@components/molecules/date-time/date-picker.js";
-import { Panel } from "@components/organisms/panel.js";
-import { TabNavigation } from "@components/organisms/tabs/tab-navigation.js";
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { DatePicker } from "@base-framework/ui/molecules";
+import { Panel, TabNavigation } from "@base-framework/ui/organisms";
 import { AnalyticsEmptyState } from "./dashboards/analytics/analytics-dashboard.js";
 import { OverviewDashboard } from "./dashboards/overview/overview-dashboard.js";
 

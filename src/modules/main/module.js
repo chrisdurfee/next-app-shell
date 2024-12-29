@@ -1,4 +1,4 @@
-import { Icons } from '@components/icons/icons.js';
+import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
 import { BlogPage } from './components/pages/blog/blog-page.js';
 import { PostPage } from './components/pages/blog/posts/post-page.js';

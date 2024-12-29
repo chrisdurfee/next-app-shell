@@ -1,7 +1,7 @@
 import { Div, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
-import { BlankPage } from "@components/pages/blank-page.js";
+import { Icons } from "@base-framework/ui/icons";
+import { BlankPage } from "@base-framework/ui/pages";
 import { ContentSwitch } from "./content-switch.js";
 import { INBOX_MESSAGES } from "./inbox-messages.js";
 import { InboxSidebarMenu } from "./inbox-sidebar-menu.js";

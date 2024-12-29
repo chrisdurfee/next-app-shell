@@ -1,8 +1,7 @@
 import { Div, H1, Header } from "@base-framework/atoms";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Tooltip } from "@components/atoms/tooltip.js";
-import { Icons } from "@components/icons/icons.js";
-import { SearchDropdown } from "@components/organisms/search/search-dropdown.js";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { SearchDropdown } from "@base-framework/ui/organisms";
 import { ClientModal } from "./client-modal.js";
 import { clients } from "./clients.js";
 

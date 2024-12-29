@@ -1,6 +1,6 @@
 import { Code, Div, Pre } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Icons } from "@components/icons/icons.js";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * This will create a code card.

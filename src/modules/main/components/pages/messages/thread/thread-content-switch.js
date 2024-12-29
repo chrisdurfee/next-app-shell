@@ -1,6 +1,6 @@
 import { Div, OnRoute } from "@base-framework/atoms";
-import { DockableOverlay } from "@components/organisms/overlays/dockable-overlay.js";
-import { Panel } from "@components/organisms/panel.js";
+import {  DockableOverlay  } from "@base-framework/ui/organisms";
+import {  Panel  } from "@base-framework/ui/organisms";
 import { ThreadDetail } from "./thread-detail.js";
 import { ThreadEmptyState } from "./thread-empty-state.js";
 

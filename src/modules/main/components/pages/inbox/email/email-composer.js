@@ -1,7 +1,7 @@
 import { Div, Textarea } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import { Button } from "@components/atoms/buttons/buttons.js";
-import { Icons } from "@components/icons/icons.js";
+import {  Button  } from "@base-framework/ui/atoms";
+import {  Icons  } from "@base-framework/ui/icons";
 
 /**
  * This will check if the count is over the limit.
