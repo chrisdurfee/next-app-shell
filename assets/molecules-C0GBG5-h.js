@@ -1,0 +1,1 @@
+import{Q as e,Y as t}from"./index-CRQn3d9U.js";const s=e((n,a)=>{let r=n.span?"span-"+n.span:"";return n.class="panel rounded-xl border bg-card text-card-foreground shadow "+r,t(n,a)}),o=e((n,a)=>{const r=new Array(18).fill(1);return t({class:"grid-container",map:[r,()=>s()],...n})});export{o as G};
