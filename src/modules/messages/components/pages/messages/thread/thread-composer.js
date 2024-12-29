@@ -88,6 +88,67 @@ export const ThreadComposer = Jot(
     },
 
     /**
+     * This will check the submit.
+     *
+     * @param {object} e
+     * @returns {void}
+     */
+    checkSubmit(e)
+    {
+        this.resizeTextarea();
+
+        const keyCode = e.keyCode;
+        if (keyCode === 13)
+        {
+            if (e.ctrlKey === true)
+            {
+                if (this.state.empty === true || this.state.isOverLimit === true)
+                {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    app.notify({
+                        icon: Icons.warning,
+                        type: 'warning',
+                        title: 'Missing Message',
+                        description: 'Please enter a message.',
+                    });
+
+                    return;
+                }
+
+                e.preventDefault();
+                e.stopPropagation();
+
+                this.submit();
+            }
+            else
+            {
+                this.resizeTextarea();
+            }
+        }
+    },
+
+    /**
+     * This will resize the textarea.
+     *
+     * @returns {void}
+     */
+    resizeTextarea()
+    {
+        const startHeight = 48;
+        let height = startHeight;
+
+        if (this.textarea.value !== '')
+        {
+            const targetHeight = this.textarea.scrollHeight;
+            height = (targetHeight > startHeight)? targetHeight : startHeight;
+        }
+
+        this.textarea.style = 'height:' + height + 'px;';
+    },
+
+    /**
      * This will render the component.
      *
      * @returns {object}
@@ -121,7 +182,8 @@ export const ThreadComposer = Jot(
                     placeholder: this.placeholder,
                     input: updateCharCount,
                     bind: this.bind,
-                    required: true
+                    required: true,
+                    keyup: (e) => this.checkSubmit(e)
                 }),
                 Div({ class: 'flex flex-col' }, [
                     //TextCount(),
