@@ -37,7 +37,7 @@ export const IntroPage = () => (
 
             Section({ class: 'space-y-4 mt-12' }, [
                 H4({ class: 'text-lg font-bold' }, 'Base UI'),
-                P({ class: 'text-muted-foreground' }, `The @base-framework/ui npm package is a collection of atoms and components that are designed to be used by the app shell. This package has atoms, molecules, organisms, icons, templates, and pages. This package is open source and can be used by any project.`),
+                P({ class: 'text-muted-foreground' }, { html: `The <a class="underline" href="https://github.com/chrisdurfee/ui" target="_blank">@base-framework/ui</a> npm package is a collection of atoms and components that are designed to be used by the app shell. This package has atoms, molecules, organisms, icons, templates, and pages. This package is open source and can be used by any project.` }),
             ]),
 
             Section({ class: 'space-y-4 mt-12' }, [
