@@ -35,11 +35,21 @@ export const IntroPage = () => (
                 P({ class: 'text-muted-foreground' }, `Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
             ]),
 
-            H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
-            P(`The shell supports auth flows and has a "signed in" and signed out" mode. It has a few default page types including a login page. The implentation of the auth flow is up to the developer.`),
+            Section({ class: 'space-y-4 mt-12' }, [
+                H4({ class: 'text-lg font-bold' }, 'Base UI'),
+                P({ class: 'text-muted-foreground' }, `The @base-framework/ui npm package is a collection of atoms and components that are designed to be used by the app shell. This package has atoms, molecules, organisms, icons, templates, and pages. This package is open source and can be used by any project.`),
+            ]),
 
-            H4({ class: 'text-lg font-bold mt-12' }, 'Examples'),
-            P({ class: 'text-muted-foreground' }, `The following examples demonstrate the use of various components and atoms within the App Shell framework that are designs from Shadcn.`),
+            Section({ class: 'space-y-4 mt-12' }, [
+                H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
+                P(`The shell supports auth flows and has a "signed in" and signed out" mode. It has a few default page types including a login page. The implentation of the auth flow is up to the developer.`),
+            ]),
+
+            Section({ class: 'space-y-4 mt-12' }, [
+                H4({ class: 'text-lg font-bold mt-12' }, 'Examples'),
+                P({ class: 'text-muted-foreground' }, `The following examples demonstrate the use of various components and atoms within the App Shell framework that are designs from Shadcn.`),
+            ]),
+
             Div({ class: 'items-start justify-center gap-6 rounded-lg pt-0 md:p-8 md:mt-6 md:grid lg:grid-cols-2 xl:grid-cols-2' }, [
                 Div({ class: 'col-span-2 grid items-start gap-6 lg:col-span-1' }, [
                     AccountCard(),
