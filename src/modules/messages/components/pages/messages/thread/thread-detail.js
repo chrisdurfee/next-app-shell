@@ -110,7 +110,7 @@ export const ThreadDetail = Jot(
 
                             // This will update the list with the new message.
                             this.mingle([
-                                { ...currentThread, content: msg }
+                                { ...currentThread, content: 'YOU: ' + msg }
                             ]);
                         }
                     })
