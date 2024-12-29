@@ -98,11 +98,6 @@ export const ThreadDetail = Jot(
                             const timeStamp = new Date().toISOString();
                             const row = {
                                 id: Math.random() * 1000,
-                                sender: "Angelina Froster",
-                                avatar: "https://example.com/avatars/angelina.png",
-                                status: "online",
-
-                                // get current datetime string
                                 time: timeStamp,
                                 direction: "sent",
                                 content: msg
