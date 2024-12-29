@@ -1,7 +1,8 @@
 import { Div, Textarea } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Icons  } from "@base-framework/ui/icons";
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+import { Form } from "@base-framework/ui/molecules";
 
 
 /**
@@ -32,10 +33,12 @@ const TextCount = () => (
 const SendButton = () => (
     Div({ class: "flex justify-between" }, [
         Button({
+            type: "submit",
             variant: "icon",
             click: () => console.log("Send email"),
             icon: Icons.airplane,
-            class: "text-foreground hover:text-accent"
+            class: "text-foreground hover:text-accent",
+            onSet: ['empty', (empty, el) => el.disabled = empty]
         })
     ])
 );
@@ -60,10 +63,26 @@ export const ThreadComposer = Jot(
     state()
     {
         return {
+            empty: true,
             charCount: 0,
             charLimit: this.charLimit ?? 5000,
             isOverLimit: false
         };
+    },
+
+    /**
+     * This will submit the form.
+     *
+     * @returns {void}
+     */
+    submit()
+    {
+        console.log('message sent');
+
+        this.textarea.value = '';
+        this.state.charCount = 0;
+        this.state.isOverLimit = false;
+        this.state.empty = true;
     },
 
     /**
@@ -80,10 +99,11 @@ export const ThreadComposer = Jot(
             const state = this.state;
             state.charCount = text.length;
             state.isOverLimit = (isOverLimit(text.length, charLimit));
+            state.empty = text.length === 0;
         };
 
         return Div({ class: "fadeIn p-4 w-full lg:max-w-5xl m-auto" }, [
-            Div({ class: "relative flex border rounded-lg p-3 bg-surface" }, [
+            Form({ class: "relative flex border rounded-lg p-3 bg-surface", submit: () => this.submit() }, [
                 Div([
                     Button({
                         variant: "icon",
@@ -95,9 +115,11 @@ export const ThreadComposer = Jot(
                 // Textarea for reply
                 Textarea({
                     class: "w-full border-none bg-transparent resize-none focus:outline-none focus:ring-0 text-sm text-foreground placeholder-muted-foreground",
+                    cache: 'textarea',
                     placeholder: this.placeholder,
                     input: updateCharCount,
-                    bind: this.bind
+                    bind: this.bind,
+                    required: true
                 }),
                 Div({ class: 'flex flex-col' }, [
                     //TextCount(),
