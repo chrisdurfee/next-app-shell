@@ -30,7 +30,7 @@ export const IntroPage = () => (
             // About the App Shell
             Section({ class: 'space-y-4' }, [
                 H4({ class: 'text-lg font-bold' }, 'The App Shell'),
-                P({ class: 'text-muted-foreground' }, `The App Shell is the core that sets up the Configs, router, Service Worker, ENV, gloabl "app" variable, and renders the "shell" that is used to add the additional pages.`),
+                P({ class: 'text-muted-foreground' }, `The App Shell is the core that sets up the Configs, router, Service Worker, ENV, global "app" variable, and renders the "shell" that is used to add the additional pages.`),
                 P({ class: 'text-muted-foreground' }, `As a modular and scalable PWA (Progressive Web App), it offers easy installation across devices, making it suitable as a foundational framework for new projects. The project comes with PWA installation prompts for all devices.`),
                 P({ class: 'text-muted-foreground' }, `Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
             ]),
