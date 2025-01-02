@@ -2,7 +2,7 @@ import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
 import { Counter, DatePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
-import { SearchDropdown } from "@base-framework/ui/organisms";
+import { SearchDropdown, SignaturePanel } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -662,7 +662,33 @@ Div({ class: 'p-4' }, [
         class: 'mt-4'
     })
 ]);`
-            })
+            }),
+
+            DocSection({
+                title: 'Signature Pad',
+                description: 'This is a signature pad input.',
+                preview: [
+                    InputPreview([
+                        new SignaturePanel({
+                            lineWidth: 1,
+                            lineColor: '#CCCCCC',
+                            baseLineWidth: 1,
+                            baseStrokeColor: '#333333',
+                        })
+                    ])
+                ],
+                code: `
+import {  SignaturePanel  } from "@base-framework/ui/organisms";
+
+new SignaturePanel({
+    lineWidth: 1,
+    lineColor: '#CCCCCC',
+    baseLineWidth: 1,
+    baseStrokeColor: '#333333',
+})`
+            }),
+
+            P({ class: 'text-muted-foreground' }, 'The data URL image can be retrieved by calling the `getImage` method on the signature pad instance. The pad can be checked if it\'s been signed by calling the `isSigned` method on the signature pad instance.'),
         ]
     )
 );
