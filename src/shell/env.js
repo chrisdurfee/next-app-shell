@@ -112,16 +112,16 @@ export const Env =
      */
     isSafariBrowser()
     {
-        if(this.isChromeBrower())
+        if (this.isChromeBrower())
         {
             return;
         }
 
-        if(navigator && /Safari/.test(USER_AGENT) && /Chrome/.test(USER_AGENT))
+        if (navigator && /Safari/.test(USER_AGENT) && /Chrome/.test(USER_AGENT))
         {
             this.isSafari = true;
 
-            if(/iPhone|iPad/.test(USER_AGENT))
+            if (/iPhone|iPad/.test(USER_AGENT))
             {
                 this.isIos = true;
             }
