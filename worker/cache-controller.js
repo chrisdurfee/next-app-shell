@@ -8,24 +8,25 @@
  */
 class CacheController
 {
-    /**
-     * This will set up the cache prefix.
-     *
-     * @param {string} prefix
-     */
+	/**
+	 * This will set up the cache prefix.
+	 *
+	 * @param {string} prefix
+	 */
 	constructor(prefix)
 	{
 		this.cacheName = prefix;
+		this.dataCacheName = prefix + '-data';
 		this.hasUpdate = false;
 	}
 
-    /**
-     * This will open the cache.
-     *
-     * @param {string} cacheName
-     * @param {function} callBack
-     * @returns {Promise}
-     */
+	/**
+	 * This will open the cache.
+	 *
+	 * @param {string} cacheName
+	 * @param {function} callBack
+	 * @returns {Promise}
+	 */
 	open(cacheName, callBack)
 	{
 		return caches.open(cacheName).then(callBack);
@@ -89,7 +90,12 @@ class CacheController
 		});
 	}
 
-
+	/**
+	 * This will add files to the cache.
+	 *
+	 * @param {array} files
+	 * @returns {Promise}
+	 */
 	addFiles(files)
 	{
 		return this.open(this.cacheName, (cache) =>
@@ -98,6 +104,11 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will delete files from the cache.
+	 *
+	 * @returns {void}
+	 */
 	deleteFiles()
 	{
 		caches.delete(this.cacheName).then((success) =>
@@ -106,6 +117,62 @@ class CacheController
 		});
 	}
 
+	/**
+	 * This will add data to the cache.
+	 *
+	 * @param {string} key
+	 * @param {*} data
+	 * @returns {Promise}
+	 */
+	addData(key, data)
+	{
+		return this.open(this.dataCacheName, (cache) =>
+		{
+			return cache.put(key, data);
+		});
+	}
+
+	/**
+	 * This will remove data from the cache.
+	 *
+	 * @param {string} key
+	 * @returns {Promise}
+	 */
+	removeData(key)
+	{
+		return this.open(this.dataCacheName, (cache) =>
+		{
+			return caches.delete(key);
+		});
+	}
+
+	/**
+	 * This will get data from the cache.
+	 *
+	 * @param {string} key
+	 * @returns {Promise}
+	 */
+	fetchData(e)
+	{
+		const request = e.request,
+		networkPromise = fetch(request);
+
+		return caches.open(this.dataCacheName).then(async (cache) =>
+		{
+			const cachedResponse = await cache.match(request);
+			const networkResponse = await networkPromise;
+			cache.put(request, networkResponse.clone());
+
+			return cachedResponse || networkPromise;
+		});
+	}
+
+	/**
+	 * This will get files from the cache.
+	 *
+	 * @param {object} e
+	 * @returns {Promise}
+	 */
 	fetchFile(e)
 	{
 		const request = e.request;
@@ -127,7 +194,8 @@ class CacheController
 	 */
 	refresh()
 	{
-		const cacheName = this.cacheName;
+		const cacheName = this.cacheName,
+		dataCacheName = this.dataCacheName;
 
 		/**
 		 * This will select all caches files.
@@ -139,7 +207,7 @@ class CacheController
 			 */
 			return Promise.all(keyList.map((key) =>
 			{
-				if (key !== cacheName)
+				if (key !== cacheName && key !== dataCacheName)
 				{
 					this.checkUpdate();
 					return caches.delete(key);
