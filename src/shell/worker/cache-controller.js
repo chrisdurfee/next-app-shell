@@ -8,6 +8,11 @@
  */
 class CacheController
 {
+	/**
+	 * This will set up the cache prefix.
+	 *
+	 * @param {string} prefix
+	 */
 	constructor(prefix)
 	{
 		this.cacheName = prefix;
