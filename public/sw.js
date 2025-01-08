@@ -1,4 +1,4 @@
-importScripts('./worker/cache-controller.js', './worker/service.js', '.worker/push-controller.js');
+importScripts('./worker/cache-controller.js', './worker/service.js', './worker/push-controller.js');
 
 /**
  * This is the name of the app and the version. This is used to
@@ -15,7 +15,7 @@ const APP_NAME = 'base-example',
  * @const
  * @type {string} version
  */
-version = '0.0.130';
+version = '0.0.131';
 
 /**
  * This will add these files to cache. Add any files you want to
