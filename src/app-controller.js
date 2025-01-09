@@ -151,6 +151,7 @@ export class AppController
 	/**
 	 * This will set the user data.
 	 *
+	 * @protected
 	 * @param {object|null} [data]
 	 * @returns {void}
 	 */
