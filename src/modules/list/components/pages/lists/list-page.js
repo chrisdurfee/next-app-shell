@@ -1,6 +1,6 @@
 import { Div, H1, Header } from "@base-framework/atoms";
 import { Button } from "@base-framework/ui/atoms";
-import { Panel, TabNavigation } from "@base-framework/ui/organisms";
+import { TabNavigation } from "@base-framework/ui/organisms";
 import { BlankPage } from "@base-framework/ui/pages";
 import { DataTablePage } from './data-table-page.js';
 import { ItemListPage } from './item-list-page.js';
@@ -40,14 +40,6 @@ const ListTabs = () => (
 );
 
 /**
- * This will wrap the atom in a panel.
- *
- * @param {object} atom
- * @returns {object}
- */
-const SubRoute = (atom) => new Panel(atom);
-
-/**
  * ListPage
  *
  * This will create a list page.
@@ -63,8 +55,8 @@ export const ListPage = () => (
 
             Div({
                 switch: [
-                    { uri: 'list', component: SubRoute(ItemListPage()) },
-                    { uri: 'list/data-table', component: SubRoute(DataTablePage()) }
+                    { uri: 'list', component: ItemListPage },
+                    { uri: 'list/data-table', component: DataTablePage }
                 ]
             })
         ])

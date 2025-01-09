@@ -4,7 +4,7 @@ import { Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 
 /**
- * @type {array} PRIUMARY_BUTTONS
+ * @type {Array<object>} PRIUMARY_BUTTONS
  * Contains all sidebar navigation options with labels, counts, icons, and links.
  */
 const PRIUMARY_BUTTONS = [
@@ -17,7 +17,7 @@ const PRIUMARY_BUTTONS = [
 ];
 
 /**
- * @type {array} OTHER_BUTTONS
+ * @type {Array<object>} OTHER_BUTTONS
  */
 const OTHER_BUTTONS = [
     { label: "Social", count: 0, icon: Icons.user.group, href: "inbox/social" },

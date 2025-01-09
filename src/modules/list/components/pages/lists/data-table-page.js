@@ -3,7 +3,7 @@ import { Atom } from "@base-framework/base";
 import { Button, Checkbox } from "@base-framework/ui/atoms";
 import { Avatar } from "@base-framework/ui/molecules";
 import { DataTable } from "@base-framework/ui/organisms";
-import { BlankPage } from "@base-framework/ui/pages";
+import { Page } from "@base-framework/ui/pages";
 
 const headers = [
     { label: 'checkbox', key: '' },
@@ -169,24 +169,26 @@ const rowItem = (row, onSelect) =>
  *
  * This will create an data table page.
  *
- * @returns {BlankPage}
+ * @returns {Page}
  */
 export const DataTablePage = () => (
-	Div({ class: 'flex flex-auto flex-col' }, [
-        Div({ class: 'flex flex-auto flex-col mb-2' }, [
-            Div({ class: 'flex flex-auto flex-row gap-2' }, [
-                Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(additionalRows) }, 'Prepend'),
-                Button({ variant: 'outline', click: (e, parent) => parent.list.append(additionalRows) }, 'Append'),
-                Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(additionalRows) }, 'Mingle'),
-            ])
-        ]),
-        new DataTable({
-            cache: 'list',
-            headers,
-            rows,
-            rowItem,
-            key: 'id'
-        })
+	new Page([
+        Div({ class: 'flex flex-auto flex-col' }, [
+            Div({ class: 'flex flex-auto flex-col mb-2' }, [
+                Div({ class: 'flex flex-auto flex-row gap-2' }, [
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(additionalRows) }, 'Prepend'),
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.append(additionalRows) }, 'Append'),
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(additionalRows) }, 'Mingle'),
+                ])
+            ]),
+            new DataTable({
+                cache: 'list',
+                headers,
+                rows,
+                rowItem,
+                key: 'id'
+            })
+        ])
     ])
 );
 

@@ -1,5 +1,5 @@
 /**
- * @type {array<object>} INBOX_MESSAGES
+ * @type {Array<object>} INBOX_MESSAGES
  */
 export const INBOX_MESSAGES = [
     {

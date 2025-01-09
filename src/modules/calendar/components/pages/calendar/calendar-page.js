@@ -1,4 +1,4 @@
-import { Div, On } from "@base-framework/atoms";
+import { Div, OnRoute } from "@base-framework/atoms";
 import { Data, DateTime } from "@base-framework/base";
 import { BlankPage } from "@base-framework/ui/pages";
 import { FullTemplate } from "@base-framework/ui/templates";
@@ -183,7 +183,7 @@ export const CalendarPage = () => (
             return FullTemplate([
                 Div({ class: 'px-4 flex flex-auto flex-col pt-[80px] md:pt-5 md:px-0' }, [
                     Div({ class: 'flex flex-auto flex-col w-full h-full' }, [
-                        On(this.route, 'view', (view) =>
+                        OnRoute('view', (view) =>
                         {
                             switch(view)
                             {

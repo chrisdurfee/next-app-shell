@@ -67,9 +67,8 @@ export const InboxPage = () =>
             Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
                 InboxList()
             ]),
-            UseParent((parent) =>
-            {
-                return ContentSwitch({
+            UseParent((parent) => (
+                ContentSwitch({
 
                     /**
                      * This will delete the email.
@@ -88,8 +87,8 @@ export const InboxPage = () =>
                             icon: Icons.check
                         });
                     }
-                });
-            })
+                })
+            ))
         ])
     ]);
 };

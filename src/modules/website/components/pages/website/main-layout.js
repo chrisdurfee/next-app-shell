@@ -1,25 +1,10 @@
 import { Div } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Panel } from "@base-framework/ui/organisms";
+import { AboutPage } from './about/about-page.js';
 import { Header } from './header/header.js';
 import { CookieConsentBar } from './home/hero/cookie-concent-bar.js';
-import { HeroSection } from './home/hero/hero.js';
-
-// Importing our new sections
-import { CTASection } from './home/cta/cta-section.js';
-import { FeaturesSection } from './home/features/features-section.js';
-import { FooterSection } from './home/footer/footer-section.js';
-import { TestimonialsSection } from './home/testimonials/testimonials-section.js';
-
-/**
- * This will create a page.
- *
- * @param {array} children
- * @returns {object}
- */
-const Page = (children) => (
-    new Panel({ class: 'flex flex-auto flex-col relative' }, children)
-);
+import { HomePage } from './home/home-page.js';
+import { Error404Page } from './not-found/error-404-page.js';
 
 /**
  * This will create the main layout for the website.
@@ -35,28 +20,14 @@ export const MainLayout = Atom(() => (
             switch: [
                 {
                     uri: 'website',
-                    component: Page([
-                        HeroSection(),
-                        FeaturesSection(),
-                        TestimonialsSection(),
-                        CTASection(),
-                        FooterSection()
-                    ])
+                    component: HomePage
                 },
                 {
                     uri: 'website/about',
-                    component: Page([
-                        Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
-                            Div({ class: 'text-3xl font-semibold' }, 'About')
-                        ])
-                    ])
+                    component: AboutPage
                 },
                 {
-                    component: Page([
-                        Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
-                            Div({ class: 'text-3xl font-semibold' }, '404 Not Found')
-                        ])
-                    ])
+                    component: Error404Page
                 }
             ]
         })

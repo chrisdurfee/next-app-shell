@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Button } from "@base-framework/ui/atoms";
 import { UserList } from '@base-framework/ui/organisms';
-import { BlankPage } from "@base-framework/ui/pages";
+import { Page } from "@base-framework/ui/pages";
 
 // Sample User Data (this could come from a backend or be passed as props)
 const users = [
@@ -77,18 +77,20 @@ const mingleUsers = [
  *
  * This will create an item list page.
  *
- * @returns {BlankPage}
+ * @returns {Page}
  */
 export const ItemListPage = () => (
-	Div({ class: 'flex flex-auto flex-col' }, [
-        Div({ class: 'flex flex-auto flex-col mb-2' }, [
-            Div({ class: 'flex flex-auto flex-row gap-2' }, [
-                Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
-                Button({ variant: 'outline', click: (e, parent) => parent.list.append(users) }, 'Append'),
-                Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(mingleUsers) }, 'Mingle'),
-            ])
-        ]),
-        UserList({ users })
+	new Page([
+        Div({ class: 'flex flex-auto flex-col' }, [
+            Div({ class: 'flex flex-auto flex-col mb-2' }, [
+                Div({ class: 'flex flex-auto flex-row gap-2' }, [
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.prepend(users) }, 'Prepend'),
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.append(users) }, 'Append'),
+                    Button({ variant: 'outline', click: (e, parent) => parent.list.mingle(mingleUsers) }, 'Mingle'),
+                ])
+            ]),
+            UserList({ users })
+        ])
     ])
 );
 
