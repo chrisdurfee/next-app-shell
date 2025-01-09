@@ -34,7 +34,7 @@ import { ThemePage } from "./theme/theme-page.js";
 const Page = (url, title, page) => ({
 	uri: url,
 	title,
-	component: page()
+	component: page
 });
 
 /**

@@ -45,7 +45,7 @@ export class AppController
 		this.setupRouter();
 		this.setData();
 
-		// remove this if you are setting up the sign in
+		// TODO: remove this if you are setting up the sign in
 		this.setUserData();
 	}
 
@@ -122,7 +122,6 @@ export class AppController
 		 * This property should be used to add popovers, modals, overlays, etc.
 		 */
 		this.root = main.panel;
-		console.log(this.root)
 	}
 
 	/**
@@ -145,7 +144,7 @@ export class AppController
 	{
 		this.appShell.state.isSignedIn = false;
 
-		// remove this comment after the sign in is set up
+		// TODO: remove this comment after the sign in is set up
 		//window.location = Configs.router.baseUrl;
 	}
 
@@ -157,6 +156,7 @@ export class AppController
 	 */
 	setUserData(data = null)
 	{
+		// TODO: Set the user data from the API
 		data = data ?? {
 			name: "John Doe", // Example default user name
 			image: "https://github.com/shadcn.png", // Example avatar image

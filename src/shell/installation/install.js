@@ -9,6 +9,18 @@ let deferredPrompt = null;
 const STORAGE_KEY = 'installPrompt';
 
 /**
+ * Checks if the app is already installed.
+ *
+ * @returns {boolean} True if the app is installed, false otherwise.
+ */
+const isPwaInstalled = () =>
+{
+    // Check for standalone mode (most platforms)
+    return window.matchMedia('(display-mode: standalone)').matches
+        || window.navigator.standalone; // For iOS
+};
+
+/**
  * This will add the install event listener to the window.
  */
 window.addEventListener('beforeinstallprompt', (e) =>
@@ -32,8 +44,8 @@ window.addEventListener('beforeinstallprompt', (e) =>
  */
 export const openInstallPrompt = () =>
 {
-     // If localStorage says user previously dismissed or installed,
-    if (localStorage.getItem(STORAGE_KEY) === 'true')
+     // If localStorage says user previously dismissed or installed.
+    if (localStorage.getItem(STORAGE_KEY) === 'true' || isPwaInstalled())
     {
         return;
     }
