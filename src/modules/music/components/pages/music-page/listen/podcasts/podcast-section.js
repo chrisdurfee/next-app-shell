@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { getRandomAlbums } from "../../albums.js";
-import { MusicSection } from "./music-section.js";
+import { getRandomAlbums } from "../../../albums.js";
+import { MusicSection } from "../music-section.js";
 
 /**
  * This will create a podcast section.

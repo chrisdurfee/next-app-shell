@@ -1,5 +1,4 @@
 import { Div } from "@base-framework/atoms";
-import { Panel } from "@base-framework/ui/organisms";
 import { BlankPage } from "@base-framework/ui/pages";
 import { BrowsePage } from "./browse/browse-page.js";
 import { ListenPage } from "./listen/listen-page.js";
@@ -21,9 +20,7 @@ export const MusicPage = () => (
                 switch: [
                     {
                         uri: 'music',
-                        component: new Panel([
-                            ListenPage()
-                        ])
+                        component: ListenPage
                     },
                     {
                         uri: 'music/browse',
