@@ -28,7 +28,7 @@ export const PageToolbar = () => (
  *
  * @returns {object}
  */
-const DackablePage = () => (
+const DockablePage = () => (
     new DockableOverlay({ class: 'px-2' }, [
         PageToolbar(),
         Div({
@@ -56,7 +56,7 @@ export const ContentSection = (props) => (
             route: [
                 {
                     uri: 'settings/:page*',
-                    component: DackablePage
+                    component: DockablePage
                 }
             ]
         })
