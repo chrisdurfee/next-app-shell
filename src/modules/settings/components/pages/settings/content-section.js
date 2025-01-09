@@ -32,6 +32,27 @@ export const PageToolbar = () => (
 );
 
 /**
+ * This will create a dockable page.
+ *
+ * @returns {object}
+ */
+const DackablePage = () => (
+    new DockableOverlay({ class: 'px-2' }, [
+        PageToolbar(),
+        Div({
+            class: 'flex flex-auto flex-col contained p-4 lg:p-6',
+            switch: [
+                { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
+                { uri: '/settings/account', component: SubRoute(AccountSettings()) },
+                { uri: '/settings/appearance', component: SubRoute(AppearanceSettings()) },
+                { uri: '/settings/notifications', component: SubRoute(NotificationSettings()) },
+                { uri: '/settings/display', component: SubRoute(DisplaySettings()) },
+            ]
+        })
+    ])
+);
+
+/**
  * This will create the Content Section.
  *
  * @param {object} props
@@ -43,19 +64,7 @@ export const ContentSection = (props) => (
             route: [
                 {
                     uri: 'settings/:page*',
-                    component: new DockableOverlay({ class: 'px-2' }, [
-                        PageToolbar(),
-                        Div({
-                            class: 'flex flex-auto flex-col contained p-4 lg:p-6',
-                            switch: [
-                                { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
-                                { uri: '/settings/account', component: SubRoute(AccountSettings()) },
-                                { uri: '/settings/appearance', component: SubRoute(AppearanceSettings()) },
-                                { uri: '/settings/notifications', component: SubRoute(NotificationSettings()) },
-                                { uri: '/settings/display', component: SubRoute(DisplaySettings()) },
-                            ]
-                        })
-                    ])
+                    component: DackablePage
                 }
             ]
         })

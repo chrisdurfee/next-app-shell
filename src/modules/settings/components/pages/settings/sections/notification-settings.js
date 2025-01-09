@@ -1,6 +1,7 @@
 import { Div, H4, P } from "@base-framework/atoms";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Toggle  } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
+import { Toggle } from "@base-framework/ui/molecules";
+import { Page } from "@base-framework/ui/pages";
 import { SettingsSection } from "../atoms/settings-section.js";
 
 /**
@@ -32,38 +33,40 @@ const NotificationToggle = ({ label, description, active, onChange }) => (
  * @returns {object}
  */
 export const NotificationSettings = () => (
-    SettingsSection({
-        title: 'Notifications',
-        description: 'Manage your notification preferences.',
-        submit: (data) => console.log("Notification Settings:", data),
-    },
-    [
-        Div({ class: 'space-y-4' }, [
-            // Email Notifications
-            NotificationToggle({
-                label: 'Email Notifications',
-                description: 'Receive email notifications for important updates.',
-                active: true,
-                onChange: (active) => console.log("Email Notifications:", active)
-            }),
+    new Page([
+        SettingsSection({
+            title: 'Notifications',
+            description: 'Manage your notification preferences.',
+            submit: (data) => console.log("Notification Settings:", data),
+        },
+        [
+            Div({ class: 'space-y-4' }, [
+                // Email Notifications
+                NotificationToggle({
+                    label: 'Email Notifications',
+                    description: 'Receive email notifications for important updates.',
+                    active: true,
+                    onChange: (active) => console.log("Email Notifications:", active)
+                }),
 
-            // Push Notifications
-            NotificationToggle({
-                label: 'Push Notifications',
-                description: 'Receive push notifications for important updates.',
-                active: false,
-                onChange: (active) => console.log("Push Notifications:", active)
-            }),
+                // Push Notifications
+                NotificationToggle({
+                    label: 'Push Notifications',
+                    description: 'Receive push notifications for important updates.',
+                    active: false,
+                    onChange: (active) => console.log("Push Notifications:", active)
+                }),
 
-            // SMS Notifications
-            NotificationToggle({
-                label: 'SMS Notifications',
-                description: 'Receive SMS notifications for important updates.',
-                active: true,
-                onChange: (active) => console.log("SMS Notifications:", active)
-            })
-        ]),
+                // SMS Notifications
+                NotificationToggle({
+                    label: 'SMS Notifications',
+                    description: 'Receive SMS notifications for important updates.',
+                    active: true,
+                    onChange: (active) => console.log("SMS Notifications:", active)
+                })
+            ]),
 
-        Button({ class: "mt-4" }, "Save Preferences")
+            Button({ class: "mt-4" }, "Save Preferences")
+        ])
     ])
 );
