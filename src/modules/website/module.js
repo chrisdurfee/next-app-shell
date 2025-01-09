@@ -1,6 +1,6 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import WebsitePage from './components/pages/website/website-page.js';
+import WebsitePage from './components/pages/website-page.js';
 
 /**
  * This will set the routes for the module.

@@ -1,7 +1,7 @@
 import { Page } from '@base-framework/ui/pages';
+import { FooterSection } from '../footer/footer-section.js';
 import { CTASection } from './cta/cta-section.js';
 import { FeaturesSection } from './features/features-section.js';
-import { FooterSection } from './footer/footer-section.js';
 import { HeroSection } from './hero/hero.js';
 import { TestimonialsSection } from './testimonials/testimonials-section.js';
 
