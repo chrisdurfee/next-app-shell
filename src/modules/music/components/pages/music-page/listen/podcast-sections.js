@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { getRandomAlbums } from "../albums.js";
+import { getRandomAlbums } from "../../albums.js";
 import { MusicSection } from "./music-section.js";
 
 /**

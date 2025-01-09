@@ -1,6 +1,6 @@
 import { A, Div, H2, Img, P, Section } from "@base-framework/atoms";
 import { Strings } from "@base-framework/base";
-import { getRandomTracks } from "../albums.js";
+import { getRandomTracks } from "../../albums.js";
 
 const PAGE_URL = 'music';
 

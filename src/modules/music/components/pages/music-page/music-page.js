@@ -1,8 +1,8 @@
 import { Div } from "@base-framework/atoms";
 import { Panel } from "@base-framework/ui/organisms";
 import { BlankPage } from "@base-framework/ui/pages";
-import { BrowsePage } from "./browse-page.js";
-import { MusicSections } from "./music-sections.js";
+import { BrowsePage } from "./browse/browse-page.js";
+import { ListenPage } from "./listen/listen-page.js";
 import { SidebarMenu } from "./sidebar-menu.js";
 
 /**
@@ -22,14 +22,12 @@ export const MusicPage = () => (
                     {
                         uri: 'music',
                         component: new Panel([
-                            MusicSections()
+                            ListenPage()
                         ])
                     },
                     {
                         uri: 'music/browse',
-                        component: new Panel([
-                            BrowsePage()
-                        ])
+                        component: BrowsePage
                     }
                 ]
             })

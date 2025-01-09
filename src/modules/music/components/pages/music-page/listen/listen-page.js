@@ -1,18 +1,18 @@
 import { Div, H1, Header } from "@base-framework/atoms";
-import { getRandomAlbums } from "../albums.js";
+import { getRandomAlbums } from "../../albums.js";
 import MusicHeader from "./music-header.js";
 import { MusicSection } from "./music-section.js";
 import { PodcastSections } from "./podcast-sections.js";
 import QuickPicksSection from "./quick-picks-section.js";
 
 /**
- * MusicSections
+ * ListenPage
  *
- * The main content sections for the music page.
+ * The main content sections for the listen page.
  *
  * @returns {object}
  */
-export const MusicSections = () => (
+export const ListenPage = () => (
     Div({ class: 'mx-auto max-w-[1400px]' }, [
         Header({ class: 'sm:py-4 sm:pb-0 px-6 flex flex-col lg:hidden' }, [
             H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Discover'),
@@ -67,4 +67,4 @@ export const MusicSections = () => (
     ])
 );
 
-export default MusicSections;
+export default ListenPage;

@@ -1,6 +1,6 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import AlbumPage from './components/pages/music/album-page/album-page.js';
+import { AlbumPage } from './components/pages/album-page/album-page.js';
 
 /**
  * This will set the routes for the module.
@@ -13,7 +13,7 @@ const routes = Module.convertRoutes(
      * Music routes
      */
     { path: '/music/album/:album?*', component: AlbumPage, title: 'Album' },
-    { path: '/music*', import: import('./components/pages/music/music-page/music-page.js'), title: 'Music' }
+    { path: '/music*', import: import('./components/pages/music-page/music-page.js'), title: 'Music' }
 ]);
 
 /**
