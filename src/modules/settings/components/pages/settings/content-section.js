@@ -7,14 +7,6 @@ import { NotificationSettings } from "./sections/notification-settings.js";
 import { ProfileSettings } from "./sections/profile-settings.js";
 
 /**
- * This will wrap the atom in a panel.
- *
- * @param {object} atom
- * @returns {object}
- */
-const SubRoute = (atom) => new Panel(atom);
-
-/**
  * This will create the back button.
  *
  * @param {object} props
@@ -42,11 +34,11 @@ const DackablePage = () => (
         Div({
             class: 'flex flex-auto flex-col contained p-4 lg:p-6',
             switch: [
-                { uri: '/settings/profile', component: SubRoute(ProfileSettings()) },
-                { uri: '/settings/account', component: SubRoute(AccountSettings()) },
-                { uri: '/settings/appearance', component: SubRoute(AppearanceSettings()) },
-                { uri: '/settings/notifications', component: SubRoute(NotificationSettings()) },
-                { uri: '/settings/display', component: SubRoute(DisplaySettings()) },
+                { uri: '/settings/profile', component: ProfileSettings },
+                { uri: '/settings/account', component: AccountSettings },
+                { uri: '/settings/appearance', component: AppearanceSettings },
+                { uri: '/settings/notifications', component: NotificationSettings },
+                { uri: '/settings/display', component: DisplaySettings },
             ]
         })
     ])
