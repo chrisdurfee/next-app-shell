@@ -3,6 +3,8 @@ import { Module } from '../module/module.js';
 
 /**
  * This will set the routes for the module.
+ *
+ * @type {Array<object>} routes
  */
 const routes = Module.convertRoutes(
 [
@@ -16,7 +18,7 @@ const routes = Module.convertRoutes(
 /**
  * This will set the links for the module.
  *
- * @type {array}
+ * @type {Array<object>}
  */
 const links =
 [
@@ -35,7 +37,7 @@ const links =
 Module.create(
 {
     /**
-     * @param {array} routes
+     * @param {Array<object>} routes
      */
     routes,
 
@@ -43,7 +45,7 @@ Module.create(
      * This will get the options to create the app
      * navigation.
      *
-     * @param {array} links
+     * @param {Array<object>} links
      */
     links
 });
