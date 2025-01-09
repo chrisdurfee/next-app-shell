@@ -116,3 +116,5 @@ export const PostPage = () =>
         ])
     ])
 };
+
+export default PostPage;

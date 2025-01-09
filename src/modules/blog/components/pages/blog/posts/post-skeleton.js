@@ -16,3 +16,5 @@ export const PostSkeleton = () => (
         Skeleton({ width: "w-full", height: "h-40", class: "rounded-md" }), // Content skeleton
     ])
 );
+
+export default PostSkeleton;

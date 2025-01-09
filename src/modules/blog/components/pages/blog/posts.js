@@ -1,7 +1,7 @@
 /**
  * Mock data for Porsche News posts
  *
- * @type {array} POSTS
+ * @type {Array<object>} POSTS
  */
 export const POSTS = [
     {

@@ -1,5 +1,5 @@
 /**
- * @type {object} orders
+ * @type {Array<object>} orders
  */
 export const orders = [
 	{

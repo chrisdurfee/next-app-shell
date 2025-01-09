@@ -29,3 +29,5 @@ export const PostHeader = ({ post }) => (
         ])
     ])
 );
+
+export default PostHeader;

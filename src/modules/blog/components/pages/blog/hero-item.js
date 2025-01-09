@@ -91,3 +91,5 @@ export const HeroItem = Jot(
         });
     },
 });
+
+export default HeroItem;

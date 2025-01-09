@@ -11,3 +11,5 @@ export const BlogHeader = () => (
         P({ class: 'text-base text-muted-foreground py-2' }, 'Stay up to date with the latest news and updates.')
     ])
 );
+
+export default BlogHeader;

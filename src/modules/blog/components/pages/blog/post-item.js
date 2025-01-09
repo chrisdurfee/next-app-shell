@@ -99,3 +99,5 @@ export const PostItem = Jot(
         ]);
     }
 });
+
+export default PostItem;
