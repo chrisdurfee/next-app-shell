@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Dashboard routes
      */
-    { path: '/dashboard/:page?*', component: DashboardPage(), title: 'Dashboard' }
+    { path: '/dashboard/:page?*', component: DashboardPage, title: 'Dashboard' }
 ]);
 
 /**

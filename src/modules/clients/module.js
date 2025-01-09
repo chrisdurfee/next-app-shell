@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Clients route
      */
-    { path: '/clients/:clientId?*', component: ClientListPage(), title: 'Clients' }
+    { path: '/clients/:clientId?*', component: ClientListPage, title: 'Clients' }
 ]);
 
 /**

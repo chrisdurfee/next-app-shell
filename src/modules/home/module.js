@@ -9,7 +9,7 @@ import { HomePage } from './components/pages/home/home-page.js';
  */
 const routes = Module.convertRoutes(
 [
-    { path: '/', component: HomePage(), title: 'Home' }
+    { path: '/', component: HomePage, title: 'Home' }
 ]);
 
 /**

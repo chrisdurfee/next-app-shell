@@ -13,8 +13,8 @@ const routes = Module.convertRoutes(
     /**
      * Blog routes
      */
-    { path: '/blog/posts/:postId?*', component: PostPage(), title: 'Post' },
-    { path: '/blog*', component: BlogPage(), title: 'Blog' }
+    { path: '/blog/posts/:postId?*', component: PostPage, title: 'Post' },
+    { path: '/blog*', component: BlogPage, title: 'Blog' }
 ]);
 
 /**

@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Messages routes
      */
-    { path: '/messages/:page?/:messageId?*', component: MessagesPage(), title: 'Messages' }
+    { path: '/messages/:page?/:messageId?*', component: MessagesPage, title: 'Messages' }
 ]);
 
 /**

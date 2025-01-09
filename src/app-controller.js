@@ -122,6 +122,7 @@ export class AppController
 		 * This property should be used to add popovers, modals, overlays, etc.
 		 */
 		this.root = main.panel;
+		console.log(this.root)
 	}
 
 	/**

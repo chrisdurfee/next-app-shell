@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Music routes
      */
-    { path: '/music/album/:album?*', component: AlbumPage(), title: 'Album' },
+    { path: '/music/album/:album?*', component: AlbumPage, title: 'Album' },
     { path: '/music*', import: import('./components/pages/music/music-page/music-page.js'), title: 'Music' }
 ]);
 

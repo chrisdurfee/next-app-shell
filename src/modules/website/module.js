@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * website routes
      */
-    { path: '/website/:page?*', component: WebsitePage(), title: 'Inbox' }
+    { path: '/website/:page?*', component: WebsitePage, title: 'Inbox' }
 ]);
 
 /**

@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Calendar route
      */
-    { path: '/calendar/:view/:date?*', component: CalendarPage(), title: 'Calender' }
+    { path: '/calendar/:view/:date?*', component: CalendarPage, title: 'Calender' }
 ]);
 
 /**

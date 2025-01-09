@@ -12,7 +12,7 @@ const routes = Module.convertRoutes(
     /**
      * Inbox routes
      */
-    { path: '/inbox/:page?/:messageId?*', component: InboxPage(), title: 'Inbox' }
+    { path: '/inbox/:page?/:messageId?*', component: InboxPage, title: 'Inbox' }
 ]);
 
 /**

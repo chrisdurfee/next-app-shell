@@ -11,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Settings route
      */
-    { path: '/settings/:page?*', component: SettingsPage(), title: 'Settings' }
+    { path: '/settings/:page?*', component: SettingsPage, title: 'Settings' }
 ]);
 
 /**
