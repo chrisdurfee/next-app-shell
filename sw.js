@@ -22,7 +22,7 @@ version = '0.0.133';
  * cache here. As files are fetched, they will be added to the cache.
  *
  * @const
- * @type {array<string>} DEFAULT_FILES
+ * @type {Array<string>} DEFAULT_FILES
  */
 const DEFAULT_FILES =
 [
