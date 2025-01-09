@@ -1,7 +1,7 @@
 import { ModuleRoutes } from './module-routes.js';
 
 /**
- * @type {array} AppModules
+ * @type {Array<object>} AppModules
  */
 export const AppModules = [];
 
@@ -23,12 +23,12 @@ export class Module
 	constructor({ links, routes } = {})
 	{
 		/**
-		 * @member {array} links
+		 * @member {Array<object>} links
 		 */
 		this.links = links;
 
 		/**
-		 * @member {array} links
+		 * @member {Array<object>} links
 		 */
 		this.routes = routes;
 	}
@@ -46,8 +46,8 @@ export class Module
 	/**
 	 * This will convert the routes to the route creator.
 	 *
-	 * @param {array} routes
-	 * @returns {array}
+	 * @param {Array<object>} routes
+	 * @returns {Array<object>}
 	 */
 	static convertRoutes(routes)
 	{
@@ -78,7 +78,7 @@ export class Module
 	/**
 	 * This will get the module routes.
 	 *
-	 * @returns {array}
+	 * @returns {Array<object>}
 	 */
 	getRoutes()
 	{
@@ -88,7 +88,7 @@ export class Module
 	/**
 	 * This will get the module links.
 	 *
-	 * @returns {array}
+	 * @returns {Array<object>}
 	 */
 	getLinks()
 	{
