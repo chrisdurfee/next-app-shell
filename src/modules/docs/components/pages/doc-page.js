@@ -36,7 +36,7 @@ const DocBody = Atom((props, children) => (
  *
  * @param {object} props
  * @param {object} children
- * @returns {DocPage}
+ * @returns {CenterPage}
  */
 export const DocPage = Atom((props, children) => (
 	new CenterPage([

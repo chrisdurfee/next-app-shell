@@ -1,7 +1,6 @@
 import { SidebarMenuPage } from "@base-framework/ui/pages";
 import { DocumentationSwitch } from "./documentation-switch.js";
 import { Links } from "./links.js";
-import { Routes } from "./routes.js";
 
 /**
  * This will create the base path.
@@ -16,7 +15,7 @@ const basePath = 'docs';
  *
  * This will create an a documentation page.
  *
- * @returns {AsidePage}
+ * @returns {SidebarMenuPage}
  */
 export const DocumentationPage = () => (
 	new SidebarMenuPage({
@@ -29,11 +28,6 @@ export const DocumentationPage = () => (
 		 * @member {string}	basePath
 		 */
 		basePath,
-
-		/**
-		 * @member {array} routes
-		 */
-		routes: Routes(basePath),
 
 		/**
 		 * @member {array} switch
