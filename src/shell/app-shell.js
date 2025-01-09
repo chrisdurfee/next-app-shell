@@ -47,8 +47,8 @@ export const AppShell = Jot(
 	 */
 	render()
 	{
-		const { options, routes, onCreated } = this;
-		return Shell({ onCreated }, [
+		const { options, routes } = this;
+		return Shell([
 			AppContent({
 				options,
 				routes
