@@ -3,8 +3,8 @@ import { Data } from "@base-framework/base";
 import { BlankPage } from "@base-framework/ui/pages";
 import { MessagesSidebar } from "./messages-sidebar.js";
 import { MESSAGES_THREADS } from "./messages-threads.js";
+import { ThreadList } from "./thread/list/thread-list.js";
 import { ThreadContentSwitch } from "./thread/thread-content-switch.js";
-import { ThreadList } from "./thread/thread-list.js";
 
 /**
  * MessagesPage
@@ -69,9 +69,8 @@ export const MessagesPage = () =>
             ]),
 
             // Right: Content Switch for actual chat messages
-            UseParent((parent) =>
-            {
-                return ThreadContentSwitch({
+            UseParent((parent) => (
+                ThreadContentSwitch({
                     delete: (id) =>
                     {
                         parent.list.delete(id);
@@ -87,8 +86,8 @@ export const MessagesPage = () =>
                     {
                         parent.list.mingle(row);
                     }
-                });
-            }),
+                })
+            )),
 
             MessagesSidebar()
         ])

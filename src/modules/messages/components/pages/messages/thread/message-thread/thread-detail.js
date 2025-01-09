@@ -5,7 +5,7 @@ import { Button, Skeleton } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Avatar, StaticStatusIndicator, TimeFrame } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
-import { MESSAGES_THREADS } from "../messages-threads.js";
+import { MESSAGES_THREADS } from "../../messages-threads.js";
 import { ThreadComposer } from "./thread-composer.js";
 
 /**
@@ -90,7 +90,7 @@ export const ThreadDetail = Jot(
                     ]);
                 }
 
-                return Div({ class: "flex flex-col flex-auto" }, [
+                return Div({ class: "flex flex-col flex-auto max-h-screen" }, [
                     ConversationHeader(currentThread),
                     ConversationMessages(currentThread),
                     new ThreadComposer({ placeholder: "Type something...", add: (msg) =>

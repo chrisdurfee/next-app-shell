@@ -1,6 +1,6 @@
 import { Div, On, OnRoute, OnState } from "@base-framework/atoms";
 import { List } from "@base-framework/organisms";
-import { MESSAGES_THREADS } from "../messages-threads.js";
+import { MESSAGES_THREADS } from "../../messages-threads.js";
 import { ListEmptyState } from "./list-empty-state.js";
 import { ThreadListHeader } from "./thread-list-header.js";
 import { ThreadListItem } from "./thread-list-item.js";

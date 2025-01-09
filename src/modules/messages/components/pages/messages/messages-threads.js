@@ -1,5 +1,5 @@
 /**
- * @type {array<object>} MESSAGES_THREADS
+ * @type {Array<object>} MESSAGES_THREADS
  *
  * Each object represents a conversation thread with summary info and a `thread` array of message bubbles.
  */

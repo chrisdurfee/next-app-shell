@@ -54,14 +54,12 @@ export const MessagesSidebar = () =>
         Header({ class: "pb-4 px-2 flex flex-col" }, [
             H3({ class: "scroll-m-20 text-lg font-bold tracking-tight" }, "Connections")
         ]),
-        UseParent(({ route }) =>
-        {
-            // The list of users/threads
-            return new List({
+        UseParent(({ route }) => (
+            new List({
                 key: 'id',
                 items: MESSAGES_THREADS,
                 class: "flex flex-col space-y-1 mt-4",
                 rowItem: SidebarRowItem(route)
-            });
-        })
+            })
+        ))
     ]);
