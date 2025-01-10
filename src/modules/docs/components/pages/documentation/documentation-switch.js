@@ -19,6 +19,7 @@ import ProgressBarPage from "./components/progress-bar-page.js";
 import SkeletonPage from "./components/skeleton-page.js";
 import { TabPage } from "./components/tab-page.js";
 import TooltipPage from "./components/tooltip-page.js";
+import { GetStartedPage } from "./get-started/get-started-page.js";
 import IconPage from "./icons/icon-page.js";
 import IntroPage from "./introduction/intro-page.js";
 import { ThemePage } from "./theme/theme-page.js";
@@ -45,6 +46,7 @@ const Page = (url, title, page) => ({
  */
 export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}`, 'Introduction', IntroPage),
+	Page(`${basePath}/get-started`, 'Get Started', GetStartedPage),
 	Page(`${basePath}/theme`, 'Theme', ThemePage),
 	Page(`${basePath}/icons`, 'Icons', IconPage),
 	Page(`${basePath}/components/buttons*`, 'Buttons', ButtonPage),

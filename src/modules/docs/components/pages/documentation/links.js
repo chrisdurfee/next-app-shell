@@ -11,6 +11,10 @@ export const Links = (path) => ([
 		exact: true
 	},
 	{
+		href: `${path}/get-started`,
+		label: 'Get Started'
+	},
+	{
 		href: `${path}/theme`,
 		label: 'Theme',
 		exact: true
