@@ -47,6 +47,71 @@ export const GetStartedPage = () => (
             ]),
 
             Section({ class: 'space-y-4 mt-12' }, [
+                H4({ class: 'text-lg font-bold' }, 'Package Setup'),
+                P({ class: 'text-muted-foreground' }, { html: `The project package.json comes configured to use Vite, Tailwind, base, and other libs for local and production deployment. The package.json file should be updated with the name, author, description, and any other details required. ` }),
+                CodeBlock(`
+{
+	"name": "",
+	"version": "",
+	"description": "",
+	"keywords": [
+
+	],
+	"author": "",
+	"license": "",
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"bugs": {
+
+	},
+	"devDependencies": {
+
+	},
+	"dependencies": {
+
+	},
+	"homepage": ""
+}
+
+                `),
+            ]),
+
+            Section({ class: 'space-y-4 mt-12' }, [
+                H4({ class: 'text-lg font-bold' }, 'Vite Support'),
+                P({ class: 'text-muted-foreground' }, { html: `This project uses Vite for local development and bundling for prodoction. The vite.config.js file can be edited with the project base path. The project also adds import aliases to shorten the import paths.` }),
+                CodeBlock(`
+import path from 'path';
+import { defineConfig } from 'vite';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+	plugins: [],
+	base: '/next-app-shell/',
+	server: {
+		open: true
+	},
+	resolve: {
+		alias: {
+			'@components': path.resolve(__dirname, 'src/components'),
+			'@modules': path.resolve(__dirname, 'src/modules'),
+			'@shell': path.resolve(__dirname, 'src/shell'),
+		}
+	}
+});
+
+                `),
+
+                CodeBlock(`/**
+ * Example import with alias
+ */
+import { Div } from "@components/atoms/inputs.js";
+
+                    `)
+            ]),
+
+            Section({ class: 'space-y-4 mt-12' }, [
                 H4({ class: 'text-lg font-bold' }, 'Theme Setup'),
                 P({ class: 'text-muted-foreground' }, { html: `This project uses Tailwind and supported light and dark themes. The theme can be modified to fit the application style by changing a few fils in the project with the desired light and dark theme colors. The <a href="/docs/theme" class="underline">"Theme"</a> page outlines the types of properties that are themeable and how they are applied. ` }),
                 CodeBlock(`
