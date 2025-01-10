@@ -460,6 +460,61 @@ export const Configs = {
 					For example, if you need to define different API endpoints for staging or
 					production environments, you can do so here and reference them throughout your code.`
 				)
+			]),
+
+			// 10) Service Worker & Push Notifications
+			Section({ class: 'space-y-4 mt-12' }, [
+				H4({ class: 'text-lg font-bold' }, 'Service Worker & Push Notifications'),
+				P(
+					{ class: 'text-muted-foreground' },
+					`The App Shell provides a service worker setup for caching assets and handling
+					push notifications. The service worker is configured in the "public/sw.js" file, and
+					you can customize it to fit your needs. The push notification functionality is
+					integrated with the service worker, allowing you to send and receive push
+					messages.`
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					`Update the settings in the "public/sw.js" file to match your app's name and version.`
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					`The service worker version is used to help know which files are on
+					which version. The version should be updated when pushing to production
+					to ensure the app knows to update the cache with the latest version of
+					the app. This is done by updating the version in the service worker file.`
+				),
+				CodeBlock(
+`/**
+ * This is the name of the app and the version. This is used to
+ * create the cache name.
+ *
+ * @const
+ * @type {string} appName
+ */
+const APP_NAME = 'base-example',
+
+/**
+ * This is the version of the app. This is used to create the cache
+ *
+ * @const
+ * @type {string} version
+ */
+version = '0.0.134';
+
+/**
+ * This will add these files to cache. Add any files you want to
+ * cache here. As files are fetched, they will be added to the cache.
+ *
+ * @const
+ * @type {Array<string>} DEFAULT_FILES
+ */
+const DEFAULT_FILES =
+[
+	'./',
+	'./index.html'
+];`
+				)
 			])
 		]
 	);
