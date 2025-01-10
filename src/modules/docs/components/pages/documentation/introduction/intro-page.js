@@ -1,5 +1,4 @@
 import { A, Div, H4, P, Section, Span } from "@base-framework/atoms";
-import { CodeCard } from "../../../molecules/cards.js";
 import { DocPage } from "../../doc-page.js";
 import AccountCard from "../components/cards/examples/account-card.js";
 import CookieSettingsCard from "../components/cards/examples/cookie-settings-card.js";
@@ -159,61 +158,6 @@ export const IntroPage = () => (
                     A({ href: '/docs/components/forms', class: 'underline' }, 'Forms'),
                     Span(` to quickly build complex UIs without starting from scratch.`)
                 ])
-            ]),
-
-            // Development and Module System
-            Section({ class: 'space-y-4 mt-12' }, [
-                H4({ class: 'text-lg font-bold' }, 'Development Guidelines'),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`Modules are an essential part of the App Shell's extensibility. You can add new features by creating modules in the modules folder and registering them in the `),
-                    A({ href: '/docs/imported-modules', class: 'underline' }, 'imported-modules.js'),
-                    Span(` file. This structure supports modularity, making it easier to maintain and scale projects.`)
-                ]),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`Each module includes its own routes, links, and options, as demonstrated in the example provided. This architecture ensures that modules are self-contained and can be easily integrated into any project using the App Shell framework.`)
-                ]),
-
-                CodeCard(`import {  Icons  } from "@base-framework/ui/icons";
-import { Module } from '../module/module.js';
-
-/**
- * This will set the routes for the module.
- */
-const routes = Module.convertRoutes(
-[
-    {
-        path: '/docs/:page?/:sub?*',
-        import: import('./components/pages/documentation/documentation-page.js'),
-        title: 'Docs'
-    }
-]);
-
-/**
- * This will create our module and add it to the app
- * modules.
- */
-Module.create(
-{
-    /**
-     * @param {array} routes
-     */
-    routes,
-
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {array} links
-     */
-    links: [
-        {
-            group: 'Discover',
-            options: [
-                { label: 'Docs', href: 'docs', icon: Icons.document.text, mobileOrder: 5 }
-            ]
-        }
-    ]
-});`)
             ]),
 
             // About the Contributors

@@ -1,5 +1,6 @@
-import { A, Code, H4, P, Pre, Section, Span } from "@base-framework/atoms";
+import { Code, H4, P, Pre, Section, Span } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { Icons } from "@base-framework/ui/icons";
 import { DocPage } from "../../doc-page.js";
 
 /**
@@ -108,32 +109,7 @@ export const GetStartedPage = () => (
                 `),
 
                 H4({ class: 'text-lg font-bold' }, 'Images and Icons'),
-                P({ class: 'text-muted-foreground' }, { html: `The app will need to have at least two homescreen icons (192px and 512px) and one "badge" (Mobile status bar icon for push notifications) in the "/public/images/icons" folder. ` }),
-                CodeBlock(`
-{
-	"short_name": "Base Example",
-	"name": "Base Example",
-	"icons": [
-		{
-			"src": "./images/icons/icon-192.png",
-			"sizes": "192x192",
-			"type": "image/png"
-		},
-		{
-			"src": "./images/icons/icon-512.png",
-			"sizes": "512x512",
-			"type": "image/png"
-		}
-	],
-	"lang": "en-US",
-	"dir": "ltr",
-	"scope": "./",
-	"start_url": "./",
-	"display": "standalone",
-	"theme_color": "#09090b",
-	"background_color": "#09090b"
-}
-                `)
+                P({ class: 'text-muted-foreground' }, { html: `The app will need to have at least two homescreen icons (192px and 512px) and one "badge" (Mobile status bar icon for push notifications) in the "/public/images/icons" folder. ` })
             ]),
 
             Section({ class: 'space-y-4 mt-12' }, [
@@ -205,19 +181,6 @@ Module.create(
         }
     ]
 });`)
-            ]),
-
-            // About the Contributors
-            Section({ class: 'space-y-4 mt-12' }, [
-                H4({ class: 'text-lg font-bold' }, 'Contributors and Community'),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`The App Shell is an open-source project, and contributions from the community are welcome. The project is maintained by a dedicated developer who aims to continuously enhance its functionality.`)
-                ]),
-                P({ class: 'text-muted-foreground' }, [
-                    Span(`For information on contributing, check the `),
-                    A({ href: 'https://github.com/chrisdurfee/next-app-shell', class: 'underline', target: '_blank' }, 'GitHub repository'),
-                    Span(` and join the community discussions to collaborate and innovate.`)
-                ])
             ])
         ]
     )
