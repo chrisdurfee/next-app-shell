@@ -5,19 +5,25 @@
  * This will create a service for a service worker.
  *
  * @class
- * @extends CacheController
  */
-class Service extends CacheController
+class Service
 {
 	/**
 	 * This will create a new service.
 	 *
 	 * @param {string} prefix
-	 * @param {array} files
+	 * @param {Array<string>} files
 	 */
 	constructor(prefix, files = [])
 	{
-		super(prefix);
+		/**
+		 * @member {CacheController} cache
+		 */
+		this.cache = new CacheController(prefix);
+
+		/**
+		 * @member {Array<string>} files
+		 */
 		this.files = files;
 
 		this.addEvents();
@@ -51,14 +57,14 @@ class Service extends CacheController
 			self.skipWaiting();
 
 			e.waitUntil(
-				this.addFiles(this.files)
+				this.cache.addFiles(this.files)
 			);
 		});
 
 		self.addEventListener('activate', (e) =>
 		{
 			e.waitUntil(
-				this.refresh().then(() =>
+				this.cache.refresh().then(() =>
 				{
 					return self.clients.matchAll({ includeUncontrolled: true }).then((clients) =>
 					{
@@ -77,7 +83,7 @@ class Service extends CacheController
 		{
 			if (e.data === 'delete')
 			{
-				this.deleteFiles();
+				this.cache.deleteFiles();
 			}
 		});
 
@@ -124,7 +130,7 @@ class Service extends CacheController
 				return;
 			}
 
-			const response = this.fetchFile(e);
+			const response = this.cache.fetchFile(e);
 			e.respondWith(response);
 		});
 	}
