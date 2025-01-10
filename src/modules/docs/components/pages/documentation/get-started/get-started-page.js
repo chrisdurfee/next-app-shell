@@ -109,7 +109,10 @@ export const GetStartedPage = () => (
                 `),
 
                 H4({ class: 'text-lg font-bold' }, 'Images and Icons'),
-                P({ class: 'text-muted-foreground' }, { html: `The app will need to have at least two homescreen icons (192px and 512px) and one "badge" (Mobile status bar icon for push notifications) in the "/public/images/icons" folder. ` })
+                P({ class: 'text-muted-foreground' }, { html: `The app will need to have at least two homescreen icons (192px and 512px) and one "badge" (Mobile status bar icon for push notifications) in the "/public/images/icons" folder. ` }),
+
+                H4({ class: 'text-lg font-bold' }, 'Logo and Branding'),
+                P({ class: 'text-muted-foreground' }, { html: `The app adds a logo to the main navigation and on the mobile header. Add an SVG logo file to "public/images/logo.svg". ` }),
             ]),
 
             Section({ class: 'space-y-4 mt-12' }, [
@@ -180,8 +183,13 @@ Module.create(
             ]
         }
     ]
-});`)
-            ])
+});`
+                ),
+                H4({ class: 'text-lg font-bold' }, 'Example Modules'),
+                P({ class: 'text-muted-foreground' }, [
+                    Span(`The App Shell project includes several example modules that demonstrate how to create and register modules. These examples can be found in the "src/modules" folder. Each module is self-contained and can be easily integrated into any project using the App Shell framework. The "main" module is a good starting point for understanding how to create and register modules. `),
+                ]),
+            ]),
         ]
     )
 );
