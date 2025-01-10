@@ -66,7 +66,8 @@ export class Push
 	}
 
 	/**
-	 * This will set up the state.
+	 * This will set up the state globally to allow the
+	 * app to bind to the push states.
 	 *
 	 * @param {boolean} supported
 	 * @returns {void}
@@ -209,11 +210,15 @@ export class Push
 	 */
 	request(subscription)
 	{
+		// TODO: change this to the correct user id proprety if not "id"
+		// and set correct params for your API
+		const userId = app.data.user.id;
 		let params = 'user=' + JSON.stringify({
-			id: app.data.user.get('id'),
-			subscription: subscription
+			id: userId,
+			subscription
 		});
 
+		// TODO: change this to the correct URL if not "/api/push"
 		Ajax('/api/push', params);
 	}
 
