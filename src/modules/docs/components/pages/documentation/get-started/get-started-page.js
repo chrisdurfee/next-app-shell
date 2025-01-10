@@ -58,9 +58,7 @@ export const GetStartedPage = () =>
 			Section({ class: 'space-y-4' }, [
 				H4({ class: 'text-lg font-bold' }, 'About the Project'),
 				P(
-					{
-						class: 'text-muted-foreground'
-					},
+					{ class: 'text-muted-foreground' },
 					`This project is a Progressive Web App (PWA) framework designed to serve as a
 					flexible and scalable starting point for new web applications. Built on
 					Vite, Tailwind CSS, and the Base framework, it allows you to quickly
@@ -83,7 +81,7 @@ export const GetStartedPage = () =>
 					in a terminal and run:`
 				),
 				CodeBlock(
-					`npm install
+`npm install
 # or
 yarn install`
 				),
@@ -402,6 +400,65 @@ Module.create({
 							point for understanding module creation and registration.`
 						)
 					]
+				)
+			]),
+
+			// 9) Global Configs
+			Section({ class: 'space-y-4 mt-12' }, [
+				H4({ class: 'text-lg font-bold' }, 'Global Configs'),
+				P(
+					{ class: 'text-muted-foreground' },
+					`The App Shell provides a global “Configs” object for handling application-level
+					settings, such as base URLs, push notifications, and API endpoints. You can
+					access or update these configurations from anywhere in your codebase, making
+					them an excellent place to store constants or environment-specific values.`
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					`Below is an example of how the Configs object is structured by default:`
+				),
+				CodeBlock(
+`/**
+ * Configs
+ *
+ * This will set the app configs. Set any global configs here.
+ *
+ * @type {object} Configs
+ */
+export const Configs = {
+  APP_NAME: 'Example App',
+
+  // Router configuration
+  router: {
+	baseUrl: '/next-app-shell/',
+	title: 'Example'
+  },
+
+  // Push notification settings
+  push: {
+	publicId: ''
+  },
+
+  // Endpoints
+  userStatusApi: '/api/use/status'
+};`
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					[
+						Span(
+							`- **APP_NAME**: The display name of your application. `,
+							`\n- **router**: Router-specific settings like the base URL and title. `,
+							`\n- **push**: Configuration for push notifications (e.g., VAPID keys). `,
+							`\n- **userStatusApi**: An endpoint for checking user status or other server-side calls.`
+						)
+					]
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					`You can extend or modify this object to add more application-wide configurations.
+					For example, if you need to define different API endpoints for staging or
+					production environments, you can do so here and reference them throughout your code.`
 				)
 			])
 		]
