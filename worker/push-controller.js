@@ -10,6 +10,7 @@ class PushController
 	/**
 	 * This will create a new instance of PushController.
 	 *
+	 * @constructor
 	 * @param {string} title
 	 */
 	constructor(title)
@@ -26,7 +27,7 @@ class PushController
 	 */
 	getOptions(event)
 	{
-		let icon = './images/icons/icon-512.png',
+		const icon = './images/icons/icon-512.png',
 		badge = '/images/icons/badge.png',
 		data = event.data.json();
 
