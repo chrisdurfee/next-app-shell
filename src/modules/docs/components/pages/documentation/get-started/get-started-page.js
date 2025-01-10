@@ -308,6 +308,13 @@ import { Div } from "@components/atoms/inputs.js";`
 						header. Replace <code>public/images/logo.svg</code> with your own
 						SVG logo to customize the branding.`
 					}
+				),
+				P(
+					{ class: 'text-muted-foreground' },
+					{
+						html: `
+						A favicon.ico file should be added to the <code>public</code> folder.`
+					}
 				)
 			]),
 
