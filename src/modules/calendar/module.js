@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import CalendarPage from './components/pages/calendar/calendar-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Calendar route
      */
-    { path: '/calendar/:view/:date?*', component: CalendarPage, title: 'Calender' }
+    { path: '/calendar/:view/:date?*', import: () => import('./components/pages/calendar/calendar-page.js'), title: 'Calender' }
 ]);
 
 /**

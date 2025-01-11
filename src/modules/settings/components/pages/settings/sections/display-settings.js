@@ -36,3 +36,5 @@ export const DisplaySettings = () => (
         ])
     ])
 );
+
+export default DisplaySettings;

@@ -30,3 +30,5 @@ export const SettingsSection = Atom((props, children) => (
         Form({ class: 'space-y-6 py-10', submit: props.submit }, children)
     ])
 ));
+
+export default SettingsSection;

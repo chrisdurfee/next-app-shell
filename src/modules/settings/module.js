@@ -1,5 +1,4 @@
 import { Module } from '../module/module.js';
-import SettingsPage from './components/pages/settings/settings-page.js';
 
 /**
  * This will set the routes for the module.
@@ -11,7 +10,7 @@ const routes = Module.convertRoutes(
     /**
      * Settings route
      */
-    { path: '/settings/:page?*', component: SettingsPage, title: 'Settings' }
+    { path: '/settings/:page?*', import: () => import('./components/pages/settings/settings-page.js'), title: 'Settings' }
 ]);
 
 /**

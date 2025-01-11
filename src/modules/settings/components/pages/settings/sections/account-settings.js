@@ -55,3 +55,5 @@ export const AccountSettings = () => (
         ])
     ])
 );
+
+export default AccountSettings;

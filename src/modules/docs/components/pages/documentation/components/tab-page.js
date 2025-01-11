@@ -224,4 +224,4 @@ new TabNavigation({
     )
 );
 
-export default DocPage;
+export default TabPage;

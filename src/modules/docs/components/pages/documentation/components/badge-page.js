@@ -53,4 +53,4 @@ export const PrimaryBadge = Atom((props, children)) => (
     )
 );
 
-export default DocPage;
+export default BadgePage;

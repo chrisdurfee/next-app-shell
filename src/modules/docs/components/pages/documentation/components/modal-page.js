@@ -439,4 +439,4 @@ const ModalForm = ({ type = 'right', size = 'md' }) => (
     ]
 );
 
-export default DocPage;
+export default ModalPage;

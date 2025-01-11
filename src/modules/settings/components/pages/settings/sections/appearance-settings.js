@@ -45,3 +45,5 @@ export const AppearanceSettings = () => (
         ])
     ])
 );
+
+export default AppearanceSettings;

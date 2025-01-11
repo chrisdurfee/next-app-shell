@@ -4,8 +4,6 @@ import { Icons } from "@base-framework/ui/icons";
 import { DatePicker } from "@base-framework/ui/molecules";
 import { TabNavigation } from "@base-framework/ui/organisms";
 import { Page } from "@base-framework/ui/pages";
-import { AnalyticsEmptyState } from "./dashboards/analytics/analytics-dashboard.js";
-import { OverviewDashboard } from "./dashboards/overview/overview-dashboard.js";
 
 /**
  * This will create the DashboardHeader molecule.
@@ -55,10 +53,12 @@ export const DashboardOverview = () => (
 
             Div({
                 switch: [
-                    { uri: 'dashboard', component: OverviewDashboard },
-                    { uri: 'dashboard/overview/analytics', component: AnalyticsEmptyState }
+                    { uri: 'dashboard', import: () => import('./dashboards/overview/overview-dashboard.js') },
+                    { uri: 'dashboard/overview/analytics', import: () => import('./dashboards/analytics/analytics-dashboard.js') }
                 ]
             })
         ])
     ])
 );
+
+export default DashboardOverview;

@@ -1,7 +1,7 @@
 import { Div, Textarea } from "@base-framework/atoms";
 import { Jot } from "@base-framework/base";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Icons  } from "@base-framework/ui/icons";
+import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * This will check if the count is over the limit.
@@ -97,3 +97,5 @@ export const EmailComposer = Jot(
         ]);
     }
 });
+
+export default EmailComposer;

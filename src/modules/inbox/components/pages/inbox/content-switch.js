@@ -57,3 +57,5 @@ export const ContentSwitch = (props) => (
         ]
     })
 );
+
+export default ContentSwitch;

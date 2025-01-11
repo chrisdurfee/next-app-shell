@@ -200,4 +200,4 @@ new Confirmation({
     )
 );
 
-export default DocPage;
+export default DialogPage;

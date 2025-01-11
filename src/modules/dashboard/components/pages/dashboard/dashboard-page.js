@@ -1,8 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { NavigationMenu } from "@base-framework/ui/organisms";
 import { BlankPage } from "@base-framework/ui/pages";
-import { DashboardCustomersEmptyState } from "./customers/dashboard-customers.js";
-import { DashboardOverview } from "./dashboard-overview/dashboard-overview.js";
 
 
 /**
@@ -36,8 +34,8 @@ export const DashboardPage = () => (
 
         Div({
             switch: [
-                { uri: 'dashboard/', component: DashboardOverview },
-                { uri: 'dashboard/customers', component: DashboardCustomersEmptyState },
+                { uri: 'dashboard/', import: () => import('./dashboard-overview/dashboard-overview.js') },
+                { uri: 'dashboard/customers', import: () => import('./customers/dashboard-customers.js') },
             ]
         })
     ])

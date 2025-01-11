@@ -27,3 +27,5 @@ export const OverviewDashboard = () => (
         ])
     ])
 );
+
+export default OverviewDashboard;

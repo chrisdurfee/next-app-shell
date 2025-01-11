@@ -172,4 +172,4 @@ LoadingButton('With Icon')`
     )
 );
 
-export default DocPage;
+export default ButtonPage;

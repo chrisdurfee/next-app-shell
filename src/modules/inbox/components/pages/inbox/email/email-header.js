@@ -43,3 +43,5 @@ export const EmailHeader = (message) => (
         ]),
     ])
 );
+
+export default EmailHeader;

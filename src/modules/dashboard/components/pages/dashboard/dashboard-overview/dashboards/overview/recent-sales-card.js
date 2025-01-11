@@ -72,3 +72,5 @@ export const RecentSalesCard = () => (
         ])
     ])
 );
+
+export default RecentSalesCard;

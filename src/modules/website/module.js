@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import WebsitePage from './components/pages/website-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * website routes
      */
-    { path: '/website/:page?*', component: WebsitePage, title: 'Inbox' }
+    { path: '/website/:page?*', import: () => import('./components/pages/website-page.js'), title: 'Inbox' }
 ]);
 
 /**

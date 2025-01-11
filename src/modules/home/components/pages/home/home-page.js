@@ -208,3 +208,5 @@ Builder.render(ToDoApp(), document.body);`)
 		])
 	])
 );
+
+export default HomePage;

@@ -37,3 +37,5 @@ export const DashboardSummaryCards = () => (
         ])
     ])
 );
+
+export default DashboardSummaryCards;

@@ -103,3 +103,5 @@ export const EmailToolbar = (props) => (
         ])
     ])
 );
+
+export default EmailToolbar;

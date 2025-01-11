@@ -139,3 +139,5 @@ export const InboxMessageItem = Jot(
         });
     },
 });
+
+export default InboxMessageItem;

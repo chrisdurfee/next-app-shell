@@ -79,3 +79,5 @@ export const InboxList = () => (
         ]),
     ])
 );
+
+export default InboxList;

@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import { HomePage } from './components/pages/home/home-page.js';
 
 /**
  * This will set the routes for the module.
@@ -9,7 +8,7 @@ import { HomePage } from './components/pages/home/home-page.js';
  */
 const routes = Module.convertRoutes(
 [
-    { path: '/', component: HomePage, title: 'Home' }
+    { path: '/', import: () => import('./components/pages/home/home-page.js'), title: 'Home' }
 ]);
 
 /**

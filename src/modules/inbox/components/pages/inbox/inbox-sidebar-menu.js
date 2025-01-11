@@ -76,3 +76,5 @@ export const InboxSidebarMenu = () => (
         ]),
     ])
 );
+
+export default InboxSidebarMenu;

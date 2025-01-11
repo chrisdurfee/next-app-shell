@@ -129,3 +129,5 @@ export const EmailDetail = Jot(
         });
     },
 });
+
+export default EmailDetail;

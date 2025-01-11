@@ -19,3 +19,5 @@ export const EmailEmptyState = () => (
         Button({ variant: 'outline', class: 'my-8' }, 'Create a Message')
     ])
 );
+
+export default EmailEmptyState;

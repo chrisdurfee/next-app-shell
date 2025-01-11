@@ -23,3 +23,5 @@ export const AnalyticsEmptyState = () => (
 		)
 	])
 );
+
+export default AnalyticsEmptyState;

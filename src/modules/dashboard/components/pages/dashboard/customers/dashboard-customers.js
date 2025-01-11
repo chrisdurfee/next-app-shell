@@ -23,3 +23,5 @@ export const DashboardCustomersEmptyState = () => (
 		)
 	])
 );
+
+export default DashboardCustomersEmptyState;

@@ -70,3 +70,5 @@ export const NotificationSettings = () => (
         ])
     ])
 );
+
+export default NotificationSettings;

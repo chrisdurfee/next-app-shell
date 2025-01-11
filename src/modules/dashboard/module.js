@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import DashboardPage from './components/pages/dashboard/dashboard-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Dashboard routes
      */
-    { path: '/dashboard/:page?*', component: DashboardPage, title: 'Dashboard' }
+    { path: '/dashboard/:page?*', import: () => import('./components/pages/dashboard/dashboard-page.js'), title: 'Dashboard' }
 ]);
 
 /**

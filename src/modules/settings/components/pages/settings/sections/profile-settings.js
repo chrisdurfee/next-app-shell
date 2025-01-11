@@ -44,3 +44,5 @@ export const ProfileSettings = () => (
         ])
     ]))
 );
+
+export default ProfileSettings;

@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import ClientListPage from './components/pages/clients/client-list-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Clients route
      */
-    { path: '/clients/:clientId?*', component: ClientListPage, title: 'Clients' }
+    { path: '/clients/:clientId?*', import: () => import('./components/pages/clients/client-list-page.js'), title: 'Clients' }
 ]);
 
 /**
