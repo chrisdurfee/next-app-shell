@@ -42,6 +42,11 @@ export class ModuleRoutes
 	 */
 	isPromise(obj)
 	{
+		if (typeof obj === 'function')
+		{
+			return true;
+		}
+
 		return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
 	}
 
