@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import OrdersDashboard from './components/pages/orders/orders-dashboard/orders-dashboard.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Orders routes
      */
-    { path: '/orders/orders-dashboard/:orderId?*', component: OrdersDashboard, title: 'Orders', preventScroll: true }
+    { path: '/orders/orders-dashboard/:orderId?*', import: () => import('./components/pages/orders/orders-dashboard/orders-dashboard.js'), title: 'Orders', preventScroll: true }
 ]);
 
 /**

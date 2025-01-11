@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import { InboxPage } from './components/pages/inbox/inbox-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Inbox routes
      */
-    { path: '/inbox/:page?/:messageId?*', component: InboxPage, title: 'Inbox' }
+    { path: '/inbox/:page?/:messageId?*', import: () => import('./components/pages/inbox/inbox-page.js'), title: 'Inbox' }
 ]);
 
 /**

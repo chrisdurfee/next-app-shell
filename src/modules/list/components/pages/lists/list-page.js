@@ -2,8 +2,6 @@ import { Div, H1, Header } from "@base-framework/atoms";
 import { Button } from "@base-framework/ui/atoms";
 import { TabNavigation } from "@base-framework/ui/organisms";
 import { BlankPage } from "@base-framework/ui/pages";
-import { DataTablePage } from './data-table-page.js';
-import { ItemListPage } from './item-list-page.js';
 
 /**
  * This will create the PageHeader molecule.
@@ -55,8 +53,8 @@ export const ListPage = () => (
 
             Div({
                 switch: [
-                    { uri: 'list', component: ItemListPage },
-                    { uri: 'list/data-table', component: DataTablePage }
+                    { uri: 'list', import: () => import('./item-list-page.js') },
+                    { uri: 'list/data-table', import: () => import('./data-table-page.js') }
                 ]
             })
         ])

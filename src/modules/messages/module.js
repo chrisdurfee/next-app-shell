@@ -1,6 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import MessagesPage from './components/pages/messages/messages-page.js';
 
 /**
  * This will set the routes for the module.
@@ -12,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Messages routes
      */
-    { path: '/messages/:page?/:messageId?*', component: MessagesPage, title: 'Messages' }
+    { path: '/messages/:page?/:messageId?*', import: () => import('./components/pages/messages/messages-page.js'), title: 'Messages' }
 ]);
 
 /**

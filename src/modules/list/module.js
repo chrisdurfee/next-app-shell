@@ -11,7 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * List route
      */
-    { path: '/list/:page?*', import: import('./components/pages/lists/list-page.js'), title: 'List' }
+    { path: '/list/:page?*', import: () => import('./components/pages/lists/list-page.js'), title: 'List' }
 ]);
 
 /**
