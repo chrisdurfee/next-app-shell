@@ -1,7 +1,5 @@
 import { Div } from "@base-framework/atoms";
 import { BlankPage } from "@base-framework/ui/pages";
-import { BrowsePage } from "./browse/browse-page.js";
-import { ListenPage } from "./listen/listen-page.js";
 import { SidebarMenu } from "./sidebar-menu.js";
 
 /**
@@ -20,11 +18,11 @@ export const MusicPage = () => (
                 switch: [
                     {
                         uri: 'music',
-                        component: ListenPage
+                        import: () => import('./listen/listen-page.js'),
                     },
                     {
                         uri: 'music/browse',
-                        component: BrowsePage
+                        import: () => import('./browse/browse-page.js'),
                     }
                 ]
             })
