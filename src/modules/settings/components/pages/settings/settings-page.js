@@ -62,6 +62,16 @@ const props =
     },
 
     /**
+     * This will run after the setup.
+     *
+     * @returns {void}
+     */
+    afterSetup()
+    {
+        this.checkPage();
+    },
+
+    /**
      * This will run after the update.
      *
      * @returns {void}
