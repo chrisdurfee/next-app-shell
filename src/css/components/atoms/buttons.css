@@ -48,7 +48,7 @@ a.icon {
 button.icon.primary,
 .bttn.icon.primary,
 a.icon.primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply bg-primary text-primary-foreground p-0 hover:bg-primary/90;
 }
 .bttn.icon.secondary,
 a.icon.secondary {
