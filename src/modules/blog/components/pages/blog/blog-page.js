@@ -25,7 +25,7 @@ const HeroSection = (props) => (
 const PostList = ({ posts }) => (
     Div([
         new List({
-            cache: "post-list",
+            cache: "postlist",
             key: "id",
             items: posts,
             role: "list",

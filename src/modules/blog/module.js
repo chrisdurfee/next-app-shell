@@ -1,7 +1,5 @@
 import { Icons } from "@base-framework/ui/icons";
 import { Module } from '../module/module.js';
-import { BlogPage } from './components/pages/blog/blog-page.js';
-import { PostPage } from './components/pages/blog/posts/post-page.js';
 
 /**
  * This will set the routes for the module.
@@ -13,8 +11,8 @@ const routes = Module.convertRoutes(
     /**
      * Blog routes
      */
-    { path: '/blog/posts/:postId?*', component: PostPage, title: 'Post' },
-    { path: '/blog*', component: BlogPage, title: 'Blog' }
+    { path: '/blog/posts/:postId?*', import: () => import('./components/pages/blog/posts/post-page.js'), title: 'Post' },
+    { path: '/blog*', import: () => import('./components/pages/blog/blog-page.js'), title: 'Blog' }
 ]);
 
 /**

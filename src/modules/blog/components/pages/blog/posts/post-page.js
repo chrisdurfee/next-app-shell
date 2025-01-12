@@ -1,4 +1,4 @@
-import { Div } from "@base-framework/atoms";
+import { Div, On } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BackButton, Overlay } from "@base-framework/ui/organisms";
 import { POSTS } from "../posts.js";
@@ -91,9 +91,8 @@ export const PostPage = () =>
         Div({ class: "flex flex-col w-full min-h-screen px-4 lg:px-8" }, [
             Div({ class: "flex flex-auto items-center flex-col gap-6 mx-auto w-full max-w-[1024px]" }, [
                 Toolbar(),
-                Div({
-                    class: 'flex flex-auto flex-col w-full',
-                    onSet: ["loaded", (loaded, ele, { data }) =>
+                Div({ class: 'flex flex-auto flex-col w-full' }, [
+                    On("loaded", (loaded, ele, { data }) =>
                     {
                         if (!loaded)
                         {
@@ -110,8 +109,8 @@ export const PostPage = () =>
                             PostHeader({ post }),
                             PostContent({ post }),
                         ]);
-                    }]
-                })
+                    })
+                ])
             ])
         ])
     ])
