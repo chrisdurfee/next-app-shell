@@ -23,3 +23,5 @@ export const BrowsePage = () => (
 		)
 	])
 );
+
+export default BrowsePage;
