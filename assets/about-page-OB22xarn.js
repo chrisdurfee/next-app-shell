@@ -1,1 +1,0 @@
-import{ah as t,Y as e}from"./index-DlwzRetq.js";const o=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"About")])]);export{o as AboutPage,o as default};
