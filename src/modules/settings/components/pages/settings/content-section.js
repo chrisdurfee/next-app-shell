@@ -20,13 +20,13 @@ export const PageToolbar = () => (
 /**
  * Helper function to create a page that uses dynamic imports.
  *
- * @param {string} uri - The URI (route) for this page
- * @param {string} src - The relative path to the JS module for this page
+ * @param {string} uri The URI (route) for this page
+ * @param {Function} importCallback A function returning the dynamic import
  * @returns {object}
  */
-const Page = (uri, src) => ({
+const Page = (uri, importCallback) => ({
 	uri,
-	import: () => import(src),
+	import: importCallback,
 });
 
 /**
@@ -40,11 +40,11 @@ const DockablePage = () => (
 		Div({
 			class: 'flex flex-auto flex-col contained p-4 lg:p-6',
 			switch: [
-				Page('/settings/profile', './sections/profile-settings.js'),
-				Page('/settings/account', './sections/account-settings.js'),
-				Page('/settings/appearance', './sections/appearance-settings.js'),
-				Page('/settings/notifications', './sections/notification-settings.js'),
-				Page('/settings/display', './sections/display-settings.js'),
+				Page('/settings/profile', () => import('./sections/profile-settings.js')),
+				Page('/settings/account', () => import('./sections/account-settings.js')),
+				Page('/settings/appearance', () => import('./sections/appearance-settings.js')),
+				Page('/settings/notifications', () => import('./sections/notification-settings.js')),
+				Page('/settings/display', () => import('./sections/display-settings.js')),
 			]
 		})
 	])
