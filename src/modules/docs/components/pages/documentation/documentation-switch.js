@@ -1,9 +1,9 @@
 /**
  * This will create a page dynamically.
  *
- * @param {string} url             The URL or path this page should match
- * @param {string} title           A descriptive title for the page
- * @param {Function} importCallback A function returning the dynamic import
+ * @param {string} url The URL or path this page should match
+ * @param {string} title A descriptive title for the page
+ * @param {function} importCallback A function returning the dynamic import
  * @returns {object}
  */
 const Page = (url, title, importCallback) => ({
