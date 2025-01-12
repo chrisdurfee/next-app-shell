@@ -2,7 +2,7 @@
  * This will create the aside links.
  *
  * @param {string} path
- * @returns {array}
+ * @returns {Array<object>}
  */
 export const Links = (path) => ([
 	{

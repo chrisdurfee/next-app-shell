@@ -8,9 +8,9 @@ import { APP_STATE, STATES, STATE_ATTR } from "./state.js";
  * Creates a debounced function that delays the execution of the callback
  * until after a specified wait time has elapsed since the last call.
  *
- * @param {Function} callBack - The function to debounce.
+ * @param {function} callBack - The function to debounce.
  * @param {number} wait - The number of milliseconds to wait.
- * @returns {Function} A debounced version of the callback.
+ * @returns {function} A debounced version of the callback.
  */
 const debounce = function(callBack, wait = 250)
 {

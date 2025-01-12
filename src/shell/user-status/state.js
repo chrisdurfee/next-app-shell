@@ -15,14 +15,14 @@ export const STATE_ATTR = 'userStatus';
  * @const {object} STATES
  *
  * Possible states for a user.
- * - AWAY: User is inactive.
+ * - AWAY: User is inactive/idle.
  * - ONLINE: User is active.
  * - BUSY: User is active but marked busy.
  * - OFFLINE: User is not active.
  */
 export const STATES = {
-    AWAY: 'away',
-    ONLINE: 'online',
-    BUSY: 'busy',
-    OFFLINE: 'offline',
+	AWAY: 'away',
+	ONLINE: 'online',
+	BUSY: 'busy',
+	OFFLINE: 'offline',
 };

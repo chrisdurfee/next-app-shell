@@ -30,12 +30,12 @@ export const DocumentationPage = () => (
 		basePath,
 
 		/**
-		 * @member {array} switch
+		 * @member {Array<object>} switch
 		 */
 		switch: DocumentationSwitch(basePath),
 
 		/**
-		 * @member {array} links
+		 * @member {Array<object>} links
 		 */
 		links: Links(basePath)
 	})

@@ -16,7 +16,7 @@ const Page = (url, title, importCallback) => ({
  * This will create the documentation switch.
  *
  * @param {string} basePath
- * @returns {array}
+ * @returns {Array<object>}
  */
 export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}`, 'Introduction', () => import('./introduction/intro-page.js')),

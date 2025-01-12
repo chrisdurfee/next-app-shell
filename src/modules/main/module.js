@@ -17,7 +17,7 @@ const routes = Module.convertRoutes(
      */
     // {
     //     path: '/aside/:page?/:marketing?/:label?/:name?*',
-    //     import: import('./components/pages/main-aside/main-sidebar-menu-page.js'),
+    //     import: () => import('./components/pages/main-aside/main-sidebar-menu-page.js'),
     //     title: 'Sidebar Menu Example'
     // }
 ]);
