@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Button, Icon, Tooltip } from "@base-framework/ui/atoms";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Confirmation } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
@@ -23,7 +23,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Move to inbox", position: "bottom-right" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.archive.box.default),
+                    icon: Icons.archive.box.default,
                 }),
             ]),
 
@@ -31,7 +31,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Move to junk", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.archive.box.x),
+                    icon: Icons.archive.box.x,
                 }),
             ]),
 
@@ -39,7 +39,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Delete", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.trash),
+                    icon: Icons.trash,
                     click: (e, parent) =>
                     {
                         new Confirmation({
@@ -60,7 +60,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Snooze", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.clock),
+                    icon: Icons.clock,
                 }),
             ])
         ]),
@@ -70,7 +70,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Reply", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.arrows.left),
+                    icon: Icons.arrows.left,
                 }),
             ]),
 
@@ -78,7 +78,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Reply All", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.arrows.uturn.left),
+                    icon: Icons.arrows.uturn.left,
                 }),
             ]),
 
@@ -86,7 +86,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "Forward", position: "bottom" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.arrows.right),
+                    icon: Icons.arrows.right,
                 }),
             ]),
 
@@ -97,7 +97,7 @@ export const EmailToolbar = (props) => (
             Tooltip({ content: "More options", position: "bottom-left" }, [
                 Button({
                     variant: "icon",
-                    icon: Icon({ size: "sm", class: "text-foreground" }, Icons.ellipsis.vertical),
+                    icon: Icons.ellipsis.vertical,
                 }),
             ])
         ])
