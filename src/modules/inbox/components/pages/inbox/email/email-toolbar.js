@@ -5,6 +5,22 @@ import { Confirmation } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
 
 /**
+ * This will create a tooltip button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const TooltipButton = (props) => (
+    Tooltip({ content: props.content, position: props.position }, [
+        Button({
+            variant: "icon",
+            icon: props.icon,
+            click: props.click
+        }),
+    ])
+);
+
+/**
  * Toolbar for Email Actions.
  *
  * @param {object} props
@@ -20,86 +36,85 @@ export const EmailToolbar = (props) => (
         ]),
         Div({ class: "hidden lg:flex items-center gap-2" }, [
             // Move to Inbox
-            Tooltip({ content: "Move to inbox", position: "bottom-right" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.archive.box.default,
-                }),
-            ]),
+            TooltipButton({
+                content: "Move to inbox",
+                position: "bottom-right",
+                icon: Icons.archive.box.default,
+                click: () => {}
+            }),
 
             // Move to Junk
-            Tooltip({ content: "Move to junk", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.archive.box.x,
-                }),
-            ]),
+            TooltipButton({
+                content: "Move to junk",
+                position: "bottom",
+                icon: Icons.archive.box.x,
+                click: () => {}
+            }),
 
             // Delete
-            Tooltip({ content: "Delete", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.trash,
-                    click: (e, parent) =>
-                    {
-                        new Confirmation({
-                            icon: Icons.trash,
-                            title: 'Delete Message',
-                            description: 'Are you sure you want to delete this message?',
-                            confirmTextLabel: 'Delete',
-                            confirmed: () =>
-                            {
-                                props.delete(props.message.id);
-                            }
-                        }).open();
-                    }
-                }),
-            ]),
+            TooltipButton({
+                content: "Delete",
+                position: "bottom",
+                icon: Icons.trash,
+                click: (e, parent) =>
+                {
+                    new Confirmation({
+                        icon: Icons.trash,
+                        title: 'Delete Message',
+                        description: 'Are you sure you want to delete this message?',
+                        confirmTextLabel: 'Delete',
+                        confirmed: () =>
+                        {
+                            props.delete(props.message.id);
+                        }
+                    }).open();
+                }
+            }),
 
             // Snooze
-            Tooltip({ content: "Snooze", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.clock,
-                }),
-            ])
+            TooltipButton({
+                content: "Snooze",
+                position: "bottom",
+                icon: Icons.clock,
+                click: () => {}
+            }),
         ]),
 
         Div({ class: "hidden lg:flex items-center gap-2" }, [
             // Reply
-            Tooltip({ content: "Reply", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.arrows.left,
-                }),
-            ]),
+            TooltipButton({
+                content: "Reply",
+                position: "bottom",
+                icon: Icons.arrows.left,
+                click: () => {}
+            }),
 
             // Reply All
-            Tooltip({ content: "Reply All", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.arrows.uturn.left,
-                }),
-            ]),
+            TooltipButton({
+                content: "Reply all",
+                position: "bottom",
+                icon: Icons.arrows.uturn.left,
+                click: () => {}
+            }),
 
             // Forward
-            Tooltip({ content: "Forward", position: "bottom" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.arrows.right,
-                }),
-            ]),
+            TooltipButton({
+                content: "Forward",
+                position: "bottom",
+                icon: Icons.arrows.right,
+                click: () => {}
+            }),
 
             // Separator
             Div({ class: "w-px h-5 bg-border mx-2" }),
 
             // More Options
-            Tooltip({ content: "More options", position: "bottom-left" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.ellipsis.vertical,
-                }),
-            ])
+            TooltipButton({
+                content: "More options",
+                position: "bottom-left",
+                icon: Icons.ellipsis.vertical,
+                click: () => {}
+            }),
         ])
     ])
 );
