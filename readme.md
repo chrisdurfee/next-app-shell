@@ -31,6 +31,8 @@ This app uses components and atoms to create layouts. Components are reusable la
 ![Calendar Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/calendar-page.png)
 ![Notification Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/notifications-page.png)
 ![Website Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/website-page.png)
+![Messaging Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/messaging-page.png)
+![Short Navigation](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/short-navigation.png)
 
 ## Getting Started
 
