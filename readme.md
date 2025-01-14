@@ -33,6 +33,7 @@ This app uses components and atoms to create layouts. Components are reusable la
 ![Website Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/website-page.png)
 ![Messaging Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/messaging-page.png)
 ![Short Navigation](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/short-navigation.png)
+![Sign In Page](https://raw.githubusercontent.com/chrisdurfee/next-app-shell/refs/heads/main/public/images/product/sign-in-page.png)
 
 ## Getting Started
 
