@@ -25,6 +25,11 @@ export const AdditionalOptionsButton = ({ click }) => (
 );
 
 /**
+ * @constant {number} MAX_PRIMARY_OPTIONS
+ */
+const MAX_PRIMARY_OPTIONS = 5;
+
+/**
  * This will separate the options.
  *
  * @param {array} options
@@ -32,7 +37,6 @@ export const AdditionalOptionsButton = ({ click }) => (
  */
 const separateOptions = (options) =>
 {
-    const MAX_PRIMARY_OPTIONS = 5;
     const primaryOptions = options.slice(0, MAX_PRIMARY_OPTIONS);
     const additionalOptions = options.slice(MAX_PRIMARY_OPTIONS);
     return { primaryOptions, additionalOptions };

@@ -1,4 +1,4 @@
-import { Atom, Component, Data } from "@base-framework/base";
+import { Atom, Component } from "@base-framework/base";
 import { MainNavigation } from "./main-navigation.js";
 import { getMobileOptions } from "./mobile-options.js";
 import { MobileNavigation } from "./mobile/mobile-navigation.js";
@@ -27,9 +27,22 @@ const AppContainer = Atom((props, children) => ({
 export class AppControl extends Component
 {
     /**
-     * @member {number|null} timer
+     * This will declare the properties of the component.
+     *
+     * @returns {void}
      */
-    timer = null;
+    declareProps()
+    {
+        /**
+         * @member {number|null} timer
+         */
+        this.timer = null;
+
+        /**
+         * @member {boolean} useShortNav
+         */
+        this.useShortNav = true;
+    }
 
     /**
      * This will set the app controll state to be stored in the local storage.
@@ -79,7 +92,7 @@ export class AppControl extends Component
                 /**
                  * This will create a navigation for the main and mobile navigation.
                  */
-                new MainNavigation({ options: this.options }),
+                new MainNavigation({ options: this.options, useShortNav: this.useShortNav }),
                 new MobileNavigation({ options: mobileOptions })
             ]
         );

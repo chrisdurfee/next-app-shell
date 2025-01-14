@@ -4,6 +4,7 @@ import { Icons } from "@base-framework/ui/icons";
 import { InlineNavigation } from "@base-framework/ui/organisms";
 import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
+import { ShortNavigation } from "./short/short-navigation.js";
 
 /**
  * This will create the main navigation.
@@ -24,8 +25,8 @@ const Navigation = Atom((props, children) => ({
  * @param {object} props
  * @returns {object}
  */
-const PrimaryNavigation = ({ options}) => (
-	new InlineNavigation({ options })
+const PrimaryNavigation = ({ options, useShortNav }) => (
+	(useShortNav) ? new ShortNavigation({ options } ) : new InlineNavigation({ options })
 );
 
 /**
@@ -80,6 +81,7 @@ export const MainNavigation = Jot(
 			MainHeader({ callBack: () => this.state.toggle('pinned') }),
 			Div({ class: 'nav-container flex flex-auto flex-col justify-between' }, [
 				PrimaryNavigation({
+					useShortNav: this.useShortNav || false,
 					options: this.options
 				}),
 				LowerNavigation()

@@ -517,6 +517,7 @@ new TimePicker({
                 preview: [
                     InputPreview([
                         new DatePicker({
+                            blockPriorDates: false,
                             selectedDate: '2022-01-01',
                         })
                     ])
@@ -524,7 +525,10 @@ new TimePicker({
                 code: `
 import DatePicker from "@base-framework/ui/molecules/date-time/date-picker.js";
 
-new DatePicker()`
+new DatePicker({
+    blockPriorDates: false,
+    selectedDate: '2022-01-01',
+})`
             }),
 
             DocSection({
