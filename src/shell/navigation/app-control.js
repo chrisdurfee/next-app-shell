@@ -1,7 +1,15 @@
 import { Atom, Component } from "@base-framework/base";
+import { Configs } from "../../configs.js";
 import { MainNavigation } from "./main-navigation.js";
 import { getMobileOptions } from "./mobile-options.js";
 import { MobileNavigation } from "./mobile/mobile-navigation.js";
+
+/**
+ * This will get the hover class.
+ *
+ * @returns {string}
+ */
+const getHoverClass = () => Configs.useShortNav ? '' : 'lg:hover:w-[330px]';
 
 /**
  * This will create the app container.
@@ -12,7 +20,9 @@ import { MobileNavigation } from "./mobile/mobile-navigation.js";
  */
 const AppContainer = Atom((props, children) => ({
     ...props,
-    class: 'app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px] lg:hover:w-[330px] sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r',
+    class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px]
+    sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
+    ${getHoverClass()}`,
     children
 }));
 
@@ -37,11 +47,6 @@ export class AppControl extends Component
          * @member {number|null} timer
          */
         this.timer = null;
-
-        /**
-         * @member {boolean} useShortNav
-         */
-        this.useShortNav = true;
     }
 
     /**
@@ -92,7 +97,7 @@ export class AppControl extends Component
                 /**
                  * This will create a navigation for the main and mobile navigation.
                  */
-                new MainNavigation({ options: this.options, useShortNav: this.useShortNav }),
+                new MainNavigation({ options: this.options }),
                 new MobileNavigation({ options: mobileOptions })
             ]
         );

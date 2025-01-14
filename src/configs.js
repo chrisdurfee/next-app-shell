@@ -21,6 +21,14 @@ export const Configs =
 	},
 
 	/**
+	 * This will enable the primary nav to be short
+	 * without hovering.
+	 *
+	 * @type {boolean} useShortNav
+	 */
+	useShortNav: true,
+
+	/**
 	 * The push settings.
 	 */
 	push: {

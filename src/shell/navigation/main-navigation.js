@@ -2,6 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Atom, Jot } from "@base-framework/base";
 import { Icons } from "@base-framework/ui/icons";
 import { InlineNavigation } from "@base-framework/ui/organisms";
+import { Configs } from "../../configs.js";
 import { NavigationAvatar } from "./avatars/navigation-avatar.js";
 import { MainHeader } from "./main-header.js";
 import { ShortNavigation } from "./short/short-navigation.js";
@@ -26,7 +27,7 @@ const Navigation = Atom((props, children) => ({
  * @returns {object}
  */
 const PrimaryNavigation = ({ options, useShortNav }) => (
-	(useShortNav) ? new ShortNavigation({ options } ) : new InlineNavigation({ options })
+	(Configs.useShortNav) ? new ShortNavigation({ options } ) : new InlineNavigation({ options })
 );
 
 /**
