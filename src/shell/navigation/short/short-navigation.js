@@ -46,8 +46,10 @@ const createOptions = (options) =>
 
 	return navOptions.map(option =>
 	{
-		option.maxHeight = maxHeight;
-		return MobileLink(option);
+		return MobileLink({
+			maxHeight,
+			...option
+		});
 	});
 };
 
