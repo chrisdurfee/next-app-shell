@@ -22,7 +22,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 1 }
+    { label: 'Blog', href: 'blog', icon: Icons.newspaper, mobileOrder: 7 }
 ];
 
 /**

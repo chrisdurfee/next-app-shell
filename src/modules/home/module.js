@@ -18,7 +18,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Home', href: './', icon: Icons.home, exact: true }
+    { label: 'Home', href: './', icon: Icons.home, mobileOrder: 1, exact: true }
 ];
 
 /**
