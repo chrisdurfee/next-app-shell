@@ -1,4 +1,4 @@
-import { BlankPage, FullPage } from "@base-framework/ui/pages";
+import { FullscreenPage } from "@base-framework/ui/pages";
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
@@ -38,10 +38,10 @@ const PageProps =
  *
  * This will create a login page.
  *
- * @returns {FullPage}
+ * @returns {FullscreenPage}
  */
 export const LoginPage = () => (
-	new BlankPage(PageProps, [
+	new FullscreenPage(PageProps, [
 		PageStepContainer()
 	])
 );

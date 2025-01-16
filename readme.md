@@ -16,7 +16,11 @@ This app uses components and atoms to create layouts. Components are reusable la
 - HTML
 - CSS
 - Base Framework
+- Base Atoms
+- Base Organisms
+- Base UI
 - Vite
+- Tailwind CSS
 
 ## Screenshots
 
