@@ -26,7 +26,7 @@ const Navigation = Atom((props, children) => ({
  * @param {object} props
  * @returns {object}
  */
-const PrimaryNavigation = ({ options, useShortNav }) => (
+const PrimaryNavigation = ({ options }) => (
 	(Configs.useShortNav) ? new ShortNavigation({ options } ) : new InlineNavigation({ options })
 );
 

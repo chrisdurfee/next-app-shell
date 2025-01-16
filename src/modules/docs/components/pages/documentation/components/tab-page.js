@@ -201,7 +201,7 @@ new TabGroup({
                         ]
                     })
                 ],
-                code: `import {  TabGroup  } from "@base-framework/ui/organisms";
+                code: `import {  TabNavigation  } from "@base-framework/ui/organisms";
 
 new TabNavigation({
     options: [
