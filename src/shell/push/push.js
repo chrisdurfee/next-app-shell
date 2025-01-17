@@ -5,7 +5,7 @@ import { Env } from "../env.js";
  * This will convert a base64 string to a Uint8Array.
  *
  * @param {string} base64String
- * @returns {array}
+ * @returns {Uint8Array}
  */
 const urlB64ToUint8Array = (base64String) =>
 {
@@ -133,7 +133,7 @@ export class Push
 	/**
 	 * This will request the permission.
 	 *
-	 * @returns {void}
+	 * @returns {Promise<void>}
 	 */
 	async requestPermission()
 	{

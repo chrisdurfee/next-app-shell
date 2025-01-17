@@ -46,9 +46,11 @@ const LowerNavigation = () => (
 						 * This will create the navigation avatar.
 						 */
 						new NavigationAvatar({
+							// @ts-ignore
 							data: app.data.user
 						})
 					],
+					// @ts-ignore
 					callBack: () => app.navigate('settings/profile')
 				},
 				{
@@ -67,7 +69,6 @@ const LowerNavigation = () => (
  * This will create the main navigation.
  *
  * @class
- * @extends Component
  */
 export const MainNavigation = Jot(
 {

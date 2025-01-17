@@ -9,31 +9,31 @@ import { Icons } from "@base-framework/ui/icons";
  * @returns {object}
  */
 const Logo = Atom((props) => (
-    A({
-        class: 'logo w-[32px] h-[32px] m-[16px] block',
-        href: './',
-        ...props
-    }, [
-        /**
-         * This will create the logo image.
-         */
-        props.src && Img({
-            src: props.src,
-            alt: 'Logo',
-            class: 'w-[32px] h-[32px]',
+	A({
+		class: 'logo w-[32px] h-[32px] m-[16px] block',
+		href: './',
+		...props
+	}, [
+		/**
+		 * This will create the logo image.
+		 */
+		props.src && Img({
+			src: props.src,
+			alt: 'Logo',
+			class: 'w-[32px] h-[32px]',
 
-            /**
-             * This will hide the image if there is an error.
-             */
-            error: (e) => e.target.style.display = 'none'
-        })
-    ])
+			/**
+			 * This will hide the image if there is an error.
+			 */
+			error: (e) => e.target.style.display = 'none'
+		})
+	])
 ));
 
 /**
  * This will create a pin icon.
  *
- * @param {object} props
+ * @param {boolean} pinned
  * @returns {object}
  */
 const PinIcon = (pinned) => (pinned)? Icons.unlocked : Icons.locked;
@@ -47,12 +47,12 @@ const PinIcon = (pinned) => (pinned)? Icons.unlocked : Icons.locked;
  */
 const PinButton = Atom((props, children) =>
 {
-    return {
-        class: 'pin w-[32px] h-[32px] m-[16px] block cursor-pointer',
-        onState: ['pinned', (val) => (PinIcon(val))],
-        ...props,
-        children
-    };
+	return {
+		class: 'pin w-[32px] h-[32px] m-[16px] block cursor-pointer',
+		onState: ['pinned', (val) => (PinIcon(val))],
+		...props,
+		children
+	};
 });
 
 /**
@@ -62,8 +62,8 @@ const PinButton = Atom((props, children) =>
  * @returns {object}
  */
 export const MainHeader = (props) => (
-    Div({ class: 'flex flex-row justify-between min-w-[330px]'}, [
-        Logo({ src: props.src || '/images/logo.svg' }),
-        //PinButton({ click: props.callBack })
-    ])
+	Div({ class: 'flex flex-row justify-between min-w-[330px]'}, [
+		Logo({ src: props.src || '/images/logo.svg' }),
+		//PinButton({ click: props.callBack })
+	])
 );

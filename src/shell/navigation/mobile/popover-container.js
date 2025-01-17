@@ -8,12 +8,12 @@ import { PopOverNavigation } from "./popover-navigation.js";
  * @returns {object}
  */
 export const PopOverContainer = ({ options }) => (
-    OnState('open', (isOpen, ele, parent) => (!isOpen)
-        ? null
-        : new PopOverNavigation({
-            cache: 'popover',
-            parent: parent,
-            options
-        })
-    )
+	OnState('open', (isOpen, ele, parent) => (!isOpen)
+		? null
+		: new PopOverNavigation({
+			cache: 'popover',
+			parent: parent,
+			options
+		})
+	)
 );
