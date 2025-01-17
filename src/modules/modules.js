@@ -4,7 +4,7 @@ import { AppModules } from "./module/module.js";
 /**
  * This will get the module settings.
  *
- * @param {object} module
+ * @param {Array<object>} modules
  * @returns {object}
  */
 const getModuleSettings = (modules) =>
@@ -35,7 +35,7 @@ const getModuleSettings = (modules) =>
 /**
  * This will add the modules to the app.
  *
- * @param {array} modules
+ * @param {Array<object>} modules
  * @returns {object}
  */
 export const AddModules = (modules) =>

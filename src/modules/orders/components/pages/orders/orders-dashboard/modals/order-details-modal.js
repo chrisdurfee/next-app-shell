@@ -146,7 +146,6 @@ const getOrderDetails = (orderId) =>
  *
  * A read-only modal showing summarized order details, pulling from your `getOrderById(orderId)`.
  *
- * @param {object} props
  * @returns {object}
  */
 export const OrderDetailsModal = () =>

@@ -16,7 +16,7 @@ import { ThreadComposer } from "./thread-composer.js";
  */
 const getThreadById = (threadId) =>
 {
-    const idNum = parseInt(threadId, 10);
+    const idNum = parseInt(String(threadId), 10);
     return MESSAGES_THREADS.find((t) => t.id === idNum) || null;
 };
 

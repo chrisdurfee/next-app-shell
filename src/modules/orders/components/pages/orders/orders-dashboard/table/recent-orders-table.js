@@ -23,7 +23,7 @@ export const OrdersHeaderRow = () => (
 /**
  * This will create an orders table for the orders page.
  *
- * @param {array} orders - List of orders
+ * @param {object} props
  * @returns {object}
  */
 export const RecentOrdersTable = ({ orders }) => (

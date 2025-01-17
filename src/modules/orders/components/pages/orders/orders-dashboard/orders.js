@@ -115,7 +115,7 @@ export const orders = [
 /**
  * This will return an order by the given id.
  *
- * @param {number|null} id
+ * @param {string|number|null} id
  * @returns {object|null}
  */
 export const getOrderById = (id) => orders.find((order) => Number(order.id) === Number(id));

@@ -10,9 +10,9 @@ import { ThreadListItem } from "./thread-list-item.js";
  *
  * Filters messages, e.g. unread vs. all.
  *
- * @param {array<object>} messages
+ * @param {Array<object>} messages
  * @param {string} filter
- * @returns {array<object>}
+ * @returns {Array<object>}
  */
 const filterMessages = (messages, filter) =>
 {

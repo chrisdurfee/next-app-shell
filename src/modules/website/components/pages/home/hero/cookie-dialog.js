@@ -7,10 +7,7 @@ import { Dialog, Toggle } from "@base-framework/ui/molecules";
  *
  * Creates a row for each cookie setting with a toggle.
  *
- * @param {string} title - The title of the cookie setting.
- * @param {string} description - A brief description of the cookie setting.
- * @param {boolean} defaultState - The initial toggle state.
- * @param {function} onChange - Callback function when the toggle state changes.
+ * @param {object} props - The title of the cookie setting.
  * @returns {object} - A toggle row element.
  */
 const CookieToggle = ({ title, description, defaultState, onChange }) => (
@@ -31,8 +28,7 @@ const CookieToggle = ({ title, description, defaultState, onChange }) => (
 /**
  * This will submit the form.
  *
- * @param {object} e
- * @param {object} parent
+ * @param {object} props
  * @returns {function}
  */
 const onSubmit = (props) =>

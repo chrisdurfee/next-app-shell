@@ -7,7 +7,6 @@ import { Sidebar } from "./sidebar.js";
 /**
  * This will create the back button.
  *
- * @param {object} props
  * @returns {object}
  */
 export const PageToolbar = () => (
