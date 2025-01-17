@@ -50,7 +50,7 @@ const ProjectRow = ({ name, description, stars, language, lastUpdated }) => (
  *
  * Renders a list of project rows.
  *
- * @param {array} projects - List of project objects.
+ * @param {object} props
  * @returns {object} - List of projects.
  */
 const ProjectList = ({ projects }) => (

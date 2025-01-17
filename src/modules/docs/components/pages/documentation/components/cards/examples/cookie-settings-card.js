@@ -8,10 +8,7 @@ import { CardHeader } from "./card-atoms.js";
  *
  * Creates a row for each cookie setting with a toggle.
  *
- * @param {string} title - The title of the cookie setting.
- * @param {string} description - A brief description of the cookie setting.
- * @param {boolean} defaultState - The initial toggle state.
- * @param {function} onChange - Callback function when the toggle state changes.
+ * @param {object} props - The component properties.
  * @returns {object} - A toggle row element.
  */
 const CookieToggle = ({ title, description, defaultState, onChange }) => (

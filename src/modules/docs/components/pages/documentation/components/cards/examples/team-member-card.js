@@ -52,7 +52,7 @@ const TeamMember = ({ name, email, role, image }) => (
  *
  * Renders a list of team members.
  *
- * @param {array} members - list of team member objects.
+ * @param {object} props
  * @returns {object} - List of team members.
  */
 const TeamMemberList = ({ members }) => (

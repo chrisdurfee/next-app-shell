@@ -25,6 +25,8 @@ const ShareLink = ({ link }) => (
             class: "px-4 py-2",
             click: () => {
                 navigator.clipboard.writeText(link);
+
+                // @ts-ignore
                 app.notify({
                     title: "Link copied",
                     description: "The link has been copied to your clipboard.",
@@ -73,7 +75,7 @@ const PersonWithAccess = ({ name, email, access, image }) => (
  *
  * Renders a list of people with access.
  *
- * @param {array} people - List of people objects.
+ * @param {object} props
  * @returns {object} - List of people with access.
  */
 const PeopleWithAccessList = ({ people }) => (
