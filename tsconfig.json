@@ -16,7 +16,6 @@
 		"module": "ESNext", // Specifies the module system, adjust according to your project's module system
 		"target": "ESNext", // Set the target ECMAScript version according to your project's needs
 		"baseUrl": "./",
-		"types": ["@base-framework/base"],
 		"skipLibCheck": true,  // Add this to avoid checking node_modules
 		"paths": {
 			"@base-framework/base": [
@@ -36,24 +35,31 @@
 				"node_modules/@base-framework/ui/dist/index.es.js"
 			],
 			"@base-framework/ui/atoms": [
+				"node_modules/@base-framework/ui/dist/components/types/atoms.d.ts",
 				"node_modules/@base-framework/ui/dist/atoms.es.js"
 			],
 			"@base-framework/ui/icons": [
+				"node_modules/@base-framework/ui/dist/components/types/icons.d.ts",
 				"node_modules/@base-framework/ui/dist/icons.es.js"
 			],
 			"@base-framework/ui/molecules": [
+				"node_modules/@base-framework/ui/dist/components/types/molecules.d.ts",
 				"node_modules/@base-framework/ui/dist/molecules.es.js"
 			],
 			"@base-framework/ui/organisms": [
+				"node_modules/@base-framework/ui/dist/components/types/organisms.d.ts",
 				"node_modules/@base-framework/ui/dist/organisms.es.js"
 			],
 			"@base-framework/ui/pages": [
+				"node_modules/@base-framework/ui/dist/components/types/pages.d.ts",
 				"node_modules/@base-framework/ui/dist/pages.es.js"
 			],
 			"@base-framework/ui/templates": [
+				"node_modules/@base-framework/ui/dist/components/types/templates.d.ts",
 				"node_modules/@base-framework/ui/dist/templates.es.js"
 			],
 			"@base-framework/ui/utils": [
+				"node_modules/@base-framework/ui/dist/components/types/utils.d.ts",
 				"node_modules/@base-framework/ui/dist/utils.es.js"
 			],
 			"d3": [
