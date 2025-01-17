@@ -23,7 +23,7 @@ const ActivePanelContainer = Atom((props, children) =>
  * This will create the main content of the app shell.
  *
  * @param {object} props
- * @returns {array<object>}
+ * @returns {Array<object>}
  */
 export const MainContent = ({ options, routes}) => (
 	[
