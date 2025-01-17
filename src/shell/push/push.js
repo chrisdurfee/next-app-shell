@@ -205,16 +205,19 @@ export class Push
 	/**
 	 * This will send the request.
 	 *
+	 * @param {string} option
 	 * @param {object} subscription
 	 * @returns {void}
 	 */
-	request(subscription)
+	request(option, subscription)
 	{
 		// TODO: change this to the correct user id proprety if not "id"
 		// and set correct params for your API
+		// @ts-ignore
 		const userId = app.data.user.id;
 		let params = 'user=' + JSON.stringify({
 			id: userId,
+			option,
 			subscription
 		});
 

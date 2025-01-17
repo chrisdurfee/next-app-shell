@@ -7,22 +7,22 @@ const match = window.matchMedia;
  */
 export const setHtmlThemeBySettings = () =>
 {
-    if (!match)
-    {
-        return;
-    }
+	if (!match)
+	{
+		return;
+	}
 
-    // if theme HAS been set and is different from OS, add classes to html tag
-    const storage = window.localStorage;
-    let theme = storage.getItem('theme');
-    if (!theme)
-    {
-        return;
-    }
+	// if theme HAS been set and is different from OS, add classes to html tag
+	const storage = window.localStorage;
+	let theme = storage.getItem('theme');
+	if (!theme)
+	{
+		return;
+	}
 
-    if (!match('(prefers-color-scheme: ' + theme + ')').matches)
-    {
-        const htmlTag = document.documentElement;
-        htmlTag.classList.add(theme);
-    }
+	if (!match('(prefers-color-scheme: ' + theme + ')').matches)
+	{
+		const htmlTag = document.documentElement;
+		htmlTag.classList.add(theme);
+	}
 };

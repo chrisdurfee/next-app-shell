@@ -8,10 +8,10 @@ import { Module } from '../module/module.js';
  */
 const routes = Module.convertRoutes(
 [
-    /**
-     * Messages routes
-     */
-    { path: '/messages/:page?/:messageId?*', import: () => import('./components/pages/messages/messages-page.js'), title: 'Messages' }
+	/**
+	 * Messages routes
+	 */
+	{ path: '/messages/:page?/:messageId?*', import: () => import('./components/pages/messages/messages-page.js'), title: 'Messages' }
 ]);
 
 /**
@@ -21,7 +21,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Messages', href: 'messages', icon: Icons.chat.text, mobileOrder: 3 }
+	{ label: 'Messages', href: 'messages', icon: Icons.chat.text, mobileOrder: 3 }
 ];
 
 /**
@@ -30,16 +30,16 @@ const links =
  */
 Module.create(
 {
-    /**
-     * @param {Array<object>} routes
-     */
-    routes,
+	/**
+	 * @param {Array<object>} routes
+	 */
+	routes,
 
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {Array<object>} links
-     */
-    links
+	/**
+	 * This will get the options to create the app
+	 * navigation.
+	 *
+	 * @param {Array<object>} links
+	 */
+	links
 });

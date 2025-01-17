@@ -21,28 +21,29 @@ const isSupported = () => ('serviceWorker' in navigator) && protocol !== 'http';
  */
 const setupServiceMessages = (serviceWorker) =>
 {
-    serviceWorker.addEventListener('message', (e) =>
-    {
-        const data = e.data;
+	serviceWorker.addEventListener('message', (e) =>
+	{
+		const data = e.data;
 
-        // this will check to route the push notifiction to the page url
-        if (data.url)
-        {
-            app.navigate(data.url);
-        }
+		// this will check to route the push notifiction to the page url
+		if (data.url)
+		{
+			// @ts-ignore
+			app.navigate(data.url);
+		}
 
-        // this will reload the page
-        if (data.action === 'reload')
-        {
-            window.location.reload();
-        }
+		// this will reload the page
+		if (data.action === 'reload')
+		{
+			window.location.reload();
+		}
 
-        // this will set the app to notify there is an updated version
-        if (data.update)
-        {
-            State.set('app', 'update', true);
-        }
-    });
+		// this will set the app to notify there is an updated version
+		if (data.update)
+		{
+			State.set('app', 'update', true);
+		}
+	});
 };
 
 /**
@@ -54,7 +55,7 @@ const setupServiceMessages = (serviceWorker) =>
  */
 const setupPush = (serviceWorker, pushId) =>
 {
-    return new Push(pushId, serviceWorker);
+	return new Push(pushId, serviceWorker);
 };
 
 /**
@@ -64,21 +65,21 @@ const setupPush = (serviceWorker, pushId) =>
  */
 export const setupServiceWorker = () =>
 {
-    if (isSupported() === false)
-    {
-        return;
-    }
+	if (isSupported() === false)
+	{
+		return;
+	}
 
-    const sw = navigator.serviceWorker;
-    sw.register('./sw.js', {
-        scope: './'
-    }).then((serviceWorker) =>
-    {
-        setupServiceMessages(serviceWorker)
+	const sw = navigator.serviceWorker;
+	sw.register('./sw.js', {
+		scope: './'
+	}).then((serviceWorker) =>
+	{
+		setupServiceMessages(serviceWorker)
 
-        if (Configs.push && Configs.push.publicId)
-        {
-            setupPush(serviceWorker, Configs.push.publicId);
-        }
-    });
+		if (Configs.push && Configs.push.publicId)
+		{
+			setupPush(serviceWorker, Configs.push.publicId);
+		}
+	});
 }
