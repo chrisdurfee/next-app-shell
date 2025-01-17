@@ -24,18 +24,6 @@
 	}
 }
 
-@media (min-width: 1024px) {
-
-	.app-nav-container {
-		transition: width .2s;
-	}
-
-	.app-nav-container .main-navigation {
-		transition: width .2s .1s ease-in-out;
-		will-change: width;
-	}
-}
-
 .app-nav-container:hover .navigation .option.sub>*:before,
 .app-nav-container.pinned .navigation .option.sub>*:before {
 	opacity: 1;

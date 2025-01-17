@@ -51,7 +51,8 @@ const SendButton = () => (
  * - mic icon
  * - send button
  *
- * @class
+ * @param {object} props
+ * @returns {object}
  */
 export const ThreadComposer = Jot(
 {
