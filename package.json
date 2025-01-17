@@ -6,7 +6,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build && tsc",
 		"preview": "vite preview",
 		"type-check": "tsc --noEmit",
 		"predeploy": "&& cp ./404.html ./build"

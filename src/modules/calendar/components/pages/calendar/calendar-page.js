@@ -4,7 +4,7 @@ import { BlankPage } from "@base-framework/ui/pages";
 import { FullTemplate } from "@base-framework/ui/templates";
 import { createDynamicEvents } from "./events.js";
 import { MonthCalendar } from "./month/month-calendar.js";
-import { pad } from "./utils.js";
+import { addTime, pad } from "./utils.js";
 
 /**
  * CalendarPage

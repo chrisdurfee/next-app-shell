@@ -16,6 +16,7 @@ export const ClientModal = (props) => (
 		description: "Let's add a new client.",
 		size: 'sm',
 		type: 'right',
+		// @ts-ignore
 		onSubmit: () => app.notify({
 			type: "success",
 			title: "Client Added",

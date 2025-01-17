@@ -72,7 +72,7 @@ export const ClientRow = (row, onSelect) => (
 /**
  * This will create a client table for the clients page.
  *
- * @param {array} clients - List of clients
+ * @param {object} clients - List of clients
  * @returns {object}
  */
 export const ClientTable = ({ clients }) => (

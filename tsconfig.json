@@ -44,6 +44,9 @@
 			"@base-framework/ui/utils": [
 				"node_modules/@base-framework/ui/dist/utils.es.js"
 			],
+			"d3": [
+				"node_modules/d3/dist/d3.js"
+			]
 		}
 	},
 	"include": [
