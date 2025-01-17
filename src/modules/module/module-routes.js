@@ -13,8 +13,8 @@ export class ModuleRoutes
 	 * @param {string} uri
 	 * @param {object} component
 	 * @param {string} [title]
-	 * @param {boolean} [persist=true]
-	 * @param {boolean} [preventScroll=false]
+	 * @param {boolean} [persist]
+	 * @param {boolean} [preventScroll]
 	 * @returns {object}
 	 */
 	add(
@@ -56,8 +56,8 @@ export class ModuleRoutes
 	 * @param {string} uri
 	 * @param {object|string} loader
 	 * @param {string} [title]
-	 * @param {boolean} [persist=true]
-	 * @param {boolean} [preventScroll=false]
+	 * @param {boolean} [persist]
+	 * @param {boolean} [preventScroll]
 	 * @returns {object}
 	 */
 	load(uri, loader, title, persist = true, preventScroll = false)

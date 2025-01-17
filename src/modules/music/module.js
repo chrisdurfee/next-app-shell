@@ -8,11 +8,11 @@ import { Module } from '../module/module.js';
  */
 const routes = Module.convertRoutes(
 [
-    /**
-     * Music routes
-     */
-    { path: '/music/album/:album?*', import: () => import('./components/pages/album-page/album-page.js'), title: 'Album' },
-    { path: '/music*', import: () => import('./components/pages/music-page/music-page.js'), title: 'Music' }
+	/**
+	 * Music routes
+	 */
+	{ path: '/music/album/:album?*', import: () => import('./components/pages/album-page/album-page.js'), title: 'Album' },
+	{ path: '/music*', import: () => import('./components/pages/music-page/music-page.js'), title: 'Music' }
 ]);
 
 /**
@@ -22,7 +22,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 }
+	{ label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2 }
 ];
 
 /**
@@ -31,16 +31,16 @@ const links =
  */
 Module.create(
 {
-    /**
-     * @param {Array<object>} routes
-     */
-    routes,
+	/**
+	 * @param {Array<object>} routes
+	 */
+	routes,
 
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {Array<object>} links
-     */
-    links
+	/**
+	 * This will get the options to create the app
+	 * navigation.
+	 *
+	 * @param {Array<object>} links
+	 */
+	links
 });

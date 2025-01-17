@@ -20,10 +20,10 @@ const getModuleSettings = (modules) =>
 		}
 
 		const moduleRoutes = module.getRoutes() || [];
-        routes.push(...moduleRoutes);
+		routes.push(...moduleRoutes);
 
-        const moduleLinks = module.getLinks() || [];
-        links.push(...moduleLinks);
+		const moduleLinks = module.getLinks() || [];
+		links.push(...moduleLinks);
 	});
 
 	return {

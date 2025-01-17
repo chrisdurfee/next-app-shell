@@ -10,24 +10,26 @@ import { SidebarMenu } from "./sidebar-menu.js";
  * @returns {object}
  */
 export const MusicPage = () => (
-    new BlankPage([
-        Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
-            SidebarMenu(),
-            Div({
-                class: 'flex flex-auto flex-col',
-                switch: [
-                    {
-                        uri: 'music',
-                        import: () => import('./listen/listen-page.js'),
-                    },
-                    {
-                        uri: 'music/browse',
-                        import: () => import('./browse/browse-page.js'),
-                    }
-                ]
-            })
-        ])
-    ])
+	new BlankPage([
+		Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
+			SidebarMenu(),
+			Div({
+				class: 'flex flex-auto flex-col',
+				switch: [
+					{
+						uri: 'music',
+						import: () => import('./listen/listen-page.js'),
+						persist: true
+					},
+					{
+						uri: 'music/browse',
+						import: () => import('./browse/browse-page.js'),
+						persist: true
+					}
+				]
+			})
+		])
+	])
 );
 
 export default MusicPage;
