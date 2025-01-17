@@ -10,12 +10,13 @@ import { Counter, FormField, Modal } from "@base-framework/ui/molecules";
  * @returns {object}
  */
 export const MusicModal = (props) => (
-    new Modal({
+	new Modal({
 		title: 'Add Music',
 		icon: Icons.pencil.square,
 		description: "What album would you like to add?",
 		size: 'sm',
 		type: 'right',
+		// @ts-ignore
 		onSubmit: () => app.notify({
 			type: "success",
 			title: "Music Added",
@@ -80,14 +81,14 @@ export const MusicModal = (props) => (
 					]),
 					new FormField({ name: "tracks", label: "Tracks", description: "The number of tracks in the album." }, [
 						new Counter({
-                            class: 'max-w-[300px]',
-                            initialCount: 0,
-                            min: 0,
-                            max: 200,
-                            readonly: false,
-                            bind: 'tracks',
-                            change: (value) => console.log(value)
-                        })
+							class: 'max-w-[300px]',
+							initialCount: 0,
+							min: 0,
+							max: 200,
+							readonly: false,
+							bind: 'tracks',
+							change: (value) => console.log(value)
+						})
 					]),
 				])
 			])

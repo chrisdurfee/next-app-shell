@@ -14,31 +14,31 @@ import { TrackList } from "./track-list.js";
  * @returns {object}
  */
 const AlbumPageContent = () => (
-    Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
-        Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
-            OnRoute('album', (title) =>
-            {
-                const album = getAlbumByTitle(title);
-                return (!album)
-                ? EmptyState()
-                : [
-                    Div({ class: 'w-full lg:w-1/3' }, [
-                        Header({ class: 'flex flex-auto items-center mb-2' }, [
-                            BackButton({
-                                backUrl: 'music'
-                            }),
-                            H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, album.artist),
-                        ]),
-                        new AlbumCard({ src: album.src, title: album.title }),
-                        AlbumDetails({ album }),
-                    ]),
-                    Div({ class: 'flex-1 space-y-4' }, [
-                        TrackList({ tracks: album.tracks })
-                    ])
-                ];
-            })
-        ])
-    ])
+	Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
+		Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
+			OnRoute('album', (title) =>
+			{
+				const album = getAlbumByTitle(title);
+				return (!album)
+				? EmptyState()
+				: [
+					Div({ class: 'w-full lg:w-1/3' }, [
+						Header({ class: 'flex flex-auto items-center mb-2' }, [
+							BackButton({
+								backUrl: 'music'
+							}),
+							H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, album.artist),
+						]),
+						new AlbumCard({ src: album.src, title: album.title }),
+						AlbumDetails({ album }),
+					]),
+					Div({ class: 'flex-1 space-y-4' }, [
+						TrackList({ tracks: album.tracks })
+					])
+				];
+			})
+		])
+	])
 );
 
 /**
@@ -49,9 +49,9 @@ const AlbumPageContent = () => (
  * @returns {object}
  */
 export const AlbumPage = () => (
-    new Overlay([
-        AlbumPageContent()
-    ])
+	new Overlay([
+		AlbumPageContent()
+	])
 );
 
 export default AlbumPage;

@@ -8,10 +8,10 @@ import { AlbumCard } from "./album-cards.js";
  * @returns {object}
  */
 const SectionHeader = ({ title, description }) => (
-    Header([
-        H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
-        P({ class: 'text-sm text-muted-foreground mb-4' }, description)
-    ])
+	Header([
+		H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
+		P({ class: 'text-sm text-muted-foreground mb-4' }, description)
+	])
 );
 
 /**
@@ -24,18 +24,18 @@ const SectionHeader = ({ title, description }) => (
  */
 export const MusicSection = ({ title, description, albums, cardType = 'large' }) =>
 {
-    return Section({ class: 'my-8' }, [
-        SectionHeader({ title, description }),
-        Div({ class: 'overflow-x-auto -mx-6 pl-6' }, [
-            Div({
-                class: 'inline-flex space-x-4 pb-4 mr-6 lg:mr-0',
-                map: [albums, (album) => new AlbumCard({
-                    src: album.src,
-                    title: album.title,
-                    artist: album.artist,
-                    cardType
-                })]
-            })
-        ])
-    ]);
+	return Section({ class: 'my-8' }, [
+		SectionHeader({ title, description }),
+		Div({ class: 'overflow-x-auto -mx-6 pl-6' }, [
+			Div({
+				class: 'inline-flex space-x-4 pb-4 mr-6 lg:mr-0',
+				map: [albums, (album) => new AlbumCard({
+					src: album.src,
+					title: album.title,
+					artist: album.artist,
+					cardType
+				})]
+			})
+		])
+	]);
 };
