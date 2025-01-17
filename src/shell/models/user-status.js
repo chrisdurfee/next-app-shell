@@ -6,8 +6,7 @@ import { Configs } from "../../configs.js";
  *
  * This will create a model for user status.
  *
- * @extends Model
- * @class UserData
+ * @type {Model} UserStatus
  */
 export const UserStatus = Model.extend({
     url: Configs.userStatusApi // API endpoint for fetching or updating user status

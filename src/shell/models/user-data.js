@@ -5,8 +5,7 @@ import { Model } from "@base-framework/base";
  *
  * This will create a model for user data.
  *
- * @extends Model
- * @class UserData
+ * @type {Model} UserData
  */
 export const UserData = Model.extend({
     url: '/api', // API endpoint for fetching or updating user data
