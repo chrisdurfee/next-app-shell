@@ -20,8 +20,6 @@ const TabContent = Atom((props, children) => (
  *
  * This will create a tab page.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const TabPage = () => (

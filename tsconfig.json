@@ -50,7 +50,8 @@
 		}
 	},
 	"include": [
-		"src/**/*"
+		"src/**/*",
+		"globals.d.ts"
 	],
 	"exclude": [
 		"node_modules/**/*"

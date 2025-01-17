@@ -154,8 +154,6 @@ export const SettingsForm = () => (
  *
  * This will create a form page with various form examples.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const FormPage = () => (

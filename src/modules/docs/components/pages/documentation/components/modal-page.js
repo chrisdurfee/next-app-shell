@@ -50,6 +50,7 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
                             confirmTextLabel: 'Save',
                             confirmed: () =>
                             {
+                                // @ts-ignore
                                 app.notify({
                                     icon: Icons.trash,
                                     title: 'Action complete',
@@ -204,8 +205,6 @@ const DetailModalButton = () => Button({
  * Provides documentation and examples for modals,
  * including header options and detail modal atoms.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const ModalPage = () =>

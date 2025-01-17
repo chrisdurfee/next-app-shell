@@ -7,7 +7,6 @@ import { CheckboxCol, DataTable, HeaderCol } from "@base-framework/ui/organisms"
  *
  * Demonstrates a data table with a custom header row and custom rows using existing components.
  *
- * @param {object} props
  * @returns {object}
  */
 export const CustomHeaderTable = () =>

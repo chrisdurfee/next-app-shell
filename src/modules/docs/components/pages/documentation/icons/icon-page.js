@@ -13,7 +13,7 @@ import { DocPage } from "../../doc-page.js";
  * @param {string|null} path
  * @returns {object}
  */
-const IconCard = (icon, iconName, path) =>
+const IconCard = (icon, iconName, path = null) =>
 {
     path = 'Icons' + ((path) ? '.' + path : '');
     return Div({ class: 'flex flex-auto flex-col items-center gap-2 w-full max-w-[150px] h-[8.5rem] cursor-pointer' }, [
@@ -22,6 +22,8 @@ const IconCard = (icon, iconName, path) =>
             {
                 // copy to clipboard
                 navigator.clipboard.writeText(`${path}.${iconName}`);
+
+                // @ts-ignore
                 app.notify({
                     title: "Icon copied",
                     description: `The icon '${path}.${iconName}' has been copied to your clipboard.`,
@@ -117,8 +119,6 @@ const IconGuide = (obj) =>
  *
  * This will create an icon page..
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const IconPage = () => (

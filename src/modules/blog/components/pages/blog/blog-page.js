@@ -13,7 +13,7 @@ import { HERO_POSTS, POSTS } from "./posts.js";
  * @returns {object}
  */
 const HeroSection = (props) => (
-    Div({ class: "grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 md:mb-8", map: [HERO_POSTS, (post) => new HeroItem({ post })] })
+	Div({ class: "grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 md:mb-8", map: [HERO_POSTS, (post) => new HeroItem({ post })] })
 );
 
 /**
@@ -23,16 +23,16 @@ const HeroSection = (props) => (
  * @returns {object}
  */
 const PostList = ({ posts }) => (
-    Div([
-        new List({
-            cache: "postlist",
-            key: "id",
-            items: posts,
-            role: "list",
-            class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6",
-            rowItem: (post) => new PostItem({ post }),
-        })
-    ])
+	Div([
+		new List({
+			cache: "postlist",
+			key: "id",
+			items: posts,
+			role: "list",
+			class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6",
+			rowItem: (post) => new PostItem({ post }),
+		})
+	])
 );
 
 /**
@@ -43,15 +43,15 @@ const PostList = ({ posts }) => (
  * @returns {object}
  */
 export const BlogPage = () => (
-    new BlankPage([
-        Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] m-auto" }, [
-            BlogHeader(),
-            HeroSection(),
-            PostList({
-                posts: POSTS
-            })
-        ])
-    ])
+	new BlankPage([
+		Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] m-auto" }, [
+			BlogHeader(),
+			HeroSection(),
+			PostList({
+				posts: POSTS
+			})
+		])
+	])
 );
 
 export default BlogPage;

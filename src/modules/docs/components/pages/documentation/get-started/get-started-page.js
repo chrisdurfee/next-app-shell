@@ -24,6 +24,8 @@ const CodeBlock = Atom((props, children) => (
 					class: 'font-mono flex-auto text-sm text-wrap',
 					click: () => {
 						navigator.clipboard.writeText(children[0].textContent);
+
+						// @ts-ignore
 						app.notify({
 							title: "Code copied",
 							description: "The code has been copied to your clipboard.",
@@ -43,8 +45,6 @@ const CodeBlock = Atom((props, children) => (
  * This component creates a comprehensive "Get Started" page for the documentation,
  * detailing how to install, configure, and begin developing with the App Shell project.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const GetStartedPage = () =>

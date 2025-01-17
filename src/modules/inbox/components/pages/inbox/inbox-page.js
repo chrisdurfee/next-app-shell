@@ -44,6 +44,7 @@ export const InboxPage = () =>
         {
             if (!this.route.page)
             {
+                // @ts-ignore
                 app.navigate("inbox/inbox", null, true);
             }
         },
@@ -78,8 +79,11 @@ export const InboxPage = () =>
                     delete: (id) =>
                     {
                         parent.list.delete(id);
+
+                        // @ts-ignore
                         app.navigate(`inbox/${parent.route.page}`);
 
+                        // @ts-ignore
                         app.notify({
                             type: "success",
                             title: "Email Deleted",

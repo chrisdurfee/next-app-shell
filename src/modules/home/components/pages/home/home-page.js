@@ -97,6 +97,8 @@ const CodeCard = Atom((props, children) => (
         Code({ class: 'font-mono flex-auto text-sm text-wrap', click: () =>
         {
             navigator.clipboard.writeText(children[0].textContent);
+
+			// @ts-ignore
             app.notify({
                 title: "Code copied",
                 description: "The code has been copied to your clipboard.",

@@ -17,6 +17,8 @@ const ColorCard = (color) =>
             {
                 // copy to clipboard
                 navigator.clipboard.writeText(`${color.class}`);
+
+                // @ts-ignore
                 app.notify({
                     title: "Color copied",
                     description: `The color '${color.class}' has been copied to your clipboard.`,
@@ -31,7 +33,7 @@ const ColorCard = (color) =>
 /**
  * This will create an color row.
  *
- * @param {array<object>} colors
+ * @param {Array<object>} colors
  *
  */
 const ColorRow = (title, colors) =>
@@ -132,8 +134,6 @@ const ColorGuide = (obj) =>
  *
  * This will create an theme page.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const ThemePage = () => (

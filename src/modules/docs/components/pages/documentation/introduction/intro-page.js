@@ -15,8 +15,6 @@ import TeamMemberCard from "../components/cards/examples/team-member-card.js";
  * detailing the app shell's purpose, theme, icons, component structure, and
  * development guidelines.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const IntroPage = () => (

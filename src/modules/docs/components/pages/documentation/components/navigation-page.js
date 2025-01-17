@@ -11,8 +11,6 @@ const PAGE_URL = 'music';
  *
  * This will create a navigation page.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const NavigationPage = () => (

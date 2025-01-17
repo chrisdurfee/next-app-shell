@@ -8,9 +8,9 @@ import { ListHeaer } from "./list-header.js";
 /**
  * This will filter messages based on the list.
  *
- * @param {array<object>} messages - Array of messages to filter.
+ * @param {Array<object>} messages - Array of messages to filter.
  * @param {string} list - List type to filter.
- * @returns {array<object>}
+ * @returns {Array<object>}
  */
 const filterMessages = (messages, list) =>
 {
@@ -36,6 +36,8 @@ export const InboxList = () => (
                 if (!page)
                 {
                     page = 'inbox';
+
+                    // @ts-ignore
                     app.navigate('inbox/inbox', null, true);
                 }
 

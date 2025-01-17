@@ -70,6 +70,8 @@ const ShareLink = ({ link }) => (
             class: "px-4 py-2",
             click: () => {
                 navigator.clipboard.writeText(link);
+
+                // @ts-ignore
                 app.notify({
                     title: "Link copied",
                     description: "The link has been copied to your clipboard.",
@@ -99,8 +101,6 @@ const ShareButton = (props) => Button({
  *
  * This will create a dialog page.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const DialogPage = () => (

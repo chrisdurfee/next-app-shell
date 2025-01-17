@@ -38,8 +38,6 @@ const users = [
  * Documents how to use the List component, including row dividers,
  * and advanced operations: remove, set, get, reset, append, mingle, and prepend.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const ListPage = () =>

@@ -10,8 +10,6 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create a notification page.
  *
- * @param {object} props
- * @param {object} children
  * @returns {DocPage}
  */
 export const NotificationPage = () => (
@@ -168,7 +166,9 @@ export const NotificationPage = () => (
                 description: 'Call \'notify\' on the global notification container to display notifications.',
                 preview: [
                     Button({
-                        click: () => {
+                        click: () =>
+                        {
+                            // @ts-ignore
                             app.notify({
                                 title: 'Notification Title',
                                 description: 'This is a notification.',
