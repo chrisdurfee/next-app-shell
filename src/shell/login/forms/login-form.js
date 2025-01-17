@@ -61,6 +61,7 @@ const SignInWIthGoogleButton = () => (
  * @returns {object}
  */
 export const LoginForm = () => (
+	// @ts-ignore
 	Form({ class: 'flex flex-col p-6 pt-0', submit: () => app.signIn(), role: 'form' }, [
 		Div({ class: 'grid gap-4' }, [
 			CredentialsContainer(),

@@ -15,9 +15,9 @@ const STORAGE_KEY = 'installPrompt';
  */
 const isPwaInstalled = () =>
 {
-    // Check for standalone mode (most platforms)
-    return window.matchMedia('(display-mode: standalone)').matches
-        || window.navigator.standalone; // For iOS
+	// Check for standalone mode (most platforms)
+	// @ts-ignore
+	return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone; // For iOS
 };
 
 /**
@@ -25,16 +25,16 @@ const isPwaInstalled = () =>
  */
 window.addEventListener('beforeinstallprompt', (e) =>
 {
-    // If we've already shown the prompt or the user dismissed/installed before, skip.
-    if (localStorage.getItem(STORAGE_KEY) === 'true')
-    {
-        return;
-    }
+	// If we've already shown the prompt or the user dismissed/installed before, skip.
+	if (localStorage.getItem(STORAGE_KEY) === 'true')
+	{
+		return;
+	}
 
-    // Prevent the default mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so we can use it later.
-    deferredPrompt = e;
+	// Prevent the default mini-infobar from appearing on mobile
+	e.preventDefault();
+	// Stash the event so we can use it later.
+	deferredPrompt = e;
 });
 
 /**
@@ -44,17 +44,17 @@ window.addEventListener('beforeinstallprompt', (e) =>
  */
 export const openInstallPrompt = () =>
 {
-     // If localStorage says user previously dismissed or installed.
-    if (localStorage.getItem(STORAGE_KEY) === 'true' || isPwaInstalled())
-    {
-        return;
-    }
+	 // If localStorage says user previously dismissed or installed.
+	if (localStorage.getItem(STORAGE_KEY) === 'true' || isPwaInstalled())
+	{
+		return;
+	}
 
-    const setToStorage = () => localStorage.setItem(STORAGE_KEY, 'true');
-    InstallPrompt({
-        promptEvent: deferredPrompt,
-        onInstall: setToStorage,
-        onCancel: setToStorage,
-        onClose: setToStorage
-    }).open();
+	const setToStorage = () => localStorage.setItem(STORAGE_KEY, 'true');
+	InstallPrompt({
+		promptEvent: deferredPrompt,
+		onInstall: setToStorage,
+		onCancel: setToStorage,
+		onClose: setToStorage
+	}).open();
 };

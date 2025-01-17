@@ -9,16 +9,16 @@ import { STEPS } from './steps.js';
  * @returns {object}
  */
 export const PageStepContainer = () => (
-    Div({ class: 'flex flex-auto flex-col' }, [
-        OnState('step', (step) =>
-        {
-            switch (step)
-            {
-                case STEPS.FORGOT_PASSWORD:
-                    return ForgotPasswordSection();
-                default:
-                    return LoginSection();
-            }
-        })
-    ])
+	Div({ class: 'flex flex-auto flex-col' }, [
+		OnState('step', (step) =>
+		{
+			switch (step)
+			{
+				case STEPS.FORGOT_PASSWORD:
+					return ForgotPasswordSection();
+				default:
+					return LoginSection();
+			}
+		})
+	])
 );

@@ -7,21 +7,20 @@ import { Avatar, StatusIndicator } from "@base-framework/ui/molecules";
  *
  * This will create the MobileUserAvatar molecule.
  *
- * @extends Component
- * @class MobileUserAvatar
+ * @type {Component} MobileUserAvatar
  */
 export const MobileUserAvatar = Jot(() =>
-    Div({ class: "flex items-center gap-4" }, [
-        A({ class: "relative", href: 'settings' }, [
-            Div({ class: "relative mx-2" }, [
-                Avatar({
-                    src: '[[image]]',
-                    alt: '[[name]]',
-                    watcherFallback: '[[name]]',
-                    size: "xs",
-                })
-            ]),
-            StatusIndicator()
-        ])
-    ])
+	Div({ class: "flex items-center gap-4" }, [
+		A({ class: "relative", href: 'settings' }, [
+			Div({ class: "relative mx-2" }, [
+				Avatar({
+					src: '[[image]]',
+					alt: '[[name]]',
+					watcherFallback: '[[name]]',
+					size: "xs",
+				})
+			]),
+			StatusIndicator()
+		])
+	])
 );

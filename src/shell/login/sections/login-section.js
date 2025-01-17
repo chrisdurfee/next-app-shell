@@ -54,9 +54,9 @@ export const LoginSection = () => (
 			OnState('loading', (state) => (!state)
 				? LoadingMessage()
 				: [
-                    LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
+					LoginHeader({ title: 'Login', description: 'Please enter your credentials to login.' }),
 					LoginForm()
-                ]
+				]
 			)
 		])
 	])

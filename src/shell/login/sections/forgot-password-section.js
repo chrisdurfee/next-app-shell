@@ -60,9 +60,9 @@ export const ForgotPasswordSection = () => (
 			OnState('showMessage', (state) => (state)
 				? SuccessMessage()
 				: [
-                    PasswordHeader({ title: 'Forgot Password', description: 'Please enter your email address.' }),
-                    ForgotPasswordForm(),
-                ]
+					PasswordHeader({ title: 'Forgot Password', description: 'Please enter your email address.' }),
+					ForgotPasswordForm(),
+				]
 			)
 		])
 	])

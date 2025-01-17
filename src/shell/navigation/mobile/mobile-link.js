@@ -9,12 +9,12 @@ import { NavLink } from "@base-framework/base";
  */
 const getMaxHeight = (props) =>
 {
-    if (props.maxHeight)
-    {
-        return props.maxHeight;
-    }
+	if (props.maxHeight)
+	{
+		return props.maxHeight;
+	}
 
-    return 'max-h-[80px]';
+	return 'max-h-[80px]';
 };
 
 /**
@@ -24,15 +24,15 @@ const getMaxHeight = (props) =>
  * @returns {object}
  */
 export const MobileLink = (props) => (
-    Li({ class: `mobile-link flex flex-auto items-center justify-center ${getMaxHeight(props)}`, click: props.click }, [
-        new NavLink({
-            class: 'p-[4px] flex flex-col items-center justify-center',
-            href: props.href,
-            exact: props.exact || false,
-        },
-        [
-            I({ class: 'flex items-center justify-center py-[2px] px-3 rounded-md', html: props.icon }),
-            Span({ class: 'text-[10px]' }, props.label)
-        ])
-    ])
+	Li({ class: `mobile-link flex flex-auto items-center justify-center ${getMaxHeight(props)}`, click: props.click }, [
+		new NavLink({
+			class: 'p-[4px] flex flex-col items-center justify-center',
+			href: props.href,
+			exact: props.exact || false,
+		},
+		[
+			I({ class: 'flex items-center justify-center py-[2px] px-3 rounded-md', html: props.icon }),
+			Span({ class: 'text-[10px]' }, props.label)
+		])
+	])
 );

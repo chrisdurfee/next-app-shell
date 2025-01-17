@@ -5,8 +5,8 @@
  */
 export const STEPS =
 {
-    LOGIN: 'login',
-    FORGOT_PASSWORD: 'forgot-password',
-    SIGN_UP: 'sign-up',
-    MULTI_FACTOR_AUTH: 'multi-factor-auth',
+	LOGIN: 'login',
+	FORGOT_PASSWORD: 'forgot-password',
+	SIGN_UP: 'sign-up',
+	MULTI_FACTOR_AUTH: 'multi-factor-auth',
 };
