@@ -117,6 +117,7 @@ export const ActionTimer =
 			for (let i = 0; i < events.length; i++)
 			{
 				const [eventNames, target, handler] = events[i];
+				// @ts-ignore
 				Events.on(eventNames, target, handler);
 			}
 		};
@@ -126,6 +127,7 @@ export const ActionTimer =
 			for (let i = 0; i < events.length; i++)
 			{
 				const [eventNames, target, handler] = events[i];
+				// @ts-ignore
 				Events.off(eventNames, target, handler);
 			}
 		};
