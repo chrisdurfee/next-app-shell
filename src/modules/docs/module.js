@@ -11,7 +11,8 @@ const routes = Module.convertRoutes(
     {
         path: '/docs/:page?/:sub?*',
         import: () => import('./components/pages/documentation/documentation-page.js'),
-        title: 'Docs'
+        title: 'Docs',
+        persist: false
     }
 ]);
 

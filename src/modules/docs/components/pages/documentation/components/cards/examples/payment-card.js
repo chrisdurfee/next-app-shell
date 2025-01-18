@@ -1,5 +1,5 @@
 import { Button as BaseButton, Div, Span } from "@base-framework/atoms";
-import { Atom, Jot } from "@base-framework/base";
+import { Atom, Component, Jot } from "@base-framework/base";
 import { Button, Card, Icon, Input, Select } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Form, FormField } from "@base-framework/ui/molecules";
@@ -18,9 +18,9 @@ const MethodButton = Atom(({ value, label, icon }) => (
 		dataSet: ['method', ['state', value, 'active']],
 		click: (e, {state}) => state.method = value
 	}, [
-        Icon(icon),
-        Span(label)
-    ])
+		Icon(icon),
+		Span(label)
+	])
 ));
 
 /**
@@ -28,15 +28,15 @@ const MethodButton = Atom(({ value, label, icon }) => (
  *
  * This will create a button group.
  *
- * @class
+ * @type {typeof Component}
  */
 export const PaymentMethoGroup = Jot(
 {
-    /**
-     * This will render the component.
-     *
-     * @returns {object}
-     */
+	/**
+	 * This will render the component.
+	 *
+	 * @returns {object}
+	 */
 	render()
 	{
 		return Div({ class: 'flex flex-auto flex-col' }, [
@@ -48,11 +48,11 @@ export const PaymentMethoGroup = Jot(
 		]);
 	},
 
-    /**
-     * This will setup the states.
-     *
-     * @returns {object}
-     */
+	/**
+	 * This will setup the states.
+	 *
+	 * @returns {object}
+	 */
 	state()
 	{
 		return {
@@ -69,9 +69,9 @@ export const PaymentMethoGroup = Jot(
  * @returns {object}
  */
 const PaymentMethodSelector = () => (
-    Div({ class: "flex items-center justify-center gap-4" }, [
-        new PaymentMethoGroup()
-    ])
+	Div({ class: "flex items-center justify-center gap-4" }, [
+		new PaymentMethoGroup()
+	])
 );
 
 /**
@@ -82,82 +82,82 @@ const PaymentMethodSelector = () => (
  * @returns {object}
  */
 const PaymentForm = () => (
-    Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
-        // Name on Card field
-        new FormField({
-            name: "name",
-            label: "Name",
-        }, [
-            Input({
-                type: "text",
-                placeholder: "First Last",
-                required: true,
-                class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
-            })
-        ]),
+	Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
+		// Name on Card field
+		new FormField({
+			name: "name",
+			label: "Name",
+		}, [
+			Input({
+				type: "text",
+				placeholder: "First Last",
+				required: true,
+				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+			})
+		]),
 
-        // Card Number field
-        new FormField({
-            name: "card_number",
-            label: "Card number",
-        }, [
-            Input({
-                type: "text",
-                placeholder: "1234 5678 9012 3456",
-                required: true,
-                class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
-            })
-        ]),
+		// Card Number field
+		new FormField({
+			name: "card_number",
+			label: "Card number",
+		}, [
+			Input({
+				type: "text",
+				placeholder: "1234 5678 9012 3456",
+				required: true,
+				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+			})
+		]),
 
-        // Expiry Date, Year, and CVC
-        Div({ class: "flex gap-4 mt-4" }, [
-            // Expiry Month
-            new FormField({ name: "month", label: "Expires" }, [
-                Select({
-                    required: true,
-                    class: "border p-2 rounded-md w-full bg-background text-foreground",
-                    options: [
-                        { value: "", label: "Month", disabled: true },
-                        ...Array.from({ length: 12 }, (_, i) => ({
-                            value: `${i + 1}`,
-                            label: `${i + 1}`.padStart(2, "0")
-                        }))
-                    ]
-                })
-            ]),
+		// Expiry Date, Year, and CVC
+		Div({ class: "flex gap-4 mt-4" }, [
+			// Expiry Month
+			new FormField({ name: "month", label: "Expires" }, [
+				Select({
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground",
+					options: [
+						{ value: "", label: "Month", disabled: true },
+						...Array.from({ length: 12 }, (_, i) => ({
+							value: `${i + 1}`,
+							label: `${i + 1}`.padStart(2, "0")
+						}))
+					]
+				})
+			]),
 
-            // Expiry Year
-            new FormField({ name: "year", label: "Year" }, [
-                Select({
-                    required: true,
-                    class: "border p-2 rounded-md w-full bg-background text-foreground",
-                    options: [
-                        { value: "", label: "Year", disabled: true },
-                        ...Array.from({ length: 10 }, (_, i) => ({
-                            value: `${new Date().getFullYear() + i}`,
-                            label: `${new Date().getFullYear() + i}`
-                        }))
-                    ]
-                })
-            ]),
+			// Expiry Year
+			new FormField({ name: "year", label: "Year" }, [
+				Select({
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background text-foreground",
+					options: [
+						{ value: "", label: "Year", disabled: true },
+						...Array.from({ length: 10 }, (_, i) => ({
+							value: `${new Date().getFullYear() + i}`,
+							label: `${new Date().getFullYear() + i}`
+						}))
+					]
+				})
+			]),
 
-            // CVC
-            new FormField({ name: "cvc", label: "CVC" }, [
-                Input({
-                    type: "text",
-                    placeholder: "CVC",
-                    required: true,
-                    class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
-                })
-            ])
-        ]),
+			// CVC
+			new FormField({ name: "cvc", label: "CVC" }, [
+				Input({
+					type: "text",
+					placeholder: "CVC",
+					required: true,
+					class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+				})
+			])
+		]),
 
-        // Submit button
-        Button({
-            type: "submit",
-            class: "w-full mt-4 py-2 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition"
-        }, "Continue")
-    ])
+		// Submit button
+		Button({
+			type: "submit",
+			class: "w-full mt-4 py-2 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition"
+		}, "Continue")
+	])
 );
 
 /**
@@ -168,14 +168,14 @@ const PaymentForm = () => (
  * @returns {object}
  */
 export const PaymentCard = () => (
-    Card({ class: "w-full max-w-md mx-auto p-8 bg-card space-y-6" }, [
-        CardHeader({ title: "Payment Method", description: "Add a new payment method to your account." }),
-        PaymentMethodSelector(),
+	Card({ class: "w-full max-w-md mx-auto p-8 bg-card space-y-6" }, [
+		CardHeader({ title: "Payment Method", description: "Add a new payment method to your account." }),
+		PaymentMethodSelector(),
 
-        Div({ class: "space-y-4" }, [
-            PaymentForm()
-        ])
-    ])
+		Div({ class: "space-y-4" }, [
+			PaymentForm()
+		])
+	])
 );
 
 export default PaymentCard;
