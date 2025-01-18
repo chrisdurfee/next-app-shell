@@ -1,5 +1,5 @@
 import { Div, P, Span } from '@base-framework/atoms';
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Button, Skeleton } from "@base-framework/ui/atoms";
 import { Avatar } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -11,6 +11,8 @@ import { DocPage } from '../../doc-page.js';
  * This component displays a skeleton as a placeholder
  * for an avatar and text while loading. After 3 seconds,
  * it switches to the actual avatar and text content.
+ *
+ * @type {typeof Component} LoadingAvatar
  */
 const LoadingAvatar = Jot(
 {
@@ -22,6 +24,7 @@ const LoadingAvatar = Jot(
     {
         return Div({ class: 'flex flex-auto flex-col max-w-[350px]' }, [
             Div({ class: 'my-8' }, [
+                // @ts-ignore
                 Button({ variant: 'outline', click: () => this.state.toggle('loaded') }, 'Toggle Loaded')
             ]),
             Div({ class: 'flex items-center bg-card rounded-md border shadow-md w-full max-w-md' }, [

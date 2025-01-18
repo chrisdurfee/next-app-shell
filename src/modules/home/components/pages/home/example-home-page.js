@@ -80,7 +80,7 @@ const FullProps = () => (
 	 * This will add the data to the component.
 	 *
 	 * @override
-	 * @returns {void}
+	 * @returns {Data}
 	 */
 	setData()
 	{

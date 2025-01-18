@@ -1,5 +1,5 @@
 import { A, Div, H2, Img, On, P } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Skeleton } from "@base-framework/ui/atoms";
 
 /**
@@ -59,7 +59,7 @@ const Post = (post) => ([
  *
  * Simulates loading for each individual post.
  *
- * @class
+ * @type {typeof Component}
  */
 export const PostItem = Jot(
 {
@@ -80,6 +80,7 @@ export const PostItem = Jot(
 	{
 		// Simulate loading for 500ms
 		const DELAY = 500;
+		// @ts-ignore
 		setTimeout(() => this.state.loaded = true, DELAY);
 	},
 
@@ -90,6 +91,7 @@ export const PostItem = Jot(
 	 */
 	render()
 	{
+		// @ts-ignore
 		const { post } = this;
 
 		return Div({ class: "p-4 px-2 lg:px-4 transition" }, [
