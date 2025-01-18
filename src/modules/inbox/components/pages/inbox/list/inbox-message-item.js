@@ -1,5 +1,5 @@
 import { A, Div, P, Span } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Skeleton } from "@base-framework/ui/atoms";
 import { TimeFrame } from "@base-framework/ui/molecules";
 
@@ -57,7 +57,7 @@ const Tag = (tag) => Span({ class: "inline-flex items-center rounded-md border p
  *
  * Displays the skeleton placeholder while the message loads.
  *
- * @class
+ * @type {typeof Component}
  */
 export const InboxMessageItem = Jot(
 {
@@ -75,12 +75,14 @@ export const InboxMessageItem = Jot(
      */
     markRead()
     {
+        // @ts-ignore
         let { message } = this;
         message = { ...message };
 
         if (!message.read)
         {
             message.read = true;
+            // @ts-ignore
             this.parent.mingle([message]);
         }
     },
@@ -92,11 +94,14 @@ export const InboxMessageItem = Jot(
      */
     render()
     {
+        // @ts-ignore
         const message = this.message;
+        // @ts-ignore
         const route = this.parent.parent.route;
 
         // Simulate loading with a timeout
         const DELAY = 500;
+        // @ts-ignore
         setTimeout(() => this.state.loaded = true, DELAY);
 
         return Div({
@@ -118,6 +123,7 @@ export const InboxMessageItem = Jot(
             {
                 return !loaded
                     ? InboxMessageSkeleton()
+                    // @ts-ignore
                     : A({ class: 'flex flex-auto flex-col w-full gap-2', href: `inbox/${route.page}/${message.id}`, click: () => this.markRead() }, [
                         Div({ class: "flex w-full flex-col gap-1" }, [
                             Div({ class: 'flex items-center justify-between' }, [

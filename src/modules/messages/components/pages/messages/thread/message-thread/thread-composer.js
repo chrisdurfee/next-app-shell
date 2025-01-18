@@ -1,5 +1,5 @@
 import { Div, Textarea } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Button } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Form } from "@base-framework/ui/molecules";
@@ -51,8 +51,7 @@ const SendButton = () => (
  * - mic icon
  * - send button
  *
- * @param {object} props
- * @returns {object}
+ * @type {typeof Component} ThreadComposer
  */
 export const ThreadComposer = Jot(
 {
@@ -66,6 +65,7 @@ export const ThreadComposer = Jot(
         return {
             empty: true,
             charCount: 0,
+            // @ts-ignore
             charLimit: this.charLimit ?? 5000,
             isOverLimit: false
         };
@@ -80,11 +80,16 @@ export const ThreadComposer = Jot(
     {
         console.log('message sent');
 
+        // @ts-ignore
         this.add(this.textarea.value);
 
+        // @ts-ignore
         this.textarea.value = '';
+        // @ts-ignore
         this.state.charCount = 0;
+        // @ts-ignore
         this.state.isOverLimit = false;
+        // @ts-ignore
         this.state.empty = true;
     },
 
@@ -96,6 +101,7 @@ export const ThreadComposer = Jot(
      */
     checkSubmit(e)
     {
+        // @ts-ignore
         this.resizeTextarea();
 
         const keyCode = e.keyCode;
@@ -103,6 +109,7 @@ export const ThreadComposer = Jot(
         {
             if (e.ctrlKey === true)
             {
+                // @ts-ignore
                 if (this.state.empty === true || this.state.isOverLimit === true)
                 {
                     e.preventDefault();
@@ -121,10 +128,12 @@ export const ThreadComposer = Jot(
                 e.preventDefault();
                 e.stopPropagation();
 
+                // @ts-ignore
                 this.submit();
             }
             else
             {
+                // @ts-ignore
                 this.resizeTextarea();
             }
         }
@@ -140,12 +149,15 @@ export const ThreadComposer = Jot(
         const startHeight = 48;
         let height = startHeight;
 
+        // @ts-ignore
         if (this.textarea.value !== '')
         {
+            // @ts-ignore
             const targetHeight = this.textarea.scrollHeight;
             height = (targetHeight > startHeight)? targetHeight : startHeight;
         }
 
+        // @ts-ignore
         this.textarea.style = 'height:' + height + 'px;';
     },
 
@@ -156,10 +168,12 @@ export const ThreadComposer = Jot(
      */
     render()
     {
+        // @ts-ignore
         const charLimit = this.state.charLimit;
         const updateCharCount = (e) =>
         {
             const text = e.target.value;
+            // @ts-ignore
             const state = this.state;
             state.charCount = text.length;
             state.isOverLimit = (isOverLimit(text.length, charLimit));
@@ -167,6 +181,7 @@ export const ThreadComposer = Jot(
         };
 
         return Div({ class: "fadeIn p-4 w-full lg:max-w-5xl m-auto" }, [
+            // @ts-ignore
             Form({ class: "relative flex border rounded-lg p-3 bg-surface", submit: () => this.submit() }, [
                 Div([
                     Button({
@@ -180,10 +195,13 @@ export const ThreadComposer = Jot(
                 Textarea({
                     class: "w-full border-none bg-transparent resize-none focus:outline-none focus:ring-0 text-sm text-foreground placeholder-muted-foreground",
                     cache: 'textarea',
+                    // @ts-ignore
                     placeholder: this.placeholder,
                     input: updateCharCount,
+                    // @ts-ignore
                     bind: this.bind,
                     required: true,
+                    // @ts-ignore
                     keyup: (e) => this.checkSubmit(e)
                 }),
                 Div({ class: 'flex flex-col' }, [

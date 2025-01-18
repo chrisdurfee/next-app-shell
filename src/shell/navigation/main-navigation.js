@@ -1,5 +1,5 @@
 import { Div } from "@base-framework/atoms";
-import { Atom, Jot } from "@base-framework/base";
+import { Atom, Component, Jot } from "@base-framework/base";
 import { Icons } from "@base-framework/ui/icons";
 import { InlineNavigation } from "@base-framework/ui/organisms";
 import { Configs } from "../../configs.js";
@@ -68,7 +68,7 @@ const LowerNavigation = () => (
  *
  * This will create the main navigation.
  *
- * @class
+ * @type {typeof Component}
  */
 export const MainNavigation = Jot(
 {
@@ -80,10 +80,13 @@ export const MainNavigation = Jot(
 	render()
 	{
 		return Navigation([
+			// @ts-ignore
 			MainHeader({ callBack: () => this.state.toggle('pinned') }),
 			Div({ class: 'nav-container flex flex-auto flex-col justify-between' }, [
 				PrimaryNavigation({
+					// @ts-ignore
 					useShortNav: this.useShortNav || false,
+					// @ts-ignore
 					options: this.options
 				}),
 				LowerNavigation()

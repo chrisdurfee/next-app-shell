@@ -1,5 +1,5 @@
 import { Nav, Ul } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { MobileLink } from "../mobile/mobile-link.js";
 
 /**
@@ -58,7 +58,7 @@ const createOptions = (options) =>
  *
  * A short navigation component that displays a list of links.
  *
- * @class
+ * @type {typeof Component}
  */
 export const ShortNavigation = Jot(
 {
@@ -69,6 +69,7 @@ export const ShortNavigation = Jot(
 	 */
 	render()
 	{
+		// @ts-ignore
 		const options = this.options || [];
 
 		return Nav({ class: 'short-navigation flex flex-auto flex-col w-full h-full z-50' }, [

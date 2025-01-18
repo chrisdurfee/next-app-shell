@@ -1,4 +1,4 @@
-import { State, base } from "@base-framework/base";
+import { Events, State } from "@base-framework/base";
 import { UserStatus } from "../models/user-status.js";
 import { ActionTimer } from "./action-timer.js";
 import { APP_STATE, STATES, STATE_ATTR } from "./state.js";
@@ -152,7 +152,8 @@ export class UserLoginStatus
 
 		for (let event of events)
 		{
-			base.on(...event);
+			// @ts-ignore
+			Events.on(...event);
 		}
 	}
 

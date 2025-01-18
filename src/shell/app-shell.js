@@ -1,5 +1,5 @@
 import { Div } from '@base-framework/atoms';
-import { Atom, Jot } from '@base-framework/base';
+import { Atom, Component, Jot } from '@base-framework/base';
 import { NotificationContainer } from "@base-framework/ui/molecules";
 import { AppContent } from './app-content.js';
 
@@ -35,8 +35,7 @@ const Shell = Atom((props, children) =>
  *
  * This will create the app shell.
  *
- * @param {object} props
- * @returns {object}
+ * @type {typeof Component} AppShell
  */
 export const AppShell = Jot(
 {
@@ -47,6 +46,7 @@ export const AppShell = Jot(
 	 */
 	render()
 	{
+		// @ts-ignore
 		const { options, routes } = this;
 		return Shell([
 			AppContent({

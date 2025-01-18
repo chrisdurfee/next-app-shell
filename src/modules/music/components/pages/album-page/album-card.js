@@ -1,5 +1,5 @@
 import { Div, Img } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Skeleton } from "@base-framework/ui/atoms";
 
 /**
@@ -42,7 +42,7 @@ const loadImage = (src, onLoaded) =>
  *
  * Displays the skeleton placeholder while the album image loads.
  *
- * @class
+ * @type {typeof Component}
  */
 export const AlbumCard = Jot(
 {
@@ -60,6 +60,7 @@ export const AlbumCard = Jot(
 	 */
 	render()
 	{
+		// @ts-ignore
 		const { src, title } = this;
 
 		/**
@@ -67,6 +68,7 @@ export const AlbumCard = Jot(
 		 * when the image is loaded. This will swap the skeleton
 		 * with the album card.
 		 */
+		// @ts-ignore
 		loadImage(src, () => this.state.loaded = true);
 
 		return Div({

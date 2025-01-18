@@ -1,9 +1,7 @@
 import { A, Div, P } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
-import {  Skeleton  } from "@base-framework/ui/atoms";
-import {  Avatar  } from "@base-framework/ui/molecules";
-import {  StaticStatusIndicator  } from "@base-framework/ui/molecules";
-import {  TimeFrame  } from "@base-framework/ui/molecules";
+import { Component, Jot } from "@base-framework/base";
+import { Skeleton } from "@base-framework/ui/atoms";
+import { Avatar, StaticStatusIndicator, TimeFrame } from "@base-framework/ui/molecules";
 
 /**
  * ThreadListItemSkeleton
@@ -34,7 +32,7 @@ const ThreadListItemSkeleton = () =>
  *
  * Uses a skeleton while loading.
  *
- * @class
+ * @type {typeof Component}
  */
 export const ThreadListItem = Jot(
 {
@@ -47,11 +45,14 @@ export const ThreadListItem = Jot(
      */
     render()
     {
+        // @ts-ignore
         const thread = this.message;
+        // @ts-ignore
         const route = this.parent.parent.route;
 
         // Simulate loading delay
         const LOADING_WAIT = 500;
+        // @ts-ignore
         setTimeout(() => this.state.loaded = true, LOADING_WAIT);
 
         return Div({

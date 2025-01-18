@@ -26,7 +26,7 @@ const status = new UserLoginStatus(Configs.userStatusApi);
  *
  * This will create the NavigationAvatar molecule.
  *
- * @type {Component} NavigationAvatar
+ * @type {typeof Component} NavigationAvatar
  */
 export const NavigationAvatar = Jot(
 {

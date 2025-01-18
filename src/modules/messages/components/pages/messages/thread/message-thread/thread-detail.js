@@ -1,5 +1,5 @@
 import { Div, OnState, Span } from "@base-framework/atoms";
-import { DateTime, Jot } from "@base-framework/base";
+import { Component, DateTime, Jot } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
 import { Button, Skeleton } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
@@ -59,7 +59,7 @@ const ThreadSkeleton = () =>
  * Displays a conversation with a header and list of messages based on the new structure:
  * Each thread object has top-level fields for the sender/avatar and a .thread array for messages.
  *
- * @class
+ * @type {typeof Component}
  */
 export const ThreadDetail = Jot(
 {
@@ -73,9 +73,11 @@ export const ThreadDetail = Jot(
     render()
     {
         // Get the full thread object by messageId
+        // @ts-ignore
         const currentThread = getThreadById(this.messageId);
 
         const LOADING_DELAY = 500;
+        // @ts-ignore
         setTimeout(() => (this.state.loaded = true), LOADING_DELAY);
 
         return Div({ class: "flex flex-auto flex-col w-full max-h-screen bg-background" },
@@ -109,6 +111,7 @@ export const ThreadDetail = Jot(
                             parent.thread.append(row);
 
                             // This will update the list with the new message.
+                            // @ts-ignore
                             this.mingle([
                                 { ...currentThread, content: 'YOU: ' + msg }
                             ]);

@@ -1,5 +1,5 @@
 import { Div, Pre } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Skeleton } from "@base-framework/ui/atoms";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { EmailComposer } from "./email-composer.js";
@@ -64,7 +64,7 @@ const getMessage = (routeId) => INBOX_MESSAGES.find((msg) => msg.id.toString() =
  *
  * Dynamically displays email details based on the selected message.
  *
- * @returns {object}
+ * @type {typeof Component}
  */
 export const EmailDetail = Jot(
 {
@@ -82,10 +82,12 @@ export const EmailDetail = Jot(
      */
     render()
     {
+        // @ts-ignore
         const message = getMessage(this.messageId);
 
         // Simulate loading with a timeout
         const DELAY = 500;
+        // @ts-ignore
         setTimeout(() => (this.state.loaded = true), DELAY);
 
         return Div({
@@ -110,6 +112,7 @@ export const EmailDetail = Jot(
 
                         EmailToolbar({
                             message,
+                            // @ts-ignore
                             delete: this.delete,
                         }),
 

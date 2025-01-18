@@ -1,5 +1,5 @@
 import { Div, OnState, Span } from '@base-framework/atoms';
-import { Jot } from '@base-framework/base';
+import { Component, Jot } from '@base-framework/base';
 import { Button } from "@base-framework/ui/atoms";
 import { CookieDialog } from './cookie-dialog.js';
 
@@ -14,7 +14,7 @@ const STORAGE_KEY = 'cookieConsent';
  *
  * Displays a bottom bar for cookie consent with options to accept or manage cookies.
  *
- * @returns {object} - The cookie consent bar element.
+ * @type {typeof Component}
  */
 export const CookieConsentBar = Jot(
 {
@@ -56,6 +56,7 @@ export const CookieConsentBar = Jot(
                         class: 'flex-auto',
                         click: () =>
                         {
+                            // @ts-ignore
                             this.state.show = false;
                         }
                     }, 'Accept'),
@@ -65,6 +66,7 @@ export const CookieConsentBar = Jot(
                         variant: 'secondary',
                         class: 'flex-auto',
                         click: () => CookieDialog({
+                            // @ts-ignore
                             onClose: () => this.state.show = false
                         }).open()
                     }, 'Manage Cookies')
@@ -80,6 +82,7 @@ export const CookieConsentBar = Jot(
      */
     setContainer(container)
     {
+        // @ts-ignore
         this.container = app.root;
     }
 });

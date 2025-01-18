@@ -1,5 +1,5 @@
 import { Div, Textarea } from "@base-framework/atoms";
-import { Jot } from "@base-framework/base";
+import { Component, Jot } from "@base-framework/base";
 import { Button } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 
@@ -44,9 +44,7 @@ const SendButton = () => (
  *
  * A styled email composer with a textarea, character counter, and send button.
  *
- * @param {object} props
- * @param {object} children
- * @returns {object}
+ * @type {typeof Component}
  */
 export const EmailComposer = Jot(
 {
@@ -59,6 +57,7 @@ export const EmailComposer = Jot(
     {
         return {
             charCount: 0,
+            // @ts-ignore
             charLimit: this.charLimit ?? 5000,
             isOverLimit: false
         };
@@ -71,10 +70,12 @@ export const EmailComposer = Jot(
      */
     render()
     {
+        // @ts-ignore
         const charLimit = this.state.charLimit;
         const updateCharCount = (e) =>
         {
             const text = e.target.value;
+            // @ts-ignore
             const state = this.state;
             state.charCount = text.length;
             state.isOverLimit = (isOverLimit(text.length, charLimit));
@@ -85,8 +86,10 @@ export const EmailComposer = Jot(
                 // Textarea for reply
                 Textarea({
                     class: "w-full border-none bg-transparent resize-none focus:outline-none focus:ring-0 text-sm text-foreground placeholder-muted-foreground",
+                    // @ts-ignore
                     placeholder: this.placeholder,
                     input: updateCharCount,
+                    // @ts-ignore
                     bind: this.bind
                 }),
                 Div({ class: 'flex flex-col items-end justify-end' }, [
