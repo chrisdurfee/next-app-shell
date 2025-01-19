@@ -34,8 +34,8 @@ export const DashboardPage = () => (
 
         Div({
             switch: [
-                { uri: 'dashboard/', import: () => import('./dashboard-overview/dashboard-overview.js') },
-                { uri: 'dashboard/customers', import: () => import('./customers/dashboard-customers.js') },
+                { uri: 'dashboard/', import: () => import('./dashboard-overview/dashboard-overview.js'), persist: true },
+                { uri: 'dashboard/customers', import: () => import('./customers/dashboard-customers.js'), persist: true },
             ]
         })
     ])
