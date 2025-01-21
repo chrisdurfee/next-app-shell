@@ -3,7 +3,7 @@
  *
  * @param {string} url The URL or path this page should match
  * @param {string} title A descriptive title for the page
- * @param {function} importCallback A function returning the dynamic import
+ * @param {function|Promise} importCallback A function returning the dynamic import
  * @returns {object}
  */
 const Page = (url, title, importCallback) => ({
@@ -19,7 +19,7 @@ const Page = (url, title, importCallback) => ({
  * @returns {Array<object>}
  */
 export const DocumentationSwitch = (basePath) => ([
-	Page(`${basePath}`, 'Introduction', () => import('./introduction/intro-page.js')),
+	Page(`${basePath}`, 'Introduction', import('./introduction/intro-page.js')),
 	Page(`${basePath}/get-started`, 'Get Started', () => import('./get-started/get-started-page.js')),
 	Page(`${basePath}/theme`, 'Theme', () => import('./theme/theme-page.js')),
 	Page(`${basePath}/icons`, 'Icons', () => import('./icons/icon-page.js')),
