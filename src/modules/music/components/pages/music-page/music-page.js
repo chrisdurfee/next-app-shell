@@ -18,13 +18,11 @@ export const MusicPage = () => (
 				switch: [
 					{
 						uri: 'music',
-						import: import('./listen/listen-page.js'),
-						persist: true
+						import: import('./listen/listen-page.js')
 					},
 					{
 						uri: 'music/browse',
-						import: () => import('./browse/browse-page.js'),
-						persist: true
+						import: () => import('./browse/browse-page.js')
 					}
 				]
 			})

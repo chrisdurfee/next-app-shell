@@ -53,8 +53,8 @@ export const DashboardOverview = () => (
 
             Div({
                 switch: [
-                    { uri: 'dashboard', import: import('./dashboards/overview/overview-dashboard.js'), persist: true },
-                    { uri: 'dashboard/overview/analytics', import: import('./dashboards/analytics/analytics-dashboard.js'), persist: true }
+                    { uri: 'dashboard', import: import('./dashboards/overview/overview-dashboard.js') },
+                    { uri: 'dashboard/overview/analytics', import: import('./dashboards/analytics/analytics-dashboard.js') }
                 ]
             })
         ])
