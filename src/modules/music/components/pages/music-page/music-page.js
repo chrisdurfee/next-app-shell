@@ -18,7 +18,9 @@ export const MusicPage = () => (
 				switch: [
 					{
 						uri: 'music',
-						import: () => import('./listen/listen-page.js'),
+						import: {
+							src: () => import('./listen/listen-page.js')
+						},
 						persist: true
 					},
 					{
