@@ -17,7 +17,7 @@ export const MainLayout = Atom(() => (
             switch: [
                 {
                     uri: 'website',
-                    import: () => import('./home/home-page.js'),
+                    import: import('./home/home-page.js'),
                 },
                 {
                     uri: 'website/about',
