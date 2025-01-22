@@ -192,13 +192,123 @@ const VideoConnected = ({ participants }) => (
 );
 
 /**
- * This will create the video connected view.
+ * This will create the calling view.
  *
+ * @param {object} props
+ * @param {Function} props.onCancel - Handler for canceling the call
  * @returns {object}
  */
-const Calling = () => (
-    Div({ class: 'flex flex-auto flex-col' }, [
+const Calling = ({ onCancel }) => (
+    Div({ class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95' }, [
+        // Avatar or placeholder for the person being called
+        Div({ class: 'w-24 h-24 rounded-full bg-muted flex items-center justify-center animate-pulse' }, [
+            Icon({ size: 'lg' }, Icons.user)
+        ]),
 
+        // Status text
+        Div({ class: 'space-y-2 text-center' }, [
+            Span({ class: 'text-xl font-semibold' }, 'Calling...'),
+            Span({ class: 'text-sm text-muted-foreground block' }, 'Waiting for others to join')
+        ]),
+
+        // Cancel button
+        Button({
+            class: 'w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center mt-8',
+            click: onCancel
+        }, [
+            Icon({ size: 'sm' }, Icons.x)
+        ])
+    ])
+);
+
+/**
+ * This will create the ended view.
+ *
+ * @param {object} props
+ * @param {Function} props.onRedial - Handler for redialing
+ * @param {Function} props.onExit - Handler for exiting
+ * @returns {object}
+ */
+const Ended = ({ onRedial, onExit }) => (
+    Div({
+        class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95'
+    }, [
+        // Status icon
+        Div({
+            class: 'w-16 h-16 rounded-full bg-muted flex items-center justify-center'
+        }, [
+            Icon({ size: 'lg', class: 'text-muted-foreground' }, Icons.phone.missed)
+        ]),
+
+        // Status text
+        Div({ class: 'space-y-2 text-center' }, [
+            Span({ class: 'text-xl font-semibold' }, 'Call Ended'),
+            Span({ class: 'text-sm text-muted-foreground block' }, 'Duration: 45:23')
+        ]),
+
+        // Action buttons
+        Div({ class: 'flex space-x-4' }, [
+            Button({
+                class: 'px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90',
+                click: onRedial
+            }, [
+                Icon({ size: 'sm', class: 'mr-2' }, Icons.phone.default),
+                Span({}, 'Redial')
+            ]),
+            Button({
+                class: 'px-6 py-2 rounded-full bg-muted hover:bg-muted/90',
+                click: onExit
+            }, [
+                Icon({ size: 'sm', class: 'mr-2' }, Icons.x),
+                Span({}, 'Exit')
+            ])
+        ])
+    ])
+);
+
+/**
+ * This will create the error view.
+ *
+ * @param {object} props
+ * @param {string} props.errorMessage - The error message to display
+ * @param {Function} props.onRetry - Handler for retry
+ * @param {Function} props.onExit - Handler for exiting
+ * @returns {object}
+ */
+const Error = ({ errorMessage, onRetry, onExit }) => (
+    Div({
+        class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95'
+    }, [
+        // Error icon
+        Div({
+            class: 'w-16 h-16 rounded-full bg-red-100 flex items-center justify-center'
+        }, [
+            Icon({ size: 'lg', class: 'text-red-500' }, Icons.warning)
+        ]),
+
+        // Error message
+        Div({ class: 'space-y-2 text-center max-w-md' }, [
+            Span({ class: 'text-xl font-semibold text-red-500' }, 'Connection Error'),
+            Span({ class: 'text-sm text-muted-foreground block' }, errorMessage)
+        ]),
+
+        // Action buttons
+        Div({ class: 'flex space-x-4' }, [
+            Button({
+                class: 'px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90',
+                click: onRetry
+            }, [
+                Icon({ size: 'sm', class: 'mr-2' }, Icons.refresh),
+                Span({}, 'Retry')
+            ]),
+            Button({
+                class: 'px-6 py-2 rounded-full bg-muted hover:bg-muted/90',
+                click: onExit
+            }, [
+                Icon({ size: 'sm', class: 'mr-2' }, Icons.x),
+                Span({}, 'Exit')
+            ])
+        ])
     ])
 );
 
@@ -211,7 +321,7 @@ const Calling = () => (
  */
 export const VideoChatPage = () =>
 {
-	/**
+    /**
      * @type {object} Props
      */
     const Props =
@@ -224,29 +334,62 @@ export const VideoChatPage = () =>
         setupStates()
         {
             return {
-                view: STATES.CALLING
+                view: STATES.CALLING,
+                errorMessage: ''
             };
+        },
+
+        /**
+         * This will handle exiting the call.
+         */
+        handleExit()
+        {
+            if (window.history.length > 2)
+            {
+                window.history.back();
+                return;
+            }
+            app.navigate('/messages/all');
+        },
+
+        /**
+         * This will handle retrying the call.
+         * @param {object} component
+         */
+        handleRetry(component)
+        {
+            this.state.view = STATES.CALLING;
         }
     };
 
-	return new Overlay(Props, [
-		Div({ class: "flex flex-col w-full h-screen bg-background" }, [
-			OnState("view", (view) =>
-            {
-                switch (view)
-                {
+    return new Overlay(Props, [
+        Div({ class: "flex flex-col w-full h-screen bg-background" }, [
+            OnState("view", (view, component) => {
+                switch (view) {
                     case STATES.CALLING:
-                        return Calling();
+                        return Calling({
+                            onCancel: Props.handleExit
+                        });
 
                     case STATES.CONNECTED:
                         return VideoConnected({ participants });
 
                     case STATES.ENDED:
-                        return Div({ class: 'flex flex-auto flex-col' }, 'Call Ended');
+                        return Ended({
+                            onRedial: () => Props.handleRetry(component),
+                            onExit: Props.handleExit
+                        });
+
+                    case STATES.ERROR:
+                        return Error({
+                            errorMessage: component.state.errorMessage || 'Failed to connect to the call. Please check your connection and try again.',
+                            onRetry: () => Props.handleRetry(component),
+                            onExit: Props.handleExit
+                        });
                 }
             })
-		])
-	]);
+        ])
+    ]);
 };
 
 export default VideoChatPage;
