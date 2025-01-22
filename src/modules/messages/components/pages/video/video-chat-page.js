@@ -117,7 +117,7 @@ export const Controls = ({ actions }) =>
  */
 export const ParticipantsList = ({ participants }) =>
 {
-	return Div({ class: "absolute flex flex-col gap-2 right-0 top-0 w-60" }, participants.map(participant =>
+	return Div({ class: "absolute flex flex-col gap-2 right-2 top-2 w-40 md:w-60" }, participants.map(participant =>
 		Div({ class: "overflow-hidden rounded-lg shadow-sm" }, [
 			VideoContainer({
 				name: participant.name,
@@ -138,11 +138,10 @@ const VideoContent = ({ participants }) => (
     Div({ class: "flex-1 p-4 flex gap-4" }, [
         Div({ class: "flex-1 relative" }, [
             VideoContainer({
-                name: "You",
-                isMuted: false,
+                ...participants[0],
                 isMainParticipant: true
             }, [
-                ParticipantsList({ participants })
+                ParticipantsList({ participants: participants.slice(1) })
             ])
         ]),
 
@@ -175,7 +174,8 @@ const STATES = {
 const participants = [
     { name: "Craig Press", isMuted: true },
     { name: "Makenna Bergson", isMuted: false },
-    { name: "Allison Septimus", isMuted: false }
+    { name: "Allison Septimus", isMuted: false },
+    { name: "You", isMuted: false },
 ];
 
 /**
@@ -368,7 +368,7 @@ export const VideoChatPage = () =>
         setupStates()
         {
             return {
-                view: STATES.ERROR,
+                view: STATES.CALLING,
                 errorMessage: ''
             };
         },
