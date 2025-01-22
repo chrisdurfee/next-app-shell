@@ -11,10 +11,10 @@ import { SidebarMenu } from "./sidebar-menu.js";
  */
 export const MusicPage = () => (
 	new BlankPage([
-		Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
+		Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] sm:max-w-[90vw] lg:max-w-[100vw] h-full' }, [
 			SidebarMenu(),
 			Div({
-				class: 'flex flex-auto flex-col',
+				class: 'flex flex-auto flex-col lg:w-[70vw] min-w-0"',
 				switch: [
 					{
 						uri: 'music',
