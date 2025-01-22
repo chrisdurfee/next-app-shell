@@ -1,4 +1,6 @@
 import { Button, Div, Span } from "@base-framework/atoms";
+import { Icon } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import { Overlay } from "@base-framework/ui/organisms";
 
 /**
@@ -12,7 +14,7 @@ import { Overlay } from "@base-framework/ui/organisms";
 export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
 {
 	return Div({
-		class: `relative rounded-lg overflow-hidden ${
+		class: `relative rounded-lg overflow-hidden border ${
 			isMainParticipant ? 'w-full h-full' : 'w-full h-32'
 		}`
 	}, [
@@ -26,10 +28,7 @@ export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
 			}, [
 				Span({ class: "text-sm font-medium" }, name),
 				isMuted && Span({ class: "flex items-center" }, [
-					Div({
-						class: "w-4 h-4",
-						innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l22 22M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"></path></svg>`
-					})
+					Icon({ size: 'xs' }, Icons.microphone)
 				])
 			])
 		])
@@ -46,13 +45,28 @@ export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
  */
 export const Header = ({ title, participantCount }) =>
 {
-	return Div({ class: "p-4 flex items-center justify-between border-b" }, [
+	return Div({ class: "p-4 flex items-center justify-between" }, [
 		Div({ class: "flex items-center gap-2" }, [
 			Span({ class: "text-xl font-semibold" }, title),
-			Span({ class: "text-sm text-gray-500" }, `${participantCount} participants`)
+			Span({ class: "text-sm text-muted-foreground" }, `${participantCount} participants`)
 		])
 	]);
 };
+
+/**
+ * This will create a control button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const ControlButton = ({ action, className, icon }) => (
+    Button({
+        class: className,
+        click: action
+    }, [
+        Icon({ size: 'sm' }, icon)
+    ])
+)
 
 /**
  * Controls
@@ -65,28 +79,28 @@ export const Header = ({ title, participantCount }) =>
 export const Controls = ({ actions }) =>
 {
 	return Div({
-		class: "absolute bottom-6 left-1/2 transform -translate-x-1/2 flex items-center gap-4"
+		class: "absolute bottom-6 left-0 right-0 flex items-center gap-4 w-60 mx-auto"
 	}, [
-		Button({
-			class: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
-			click: actions.toggleCamera,
-			innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>`
-		}),
-		Button({
-			class: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
-			click: actions.toggleMute,
-			innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>`
-		}),
-		Button({
-			class: "w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center",
-			click: actions.endCall,
-			innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
-		}),
-		Button({
-			class: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
-			click: actions.toggleFullscreen,
-			innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`
-		})
+        ControlButton({
+            action: actions.toggleCamera,
+            className: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
+            icon: Icons.videoCamera.default
+        }),
+        ControlButton({
+            action: actions.toggleMute,
+            className: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
+            icon: Icons.microphone
+        }),
+        ControlButton({
+            action: actions.endCall,
+            className: "w-12 h-12 rounded-full bg-red-500 hover:bg-red-600 flex items-center justify-center",
+            icon: Icons.x
+        }),
+        ControlButton({
+            action: actions.toggleFullscreen,
+            className: "w-12 h-12 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center",
+            icon: Icons.expand
+        })
 	]);
 };
 
@@ -137,6 +151,12 @@ const VideoContent = ({ participants }) => (
                     toggleCamera: () => console.log("Toggle camera"),
                     endCall: () => {
                         console.log("End call");
+
+                        if (window.history.length > 2)
+                        {
+                            window.history.back();
+                            return;
+                        }
                         app.navigate('/messages/all');
                     },
                     toggleFullscreen: () => console.log("Toggle fullscreen")
