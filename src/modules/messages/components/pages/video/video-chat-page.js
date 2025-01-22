@@ -331,18 +331,16 @@ const Error = ({ errorMessage, onRetry, onExit }) => (
         // Action buttons
         Div({ class: 'flex space-x-4' }, [
             Button({
-                class: 'px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90',
+                class: 'w-12 h-12 rounded-full bg-primary hover:bg-primary text-primary-foreground flex items-center justify-center mt-8',
                 click: onRetry
             }, [
-                Icon({ size: 'sm', class: 'mr-2' }, Icons.refresh),
-                Span({}, 'Retry')
+                Icon({ size: 'sm' }, Icons.phone.oubound)
             ]),
             Button({
-                class: 'px-6 py-2 rounded-full bg-muted hover:bg-muted/90',
+                class: 'w-12 h-12 rounded-full bg-muted hover:bg-muted text-muted-foreground flex items-center justify-center mt-8',
                 click: onExit
             }, [
-                Icon({ size: 'sm', class: 'mr-2' }, Icons.x),
-                Span({}, 'Exit')
+                Icon({ size: 'sm' }, Icons.x)
             ])
         ])
     ])
@@ -370,7 +368,7 @@ export const VideoChatPage = () =>
         setupStates()
         {
             return {
-                view: STATES.CALLING,
+                view: STATES.ERROR,
                 errorMessage: ''
             };
         },
