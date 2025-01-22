@@ -1,4 +1,4 @@
-import { Button, Div, Span } from "@base-framework/atoms";
+import { Button, Div, OnState, Span } from "@base-framework/atoms";
 import { Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Overlay } from "@base-framework/ui/organisms";
@@ -175,6 +175,34 @@ const participants = [
 ];
 
 /**
+ * This will create the video connected view.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const VideoConnected = ({ participants }) => (
+    Div({ class: 'flex flex-auto flex-col' }, [
+        Header({
+            title: "Video Chat",
+            participantCount: 4
+        }),
+
+        VideoContent({ participants })
+    ])
+);
+
+/**
+ * This will create the video connected view.
+ *
+ * @returns {object}
+ */
+const Calling = () => (
+    Div({ class: 'flex flex-auto flex-col' }, [
+
+    ])
+);
+
+/**
  * VideoChatPage
  *
  * Main layout for the video chat interface
@@ -203,12 +231,20 @@ export const VideoChatPage = () =>
 
 	return new Overlay(Props, [
 		Div({ class: "flex flex-col w-full h-screen bg-background" }, [
-			Header({
-				title: "Video Chat",
-				participantCount: 4
-			}),
+			OnState("view", (view) =>
+            {
+                switch (view)
+                {
+                    case STATES.CALLING:
+                        return Calling();
 
-			VideoContent({ participants })
+                    case STATES.CONNECTED:
+                        return VideoConnected({ participants });
+
+                    case STATES.ENDED:
+                        return Div({ class: 'flex flex-auto flex-col' }, 'Call Ended');
+                }
+            })
 		])
 	]);
 };
