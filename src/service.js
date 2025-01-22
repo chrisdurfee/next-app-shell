@@ -70,9 +70,10 @@ export const setupServiceWorker = () =>
 		return;
 	}
 
+	const baseUrl = Configs.router.baseUrl || './';
 	const sw = navigator.serviceWorker;
-	sw.register('./sw.js', {
-		scope: Configs.router.baseUrl || './'
+	sw.register(`${baseUrl}sw.js`, {
+		scope: baseUrl
 	}).then((serviceWorker) =>
 	{
 		setupServiceMessages(serviceWorker)
