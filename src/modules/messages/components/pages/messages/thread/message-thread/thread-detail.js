@@ -1,7 +1,7 @@
-import { Div, OnState, Span } from "@base-framework/atoms";
+import { A, Div, OnState, Span } from "@base-framework/atoms";
 import { Component, DateTime, Jot } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
-import { Button, Skeleton } from "@base-framework/ui/atoms";
+import { Button, Icon, Skeleton } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Avatar, StaticStatusIndicator, TimeFrame } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
@@ -161,10 +161,12 @@ const ConversationHeader = (thread) =>
 
             // Right side icons (video/call)
             Div({ class: "ml-auto flex items-center gap-4" }, [
-                Button({
-                    variant: "icon",
-                    icon: Icons.videoCamera.default
-                }),
+                A({
+                    class: "bttn icon",
+                    href: '/messages/all/video/' + thread.id,
+                }, [
+                    Icon(Icons.videoCamera.default)
+                ]),
                 Button({
                     variant: "icon",
                     icon: Icons.phone.default
