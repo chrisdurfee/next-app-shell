@@ -1,4 +1,5 @@
 import { Button, Div, OnState, Span } from "@base-framework/atoms";
+import { Atom } from "@base-framework/base";
 import { Avatar } from "@base-framework/ui";
 import { Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
@@ -12,7 +13,7 @@ import { Overlay } from "@base-framework/ui/organisms";
  * @param {object} props
  * @returns {object}
  */
-export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
+export const VideoContainer = Atom(({ name, isMuted, isMainParticipant = false }, children) =>
 {
 	return Div({
 		class: `relative rounded-lg overflow-hidden border ${
@@ -30,9 +31,11 @@ export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
 					Icon({ size: 'xs' }, Icons.microphone)
 				])
 			])
-		])
+		]),
+
+        children
 	]);
-};
+});
 
 /**
  * Header
@@ -59,7 +62,11 @@ export const Header = ({ title, participantCount }) =>
  * @returns {object}
  */
 const ControlButton = ({ action, className, icon }) => (
-    Button({ class: className, click: action }, [
+    Button({ class: className, click: (e, parent) =>
+    {
+        action(e, parent);
+    }
+     }, [
         Icon({ size: 'sm' }, icon)
     ])
 )
@@ -110,7 +117,7 @@ export const Controls = ({ actions }) =>
  */
 export const ParticipantsList = ({ participants }) =>
 {
-	return Div({ class: "flex flex-col gap-2 w-60" }, participants.map(participant =>
+	return Div({ class: "absolute flex flex-col gap-2 right-0 top-0 w-60" }, participants.map(participant =>
 		Div({ class: "overflow-hidden rounded-lg shadow-sm" }, [
 			VideoContainer({
 				name: participant.name,
@@ -134,27 +141,23 @@ const VideoContent = ({ participants }) => (
                 name: "You",
                 isMuted: false,
                 isMainParticipant: true
-            }),
-            Controls({
-                actions: {
-                    toggleMute: () => console.log("Toggle mute"),
-                    toggleCamera: () => console.log("Toggle camera"),
-                    endCall: () => {
-                        console.log("End call");
-
-                        if (window.history.length > 2)
-                        {
-                            window.history.back();
-                            return;
-                        }
-                        app.navigate('/messages/all');
-                    },
-                    toggleFullscreen: () => console.log("Toggle fullscreen")
-                }
-            })
+            }, [
+                ParticipantsList({ participants })
+            ])
         ]),
 
-        ParticipantsList({ participants })
+        Controls({
+            actions: {
+                toggleMute: () => console.log("Toggle mute"),
+                toggleCamera: () => console.log("Toggle camera"),
+                endCall: (e, parent) =>
+                {
+                    console.log("End call");
+                    parent.state.view = STATES.ENDED;
+                },
+                toggleFullscreen: () => console.log("Toggle fullscreen")
+            }
+        })
     ])
 );
 
@@ -200,7 +203,24 @@ const VideoConnected = ({ participants }) => (
  * @returns {object}
  */
 const Calling = ({ onCancel }) => (
-    Div({ class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95' }, [
+    Div({
+        class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95',
+
+        /**
+         * This will chnage the state to connected
+         * after 3 seconds.
+         *
+         * @param {object} e
+         * @param {object} parent
+         */
+        onCreated(e, parent)
+        {
+            const DURATION = 2000;
+            window.setTimeout(() => {
+                parent.state.view = STATES.CONNECTED;
+            }, DURATION);
+        }
+    }, [
         // Avatar or placeholder for the person being called
         Div({ class: 'w-24 h-24 rounded-full bg-muted flex items-center justify-center animate-pulse' }, [
             Avatar({
@@ -236,12 +256,25 @@ const Calling = ({ onCancel }) => (
  */
 const Ended = ({ onRedial, onExit }) => (
     Div({
-        class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95'
+        class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95',
+
+        /**
+         * This will close the overlay after 3 seconds
+         * after the component is created.
+         *
+         * @param {object} e
+         * @param {object} parent
+         */
+        onCreated(e, parent)
+        {
+            const DURATION = 2000;
+            window.setTimeout(() => {
+                parent.handleExit();
+            }, DURATION);
+        }
     }, [
         // Status icon
-        Div({
-            class: 'w-16 h-16 rounded-full bg-muted flex items-center justify-center'
-        }, [
+        Div({ class: 'w-24 h-24 rounded-full bg-muted flex items-center justify-center' }, [
             Icon({ size: 'lg', class: 'text-muted-foreground' }, Icons.phone.missed)
         ]),
 
@@ -254,18 +287,16 @@ const Ended = ({ onRedial, onExit }) => (
         // Action buttons
         Div({ class: 'flex space-x-4' }, [
             Button({
-                class: 'px-6 py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90',
+                class: 'w-12 h-12 rounded-full bg-primary hover:bg-primary text-primary-foreground flex items-center justify-center mt-8',
                 click: onRedial
             }, [
-                Icon({ size: 'sm', class: 'mr-2' }, Icons.phone.default),
-                Span({}, 'Redial')
+                Icon({ size: 'sm' }, Icons.phone.oubound)
             ]),
             Button({
-                class: 'px-6 py-2 rounded-full bg-muted hover:bg-muted/90',
+                class: 'w-12 h-12 rounded-full bg-muted hover:bg-muted text-muted-foreground flex items-center justify-center mt-8',
                 click: onExit
             }, [
-                Icon({ size: 'sm', class: 'mr-2' }, Icons.x),
-                Span({}, 'Exit')
+                Icon({ size: 'sm' }, Icons.x)
             ])
         ])
     ])
@@ -345,7 +376,19 @@ export const VideoChatPage = () =>
         },
 
         /**
+         * This will run after the component is created.
+         *
+         * @returns {void}
+         */
+        beforeDestroy()
+        {
+            this.state.view = STATES.CALLING;
+        },
+
+        /**
          * This will handle exiting the call.
+         *
+         * @returns {void}
          */
         handleExit()
         {
@@ -359,9 +402,10 @@ export const VideoChatPage = () =>
 
         /**
          * This will handle retrying the call.
-         * @param {object} component
+         *
+         * @returns {void}
          */
-        handleRetry(component)
+        handleRetry()
         {
             this.state.view = STATES.CALLING;
         }
@@ -369,7 +413,7 @@ export const VideoChatPage = () =>
 
     return new Overlay(Props, [
         Div({ class: "flex flex-col w-full h-screen bg-background" }, [
-            OnState("view", (view, component) => {
+            OnState("view", (view, ele, component) => {
                 switch (view) {
                     case STATES.CALLING:
                         return Calling({
@@ -381,7 +425,7 @@ export const VideoChatPage = () =>
 
                     case STATES.ENDED:
                         return Ended({
-                            onRedial: () => Props.handleRetry(component),
+                            onRedial: () => component.handleRetry(),
                             onExit: Props.handleExit
                         });
 
