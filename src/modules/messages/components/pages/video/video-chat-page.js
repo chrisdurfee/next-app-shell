@@ -158,6 +158,23 @@ const VideoContent = ({ participants }) => (
 );
 
 /**
+ * @type {object} STATES
+ */
+const STATES = {
+    CALLING: 'calling',
+    CONNECTED: 'connected',
+    ENDED: 'ended',
+    ERROR: 'Error connecting'
+};
+
+// Dummy participants data
+const participants = [
+    { name: "Craig Press", isMuted: true },
+    { name: "Makenna Bergson", isMuted: false },
+    { name: "Allison Septimus", isMuted: false }
+];
+
+/**
  * VideoChatPage
  *
  * Main layout for the video chat interface
@@ -166,13 +183,25 @@ const VideoContent = ({ participants }) => (
  */
 export const VideoChatPage = () =>
 {
-	const participants = [
-		{ name: "Craig Press", isMuted: true },
-		{ name: "Makenna Bergson", isMuted: false },
-		{ name: "Allison Septimus", isMuted: false }
-	];
+	/**
+     * @type {object} Props
+     */
+    const Props =
+    {
+        /**
+         * This will set up the state for the component.
+         *
+         * @returns {object} state
+         */
+        setupStates()
+        {
+            return {
+                view: STATES.CALLING
+            };
+        }
+    };
 
-	return new Overlay([
+	return new Overlay(Props, [
 		Div({ class: "flex flex-col w-full h-screen bg-background" }, [
 			Header({
 				title: "Video Chat",
