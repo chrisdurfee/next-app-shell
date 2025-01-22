@@ -72,7 +72,7 @@ export const setupServiceWorker = () =>
 
 	const sw = navigator.serviceWorker;
 	sw.register('./sw.js', {
-		scope: './'
+		scope: Configs.router.baseUrl || './'
 	}).then((serviceWorker) =>
 	{
 		setupServiceMessages(serviceWorker)
