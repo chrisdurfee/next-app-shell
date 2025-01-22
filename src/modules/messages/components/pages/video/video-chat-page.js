@@ -1,4 +1,5 @@
 import { Button, Div, OnState, Span } from "@base-framework/atoms";
+import { Avatar } from "@base-framework/ui";
 import { Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Overlay } from "@base-framework/ui/organisms";
@@ -202,7 +203,11 @@ const Calling = ({ onCancel }) => (
     Div({ class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95' }, [
         // Avatar or placeholder for the person being called
         Div({ class: 'w-24 h-24 rounded-full bg-muted flex items-center justify-center animate-pulse' }, [
-            Icon({ size: 'lg' }, Icons.user)
+            Avatar({
+                src: '',
+                size: 'lg',
+                fallbackText: 'User Name',
+            })
         ]),
 
         // Status text
