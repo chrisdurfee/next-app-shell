@@ -1,6 +1,7 @@
 {
 	"short_name": "Base Example",
 	"name": "Base Example",
+	"description": "This is an example app that uses the base framework.",
 	"icons": [
 		{
 			"src": "./images/icons/icon-192.png",
@@ -17,6 +18,7 @@
 	"dir": "ltr",
 	"scope": "./",
 	"start_url": "./",
+	"orientation": "portrait",
 	"display": "standalone",
 	"theme_color": "#09090b",
 	"background_color": "#09090b"
