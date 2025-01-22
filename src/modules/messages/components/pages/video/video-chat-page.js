@@ -23,9 +23,7 @@ export const VideoContainer = ({ name, isMuted, isMainParticipant = false }) =>
 
 		// Gradient overlay with name
 		Div({ class: "absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/50 to-transparent" }, [
-			Div({
-				class: "flex items-center justify-between"
-			}, [
+			Div({ class: "flex items-center justify-between" }, [
 				Span({ class: "text-sm font-medium" }, name),
 				isMuted && Span({ class: "flex items-center" }, [
 					Icon({ size: 'xs' }, Icons.microphone)
@@ -60,10 +58,7 @@ export const Header = ({ title, participantCount }) =>
  * @returns {object}
  */
 const ControlButton = ({ action, className, icon }) => (
-    Button({
-        class: className,
-        click: action
-    }, [
+    Button({ class: className, click: action }, [
         Icon({ size: 'sm' }, icon)
     ])
 )
@@ -114,12 +109,8 @@ export const Controls = ({ actions }) =>
  */
 export const ParticipantsList = ({ participants }) =>
 {
-	return Div({
-		class: "flex flex-col gap-2 w-60"
-	}, participants.map(participant =>
-		Div({
-			class: "overflow-hidden rounded-lg shadow-sm"
-		}, [
+	return Div({ class: "flex flex-col gap-2 w-60" }, participants.map(participant =>
+		Div({ class: "overflow-hidden rounded-lg shadow-sm" }, [
 			VideoContainer({
 				name: participant.name,
 				isMuted: participant.isMuted
@@ -137,9 +128,7 @@ export const ParticipantsList = ({ participants }) =>
  */
 const VideoContent = ({ participants }) => (
     Div({ class: "flex-1 p-4 flex gap-4" }, [
-        Div({
-            class: "flex-1 relative"
-        }, [
+        Div({ class: "flex-1 relative" }, [
             VideoContainer({
                 name: "You",
                 isMuted: false,
