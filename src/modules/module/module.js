@@ -60,7 +60,6 @@ export class Module
 					route.path,
 					route.import,
 					route.title,
-					route.persist,
 					route.preventScroll
 				);
 			}
@@ -69,7 +68,6 @@ export class Module
 				route.path,
 				route.component,
 				route.title,
-				route.persist,
 				route.preventScroll
 			);
 		});
