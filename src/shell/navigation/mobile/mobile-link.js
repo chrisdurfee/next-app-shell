@@ -26,7 +26,7 @@ const getMaxHeight = (props) =>
 export const MobileLink = (props) => (
 	Li({ class: `mobile-link flex flex-auto items-center justify-center ${getMaxHeight(props)}`, click: props.click }, [
 		new NavLink({
-			class: 'p-[4px] flex flex-col items-center justify-center rounded-md hover:bg-accent transition-colors duration-200',
+			class: 'p-[4px] flex flex-col items-center justify-center rounded-md md:hover:bg-accent transition-colors duration-200',
 			href: props.href,
 			exact: props.exact || false,
 		},
