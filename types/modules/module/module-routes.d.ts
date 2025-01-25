@@ -12,11 +12,10 @@ export class ModuleRoutes {
      * @param {string} uri
      * @param {object} component
      * @param {string} [title]
-     * @param {boolean} [persist]
      * @param {boolean} [preventScroll]
      * @returns {object}
      */
-    add(uri: string, component: object, title?: string, persist?: boolean, preventScroll?: boolean): object;
+    add(uri: string, component: object, title?: string, preventScroll?: boolean): object;
     /**
      * This will check if the object is a promise.
      *
@@ -30,9 +29,8 @@ export class ModuleRoutes {
      * @param {string} uri
      * @param {object|string} loader
      * @param {string} [title]
-     * @param {boolean} [persist]
      * @param {boolean} [preventScroll]
      * @returns {object}
      */
-    load(uri: string, loader: object | string, title?: string, persist?: boolean, preventScroll?: boolean): object;
+    load(uri: string, loader: object | string, title?: string, preventScroll?: boolean): object;
 }
