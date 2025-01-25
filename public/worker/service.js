@@ -54,7 +54,7 @@ class Service
 	{
 		self.addEventListener('install', (e) =>
 		{
-			self.skipWaiting();
+			//self.skipWaiting();
 
 			e.waitUntil(
 				this.cache.addFiles(this.files)
@@ -66,13 +66,13 @@ class Service
 			e.waitUntil(
 				this.cache.refresh().then(() =>
 				{
-					return self.clients.matchAll({ includeUncontrolled: true }).then((clients) =>
-					{
-						clients.forEach((client) =>
-						{
-							client.postMessage({ action: 'reload' });
-						});
-					});
+					// return self.clients.matchAll({ includeUncontrolled: true }).then((clients) =>
+					// {
+					// 	clients.forEach((client) =>
+					// 	{
+					// 		client.postMessage({ action: 'reload' });
+					// 	});
+					// });
 				})
 			);
 
@@ -102,7 +102,9 @@ class Service
 			 */
 			if (e.request.mode === 'navigate')
 			{
-				e.respondWith(caches.match('index.html'));
+				fetch(e.request).catch(() => {
+					return caches.match('index.html');
+				});
 				return false;
 			}
 
