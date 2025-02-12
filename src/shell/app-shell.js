@@ -14,10 +14,7 @@ const Shell = Atom((props, children) =>
 {
 	return Div({
 			...props,
-			class: 'shell flex flex-auto relative z-10',
-
-			// This will add a class of 'authed' if the user is signed in.
-			onState: ['isSignedIn', { authed: true }]
+			class: 'shell flex flex-auto relative z-10'
 		}, [
 			/**
 			 * This will set up the notification container so that it can be used
