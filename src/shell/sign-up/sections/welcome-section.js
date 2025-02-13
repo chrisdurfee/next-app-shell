@@ -1,4 +1,4 @@
-import { Div, H1, Header, OnState, P, Section } from '@base-framework/atoms';
+import { Div, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -24,38 +24,18 @@ const SignUpHeader = Atom(({ title, description}) => (
 const FormWrapper = Atom((props, children) => (
 	Div({
 		class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
-		addState()
-		{
-			return {
-				loading: true
-			};
-		}
 	}, children)
 ));
 
 /**
- * This will create a loading message.
- *
- * @returns {object}
- */
-const LoadingMessage = () => (
-	null
-);
-
-/**
- * This will create the sign up section.
+ * This will create the welcome section.
  *
  * @returns {object}
  */
 export const WelcomeSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
 		FormWrapper({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
-			OnState('loading', (state) => (!state)
-				? LoadingMessage()
-				: [
-					SignUpHeader({ title: 'Sign Up', description: 'Please enter your credentials to sign up.' }),
-				]
-			)
+			SignUpHeader({ title: 'Sign Up', description: 'Please enter your credentials to sign up.' })
 		])
 	])
 );
