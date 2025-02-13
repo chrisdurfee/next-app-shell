@@ -3,6 +3,7 @@ import { Atom } from '@base-framework/base';
 import { Icon } from '@base-framework/ui';
 import { Button, Input } from '@base-framework/ui/atoms';
 import { Icons } from "@base-framework/ui/icons";
+import { STEPS } from '../steps';
 
 /**
  * @function CredentialsContainer
@@ -17,7 +18,7 @@ const CredentialsContainer = Atom(() =>
         Div({ class: 'grid gap-4' }, [
             Input({
                 type: 'email',
-                placeholder: 'Email',
+                placeholder: 'name@example.com',
                 required: true,
                 'aria-required': true
             })
@@ -88,17 +89,20 @@ const FormWrapper = Atom((props, children) => (
  * @description
  *  The main form for collecting user credentials. Mimics the login form structure.
  *
- * @param {object} props
- * @param {Function} props.onSubmit - Callback to handle submission logic.
  * @returns {object} A Form containing the fields and buttons.
  */
-export const SignUpForm = Atom(({ onSubmit }) =>
+export const SignUpForm = Atom(() =>
 (
 	FormWrapper([
 		CardHeader({ title: "Create an account", description: "Enter your email below to create your account" }),
 		Form({
 			class: 'flex flex-col',
-			submit: () => onSubmit()  // Or whatever sign-up handler you'd like
+			role: 'form',
+			submit: (e, parent) =>
+			{
+				e.preventDefault();
+				parent.showStep(STEPS.USER_DETAILS);
+			}
 		}, [
 			Div({ class: 'grid gap-4' }, [
 				CredentialsContainer(),

@@ -6,13 +6,11 @@ import { ErrorMessage } from '../atoms/error-message.js';
  * @description
  *  A page section that displays an error message via ErrorMessage atom.
  *
- * @param {object} props
- * @param {Function} props.showStep - The callback to navigate steps.
  * @returns {object} A Section component containing the error message UI.
  */
-export const ErrorSection = ({ showStep }) =>
+export const ErrorSection = () =>
 (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		ErrorMessage({ showStep })
+		ErrorMessage()
 	])
 );

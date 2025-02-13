@@ -1,5 +1,7 @@
-import { Button, Div, Input, Label } from '@base-framework/atoms';
+import { Form } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { FormField } from '@base-framework/ui';
+import { Button, EmailInput, Fieldset, Input } from "@base-framework/ui/atoms";
 import { STEPS } from '../steps.js';
 
 /**
@@ -7,47 +9,37 @@ import { STEPS } from '../steps.js';
  * @description
  *  Renders a simple form to collect user details.
  *
- * @param {object} props
- * @param {Function} props.showStep - The callback to navigate steps.
  * @returns {object} A Div component containing the user details form.
  */
-export const UserDetailsForm = Atom(({ showStep }) =>
+export const UserDetailsForm = Atom(() =>
 (
-	Div({ class: 'p-6 space-y-4' }, [
-		Div({ class: 'grid gap-2' }, [
-			Label({ class: 'block text-sm font-medium' }, 'Full Name'),
-			Input({
-				class: 'border p-2 rounded',
-				type: 'text',
-				placeholder: 'Jane Doe'
-			})
-		]),
-		Div({ class: 'grid gap-2' }, [
-			Label({ class: 'block text-sm font-medium' }, 'Email'),
-			Input({
-				class: 'border p-2 rounded',
-				type: 'email',
-				placeholder: 'jane@example.com'
-			})
-		]),
-		Div({ class: 'grid gap-2' }, [
-			Label({ class: 'block text-sm font-medium' }, 'Password'),
-			Input({
-				class: 'border p-2 rounded',
-				type: 'password',
-				placeholder: '********'
-			})
-		]),
+	Form({ submit: (e, { showStep }) => showStep(STEPS.ERROR) }, [
+		Fieldset({ legend: 'Profile' }, [
+			new FormField({
+				name: "fullname",
+				label: "Full Name",
+				description: "This is your public display name."
+			}, [
+				Input({ placeholder: "e.g. Jane Doe", required: true })
+			]),
 
-		Div({ class: 'flex space-x-2 pt-4' }, [
-			Button({
-				class: 'px-4 py-2 bg-primary rounded-md',
-				onClick: () => showStep(STEPS.CONGRATULATIONS)
-			}, 'Continue'),
-			Button({
-				class: 'px-4 py-2 bg-red-600 rounded-md',
-				onClick: () => showStep(STEPS.ERROR)
-			}, 'Trigger Error')
+			new FormField({
+				name: "email",
+				label: "Email Address",
+				description: "We'll use this to contact you."
+			}, [
+				EmailInput({ placeholder: "e.g. email@address.com", required: true })
+			]),
+
+			new FormField({
+				name: "password",
+				label: "Password",
+				description: "Keep it secret, keep it safe."
+			}, [
+				Input({ type: "password", placeholder: "********", required: true })
+			]),
+
+			Button({ type: "submit" }, "Submit")
 		])
 	])
 ));

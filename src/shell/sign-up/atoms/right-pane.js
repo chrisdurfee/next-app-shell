@@ -1,7 +1,6 @@
 import { A, Div, Img } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Button } from '@base-framework/ui/atoms';
-import { STEPS } from '../steps.js';
 import { SignUpForm } from './sign-up-form.js';
 
 /**
@@ -63,28 +62,19 @@ const SignInNavigation = Atom(({ src }) =>
  * @description
  *  Renders the top navigation (Sign In link) + sign-up form in a card on the right side.
  *
- * @param {object} props
- * @param {Function} props.showStep - The callback to navigate steps (e.g., sign in).
  * @returns {object} A Div component for the right panel.
  */
-export const RightPane = Atom(({ showStep }) => (
+export const RightPane = Atom(() => (
 	Div({ class: 'flex flex-auto flex-col' }, [
 		// Top nav to go to sign-in
-		SignInNavigation({ showStep }),
+		SignInNavigation(),
 
 		// Main sign-up card
 		Div({
 			class: 'flex flex-auto flex-col'
 		}, [
 			Div({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-				SignUpForm({
-					showStep,
-					onSubmit: () =>
-					{
-						// Example: do something server-side, then show next step
-						showStep(STEPS.USER_DETAILS);
-					}
-				})
+				SignUpForm()
 			])
 		])
 	])

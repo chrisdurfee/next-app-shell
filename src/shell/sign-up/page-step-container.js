@@ -15,22 +15,22 @@ import { STEPS } from './steps.js';
 export const PageStepContainer = () =>
 (
 	Div({ class: 'flex flex-auto flex-col' }, [
-		OnState('step', (step, state, { showStep }) =>
+		OnState('step', (step) =>
 		{
 			switch (step)
 			{
 				case STEPS.USER_DETAILS:
-					return UserDetailsSection({ showStep });
+					return UserDetailsSection();
 
 				case STEPS.ERROR:
-					return ErrorSection({ showStep });
+					return ErrorSection();
 
 				case STEPS.CONGRATULATIONS:
-					return CongratulationsSection({ showStep });
+					return CongratulationsSection();
 
 				case STEPS.WELCOME:
 				default:
-					return WelcomeSection({ showStep });
+					return WelcomeSection();
 			}
 		})
 	])

@@ -9,14 +9,12 @@ import { RightPane } from '../atoms/right-pane.js';
  *    - Left side: branding/testimonial panel
  *    - Right side: sign-up intro card
  *
- * @param {object} props
- * @param {Function} props.showStep - The callback to navigate steps.
  * @returns {object} A Section component containing the two panes.
  */
-export const WelcomeSection = ({ showStep }) =>
+export const WelcomeSection = () =>
 (
 	Section({ class: 'flex flex-auto flex-col md:flex-row' }, [
 		LeftPane(),
-		RightPane({ showStep })
+		RightPane()
 	])
 );
