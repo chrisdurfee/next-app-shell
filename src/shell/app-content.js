@@ -1,6 +1,6 @@
 import { Div } from '@base-framework/atoms';
+import { Import } from '@base-framework/base';
 import { openInstallPrompt } from './installation/install.js';
-import { LoginPage } from './login/login-page.js';
 import { MainContent } from './main-content.js';
 
 /**
@@ -27,6 +27,17 @@ const updateBodyClass = (isSignedIn) =>
 		document.body.classList.remove(AUTHED_CLASS_NAME);
 	}
 };
+
+/**
+ * This will create the login page.
+ *
+ * @returns {object}
+ */
+const LoginPage = () => (
+	Import({
+		src: () => import('./login/login-page.js')
+	})
+);
 
 /**
  * This will create the app content.
