@@ -1,5 +1,34 @@
-import { Div, P } from '@base-framework/atoms';
+import { A, Div, Img, P } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Configs } from '../../../../src/configs.js';
+
+/**
+ * This will create a logo.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const Logo = Atom((props) => (
+	A({
+		class: 'logo w-[32px] h-[32px] m-[16px] block',
+		href: './',
+		...props
+	}, [
+		/**
+		 * This will create the logo image.
+		 */
+		props.src && Img({
+			src: props.src,
+			alt: 'Logo',
+			class: 'w-[32px] h-[32px]',
+
+			/**
+			 * This will hide the image if there is an error.
+			 */
+			error: (e) => e.target.style.display = 'none'
+		})
+	])
+));
 
 /**
  * @function LeftPane
@@ -8,20 +37,21 @@ import { Atom } from '@base-framework/base';
  *
  * @returns {object} A Div component for the left panel.
  */
-export const LeftPane = Atom(() =>
+export const LeftPane = Atom((props) =>
 (
-	Div({ class: 'hidden md:flex flex-col justify-between bg-background p-8' }, [
+	Div({ class: 'hidden md:flex flex-col justify-between bg-accent p-8' }, [
 		// Top Logo
 		Div({ class: 'flex items-center space-x-2' }, [
-			Div({ class: 'text-lg font-bold' }, '⌘ Acme Inc'),
+			Logo({ src: props.src || '/images/logo.svg' }),
+			Div({ class: 'text-lg font-bold' }, Configs.APP_NAME),
 		]),
 
 		// Testimonial
 		Div({}, [
 			P({ class: 'text-sm italic' },
-				'“This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.”'
+				'“Simplify your workflow with our intuitive tools.”'
 			),
-			P({ class: 'mt-2 text-sm font-semibold' }, 'Sofia Davis')
+			P({ class: 'mt-2 text-sm font-semibold' }, '')
 		])
 	])
 ));
