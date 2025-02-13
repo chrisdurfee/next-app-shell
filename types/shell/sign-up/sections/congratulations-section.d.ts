@@ -1,3 +1,1 @@
-export function CongratulationsSection({ showStep }: {
-    showStep: Function;
-}): object;
+export function CongratulationsSection(): object;

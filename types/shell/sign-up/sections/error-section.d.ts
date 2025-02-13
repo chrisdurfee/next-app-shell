@@ -1,3 +1,1 @@
-export function ErrorSection({ showStep }: {
-    showStep: Function;
-}): object;
+export function ErrorSection(): object;

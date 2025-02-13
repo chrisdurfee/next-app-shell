@@ -1,3 +1,1 @@
-export function UserDetailsSection({ showStep }: {
-    showStep: Function;
-}): object;
+export function UserDetailsSection(): object;
