@@ -1,7 +1,6 @@
 import { A, Div, Img } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Button } from '@base-framework/ui/atoms';
-import { Configs } from '../../../configs.js';
 import { STEPS } from '../steps.js';
 import { SignUpForm } from './sign-up-form.js';
 
@@ -54,7 +53,7 @@ const SignInNavigation = Atom(({ src }) =>
 
 		Button({
 			variant: 'link',
-			onClick: () => app.navigate(Configs.router.baseUrl)
+			click: () => app.navigate('/')
 		}, 'Sign in')
 	])
 ));

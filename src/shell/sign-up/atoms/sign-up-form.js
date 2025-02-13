@@ -1,6 +1,8 @@
-import { Div, Form } from '@base-framework/atoms';
+import { Div, Form, H2, Header, P, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Icon } from '@base-framework/ui';
 import { Button, Input } from '@base-framework/ui/atoms';
+import { Icons } from "@base-framework/ui/icons";
 
 /**
  * @function CredentialsContainer
@@ -46,13 +48,29 @@ const SignUpButton = Atom(() =>
  */
 const SignUpWithGoogleButton = Atom(() =>
 (
-    Div({ class: 'grid gap-4' }, [
-        Button({
-            variant: 'outline',
-            'aria-label': 'Sign up with Google'
-        }, 'Sign Up with Google')
-    ])
+    Button({
+		variant: 'outline',
+		class: "gap-2 w-full",
+		click: () => console.log("Sign in with Google"),
+		"aria-label": "Sign in with Google"
+	}, [
+		Icon(Icons.companies.google || ''),
+		Span("Google")
+	])
 ));
+
+/**
+ * This will create the card header.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const CardHeader = ({ title, description }) => (
+	Header({ class: 'text-center py-6 flex flex-auto flex-col space-y-1' }, [
+		H2({ class: "font-semibold tracking-tight text-2xl" }, title),
+		P({ class: "text-sm text-muted-foreground" }, description)
+	])
+);
 
 /**
  * This will create a form wrapper.
@@ -62,7 +80,7 @@ const SignUpWithGoogleButton = Atom(() =>
  * @returns {object}
  */
 const FormWrapper = Atom((props, children) => (
-	Div({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, children)
+	Div({ class: 'w-full mx-auto max-w-sm p-6' }, children)
 ));
 
 /**
@@ -77,13 +95,25 @@ const FormWrapper = Atom((props, children) => (
 export const SignUpForm = Atom(({ onSubmit }) =>
 (
 	FormWrapper([
+		CardHeader({ title: "Create an account", description: "Enter your email below to create your account" }),
 		Form({
-			class: 'flex flex-col p-6',
+			class: 'flex flex-col',
 			submit: () => onSubmit()  // Or whatever sign-up handler you'd like
 		}, [
 			Div({ class: 'grid gap-4' }, [
 				CredentialsContainer(),
 				SignUpButton(),
+
+				// Divider for "OR CONTINUE WITH"
+				Div({ class: "relative" }, [
+					Div({ class: "absolute inset-0 flex items-center" }, [
+						Span({ class: "flex-grow border-t" })
+					]),
+					Div({ class: 'relative flex justify-center text-xs uppercase' }, [
+						Span({ class: 'bg-background px-2 text-muted-foreground' }, "or continue with")
+					]),
+				]),
+
 				SignUpWithGoogleButton(),
 			])
 		])
