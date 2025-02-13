@@ -43,3 +43,5 @@ export const MainContent = ({ options, routes}) => (
 		})
 	]
 );
+
+export default MainContent;
