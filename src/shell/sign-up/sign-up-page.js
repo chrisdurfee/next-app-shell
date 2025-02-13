@@ -1,18 +1,28 @@
-import { FullscreenPage } from "@base-framework/ui/pages";
+import { FullscreenPage } from '@base-framework/ui/pages';
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
 /**
- * This will setup the page settings.
- *
- * @type {object} PageSettings
+ * @typedef {object} PageSettings
+ * @property {Function} setupStates - Defines initial state.
+ * @property {Function} showStep    - Updates the "step" state.
+ */
+
+/**
+ * @type {PageSettings}
+ * @description
+ *  Settings for configuring the sign-up page. Maintains
+ *  the `step` in the component’s state and provides a
+ *  method to show different steps.
  */
 const PageProps =
 {
 	/**
-	 * This will setup the states.
+	 * @function setupStates
+	 * @description
+	 *  Defines the initial state values for the sign-up page.
 	 *
-	 * @returns {object}
+	 * @returns {object} The initial state (with step = WELCOME).
 	 */
 	setupStates()
 	{
@@ -22,25 +32,29 @@ const PageProps =
 	},
 
 	/**
-	 * This will show the step.
+	 * @function showStep
+	 * @description
+	 *  Updates the `step` state to a new step key.
 	 *
-	 * @param {string} step
-	 * @returns {void}
+	 * @param {string} step - One of the STEPS constants.
 	 */
 	showStep(step)
 	{
+		// @ts-ignore
 		this.state.step = step;
 	}
 };
 
 /**
- * SignUpPage
+ * @function SignUpPage
+ * @description
+ *  Constructs a FullscreenPage using our page settings and
+ *  the PageStepContainer, which renders all step UI.
  *
- * This will create a sign up page.
- *
- * @returns {FullscreenPage}
+ * @returns {object} A FullscreenPage instance.
  */
-export const SignUpPage = () => (
+export const SignUpPage = () =>
+(
 	new FullscreenPage(PageProps, [
 		PageStepContainer()
 	])

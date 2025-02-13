@@ -1,41 +1,22 @@
-import { Div, H1, Header, P, Section } from '@base-framework/atoms';
-import { Atom } from '@base-framework/base';
+import { Section } from '@base-framework/atoms';
+import { LeftPane } from '../atoms/left-pane.js';
+import { RightPane } from '../atoms/right-pane.js';
 
 /**
- * This will create a header for the documentation.
+ * @function WelcomeSection
+ * @description
+ *  Creates the split layout of the welcome page:
+ *    - Left side: branding/testimonial panel
+ *    - Right side: sign-up intro card
  *
  * @param {object} props
- * @returns {object}
+ * @param {Function} props.showStep - The callback to navigate steps.
+ * @returns {object} A Section component containing the two panes.
  */
-const SignUpHeader = Atom(({ title, description}) => (
-	Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
-		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
-		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
-	])
-));
-
-/**
- * This will create a form wrapper.
- *
- * @param {object} props
- * @param {array} children
- * @returns {object}
- */
-const FormWrapper = Atom((props, children) => (
-	Div({
-		class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
-	}, children)
-));
-
-/**
- * This will create the welcome section.
- *
- * @returns {object}
- */
-export const WelcomeSection = () => (
-	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		FormWrapper({ class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm' }, [
-			SignUpHeader({ title: 'Sign Up', description: 'Please enter your credentials to sign up.' })
-		])
+export const WelcomeSection = ({ showStep }) =>
+(
+	Section({ class: 'flex flex-auto flex-col md:flex-row' }, [
+		LeftPane(),
+		RightPane({ showStep })
 	])
 );

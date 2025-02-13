@@ -1,9 +1,12 @@
 /**
- * This is a enum for the different steps in the sign-up process.
- *
- * @type {object} STEPS
+ * @enum {string} STEPS
+ * @description
+ *  Enumerates all possible steps in the sign-up process.
  */
 export const STEPS =
 {
-	WELCOME: 'welcome'
+	WELCOME: 'welcome',
+	USER_DETAILS: 'user_details',
+	ERROR: 'error',
+	CONGRATULATIONS: 'congratulations'
 };
