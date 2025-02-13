@@ -1,2 +1,2 @@
-export function AppContent(props: object): object;
+export function AppContent(): object;
 export default AppContent;

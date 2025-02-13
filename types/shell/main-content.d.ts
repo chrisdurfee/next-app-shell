@@ -1,2 +1,2 @@
-export function MainContent({ options, routes }: object): Array<object>;
+export function MainContent(): Array<object>;
 export default MainContent;
