@@ -52,11 +52,11 @@ export const AppShell = Jot(
 				switch: [
 					{
 						uri: '/sign-up*',
-						component: new Panel()
+						import: () => import('./sign-up/sign-up-page.js')
 					},
 					{
 						uri: '/onboarding*',
-						component: new Panel()
+						component: new Panel('onboarding')
 					},
 					{
 						component: AppContent({
