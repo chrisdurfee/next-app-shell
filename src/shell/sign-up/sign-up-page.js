@@ -45,3 +45,5 @@ export const SignUpPage = () => (
 		PageStepContainer()
 	])
 );
+
+export default SignUpPage;

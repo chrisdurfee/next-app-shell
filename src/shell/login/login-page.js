@@ -45,3 +45,5 @@ export const LoginPage = () => (
 		PageStepContainer()
 	])
 );
+
+export default LoginPage;
