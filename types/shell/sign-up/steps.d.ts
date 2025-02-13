@@ -1,6 +1,10 @@
 /**
- * This is a enum for the different steps in the sign-up process.
- *
- * @type {object} STEPS
+ * STEPS
  */
-export const STEPS: object;
+export type STEPS = string;
+export namespace STEPS {
+    let WELCOME: string;
+    let USER_DETAILS: string;
+    let ERROR: string;
+    let CONGRATULATIONS: string;
+}
