@@ -10,15 +10,15 @@ import { EmailEmptyState } from "./email/email-empty-state.js";
  * @returns {function}
  */
 const DockableEmailDetail = (props) => (
-    () => new DockableOverlay([
-        OnRoute('messageId', (messageId) => (!messageId)
-            ? EmailEmptyState()
-            : new EmailDetail({
-                messageId,
-                delete: props.delete
-            })
-        )
-    ])
+	() => new DockableOverlay([
+		OnRoute('messageId', (messageId) => (!messageId)
+			? EmailEmptyState()
+			: new EmailDetail({
+				messageId,
+				delete: props.delete
+			})
+		)
+	])
 );
 
 /**
@@ -27,13 +27,13 @@ const DockableEmailDetail = (props) => (
  * @returns {object}
  */
 const EmptyEmail = () => (
-    new Panel([
-        Div({ class: "hidden lg:flex flex-auto flex-col" }, [
-            Div({ class: 'flex auto flex-col w-full h-full' }, [
-                EmailEmptyState()
-            ])
-        ])
-    ])
+	new Panel([
+		Div({ class: "hidden lg:flex flex-auto flex-col" }, [
+			Div({ class: 'flex auto flex-col w-full h-full' }, [
+				EmailEmptyState()
+			])
+		])
+	])
 );
 
 /**
@@ -43,19 +43,19 @@ const EmptyEmail = () => (
  * @returns {object}
  */
 export const ContentSwitch = (props) => (
-    Div({
-        class: 'flex-[4] flex-col w-full h-full hidden lg:flex',
-        switch: [
-            {
-                uri: 'inbox/:page/:messageId*',
-                component: DockableEmailDetail(props)
-            },
-            {
-                uri: 'inbox*',
-                component: EmptyEmail
-            }
-        ]
-    })
+	Div({
+		class: 'flex-[4] flex-col w-full h-full hidden lg:flex',
+		switch: [
+			{
+				uri: 'inbox/:page/:messageId*',
+				component: DockableEmailDetail(props)
+			},
+			{
+				uri: 'inbox*',
+				component: EmptyEmail
+			}
+		]
+	})
 );
 
 export default ContentSwitch;

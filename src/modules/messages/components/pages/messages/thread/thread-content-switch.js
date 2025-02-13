@@ -10,16 +10,16 @@ import { ThreadEmptyState } from "./message-thread/thread-empty-state.js";
  * @returns {function}
  */
 const DockableThread = (props) => (
-    () => new DockableOverlay([
-        OnRoute('messageId', (messageId) => (!messageId)
-            ? ThreadEmptyState()
-            : new ThreadDetail({
-                messageId,
-                delete: props.delete,
-                mingle: props.mingle
-            })
-        )
-    ])
+	() => new DockableOverlay([
+		OnRoute('messageId', (messageId) => (!messageId)
+			? ThreadEmptyState()
+			: new ThreadDetail({
+				messageId,
+				delete: props.delete,
+				mingle: props.mingle
+			})
+		)
+	])
 );
 
 /**
@@ -28,13 +28,13 @@ const DockableThread = (props) => (
  * @returns {object}
  */
 const EmptyThread = () => (
-    new Panel([
-        Div({ class: "hidden lg:flex flex-auto flex-col" }, [
-            Div({ class: "flex auto flex-col w-full h-full" }, [
-                ThreadEmptyState()
-            ])
-        ])
-    ])
+	new Panel([
+		Div({ class: "hidden lg:flex flex-auto flex-col" }, [
+			Div({ class: "flex auto flex-col w-full h-full" }, [
+				ThreadEmptyState()
+			])
+		])
+	])
 );
 
 /**
@@ -46,16 +46,16 @@ const EmptyThread = () => (
  * @returns {object}
  */
 export const ThreadContentSwitch = (props) =>
-    Div({
-        class: "flex-auto flex-col w-full h-full hidden lg:flex",
-        switch: [
-            {
-                uri: 'messages/:page/:messageId*',
-                component: DockableThread(props)
-            },
-            {
-                uri: 'messages*',
-                component: EmptyThread
-            }
-        ]
-    });
+	Div({
+		class: "flex-auto flex-col w-full h-full hidden lg:flex",
+		switch: [
+			{
+				uri: 'messages/:page/:messageId*',
+				component: DockableThread(props)
+			},
+			{
+				uri: 'messages*',
+				component: EmptyThread
+			}
+		]
+	});

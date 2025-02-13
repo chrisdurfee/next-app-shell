@@ -1,5 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Atom, Component, Jot } from '@base-framework/base';
+import { Panel } from '@base-framework/ui';
 import { NotificationContainer } from "@base-framework/ui/molecules";
 import { AppContent } from './app-content.js';
 
@@ -46,9 +47,24 @@ export const AppShell = Jot(
 		// @ts-ignore
 		const { options, routes } = this;
 		return Shell([
-			AppContent({
-				options,
-				routes
+			Div({
+				class: 'flex flex-auto flex-col',
+				switch: [
+					{
+						uri: '/sign-up*',
+						component: new Panel()
+					},
+					{
+						uri: '/onboarding*',
+						component: new Panel()
+					},
+					{
+						component: AppContent({
+							options,
+							routes
+						})
+					}
+				]
 			})
 		]);
 	}
