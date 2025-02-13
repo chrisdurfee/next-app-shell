@@ -13,7 +13,7 @@ export const UserDetailsSection = () =>
 		Div({
 			class: 'w-full max-w-sm bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg'
 		}, [
-			Div({ class: 'p-6 text-lg font-semibold' }, 'Get User Details'),
+			Div({ class: 'p-6 text-lg font-semibold' }, 'User Details'),
 			UserDetailsForm()
 		])
 	])

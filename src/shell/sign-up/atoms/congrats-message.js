@@ -1,6 +1,6 @@
-import { Button, Div, H2, P } from '@base-framework/atoms';
+import { Div, Form, H2, Header, P } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { STEPS } from '../steps.js';
+import { Button } from "@base-framework/ui/atoms";
 
 /**
  * @function CongratsMessage
@@ -11,12 +11,18 @@ import { STEPS } from '../steps.js';
  */
 export const CongratsMessage = Atom(() =>
 (
-	Div({ class: 'w-full max-w-sm bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-6 space-y-4' }, [
-		H2({ class: 'text-xl font-bold text-green-600' }, 'Congratulations!'),
-		P({}, 'Your account has been created successfully.'),
-		Button({
-			class: 'px-4 py-2 bg-primary rounded-md',
-			click: (e, { showStep }) => showStep(STEPS.WELCOME)
-		}, 'Back to Welcome')
+	Div({ class: 'w-full max-w-sm bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-6' }, [
+        Form({ class: 'flex flex-auto flex-col' }, [
+            Div({ class: 'flex flex-auto flex-col space-y-4' }, [
+                Header({ class: 'py-4' }, [
+                    H2({ class: 'text-xl font-bold' }, 'Congratulations!'),
+                    P('Your account has been created successfully.'),
+                ]),
+                Button({
+                    variant: 'primary',
+                    click: () => app.navigation('/')
+                }, 'Let\'s go!')
+            ])
+        ])
 	])
 ));

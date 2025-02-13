@@ -48,10 +48,8 @@ export const LeftPane = Atom((props) =>
 
 		// Testimonial
 		Div({}, [
-			P({ class: 'text-sm italic' },
-				'“Simplify your workflow with our intuitive tools.”'
-			),
-			P({ class: 'mt-2 text-sm font-semibold' }, '')
+			P({ class: 'text-sm italic' }, '“Simplify your workflow with our intuitive tools.”'),
+			P({ class: 'mt-2 text-sm font-semibold' }, 'Discover our user-friendly features.')
 		])
 	])
 ));
