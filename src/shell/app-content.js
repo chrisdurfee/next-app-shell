@@ -78,3 +78,5 @@ export const AppContent = (props) => (
 		]
 	})
 );
+
+export default AppContent;

@@ -1,5 +1,6 @@
 import { A, Code, Div, H1, H3, Header, P, Pre, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Button } from '@base-framework/ui/atoms';
 import { Icons } from "@base-framework/ui/icons";
 import { BlankPage } from "@base-framework/ui/pages";
 
@@ -193,6 +194,28 @@ export function ToDoApp()
  * This will render the to-do app to the body of the document.
  */
 Builder.render(ToDoApp(), document.body);`)
+			]),
+
+			TextSection({
+				title: 'Sign Up, Onboarding, and Sign In',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "This platform comes with the front end pages to sign up, onboard, and sign in. "),
+				Div({ class: 'mt-10 flex items-center justify-start gap-x-4 pb-6' }, [
+					A({
+						href: './sign-up',
+						target: '_blank',
+						class: 'bttn ghost gap-2'
+					}, 'Sign Up'),
+					A({
+						href: './onboarding',
+						target: '_blank',
+						class: 'bttn ghost gap-2'
+					}, 'Onboarding'),
+					Button({
+						variant: 'ghost',
+						click: () => app.signOut()
+					}, 'Sign Out')
+				])
 			]),
 
 			TextSection({
