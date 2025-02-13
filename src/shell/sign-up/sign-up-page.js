@@ -27,7 +27,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.CONGRATULATIONS
+			step: STEPS.WELCOME
 		};
 	},
 

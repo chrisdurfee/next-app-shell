@@ -5,7 +5,7 @@ import { Button } from "@base-framework/ui/atoms";
 /**
  * @function CongratsMessage
  * @description
- *  Displays a final success message with a button to return to the welcome step.
+ *  Displays a final success message with a button to go to the app.
  *
  * @returns {object} A Div component containing the congratulations message.
  */
@@ -20,7 +20,7 @@ export const CongratsMessage = Atom(() =>
                 ]),
                 Button({
                     variant: 'primary',
-                    click: () => app.navigation('/')
+                    click: () => app.navigate('/')
                 }, 'Let\'s go!')
             ])
         ])
