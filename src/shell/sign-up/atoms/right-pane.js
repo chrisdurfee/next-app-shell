@@ -1,32 +1,92 @@
-import { Button, Div, H1, Header, P } from '@base-framework/atoms';
+import { A, Div, Img } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { Button } from '@base-framework/ui/atoms';
+import { Configs } from '../../../configs.js';
 import { STEPS } from '../steps.js';
+import { SignUpForm } from './sign-up-form.js';
+
+/**
+ * This will create a logo.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const Logo = Atom((props) => (
+	A({
+		class: 'logo w-[24px] h-[24px] block md:hidden',
+		href: './sign-up',
+		...props
+	}, [
+
+		/**
+		 * This will create the logo image.
+		 */
+		props.src && Img({
+			src: props.src,
+			alt: 'Logo',
+			class: 'w-[24px] h-[24px]',
+
+			/**
+			 * This will hide the image if there is an error.
+			 */
+			error: (e) => e.target.style.display = 'none'
+		})
+	])
+));
+
+/**
+ * @function SignInNavigation
+ * @description
+ *  Button bar at the top-right that navigates to the "Sign In" step.
+ *
+ * @param {object} props
+ * @param {Function} props.showStep - The callback to navigate steps.
+ * @returns {object} A Div containing the "Sign in" button.
+ */
+const SignInNavigation = Atom(({ src }) =>
+(
+	Div({ class: 'p-4 flex justify-between' }, [
+		Div({ class: 'flex items-center space-x-2' }, [
+			Logo({
+				src: src || '/images/logo.svg'
+			})
+		]),
+
+		Button({
+			variant: 'link',
+			onClick: () => app.navigate(Configs.router.baseUrl)
+		}, 'Sign in')
+	])
+));
 
 /**
  * @function RightPane
  * @description
- *  Renders the sign-up card portion on the right side of the screen.
+ *  Renders the top navigation (Sign In link) + sign-up form in a card on the right side.
  *
  * @param {object} props
- * @param {Function} props.showStep - The callback to navigate steps.
- * @returns {object} A Div component for the right panel (Welcome view).
+ * @param {Function} props.showStep - The callback to navigate steps (e.g., sign in).
+ * @returns {object} A Div component for the right panel.
  */
-export const RightPane = Atom(({ showStep }) =>
-(
-	Div({ class: 'flex w-full flex-auto flex-col justify-center items-center' }, [
+export const RightPane = Atom(({ showStep }) => (
+	Div({ class: 'flex flex-auto flex-col' }, [
+		// Top nav to go to sign-in
+		SignInNavigation({ showStep }),
+
+		// Main sign-up card
 		Div({
-			class: 'w-full max-w-sm bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-6 space-y-4'
+			class: 'flex flex-auto flex-col'
 		}, [
-			Header({ class: 'flex flex-col space-y-1.5' }, [
-				H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, 'Sign Up'),
-				P({ class: 'text-base text-muted-foreground py-2' },
-					'Welcome to Acme Inc! Let\'s get you started.'
-				)
-			]),
-			Button({
-				class: 'px-4 py-2 bg-primary rounded-md',
-				onClick: () => showStep(STEPS.USER_DETAILS)
-			}, 'Continue')
+			Div({ class: 'flex flex-auto flex-col justify-center items-center' }, [
+				SignUpForm({
+					showStep,
+					onSubmit: () =>
+					{
+						// Example: do something server-side, then show next step
+						showStep(STEPS.USER_DETAILS);
+					}
+				})
+			])
 		])
 	])
 ));

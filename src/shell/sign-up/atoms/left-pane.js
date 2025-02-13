@@ -11,7 +11,7 @@ import { Configs } from '../../../../src/configs.js';
 const Logo = Atom((props) => (
 	A({
 		class: 'logo w-[32px] h-[32px] m-[16px] block',
-		href: './',
+		href: './sign-up',
 		...props
 	}, [
 		/**
@@ -39,7 +39,7 @@ const Logo = Atom((props) => (
  */
 export const LeftPane = Atom((props) =>
 (
-	Div({ class: 'hidden md:flex flex-col justify-between bg-accent p-8' }, [
+	Div({ class: 'hidden md:flex flex-auto flex-col justify-between bg-accent p-8' }, [
 		// Top Logo
 		Div({ class: 'flex items-center space-x-2' }, [
 			Logo({ src: props.src || '/images/logo.svg' }),
