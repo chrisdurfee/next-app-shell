@@ -36,7 +36,7 @@ const PageProps =
 /**
  * SignUpPage
  *
- * This will create a siggn up page.
+ * This will create a sign up page.
  *
  * @returns {FullscreenPage}
  */
