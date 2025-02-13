@@ -1,5 +1,6 @@
 import { Main } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
+import { modules } from '../modules/modules.js';
 import { AppControl } from './navigation/app-control.js';
 import { MobileHeader } from './navigation/mobile-header.js';
 
@@ -22,11 +23,13 @@ const ActivePanelContainer = Atom((props, children) =>
 /**
  * This will create the main content of the app shell.
  *
- * @param {object} props
  * @returns {Array<object>}
  */
-export const MainContent = ({ options, routes}) => (
-	[
+export const MainContent = () =>
+{
+	const { routes, links: options } = modules;
+
+	return [
 		MobileHeader(),
 
 		/**
@@ -41,7 +44,7 @@ export const MainContent = ({ options, routes}) => (
 			switch: routes,
 			cache: 'mainBody'
 		})
-	]
-);
+	];
+};
 
 export default MainContent;

@@ -1,6 +1,5 @@
 import { Builder, router } from "@base-framework/base";
 import { Configs } from "./configs.js";
-import { modules } from "./modules/modules.js";
 import { setupServiceWorker } from "./service.js";
 import { AppShell } from "./shell/app-shell.js";
 import { UserData } from "./shell/models/user-data.js";
@@ -112,8 +111,7 @@ export class AppController
 	 */
 	render()
 	{
-		const { routes, links: options } = modules;
-		const main = this.appShell = new AppShell({ options, routes });
+		const main = this.appShell = new AppShell();
 		Builder.render(main, document.body);
 
 		/**

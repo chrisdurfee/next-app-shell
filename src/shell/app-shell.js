@@ -2,7 +2,6 @@ import { Div } from '@base-framework/atoms';
 import { Atom, Component, Jot } from '@base-framework/base';
 import { Panel } from '@base-framework/ui';
 import { NotificationContainer } from "@base-framework/ui/molecules";
-import { AppContent } from './app-content.js';
 
 /**
  * This will create the app container.
@@ -44,8 +43,6 @@ export const AppShell = Jot(
 	 */
 	render()
 	{
-		// @ts-ignore
-		const { options, routes } = this;
 		return Shell([
 			Div({
 				class: 'flex flex-auto flex-col',
@@ -59,10 +56,7 @@ export const AppShell = Jot(
 						component: new Panel('onboarding')
 					},
 					{
-						component: AppContent({
-							options,
-							routes
-						})
+						import: () => import('./app-content.js')
 					}
 				]
 			})

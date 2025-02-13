@@ -1,7 +1,6 @@
 import { Div } from '@base-framework/atoms';
 import { Import } from '@base-framework/base';
 import { openInstallPrompt } from './installation/install.js';
-import { MainContent } from './main-content.js';
 
 /**
  * This will update the body class based on the sign in state.
@@ -40,12 +39,22 @@ const LoginPage = () => (
 );
 
 /**
- * This will create the app content.
+ * This will create the main content page.
  *
- * @param {object} props
  * @returns {object}
  */
-export const AppContent = (props) => (
+const MainContent = () => (
+	Import({
+		src: () => import('./main-content.js')
+	})
+);
+
+/**
+ * This will create the app content.
+ *
+ * @returns {object}
+ */
+export const AppContent = () => (
 	Div({
 		class: 'app-content flex flex-auto flex-col will-change-contents',
 
@@ -80,7 +89,7 @@ export const AppContent = (props) => (
 			/**
 			 * This will add the login page if the user is not signed in.
 			 */
-			['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent(props)],
+			['isSignedIn', (isSignedIn) => (!isSignedIn)? LoginPage() : MainContent()],
 
 			/**
 			 * This will update the body class based on the sign in state.
