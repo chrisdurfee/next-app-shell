@@ -13,7 +13,7 @@ import { STEPS } from '../steps.js';
  */
 export const UserDetailsForm = Atom(() =>
 (
-	Form({ submit: (e, { showStep }) => showStep(STEPS.ERROR) }, [
+	Form({ submit: (e, { showStep }) => showStep(STEPS.CONGRATULATIONS) }, [
 		Fieldset({ legend: 'Profile' }, [
 			new FormField({
 				name: "fullname",
