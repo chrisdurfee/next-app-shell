@@ -1,4 +1,4 @@
-import { Div, Section } from '@base-framework/atoms';
+import { Div, H2, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Skeleton } from '@base-framework/ui';
 import { UserDetailsForm } from '../atoms/user-details-form.js';
@@ -28,7 +28,10 @@ export const UserDetailsSection = () =>
 				Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 			]),
 			Col({ class: 'md:max-w-[400px] md:p-4' }, [
-				Div({ class: 'p-6 text-lg font-semibold' }, 'User Details'),
+				Header({ class: 'p-6 ' }, [
+					H2({ class: 'text-lg font-semibold' }, 'Let\'s Get to Know You'),
+					P({ class: 'text-sm text-gray-500' }, 'Enter your details below to create an account.')
+				]),
 				UserDetailsForm()
 			])
 		])
