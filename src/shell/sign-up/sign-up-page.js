@@ -27,7 +27,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.USER_DETAILS
+			step: STEPS.WELCOME
 		};
 	},
 

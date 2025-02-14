@@ -23,7 +23,7 @@ const Col = Atom((props, children) => (
 export const UserDetailsSection = () =>
 (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Section({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4' }, [
+		Section({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
 			Col({ class: 'hidden md:flex' }, [
 				Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 			]),
