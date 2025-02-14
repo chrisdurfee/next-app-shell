@@ -24,10 +24,10 @@ export const UserDetailsSection = () =>
 (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
 		Section({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4' }, [
-			Col([
+			Col({ class: 'hidden md:flex' }, [
 				Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 			]),
-			Col({ class: 'md:max-w-[400px] p-4' }, [
+			Col({ class: 'md:max-w-[400px] md:p-4' }, [
 				Div({ class: 'p-6 text-lg font-semibold' }, 'User Details'),
 				UserDetailsForm()
 			])
