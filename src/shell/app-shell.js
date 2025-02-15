@@ -1,6 +1,5 @@
 import { Div } from '@base-framework/atoms';
 import { Atom, Component, Jot } from '@base-framework/base';
-import { Panel } from '@base-framework/ui';
 import { NotificationContainer } from "@base-framework/ui/molecules";
 
 /**
@@ -53,7 +52,7 @@ export const AppShell = Jot(
 					},
 					{
 						uri: '/onboarding*',
-						component: new Panel('onboarding')
+						import: () => import('./onboarding/onboarding-page.js')
 					},
 					{
 						import: () => import('./app-content.js')
