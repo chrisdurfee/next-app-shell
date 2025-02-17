@@ -83,10 +83,18 @@ export const PageStepContainer = () =>
         Div({ class: 'w-full max-w-5xl flex justify-between mt-4' }, [
             Button({
                 variant: 'outline',
-                click: (e, parent) => parent.showStep(getPreviousStep(parent.state.step))
+                click: (e, parent) =>
+					{
+						const previousStep = getPreviousStep(parent.state.step);
+						parent.showStep(previousStep);
+					}
             }, 'Back'),
             Button({
-                click: (e, parent) => parent.showStep(getNextStep(parent.state.step))
+                click: (e, parent) =>
+					{
+						const nextStep = getNextStep(parent.state.step);
+						parent.showStep(nextStep);
+					}
             }, 'Next')
         ])
     ])
