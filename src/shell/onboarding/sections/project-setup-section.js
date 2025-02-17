@@ -1,12 +1,7 @@
-import { Button, Code, Div, H2, H3, P } from '@base-framework/atoms';
-import { Icons } from '@base-framework/ui/icons';
-import { STEPS } from '../steps.js';
+import { Code, Div, H2, H3, P } from '@base-framework/atoms';
 
 export const ProjectSetupSection = () =>
 {
-    const nextStep = () => app.showStep(STEPS.THEMING);
-    const prevStep = () => app.showStep(STEPS.WELCOME);
-
     return Div({ class: 'flex flex-col items-start' }, [
         H2({ class: 'text-2xl font-bold mb-4' }, 'Project Setup'),
 
@@ -44,22 +39,6 @@ export const ProjectSetupSection = () =>
             Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'npm run dev'),
             P({ class: 'text-muted-foreground' }, 'Build for production:'),
             Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'npm run build')
-        ]),
-
-        Div({ class: 'flex justify-between mt-8' }, [
-            Button({
-                variant: 'outline',
-                click: prevStep
-            }, [
-                Icons.arrowLeft(),
-                ' Back'
-            ]),
-            Button({
-                click: nextStep
-            }, [
-                'Next: Theming ',
-                Icons.arrowRight()
-            ])
         ])
     ]);
 };

@@ -1,5 +1,4 @@
-import { Button, Code, Div, H2, H3, P } from '@base-framework/atoms';
-import { Icons } from '@base-framework/ui/icons';
+import { Code, Div, H2, H3, P } from '@base-framework/atoms';
 import { STEPS } from '../steps.js';
 
 export const ModulesSection = () =>
@@ -75,22 +74,6 @@ import "./your-module/module.js";`
                 P('• Use clear, descriptive names for routes and components'),
                 P('• Maintain module-specific styles in the css folder'),
                 P('• Document module configuration and dependencies')
-            ])
-        ]),
-
-        Div({ class: 'flex justify-between mt-8' }, [
-            Button({
-                variant: 'outline',
-                click: prevStep
-            }, [
-                Icons.arrowLeft(),
-                ' Back'
-            ]),
-            Button({
-                click: nextStep
-            }, [
-                'Next: App Shell ',
-                Icons.arrowRight()
             ])
         ])
     ]);

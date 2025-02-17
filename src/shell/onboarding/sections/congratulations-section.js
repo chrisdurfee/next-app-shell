@@ -1,6 +1,5 @@
-import { A, Button, Div, H1, P } from '@base-framework/atoms';
+import { A, Div, H1, P } from '@base-framework/atoms';
 import { Icons } from '@base-framework/ui/icons';
-import { STEPS } from '../steps.js';
 
 /**
  * @function CongratulationsSection
@@ -11,9 +10,7 @@ import { STEPS } from '../steps.js';
  */
 export const CongratulationsSection = () =>
 {
-    const startOver = () => app.showStep(STEPS.WELCOME);
-
-    return Div({ class: 'flex flex-col items-start' }, [
+   return Div({ class: 'flex flex-col items-start' }, [
         Div({ class: 'w-16 h-16 mb-6 text-primary' }, Icons.checkCircle()),
         H1({ class: 'text-2xl font-bold mb-4' }, "You're Ready to Build!"),
         P({ class: 'text-base text-muted-foreground mb-4' },
@@ -26,13 +23,6 @@ export const CongratulationsSection = () =>
             }, [
                 Icons.document.text(),
                 ' View Documentation'
-            ]),
-            Button({
-                variant: 'outline',
-                click: startOver
-            }, [
-                Icons.refresh(),
-                ' Start Over'
             ])
         ])
     ]);

@@ -1,5 +1,4 @@
-import { Button, Div, H2, H3, P } from '@base-framework/atoms';
-import { Icons } from '@base-framework/ui/icons';
+import { Div, H2, H3, P } from '@base-framework/atoms';
 import { STEPS } from '../steps.js';
 
 export const DevelopmentSection = () =>
@@ -47,22 +46,6 @@ export const DevelopmentSection = () =>
                 P('• Following Base framework conventions'),
                 P('• Testing components and modules'),
                 P('• Using TypeScript for better type safety')
-            ])
-        ]),
-
-        Div({ class: 'flex justify-between mt-8' }, [
-            Button({
-                variant: 'outline',
-                click: prevStep
-            }, [
-                Icons.arrowLeft(),
-                ' Back'
-            ]),
-            Button({
-                click: nextStep
-            }, [
-                'Finish ',
-                Icons.arrowRight()
             ])
         ])
     ]);

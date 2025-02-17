@@ -1,5 +1,4 @@
-import { Button, Code, Div, H2, H3, P } from '@base-framework/atoms';
-import { Icons } from '@base-framework/ui/icons';
+import { Code, Div, H2, H3, P } from '@base-framework/atoms';
 import { STEPS } from '../steps.js';
 
 export const AppShellSection = () =>
@@ -59,22 +58,6 @@ export const AppShellSection = () =>
                 P('• User session management'),
                 P('• Protected routes'),
                 P('• Customizable auth providers')
-            ])
-        ]),
-
-        Div({ class: 'flex justify-between mt-8' }, [
-            Button({
-                variant: 'outline',
-                click: prevStep
-            }, [
-                Icons.arrowLeft(),
-                ' Back'
-            ]),
-            Button({
-                click: nextStep
-            }, [
-                'Next: Development ',
-                Icons.arrowRight()
             ])
         ])
     ]);

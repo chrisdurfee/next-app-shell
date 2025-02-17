@@ -1,5 +1,5 @@
 import { Div, OnState } from '@base-framework/atoms';
-import { Button } from '@base-framework/ui/atoms';
+import { Button, Skeleton } from '@base-framework/ui/atoms';
 import { AppShellSection } from './sections/app-shell-section.js';
 import { CongratulationsSection } from './sections/congratulations-section.js';
 import { DevelopmentSection } from './sections/development-section.js';
@@ -10,6 +10,33 @@ import { WelcomeSection } from './sections/welcome-section.js';
 import { STEPS } from './steps.js';
 
 /**
+ * This will get the next step.
+ *
+ * @param {string} currentStep
+ * @returns {string}
+ */
+const getNextStep = (currentStep) =>
+{
+	const values = Object.values(STEPS);
+	const stepIndex = values.indexOf(currentStep);
+	const result = values[stepIndex + 1];
+	return result || values[values.length - 1];
+};
+
+/**
+ * This will get the previous step.
+ *
+ * @param {string} currentStep
+ * @returns {string}
+ */
+const getPreviousStep = (currentStep) =>
+{
+	const values = Object.values(STEPS);
+	const stepIndex = values.indexOf(currentStep);
+	return values[stepIndex - 1] || values[0];
+};
+
+/**
  * @function PageStepContainer
  * @description
  *  Renders the correct page section based on current step.
@@ -18,8 +45,10 @@ import { STEPS } from './steps.js';
  */
 export const PageStepContainer = () =>
 (
-    Div({ class: 'flex flex-auto flex-col items-center justify-center p-4' }, [
-        Div({ class: 'w-full max-w-4xl border shadow-md rounded-lg p-6 flex' }, [
+    Div({
+			class: 'flex flex-auto flex-col items-center justify-center p-4'
+		}, [
+        Div({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
             Div({ class: 'w-1/2 p-4' }, [
                 OnState('step', (step) =>
                 {
@@ -49,17 +78,15 @@ export const PageStepContainer = () =>
                     }
                 })
             ]),
-            Div({ class: 'w-1/2 p-4 flex items-center justify-center' }, [
-                Div({ class: 'w-full h-64 bg-gray-200 rounded-lg' }) // Skeleton image placeholder
-            ])
+            Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
         ]),
-        Div({ class: 'w-full max-w-4xl flex justify-between mt-4' }, [
+        Div({ class: 'w-full max-w-5xl flex justify-between mt-4' }, [
             Button({
                 variant: 'outline',
-                click: (e, parent) => parent.showStep(parent.state.step === STEPS.WELCOME ? STEPS.WELCOME : Object.keys(STEPS)[Object.keys(STEPS).indexOf(parent.state.step) - 1])
+                click: (e, parent) => parent.showStep(getPreviousStep(parent.state.step))
             }, 'Back'),
             Button({
-                click: (e, parent) => parent.showStep(Object.keys(STEPS)[Object.keys(STEPS).indexOf(parent.state.step) + 1])
+                click: (e, parent) => parent.showStep(getNextStep(parent.state.step))
             }, 'Next')
         ])
     ])
