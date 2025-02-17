@@ -2,7 +2,6 @@ import { Div, OnState } from '@base-framework/atoms';
 import { Button, Skeleton } from '@base-framework/ui/atoms';
 import { AppShellSection } from './sections/app-shell-section.js';
 import { CongratulationsSection } from './sections/congratulations-section.js';
-import { DevelopmentSection } from './sections/development-section.js';
 import { ModulesSection } from './sections/modules-section.js';
 import { ProjectSetupSection } from './sections/project-setup-section.js';
 import { ThemingSection } from './sections/theming-section.js';
@@ -34,9 +33,6 @@ export const PageStepContainer = () =>
 
                         case STEPS.APP_SHELL:
                             return AppShellSection();
-
-                        case STEPS.DEVELOPMENT:
-                            return DevelopmentSection();
 
                         case STEPS.CONGRATULATIONS:
                             return CongratulationsSection();

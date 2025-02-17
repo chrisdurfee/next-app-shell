@@ -9,6 +9,5 @@ export const STEPS =
 	THEMING: 'theming',
 	MODULES: 'modules',
 	APP_SHELL: 'app_shell',
-	DEVELOPMENT: 'development',
 	CONGRATULATIONS: 'congratulations'
 };
