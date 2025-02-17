@@ -1,70 +1,31 @@
-import { Code, Div, H2, H3, P } from '@base-framework/atoms';
-import { STEPS } from '../steps.js';
+import { Div } from '@base-framework/atoms';
+import { StepHeader, StepItemCard } from '../atoms/atoms.js';
 
-export const AppShellSection = () =>
-{
-    const nextStep = () => app.showStep(STEPS.DEVELOPMENT);
-    const prevStep = () => app.showStep(STEPS.MODULES);
+/**
+ * AppShellSection renders the default application shell pages.
+ *
+ * @returns {object}
+ */
+export const AppShellSection = () => (
+    Div({ class: 'flex flex-col items-start' }, [
+        StepHeader({
+            title: 'Default Pages',
+            description: 'The App Shell is set up with default pages for easy customization.'
+        }),
 
-    return Div({ class: 'flex flex-col items-start' }, [
-        H2({ class: 'text-2xl font-bold mb-4' }, 'Understanding the App Shell'),
+        StepItemCard({
+            title: 'Sign Up',
+            content: 'The sign up page is set up to allow for multi step form submission.'
+        }),
 
-        ShellStep('Core Components', [
-            P({ class: 'text-muted-foreground' }, 'The App Shell consists of these key components:'),
-            Div({ class: 'ml-4 mt-2 space-y-2' }, [
-                P('• Router and navigation system'),
-                P('• Service Worker for PWA features'),
-                P('• Authentication flow'),
-                P('• Global state management'),
-                P('• Push notification support')
-            ])
-        ]),
+        StepItemCard({
+            title: 'Onboarding',
+            content: 'The onboarding process is designed to guide users through the initial setup effortlessly.'
+        }),
 
-        ShellStep('Configuration', [
-            P({ class: 'text-muted-foreground' }, 'Configure global settings in src/configs.js:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block whitespace-pre' },
-`export const Configs = {
-    APP_NAME: 'Your App Name',
-    router: {
-        baseUrl: '/your-base-url/',
-        title: 'Your App'
-    },
-    push: {
-        publicId: 'your-push-id'
-    }
-}`
-            )
-        ]),
-
-        ShellStep('Service Worker', [
-            P({ class: 'text-muted-foreground' }, 'The service worker (public/sw.js) handles:'),
-            Div({ class: 'ml-4 mt-2 space-y-2' }, [
-                P('• Asset caching'),
-                P('• Offline functionality'),
-                P('• Push notifications'),
-                P('• App updates')
-            ]),
-            P({ class: 'text-muted-foreground mt-4' }, 'Update the version when deploying:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block' },
-`const APP_NAME = 'your-app-name',
-      version = '1.0.0';`
-            )
-        ]),
-
-        ShellStep('Authentication', [
-            P({ class: 'text-muted-foreground' }, 'The shell includes built-in auth flows:'),
-            Div({ class: 'ml-4 mt-2 space-y-2' }, [
-                P('• Sign-in/sign-up pages'),
-                P('• User session management'),
-                P('• Protected routes'),
-                P('• Customizable auth providers')
-            ])
-        ])
-    ]);
-};
-
-const ShellStep = (title, content) =>
-    Div({ class: 'mb-8' }, [
-        H3({ class: 'text-xl font-semibold mb-4' }, title),
-        ...content
-    ]);
+        StepItemCard({
+            title: 'Sign In & Sign Out',
+            content: 'The sign in and sign out process allows users to manage their sessions seamlessly.'
+        })
+    ])
+);
