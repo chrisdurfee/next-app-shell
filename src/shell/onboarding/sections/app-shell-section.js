@@ -25,7 +25,7 @@ export const AppShellSection = () => (
 
         StepItemCard({
             title: 'Sign In & Sign Out',
-            content: 'The sign in and sign out process allows users to manage their sessions seamlessly.'
+            content: 'The sign in and sign out will update the app to reflect the user\'s authentication status.'
         })
     ])
 );
