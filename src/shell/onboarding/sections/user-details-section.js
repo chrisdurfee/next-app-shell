@@ -23,14 +23,14 @@ const Col = Atom((props, children) => (
 export const UserDetailsSection = () =>
 (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
-		Section({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
+		Section({ class: 'flex flex-auto flex-col md:flex-row md:min-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
 			Col({ class: 'hidden md:flex' }, [
 				Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 			]),
 			Col({ class: 'md:max-w-[400px] md:p-4' }, [
-				Header({ class: 'p-6 ' }, [
+				Header({ class: 'p-6' }, [
 					H2({ class: 'text-lg font-semibold' }, 'Let\'s Get to Know You'),
-					P({ class: 'text-sm text-gray-500' }, 'Enter your details below to create an account.')
+					P({ class: 'text-sm' }, 'Enter your details below to create an account.')
 				]),
 				UserDetailsForm()
 			])

@@ -3,17 +3,7 @@ import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
 /**
- * @typedef {object} PageSettings
- * @property {Function} setupStates - Defines initial state.
- * @property {Function} showStep    - Updates the "step" state.
- */
-
-/**
- * @type {PageSettings}
- * @description
- *  Settings for configuring the sign-up page. Maintains
- *  the `step` in the component’s state and provides a
- *  method to show different steps.
+ * @type {PageProps}
  */
 const PageProps =
 {
@@ -42,6 +32,37 @@ const PageProps =
 	{
 		// @ts-ignore
 		this.state.step = step;
+	},
+
+	/**
+	 * This will get the next step.
+	 *
+	 * @returns {string}
+	 */
+	nextStep()
+	{
+		const values = Object.values(STEPS);
+		// @ts-ignore
+		const currentStep = this.state.step;
+		const stepIndex = values.indexOf(currentStep);
+
+		const result = values[stepIndex + 1];
+		return result || values[values.length - 1];
+	},
+
+	/**
+	 * This will get the previous step.
+	 *
+	 * @returns {string}
+	 */
+	prevStep()
+	{
+		const values = Object.values(STEPS);
+		// @ts-ignore
+		const currentStep = this.state.step;
+		const stepIndex = values.indexOf(currentStep);
+
+		return values[stepIndex - 1] || values[0];
 	}
 };
 
