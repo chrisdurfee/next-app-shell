@@ -1,6 +1,14 @@
 import { FullscreenPage } from '@base-framework/ui/pages';
+import { Configs } from '../../configs.js';
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
+
+/**
+ * This will get the step values.
+ *
+ * @returns {string[]}
+ */
+const getStepValues = () => Object.values(STEPS);
 
 /**
  * @constant PageProps
@@ -18,7 +26,9 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.WELCOME
+			step: STEPS.WELCOME,
+			next: true,
+			previous: false
 		};
 	},
 
@@ -38,17 +48,24 @@ const PageProps =
 	/**
 	 * This will get the next step.
 	 *
-	 * @returns {string}
+	 * @returns {string|null}
 	 */
 	getNextStep()
 	{
-		const values = Object.values(STEPS);
+		const values = getStepValues();
 		// @ts-ignore
 		const currentStep = this.state.step;
 		const stepIndex = values.indexOf(currentStep);
 
 		const result = values[stepIndex + 1];
-		return result || values[values.length - 1];
+		if (result)
+		{
+			this.state.previous = true;
+			return result;
+
+		}
+
+		return null;
 	},
 
 	/**
@@ -59,6 +76,12 @@ const PageProps =
 	nextStep()
 	{
 		const nextStep = this.getNextStep();
+		if (!nextStep)
+		{
+			app.navigate(Configs.router.baseUrl);
+			return;
+		}
+
 		this.showStep(nextStep);
 	},
 
@@ -69,12 +92,18 @@ const PageProps =
 	 */
 	getPrevStep()
 	{
-		const values = Object.values(STEPS);
+		const values = getStepValues();
 		// @ts-ignore
 		const currentStep = this.state.step;
 		const stepIndex = values.indexOf(currentStep);
+		if (stepIndex === 1)
+		{
+			this.state.previous = false;
+			return values[0];
+		}
 
-		return values[stepIndex - 1] || values[0];
+		this.state.previous = true;
+		return values[stepIndex - 1];
 	},
 
 	/**

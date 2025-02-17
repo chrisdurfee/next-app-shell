@@ -15,9 +15,7 @@ const Col = Atom((props, children) => (
 ));
 
 /**
- * @function UserDetailsSection
- * @description
- *  A page section that wraps the UserDetailsForm to collect user data.
+ * A page section that wraps the UserDetailsForm to collect user data.
  * @returns {object} A Section component containing the user details form.
  */
 export const UserDetailsSection = () =>

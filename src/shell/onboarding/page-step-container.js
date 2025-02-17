@@ -50,13 +50,22 @@ export const PageStepContainer = () =>
             Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
         ]),
         Div({ class: 'w-full max-w-5xl flex justify-between mt-4' }, [
-            Button({
-                variant: 'outline',
-                click: (e, parent) => parent.prevStep()
-            }, 'Back'),
-            Button({
-                click: (e, parent) => parent.nextStep()
-            }, 'Next')
+			Div({ class: 'flex' }, [
+				OnState('previous', (state) =>
+				{
+					if (!state) return null;
+
+					return Button({ click: (e, parent) => parent.prevStep(), variant: 'outline' }, 'Previous');
+				})
+            ]),
+			Div({ class: 'flex' }, [
+				OnState('next', (state) =>
+				{
+					if (!state) return null;
+
+					return Button({ click: (e, parent) => parent.nextStep() }, 'Next');
+				})
+            ])
         ])
     ])
 );
