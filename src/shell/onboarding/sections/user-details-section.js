@@ -1,7 +1,6 @@
 import { Div, H2, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Skeleton } from '@base-framework/ui';
-import { UserDetailsForm } from '../atoms/user-details-form.js';
 
 /**
  * This will create a column layout for the user details form.
@@ -29,8 +28,7 @@ export const UserDetailsSection = () =>
 				Header({ class: 'p-6' }, [
 					H2({ class: 'text-lg font-semibold' }, 'Let\'s Get to Know You'),
 					P({ class: 'text-sm' }, 'Enter your details below to create an account.')
-				]),
-				UserDetailsForm()
+				])
 			])
 		])
 	])

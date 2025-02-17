@@ -1,50 +1,32 @@
-import { Code, Div, H2, H3, P } from '@base-framework/atoms';
+import { Div } from '@base-framework/atoms';
+import { StepHeader, StepItemCard } from '../atoms/atoms.js';
 
+/**
+ * This will create the project setup section.
+ *
+ * @returns {object}
+ */
 export const ProjectSetupSection = () =>
 {
-    return Div({ class: 'flex flex-col items-start' }, [
-        H2({ class: 'text-2xl font-bold mb-4' }, 'Project Setup'),
+	return Div({ class: 'flex flex-col items-start' }, [
+		StepHeader({
+			title: 'Project Setup',
+			description: 'Modular, scalable, and easy to configure.'
+		}),
 
-        SetupStep('Prerequisites', [
-            P({ class: 'text-muted-foreground' }, 'Before you begin, ensure you have:'),
-            Div({ class: 'ml-4 mt-2 space-y-2' }, [
-                P('• Node.js (version 16+)'),
-                P('• npm or yarn package manager'),
-                P('• A code editor (VS Code recommended)')
-            ])
-        ]),
+		StepItemCard({
+			title: 'Configurable Setup',
+			content: 'Easily configure your project with a few simple steps to get started.'
+		}),
 
-        SetupStep('Installation', [
-            P({ class: 'text-muted-foreground' }, 'Run the following command in your terminal:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'npm install'),
-            P({ class: 'text-muted-foreground' }, 'Or if you prefer yarn:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'yarn install')
-        ]),
+		StepItemCard({
+			title: 'Vite Support',
+			content: 'Leverage Vite for a fast and efficient development experience.'
+		}),
 
-        SetupStep('Package Configuration', [
-            P({ class: 'text-muted-foreground' }, 'Update your package.json with your project details:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block whitespace-pre' },
-`{
-  "name": "your-app-name",
-  "version": "1.0.0",
-  "description": "Your app description",
-  "keywords": ["pwa", "vite", "tailwind"],
-  "author": "Your Name"
-}`
-            )
-        ]),
-
-        SetupStep('Development Commands', [
-            P({ class: 'text-muted-foreground' }, 'Start the development server:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'npm run dev'),
-            P({ class: 'text-muted-foreground' }, 'Build for production:'),
-            Code({ class: 'my-4 p-4 bg-muted rounded-md block' }, 'npm run build')
-        ])
-    ]);
+		StepItemCard({
+			title: 'Installable',
+			content: 'The app is installable on any device for a native-like experience using Progressive Web App (PWA) features.'
+		})
+	]);
 };
-
-const SetupStep = (title, content) =>
-    Div({ class: 'mb-8' }, [
-        H3({ class: 'text-xl font-semibold mb-4' }, title),
-        ...content
-    ]);
