@@ -40,7 +40,7 @@ const PageProps =
 	 *
 	 * @returns {string}
 	 */
-	nextStep()
+	getNextStep()
 	{
 		const values = Object.values(STEPS);
 		// @ts-ignore
@@ -52,11 +52,22 @@ const PageProps =
 	},
 
 	/**
+	 * This will get the next step.
+	 *
+	 * @returns {void}
+	 */
+	nextStep()
+	{
+		const nextStep = this.getNextStep();
+		this.showStep(nextStep);
+	},
+
+	/**
 	 * This will get the previous step.
 	 *
 	 * @returns {string}
 	 */
-	prevStep()
+	getPrevStep()
 	{
 		const values = Object.values(STEPS);
 		// @ts-ignore
@@ -64,6 +75,17 @@ const PageProps =
 		const stepIndex = values.indexOf(currentStep);
 
 		return values[stepIndex - 1] || values[0];
+	},
+
+	/**
+	 * This will get the previous step.
+	 *
+	 * @returns {void}
+	 */
+	prevStep()
+	{
+		const prevStep = this.getPrevStep();
+		this.showStep(prevStep);
 	}
 };
 
