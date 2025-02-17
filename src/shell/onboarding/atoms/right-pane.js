@@ -33,9 +33,7 @@ const Logo = Atom((props) => (
 ));
 
 /**
- * @function SignInNavigation
- * @description
- *  Button bar at the top-right that navigates to the "Sign In" step.
+ * Button bar at the top-right that navigates to the "Sign In" step.
  *
  * @param {object} props
  * @param {Function} props.showStep - The callback to navigate steps.
