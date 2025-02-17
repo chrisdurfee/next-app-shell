@@ -1,12 +1,7 @@
-import { Button, Code, Div, H2, H3, P } from '@base-framework/atoms';
-import { Icons } from '@base-framework/ui/icons';
-import { STEPS } from '../steps.js';
+import { Code, Div, H2, H3, P } from '@base-framework/atoms';
 
 export const ThemingSection = () =>
 {
-    const nextStep = () => app.showStep(STEPS.MODULES);
-    const prevStep = () => app.showStep(STEPS.PROJECT_SETUP);
-
     return Div({ class: 'flex flex-col items-start' }, [
         H2({ class: 'text-2xl font-bold mb-4' }, 'Theming Your App'),
 
@@ -59,22 +54,6 @@ export const ThemingSection = () =>
 
         ThemeStep('Custom Components', [
             P({ class: 'text-muted-foreground' }, 'The app includes Shadcn-inspired UI components that automatically use your theme variables. Components are built with accessibility and customization in mind.')
-        ]),
-
-        Div({ class: 'flex justify-between mt-8' }, [
-            Button({
-                variant: 'outline',
-                click: prevStep
-            }, [
-                Icons.arrowLeft(),
-                ' Back'
-            ]),
-            Button({
-                click: nextStep
-            }, [
-                'Next: Modules ',
-                Icons.arrowRight()
-            ])
         ])
     ]);
 };
