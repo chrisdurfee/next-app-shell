@@ -3,7 +3,8 @@ import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
 /**
- * @type {PageProps}
+ * @constant PageProps
+ * @type {object}
  */
 const PageProps =
 {
@@ -67,10 +68,8 @@ const PageProps =
 };
 
 /**
- * @function OnboardingPage
- * @description
- *  Constructs a FullscreenPage using our page settings and
- *  the PageStepContainer, which renders all step UI.
+ * Constructs a FullscreenPage using our page settings and
+ * the PageStepContainer, which renders all step UI.
  *
  * @returns {object} A FullscreenPage instance.
  */
