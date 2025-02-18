@@ -20,7 +20,7 @@ export const CongratsMessage = Atom(() =>
                 ]),
                 Button({
                     variant: 'primary',
-                    click: () => app.navigate('/')
+                    click: () => app.navigate('/onboarding')
                 }, 'Let\'s go!')
             ])
         ])
