@@ -1,5 +1,5 @@
 import { Div, OnState } from '@base-framework/atoms';
-import { Button, Skeleton } from '@base-framework/ui/atoms';
+import { Button } from '@base-framework/ui/atoms';
 import { AppShellSection } from './sections/app-shell-section.js';
 import { CongratulationsSection } from './sections/congratulations-section.js';
 import { ModulesSection } from './sections/modules-section.js';
@@ -16,34 +16,31 @@ import { STEPS } from './steps.js';
 export const PageStepContainer = () =>
 (
     Div({ class: 'flex flex-auto flex-col items-center justify-center p-4' }, [
-        Div({ class: 'flex flex-auto flex-col md:flex-row md:max-h-[700px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
-            Div({ class: 'w-1/2 p-4' }, [
-                OnState('step', (step) =>
+        Div({ class: 'flex flex-auto flex-col md:max-h-[800px] w-full max-w-5xl bg-card text-card-foreground shadow rounded-xl sm:border sm:shadow-lg p-4 fadeIn' }, [
+            OnState('step', (step) =>
+            {
+                switch (step)
                 {
-                    switch (step)
-                    {
-                        case STEPS.PROJECT_SETUP:
-                            return ProjectSetupSection();
+                    case STEPS.PROJECT_SETUP:
+                        return ProjectSetupSection();
 
-                        case STEPS.THEMING:
-                            return ThemingSection();
+                    case STEPS.THEMING:
+                        return ThemingSection();
 
-                        case STEPS.MODULES:
-                            return ModulesSection();
+                    case STEPS.MODULES:
+                        return ModulesSection();
 
-                        case STEPS.APP_SHELL:
-                            return AppShellSection();
+                    case STEPS.APP_SHELL:
+                        return AppShellSection();
 
-                        case STEPS.CONGRATULATIONS:
-                            return CongratulationsSection();
+                    case STEPS.CONGRATULATIONS:
+                        return CongratulationsSection();
 
-                        case STEPS.WELCOME:
-                        default:
-                            return WelcomeSection();
-                    }
-                })
-            ]),
-            Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
+                    case STEPS.WELCOME:
+                    default:
+                        return WelcomeSection();
+                }
+            })
         ]),
         Div({ class: 'w-full max-w-5xl flex justify-between mt-4' }, [
 			Div({ class: 'flex' }, [

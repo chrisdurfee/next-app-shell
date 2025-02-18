@@ -1,5 +1,5 @@
-import { Div } from '@base-framework/atoms';
 import { StepHeader, StepItemCard } from '../atoms/atoms.js';
+import { StepContainer } from '../atoms/step-container.js';
 
 /**
  * ThemingSection component that renders the theme support section.
@@ -7,7 +7,7 @@ import { StepHeader, StepItemCard } from '../atoms/atoms.js';
  * @returns {object}
  */
 export const ThemingSection = () => (
-    Div({ class: 'flex flex-col items-start' }, [
+    StepContainer([
         StepHeader({
             title: 'Theme Support',
             description: 'Customizable themes for a personalized experience.'
