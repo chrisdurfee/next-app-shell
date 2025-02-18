@@ -1,5 +1,4 @@
 import { FullscreenPage } from '@base-framework/ui/pages';
-import { Configs } from '../../configs.js';
 import { PageStepContainer } from './page-step-container.js';
 import { STEPS } from './steps.js';
 
@@ -78,7 +77,7 @@ const PageProps =
 		const nextStep = this.getNextStep();
 		if (!nextStep)
 		{
-			app.navigate(Configs.router.baseUrl);
+			app.navigate('/');
 			return;
 		}
 
