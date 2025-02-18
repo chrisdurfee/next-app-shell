@@ -44,16 +44,10 @@ export const PageStepContainer = () =>
         ]),
         Div({ class: 'w-full max-w-5xl flex justify-between mt-4' }, [
 			Div({ class: 'flex' }, [
-				OnState('previous', (state) =>
-				{
-					return state && Button({ click: (e, parent) => parent.prevStep(), variant: 'outline' }, 'Previous');
-				})
+				OnState('previous', (state) => state && Button({ click: (e, parent) => parent.prevStep(), variant: 'outline' }, 'Previous'))
             ]),
 			Div({ class: 'flex' }, [
-				OnState('next', (state) =>
-				{
-					return state && Button({ click: (e, parent) => parent.nextStep() }, 'Next');
-				})
+				OnState('next', (state) => state && Button({ click: (e, parent) => parent.nextStep() }, 'Next'))
             ])
         ])
     ])
