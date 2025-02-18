@@ -1,7 +1,7 @@
 import { Form } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { FormField } from '@base-framework/ui';
-import { Button, EmailInput, Fieldset, Input } from "@base-framework/ui/atoms";
+import { DatePicker, FormField } from '@base-framework/ui';
+import { Button, Fieldset, Input } from "@base-framework/ui/atoms";
 import { STEPS } from '../steps.js';
 
 /**
@@ -30,11 +30,11 @@ export const UserDetailsForm = Atom(() =>
 			]),
 
 			new FormField({
-				name: "email",
-				label: "Email Address",
-				description: "We'll use this to contact you."
+				name: "birthday",
+				label: "Birthday",
+				description: "Please enter your date of birth."
 			}, [
-				EmailInput({ placeholder: "e.g. email@address.com", required: true })
+				new DatePicker({ required: true })
 			]),
 
 			new FormField({
