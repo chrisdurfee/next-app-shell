@@ -46,17 +46,13 @@ export const PageStepContainer = () =>
 			Div({ class: 'flex' }, [
 				OnState('previous', (state) =>
 				{
-					if (!state) return null;
-
-					return Button({ click: (e, parent) => parent.prevStep(), variant: 'outline' }, 'Previous');
+					return state && Button({ click: (e, parent) => parent.prevStep(), variant: 'outline' }, 'Previous');
 				})
             ]),
 			Div({ class: 'flex' }, [
 				OnState('next', (state) =>
 				{
-					if (!state) return null;
-
-					return Button({ click: (e, parent) => parent.nextStep() }, 'Next');
+					return state && Button({ click: (e, parent) => parent.nextStep() }, 'Next');
 				})
             ])
         ])
