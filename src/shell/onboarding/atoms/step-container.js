@@ -11,7 +11,7 @@ import { Skeleton } from '@base-framework/ui/atoms';
  */
 const LeftNavStep = (props, children) => ([
 	Div({ class: 'w-full md:max-w-[400px] p-4' }, children),
-	Div({ class: 'flex flex-auto' }, [
+	Div({ class: 'hidden md:flex flex-auto' }, [
 		Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 	])
 ]);
@@ -24,7 +24,7 @@ const LeftNavStep = (props, children) => ([
  * @returns {Array<object>}
  */
 const RightNavStep = (props, children) => ([
-	Div({ class: 'flex flex-auto' }, [
+	Div({ class: 'hidden md:flex flex-auto' }, [
 		Skeleton({ width: "w-full", height: "h-full", class: "rounded-lg" })
 	]),
 	Div({ class: 'w-full md:max-w-[400px] p-4' }, children),
