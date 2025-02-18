@@ -1,4 +1,4 @@
-import { Div, H2, Header, P, Span } from '@base-framework/atoms';
+import { Button, Div, H2, Header, P, Span } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 
 /**
@@ -33,7 +33,7 @@ export const FormWrapper = Atom((props, children) => (
  * @returns {object}
  */
 export const StepItemCard = Atom((props, children) => (
-	Div({ class: 'flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left transition-all hover:bg-muted/50 my-2' }, [
+	Button({ class: 'flex flex-auto flex-col items-start gap-2 rounded-lg border p-3 text-left transition-all hover:bg-muted/50 my-2 ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus:ring-2 focus:ring-ring focus:ring-offset-2' }, [
 		Div({ class: 'flex flex-auto flex-col w-full gap-2' }, [
 			Div({ class: "flex w-full flex-col gap-1" }, [
 				Span({ class: "font-semibold text-base text-foreground" }, props.title),
