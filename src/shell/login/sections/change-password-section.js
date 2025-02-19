@@ -31,6 +31,7 @@ const ChangePasswordForm = () => (
 		class: 'flex flex-col p-6 pt-0',
 		submit: (e, parent) =>
 		{
+			e.preventDefault();
 			// Handle the password change logic
 			console.log('Password change submitted');
 		},
@@ -78,7 +79,7 @@ export const ChangePasswordSection = () => (
 		}, [
 			ChangePasswordHeader({
 				title: 'Change Password',
-				description: 'Enter your current password and choose a new one.'
+				description: 'Choose a new password.'
 			}),
 			ChangePasswordForm()
 		])

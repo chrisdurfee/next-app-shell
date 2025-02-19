@@ -17,7 +17,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.MULTI_FACTOR_METHOD
+			step: STEPS.CHANGE_PASSWORD
 		};
 	},
 
