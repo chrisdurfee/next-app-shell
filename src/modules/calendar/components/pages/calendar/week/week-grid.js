@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
-import { DayCell } from "../month/day-cell.js";
 import { FormatDate } from "../utils.js";
+import { WeekDayCell } from "./week-day-cell.js";
 
 /**
  * getStartOfWeek
@@ -44,27 +44,30 @@ export const WeekGrid = (props) =>
 			startOfWeek.getMonth(),
 			startOfWeek.getDate() + i
 		);
+
 		const isToday =
-			cellDate.getDate() === props.today.date &&
-			cellDate.getMonth() === props.today.month &&
-			cellDate.getFullYear() === props.today.year;
+		cellDate.getDate() === props.today.date &&
+		cellDate.getMonth() === props.today.month &&
+		cellDate.getFullYear() === props.today.year;
+
 		const formattedDate = FormatDate(
 			cellDate.getFullYear(),
 			cellDate.getMonth(),
 			cellDate.getDate()
 		);
-		const isOutsideMonth = (cellDate.getMonth() !== props.current.month);
+
+		const isOutsideMonth = cellDate.getMonth() !== props.current.month;
+
 		cells.push(
-			DayCell({
-				day: cellDate.getDate(),
+			WeekDayCell({
+				date: formattedDate,
+				isToday,
+				isOutsideMonth,
 				currentDate: FormatDate(
 					props.current.year,
 					props.current.month,
 					props.current.date
 				),
-				date: formattedDate,
-				isToday: isToday,
-				isOutsideMonth: isOutsideMonth,
 				select: props.select
 			})
 		);
