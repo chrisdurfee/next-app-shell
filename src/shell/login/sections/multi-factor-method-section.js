@@ -58,11 +58,7 @@ export const MultiFactorMethodSection = () => (
 	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
 		Div({
 			class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm',
-			addState: () => {
-				return {
-					selectedMfaMethod: null
-				};
-			}
+			addState: () => ({ selectedMfaMethod: '' })
 		}, [
 			MultiFactorMethodHeader({
 				title: 'Multi-Factor Authentication',
