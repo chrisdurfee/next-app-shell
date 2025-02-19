@@ -10,9 +10,9 @@ const PAGE_URL = 'calendar';
  * @returns {object}
  */
 export const SidebarMenu = () => (
-    Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar h-full' }, [
+	Div({ class: 'pb-12 hidden lg:block p-6 border-r bg-sidebar h-full' }, [
 
-    ])
+	])
 );
 
 export default SidebarMenu;

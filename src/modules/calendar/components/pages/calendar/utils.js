@@ -6,8 +6,8 @@
  */
 export const pad = (number) =>
 {
-    number *= 1;
-    return (number < 10 ? `0${number}` : String(number));
+	number *= 1;
+	return (number < 10 ? `0${number}` : String(number));
 };
 
 /**
@@ -18,13 +18,13 @@ export const pad = (number) =>
  */
 export const addTime = (date) =>
 {
-    if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
-    {
-        date += 'T00:00:01';
-    }
+	if (date.indexOf('T') === -1 && date.indexOf(' ') === -1)
+	{
+		date += 'T00:00:01';
+	}
 
-    date.replace(' ', 'T');
-    return date;
+	date.replace(' ', 'T');
+	return date;
 };
 
 /**

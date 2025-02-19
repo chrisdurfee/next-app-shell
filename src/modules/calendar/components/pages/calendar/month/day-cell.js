@@ -46,24 +46,24 @@ const getCurrentDateClass = (currentDate, date) => (isCurrentDate(currentDate, d
  */
 const getClasses = (isToday, currentDate, isOutsideMonth, date) =>
 {
-    const currentDateClass = getCurrentDateClass(currentDate, date);
-    if (currentDateClass)
-    {
-        return currentDateClass;
-    }
+	const currentDateClass = getCurrentDateClass(currentDate, date);
+	if (currentDateClass)
+	{
+		return currentDateClass;
+	}
 
-    const todayClass = getTodayClass(isToday);
-    if(isToday)
-    {
-        return todayClass;
-    }
+	const todayClass = getTodayClass(isToday);
+	if(isToday)
+	{
+		return todayClass;
+	}
 
-    const outsideMonthClass = getOutsideMonthClass(isOutsideMonth);
-    if(isOutsideMonth)
-    {
-        return outsideMonthClass;
-    }
-    return 'text-foreground';
+	const outsideMonthClass = getOutsideMonthClass(isOutsideMonth);
+	if(isOutsideMonth)
+	{
+		return outsideMonthClass;
+	}
+	return 'text-foreground';
 };
 
 /**
@@ -82,18 +82,18 @@ const Event = (event) => Span({ class: 'bg-primary w-1 h-1 rounded-full m-[2px]'
  */
 const DesktopEvent = (event, index) =>
 {
-    const MAX_EVENTS = 3;
-    if(index === MAX_EVENTS)
-    {
-        return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, '...');
-    }
+	const MAX_EVENTS = 3;
+	if(index === MAX_EVENTS)
+	{
+		return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, '...');
+	}
 
-    if (index > MAX_EVENTS)
-    {
-        return null;
-    }
+	if (index > MAX_EVENTS)
+	{
+		return null;
+	}
 
-    return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, event);
+	return Span({ class: 'px-1 border rounded-md text-sm text-muted-foreground bg-secondary' }, event);
 };
 
 /**
@@ -103,29 +103,29 @@ const DesktopEvent = (event, index) =>
  * @returns {object}
  */
 export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, select }) => (
-    A(
-        {
-            href: '/calendar/month/' + date,
-            class: `
-        flex flex-auto flex-col p-2 rounded-md
-        hover:bg-muted/50 focus:z-10 items-center lg:items-start
-      `,
-            disabled: day === null,
-            'aria-label': day ? `Day ${day}` : null,
-            click: () => select(date),
-        },
-        [
-            Div({ class: 'flex items-center justify-center w-full' }, [
-                P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
-            ]),
-            Div({
-                class: 'flex lg:hidden flex-auto flex-row flex-wrap',
-                for: [`events._${removeHyphens(date)}`, Event]
-            }),
-            Div({
-                class: 'hidden lg:flex flex-auto flex-col space-y-1',
-                for: [`events._${removeHyphens(date)}`, DesktopEvent]
-            })
-        ]
-    )
+	A(
+		{
+			href: '/calendar/month/' + date,
+			class: `
+		flex flex-auto flex-col p-2 rounded-md
+		hover:bg-muted/50 focus:z-10 items-center lg:items-start
+	  `,
+			disabled: day === null,
+			'aria-label': day ? `Day ${day}` : null,
+			click: () => select(date),
+		},
+		[
+			Div({ class: 'flex items-center justify-center w-full' }, [
+				P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
+			]),
+			Div({
+				class: 'flex lg:hidden flex-auto flex-row flex-wrap',
+				for: [`events._${removeHyphens(date)}`, Event]
+			}),
+			Div({
+				class: 'hidden lg:flex flex-auto flex-col space-y-1',
+				for: [`events._${removeHyphens(date)}`, DesktopEvent]
+			})
+		]
+	)
 );
