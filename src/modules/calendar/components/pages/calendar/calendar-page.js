@@ -5,6 +5,7 @@ import { FullTemplate } from "@base-framework/ui/templates";
 import { createDynamicEvents } from "./events.js";
 import { MonthCalendar } from "./month/month-calendar.js";
 import { addTime, pad } from "./utils.js";
+import { WeekCalendar } from "./week/week-calendar.js";
 
 /**
  * CalendarPage
@@ -189,6 +190,14 @@ export const CalendarPage = () => (
 							{
 								case 'month':
 									return MonthCalendar({
+										current: this.data.current,
+										today: this.data.today,
+										select: (date) => this.selectDate(date),
+										next: () => this.goToNextMonth(),
+										previous: () => this.goToPreviousMonth()
+									});
+								case 'week':
+									return WeekCalendar({
 										current: this.data.current,
 										today: this.data.today,
 										select: (date) => this.selectDate(date),
