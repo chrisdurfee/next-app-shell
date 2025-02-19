@@ -17,7 +17,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.LOGIN
+			step: STEPS.ONE_TIME_CODE
 		};
 	},
 
