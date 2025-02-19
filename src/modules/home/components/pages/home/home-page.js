@@ -78,7 +78,7 @@ const MainSection = Atom((props, children) => (
 		}, [
 			PageHeader({
 				title: 'Build faster with Base and Tailwind CSS',
-				description: 'Beautifully designed components inpired by the genius at Shadcn and tailored to work with Base. Base is easy to use and open source.'
+				description: 'Beautifully designed components using Tailwind CSS inspired by the genius at Shadcn and tailored to work with Base. Base is easy to use and open source.'
 			}),
 			MainButtonContainer(),
 			...children
@@ -229,6 +229,42 @@ Builder.render(ToDoApp(), document.body);`)
 						class: 'bttn ghost gap-2'
 					}, 'Shadcn UI')
 				])
+			]),
+
+			TextSection({
+				title: 'Vite Support',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "This app is configured to use Vite for local development and production builds. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. "),
+			]),
+
+			TextSection({
+				title: 'Code Splitting',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "Code splitting is supported to optimize performance and load only necessary code when required.")
+			]),
+
+			TextSection({
+				title: 'Vite Support',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "This app is configured to use Vite for local development and production builds. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. "),
+			]),
+
+			TextSection({
+				title: 'Documentation',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "Documentation is provided to assist developers in understanding and utilizing the framework, platform, and components effectively."),
+				Div({ class: 'mt-10 flex items-center justify-start gap-x-4 pb-6' }, [
+					A({
+						href: '/docs',
+						class: 'bttn primary'
+					}, 'Learn more')
+				])
+			]),
+
+			TextSection({
+				title: 'Example Pages',
+			}, [
+				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "This app contains examples pages for the most common application needs. Calendar, Messaging, Dashboard, Lists, Grids, and more."),
 			])
 		])
 	])
