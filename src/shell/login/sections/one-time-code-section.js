@@ -12,13 +12,12 @@ import { Button, Input } from "@base-framework/ui/atoms";
  * @param {string} props.description - The description text.
  * @returns {object} A virtual DOM element representing the header.
  */
-const OneTimeCodeHeader = Atom(({ title, description }) =>
-{
-	return Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
+const OneTimeCodeHeader = Atom(({ title, description }) => (
+	Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
 		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
 		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description)
-	]);
-});
+	])
+));
 
 /**
  * OneTimeCodeForm
@@ -27,12 +26,12 @@ const OneTimeCodeHeader = Atom(({ title, description }) =>
  *
  * @returns {object} A virtual DOM element representing the one-time code form.
  */
-const OneTimeCodeForm = () =>
-{
-	return Form({
+const OneTimeCodeForm = () => (
+	Form({
 		class: 'flex flex-col p-6 pt-0',
 		submit: (e, parent) =>
 		{
+			e.preventDefault();
 			// Handle submission logic (e.g., verify the one-time code)
 			console.log('One-time code submitted');
 		},
@@ -47,8 +46,8 @@ const OneTimeCodeForm = () =>
 			}),
 			Button({ type: 'submit' }, 'Verify Code')
 		])
-	]);
-};
+	])
+);
 
 /**
  * OneTimeCodeSection
@@ -57,9 +56,8 @@ const OneTimeCodeForm = () =>
  *
  * @returns {object} A virtual DOM element representing the one-time code section.
  */
-export const OneTimeCodeSection = () =>
-{
-	return Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
+export const OneTimeCodeSection = () => (
+	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
 		Div({
 			class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm'
 		}, [
@@ -69,7 +67,7 @@ export const OneTimeCodeSection = () =>
 			}),
 			OneTimeCodeForm()
 		])
-	]);
-};
+	])
+);
 
 export default OneTimeCodeSection;

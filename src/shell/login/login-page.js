@@ -17,7 +17,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.ONE_TIME_CODE
+			step: STEPS.MULTI_FACTOR_METHOD
 		};
 	},
 
