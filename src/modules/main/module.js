@@ -7,19 +7,19 @@ import { Module } from '../module/module.js';
  */
 const routes = Module.convertRoutes(
 [
-    /**
-     * Staticly loaded routes
-     */
-    // { path: '/website/:page?*', component: WebsitePage(), title: 'Inbox' },
+	/**
+	 * Staticly loaded routes
+	 */
+	// { path: '/website/:page?*', component: WebsitePage(), title: 'Inbox' },
 
-    /**
-     * Dynamically loaded routes
-     */
-    // {
-    //     path: '/aside/:page?/:marketing?/:label?/:name?*',
-    //     import: () => import('./components/pages/main-aside/main-sidebar-menu-page.js'),
-    //     title: 'Sidebar Menu Example'
-    // }
+	/**
+	 * Dynamically loaded routes
+	 */
+	// {
+	//     path: '/aside/:page?/:marketing?/:label?/:name?*',
+	//     import: () => import('./components/pages/main-aside/main-sidebar-menu-page.js'),
+	//     title: 'Sidebar Menu Example'
+	// }
 ]);
 
 /**
@@ -29,38 +29,38 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    // Top level links
-    // { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2, exact: false },
+	// Top level links
+	// { label: 'Music', href: 'music', icon: Icons.music, mobileOrder: 2, exact: false },
 
-    // Nested links
-    // {
-    //     label: 'Photo',
-    //     icon: Icons.photo,
-    //     options: [
-    //         {
-    //             group: 'Synopsis',
-    //             options: [
-    //                 { label: 'Story', href: 'synopsis/story' },
-    //                 {
-    //                     label: 'Book',
-    //                     options: [
-    //                         { label: 'irure nostrud 1', href: 'synopsis/Book/irure-nostrud' },
-    //                         { label: 'ipsum dolore 2', href: 'synopsis/Book/ipsum-dolore' },
-    //                         { label: 'enim consectetur 3', href: 'synopsis/Book/enim-consectetur' }
-    //                     ]
-    //                 },
-    //                 {
-    //                     label: 'Concepts',
-    //                     options: [
-    //                         { label: 'irure nostrud', href: 'synopsis/concepts/irure-nostrud' },
-    //                         { label: 'ipsum dolore', href: 'synopsis/concepts/ipsum-dolore' },
-    //                         { label: 'enim consectetur', href: 'synopsis/concepts/enim-consectetur' }
-    //                     ]
-    //                 }
-    //             ]
-    //         }
-    //     ]
-    // }
+	// Nested links
+	// {
+	//     label: 'Photo',
+	//     icon: Icons.photo,
+	//     options: [
+	//         {
+	//             group: 'Synopsis',
+	//             options: [
+	//                 { label: 'Story', href: 'synopsis/story' },
+	//                 {
+	//                     label: 'Book',
+	//                     options: [
+	//                         { label: 'irure nostrud 1', href: 'synopsis/Book/irure-nostrud' },
+	//                         { label: 'ipsum dolore 2', href: 'synopsis/Book/ipsum-dolore' },
+	//                         { label: 'enim consectetur 3', href: 'synopsis/Book/enim-consectetur' }
+	//                     ]
+	//                 },
+	//                 {
+	//                     label: 'Concepts',
+	//                     options: [
+	//                         { label: 'irure nostrud', href: 'synopsis/concepts/irure-nostrud' },
+	//                         { label: 'ipsum dolore', href: 'synopsis/concepts/ipsum-dolore' },
+	//                         { label: 'enim consectetur', href: 'synopsis/concepts/enim-consectetur' }
+	//                     ]
+	//                 }
+	//             ]
+	//         }
+	//     ]
+	// }
 ];
 
 /**
@@ -69,16 +69,16 @@ const links =
  */
 Module.create(
 {
-    /**
-     * @param {Array<object>} routes
-     */
-    routes,
+	/**
+	 * @param {Array<object>} routes
+	 */
+	routes,
 
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {Array<object>} links
-     */
-    links
+	/**
+	 * This will get the options to create the app
+	 * navigation.
+	 *
+	 * @param {Array<object>} links
+	 */
+	links
 });

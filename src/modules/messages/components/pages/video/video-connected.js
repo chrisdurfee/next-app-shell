@@ -11,12 +11,12 @@ import { VideoContent } from "./video-content.js";
  */
 export const Header = ({ title, participantCount }) =>
 {
-    return Div({ class: "p-4 pt-6 pb-0 flex items-center justify-between" }, [
-        Div({ class: "flex items-center gap-2" }, [
-            Span({ class: "text-xl font-semibold pl-2" }, title),
-            Span({ class: "text-sm text-muted-foreground" }, `${participantCount} participants`)
-        ])
-    ]);
+	return Div({ class: "p-4 pt-6 pb-0 flex items-center justify-between" }, [
+		Div({ class: "flex items-center gap-2" }, [
+			Span({ class: "text-xl font-semibold pl-2" }, title),
+			Span({ class: "text-sm text-muted-foreground" }, `${participantCount} participants`)
+		])
+	]);
 };
 
 /**
@@ -26,12 +26,12 @@ export const Header = ({ title, participantCount }) =>
  * @returns {object}
  */
 export const VideoConnected = ({ participants }) => (
-    Div({ class: 'flex flex-auto flex-col' }, [
-        Header({
-            title: "Video Chat",
-            participantCount: 4
-        }),
+	Div({ class: 'flex flex-auto flex-col' }, [
+		Header({
+			title: "Video Chat",
+			participantCount: 4
+		}),
 
-        VideoContent({ participants })
-    ])
+		VideoContent({ participants })
+	])
 );

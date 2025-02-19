@@ -244,12 +244,6 @@ Builder.render(ToDoApp(), document.body);`)
 			]),
 
 			TextSection({
-				title: 'Vite Support',
-			}, [
-				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "This app is configured to use Vite for local development and production builds. Vite is a build tool that aims to provide a faster and leaner development experience for modern web projects. "),
-			]),
-
-			TextSection({
 				title: 'Documentation',
 			}, [
 				P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, "Documentation is provided to assist developers in understanding and utilizing the framework, platform, and components effectively."),

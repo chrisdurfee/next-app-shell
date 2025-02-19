@@ -16,85 +16,85 @@ import { InboxList } from "./list/inbox-list.js";
  */
 export const InboxPage = () =>
 {
-    /**
-     * @type {object} Props
-     *
-     * This will set up the page props.
-     */
-    const Props =
-    {
-        /**
-         * This will set up the page data.
-         *
-         * @returns {object}
-         */
-        setData()
-        {
-            return new Data({
-                items: INBOX_MESSAGES
-            });
-        },
+	/**
+	 * @type {object} Props
+	 *
+	 * This will set up the page props.
+	 */
+	const Props =
+	{
+		/**
+		 * This will set up the page data.
+		 *
+		 * @returns {object}
+		 */
+		setData()
+		{
+			return new Data({
+				items: INBOX_MESSAGES
+			});
+		},
 
-        /**
-         * This will check to route to the inbox page if no page is set.
-         *
-         * @returns {void}
-         */
-        afterSetup()
-        {
-            if (!this.route.page)
-            {
-                // @ts-ignore
-                app.navigate("inbox/inbox", null, true);
-            }
-        },
+		/**
+		 * This will check to route to the inbox page if no page is set.
+		 *
+		 * @returns {void}
+		 */
+		afterSetup()
+		{
+			if (!this.route.page)
+			{
+				// @ts-ignore
+				app.navigate("inbox/inbox", null, true);
+			}
+		},
 
-        /**
-         * This will set up the page states.
-         *
-         * @returns {object}
-         */
-        setupStates()
-        {
-            return {
-                list: 'all'
-            };
-        }
-    };
+		/**
+		 * This will set up the page states.
+		 *
+		 * @returns {object}
+		 */
+		setupStates()
+		{
+			return {
+				list: 'all'
+			};
+		}
+	};
 
-    return new BlankPage(Props, [
-        Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
-            InboxSidebarMenu(),
-            Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
-                InboxList()
-            ]),
-            UseParent((parent) => (
-                ContentSwitch({
+	return new BlankPage(Props, [
+		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
+			InboxSidebarMenu(),
+			Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
+				InboxList()
+			]),
+			UseParent((parent) => (
+				ContentSwitch({
 
-                    /**
-                     * This will delete the email.
-                     *
-                     * @param {number} id
-                     */
-                    delete: (id) =>
-                    {
-                        parent.list.delete(id);
+					/**
+					 * This will delete the email.
+					 *
+					 * @param {number} id
+					 */
+					delete: (id) =>
+					{
+						parent.list.delete(id);
 
-                        // @ts-ignore
-                        app.navigate(`inbox/${parent.route.page}`);
+						// @ts-ignore
+						app.navigate(`inbox/${parent.route.page}`);
 
-                        // @ts-ignore
-                        app.notify({
-                            type: "success",
-                            title: "Email Deleted",
-                            description: "The email has been deleted.",
-                            icon: Icons.check
-                        });
-                    }
-                })
-            ))
-        ])
-    ]);
+						// @ts-ignore
+						app.notify({
+							type: "success",
+							title: "Email Deleted",
+							description: "The email has been deleted.",
+							icon: Icons.check
+						});
+					}
+				})
+			))
+		])
+	]);
 };
 
 export default InboxPage;

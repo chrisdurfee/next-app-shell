@@ -8,10 +8,10 @@ import { Module } from '../module/module.js';
  */
 const routes = Module.convertRoutes(
 [
-    /**
-     * Inbox routes
-     */
-    { path: '/inbox/:page?/:messageId?*', import: () => import('./components/pages/inbox/inbox-page.js'), title: 'Inbox' }
+	/**
+	 * Inbox routes
+	 */
+	{ path: '/inbox/:page?/:messageId?*', import: () => import('./components/pages/inbox/inbox-page.js'), title: 'Inbox' }
 ]);
 
 /**
@@ -21,7 +21,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Inbox', href: 'inbox', icon: Icons.envelope.default, mobileOrder: 3 }
+	{ label: 'Inbox', href: 'inbox', icon: Icons.envelope.default, mobileOrder: 3 }
 ];
 
 /**
@@ -30,16 +30,16 @@ const links =
  */
 Module.create(
 {
-    /**
-     * @param {Array<object>} routes
-     */
-    routes,
+	/**
+	 * @param {Array<object>} routes
+	 */
+	routes,
 
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {Array<object>} links
-     */
-    links
+	/**
+	 * This will get the options to create the app
+	 * navigation.
+	 *
+	 * @param {Array<object>} links
+	 */
+	links
 });
