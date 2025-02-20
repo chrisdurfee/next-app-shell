@@ -11,26 +11,36 @@ import { STEPS } from './steps.js';
  *
  * @returns {object}
  */
-export const PageStepContainer = () =>
-{
-	return Div({ class: 'flex flex-auto flex-col' }, [
-		OnState('step', (step) =>
-		{
-			switch (step)
+export const PageStepContainer = () => (
+	Div({
+		class: 'flex flex-auto flex-col',
+		switch: [
 			{
-				case STEPS.FORGOT_PASSWORD:
-					return ForgotPasswordSection();
-				case STEPS.ONE_TIME_CODE:
-					return OneTimeCodeSection();
-				case STEPS.MULTI_FACTOR_METHOD:
-					return MultiFactorMethodSection();
-				case STEPS.CHANGE_PASSWORD:
-					return ChangePasswordSection();
-				default:
-					return LoginSection();
+				uri: '/change-password',
+				component: Div({ class: 'flex flex-auto flex-col' }, [
+					ChangePasswordSection()
+				])
+			},
+			{
+				component: Div({ class: 'flex flex-auto flex-col' }, [
+					OnState('step', (step) =>
+					{
+						switch (step)
+						{
+							case STEPS.FORGOT_PASSWORD:
+								return ForgotPasswordSection();
+							case STEPS.ONE_TIME_CODE:
+								return OneTimeCodeSection();
+							case STEPS.MULTI_FACTOR_METHOD:
+								return MultiFactorMethodSection();
+							default:
+								return LoginSection();
+						}
+					})
+				])
 			}
-		})
-	]);
-};
+		]
+	})
+);
 
 export default PageStepContainer;
