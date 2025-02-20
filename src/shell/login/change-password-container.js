@@ -3,17 +3,6 @@ import { Component, Data, Jot } from '@base-framework/base';
 import { ChangePasswordSection } from './sections/change-password-section.js';
 
 /**
- * This is an enum for the different steps in the change password process.
- *
- * @type {object} STEPS
- */
-export const STEPS =
-{
-	CHANGE_PASSWORD: 'change-password',
-	CONFIRM: 'confirm'
-};
-
-/**
  * This will create the data for the change password container.
  *
  * @type {typeof Component}
@@ -31,30 +20,6 @@ export const ChangePasswordContainer = Jot(
 			password: '',
 			confirmPassword: ''
 		});
-	},
-
-	/**
-	 * This will setup the states.
-	 *
-	 * @returns {object}
-	 */
-	setupStates()
-	{
-		return {
-			step: STEPS.CHANGE_PASSWORD
-		};
-	},
-
-	/**
-	 * This will show the step.
-	 *
-	 * @param {string} step
-	 * @returns {void}
-	 */
-	showStep(step)
-	{
-		// @ts-ignore
-		this.state.step = step;
 	},
 
 	/**
