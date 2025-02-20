@@ -155,7 +155,7 @@ export const ChangePasswordSection = () => (
 						return Div([
 							ChangePasswordHeader({
 								title: 'Change Password',
-								description: 'Choose a new password.'
+								description: 'Choose a new password. Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.'
 							}),
 							ChangePasswordForm()
 						]);
