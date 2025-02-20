@@ -1,1 +1,0 @@
-import{Y as e}from"./index-CQxFCK2O.js";import{n as t}from"./sidebar-menu-page-nCAVFk3R-C7bQS4gH.js";import"./mobile-nav-wrapper-BE_hr65B-CWJw8YZp.js";const s=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"About")])]);export{s as AboutPage,s as default};
