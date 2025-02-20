@@ -1,6 +1,7 @@
-import { Div, Form, H1, Header, P, Section } from '@base-framework/atoms';
+import { Div, Form, H1, Header, OnState, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
-import { Button, Input } from "@base-framework/ui/atoms";
+import { Button, Icon, Input } from "@base-framework/ui/atoms";
+import { Icons } from '@base-framework/ui/icons';
 import { PasswordValidator } from '../utils/password-validator';
 
 /**
@@ -78,7 +79,7 @@ const ChangePasswordForm = () => (
 			}
 
 			// Handle the password change logic
-			console.log('Password change submitted');
+			parent.showStep('confirm');
 		},
 		role: 'form'
 	}, [
@@ -110,6 +111,29 @@ const ChangePasswordForm = () => (
 );
 
 /**
+ * A page section that displays the final success message.
+ *
+ * @returns {object} A Section component containing the success message UI.
+ */
+export const CongratulationsSection = () => (
+	Div({ class: 'flex flex-col items-center p-6' }, [
+		Div({ class: 'w-16 h-16 mb-6 text-primary' }, [
+			Icon(Icons.circleCheck)
+		]),
+		H1({ class: 'text-2xl font-bold mb-4' }, "All Done!"),
+		P({ class: 'text-base text-muted-foreground mb-4' },
+			"You now have completed the password change process. "
+		),
+		Button({
+			click: () =>
+			{
+				app.navigate('/');
+			}
+		}, "Go to Home")
+	])
+);
+
+/**
  * ChangePasswordSection
  *
  * Renders the change password step for the login process.
@@ -121,11 +145,22 @@ export const ChangePasswordSection = () => (
 		Div({
 			class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm'
 		}, [
-			ChangePasswordHeader({
-				title: 'Change Password',
-				description: 'Choose a new password.'
-			}),
-			ChangePasswordForm()
+			OnState('step', (step) =>
+			{
+				switch (step)
+				{
+					case 'confirm':
+						return CongratulationsSection();
+					default:
+						return Div([
+							ChangePasswordHeader({
+								title: 'Change Password',
+								description: 'Choose a new password.'
+							}),
+							ChangePasswordForm()
+						]);
+				}
+			})
 		])
 	])
 );

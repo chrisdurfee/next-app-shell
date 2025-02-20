@@ -17,7 +17,7 @@ const PageProps =
 	setupStates()
 	{
 		return {
-			step: STEPS.CHANGE_PASSWORD
+			step: STEPS.LOGIN
 		};
 	},
 

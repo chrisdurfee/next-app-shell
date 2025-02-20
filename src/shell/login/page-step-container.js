@@ -1,5 +1,4 @@
 import { Div, OnState } from '@base-framework/atoms';
-import { ChangePasswordContainer } from './change-password-container.js';
 import { ForgotPasswordSection } from './sections/forgot-password-section.js';
 import { LoginSection } from './sections/login-section.js';
 import { MultiFactorMethodSection } from './sections/multi-factor-method-section.js';
@@ -17,7 +16,7 @@ export const PageStepContainer = () => (
 		switch: [
 			{
 				uri: '/change-password',
-				component: new ChangePasswordContainer()
+				import: () => import('./change-password-container.js'),
 			},
 			{
 				component: Div({ class: 'flex flex-auto flex-col' }, [
