@@ -77,7 +77,7 @@ export const AppContent = () => (
 		addState()
 		{
 			return {
-				isSignedIn: false
+				isSignedIn: true
 			};
 		},
 
