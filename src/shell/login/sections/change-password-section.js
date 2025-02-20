@@ -1,6 +1,7 @@
 import { Div, Form, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Button, Input } from "@base-framework/ui/atoms";
+import { PasswordValidator } from '../utils/password-validator';
 
 /**
  * ChangePasswordHeader
@@ -13,11 +14,47 @@ import { Button, Input } from "@base-framework/ui/atoms";
  * @returns {object} A virtual DOM element representing the header.
  */
 const ChangePasswordHeader = Atom(({ title, description }) => (
-    Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
+	Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
 		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
 		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description)
 	])
 ));
+
+/**
+ * Validates the password and confirm password.
+ *
+ * @param {string} password - The password to validate.
+ * @param {string} confirmPassword - The password to compare against.
+ * @returns {boolean}
+ */
+const validate = (password, confirmPassword) =>
+{
+	if (password !== confirmPassword)
+	{
+		app.notify({
+			title: 'Error',
+			description: 'Passwords do not match.',
+			type: 'destructive'
+		});
+		return false;
+	}
+
+	const firstName = '';
+	const lastName = '';
+	const validator = new PasswordValidator(firstName, lastName, password);
+	const result = validator.validate();
+	if (result.valid)
+	{
+		return true;
+	}
+
+	app.notify({
+		title: 'Error',
+		description: 'Password does not meet requirements.',
+		type: 'destructive'
+	});
+	return false;
+}
 
 /**
  * ChangePasswordForm
@@ -27,29 +64,26 @@ const ChangePasswordHeader = Atom(({ title, description }) => (
  * @returns {object} A virtual DOM element representing the change password form.
  */
 const ChangePasswordForm = () => (
-    Form({
+	Form({
 		class: 'flex flex-col p-6 pt-0',
 		submit: (e, parent) =>
 		{
 			e.preventDefault();
+
 			// Handle the password change logic
 			console.log('Password change submitted');
 		},
 		role: 'form'
 	}, [
 		Div({ class: 'grid gap-4' }, [
-			// Current Password
-			Input({
-				type: 'password',
-				placeholder: 'Current Password',
-				required: true,
-				'aria-required': true
-			}),
 			// New Password
 			Input({
 				type: 'password',
 				placeholder: 'New Password',
 				required: true,
+				bind: 'password',
+				pattern: '(?=^.{12,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*$',
+				title: 'Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.',
 				'aria-required': true
 			}),
 			// Confirm New Password
@@ -57,6 +91,9 @@ const ChangePasswordForm = () => (
 				type: 'password',
 				placeholder: 'Confirm New Password',
 				required: true,
+				bind: 'confirmPassword',
+				pattern: '(?=^.{12,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*$',
+				title: 'Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.',
 				'aria-required': true
 			}),
 			// Submit Button
@@ -73,7 +110,7 @@ const ChangePasswordForm = () => (
  * @returns {object} A virtual DOM element representing the change password section.
  */
 export const ChangePasswordSection = () => (
-    Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
+	Section({ class: 'flex flex-auto flex-col justify-center items-center' }, [
 		Div({
 			class: 'rounded-xl sm:border sm:shadow-lg bg-card text-card-foreground shadow w-full mx-auto max-w-sm'
 		}, [
