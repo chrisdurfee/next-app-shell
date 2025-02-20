@@ -70,6 +70,13 @@ const ChangePasswordForm = () => (
 		{
 			e.preventDefault();
 
+			const password = parent.data.password;
+			const confirmPassword = parent.data.confirmPassword;
+			if (!validate(password, confirmPassword))
+			{
+				return;
+			}
+
 			// Handle the password change logic
 			console.log('Password change submitted');
 		},
