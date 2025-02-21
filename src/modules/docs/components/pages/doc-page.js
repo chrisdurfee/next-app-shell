@@ -10,8 +10,8 @@ import { CenterPage } from "@base-framework/ui/pages";
  */
 const DocHeader = Atom(({ title, description}) => (
 	Header({ class: 'flex flex-col' }, [
-		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
-		P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description),
+		H1({ class: 'text-3xl font-bold leading-tight tracking-tighter md:text-4xl lg:leading-[1.1]' }, title),
+		P({ class: 'text-lg font-light text-foreground mt-2' }, description),
 	])
 ));
 
