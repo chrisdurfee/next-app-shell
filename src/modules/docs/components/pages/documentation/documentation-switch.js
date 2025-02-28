@@ -27,7 +27,7 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/badges*`, 'Badges', () => import('./components/badge-page.js')),
 	Page(`${basePath}/components/tabs*`, 'Tabs', () => import('./components/tab-page.js')),
 	Page(`${basePath}/components/modals*`, 'Modals', () => import('./components/modal-page.js')),
-	Page(`${basePath}/components/notifications*`, 'Notifications', () => import('./components/nofication-page.js')),
+	Page(`${basePath}/components/notifications*`, 'Notifications', () => import('./components/notification-page.js')),
 	Page(`${basePath}/components/dialogs*`, 'Modals', () => import('./components/dialog-page.js')),
 	Page(`${basePath}/components/cards*`, 'Cards', () => import('./components/cards/card-page.js')),
 	Page(`${basePath}/components/calendars*`, 'Calendars', () => import('./components/calendar-page.js')),

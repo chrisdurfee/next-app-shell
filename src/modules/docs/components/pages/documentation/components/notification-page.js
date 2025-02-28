@@ -101,7 +101,7 @@ export const NotificationPage = () => (
                 code: `app.notify({
     title: 'Error!',
     description: 'Something went wrong. Please try again later.',
-    icon: Icons.error,
+    icon: Icons.warning,
     type: 'destructive',
     duration: 'infinite'
 })`
