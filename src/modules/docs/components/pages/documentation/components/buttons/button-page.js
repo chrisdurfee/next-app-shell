@@ -26,7 +26,7 @@ export const ButtonPage = () => (
                 ],
                 code: `import {  Button  } from "@base-framework/ui/atoms";
 
-Button({ ...props, variant: 'secondary' }, primary)`
+Button({ variant: 'primary', click: () => console.log('clicked') }, 'Click Me')`
             }),
 
             Header({ class: 'flex flex-col py-8' }, [
