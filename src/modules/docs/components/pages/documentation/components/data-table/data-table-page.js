@@ -1,6 +1,6 @@
 import { H4, P, Section, Span, Td, Tr } from '@base-framework/atoms';
 import { Checkbox } from "@base-framework/ui/atoms";
-import { DataTable } from "@base-framework/ui/organisms";
+import { DataTable, ScrollableDataTable } from "@base-framework/ui/organisms";
 import { CodeCard } from "../../../../molecules/cards.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -51,7 +51,8 @@ const rowItem = (row, onSelect) =>
 /**
  * DataTablePage
  *
- * Documents DataTable usage, including advanced row manipulation (selecting, removing, etc.).
+ * Documents DataTable usage, including advanced row manipulation (selecting, removing, etc.),
+ * and now includes a section on the ScrollableDataTable which automatically loads more rows as you scroll.
  *
  * @returns {DocPage}
  */
@@ -69,8 +70,8 @@ export const DataTablePage = () =>
 			preview: [
 				new DataTable({ headers, rows, rowItem, key: 'id' }),
 			],
-			code: `import {  DataTable  } from "@base-framework/ui/organisms";
-import {  Checkbox  } from "@base-framework/ui/atoms";
+			code: `import { DataTable } from "@base-framework/ui/organisms";
+import { Checkbox } from "@base-framework/ui/atoms";
 import { Tr, Td } from '@base-framework/atoms';
 
 const headers = [
@@ -116,8 +117,8 @@ new DataTable({
 				CustomHeaderTable()
 			],
 			code: `// custom-header-table.js
-import {  CheckboxCol, HeaderCol  } from "@base-framework/ui/organisms";
-import {  DataTable  } from "@base-framework/ui/organisms";
+import { CheckboxCol, HeaderCol } from "@base-framework/ui/organisms";
+import { DataTable } from "@base-framework/ui/organisms";
 import { Tr, Td, Thead } from '@base-framework/atoms';
 
 // Showcases a custom header with CheckboxCol and HeaderCol, plus a custom rowItem.
@@ -132,9 +133,65 @@ export const CustomHeaderTable = () => {
 };`
 		}),
 
-		// 3) Using sections with code cards for advanced usage
+		// 3) Scrollable Data Table section
+		DocSection({
+			title: 'Scrollable Data Table',
+			description: 'The ScrollableDataTable component extends the basic DataTable by automatically loading additional rows as you scroll near the bottom of the table\'s container. It provides a refresh() method to reload data. You can pass a loadMoreItems callback for dynamic fetching or pass a data object to have the callback set up automatically.',
+			preview: [
+				ScrollableDataTable({
+					cache: 'table',
+					headers,
+					rows,
+					rowItem,
+					loadMoreItems: (offset, limit, callback) =>
+					{
+						// Simulate asynchronous data fetching.
+						setTimeout(() =>
+						{
+							callback([
+								{ id: 6, status: 'Success', email: 'newuser@example.com', amount: 200.00, selected: false }
+							]);
+						}, 1000);
+					},
+					scrollContainer: window,
+					limit: 20
+				})
+			],
+			code: `import { ScrollableDataTable } from "@base-framework/organisms";
 
-		// Selecting & resetting
+const headers = [
+	{ label: 'Status', key: 'status' },
+	{ label: 'Email', key: 'email' },
+	{ label: 'Amount', key: 'amount', align: 'justify-end' }
+];
+
+const rows = [
+	{ id: 1, status: 'Success', email: 'ken99@yahoo.com', amount: 316.00, selected: false },
+	// additional rows...
+];
+
+const scrollableTable = ScrollableDataTable({
+	cache: 'table',
+	headers,
+	rows,
+	rowItem,
+	loadMoreItems: (offset, limit, callback) => {
+		// Replace with asynchronous data fetching logic.
+		setTimeout(() => {
+			callback([
+				{ id: 6, status: 'Success', email: 'newuser@example.com', amount: 200.00, selected: false }
+			]);
+		}, 1000);
+	},
+	scrollContainer: window,
+	limit: 20
+});
+
+// To refresh the table data:
+scrollableTable.refresh();`
+		}),
+
+		// 4) Selecting & resetting
 		Section({ class: 'space-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Selecting and Resetting Rows'),
 			P({ class: 'text-muted-foreground' }, 'DataTable supports toggling all rows, clearing selections, and retrieving selected rows.'),
@@ -153,7 +210,7 @@ dt.updateSelected(); // updates the internal 'selected' boolean
 `)
 		]),
 
-		// Removing items
+		// 5) Removing items
 		Section({ class: 'space-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Removing Items'),
 			P({ class: 'text-muted-foreground' }, 'Use remove() to delete rows by passing an array of items (or a single item).'),
@@ -167,7 +224,7 @@ dt.remove(selectedItems); // e.g. dt.getSelectedRows()
 `)
 		]),
 
-		// Appending items
+		// 6) Appending items
 		Section({ class: 'space-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Appending Items'),
 			P({ class: 'text-muted-foreground' }, 'Use append() to add rows at the end of the list. Accepts an array or single object.'),
@@ -183,7 +240,7 @@ dt.append([
 `)
 		]),
 
-		// Mingling
+		// 7) Mingling items
 		Section({ class: 'space-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Mingling Items'),
 			P({ class: 'text-muted-foreground' }, 'Mingle merges new items with existing items by matching keys. If withDelete = true, items not in newItems are removed.'),
@@ -198,7 +255,7 @@ dt.mingle(newItems, true);
 `)
 		]),
 
-		// Prepending items
+		// 8) Prepending items
 		Section({ class: 'space-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Prepending Items'),
 			P({ class: 'text-muted-foreground' }, 'Use prepend() to add new rows at the beginning of the list, shifting existing rows down.'),
