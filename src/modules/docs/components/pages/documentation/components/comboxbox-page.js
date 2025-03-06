@@ -42,13 +42,17 @@ export const ComboboxPage = () => (
 import {  Icons  } from "@base-framework/ui/icons";
 
 new Combobox({
+    width: 'w-full', // this is the default value
+    maxWidth: 'max-w-[250px]', // this is the default value
+    class: '',
+    onSelect: (item) => console.log(item),
     items: [
-    { value: 'next.js', label: 'Next.js', icon: Icons.home },,
-    { value: 'sveltekit', label: 'SvelteKit' },
-    { value: 'nuxt.js', label: 'Nuxt.js' },
-    { value: 'remix', label: 'Remix' },
-    { value: 'astro', label: 'Astro' },
-],
+        { value: 'next.js', label: 'Next.js', icon: Icons.home },
+        { value: 'sveltekit', label: 'SvelteKit' },
+        { value: 'nuxt.js', label: 'Nuxt.js' },
+        { value: 'remix', label: 'Remix' },
+        { value: 'astro', label: 'Astro' },
+    ],
 })`
             })
         ]
