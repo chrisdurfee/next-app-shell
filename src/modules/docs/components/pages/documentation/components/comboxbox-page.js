@@ -46,6 +46,7 @@ new Combobox({
     maxWidth: 'max-w-[250px]', // this is the default value
     class: '',
     onSelect: (item) => console.log(item),
+    selectedFirst: false,
     items: [
         { value: 'next.js', label: 'Next.js', icon: Icons.home },
         { value: 'sveltekit', label: 'SvelteKit' },
