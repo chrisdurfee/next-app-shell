@@ -47,6 +47,7 @@ new Combobox({
     class: '',
     onSelect: (item) => console.log(item),
     selectedFirst: false,
+    required: false,
     items: [
         { value: 'next.js', label: 'Next.js', icon: Icons.home },
         { value: 'sveltekit', label: 'SvelteKit' },
