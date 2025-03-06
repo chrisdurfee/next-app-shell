@@ -38,8 +38,8 @@ export const ComboboxPage = () => (
                         })
                     ])
                 ],
-                code: `@base-framework/ui/molecules;
-import {  Icons  } from "@base-framework/ui/icons";
+                code: `import { Combobox } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
 
 new Combobox({
     width: 'w-full', // this is the default value
