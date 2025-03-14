@@ -40,7 +40,7 @@ export const BadgePage = () => (
                     ])
                 ],
                 code: `
-import {  Button  } from "@base-framework/ui/atoms";
+import { Badge } from "@base-framework/ui/atoms";
 import { Atom } from '@base-framework/base';
 
 export const PrimaryBadge = Atom((props, children)) => (
