@@ -97,7 +97,7 @@ const ChangePasswordForm = () => (
 				placeholder: 'New Password',
 				required: true,
 				bind: 'password',
-				pattern: '(?=^.{12,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*$',
+				pattern: '^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).{12,}$',
 				title: 'Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.',
 				'aria-required': true
 			}),
@@ -107,7 +107,7 @@ const ChangePasswordForm = () => (
 				placeholder: 'Confirm New Password',
 				required: true,
 				bind: 'confirmPassword',
-				pattern: '(?=^.{12,}$)(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).*$',
+				pattern: '^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).{12,}$',
 				title: 'Password must be at least 12 characters long and include uppercase, lowercase, number, and special character.',
 				'aria-required': true
 			}),
