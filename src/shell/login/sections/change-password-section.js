@@ -2,7 +2,7 @@ import { Div, Form, H1, Header, P, Section } from '@base-framework/atoms';
 import { Atom } from '@base-framework/base';
 import { Button, Input } from "@base-framework/ui/atoms";
 import { Icons } from '@base-framework/ui/icons';
-import { PasswordValidator } from '../utils/password-validator';
+import { PasswordValidator } from '../utils/password-validator.js';
 
 /**
  * ChangePasswordHeader
