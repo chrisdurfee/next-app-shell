@@ -55,7 +55,7 @@ const validate = (password, confirmPassword) =>
 		type: 'destructive'
 	});
 	return false;
-}
+};
 
 /**
  * ChangePasswordForm
