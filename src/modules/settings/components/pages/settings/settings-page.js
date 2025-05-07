@@ -10,14 +10,14 @@ import { Sidebar } from "./sidebar.js";
  * @returns {object}
  */
 export const PageToolbar = () => (
-    Div({ class: "flex items-center justify-between pb-2 mt-2" }, [
-        Div({ class: 'flex lg:hidden' }, [
-            BackButton({
-                margin: 'm-0 ml-0',
-                backUrl: '/settings'
-            })
-        ])
-    ])
+	Div({ class: "flex items-center justify-between pb-2 mt-2" }, [
+		Div({ class: 'flex lg:hidden' }, [
+			BackButton({
+				margin: 'm-0 ml-0',
+				backUrl: '/settings'
+			})
+		])
+	])
 );
 
 /**
@@ -35,50 +35,50 @@ const isMobile = () => window.innerWidth < LG_WINDOW_SIZE;
  */
 const props =
 {
-    /**
-     * This will check the page.
-     *
-     * @returns {void}
-     */
-    checkPage()
-    {
-        const page = this.route.page;
-        if (!isMobile() && !page)
-        {
-            app.navigate('settings/profile', null, true);
-        }
-    },
+	/**
+	 * This will check the page.
+	 *
+	 * @returns {void}
+	 */
+	checkPage()
+	{
+		const page = this.route.page;
+		if (!isMobile() && !page)
+		{
+			app.navigate('settings/profile', null, true);
+		}
+	},
 
-    /**
-     * This will setup the events for the settings page.
-     * @returns {array}
-     */
-    setupEvents()
-    {
-        return [
-            ['resize', window, () => this.checkPage()]
-        ];
-    },
+	/**
+	 * This will setup the events for the settings page.
+	 * @returns {array}
+	 */
+	setupEvents()
+	{
+		return [
+			['resize', window, () => this.checkPage()]
+		];
+	},
 
-    /**
-     * This will run after the setup.
-     *
-     * @returns {void}
-     */
-    afterSetup()
-    {
-        this.checkPage();
-    },
+	/**
+	 * This will run after the setup.
+	 *
+	 * @returns {void}
+	 */
+	afterSetup()
+	{
+		this.checkPage();
+	},
 
-    /**
-     * This will run after the update.
-     *
-     * @returns {void}
-     */
-    update()
-    {
-        this.checkPage();
-    }
+	/**
+	 * This will run after the update.
+	 *
+	 * @returns {void}
+	 */
+	update()
+	{
+		this.checkPage();
+	}
 };
 
 /**
@@ -89,12 +89,12 @@ const props =
  * @returns {object}
  */
 export const SettingsPage = () => (
-    new BlankPage(props, [
-        Div({ class: 'flex flex-auto flex-col lg:flex-row max-w-[100vw] h-full' }, [
-            Sidebar(),
-            ContentSection()
-        ])
-    ])
+	new BlankPage(props, [
+		Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row max-w-[100vw] h-full' }, [
+			Sidebar(),
+			ContentSection()
+		])
+	])
 );
 
 export default SettingsPage;
