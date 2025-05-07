@@ -1,5 +1,5 @@
 import { Div, H1, Header, P } from '@base-framework/atoms';
-import { Button } from "@base-framework/ui/atoms";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Breadcrumb } from "@base-framework/ui/molecules";
 import { DashboardCards } from './dasboard-cards.js';
@@ -23,10 +23,13 @@ export const DashboardHeader = () => (
 				{ label: 'Recent' }
 			]
 		}),
-        Div({ class: 'hidden md:flex gap-2'}, [
+        Div({ class: 'hidden sm:flex gap-2'}, [
             Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus, click: OrderModal }, 'Add Order'),
+        ]),
+        Div({ class: 'flex sm:hidden mr-4' }, [
+            Tooltip({ content: 'Add Order', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: OrderModal }))
         ])
-	])
+])
 );
 
 /**

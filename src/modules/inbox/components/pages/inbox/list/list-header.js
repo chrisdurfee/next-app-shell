@@ -36,7 +36,7 @@ const AddMessageButton = () => (
  * @returns {object}
  */
 export const ListHeaer = () => (
-	Header({ class: "px-4 pb-2 lg:p-4 bg-card" }, [
+	Header({ class: "px-4 pb-2 sm:py-2 lg:p-4 bg-card" }, [
 		Div({ class: "flex justify-between" }, [
 			Title(),
 			Div({ class: 'flex' }, [

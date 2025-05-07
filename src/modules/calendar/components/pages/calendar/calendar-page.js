@@ -182,7 +182,7 @@ export const CalendarPage = () => (
 		render()
 		{
 			return FullTemplate([
-				Div({ class: 'px-4 flex flex-auto flex-col pt-[80px] md:pt-5 md:px-0' }, [
+				Div({ class: 'px-4 flex flex-auto flex-col pt-[80px] sm:pt-2 md:pt-5 md:px-0' }, [
 					Div({ class: 'flex flex-auto flex-col w-full h-full' }, [
 						OnRoute('view', (view) =>
 						{
