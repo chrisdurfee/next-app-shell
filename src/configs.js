@@ -26,7 +26,7 @@ export const Configs =
 	 *
 	 * @type {boolean} useShortNav
 	 */
-	useShortNav: false,
+	useShortNav: true,
 
 	/**
 	 * The push settings.
