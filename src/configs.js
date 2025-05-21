@@ -32,7 +32,8 @@ export const Configs =
 	 * The push settings.
 	 */
 	push: {
-		publicId: ''
+		// TODO: Add your public key here
+		publicId: 'BLQ5dFCQWbjg4SwqEe1NNYm31aD4MMNXsflFsCc-TxbipA1eTqtX_XdJqpCGq8tTbqYtSCVJFLB4d0D4FOtTrS4'
 	},
 
 	/**
@@ -40,5 +41,5 @@ export const Configs =
 	 *
 	 * @type {string} userStatusApi
 	 */
-	userStatusApi: '/api/use/status',
+	userStatusApi: '/api/user/status',
 };
