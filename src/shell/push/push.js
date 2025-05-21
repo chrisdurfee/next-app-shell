@@ -221,8 +221,8 @@ export class Push
 			subscription
 		});
 
-		// TODO: change this to the correct URL if not "/api/push"
-		Ajax('/api/push', params);
+		// TODO: change this to the correct URL
+		Ajax(`/api/user/${userId}/push`, params);
 	}
 
 	/**
@@ -244,6 +244,6 @@ export class Push
 	 */
 	updateSubscription(subscription)
 	{
-		this.request('setup', subscription);
+		this.request('subscribe', subscription);
 	}
 }
