@@ -69,11 +69,11 @@ export class Push {
     /**
      * This will send the request.
      *
-     * @param {string} option
+     * @param {string} action
      * @param {object} subscription
      * @returns {void}
      */
-    request(option: string, subscription: object): void;
+    request(action: string, subscription: object): void;
     /**
      * This will remove the subscription.
      *
