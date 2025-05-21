@@ -205,11 +205,11 @@ export class Push
 	/**
 	 * This will send the request.
 	 *
-	 * @param {string} option
+	 * @param {string} action
 	 * @param {object} subscription
 	 * @returns {void}
 	 */
-	request(option, subscription)
+	request(action, subscription)
 	{
 		// TODO: change this to the correct user id proprety if not "id"
 		// and set correct params for your API
@@ -217,13 +217,12 @@ export class Push
 		const userId = app.data.user.id;
 		let params = 'item=' + JSON.stringify({
 			id: userId,
-			option,
 			subscription
 		});
 
 		// TODO: change this to the correct URL
 		Ajax({
-			url: `/api/user/${userId}/push`,
+			url: `/api/user/${userId}/push/${action}`,
 			method: 'POST',
 			params
 		});
