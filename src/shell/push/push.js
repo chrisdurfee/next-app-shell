@@ -215,14 +215,18 @@ export class Push
 		// and set correct params for your API
 		// @ts-ignore
 		const userId = app.data.user.id;
-		let params = 'user=' + JSON.stringify({
+		let params = 'item=' + JSON.stringify({
 			id: userId,
 			option,
 			subscription
 		});
 
 		// TODO: change this to the correct URL
-		Ajax(`/api/user/${userId}/push`, params);
+		Ajax({
+			url: `/api/user/${userId}/push`,
+			method: 'POST',
+			params
+		});
 	}
 
 	/**
