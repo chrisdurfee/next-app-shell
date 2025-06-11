@@ -43,6 +43,25 @@ const separateOptions = (options) =>
 };
 
 /**
+ * This will add a callback to each option.
+ *
+ * @param {Array} options
+ * @param {function} callback
+ * @returns {void}
+ */
+const addOptionsCallback = (options, callback) =>
+{
+	options.map(option =>
+	{
+		option.click = callback;
+		if (option.options)
+		{
+			addOptionsCallback(option.options, callback);
+		}
+	});
+};
+
+/**
  * MobileNavigation
  *
  * A mobile navigation component that displays a list of links in a dropdown.
