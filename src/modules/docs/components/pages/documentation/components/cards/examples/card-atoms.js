@@ -7,8 +7,8 @@ import { H2, Header, P } from "@base-framework/atoms";
  * @returns {object}
  */
 export const CardHeader = ({ title, description }) => (
-    Header({ class: 'text-left' }, [
-        H2({ class: "font-semibold tracking-tight text-2xl" }, title),
-        P({ class: "text-sm text-muted-foreground" }, description)
-    ])
+	Header({ class: 'text-left' }, [
+		H2({ class: "font-semibold tracking-tight text-2xl" }, title),
+		P({ class: "text-sm text-muted-foreground" }, description)
+	])
 );

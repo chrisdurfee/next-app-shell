@@ -16,4 +16,5 @@ import "./list/module.js";
 import "./clients/module.js";
 import "./website/module.js";
 import "./settings/module.js";
+import "./directory/module.js";
 import "./docs/module.js";
