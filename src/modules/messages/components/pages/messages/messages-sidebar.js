@@ -49,7 +49,7 @@ const SidebarRowItem = (route) =>
  * @returns {object}
  */
 export const MessagesSidebar = () =>
-	Div({ class: "flex-auto flex-col pb-12 hidden lg:flex p-6 border-l bg-sidebar w-full max-w-[320px] h-full" },
+	Div({ class: "flex-auto flex-col pb-12 hidden 2xl:flex p-6 border-l bg-sidebar w-full max-w-[320px] h-full" },
 	[
 		Header({ class: "pb-4 px-2 flex flex-col" }, [
 			H3({ class: "scroll-m-20 text-lg font-bold tracking-tight" }, "Connections")
