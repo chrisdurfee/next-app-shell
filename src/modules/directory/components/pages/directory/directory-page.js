@@ -18,7 +18,7 @@ const UserList = ({ users }) => (
 			key: "id",
 			items: users,
 			role: "list",
-			class: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-2 md:gap-4 pb-6",
+			class: "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 xl:grid-cols-5 2xl:grid-cols-6 pb-6",
 			rowItem: (user) => new UserItem({ user }),
 		})
 	])
@@ -33,7 +33,7 @@ const UserList = ({ users }) => (
  */
 export const DirectoryPage = () => (
 	new BlankPage([
-		Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] mx-auto" }, [
+		Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] 2xl:max-w-[2200px] mx-auto" }, [
 			PageHeader(),
 			UserList({
 				users: USERS
