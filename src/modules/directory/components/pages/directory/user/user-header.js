@@ -1,4 +1,4 @@
-import { Div, H1, Img, Span } from "@base-framework/atoms";
+import { Div, H1, Img } from "@base-framework/atoms";
 
 /**
  * UserHeader
@@ -10,7 +10,7 @@ import { Div, H1, Img, Span } from "@base-framework/atoms";
  * @returns {object}
  */
 export const UserHeader = ({ user }) => (
-	Div({ class: "flex flex-col gap-6 mt-4" }, [
+	Div({ class: "flex flex-col gap-4 mt-4" }, [
 		// User Image
 		Img({
 			src: user.image,
@@ -22,9 +22,9 @@ export const UserHeader = ({ user }) => (
 		H1({ class: "text-3xl font-bold text-foreground" }, `${user.firstName} ${user.lastName}`),
 
 		// User Metadata
-		Div({ class: "text-sm text-muted-foreground flex gap-4" }, [
-			Span(user.role),
-			Span(user.location),
+		Div({ class: "text-sm text-muted-foreground flex gap-2 flex-col" }, [
+			Div(user.role),
+			Div(user.location),
 		])
 	])
 );
