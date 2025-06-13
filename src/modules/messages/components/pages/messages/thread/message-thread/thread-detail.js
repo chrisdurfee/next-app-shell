@@ -133,7 +133,7 @@ export const ThreadDetail = Jot(
  * @returns {object}
  */
 const ConversationHeader = (thread) =>
-    Div({ class: "flex items-center p-4" }, [
+    Div({ class: "flex items-center p-4 bg-background/80 backdrop-blur-md fixed w-full" }, [
         Div({ class: 'flex flex-auto items-center gap-3 lg:max-w-5xl m-auto' }, [
             // Left side avatar + status
             Div({ class: 'flex lg:hidden' }, [
