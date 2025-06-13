@@ -47,7 +47,7 @@ const HeaderSkeleton = () =>
  * @returns {object}
  */
 const ThreadSkeleton = () =>
-    Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto p-4" }, [
+    Div({ class: "flex flex-col gap-4 w-full h-full max-w-none lg:max-w-5xl m-auto p-4 pt-24" }, [
         Skeleton({ width: "w-1/2", height: "h-8", class: "rounded" }),
         Skeleton({ width: "w-2/3", height: "h-8", class: "rounded self-end" }),
         Skeleton({ width: "w-1/4", height: "h-8", class: "rounded" }),
@@ -92,7 +92,7 @@ export const ThreadDetail = Jot(
                     ]);
                 }
 
-                return Div({ class: "flex flex-col flex-auto max-h-screen" }, [
+                return Div({ class: "flex flex-col flex-auto max-h-screen relative" }, [
                     ConversationHeader(currentThread),
                     ConversationMessages(currentThread),
                     new ThreadComposer({ placeholder: "Type something...", add: (msg) =>
@@ -133,7 +133,7 @@ export const ThreadDetail = Jot(
  * @returns {object}
  */
 const ConversationHeader = (thread) =>
-    Div({ class: "flex items-center p-4 bg-background/80 backdrop-blur-md fixed w-full" }, [
+    Div({ class: "flex items-center p-4 bg-background/80 backdrop-blur-md absolute w-full" }, [
         Div({ class: 'flex flex-auto items-center gap-3 lg:max-w-5xl m-auto' }, [
             // Left side avatar + status
             Div({ class: 'flex lg:hidden' }, [
@@ -197,7 +197,7 @@ const DateDivider = (date) => (
  */
 const ConversationMessages = (thread) =>
     Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
-        Div({ class: "flex flex-col w-full h-full max-w-none lg:max-w-5xl m-auto" }, [
+        Div({ class: "flex flex-col w-full h-full max-w-none lg:max-w-5xl m-auto pt-24" }, [
             new List({
                 cache: 'thread',
                 key: 'id',
