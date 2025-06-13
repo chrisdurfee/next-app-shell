@@ -19,7 +19,7 @@ const Page = (uri, importCallback) => ({
  */
 const ContentPage = () => (
 	Div({
-		class: 'flex flex-auto flex-col contained p-4 lg:p-6',
+		class: 'flex flex-auto flex-col p-4 lg:p-6',
 		switch: [
 			Page(`/directory/users/:userId?/:page?`, () => import('./sections/profile-page.js'))
 		]
