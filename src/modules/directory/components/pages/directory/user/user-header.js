@@ -2,6 +2,7 @@ import { Div, H1, Img } from "@base-framework/atoms";
 import { Tooltip } from "@base-framework/ui";
 import { Button } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
+import { StaticStatusIndicator } from "@base-framework/ui/molecules";
 
 /**
  * UserHeader
@@ -15,11 +16,16 @@ import { Icons } from "@base-framework/ui/icons";
 export const UserHeader = ({ user }) => (
 	Div({ class: "flex flex-col gap-2 mt-4 items-center justify-center" }, [
 		// User Image
-		Img({
-			src: user.image,
-			alt: user.name,
-			class: "w-full h-96 object-cover rounded-lg",
-		}),
+		Div({ class: 'relative' }, [
+			Img({
+				src: user.image,
+				alt: user.name,
+				class: "w-full h-96 object-cover rounded-lg",
+			}),
+			Div({ class: "absolute bottom-3 right-3" }, [
+				StaticStatusIndicator(user.status)
+			])
+		]),
 
 		// User Name
 		H1({ class: "text-3xl font-bold text-foreground truncate" }, `${user.firstName} ${user.lastName}`),
