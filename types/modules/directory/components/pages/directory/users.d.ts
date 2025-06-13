@@ -1,5 +1,5 @@
 /**
- * Mock data for directory page.
+ * Mock data for directory & profile pages.
  *
  * @type {Array<object>} USERS
  */
