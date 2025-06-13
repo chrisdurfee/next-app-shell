@@ -1,2 +1,1 @@
-export function PageToolbar(): object;
-export function ContentSection(): object;
+export function ContentSection(props: object): object;

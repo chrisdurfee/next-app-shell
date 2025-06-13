@@ -1,1 +1,1 @@
-export function Sidebar(): object;
+export function Sidebar({ userId }: object): object;
