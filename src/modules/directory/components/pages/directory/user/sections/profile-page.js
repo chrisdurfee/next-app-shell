@@ -74,7 +74,7 @@ export const ProfilePage = () => (
 				return Div({ class: "text-center" }, "User not found.");
 			}
 
-			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
+			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[2200px]' }, [
 				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
 					Div({ class: 'w-full lg:w-1/3' }, [
 						UserHeader({ user })

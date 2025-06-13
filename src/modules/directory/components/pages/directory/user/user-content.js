@@ -24,9 +24,8 @@ export const CardHeader = ({ title, description }) => (
  * @returns {object}
  */
 export const UserContent = ({ user }) => (
-	Card({ class: "w-full mx-auto p-6 bg-card space-y-6" }, [
-		CardHeader({ title: "Team Member" }),
-
+	Card({ class: "w-full mx-auto p-6 bg-card space-y-2" }, [
+		CardHeader({ title: "Biography" }),
 		P({ class: "text-sm text-muted-foreground" }, `${user.bio}`),
 	])
 );
