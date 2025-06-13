@@ -8,7 +8,7 @@ import { Icons } from "@base-framework/ui/icons";
  * @returns {object}
  */
 export const EmailEmptyState = () => (
-	Div({ class: 'm-4 mt-8 p-4 rounded-md items-center justify-center text-center' }, [
+	Div({ class: 'm-4 mt-0 p-4 rounded-md items-center justify-center text-center' }, [
 		Div({ class: 'flex-none max-w-12 mx-auto mt-8 mb-4' }, [
 			Icon({ size: "xl" }, Icons.envelope.open)
 		]),
