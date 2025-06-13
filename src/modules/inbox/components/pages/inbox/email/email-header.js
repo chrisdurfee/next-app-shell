@@ -22,7 +22,7 @@ const Time = (time) => (
  * @returns {object}
  */
 export const EmailHeader = (message) => (
-	Div({ class: "flex items-center justify-between border-b pb-4 gap-4" }, [
+	Div({ class: "flex items-center justify-between pb-4 gap-4" }, [
 		// Avatar and Name
 		Div({ class: "flex items-center gap-4" }, [
 			Avatar({
