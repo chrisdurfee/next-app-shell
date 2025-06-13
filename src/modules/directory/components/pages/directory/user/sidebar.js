@@ -1,8 +1,7 @@
+import { Div, H1, Header } from "@base-framework/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { Confirmation } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
 import { SidebarMenu } from "./sidebar-menu.js";
-import { Div } from "@base-framework/atoms";
 
 /**
  * Toolbar
@@ -12,12 +11,13 @@ import { Div } from "@base-framework/atoms";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full items-center justify-between pb-2 mt-2" }, [
-		Div({ class: 'flex' }, [
+	Div({ class: "flex w-full items-center justify-between pb-2 mt-2 pl-2" }, [
+		Header({ class: 'flex space-x-4' }, [
 			BackButton({
 				margin: 'm-0 ml-0',
-				backUrl: '/blog'
-			})
+				backUrl: '/directory'
+			}),
+			H1({ class: 'scroll-m-20 text-3xl lg:text-2xl font-bold tracking-tight' }, 'User Profile'),
 		])
 	])
 );
@@ -25,29 +25,18 @@ const Toolbar = () => (
 /**
  * This will create the Sidebar.
  *
+ * @param {object} props
  * @returns {object}
  */
-export const Sidebar = () =>(
+export const Sidebar = ({ userId }) => (
 	SidebarMenu({
 		tapNav: Toolbar(),
-		title: 'Settings',
 		options: [
-			{ label: 'Profile', href: 'settings/profile', icon: Icons.user.default, exact: true },
-			{ label: 'Account', href: 'settings/account', icon: Icons.locked },
-			{ label: 'Appearance', href: 'settings/appearance', icon: Icons.sun },
-			{ label: 'Notifications', href: 'settings/notifications', icon: Icons.bell.default },
-			{ label: 'Display', href: 'settings/display', icon: Icons.window },
-			{ label: 'Sign Out', icon: Icons.signOut, callBack: () => {
-
-				new Confirmation({
-					icon: Icons.signOut,
-					type: 'destructive',
-					title: 'Are you absolutely sure?',
-					description: 'This will sign you out of the application.',
-					confirmTextLabel: 'Sign Out',
-					confirmed: () => app.signOut()
-				}).open()
-			} }
+			{ label: 'Profile', href: `directory/users/${userId}`, icon: Icons.user.default, exact: true },
+			{ label: 'Account', href: `directory/users/${userId}/account`, icon: Icons.locked },
+			{ label: 'Appearance', href: `directory/users/${userId}/appearance`, icon: Icons.sun },
+			{ label: 'Notifications', href: `directory/users/${userId}/notifications`, icon: Icons.bell.default },
+			{ label: 'Display', href: `directory/users/${userId}/display`, icon: Icons.window }
 		]
 	})
 );

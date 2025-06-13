@@ -1,21 +1,4 @@
 import { Div } from "@base-framework/atoms";
-import { BackButton, DockableOverlay } from "@base-framework/ui/organisms";
-
-/**
- * This will create the back button toolbar.
- *
- * @returns {object}
- */
-export const PageToolbar = () => (
-	Div({ class: "flex items-center justify-between pb-2 mt-2" }, [
-		Div({ class: 'flex lg:hidden' }, [
-			BackButton({
-				margin: 'm-0 ml-0',
-				backUrl: '/settings'
-			})
-		])
-	])
-);
 
 /**
  * Helper function to create a page that uses dynamic imports.
@@ -34,32 +17,23 @@ const Page = (uri, importCallback) => ({
  *
  * @returns {object}
  */
-const DockablePage = () => (
-	new DockableOverlay({ class: 'px-2' }, [
-		PageToolbar(),
-		Div({
-			class: 'flex flex-auto flex-col contained p-4 lg:p-6',
-			switch: [
-				Page('/settings/profile', () => import('./sections/profile-settings.js'))
-			]
-		})
-	])
+const ContentPage = () => (
+	Div({
+		class: 'flex flex-auto flex-col contained p-4 lg:p-6',
+		switch: [
+			Page(`/directory/users/:userId?/:page?`, () => import('./sections/profile-page.js'))
+		]
+	})
 );
 
 /**
  * This will create the Content Section.
  *
+ * @param {object} props
  * @returns {object}
  */
-export const ContentSection = () => (
+export const ContentSection = (props) => (
 	Div({ class: 'flex flex-auto flex-col' }, [
-		Div({
-			route: [
-				{
-					uri: 'settings/:page*',
-					component: DockablePage
-				}
-			]
-		})
+		ContentPage()
 	])
 );
