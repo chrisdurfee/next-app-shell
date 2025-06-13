@@ -32,11 +32,14 @@ export const Sidebar = ({ userId }) => (
 	SidebarMenu({
 		tapNav: Toolbar(),
 		options: [
-			{ label: 'Profile', href: `directory/users/${userId}`, icon: Icons.user.default, exact: true },
-			{ label: 'Account', href: `directory/users/${userId}/account`, icon: Icons.locked },
-			{ label: 'Appearance', href: `directory/users/${userId}/appearance`, icon: Icons.sun },
-			{ label: 'Notifications', href: `directory/users/${userId}/notifications`, icon: Icons.bell.default },
-			{ label: 'Display', href: `directory/users/${userId}/display`, icon: Icons.window }
+			{ label: 'Profile', href: `directory/users/${userId}`, icon: Icons.identification, exact: true },
+			{ label: 'Schedule', href: `directory/users/${userId}/schedule`, icon: Icons.calendar.default },
+			{ label: 'Documents', href: `directory/users/${userId}/documents`, icon: Icons.document.text },
+			{ label: 'Notes', href: `directory/users/${userId}/notes`, icon: Icons.pencil.square },
+			{ label: '1-on-1', href: `directory/users/${userId}/1-1`, icon: Icons.user.multiple },
+			{ label: 'Analytics', href: `directory/users/${userId}/analytics`, icon: Icons.barChart },
+			{ label: 'Posts', href: `directory/users/${userId}/posts`, icon: Icons.newspaper },
+			{ label: 'Reviews', href: `directory/users/${userId}/reviews`, icon: Icons.folder.default },
 		]
 	})
 );
