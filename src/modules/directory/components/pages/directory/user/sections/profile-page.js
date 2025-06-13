@@ -1,5 +1,6 @@
 import { Div, On } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { Breadcrumb } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
 import { getUserById } from "../../users.js";
 import { UserContent } from "../user-content.js";
@@ -75,11 +76,18 @@ export const ProfilePage = () => (
 			}
 
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
+				new Breadcrumb({
+					items: [
+						{ href: "/directory", label: "Directory" },
+						{ href: `/directory/users/${user.id}`, label: "Profile" },
+						{ label: `${user.firstName} ${user.lastName}` },
+					],
+				}),
 				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
 					Div({ class: 'w-full lg:w-1/3' }, [
 						UserHeader({ user })
 					]),
-					Div({ class: 'flex-1 space-y-4' }, [
+					Div({ class: 'flex-1' }, [
 						UserContent({ user }),
 					])
 				])

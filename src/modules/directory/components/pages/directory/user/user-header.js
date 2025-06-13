@@ -14,7 +14,7 @@ import { StaticStatusIndicator } from "@base-framework/ui/molecules";
  * @returns {object}
  */
 export const UserHeader = ({ user }) => (
-	Div({ class: "flex flex-col gap-2 mt-4 items-center justify-center" }, [
+	Div({ class: "flex flex-col gap-2 mt-4" }, [
 		// User Image
 		Div({ class: 'relative' }, [
 			Img({
@@ -28,7 +28,9 @@ export const UserHeader = ({ user }) => (
 		]),
 
 		// User Name
-		H1({ class: "text-3xl font-bold text-foreground truncate" }, `${user.firstName} ${user.lastName}`),
+		Div({ class: "text-sm text-muted-foreground flex gap-1 flex-col truncate items-center justify-center" }, [
+			H1({ class: "text-3xl font-bold text-foreground truncate" }, `${user.firstName} ${user.lastName}`),
+		]),
 
 		// User Metadata
 		Div({ class: "text-sm text-muted-foreground flex gap-1 flex-col truncate items-center justify-center" }, [
