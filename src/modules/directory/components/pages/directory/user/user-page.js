@@ -1,10 +1,9 @@
-import { Div, On } from "@base-framework/atoms";
+import { Div } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { BackButton, Overlay } from "@base-framework/ui/organisms";
+import { Overlay } from "@base-framework/ui/organisms";
 import { USERS } from "../users.js";
-import { UserContent } from "./user-content.js";
-import { UserHeader } from "./user-header.js";
-import { UserSkeleton } from "./user-skeleton.js";
+import { ContentSection } from "./content-section.js";
+import { Sidebar } from "./sidebar.js";
 
 /**
  * Finds a user by its ID.
@@ -13,24 +12,6 @@ import { UserSkeleton } from "./user-skeleton.js";
  * @returns {object|null}
  */
 export const getUserById = (userId) => USERS.find((user) => user.id.toString() === userId) || null;
-
-/**
- * Toolbar
- *
- * Displays a back button in the toolbar.
- *
- * @returns {object}
- */
-const Toolbar = () => (
-	Div({ class: "flex w-full items-center justify-between pb-2 mt-2" }, [
-		Div({ class: 'flex' }, [
-			BackButton({
-				margin: 'm-0 ml-0',
-				backUrl: '/blog'
-			})
-		])
-	])
-);
 
 /**
  * UserPage
@@ -88,28 +69,11 @@ export const UserPage = () =>
 	};
 
 	return new Overlay(props, [
-		Div({ class: "flex flex-col w-full min-h-screen px-4 lg:px-8" }, [
-			Div({ class: "flex flex-auto items-center flex-col gap-6 mx-auto w-full max-w-[1024px]" }, [
-				Toolbar(),
-				Div({ class: 'flex flex-auto flex-col w-full' }, [
-					On("loaded", (loaded, ele, { data }) =>
-					{
-						if (!loaded)
-						{
-							return UserSkeleton();
-						}
-
-						const user = data.user;
-						if (!user)
-						{
-							return Div({ class: "text-center" }, "User not found.");
-						}
-
-						return Div({ class: "w-full flex flex-auto flex-col gap-6" }, [
-							UserHeader({ user }),
-							UserContent({ user }),
-						]);
-					})
+		Div({ class: "flex flex-auto flex-col w-full" }, [
+			Div({ class: "flex flex-auto flex-col gap-6 w-full" }, [
+				Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row h-full' }, [
+					Sidebar(),
+					ContentSection()
 				])
 			])
 		])
