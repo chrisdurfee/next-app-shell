@@ -1,8 +1,6 @@
 import { Div, On } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
-import { Fieldset } from "@base-framework/ui/atoms";
 import { Page } from "@base-framework/ui/pages";
-import { SettingsSection } from "../../../../atoms/settings-section.js";
 import { getUserById } from "../../users.js";
 import { UserContent } from "../user-content.js";
 import UserHeader from "../user-header.js";
@@ -76,15 +74,14 @@ export const ProfilePage = () => (
 				return Div({ class: "text-center" }, "User not found.");
 			}
 
-			return SettingsSection({
-				title: 'Profile',
-				description: 'This is how others will see you on the site.',
-				class: 'max-w-[500px]',
-				submit: (data) => console.log("Profile Settings:", data)
-			}, [
-				Fieldset({ legend: 'Profile Information' }, [
-					UserHeader({ user }),
-					UserContent({ user }),
+			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
+				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
+					Div({ class: 'w-full lg:w-1/3' }, [
+						UserHeader({ user })
+					]),
+					Div({ class: 'flex-1 space-y-4' }, [
+						UserContent({ user }),
+					])
 				])
 			]);
 		})

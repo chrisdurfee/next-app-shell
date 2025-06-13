@@ -19,13 +19,12 @@ export const UserHeader = ({ user }) => (
 		}),
 
 		// User Name
-		H1({ class: "text-3xl font-bold text-foreground" }, user.name),
+		H1({ class: "text-3xl font-bold text-foreground" }, `${user.firstName} ${user.lastName}`),
 
 		// User Metadata
 		Div({ class: "text-sm text-muted-foreground flex gap-4" }, [
-			Span(user.date),
-			Span(`${user.comments} comments`),
-			Span(user.category),
+			Span(user.role),
+			Span(user.location),
 		])
 	])
 );
