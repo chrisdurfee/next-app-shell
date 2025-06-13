@@ -1,1 +1,0 @@
-import{Y as e}from"./index-qcr879_K.js";import{c as t}from"./sidebar-menu-page-DyIwNFwe-BAt3HXqV.js";import"./mobile-nav-wrapper-CuATTfqK-CM-Ktqrd.js";const s=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"404 Not Found")])]);export{s as Error404Page,s as default};
