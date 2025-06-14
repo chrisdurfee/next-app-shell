@@ -13,27 +13,6 @@ import { Skeleton } from "@base-framework/ui/atoms";
  */
 export const ClientSkeleton = () =>
 {
-	// sidebar pieces
-	const avatarSkeleton = Skeleton({ width: "w-full", height: "h-96", class: "mx-auto" });
-	const nameSkeleton = Skeleton({ width: "w-1/2", height: "h-8", class: "rounded-md mx-auto" });
-	const roleSkeleton = Skeleton({ width: "w-1/3", height: "h-5", class: "rounded-md mx-auto" });
-	const deptSkeleton = Skeleton({ width: "w-1/4", height: "h-5", class: "rounded-md mx-auto" });
-	const emailSkeleton = Skeleton({ width: "w-2/3", height: "h-4", class: "rounded-md mx-auto mt-2" });
-	const phoneSkeleton = Skeleton({ width: "w-1/3", height: "h-4", class: "rounded-md mx-auto" });
-	const iconButtonsSkeleton = Div({ class: "flex justify-center space-x-4 mt-4" },
-		Array(4).fill().map(() => Skeleton({ shape: "circle", width: "w-8", height: "h-8" }))
-	);
-
-	const sidebarSkeleton = Div({ class: "w-full lg:w-1/3 space-y-4" }, [
-		avatarSkeleton,
-		nameSkeleton,
-		roleSkeleton,
-		deptSkeleton,
-		emailSkeleton,
-		phoneSkeleton,
-		iconButtonsSkeleton
-	]);
-
 	// About section
 	const aboutSectionSkeleton = Div({ class: "space-y-4" }, [
 		Skeleton({ width: "w-24", height: "h-6", class: "rounded-md" }),
@@ -116,7 +95,6 @@ export const ClientSkeleton = () =>
 	return Div({ class: "p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px] space-y-8" }, [
 		Skeleton({ width: "w-20", height: "h-6", class: "rounded-md" }),
 		Div({ class: "flex flex-col lg:flex-row lg:space-x-8" }, [
-			sidebarSkeleton,
 			mainContentSkeleton
 		])
 	]);
