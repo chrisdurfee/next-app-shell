@@ -1,4 +1,5 @@
-export function EmploymentDetailsSection(): object;
+export function OrgDetailsSection(): object;
+export function PersonalDetailsSection(): object;
 export function ScheduleSection(): object;
 export function AboutSection({ about }: {
     about: string;
