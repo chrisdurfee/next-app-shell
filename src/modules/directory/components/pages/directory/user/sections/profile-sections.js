@@ -25,31 +25,53 @@ const ProfileSection = Atom((props, children) => (
 	])
 ))
 
-/* existing sections omitted for brevity… */
-
 /**
- * EmploymentDetailsSection
+ * OrgDetailsSection
  *
- * Placeholder fields: start date, tenure, department, manager,
- * work style, birthday. Other common fields include employee ID,
- * office location, time zone, emergency contact.
+ * Organization-specific employment fields:
+ * – Employee ID
+ * – Date Started
+ * – Time-to-Hire
+ * – Years at Company
+ * – Last Promotion Date
+ * – Department
+ * – Reporting Manager
+ * – Office / Time Zone
  *
  * @returns {object}
  */
-export const EmploymentDetailsSection = () =>
-	ProfileSection({ title: "Employment Details" }, [
+export const OrgDetailsSection = () =>
+	ProfileSection({ title: "Organization Details" }, [
 		Card({ class: "p-6", margin: "m-0" }, [
-			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" }, [
+			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" }, [
+				// Employee ID
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Employee ID"),
+					P({ class: "font-medium text-foreground" }, "EMP-000123")
+				]),
+
 				// Date Started
 				Div({ class: "space-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Date Started"),
 					P({ class: "font-medium text-foreground" }, "Jan. 1, 2020")
 				]),
 
+				// Time-to-Hire
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Time-to-Hire"),
+					P({ class: "font-medium text-foreground" }, "45 days")
+				]),
+
 				// Years at Company
 				Div({ class: "space-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Years at Company"),
 					P({ class: "font-medium text-foreground" }, "3 years")
+				]),
+
+				// Last Promotion Date
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Last Promotion Date"),
+					P({ class: "font-medium text-foreground" }, "Jun. 15, 2022")
 				]),
 
 				// Department
@@ -64,10 +86,40 @@ export const EmploymentDetailsSection = () =>
 					P({ class: "font-medium text-foreground" }, "Jordan Smith")
 				]),
 
+				// Office / Time Zone
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Office / Time Zone"),
+					P({ class: "font-medium text-foreground" }, "Dubai / GST")
+				])
+			])
+		])
+	]);
+
+/**
+ * PersonalDetailsSection
+ *
+ * User-specific personal fields:
+ * – Work Style
+ * – Emergency Contact
+ * – Birthday
+ *
+ * @returns {object}
+ */
+export const PersonalDetailsSection = () =>
+	ProfileSection({ title: "Personal Details" }, [
+		Card({ class: "p-6", margin: "m-0" }, [
+			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" }, [
 				// Work Style
 				Div({ class: "space-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Work Style"),
 					P({ class: "font-medium text-foreground" }, "Hybrid")
+				]),
+
+				// Emergency Contact
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Emergency Contact"),
+					P({ class: "font-medium text-foreground" }, "Alex Doe"),
+					P({ class: "text-sm text-muted-foreground" }, "(555) 123-4567")
 				]),
 
 				// Birthday
@@ -78,6 +130,7 @@ export const EmploymentDetailsSection = () =>
 			])
 		])
 	]);
+
 
 /**
  * ScheduleSection
