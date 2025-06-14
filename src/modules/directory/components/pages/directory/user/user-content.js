@@ -24,7 +24,7 @@ export const CardHeader = ({ title, description }) => (
  * @returns {object}
  */
 export const UserContent = ({ user }) => (
-	Div({ class: "space-y-12 mt-2" }, [
+	Div({ class: "space-y-12 mt-6 px-6" }, [
 		AboutSection(user),
 		PositionHistorySection({ history: user.positionHistory }),
 		ProjectsSection({ projects: user.projects }),
