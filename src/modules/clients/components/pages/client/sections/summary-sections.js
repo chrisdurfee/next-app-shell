@@ -1,7 +1,7 @@
 import { Div, H2, Header, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
-import { Card } from "@base-framework/ui";
+import { Card, Icon } from "@base-framework/ui";
 import { Badge } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Avatar } from "@base-framework/ui/molecules";
@@ -36,12 +36,12 @@ const ProfileSection = Atom((props, children) =>
  * @returns {object}
  */
 export const ClientAvatarSection = Atom(({ client }) =>
-	Div({ class: "flex items-center space-x-4 mt-6" }, [
+	Div({ class: "flex items-center space-x-4 my-10" }, [
 		Avatar({
 			src: client.avatar,
 			alt: client.name,
 			fallbackText: client.name,
-			size: "xl"
+			size: "lg"
 		}),
 		Div({ class: "flex flex-col space-y-1" }, [
 			Div({ class: "flex items-baseline space-x-2" }, [
@@ -160,7 +160,26 @@ export const ContractSection = Atom(({client}) =>
 			])
 		])
 	])
-)
+);
+
+/**
+ * TicketIcon
+ *
+ * @param {string} priority - The priority of the ticket.
+ * @returns {string} - The icon svg
+ */
+const TicketIcon = (priority) =>
+{
+	switch (priority)
+	{
+		case "high":
+			return Icons.chevron.up;
+		case "low":
+			return Icons.chevron.down;
+		default:
+			return Icons.check;
+	}
+};
 
 /**
  * TicketListItem
@@ -170,38 +189,36 @@ export const ContractSection = Atom(({client}) =>
  * @param {object} ticket
  * @returns {object}
  */
-const TicketListItem = Atom((ticket) =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: 'my-2' }, [
-		Div({ class: "flex items-center space-x-4" }, [
-			Div({ class: "flex items-center justify-center bg-muted rounded-full w-10 h-10" }, [
-				//Icon(Icons.arrow[ticket.priority], { class: "text-lg" })
-			]),
-			Div({ class: "flex flex-col" }, [
-				P({ class: "font-medium" }, ticket.subject),
-				P({ class: "text-sm text-muted-foreground" }, ticket.owner)
-			])
-		]),
-		Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
-	])
+const TicketListItem = Atom(ticket =>
+    Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+        Div({ class: "flex items-center space-x-4" }, [
+            Icon(TicketIcon(ticket.priority)),
+            Div({ class: "flex flex-col" }, [
+                P({ class: "font-medium" }, ticket.subject),
+                P({ class: "text-sm text-muted-foreground" }, ticket.owner)
+            ])
+        ]),
+        Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
+    ])
 );
 
 /**
  * TicketsSection
  *
- * Displays the client’s recent support tickets.
+ * Shows recent tickets in a list.
  *
  * @param {object} props
  * @param {object} props.client
  * @returns {object}
  */
 export const TicketsSection = Atom(({ client }) =>
-	ProfileSection({ title: "Tickets" }, [
-		new List({
-			cache: "tickets",
-			key: "id",
-			items: client.tickets,
-			role: "list",
-			rowItem: TicketListItem
-		})
-	])
+    ProfileSection({ title: "Tickets" }, [
+        new List({
+            cache: "tickets",
+            key: "id",
+            items: client.tickets,
+            role: "list",
+            rowItem: TicketListItem
+        })
+    ])
 );

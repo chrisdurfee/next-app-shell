@@ -26,12 +26,12 @@ export const clients = Array.from({ length: 20 }, (_, i) => {
 
 	return {
 		id,
-		name: `Client ${id}`,
+		name: `Client Name ${id}`,
 		code: `#${3000 + id}`,
 		//avatar: `https://i.pravatar.cc/150?img=${(i % 70) + 1}`,
 		status: isActive ? "Active" : "Inactive",
 		email: `client${id}@example.com`,
-		about: `This is a brief description of Client and what they do so our team can understand their needs and how we can assist them. This text is a placeholder and can be replaced with actual client information.`,
+		about: `This is a brief description of client and what they do so our team can understand their needs and how we can assist them. This text is a placeholder and can be replaced with actual client information.`,
 
 		payment: (Math.random() * 1000 + 50).toFixed(2),
 		package: pkg,
