@@ -34,9 +34,10 @@ export const ContractSection: Function;
 /**
  * TicketsSection
  *
- * Shows recent support tickets.
+ * Displays the client’s recent support tickets.
  *
- * @param {object} props - Properties for the section.
+ * @param {object} props
+ * @param {object} props.client
  * @returns {object}
  */
 export const TicketsSection: Function;
