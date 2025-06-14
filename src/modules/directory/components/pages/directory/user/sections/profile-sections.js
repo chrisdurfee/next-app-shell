@@ -1,7 +1,7 @@
 import { Div, H2, Header, P, Td, Tr } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Card } from "@base-framework/ui";
-import { Badge, Icon } from "@base-framework/ui/atoms";
+import { Badge, Button, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { DataTable } from "@base-framework/ui/organisms";
 
@@ -301,3 +301,110 @@ export const ReviewsSection = ({ reviews }) =>
 			})
 		])
 	]);
+
+	/**
+ * CancelledRequestItem
+ *
+ * Renders a single cancelled time-off request row.
+ *
+ * @param {object} props
+ * @param {string} props.typeLabel
+ * @param {string} props.startDate
+ * @param {string} props.endDate
+ * @param {number} props.days
+ * @param {number} props.percent
+ * @param {string} props.icon
+ * @param {string} props.status
+ * @returns {object}
+ */
+export const CancelledRequestItem = Atom((props) =>
+    Div({ class: "flex items-center justify-between p-4 bg-card rounded-lg" }, [
+        Div({ class: "flex items-center space-x-4" }, [
+            Icon({ size: "lg" }, props.icon),
+            Div({ class: "flex flex-col" }, [
+                P({ class: "font-medium" }, props.typeLabel),
+                P(
+                    { class: "text-sm text-muted-foreground" },
+                    `${props.startDate} → ${props.endDate} (${props.days}d) • ${props.percent}%`
+                )
+            ])
+        ]),
+        Badge({ variant: "outline" }, props.status)
+    ])
+);
+
+/**
+ * PendingRequestItem
+ *
+ * Renders a single pending time-off request row, with action buttons.
+ *
+ * @param {object} props
+ * @param {string} props.typeLabel
+ * @param {string} props.startDate
+ * @param {number} props.days
+ * @param {number} props.percent
+ * @param {string} props.icon
+ * @param {string} props.status
+ * @param {string} [props.reason]
+ * @returns {object}
+ */
+export const PendingRequestItem = Atom((props) =>
+    Div({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg" }, [
+        Div({ class: "flex items-center justify-between" }, [
+            Div({ class: "flex items-center space-x-4" }, [
+                Icon({ source: props.icon, size: "lg" }),
+                Div({ class: "flex flex-col" }, [
+                    P({ class: "font-medium" }, props.typeLabel),
+                    P(
+                        { class: "text-sm text-muted-foreground" },
+                        `${props.startDate} (${props.days}d) • ${props.percent}%`
+                    )
+                ])
+            ]),
+            Div({ class: "flex items-center space-x-2" }, [
+                Badge({ variant: "secondary" }, props.status),
+                Button({ variant: "ghost", icon: Icons.check.default,  label: "Approve" }),
+                Button({ variant: "ghost", icon: Icons.x.default,      label: "Decline" })
+            ])
+        ]),
+        props.reason && P({ class: "text-sm text-muted-foreground bg-muted p-2 rounded" }, props.reason)
+    ])
+);
+
+/**
+ * TimeOffRequestsSection
+ *
+ * Displays all time-off requests using the item atoms.
+ *
+ * @returns {object}
+ */
+export const TimeOffRequestsSection = () =>
+    ProfileSection(
+        {
+            title: "Time Off Requests",
+            onAction: () => Button({ variant: "outline", icon: Icons.plus.default, label: "Register time-off" })
+        },
+        [
+            Card({ class: "p-4 space-y-4", margin: "m-0" }, [
+                CancelledRequestItem({
+                    icon: Icons.face.frown,
+                    typeLabel: "Vacation",
+                    startDate: "Jul 24, 2024",
+                    endDate: "Jul 31, 2024",
+                    days: 6,
+                    percent: 100,
+                    status: "Cancelled"
+                }),
+
+                PendingRequestItem({
+                    icon: Icons.face.frown,
+                    typeLabel: "Sick",
+                    startDate: "Jul 3, 2024",
+                    days: 1,
+                    percent: 100,
+                    status: "Pending",
+                    reason: "Sick with heavy flu."
+                })
+            ])
+        ]
+    );
