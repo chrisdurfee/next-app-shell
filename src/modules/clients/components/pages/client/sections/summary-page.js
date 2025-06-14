@@ -84,7 +84,7 @@ const PageHeader = (client) => (
  * @returns {object}
  */
 export const SummaryPage = () => (
-    new Page(props, [
+	new Page(props, [
 		On("loaded", (loaded, ele, { data }) =>
 		{
 			if (!loaded)
@@ -110,7 +110,7 @@ export const SummaryPage = () => (
 				])
 			]);
 		})
-    ])
+	])
 );
 
 export default SummaryPage;
