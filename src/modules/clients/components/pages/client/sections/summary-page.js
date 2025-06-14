@@ -55,13 +55,35 @@ const props =
 };
 
 /**
- * ProfilePage
+ * PageHeader
  *
- * Profile page for displaying user information.
+ * Creates the header for the client page, including the title and edit button.
+ *
+ * @param {object} client The client data to display.
+ * @returns {object}
+ */
+const PageHeader = (client) => (
+	Div({ class: 'flex flex-row justify-between gap-4' }, [
+		H2({ class: 'text-2xl font-medium' }, 'Client Summary'),
+		Div({ class: 'flex flex-row space-x-2' }, [
+			Div({ class: 'hidden lg:inline-flex' }, [
+				Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: ClientModal }, 'Edit'),
+			]),
+			Div({ class: 'flex lg:hidden mr-4' }, [
+				Tooltip({ content: 'Edit', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.pencil.square, click: ClientModal }))
+			])
+		])
+	])
+);
+
+/**
+ * SummaryPage
+ *
+ * Summary page for displaying client information.
  *
  * @returns {object}
  */
-export const ProfilePage = () => (
+export const SummaryPage = () => (
     new Page(props, [
 		On("loaded", (loaded, ele, { data }) =>
 		{
@@ -79,17 +101,7 @@ export const ProfilePage = () => (
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
 				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
 					Div({ class: 'flex-1' }, [
-						Div({ class: 'flex flex-row justify-between gap-4' }, [
-							H2({ class: 'text-2xl font-medium' }, 'Client'),
-							Div({ class: 'flex flex-row space-x-2' }, [
-								Div({ class: 'hidden lg:inline-flex' }, [
-									Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: ClientModal }, 'Edit'),
-								]),
-								Div({ class: 'flex lg:hidden mr-4' }, [
-									Tooltip({ content: 'Edit', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.pencil.square, click: ClientModal }))
-								])
-							])
-						]),
+						PageHeader(client),
 						ClientContent({ client }),
 					]),
 					Div({ class: 'w-full lg:w-1/4' }, [
@@ -101,4 +113,4 @@ export const ProfilePage = () => (
     ])
 );
 
-export default ProfilePage;
+export default SummaryPage;

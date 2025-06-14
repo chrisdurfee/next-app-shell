@@ -1,5 +1,11 @@
 import { Div, H2, Header, P } from "@base-framework/atoms";
-import { AboutSection, OrgDetailsSection, PersonalDetailsSection, PositionHistorySection, ProjectsSection, ReviewsSection, ScheduleSection, SkillsSection, TimeOffRequestsSection } from "./sections/profile-sections.js";
+import {
+	AboutSection,
+	ClientAvatarSection,
+	ClientSummaryCardsSection,
+	ContractSection,
+	TicketsSection
+} from "./sections/summary-sections.js";
 
 /**
  * This will create the card header.
@@ -24,15 +30,11 @@ export const CardHeader = ({ title, description }) => (
  * @returns {object}
  */
 export const ClientContent = ({ client }) => (
-	Div({ class: "space-y-12 mt-6 md:px-6" }, [
+	Div({ class: "space-y-12 mt-6" }, [
+		ClientAvatarSection({ client }),
+		ClientSummaryCardsSection({ client }),
 		AboutSection(client),
-		OrgDetailsSection(),
-		PersonalDetailsSection(),
-		ScheduleSection(),
-		PositionHistorySection({ history: client.positionHistory || [] }),
-		ProjectsSection({ projects: client.projects || [] }),
-		SkillsSection({ skills: client.skills || [] }),
-		ReviewsSection({ reviews: client.reviews || [] }),
-		TimeOffRequestsSection()
+		ContractSection({ client }),
+		TicketsSection({ client }),
 	])
 );

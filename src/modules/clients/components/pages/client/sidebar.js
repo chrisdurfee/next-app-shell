@@ -32,14 +32,10 @@ export const Sidebar = ({ clientId }) => (
 	SidebarMenu({
 		tapNav: Toolbar(),
 		options: [
-			{ label: 'Profile', href: `clients/client/${clientId}`, icon: Icons.identification, exact: true },
-			{ label: 'Schedule', href: `clients/client/${clientId}/schedule`, icon: Icons.calendar.default },
-			{ label: 'Documents', href: `clients/client/${clientId}/documents`, icon: Icons.document.text },
-			{ label: 'Notes', href: `clients/client/${clientId}/notes`, icon: Icons.pencil.square },
-			{ label: '1-on-1', href: `clients/client/${clientId}/1-1`, icon: Icons.user.multiple },
-			{ label: 'Analytics', href: `clients/client/${clientId}/analytics`, icon: Icons.barChart },
-			{ label: 'Posts', href: `clients/client/${clientId}/posts`, icon: Icons.newspaper },
-			{ label: 'Reviews', href: `clients/client/${clientId}/reviews`, icon: Icons.folder.default },
+			{ label: 'Summary', href: `clients/client/${clientId}`, icon: Icons.office.single, exact: true },
+			{ label: 'Communication', href: `clients/client/${clientId}/communication`, icon: Icons.chat.group },
+			{ label: 'Billing', href: `clients/client/${clientId}/billing`, icon: Icons.currency.dollar },
+			{ label: 'Support', href: `clients/client/${clientId}/support`, icon: Icons.ticket }
 		]
 	})
 );
