@@ -1,3 +1,5 @@
+export function EmploymentDetailsSection(): object;
+export function ScheduleSection(): object;
 export function AboutSection({ about }: {
     about: string;
 }): object;
