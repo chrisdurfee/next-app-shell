@@ -38,30 +38,37 @@ const ProfileSection = Atom((props, children) => (
  */
 export const EmploymentDetailsSection = () =>
 	ProfileSection({ title: "Employment Details" }, [
-		Div({ class: "divide-y divide-muted-200 text-sm text-muted-foreground" }, [
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Date Started"),
-				P("01 Jan")
-			]),
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Years at Company"),
-				P("3 years")
-			]),
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Department"),
-				P("Engineering")
-			]),
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Reporting Manager"),
-				P("Jordan Smith")
-			]),
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Work Style"),
-				P("Hybrid")
-			]),
-			Div({ class: "flex justify-between py-2" }, [
-				P({ class: "font-medium text-foreground" }, "Birthday"),
-				P("Jun 07")
+		Card({ class: "p-6", margin: "m-0" }, [
+			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" }, [
+				// Date Started
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Date Started"),
+					P({ class: "font-medium text-foreground" }, "Jan. 1, 2020 (3 years)")
+				]),
+
+				// Department
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Department"),
+					P({ class: "font-medium text-foreground" }, "Engineering")
+				]),
+
+				// Reporting Manager
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Reporting Manager"),
+					P({ class: "font-medium text-foreground" }, "Jordan Smith")
+				]),
+
+				// Work Style
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Work Style"),
+					P({ class: "font-medium text-foreground" }, "Hybrid")
+				]),
+
+				// Birthday
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Birthday"),
+					P({ class: "font-medium text-foreground" }, "Jun. 7th")
+				])
 			])
 		])
 	]);
