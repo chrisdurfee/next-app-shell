@@ -7,3 +7,4 @@ export const clients: {
     image: string;
     role: string;
 }[];
+export function getClientById(clientId: string): object | null;

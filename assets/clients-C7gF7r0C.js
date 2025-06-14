@@ -1,0 +1,1 @@
+const a=Array.from({length:20},(e,t)=>({id:t+1,name:`Client ${t+1}`,status:t%2===0?"Active":"Inactive",email:`client${t+1}@example.com`,totalAmount:(Math.random()*1e3).toFixed(2),image:"",role:t%2===0?"Premium Member":"Basic Member"})),m=e=>a.find(t=>t.id.toString()===e)||null;export{a as c,m as g};
