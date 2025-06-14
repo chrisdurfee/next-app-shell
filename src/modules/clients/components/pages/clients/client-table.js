@@ -38,7 +38,7 @@ export const ClientRow = (row, onSelect) => (
         ]),
         Td({ class: 'p-4' }, [
             A({
-                href: `clients/${row.id}`,
+                href: `clients/client/${row.id}`,
                 class: 'flex items-center gap-x-4 no-underline text-inherit hover:text-primary',
             }, [
                 Avatar({ src: row.image, alt: row.name, fallbackText: row.name }),

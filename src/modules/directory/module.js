@@ -8,11 +8,11 @@ import { Module } from '../module/module.js';
  */
 const routes = Module.convertRoutes(
 [
-    /**
-     * Directory routes
-     */
-    { path: '/directory/users/:userId?*', import: () => import('./components/pages/directory/user/user-page.js'), title: 'User' },
-    { path: '/directory*', import: () => import('./components/pages/directory/directory-page.js'), title: 'Directory' }
+	/**
+	 * Directory routes
+	 */
+	{ path: '/directory/users/:userId?*', import: () => import('./components/pages/directory/user/user-page.js'), title: 'User' },
+	{ path: '/directory*', import: () => import('./components/pages/directory/directory-page.js'), title: 'Directory' }
 ]);
 
 /**
@@ -22,7 +22,7 @@ const routes = Module.convertRoutes(
  */
 const links =
 [
-    { label: 'Directory', href: 'directory', icon: Icons.user.group, mobileOrder: 7 }
+	{ label: 'Directory', href: 'directory', icon: Icons.user.group, mobileOrder: 7 }
 ];
 
 /**
@@ -31,16 +31,16 @@ const links =
  */
 Module.create(
 {
-    /**
-     * @param {Array<object>} routes
-     */
-    routes,
+	/**
+	 * @param {Array<object>} routes
+	 */
+	routes,
 
-    /**
-     * This will get the options to create the app
-     * navigation.
-     *
-     * @param {Array<object>} links
-     */
-    links
+	/**
+	 * This will get the options to create the app
+	 * navigation.
+	 *
+	 * @param {Array<object>} links
+	 */
+	links
 });

@@ -11,6 +11,7 @@ const routes = Module.convertRoutes(
     /**
      * Clients route
      */
+    { path: '/clients/client/:clientId?*', import: () => import('./components/pages/client/client-page.js'), title: 'Client' },
     { path: '/clients/:clientId?*', import: () => import('./components/pages/clients/client-list-page.js'), title: 'Clients' }
 ]);
 
