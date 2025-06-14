@@ -1,10 +1,10 @@
 import { Div, H2, Header, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { List } from "@base-framework/organisms";
 import { Card } from "@base-framework/ui";
-import { Badge, Button } from "@base-framework/ui/atoms";
+import { Badge } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Avatar } from "@base-framework/ui/molecules";
-import { DataTable } from "@base-framework/ui/organisms";
 import { ClientSummaryCard } from "./client-summary-card.js";
 
 /**
@@ -122,56 +122,86 @@ export const AboutSection = ({ about }) =>
  * @param {object} props - Properties for the section.
  * @returns {object}
  */
-export const ContractSection = Atom((props) =>
+export const ContractSection = Atom(({client}) =>
 	ProfileSection({ title: "Packages and Contract" }, [
 		Card({ class: "p-6", margin: "m-0" }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 gap-6" }, [
-				Div({ class: "space-y-1" }, [
-					P({ class: "text-sm text-muted-foreground" }, "Expires"),
-					P({ class: "font-medium text-foreground" }, props.client.contractExpires),
-					P({ class: "text-sm text-muted-foreground" }, props.client.contractStatus)
+				// left side
+				Div({ class: "space-y-12" }, [
+					// expiration row
+					Div({ class: "space-y-1" }, [
+						P({ class: "text-sm text-muted-foreground" }, "Contract expiration in 8 months"),
+						Div({ class: "flex items-center space-x-2" }, [
+							P({ class: "font-medium text-foreground" }, client.contractExpires),
+							Badge({ variant: "secondary" }, client.contractStatus)
+						])
+					]),
+					// billing row
+					Div({ class: "space-y-1" }, [
+						P({ class: "text-sm text-muted-foreground" }, "Billing"),
+						P({ class: "font-medium text-foreground" },
+							`${client.package} (ID: ${client.contractId}), $${client.payment} monthly`
+						)
+					])
 				]),
-				Div({ class: "space-y-1" }, [
-					P({ class: "text-sm text-muted-foreground" }, "Add-Ons"),
-					Div({ class: "flex flex-wrap gap-2" }, props.client.addOns.map(a => Badge({ variant: "outline" }, a)))
+				// right side
+				Div({ class: "space-y-12" }, [
+					Div({ class: "space-y-1" }, [
+						P({ class: "text-sm text-muted-foreground" }, "Upgrades"),
+						Div({ class: "flex flex-wrap gap-2" },
+							client.addOns.map(a => Badge({ variant: "outline" }, a))
+						)
+					]),
+					Div({ class: "space-y-1" }, [
+						P({ class: "text-sm text-muted-foreground" }, "Sales Agent"),
+						P({ class: "font-medium text-foreground" }, client.salesAgent)
+					])
 				])
 			])
 		])
+	])
+)
+
+/**
+ * TicketListItem
+ *
+ * Renders a single ticket as a row in the list.
+ *
+ * @param {object} ticket
+ * @returns {object}
+ */
+const TicketListItem = Atom((ticket) =>
+	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: 'my-2' }, [
+		Div({ class: "flex items-center space-x-4" }, [
+			Div({ class: "flex items-center justify-center bg-muted rounded-full w-10 h-10" }, [
+				//Icon(Icons.arrow[ticket.priority], { class: "text-lg" })
+			]),
+			Div({ class: "flex flex-col" }, [
+				P({ class: "font-medium" }, ticket.subject),
+				P({ class: "text-sm text-muted-foreground" }, ticket.owner)
+			])
+		]),
+		Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
 	])
 );
 
 /**
  * TicketsSection
  *
- * Shows recent support tickets.
+ * Displays the client’s recent support tickets.
  *
- * @param {object} props - Properties for the section.
+ * @param {object} props
+ * @param {object} props.client
  * @returns {object}
  */
-export const TicketsSection = Atom((props) =>
+export const TicketsSection = Atom(({ client }) =>
 	ProfileSection({ title: "Tickets" }, [
-		Div({ class: "overflow-x-auto" }, [
-			new DataTable({
-				key: "id",
-				headers: [
-					{ label: "", key: "priority" },
-					{ label: "Subject", key: "subject" },
-					{ label: "Owner", key: "owner" },
-					{ label: "Status", key: "status" }
-				],
-				rows: props.client.tickets,
-				rowItem: (ticket) => Div({ class: "flex items-center justify-between p-2 hover:bg-muted/50 rounded" }, [
-					Div({ class: "flex items-center space-x-3" }, [
-						//Icon({ class: "text-lg" }, Icons.arrow[ticket.priority]),
-						Div({ class: "flex flex-col" }, [
-							P({ class: "font-medium" }, ticket.subject),
-							P({ class: "text-sm text-muted-foreground" }, ticket.owner)
-						])
-					]),
-					Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
-				])
-			})
-		]),
-		Div({ class: "text-right" }, Button({ variant: "ghost", label: "View more…" }))
+		new List({
+			cache: "tickets",
+			key: "id",
+			items: client.tickets,
+			role: "list",
+			rowItem: TicketListItem
+		})
 	])
 );

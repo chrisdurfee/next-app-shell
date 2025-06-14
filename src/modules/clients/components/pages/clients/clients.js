@@ -42,7 +42,7 @@ export const clients = Array.from({ length: 20 }, (_, i) => {
 
 		contractExpires: `Jan ${((i % 12) + 1)}, 2025`,
 		contractStatus: "In Contract",
-		addOns: ["Email Hosting", "MVT"].filter((_, idx) => idx <= (i % 2)),
+		addOns: ["Boosting", "Sponsored Posts"],
 
 		tickets
 	};
