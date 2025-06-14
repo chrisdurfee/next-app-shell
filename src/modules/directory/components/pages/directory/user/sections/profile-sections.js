@@ -1,7 +1,8 @@
-import { Div, H2, Header, P } from "@base-framework/atoms";
+import { Div, H2, Header, P, Td, Tr } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Badge, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
+import { DataTable } from "@base-framework/ui/organisms";
 
 /**
  * ProfileSection
@@ -82,8 +83,8 @@ export const PositionHistorySection = ({ history }) =>
 							: null
 					]),
 					Div({ class: "flex flex-col pb-8" }, [
-						P({ class: "font-medium text-foreground" }, position.title),
-						P({ class: "text-sm text-accent" }, `${position.company} (${position.from} - ${position.to})`)
+						P({ class: "font-medium" }, position.title),
+						P({ class: "text-sm text-muted-foreground" }, `${position.company} (${position.from} - ${position.to})`)
 					])
 				])
 			))
@@ -100,26 +101,22 @@ export const PositionHistorySection = ({ history }) =>
  * @returns {object}
  */
 export const ProjectsSection = ({ projects }) =>
-	ProfileSection({ title: "Current Projects", description: "User's current projects" }, [
+	ProfileSection({ title: "Current Projects" }, [
 		Div({ class: "overflow-x-auto" },
-			Div({ class: "min-w-full text-sm divide-y divide-muted-200" }, [
-				// header
-				Div({ class: "grid grid-cols-3 gap-4 pb-2 font-medium" }, [
-					P("Project Name"),
-					P("Role"),
-					P("Status")
-				]),
-				// rows
-				...projects.map(project =>
-					Div({ class: "grid grid-cols-3 gap-4 py-3 items-center" }, [
-						P(project.name),
-						P({ class: "text-accent" }, project.role),
-						Badge({ variant: project.status === "Completed" ? "secondary" : "primary" },
-							project.status
-						)
-					])
-				)
-			])
+			new DataTable({
+				key: 'id',
+				headers: [
+					{ label: 'Project Name', key: 'name' },
+					{ label: 'Role', key: 'role' },
+					{ label: 'Status', key: 'status' }
+				],
+				rows: projects,
+				rowItem: (project) => Tr({ class: "items-center px-4 py-2 hover:bg-muted/50" }, [
+					Td({ class: "p-4" }, P(project.name)),
+					Td({ class: "p-4 text-muted-foreground" }, P(project.role)),
+					Td({ class: "p-4" }, Badge({ variant: project.status === "Completed" ? "secondary" : "primary" }, project.status))
+				])
+			})
 		)
 	]);
 
@@ -133,9 +130,8 @@ export const ProjectsSection = ({ projects }) =>
  * @returns {object}
  */
 export const SkillsSection = ({ skills }) =>
-	ProfileSection({ title: "Skills", description: "User skills and expertise" }, [
+	ProfileSection({ title: "Skills" }, [
 		Div({ class: "space-y-4" }, [
-			H2({ class: "text-xl font-semibold" }, "Skills"),
 			Div({ class: "flex flex-wrap gap-2" }, skills.map(skill => Badge({ variant: "outline" }, skill)))
 		])
 	]);
@@ -151,22 +147,20 @@ export const SkillsSection = ({ skills }) =>
  */
 export const ReviewsSection = ({ reviews }) =>
 	ProfileSection({ title: "Performance Reviews", description: "User performance reviews" }, [
-		Div({ class: "overflow-x-auto" },
-			Div({ class: "min-w-full text-sm divide-y divide-muted-200" }, [
-				// header
-				Div({ class: "grid grid-cols-3 gap-4 pb-2 font-medium" }, [
-					P("Date"),
-					P("Reviewer"),
-					P("Rating")
-				]),
-				// rows
-				...reviews.map(review =>
-					Div({ class: "grid grid-cols-3 gap-4 py-3 items-center" }, [
-						P(review.date),
-						P({ class: "text-accent" }, review.reviewer),
-						P(review.rating)
-					])
-				)
-			])
-		)
+		Div({ class: "overflow-x-auto" }, [
+			new DataTable({
+				key: 'id',
+				headers: [
+					{ label: 'Date', key: 'date' },
+					{ label: 'Reviewer', key: 'reviewer' },
+					{ label: 'Rating', key: 'rating' }
+				],
+				rows: reviews,
+				rowItem: (review) => Tr({ class: "items-center px-4 py-2 hover:bg-muted/50" }, [
+					Td({ class: "p-4" }, P(review.date)),
+					Td({ class: "p-4 text-muted-foreground" }, P(review.reviewer)),
+					Td({ class: "p-4" }, P(review.rating))
+				])
+			})
+		])
 	]);

@@ -37,6 +37,12 @@ export const UserHeader = ({ user }) => (
 			Div({ class: 'text-xl' }, user.role),
 			Div(user.location),
 		]),
+
+		// phone and email
+		Div({ class: 'text-sm text-muted-foreground flex gap-1 flex-col truncate items-center justify-center mt-4' }, [
+			Div(user.email),
+			Div(user.phone || '—'),
+		]),
 		Div({ class: 'flex flex-auto items-center justify-center' }, [
 			Div({ class: 'flex space-x-4 mt-4' }, [
 				Tooltip({ content: 'Email' }, [
