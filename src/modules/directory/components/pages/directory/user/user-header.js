@@ -39,7 +39,7 @@ export const UserHeader = ({ user }) => (
 		]),
 
 		// phone and email
-		Div({ class: 'text-sm text-muted-foreground flex gap-1 flex-col truncate items-center justify-center mt-4' }, [
+		Div({ class: 'text-sm text-muted-foreground gap-1 flex-col truncate items-center justify-center mt-4 hidden md:flex' }, [
 			Div(user.email),
 			Div(user.phone || '—'),
 		]),

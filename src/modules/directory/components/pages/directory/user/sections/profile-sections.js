@@ -143,14 +143,14 @@ export const ScheduleSection = () => {
 	const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 	return ProfileSection({ title: "Schedule" }, [
 		Card({ class: '', margin: 'm-0' }, [
-			Div({ class: "grid grid-cols-7 gap-2 text-sm text-muted-foreground divide-x divide-border" },
+			Div({ class: "grid grid-cols-7 text-sm text-muted-foreground divide-x divide-border" },
 				days.map((day) =>
 					(day == 'Sat' || day == 'Sun')
 					? Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded" }, [
 						P({ class: "font-medium text-foreground" }, day),
 						P("-")
 					])
-					: Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded" }, [
+					: Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded hover:bg-muted/50" }, [
 						P({ class: "font-medium text-foreground flex-col" }, day),
 						P("9:00 am"),
 						P("5:00 pm")
