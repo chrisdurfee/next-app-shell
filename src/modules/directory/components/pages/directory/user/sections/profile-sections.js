@@ -43,7 +43,13 @@ export const EmploymentDetailsSection = () =>
 				// Date Started
 				Div({ class: "space-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Date Started"),
-					P({ class: "font-medium text-foreground" }, "Jan. 1, 2020 (3 years)")
+					P({ class: "font-medium text-foreground" }, "Jan. 1, 2020")
+				]),
+
+				// Years at Company
+				Div({ class: "space-y-1" }, [
+					P({ class: "text-sm text-muted-foreground" }, "Years at Company"),
+					P({ class: "font-medium text-foreground" }, "3 years")
 				]),
 
 				// Department
