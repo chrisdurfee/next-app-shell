@@ -2,7 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { TabGroup } from "@base-framework/ui/organisms";
-import { MusicModal } from "./music-modal";
+import { MusicModal } from "./music-modal.js";
 
 /**
  * This will create a music header with tabs and add music button.

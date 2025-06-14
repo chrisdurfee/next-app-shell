@@ -1,7 +1,10 @@
 import { Div, On } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
+import { Button, Tooltip } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import { Breadcrumb } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
+import { EmployeeModal } from "../../../../organisms/modals/employee-modal.js";
 import { getUserById } from "../../users.js";
 import { UserContent } from "../user-content.js";
 import UserHeader from "../user-header.js";
@@ -76,13 +79,23 @@ export const ProfilePage = () => (
 			}
 
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
-				new Breadcrumb({
-					items: [
-						{ href: "/directory", label: "Directory" },
-						{ href: `/directory/users/${user.id}`, label: "Profile" },
-						{ label: `${user.firstName} ${user.lastName}` },
-					],
-				}),
+				Div({ class: 'flex flex-row justify-between gap-4' }, [
+					new Breadcrumb({
+						items: [
+							{ href: "/directory", label: "Directory" },
+							{ href: `/directory/users/${user.id}`, label: "Profile" },
+							{ label: `${user.firstName} ${user.lastName}` },
+						],
+					}),
+					Div({ class: 'flex flex-row space-x-2' }, [
+						Div({ class: 'hidden lg:inline-flex' }, [
+							Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: EmployeeModal }, 'Edit'),
+						]),
+						Div({ class: 'flex lg:hidden mr-4' }, [
+							Tooltip({ content: 'Edit', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.pencil.square, click: EmployeeModal }))
+						])
+					])
+				]),
 				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
 					Div({ class: 'w-full lg:w-1/3' }, [
 						UserHeader({ user })
