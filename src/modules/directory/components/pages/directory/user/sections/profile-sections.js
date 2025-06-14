@@ -302,7 +302,7 @@ export const ReviewsSection = ({ reviews }) =>
 		])
 	]);
 
-	/**
+/**
  * CancelledRequestItem
  *
  * Renders a single cancelled time-off request row.
@@ -318,9 +318,11 @@ export const ReviewsSection = ({ reviews }) =>
  * @returns {object}
  */
 export const CancelledRequestItem = Atom((props) =>
-    Div({ class: "flex items-center justify-between p-4 bg-card rounded-lg" }, [
+    Card({ class: "flex items-center justify-between p-4 bg-card rounded-lg", margin: 'm-0' }, [
         Div({ class: "flex items-center space-x-4" }, [
-            Icon({ size: "lg" }, props.icon),
+			Div({ class: "flex items-center bg-muted rounded-full p-4" }, [
+				Icon(props.icon)
+			]),
             Div({ class: "flex flex-col" }, [
                 P({ class: "font-medium" }, props.typeLabel),
                 P(
@@ -349,10 +351,12 @@ export const CancelledRequestItem = Atom((props) =>
  * @returns {object}
  */
 export const PendingRequestItem = Atom((props) =>
-    Div({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg" }, [
+    Card({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg", margin: 'm-0' }, [
         Div({ class: "flex items-center justify-between" }, [
             Div({ class: "flex items-center space-x-4" }, [
-                Icon({ source: props.icon, size: "lg" }),
+				Div({ class: "flex items-center bg-muted rounded-full p-4" }, [
+					Icon(props.icon)
+				]),
                 Div({ class: "flex flex-col" }, [
                     P({ class: "font-medium" }, props.typeLabel),
                     P(
@@ -363,8 +367,8 @@ export const PendingRequestItem = Atom((props) =>
             ]),
             Div({ class: "flex items-center space-x-2" }, [
                 Badge({ variant: "secondary" }, props.status),
-                Button({ variant: "ghost", icon: Icons.check.default,  label: "Approve" }),
-                Button({ variant: "ghost", icon: Icons.x.default,      label: "Decline" })
+                Button({ variant: "icon", class: 'outline', icon: Icons.check, label: "Approve" }),
+                Button({ variant: "icon", class: 'outline', icon: Icons.x, label: "Decline" })
             ])
         ]),
         props.reason && P({ class: "text-sm text-muted-foreground bg-muted p-2 rounded" }, props.reason)
@@ -385,9 +389,9 @@ export const TimeOffRequestsSection = () =>
             onAction: () => Button({ variant: "outline", icon: Icons.plus.default, label: "Register time-off" })
         },
         [
-            Card({ class: "p-4 space-y-4", margin: "m-0" }, [
+            Div({ class: "space-y-3", margin: "m-0" }, [
                 CancelledRequestItem({
-                    icon: Icons.face.frown,
+                    icon: Icons.airplane,
                     typeLabel: "Vacation",
                     startDate: "Jul 24, 2024",
                     endDate: "Jul 31, 2024",
@@ -403,7 +407,7 @@ export const TimeOffRequestsSection = () =>
                     days: 1,
                     percent: 100,
                     status: "Pending",
-                    reason: "Sick with heavy flu."
+                    reason: "Needing the day off."
                 })
             ])
         ]
