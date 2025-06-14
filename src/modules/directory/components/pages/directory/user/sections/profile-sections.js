@@ -1,5 +1,6 @@
 import { Div, H2, Header, P, Td, Tr } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { Card } from "@base-framework/ui";
 import { Badge, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { DataTable } from "@base-framework/ui/organisms";
@@ -23,6 +24,76 @@ const ProfileSection = Atom((props, children) => (
 		...children
 	])
 ))
+
+/* existing sections omitted for brevity… */
+
+/**
+ * EmploymentDetailsSection
+ *
+ * Placeholder fields: start date, tenure, department, manager,
+ * work style, birthday. Other common fields include employee ID,
+ * office location, time zone, emergency contact.
+ *
+ * @returns {object}
+ */
+export const EmploymentDetailsSection = () =>
+	ProfileSection({ title: "Employment Details" }, [
+		Div({ class: "divide-y divide-muted-200 text-sm text-muted-foreground" }, [
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Date Started"),
+				P("01 Jan")
+			]),
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Years at Company"),
+				P("3 years")
+			]),
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Department"),
+				P("Engineering")
+			]),
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Reporting Manager"),
+				P("Jordan Smith")
+			]),
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Work Style"),
+				P("Hybrid")
+			]),
+			Div({ class: "flex justify-between py-2" }, [
+				P({ class: "font-medium text-foreground" }, "Birthday"),
+				P("Jun 07")
+			])
+		])
+	]);
+
+/**
+ * ScheduleSection
+ *
+ * Placeholder weekly in/out times.
+ *
+ * @returns {object}
+ */
+export const ScheduleSection = () => {
+	const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+	return ProfileSection({ title: "Schedule" }, [
+		Card({ class: '', margin: 'm-0' }, [
+			Div({ class: "grid grid-cols-7 gap-2 text-sm text-muted-foreground divide-x divide-border" },
+				days.map((day) =>
+					(day == 'Sat' || day == 'Sun')
+					? Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded" }, [
+						P({ class: "font-medium text-foreground" }, day),
+						P("-")
+					])
+					: Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded" }, [
+						P({ class: "font-medium text-foreground flex-col" }, day),
+						P("9:00 am"),
+						P("5:00 pm")
+					])
+				)
+			)
+		])
+	]);
+};
 
 /**
  * AboutSection
@@ -71,7 +142,7 @@ export const ContactSection = ({ user }) =>
  * @returns {object}
  */
 export const PositionHistorySection = ({ history }) =>
-	ProfileSection({ title: "Work Progress" }, [
+	ProfileSection({ title: "Position History" }, [
 		Div({ class: "relative pl-6 space-y-6" }, [
 			history.map((position, index) => (
 				Div({ class: "flex flex-auto flex-row space-x-4" }, [
@@ -84,7 +155,7 @@ export const PositionHistorySection = ({ history }) =>
 					]),
 					Div({ class: "flex flex-col pb-8" }, [
 						P({ class: "font-medium" }, position.title),
-						P({ class: "text-sm text-muted-foreground" }, `${position.company} (${position.from} - ${position.to})`)
+						P({ class: "text-sm text-muted-foreground" }, `(${position.from} - ${position.to})`)
 					])
 				])
 			))
