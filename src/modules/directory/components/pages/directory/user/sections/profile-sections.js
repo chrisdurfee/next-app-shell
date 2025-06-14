@@ -107,7 +107,7 @@ export const OrgDetailsSection = () =>
  */
 export const PersonalDetailsSection = () =>
 	ProfileSection({ title: "Personal Details" }, [
-		Card({ class: "p-6", margin: "m-0" }, [
+		Div([
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" }, [
 				// Work Style
 				Div({ class: "space-y-1" }, [
