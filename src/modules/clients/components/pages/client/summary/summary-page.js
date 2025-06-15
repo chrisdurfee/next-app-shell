@@ -5,9 +5,9 @@ import { Icons } from "@base-framework/ui/icons";
 import { Page } from "@base-framework/ui/pages";
 import { ClientModal } from "../../../organisms/modals/client-modal.js";
 import { getClientById } from "../../clients/clients.js";
-import { ClientContent } from "../client-content.js";
-import ClientSkeleton from "../client-skeleton.js";
-import { ConversationSection } from "../sections/conversation-section.js";
+import { ClientContent } from "./client-content.js";
+import ClientSkeleton from "./client-skeleton.js";
+import { ConversationSection } from "./conversation/conversation-section.js";
 
 /**
  * ClientPage properties.
