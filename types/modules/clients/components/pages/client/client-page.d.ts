@@ -1,2 +1,2 @@
-export function ClientPage(): object;
+export function ClientPage(): Overlay;
 export default ClientPage;

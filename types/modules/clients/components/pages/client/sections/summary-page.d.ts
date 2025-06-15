@@ -1,2 +1,2 @@
-export function SummaryPage(): object;
+export function SummaryPage(): Page;
 export default SummaryPage;
