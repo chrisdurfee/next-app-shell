@@ -222,3 +222,50 @@ export const TicketsSection = Atom(({ client }) =>
 		})
 	])
 );
+
+/**
+ * InvoiceListItem
+ *
+ * Renders a single invoice as a row in the list.
+ *
+ * @param {object} invoice
+ * @returns {object}
+ */
+const InvoiceListItem = Atom(invoice =>
+    Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+        Div({ class: "flex items-center space-x-4" }, [
+            Icon(Icons.document.default),
+            Div({ class: "flex flex-col" }, [
+                P({ class: "font-medium" }, invoice.number),
+                P({ class: "text-sm text-muted-foreground" }, invoice.date)
+            ])
+        ]),
+        Div({ class: "flex items-center space-x-4" }, [
+            P({ class: "font-medium text-foreground" }, invoice.amount),
+            Badge({ variant: invoice.status === "Paid" ? "secondary" : "outline" }, invoice.status)
+        ])
+    ])
+);
+
+/**
+ * InvoicesSection
+ *
+ * Displays a list of previous invoices.
+ *
+ * @returns {object}
+ */
+export const InvoicesSection = Atom(() =>
+    ProfileSection({ title: "Previous Invoices" }, [
+        new List({
+            cache: "invoices",
+            key: "id",
+            items: [
+                { id: 1, number: "INV-1001", date: "May 1, 2024", amount: "$200.00", status: "Paid" },
+                { id: 2, number: "INV-1002", date: "Jun 1, 2024", amount: "$150.00", status: "Overdue" },
+                { id: 3, number: "INV-1003", date: "Jul 1, 2024", amount: "$175.00", status: "Paid" }
+            ],
+            role: "list",
+            rowItem: InvoiceListItem
+        })
+    ])
+);

@@ -4,6 +4,7 @@ import {
 	ClientAvatarSection,
 	ClientSummaryCardsSection,
 	ContractSection,
+	InvoicesSection,
 	TicketsSection
 } from "./sections/summary-sections.js";
 
@@ -36,5 +37,6 @@ export const ClientContent = ({ client }) => (
 		AboutSection(client),
 		ContractSection({ client }),
 		TicketsSection({ client }),
+		InvoicesSection()
 	])
 );
