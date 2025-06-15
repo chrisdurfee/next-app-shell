@@ -33,8 +33,21 @@ export const Sidebar = ({ clientId }) => (
 		tapNav: Toolbar(),
 		options: [
 			{ label: 'Summary', href: `clients/client/${clientId}`, icon: Icons.office.single, exact: true },
-			{ label: 'Communication', href: `clients/client/${clientId}/communication`, icon: Icons.chat.group },
-			{ label: 'Billing', href: `clients/client/${clientId}/billing`, icon: Icons.currency.dollar },
+			{
+				label: 'Communication',
+				icon: Icons.chat.group,
+				options: [
+					{ label: 'Contacts', href: `clients/client/${clientId}/communication/contacts` },
+					{ label: 'Messages', href: `clients/client/${clientId}/communication/messages` },
+					{ label: 'Calls', href: `clients/client/${clientId}/communication/calls` },
+					{ label: 'Notes', href: `clients/client/${clientId}/communication/notes` }
+				]
+			},
+			{
+				label: 'Billing',
+				href: `clients/client/${clientId}/billing`,
+				icon: Icons.currency.dollar
+			},
 			{ label: 'Support', href: `clients/client/${clientId}/support`, icon: Icons.ticket }
 		]
 	})

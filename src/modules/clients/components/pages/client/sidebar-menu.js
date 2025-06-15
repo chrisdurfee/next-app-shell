@@ -12,7 +12,7 @@ export const SidebarMenu = (props) => (
 		mobileBorder: true,
 		title: props.title,
 		options: props.options,
-		class: 'lg:block w-full'
+		class: 'hidden lg:block w-full flex-none'
 	})
 );
 
