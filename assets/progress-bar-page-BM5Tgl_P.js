@@ -1,5 +1,0 @@
-import{f as s,O as e}from"./tooltip-DcnXGw52-Cm4FTair.js";import"./index-BrCvYeHz.js";import{D as r}from"./doc-section-BnUOmi7G.js";import{D as o}from"./doc-page-BBoRY3a6.js";import"./signature-panel-DEX9Sggs-BuI7JHlX.js";import"./sidebar-menu-page-DyIwNFwe-CXFKGbBz.js";import"./mobile-nav-wrapper-CuATTfqK-DS1lcSjQ.js";const n=()=>o({title:"Progress Bars",description:"Progress bars are a great way to show the progress of a task or process."},[r({title:"Usage",description:"Import the progress bar atom and use it in your components. The progress bar can be used to show the progress of a task or process.",preview:[new s({cache:"progress",progress:20})],code:`import {  ProgressBar  } from "@base-framework/ui/atoms";
-
-new ProgressBar({ cache: 'progress', progress: 20 })`}),r({title:"Circle Progress Bar",description:"The progress bar can also be displayed as a circle.",preview:[e({cache:"progress",progress:50,class:"stroke-gray-300"})],code:`import {  ProgressBar  } from "@base-framework/ui/atoms";
-
-new ProgressBar({ cache: 'progress', progress: 20 })`})]);export{n as ProgressBarPage,n as default};
