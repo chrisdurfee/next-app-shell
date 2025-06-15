@@ -84,7 +84,7 @@ const PageHeader = (client) => (
  *
  * Summary page for displaying client information.
  *
- * @returns {object}
+ * @returns {Page}
  */
 export const SummaryPage = () => (
 	new Page(props, [

@@ -8,7 +8,7 @@ import { Sidebar } from "./sidebar.js";
  *
  * Dynamically displays client details based on the `clientId` from the route.
  *
- * @returns {object}
+ * @returns {Overlay}
  */
 export const ClientPage = () =>
 {
