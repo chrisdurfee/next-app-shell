@@ -7,6 +7,7 @@ import { ClientModal } from "../../../organisms/modals/client-modal.js";
 import { getClientById } from "../../clients/clients.js";
 import { ClientContent } from "../client-content.js";
 import ClientSkeleton from "../client-skeleton.js";
+import { ConversationSection } from "../sections/conversation-section.js";
 
 /**
  * ClientPage properties.
@@ -15,6 +16,8 @@ import ClientSkeleton from "../client-skeleton.js";
  */
 const props =
 {
+	class: 'flex flex-auto flex-col w-full',
+
 	/**
 	 * Sets up the state and loading simulation for the page.
 	 *
@@ -63,7 +66,7 @@ const props =
  * @returns {object}
  */
 const PageHeader = (client) => (
-	Div({ class: 'flex flex-row justify-between gap-4' }, [
+	Div({ class: 'flex flex-row justify-between gap-4 p-4 lg:p-6' }, [
 		H2({ class: 'text-2xl font-medium' }, 'Client Summary'),
 		Div({ class: 'flex flex-row space-x-2' }, [
 			Div({ class: 'hidden lg:inline-flex' }, [
@@ -98,14 +101,16 @@ export const SummaryPage = () => (
 				return Div({ class: "text-center" }, "Client not found.");
 			}
 
-			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
-				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
-					Div({ class: 'flex-1' }, [
-						PageHeader(client),
-						ClientContent({ client }),
+			return Div({ class: 'flex flex-auto p-0 pt-0 w-full' }, [
+				Div({ class: 'flex flex-auto flex-col lg:flex-row'}, [
+					Div({ class: 'flex flex-auto flex-col' }, [
+						Div({ class: 'flex flex-col 2xl:mx-auto 2xl:max-w-[1600px] p-6' }, [
+							PageHeader(client),
+							ClientContent({ client }),
+						])
 					]),
-					Div({ class: 'w-full lg:w-1/4' }, [
-						// conversaton history
+					Div({ class: 'hidden 2xl:flex flex-1 min-w-[320px] border-l' }, [
+						ConversationSection({ client })
 					]),
 				])
 			]);

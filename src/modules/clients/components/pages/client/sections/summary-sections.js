@@ -36,7 +36,7 @@ const ProfileSection = Atom((props, children) =>
  * @returns {object}
  */
 export const ClientAvatarSection = Atom(({ client }) =>
-	Div({ class: "flex items-center space-x-4 my-10" }, [
+	Div({ class: "flex items-center space-x-4 my-0" }, [
 		Avatar({
 			src: client.avatar,
 			alt: client.name,

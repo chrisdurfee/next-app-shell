@@ -19,7 +19,7 @@ const Page = (uri, importCallback) => ({
  */
 const ContentPage = () => (
 	Div({
-		class: 'flex flex-auto flex-col p-4 lg:p-6',
+		class: 'flex flex-auto flex-col',
 		switch: [
 			Page(`/clients/client/:clientId?/:page?`, () => import('./sections/summary-page.js'))
 		]

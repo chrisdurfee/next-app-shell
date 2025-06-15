@@ -30,7 +30,7 @@ export const CardHeader = ({ title, description }) => (
  * @returns {object}
  */
 export const ClientContent = ({ client }) => (
-	Div({ class: "space-y-12 mt-6" }, [
+	Div({ class: "flex flex-auto flex-col space-y-12 mt-6" }, [
 		ClientAvatarSection({ client }),
 		ClientSummaryCardsSection({ client }),
 		AboutSection(client),
