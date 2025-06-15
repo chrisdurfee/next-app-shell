@@ -1,5 +1,5 @@
-import { Div, H1, Img } from "@base-framework/atoms";
-import { Tooltip } from "@base-framework/ui";
+import { Div, H1 } from "@base-framework/atoms";
+import { Avatar, Tooltip } from "@base-framework/ui";
 import { Button } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { StaticStatusIndicator } from "@base-framework/ui/molecules";
@@ -16,14 +16,17 @@ import { StaticStatusIndicator } from "@base-framework/ui/molecules";
 export const UserHeader = ({ user }) => (
 	Div({ class: "flex flex-col gap-2 mt-4" }, [
 		// User Image
-		Div({ class: 'relative mt-6' }, [
-			Img({
-				src: user.image,
-				alt: user.name,
-				class: "w-full h-96 object-cover rounded-lg",
-			}),
-			Div({ class: "absolute bottom-3 right-3" }, [
-				StaticStatusIndicator(user.status)
+		Div({ class: 'flex flex-auto items-center justify-center mt-6' }, [
+			Div({ class: 'relative mt-6 flex-none' }, [
+				Avatar({
+					src: user.image,
+					alt: user.name,
+					fallbackText: user.name,
+					size: "4xl",
+				}),
+				Div({ class: "absolute bottom-3 right-3" }, [
+					StaticStatusIndicator(user.status)
+				])
 			])
 		]),
 

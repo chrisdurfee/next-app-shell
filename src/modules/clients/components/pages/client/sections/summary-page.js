@@ -66,7 +66,7 @@ const props =
  * @returns {object}
  */
 const PageHeader = (client) => (
-	Div({ class: 'flex flex-row justify-between gap-4 p-4 lg:p-6' }, [
+	Div({ class: 'flex flex-row justify-between gap-4 py-4 lg:py-6' }, [
 		H2({ class: 'text-2xl font-medium' }, 'Client Summary'),
 		Div({ class: 'flex flex-row space-x-2' }, [
 			Div({ class: 'hidden lg:inline-flex' }, [
