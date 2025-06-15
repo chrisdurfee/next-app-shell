@@ -41,3 +41,11 @@ export const ContractSection: Function;
  * @returns {object}
  */
 export const TicketsSection: Function;
+/**
+ * InvoicesSection
+ *
+ * Displays a list of previous invoices.
+ *
+ * @returns {object}
+ */
+export const InvoicesSection: Function;
