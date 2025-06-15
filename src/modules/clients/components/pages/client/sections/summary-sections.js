@@ -190,16 +190,16 @@ const TicketIcon = (priority) =>
  * @returns {object}
  */
 const TicketListItem = Atom(ticket =>
-    Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
-        Div({ class: "flex items-center space-x-4" }, [
-            Icon(TicketIcon(ticket.priority)),
-            Div({ class: "flex flex-col" }, [
-                P({ class: "font-medium" }, ticket.subject),
-                P({ class: "text-sm text-muted-foreground" }, ticket.owner)
-            ])
-        ]),
-        Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
-    ])
+	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+		Div({ class: "flex items-center space-x-4" }, [
+			Icon(TicketIcon(ticket.priority)),
+			Div({ class: "flex flex-col" }, [
+				P({ class: "font-medium" }, ticket.subject),
+				P({ class: "text-sm text-muted-foreground" }, ticket.owner)
+			])
+		]),
+		Badge({ variant: ticket.status === "Open" ? "primary" : "secondary" }, ticket.status)
+	])
 );
 
 /**
@@ -212,13 +212,13 @@ const TicketListItem = Atom(ticket =>
  * @returns {object}
  */
 export const TicketsSection = Atom(({ client }) =>
-    ProfileSection({ title: "Tickets" }, [
-        new List({
-            cache: "tickets",
-            key: "id",
-            items: client.tickets,
-            role: "list",
-            rowItem: TicketListItem
-        })
-    ])
+	ProfileSection({ title: "Tickets" }, [
+		new List({
+			cache: "tickets",
+			key: "id",
+			items: client.tickets,
+			role: "list",
+			rowItem: TicketListItem
+		})
+	])
 );
