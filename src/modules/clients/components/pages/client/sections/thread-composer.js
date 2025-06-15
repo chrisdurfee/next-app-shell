@@ -183,14 +183,6 @@ export const ThreadComposer = Jot(
 		return Div({ class: "fadeIn p-4 w-full lg:max-w-5xl m-auto" }, [
 			// @ts-ignore
 			Form({ class: "relative flex border rounded-lg p-3 bg-surface", submit: () => this.submit() }, [
-				Div([
-					Button({
-						variant: "icon",
-						icon: Icons.microphone,
-						class: "text-foreground hover:text-accent",
-						click: () => console.log("Recording audio!")
-					})
-				]),
 				// Textarea for reply
 				Textarea({
 					class: "w-full border-none bg-transparent resize-none focus:outline-none focus:ring-0 text-sm text-foreground placeholder-muted-foreground",
