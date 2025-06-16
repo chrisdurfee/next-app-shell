@@ -10,8 +10,10 @@ import { Icons } from "@base-framework/ui/icons";
  * @param {string} status - The payment status
  * @return {string} - The badge color variant
  */
-const getStatusBadgeColor = (status) => {
-    switch (status) {
+const getStatusBadgeColor = (status) =>
+{
+    switch (status)
+    {
         case "Completed":
             return "success";
         case "Partial":
@@ -31,7 +33,8 @@ const getStatusBadgeColor = (status) => {
  * @param {number} amount - The amount to format
  * @return {string} - Formatted currency string
  */
-const formatCurrency = (amount) => {
+const formatCurrency = (amount) =>
+{
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
@@ -44,8 +47,10 @@ const formatCurrency = (amount) => {
  * @param {string} method - The payment method
  * @return {object} - Icon component
  */
-const getPaymentMethodIcon = (method) => {
-    switch (method) {
+const getPaymentMethodIcon = (method) =>
+{
+    switch (method)
+    {
         case "Credit Card":
             return Icon({ class: 'text-muted-foreground ml-1' }, Icons.creditCard);
         case "Bank Transfer":
@@ -65,7 +70,7 @@ const getPaymentMethodIcon = (method) => {
  * @param {object} payment
  * @returns {object}
  */
-const PaymentItem = Atom(payment =>
+const PaymentItem = Atom((payment) =>
     Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
         Div({ class: "flex flex-1 flex-col md:flex-row md:items-center md:justify-between" }, [
             // Left column - Payment number and date
