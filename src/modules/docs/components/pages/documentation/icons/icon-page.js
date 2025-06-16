@@ -214,7 +214,7 @@ Span('3X Large (16x16)')`
 
 			DocSection({
 				title: 'Icon Colors',
-				description: 'Icons can be rendered in various colors using the `class` property to apply Tailwind CSS classes. The following colors are available: `primary`, `secondary`, `accent`, `muted`, and `destructive`.',
+				description: 'Icons can be rendered in various colors using the `class` property to apply Tailwind CSS classes.',
 				preview: [
 					Div({ class: 'flex flex-wrap gap-4 items-center' }, [
 						Icon({ class: 'text-red-500' }, Icons.phone.missed),
