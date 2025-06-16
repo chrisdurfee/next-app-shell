@@ -1,5 +1,5 @@
-import { Div, P } from "@base-framework/atoms";
-import { Atom } from "@base-framework/base";
+import { Div, P, Span } from "@base-framework/atoms";
+import { Atom, DateTime } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
 import { Card, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
@@ -55,6 +55,22 @@ const CallItem = Atom(call =>
 );
 
 /**
+ * DateDivider
+ *
+ * Renders a date divider between messages.
+ *
+ * @param {string} date
+ * @returns {object}
+ */
+const DateDivider = (date) =>
+	Div({ class: "flex mt-4" }, [
+		Span(
+			{ class: "text-base text-muted-foreground bg-background p-2 pl-2" },
+			DateTime.format('standard', date.split(" ")[0])
+		)
+	]);
+
+/**
  * CallList
  *
  * Lists all of a client's calls.
@@ -65,6 +81,16 @@ const CallItem = Atom(call =>
  */
 export const CallList = Atom(({ calls }) =>
 	Div({ class: "space-y-6 mt-12" }, [
-		new List({ cache: "calls", key: "id", items: calls || [], role: "list", rowItem: CallItem })
+		new List({
+			cache: "calls",
+			key: "id",
+			items: calls || [],
+			divider: {
+				itemProperty: 'time',
+				layout: DateDivider
+			},
+			role: "list",
+			rowItem: CallItem
+		})
 	])
 );
