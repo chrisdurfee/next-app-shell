@@ -20,7 +20,7 @@ const CallIcon = (status) =>
 		case "Incoming":
 			return Icon({ class: 'info' }, Icons.phone.inbound);
 		case "Outgoing":
-			return Icon({ class: 'success' }, Icons.phone.outbound);
+			return Icon(Icons.phone.outbound);
 		default:
 			return Icon({ class: 'default' }, Icons.phone.default);
 	}
