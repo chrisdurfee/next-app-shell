@@ -33,14 +33,14 @@ export default () =>
 	Div({ class: "p-6 contained" }, [
 		// Search input + Add Contact button skeleton
 		Div({ class: "flex items-center justify-between space-x-4" }, [
-            // Page title skeleton
-		    Skeleton({ width: "w-32", height: "h-8" }),
+			// Page title skeleton
+			Skeleton({ width: "w-32", height: "h-8" }),
 
 			Skeleton({ width: "w-32", height: "h-10", class: "rounded-lg" })
 		]),
 
-        Div({ class: 'flex flex-auto flex-col mt-14 space-y-2' }, [
-            // Three contact card skeletons
-		    ...Array.from({ length: 6 }).map(() => ContactCardSkeleton())
-        ])
+		Div({ class: 'flex flex-auto flex-col mt-14 space-y-2' }, [
+			// Three contact card skeletons
+			...Array.from({ length: 3 }).map(() => ContactCardSkeleton())
+		])
 	]);
