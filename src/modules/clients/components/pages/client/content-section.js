@@ -21,6 +21,7 @@ const ContentPage = () => (
 	Div({
 		class: 'flex flex-auto flex-col',
 		switch: [
+			Page(`/clients/client/:clientId?/communication/contacts`, () => import('./communication/contacts/contact-page.js')),
 			Page(`/clients/client/:clientId?/:page?*`, () => import('./summary/summary-page.js'))
 		]
 	})

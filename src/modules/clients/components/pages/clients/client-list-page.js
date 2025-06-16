@@ -2,7 +2,7 @@ import { Div } from "@base-framework/atoms";
 import { BlankPage } from "@base-framework/ui/pages";
 import { ClientSummaryCards } from "./client-summary-cards.js";
 import { ClientTable } from "./client-table.js";
-import { clients } from "./clients.js"; // Import fake data
+import { clients } from "./clients.js";
 import { PageHeader } from "./page-header.js";
 
 /**
@@ -11,7 +11,7 @@ import { PageHeader } from "./page-header.js";
  * @returns {object}
  */
 export const ClientListPage = () => (
-	new BlankPage([
+	new BlankPage({ class: 'flex flex-auto flex-col' }, [
 		Div({ class: 'grid grid-cols-1' }, [
 			Div({ class: 'flex flex-auto flex-col p-6 pt-0 lg:space-y-12 md:pt-6 lg:p-8 w-full mx-auto' }, [
 				PageHeader(),
