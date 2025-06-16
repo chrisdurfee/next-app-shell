@@ -23,6 +23,8 @@ const ContentPage = () => (
 		switch: [
 			Page(`/clients/client/:clientId?/communication/contacts`, () => import('./communication/contacts/contact-page.js')),
 			Page(`/clients/client/:clientId?/communication/calls`, () => import('./communication/calls/call-page.js')),
+			Page(`/clients/client/:clientId?/billing/invoices`, () => import('./billing/invoices/invoice-page.js')),
+			Page(`/clients/client/:clientId?/billing/payments`, () => import('./billing/payments/payment-page.js')),
 			Page(`/clients/client/:clientId?/:page?*`, () => import('./summary/summary-page.js'))
 		]
 	})
