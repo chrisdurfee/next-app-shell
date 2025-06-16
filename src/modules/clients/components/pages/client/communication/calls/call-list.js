@@ -9,20 +9,20 @@ import { Avatar } from "@base-framework/ui/molecules";
  * This will get the icon for the call status.
  *
  * @param {string} status - The call status.
- * @return {string} - The icon for the call status.
+ * @return {object} - The icon for the call status.
  */
 const CallIcon = (status) =>
 {
 	switch (status)
 	{
 		case "Missed":
-			return Icons.phone.missed;
+			return Icon({ class: 'danger' }, Icons.phone.missed);
 		case "Incoming":
-			return Icons.phone.inbound;
+			return Icon({ class: 'info' }, Icons.phone.inbound);
 		case "Outgoing":
-			return Icons.phone.oubound;
+			return Icon({ class: 'success' }, Icons.phone.outbound);
 		default:
-			return Icons.phone.default;
+			return Icon({ class: 'default' }, Icons.phone.default);
 	}
 };
 
@@ -50,7 +50,7 @@ const CallItem = Atom(call =>
 				P({ class: "text-sm text-muted-foreground" }, `Duration: ${call.duration}`)
 			])
 		]),
-		Icon(CallIcon(call.status))
+		CallIcon(call.status)
 	])
 );
 
