@@ -16,13 +16,13 @@ const CallIcon = (status) =>
 	switch (status)
 	{
 		case "Missed":
-			return Icon({ class: 'danger' }, Icons.phone.missed);
+			return Icon({ class: 'text-red-500' }, Icons.phone.missed);
 		case "Incoming":
-			return Icon({ class: 'info' }, Icons.phone.inbound);
+			return Icon({ class: 'text-blue-500' }, Icons.phone.inbound);
 		case "Outgoing":
-			return Icon(Icons.phone.outbound);
+			return Icon({ class: 'text-yellow-500' }, Icons.phone.outbound);
 		default:
-			return Icon({ class: 'default' }, Icons.phone.default);
+			return Icon({ class: 'text-base' }, Icons.phone.default);
 	}
 };
 

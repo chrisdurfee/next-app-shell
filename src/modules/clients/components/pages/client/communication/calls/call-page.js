@@ -53,7 +53,7 @@ const props =
 		this.data.delete();
 		this.data.loaded = false;
 	}
-}
+};
 
 /**
  * CallPage
