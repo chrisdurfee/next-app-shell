@@ -7,7 +7,7 @@ import { Atom } from "@base-framework/base";
  * @returns {object}
  */
 export const PageHeader = Atom(() =>
-    Div({ class: "space-y-2 mb-8" }, [
+    Div({ class: "space-y-2" }, [
         H1({ class: "text-3xl font-bold tracking-tight" }, "Payment History")
     ])
 );
