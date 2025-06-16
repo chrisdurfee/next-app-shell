@@ -92,10 +92,16 @@ export const ClientSkeleton = () =>
 	]);
 
 	// full layout
-	return Div({ class: "p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px] space-y-8" }, [
-		Skeleton({ width: "w-20", height: "h-6", class: "rounded-md" }),
-		Div({ class: "flex flex-col lg:flex-row lg:space-x-8" }, [
-			mainContentSkeleton
+	return Div({ class: 'flex flex-auto p-0 pt-0 w-full' }, [
+		Div({ class: 'flex flex-auto flex-col lg:flex-row'}, [
+			Div({ class: 'flex flex-auto flex-col min-w-0' }, [
+				Div({ class: 'flex flex-col max-w-full p-6' }, [
+					mainContentSkeleton
+				])
+			]),
+			Div({ class: 'hidden 2xl:flex flex-none min-w-[420px] border-l' }, [
+
+			])
 		])
 	]);
 };

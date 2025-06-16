@@ -103,13 +103,13 @@ export const SummaryPage = () => (
 
 			return Div({ class: 'flex flex-auto p-0 pt-0 w-full' }, [
 				Div({ class: 'flex flex-auto flex-col lg:flex-row'}, [
-					Div({ class: 'flex flex-auto flex-col' }, [
+					Div({ class: 'flex flex-auto flex-col min-w-0' }, [
 						Div({ class: 'flex flex-col max-w-full p-6' }, [
 							PageHeader(client),
 							ClientContent({ client }),
 						])
 					]),
-					Div({ class: 'hidden 2xl:flex flex-1 min-w-[420px] border-l' }, [
+					Div({ class: 'hidden 2xl:flex flex-none min-w-[420px] border-l' }, [
 						ConversationSection({ client })
 					]),
 				])
