@@ -9,8 +9,10 @@ import { Badge, Card } from "@base-framework/ui/atoms";
  * @param {string} status - The invoice status
  * @return {string} - The badge color variant
  */
-const getStatusBadgeColor = (status) => {
-    switch (status) {
+const getStatusBadgeColor = (status) =>
+{
+    switch (status)
+    {
         case "Paid":
             return "success";
         case "Due":
@@ -30,7 +32,8 @@ const getStatusBadgeColor = (status) => {
  * @param {number} amount - The amount to format
  * @return {string} - Formatted currency string
  */
-const formatCurrency = (amount) => {
+const formatCurrency = (amount) =>
+{
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'

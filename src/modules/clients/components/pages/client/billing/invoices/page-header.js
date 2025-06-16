@@ -1,4 +1,4 @@
-import { Div, H1, P } from "@base-framework/atoms";
+import { Div, H1 } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 
 /**
@@ -8,7 +8,6 @@ import { Atom } from "@base-framework/base";
  */
 export const PageHeader = Atom(() =>
     Div({ class: "space-y-2 mb-8" }, [
-        H1({ class: "text-3xl font-bold tracking-tight" }, "Billing Invoices"),
-        P({ class: "text-muted-foreground" }, "View and manage client billing history and invoice details.")
+        H1({ class: "text-3xl font-bold tracking-tight" }, "Billing Invoices")
     ])
 );
