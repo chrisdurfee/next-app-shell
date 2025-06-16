@@ -45,8 +45,12 @@ export const Sidebar = ({ clientId }) => (
 			},
 			{
 				label: 'Billing',
-				href: `clients/client/${clientId}/billing`,
-				icon: Icons.currency.dollar
+				icon: Icons.currency.dollar,
+				options: [
+					{ label: 'Invoices', href: `clients/client/${clientId}/billing/invoices` },
+					{ label: 'Payments', href: `clients/client/${clientId}/billing/payments` },
+					{ label: 'Orders', href: `clients/client/${clientId}/billing/orders` }
+				]
 			},
 			{ label: 'Support', href: `clients/client/${clientId}/support`, icon: Icons.ticket }
 		]
