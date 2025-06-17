@@ -11,7 +11,7 @@ const routes = Module.convertRoutes(
 	/**
 	 * Directory routes
 	 */
-	{ path: '/directory/users/:userId?*', import: () => import('./components/pages/directory/user/user-page.js'), title: 'User' },
+	{ path: '/directory/user/:userId?*', import: () => import('./components/pages/directory/user/user-page.js'), title: 'User' },
 	{ path: '/directory*', import: () => import('./components/pages/directory/directory-page.js'), title: 'Directory' }
 ]);
 

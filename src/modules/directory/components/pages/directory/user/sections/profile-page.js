@@ -83,7 +83,7 @@ export const ProfilePage = () => (
 					new Breadcrumb({
 						items: [
 							{ href: "/directory", label: "Directory" },
-							{ href: `/directory/users/${user.id}`, label: "Profile" },
+							{ href: `/directory/user/${user.id}`, label: "Profile" },
 							{ label: `${user.firstName} ${user.lastName}` },
 						],
 					}),

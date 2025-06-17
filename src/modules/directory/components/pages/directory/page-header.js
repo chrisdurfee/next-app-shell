@@ -20,7 +20,7 @@ const convertUsersToOptions = (users) => users.map((user) => ({ label: `${user.f
 const SearchInput = () => (
 	new SearchDropdown({
 		options: convertUsersToOptions(USERS),
-		onSelect: (item) => console.log(item)
+		onSelect: (item) => app.navigate(`/directory/user/${item.value}`),
 	})
 );
 

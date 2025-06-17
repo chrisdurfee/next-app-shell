@@ -32,14 +32,14 @@ export const Sidebar = ({ userId }) => (
 	SidebarMenu({
 		tapNav: Toolbar(),
 		options: [
-			{ label: 'Profile', href: `directory/users/${userId}`, icon: Icons.identification, exact: true },
-			{ label: 'Schedule', href: `directory/users/${userId}/schedule`, icon: Icons.calendar.default },
-			{ label: 'Documents', href: `directory/users/${userId}/documents`, icon: Icons.document.text },
-			{ label: 'Notes', href: `directory/users/${userId}/notes`, icon: Icons.pencil.square },
-			{ label: '1-on-1', href: `directory/users/${userId}/1-1`, icon: Icons.user.multiple },
-			{ label: 'Analytics', href: `directory/users/${userId}/analytics`, icon: Icons.barChart },
-			{ label: 'Posts', href: `directory/users/${userId}/posts`, icon: Icons.newspaper },
-			{ label: 'Reviews', href: `directory/users/${userId}/reviews`, icon: Icons.folder.default },
+			{ label: 'Profile', href: `directory/user/${userId}`, icon: Icons.identification, exact: true },
+			{ label: 'Schedule', href: `directory/user/${userId}/schedule`, icon: Icons.calendar.default },
+			{ label: 'Documents', href: `directory/user/${userId}/documents`, icon: Icons.document.text },
+			{ label: 'Notes', href: `directory/user/${userId}/notes`, icon: Icons.pencil.square },
+			{ label: '1-on-1', href: `directory/user/${userId}/1-1`, icon: Icons.user.multiple },
+			{ label: 'Analytics', href: `directory/user/${userId}/analytics`, icon: Icons.barChart },
+			{ label: 'Posts', href: `directory/user/${userId}/posts`, icon: Icons.newspaper },
+			{ label: 'Reviews', href: `directory/user/${userId}/reviews`, icon: Icons.folder.default },
 		]
 	})
 );

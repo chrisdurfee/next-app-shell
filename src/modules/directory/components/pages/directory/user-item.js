@@ -49,7 +49,7 @@ const SkeletonUser = () => (
  * @returns {Array<object>}
  */
 const User = (user) => ([
-	A({ href: `directory/users/${user.id}`, class: 'flex flex-auto flex-row sm:flex-col' }, [
+	A({ href: `directory/user/${user.id}`, class: 'flex flex-auto flex-row sm:flex-col' }, [
 		Div({ class: "mb-4 flex-auto flex-col justify-center items-center hidden sm:flex" }, [
 			Div({ class: 'relative flex-none' }, [
 				Avatar({ src: user.image, alt: user.name, fallbackText: user.name, size: '2xl' }),

@@ -21,7 +21,7 @@ const ContentPage = () => (
 	Div({
 		class: 'flex flex-auto flex-col p-4 lg:p-6',
 		switch: [
-			Page(`/directory/users/:userId?/:page?`, () => import('./sections/profile-page.js'))
+			Page(`/directory/user/:userId?/:page?`, () => import('./sections/profile-page.js'))
 		]
 	})
 );
