@@ -21,7 +21,7 @@ const convertClientsToOptions = (clients) => clients.map((client) => ({ label: c
 const SearchInput = () => (
 	new SearchDropdown({
 		options: convertClientsToOptions(clients),
-		onSelect: (item) => console.log(item)
+		onSelect: (item) => app.navigate(`/clients/client/${item.value}`),
 	})
 );
 
