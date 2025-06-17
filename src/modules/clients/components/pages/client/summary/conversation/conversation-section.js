@@ -73,6 +73,22 @@ export const ConversationSection = Atom(({ client }) =>
 				rowItem: ConversationListItem
 			})
 		]),
-		new ThreadComposer({ placeholder: "Add a comment...", add: (msg) => {/* TODO: send message */} })
+		new ThreadComposer({ placeholder: "Add a comment...", add: (msg, { parent }) =>
+			{
+				/**
+				 * This is a placeholder for adding a new message to the thread.
+				 */
+				const timeStamp = new Date().toISOString();
+				const row = {
+					id: Math.random() * 1000,
+					date: timeStamp,
+					user: 'You',
+					avatar: 'https://github.com/shadcn.png',
+					text: msg
+				};
+
+				parent.conversation.append(row);
+			}
+		})
 	])
 );

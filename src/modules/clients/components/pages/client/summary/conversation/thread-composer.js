@@ -81,7 +81,7 @@ export const ThreadComposer = Jot(
 		console.log('message sent');
 
 		// @ts-ignore
-		this.add(this.textarea.value);
+		this.add(this.textarea.value, this);
 
 		// @ts-ignore
 		this.textarea.value = '';
