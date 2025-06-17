@@ -69,7 +69,7 @@ export const ClientAvatarSection = Atom(({ client }) =>
  */
 export const ClientSummaryCardsSection = Atom(({ client }) =>
 	Div({ class: "overflow-x-auto" },
-		Div({ class: "flex space-x-4 pb-4 max-w-lg" }, [
+		Div({ class: "flex space-x-4 pb-4 max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg" }, [
 			ClientSummaryCard({
 				title: "Payment Amount",
 				value: `$${client.payment}`,
