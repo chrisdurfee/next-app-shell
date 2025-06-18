@@ -1,7 +1,7 @@
 import { A, Div, P } from "@base-framework/atoms";
 import { Button, Card, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { MEETINGS } from "../../1-1/meetings.js";
+import { MEETINGS } from "../../one-on-one/meetings.js";
 import { ProfileSection } from "./profile-sections.js";
 
 /**
@@ -30,7 +30,7 @@ export const OneOnOneSection = ({ userId }) =>
 					),
 					Button({
 						variant: 'withIcon',
-						click: () => app.navigate(`/directory/user/${userId}/1-1`),
+						click: () => app.navigate(`/directory/user/${userId}/one-on-one`),
 						class: "inline-flex items-center button outline",
 						icon: Icons.circlePlus
 					}, "Schedule first meeting")
@@ -68,7 +68,7 @@ export const OneOnOneSection = ({ userId }) =>
 				// View full details link
 				Div({ class: "mt-4 pt-2" }, [
 					A({
-						href: `/directory/user/${userId}/1-1`,
+						href: `/directory/user/${userId}/one-on-one`,
 						class: "inline-flex items-center text-sm"
 					}, "View full details")
 				])

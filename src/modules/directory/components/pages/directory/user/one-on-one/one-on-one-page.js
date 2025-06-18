@@ -13,7 +13,7 @@ const Header = ({ meeting }) =>
 (
 	Div({ class: "flex items-center justify-between mb-6 py-2" }, [
 		Div({ class: "flex items-center space-x-4" }, [
-			H2({ class: "text-2xl font-semibold" }, `1-1 Meeting / ${meeting.date}`),
+			H2({ class: "text-2xl font-semibold" }, `${meeting.title} / ${meeting.date}`),
 		])
 	])
 );

@@ -21,7 +21,7 @@ const ContentPage = () => (
 	Div({
 		class: 'flex flex-auto flex-col p-4 lg:p-6',
 		switch: [
-			Page(`/directory/user/:userId?/1-1`, () => import('./1-1/one-on-one-page.js')),
+			Page(`/directory/user/:userId?/one-on-one`, () => import('./one-on-one/meetings-page.js')),
 			Page(`/directory/user/:userId?/:page?`, () => import('./profile/sections/profile-page.js'))
 		]
 	})
