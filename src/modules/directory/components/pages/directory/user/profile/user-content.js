@@ -1,4 +1,5 @@
 import { Div, H2, Header, P } from "@base-framework/atoms";
+import { OneOnOneSection } from "./sections/one-on-one-section.js";
 import { AboutSection, OrgDetailsSection, PersonalDetailsSection, PositionHistorySection, ProjectsSection, ReviewsSection, ScheduleSection, SkillsSection, TimeOffRequestsSection } from "./sections/profile-sections.js";
 
 /**
@@ -33,6 +34,7 @@ export const UserContent = ({ user }) => (
 		ProjectsSection({ projects: user.projects }),
 		SkillsSection({ skills: user.skills }),
 		ReviewsSection({ reviews: user.reviews }),
+		OneOnOneSection({ userId: user.id }),
 		TimeOffRequestsSection()
 	])
 );

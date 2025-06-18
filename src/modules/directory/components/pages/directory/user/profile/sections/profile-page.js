@@ -4,11 +4,11 @@ import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Breadcrumb } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
-import { EmployeeModal } from "../../../../organisms/modals/employee-modal.js";
-import { getUserById } from "../../users.js";
+import { EmployeeModal } from "../../../../../organisms/modals/employee-modal.js";
+import { getUserById } from "../../../users.js";
+import UserSkeleton from "../../user-skeleton.js";
 import { UserContent } from "../user-content.js";
 import UserHeader from "../user-header.js";
-import UserSkeleton from "../user-skeleton.js";
 
 /**
  * UserPage properties.
