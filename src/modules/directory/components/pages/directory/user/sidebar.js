@@ -1,5 +1,6 @@
-import { Div, H1, Header } from "@base-framework/atoms";
+import { Div, H1, Header, On, P } from "@base-framework/atoms";
 import { Icons } from "@base-framework/ui/icons";
+import { Avatar } from "@base-framework/ui/molecules";
 import { BackButton } from "@base-framework/ui/organisms";
 import { SidebarMenu } from "./sidebar-menu.js";
 
@@ -11,14 +12,25 @@ import { SidebarMenu } from "./sidebar-menu.js";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full items-center justify-between pb-2 mt-2 pl-2" }, [
-		Header({ class: 'flex space-x-4' }, [
-			BackButton({
-				margin: 'm-0 ml-0',
-				backUrl: '/directory'
-			}),
-			H1({ class: 'scroll-m-20 text-3xl lg:text-2xl font-bold tracking-tight' }, 'User Profile'),
-		])
+	Div({ class: "flex w-full flex-col space-y-8 pb-2 mt-2 pl-2" }, [
+		Div({ class: "flex items-center justify-between" }, [
+			Header({ class: 'flex space-x-4' }, [
+				BackButton({
+					margin: 'm-0 ml-0',
+					backUrl: '/directory'
+				}),
+				H1({ class: 'scroll-m-20 text-3xl lg:text-2xl font-bold tracking-tight' }, 'User Profile'),
+			])
+		]),
+		On('loaded', (value =>
+		{
+			return Div({ class: "flex items-center space-x-4 border rounded-md p-2" }, [
+					Avatar({ src: '[[user.image]]', alt: '[[user.firstName]] [[user.lastName]]', watcherFallback: '[[user.firstName]] [[user.lastName]]', size: "sm" }),
+					Div({ class: "flex flex-col" }, [
+						P({ class: "font-medium truncate" }, '[[user.firstName]] [[user.lastName]]'),
+					])
+				])
+		}))
 	])
 );
 

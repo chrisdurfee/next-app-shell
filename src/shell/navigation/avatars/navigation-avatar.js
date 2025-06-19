@@ -55,7 +55,7 @@ export const NavigationAvatar = Jot(
 					Avatar({
 						src: '[[image]]',
 						alt: '[[name]]',
-						fallbackText: '[[name]]',
+						watcherFallback: '[[name]]',
 						size: "sm",
 					})
 				]),

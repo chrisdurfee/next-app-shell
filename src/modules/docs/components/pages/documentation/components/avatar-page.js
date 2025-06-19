@@ -1,4 +1,4 @@
-import { Div, H4, P, Span } from "@base-framework/atoms";
+import { Div, P, Span } from "@base-framework/atoms";
 import { Avatar, StaticStatusIndicator, StatusIndicator } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -24,11 +24,35 @@ export const AvatarPage = () => (
                 preview: [
                     Avatar({ src: 'https://github.com/shadcn.png', alt: '@shadcn', fallbackText: 'CN', size: 'xs' })
                 ],
-                code: `Avatar({ src: 'https://github.com/shadcn.png', alt: '@shadcn', fallbackText: 'CN', size: 'xs' })`
+                code: `
+import { Avatar } from '@base-framework/ui/molecules';
+
+Avatar({
+    src: 'https://github.com/shadcn.png',
+    alt: '@shadcn',
+    fallbackText: 'CN',
+    size: 'xs'
+})`
             }),
 
-            H4({ class: 'text-2xl font-semibold text-foreground mt-8' }, 'Avatar Fallbacks'),
-            P({ class: 'text-sm text-muted-foreground mb-4' }, `The avatar fallback can be bound to a watcher for dynamic content using the 'watcherFallback' property. The fallback and watcher fallback will convert a name to initials if not set as a two letter string.`),
+            DocSection({
+                title: 'Avatar Fallbacks',
+                description: `The avatar fallback can be bound to a watcher for dynamic content using the 'watcherFallback' property. The fallback and watcher fallback will convert a name to initials if not set as a two letter string.`,
+                preview: [
+                    Avatar({ src: '[[user.image]]', alt: '[[user.name]]', watcherFallback: '[[user.name]]', size: 'sm' })
+                ],
+                code: `
+import { Avatar } from '@base-framework/ui/molecules';
+
+Avatar({
+    src: '[[user.image]]',
+    alt: '[[user.name]]',
+    watcherFallback: '[[user.name]]',
+    size: 'sm'
+})`
+            }),
+
+            P({ class: 'The "fallBackText" and "watcherFallback" will convert a name to initials if not set as a two letter string.' }),
 
             DocSection({
                 title: 'Small Avatar (sm)',
