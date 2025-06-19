@@ -8,7 +8,7 @@ import { SidebarMenu as BaseSidebarMenu } from "@base-framework/ui/organisms";
  */
 export const SidebarMenu = (props) => (
 	BaseSidebarMenu({
-		tapNav: props.tapNav,
+		topNav: props.topNav,
 		mobileBorder: true,
 		title: props.title,
 		options: props.options,

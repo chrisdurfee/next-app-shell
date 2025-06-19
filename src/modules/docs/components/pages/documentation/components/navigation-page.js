@@ -150,7 +150,14 @@ import {  SidebarMenu  } from "@base-framework/ui/organisms";
 const PAGE_URL = 'music';
 
 SidebarMenu({
-    title: 'Discover',
+
+    // optional
+    // title: 'Discover', // the navigation title
+
+    // topNav: Toolbar(), // optional top navigation, can be used to display a title or a back button
+    // bottomNav: Footer(), // optional bottom navigation, can be used to display a footer or a copyright notice
+    // mobileBorder: true, // optional, adds a border to the sidebar menu on mobile devices
+
     options: [
         { label: 'Listen Now', href: \`\${PAGE_URL}\`, icon: Icons.playing, exact: true },
         { label: 'Browse', href: \`\${PAGE_URL}/browse\`, icon: Icons.square.grid },

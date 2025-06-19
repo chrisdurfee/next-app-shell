@@ -30,7 +30,7 @@ const Toolbar = () => (
  */
 export const Sidebar = ({ clientId }) => (
 	SidebarMenu({
-		tapNav: Toolbar(),
+		topNav: Toolbar(),
 		options: [
 			{ label: 'Summary', href: `clients/client/${clientId}`, icon: Icons.office.single, exact: true },
 			{
