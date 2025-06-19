@@ -17,16 +17,16 @@ export const OneOnOneSection = ({ userId }) =>
 	if (!meeting)
 	{
 		return ProfileSection({
-			title: "1-1 Meetings",
+			title: "1:1 Meetings",
 		}, [
 			Card({ class: "p-6", margin: 'm-0' }, [
 				Div({ class: "text-center py-4" }, [
 					Div({ class: "bg-accent inline-flex p-3 rounded-full mb-3" }, [
 						Icon(Icons.calendar.default)
 					]),
-					P({ class: "text-lg font-medium mb-2" }, "No 1-1 meetings scheduled"),
+					P({ class: "text-lg font-medium mb-2" }, "No 1:1 meetings scheduled"),
 					P({ class: "text-sm text-muted-foreground mb-4" },
-						"Start by scheduling your first 1-1 meeting with this user."
+						"Start by scheduling your first 1:1 meeting with this user."
 					),
 					Button({
 						variant: 'withIcon',
@@ -41,8 +41,7 @@ export const OneOnOneSection = ({ userId }) =>
 
 	const goals = meeting.goals || [];
 	return ProfileSection({
-		title: "1-1 Meetings",
-		description: "Recent 1-1 meeting information"
+		title: "1:1 Meetings",
 	}, [
 		Card({ class: "p-6", margin: 'm-0' }, [
 			Div({ class: "space-y-4" }, [
