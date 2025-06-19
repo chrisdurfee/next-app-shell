@@ -49,7 +49,7 @@ export const UserHeader = ({ user }) => (
 		Div({ class: 'flex flex-auto items-center justify-center' }, [
 			Div({ class: 'flex space-x-4 mt-4' }, [
 				Tooltip({ content: 'Email' }, [
-					Button({ variant: 'icon', class: 'primary', icon: Icons.envelope.default, label: 'Email' })
+					Button({ variant: 'icon', icon: Icons.envelope.default, label: 'Email' })
 				]),
 				Tooltip({ content: 'Call' }, [
 					Button({ variant: 'icon', icon: Icons.phone.default, label: 'Call' })
