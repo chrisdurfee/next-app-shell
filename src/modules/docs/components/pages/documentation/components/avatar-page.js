@@ -45,9 +45,9 @@ Avatar({
 import { Avatar } from '@base-framework/ui/molecules';
 
 Avatar({
-    src: '[ [user.image]]',
-    alt: '[ [user.name]]',
-    watcherFallback: '[ [user.name]]',
+    src: '[watcher prop]',
+    alt: '[watcher prop]',
+    watcherFallback: '[watcher prop]',
     size: 'sm'
 })`
             }),
