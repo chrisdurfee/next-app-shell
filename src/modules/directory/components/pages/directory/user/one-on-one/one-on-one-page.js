@@ -1,7 +1,23 @@
 import { Div, H2, H3, P, Span } from "@base-framework/atoms";
+import { Atom } from "@base-framework/base";
 import { Button, Card, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { MEETINGS } from "./meetings.js";
+
+/**
+ * This will create an overlay back button.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+export const BackButton = Atom((props) =>
+{
+	const margin = props.margin || 'm-4 ml-0';
+	props.allowHistory = (props.allowHistory === true);
+	return Div({ class: `flex-none ${margin}` }, [
+		Button({ variant: 'back', class: 'ghost', ...props })
+	]);
+});
 
 /**
  * This renders the header section for the 1-1 meeting page.
@@ -12,7 +28,10 @@ import { MEETINGS } from "./meetings.js";
 const Header = ({ meeting }) =>
 (
 	Div({ class: "flex items-center justify-between mb-6 py-2" }, [
-		Div({ class: "flex items-center space-x-4" }, [
+		Div({ class: "flex items-center" }, [
+			BackButton({
+				backUrl: `/directory/user/${meeting.userId}/one-on-one`,
+			}),
 			H2({ class: "text-2xl font-semibold" }, `${meeting.title} / ${meeting.date}`),
 		])
 	])

@@ -165,6 +165,16 @@ Button({ variant: 'withIcon', icon: Icons.home }, 'With Icon')`
                 code: `import {  LoadingButton  } from "@base-framework/ui/atoms";
 
 LoadingButton('With Icon')`
+            }),
+
+            DocSection({
+                title: 'Back Button',
+                preview: [
+                    Button({ variant: 'back', class: 'ghost', allowHistory: false })
+                ],
+                code: `import {  Button  } from "@base-framework/ui/atoms";
+
+Button({ variant: 'back', class: 'ghost', allowHistory: false })`
             })
         ]
     )
