@@ -42,7 +42,7 @@ export const ProfileSection = Atom((props, children) => (
  */
 export const OrgDetailsSection = () =>
 	ProfileSection({ title: "Organization Details" }, [
-		Card({ class: "p-6", margin: "m-0" }, [
+		Card({ class: "p-6", margin: "m-0", hover: true }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" }, [
 				// Employee ID
 				Div({ class: "space-y-1" }, [
@@ -318,7 +318,7 @@ export const ReviewsSection = ({ reviews }) =>
  * @returns {object}
  */
 export const CancelledRequestItem = Atom((props) =>
-    Card({ class: "flex items-center justify-between p-4 bg-card rounded-lg", margin: 'm-0' }, [
+    Card({ class: "flex items-center justify-between p-4 bg-card rounded-lg", margin: 'm-0', hover: true }, [
         Div({ class: "flex items-center space-x-4" }, [
 			Div({ class: "flex items-center bg-muted rounded-full p-4" }, [
 				Icon(props.icon)
@@ -351,7 +351,7 @@ export const CancelledRequestItem = Atom((props) =>
  * @returns {object}
  */
 export const PendingRequestItem = Atom((props) =>
-    Card({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg", margin: 'm-0' }, [
+    Card({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg", margin: 'm-0', hover: true }, [
         Div({ class: "flex items-center justify-between" }, [
             Div({ class: "flex items-center space-x-4" }, [
 				Div({ class: "flex items-center bg-muted rounded-full p-4" }, [

@@ -43,7 +43,7 @@ export const OneOnOneSection = ({ userId }) =>
 	return ProfileSection({
 		title: "1:1 Meetings",
 	}, [
-		Card({ class: "p-6", margin: 'm-0' }, [
+		Card({ class: "p-6", margin: 'm-0', hover: true }, [
 			Div({ class: "space-y-4" }, [
 				// Last meeting info
 				Div({ class: "flex items-center justify-between" }, [
