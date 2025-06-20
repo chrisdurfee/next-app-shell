@@ -124,7 +124,7 @@ export const AboutSection = ({ about }) =>
  */
 export const ContractSection = Atom(({client}) =>
 	ProfileSection({ title: "Packages and Contract" }, [
-		Card({ class: "p-6", margin: "m-0" }, [
+		Card({ class: "p-6", margin: "m-0", hover: true }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 gap-6" }, [
 				// left side
 				Div({ class: "space-y-12" }, [
@@ -190,7 +190,7 @@ const TicketIcon = (priority) =>
  * @returns {object}
  */
 const TicketListItem = Atom(ticket =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
 		Div({ class: "flex items-center space-x-4" }, [
 			Icon(TicketIcon(ticket.priority)),
 			Div({ class: "flex flex-col" }, [
@@ -232,7 +232,7 @@ export const TicketsSection = Atom(({ client }) =>
  * @returns {object}
  */
 const InvoiceListItem = Atom(invoice =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+	Card({ class: "flex items-center justify-between cursor-pointer p-4", margin: "m-2", hover: true }, [
 		Div({ class: "flex items-center space-x-4" }, [
 			Icon(Icons.document.default),
 			Div({ class: "flex flex-col" }, [
