@@ -24,7 +24,7 @@ export const MeetingsPage = () =>
 	return Div({
         class: 'flex flex-auto flex-col',
         switch: [
-            Page(`/directory/user/:userId?/one-on-one/meeting/:meetingId`, () => import('./one-on-one-page.js')),
+            Page(`/directory/user/:userId?/one-on-one/:meetingId*`, () => import('./one-on-one-page.js')),
             Page(`/directory/user/:userId?/one-on-one`, () => import('./meetings-list-page.js'))
         ]
     });

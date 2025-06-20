@@ -1,8 +1,8 @@
-import { Div, H2, H3, P, Span } from "@base-framework/atoms";
+import { Div, H2, H3, P, Span, UseParent } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Card, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { MEETINGS } from "./meetings.js";
+import { getMeetingById } from "./meetings.js";
 
 /**
  * This will create an overlay back button.
@@ -149,13 +149,17 @@ const Topics = ({ meeting }) =>
  */
 export const OneOnOnePage = () =>
 {
-	const meeting = MEETINGS[0];
+	console.log("Rendering OneOnOnePage");
+	return UseParent(({ route }) =>
+	{
+		const meeting = getMeetingById(route.meetingId);
 
-	return Div({ class: "flex flex-col contained" }, [
-		Header({ meeting }),
-		Goals({ meeting }),
-		Topics({ meeting })
-	]);
+		return Div({ class: "flex flex-col contained" }, [
+			Header({ meeting }),
+			Goals({ meeting }),
+			Topics({ meeting })
+		]);
+	});
 };
 
 export default OneOnOnePage;
