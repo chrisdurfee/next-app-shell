@@ -104,7 +104,7 @@ export const SummaryPage = () => (
 			return Div({ class: 'flex flex-auto p-0 pt-0 w-full' }, [
 				Div({ class: 'flex flex-auto flex-col lg:flex-row'}, [
 					Div({ class: 'flex flex-auto flex-col min-w-0' }, [
-						Div({ class: 'flex flex-col max-w-full p-6' }, [
+						Div({ class: 'flex flex-col w-full max-w-[1400px] p-6 mx-auto' }, [
 							PageHeader(client),
 							ClientContent({ client }),
 						])
