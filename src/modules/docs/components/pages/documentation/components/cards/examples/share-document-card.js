@@ -49,8 +49,8 @@ const PersonWithAccess = ({ name, email, access, image }) => (
 	Div({ class: "flex items-center justify-between gap-4 py-2" }, [
 		// Avatar and Person Info
 		Div({ class: "flex items-center gap-3" }, [
-			Avatar({ src: image, alt: name, fallbackText: name.split(" ").map(n => n[0]).join("") }),
-			Div({}, [
+			Avatar({ src: image, alt: name, fallbackText: name }),
+			Div([
 				Span({ class: "font-medium text-foreground" }, name),
 				Span({ class: "block text-sm text-muted-foreground" }, email),
 			])

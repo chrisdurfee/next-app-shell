@@ -28,9 +28,7 @@ export const EmailHeader = (message) => (
 			Avatar({
 				src: null, // Replace with actual image URL if available
 				alt: message.name,
-				fallbackText: `${message.name.split(" ")[0][0]}${
-					message.name.split(" ")[1][0]
-				}`,
+				fallbackText: `${message.name}`,
 				size: "md",
 			}),
 			Div({ class: "flex flex-col" }, [
