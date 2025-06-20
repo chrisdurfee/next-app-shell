@@ -33,7 +33,7 @@ const Header = () =>
 const MeetingItem = (meeting) =>
 (
 	A({
-		href: `/directory/user/${meeting.userId}/one-on-one/${meeting.id}`,
+		href: `/directory/user/${meeting.userId}/one-on-one/meeting/${meeting.id}`,
 	}, [
 		Card({ margin: "mb-3", hover: true }, [
 			Div({ class: "p-4" }, [

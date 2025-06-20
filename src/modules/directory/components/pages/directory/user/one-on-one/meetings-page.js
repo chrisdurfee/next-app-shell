@@ -25,7 +25,7 @@ export const MeetingsPage = () =>
         class: 'flex flex-auto flex-col',
         switch: [
             Page(`/directory/user/:userId?/one-on-one/meeting/:meetingId`, () => import('./one-on-one-page.js')),
-            Page(`/directory/user/:userId?/:page?`, () => import('./meetings-list-page.js'))
+            Page(`/directory/user/:userId?/one-on-one`, () => import('./meetings-list-page.js'))
         ]
     });
 };

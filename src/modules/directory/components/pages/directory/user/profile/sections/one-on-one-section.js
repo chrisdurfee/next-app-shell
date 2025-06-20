@@ -67,7 +67,7 @@ export const OneOnOneSection = ({ userId }) =>
 				// View full details link
 				Div({ class: "mt-4 pt-2" }, [
 					A({
-						href: `/directory/user/${userId}/one-on-one/${meeting.id}`,
+						href: `/directory/user/${userId}/one-on-one/meeting/${meeting.id}`,
 						class: "inline-flex items-center text-sm"
 					}, "View full details")
 				])

@@ -167,3 +167,11 @@ export const MEETINGS = [
 		]
 	}
 ];
+
+/**
+ * Finds a meeting by its ID.
+ *
+ * @param {string} meetingId - The ID of the meeting to fetch.
+ * @returns {object|null}
+ */
+export const getMeetingById = (meetingId) => MEETINGS.find((meeting) => meeting.id.toString() === meetingId) || null;
