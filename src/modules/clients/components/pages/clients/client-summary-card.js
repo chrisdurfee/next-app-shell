@@ -14,14 +14,14 @@ import { Card, Icon } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 export const ClientSummaryCard = ({ title, value, change, icon }) => (
-	Card({ class: 'flex flex-auto flex-col p-4 min-w-[280px] max-w-sm hover:bg-muted/50 transition-colors', margin: 'm-0' }, [
+	Card({ class: 'flex flex-col w-72 max-w-sm hover:bg-muted/50 transition-colors', margin: 'm-0' }, [
 		Div({ class: 'flex justify-between items-center mb-2' }, [
-			H2({ class: 'text-lg font-medium text-muted-foreground' }, title),
+			H2({ class: 'text-base font-medium text-muted-foreground' }, title),
 			Icon(icon, { class: 'text-xl' })
 		]),
 		Div({ class: 'flex flex-col' }, [
-			P({ class: 'text-3xl font-bold leading-tight' }, value),
-			P({ class: 'text-sm text-muted-foreground mt-1' }, change)
+			P({ class: 'text-2xl font-bold leading-tight' }, value),
+			P({ class: 'text-xs text-muted-foreground mt-1' }, change)
 		])
 	])
 );
