@@ -29,7 +29,7 @@ const UserList = ({ users }) => (
  *
  * Sets up the directory page using BlankPage and simulates loading for users.
  *
- * @returns {object}
+ * @returns {BlankPage}
  */
 export const DirectoryPage = () => (
 	new BlankPage([

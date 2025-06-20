@@ -2,6 +2,7 @@ import { Div, H2, H3, P, Span, UseParent } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Card, Icon } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
+import { BlankPage } from "@base-framework/ui/pages";
 import { getMeetingById } from "./meetings.js";
 
 /**
@@ -12,7 +13,7 @@ import { getMeetingById } from "./meetings.js";
  */
 export const BackButton = Atom((props) =>
 {
-	const margin = props.margin || 'm-4 ml-0';
+	const margin = props.margin || 'mx-4 ml-0';
 	props.allowHistory = (props.allowHistory === true);
 	return Div({ class: `flex-none ${margin}` }, [
 		Button({ variant: 'back', class: 'ghost', ...props })
@@ -145,21 +146,23 @@ const Topics = ({ meeting }) =>
  *
  * Renders the 1-1 meeting page with goals and topics sections.
  *
- * @returns {object}
+ * @returns {BlankPage}
  */
-export const OneOnOnePage = () =>
-{
-	console.log("Rendering OneOnOnePage");
-	return UseParent(({ route }) =>
-	{
-		const meeting = getMeetingById(route.meetingId);
+export const OneOnOnePage = () => (
+	new BlankPage({ class: 'p-0' }, [
+		Div({ class: "flex flex-col w-full px-4 lg:px-8 max-w-[1800px] 2xl:max-w-[2200px] mx-auto" }, [
+			UseParent(({ route }) =>
+			{
+				const meeting = getMeetingById(route.meetingId);
 
-		return Div({ class: "flex flex-col contained" }, [
-			Header({ meeting }),
-			Goals({ meeting }),
-			Topics({ meeting })
-		]);
-	});
-};
+				return Div({ class: "flex flex-col contained" }, [
+					Header({ meeting }),
+					Goals({ meeting }),
+					Topics({ meeting })
+				]);
+			})
+		])
+	])
+);
 
 export default OneOnOnePage;

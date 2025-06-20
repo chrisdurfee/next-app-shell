@@ -24,8 +24,8 @@ export const DocumentPage = () =>
 	return Div({
         class: 'flex flex-auto flex-col',
         switch: [
-            Page(`/directory/user/:userId?/documents/document/:documentId`, () => import('./documents-page.js')),
-            Page(`/directory/user/:userId?/documents`, () => import('./documents-list-page.js'))
+            Page(`/directory/user/:userId/documents/:documentId`, () => import('./documents-page.js')),
+            Page(`/directory/user/:userId/documents`, () => import('./documents-list-page.js'))
         ]
     });
 };

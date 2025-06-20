@@ -40,7 +40,7 @@ const Header = () =>
  */
 const DocumentItem = (document) =>
 (
-	A({ href: `/directory/user/${document.userId}/documents/document/${document.id}` }, [
+	A({ href: `/directory/user/${document.userId}/documents/${document.id}` }, [
 		Card({
 			class: "flex flex-col items-center justify-center h-72",
 			margin: "m-2",
