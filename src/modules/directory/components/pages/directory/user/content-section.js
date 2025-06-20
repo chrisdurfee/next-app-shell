@@ -23,7 +23,7 @@ const ContentPage = () => (
 		switch: [
 			Page(`/directory/user/:userId/documents`, () => import('./documents/documents-page.js')),
 			Page(`/directory/user/:userId/one-on-one`, () => import('./one-on-one/meetings-page.js')),
-			Page(`/directory/user/:userId`, () => import('./profile/sections/profile-page.js'))
+			Page(`/directory/user/:userId*`, () => import('./profile/sections/profile-page.js'))
 		]
 	})
 );
