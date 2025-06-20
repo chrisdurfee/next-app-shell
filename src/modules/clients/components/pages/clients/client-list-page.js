@@ -11,7 +11,7 @@ import { PageHeader } from "./page-header.js";
  * @returns {object}
  */
 export const ClientListPage = () => (
-	new BlankPage({ class: 'flex flex-auto flex-col' }, [
+	new BlankPage([
 		Div({ class: 'grid grid-cols-1' }, [
 			Div({ class: 'flex flex-auto flex-col p-6 pt-0 lg:space-y-12 md:pt-6 lg:p-8 w-full mx-auto' }, [
 				PageHeader(),
