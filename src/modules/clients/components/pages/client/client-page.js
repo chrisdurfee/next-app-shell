@@ -1,7 +1,55 @@
 import { Div, UseParent } from "@base-framework/atoms";
+import { Data } from "@base-framework/base";
 import { Overlay } from "@base-framework/ui/organisms";
+import { getClientById } from "../clients/clients.js";
 import { ContentSection } from "./content-section.js";
 import { Sidebar } from "./sidebar.js";
+
+/**
+ * ClientPage properties.
+ *
+ * @type {object} props
+ */
+const props =
+{
+	/**
+	 * Sets up the state and loading simulation for the page.
+	 *
+	 * @returns {object}
+	 */
+	setData()
+	{
+		return new Data({
+			loaded: false,
+			client: null
+		});
+	},
+
+	/**
+	 * Simulates loading and fetches the client by ID after a delay.
+	 *
+	 * @returns {void}
+	 */
+	afterSetup()
+	{
+		const route = this.route;
+		const client = getClientById(route.clientId);
+
+		const DELAY = 500;
+		setTimeout(() => this.data.set({ client, loaded: true }), DELAY);
+	},
+
+	/**
+	 * Deletes the data when the component is destroyed.
+	 *
+	 * @returns {void}
+	 */
+	beforeDestroy()
+	{
+		this.data.delete();
+		this.data.loaded = false;
+	}
+};
 
 /**
  * ClientPage
@@ -12,7 +60,7 @@ import { Sidebar } from "./sidebar.js";
  */
 export const ClientPage = () =>
 {
-	return new Overlay([
+	return new Overlay(props, [
 		Div({ class: "flex flex-auto flex-col w-full" }, [
 			Div({ class: "flex flex-auto flex-col gap-6 w-full" }, [
 				Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row h-full' }, [

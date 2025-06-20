@@ -1,6 +1,7 @@
 import { Div, H1, Header } from "@base-framework/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { BackButton } from "@base-framework/ui/organisms";
+import { ClientAvatar } from "./client-avatar.js";
 import { SidebarMenu } from "./sidebar-menu.js";
 
 /**
@@ -11,14 +12,17 @@ import { SidebarMenu } from "./sidebar-menu.js";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full items-center justify-between pb-2 mt-2 pl-2" }, [
-		Header({ class: 'flex space-x-4 items-center' }, [
-			BackButton({
-				margin: 'm-0 ml-0',
-				backUrl: '/clients'
-			}),
-			H1({ class: 'scroll-m-20 text-2xl lg:text-lg font-bold tracking-tight' }, 'Client Profile'),
-		])
+	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-2 pl-2" }, [
+		Div({ class: "flex items-center justify-between" }, [
+			Header({ class: 'flex space-x-4 items-center' }, [
+				BackButton({
+					margin: 'm-0 ml-0',
+					backUrl: '/clients'
+				}),
+				H1({ class: 'scroll-m-20 text-2xl lg:text-lg font-bold tracking-tight' }, 'Client Profile'),
+			])
+		]),
+		ClientAvatar()
 	])
 );
 
