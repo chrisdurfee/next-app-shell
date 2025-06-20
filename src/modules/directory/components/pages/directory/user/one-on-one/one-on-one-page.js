@@ -56,7 +56,7 @@ const Goals = ({ meeting }) =>
 			}, "New goal")
 		]),
 		meeting.goals.map(goal =>
-			Card({ class: "p-4", margin: "mb-3" }, [
+			Card({ class: "p-4", margin: "mb-3", hover: true }, [
 				Div({ class: "flex items-start" }, [
 					Div({ class: "flex-shrink-0 p-2 mr-4" }, [
                         Div({ class: "w-12 h-12 bg-accent rounded-full p-3" }, [
@@ -86,7 +86,7 @@ const Goals = ({ meeting }) =>
  */
 const TopicItem = ({ topic }) =>
 (
-	Card({ margin: "mb-3" }, [
+	Card({ margin: "mb-3", hover: true }, [
 		Div({ class: "p-4" }, [
 			Div({ class: "flex items-center justify-between mb-2" }, [
 				Div({ class: "flex items-center" }, [

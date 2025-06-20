@@ -35,7 +35,7 @@ const MeetingItem = (meeting) =>
 	A({
 		href: `/directory/user/${meeting.userId}/one-on-one/${meeting.id}`,
 	}, [
-		Card({ margin: "mb-3" }, [
+		Card({ margin: "mb-3", hover: true }, [
 			Div({ class: "p-4" }, [
 				Div({ class: "flex items-center justify-between mb-2" }, [
 					Div({ class: "flex items-center" }, [
