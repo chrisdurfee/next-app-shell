@@ -1,2 +1,2 @@
-export function DirectoryPage(): object;
+export function DirectoryPage(): BlankPage;
 export default DirectoryPage;

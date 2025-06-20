@@ -5,5 +5,5 @@
  * @returns {object}
  */
 export const BackButton: Function;
-export function OneOnOnePage(): object;
+export function OneOnOnePage(): BlankPage;
 export default OneOnOnePage;
