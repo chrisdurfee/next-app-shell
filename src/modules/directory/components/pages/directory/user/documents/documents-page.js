@@ -22,12 +22,12 @@ const Page = (uri, importCallback) => ({
 export const DocumentPage = () =>
 {
 	return Div({
-        class: 'flex flex-auto flex-col',
-        switch: [
-            Page(`/directory/user/:userId/documents/:documentId`, () => import('./document-page.js')),
-            Page(`/directory/user/:userId/documents`, () => import('./documents-list-page.js'))
-        ]
-    });
+		class: 'flex flex-auto flex-col',
+		switch: [
+			Page(`/directory/user/:userId/documents/:documentId`, () => import('./document-page.js')),
+			Page(`/directory/user/:userId/documents`, () => import('./documents-list-page.js'))
+		]
+	});
 };
 
 export default DocumentPage;

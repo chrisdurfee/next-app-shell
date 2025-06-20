@@ -53,7 +53,7 @@ const DocumentItem = (document) =>
 		Div({ class: "p-4 flex flex-col space-y-1" }, [
 			P({ class: "text-sm font-medium truncate" }, document.title),
 			P({ class: "text-xs text-muted-foreground truncate" }, document.subtitle),
-			P({ class: "text-sm font-semibold" }, document.price)
+			//P({ class: "text-sm font-semibold" }, document.price)
 		])
 	])
 );
