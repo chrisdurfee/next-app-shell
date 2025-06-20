@@ -1,10 +1,8 @@
 import { Div, H2, On } from "@base-framework/atoms";
-import { Data } from "@base-framework/base";
 import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Page } from "@base-framework/ui/pages";
 import { ClientModal } from "../../../organisms/modals/client-modal.js";
-import { getClientById } from "../../clients/clients.js";
 import { ClientContent } from "./client-content.js";
 import ClientSkeleton from "./client-skeleton.js";
 import { ConversationSection } from "./conversation/conversation-section.js";
@@ -16,45 +14,7 @@ import { ConversationSection } from "./conversation/conversation-section.js";
  */
 const props =
 {
-	class: 'flex flex-auto flex-col w-full',
-
-	/**
-	 * Sets up the state and loading simulation for the page.
-	 *
-	 * @returns {object}
-	 */
-	setData()
-	{
-		return new Data({
-			loaded: false,
-			user: null
-		});
-	},
-
-	/**
-	 * Simulates loading and fetches the user by ID after a delay.
-	 *
-	 * @returns {void}
-	 */
-	afterSetup()
-	{
-		const route = this.route;
-		const client = getClientById(route.clientId);
-
-		const DELAY = 500;
-		setTimeout(() => this.data.set({ client, loaded: true }), DELAY);
-	},
-
-	/**
-	 * Deletes the data when the component is destroyed.
-	 *
-	 * @returns {void}
-	 */
-	beforeDestroy()
-	{
-		this.data.delete();
-		this.data.loaded = false;
-	}
+	class: 'flex flex-auto flex-col w-full'
 };
 
 /**
@@ -88,14 +48,14 @@ const PageHeader = (client) => (
  */
 export const SummaryPage = () => (
 	new Page(props, [
-		On("loaded", (loaded, ele, { data }) =>
+		On("loaded", (loaded, ele, { context }) =>
 		{
 			if (!loaded)
 			{
 				return ClientSkeleton();
 			}
 
-			const client = data.client;
+			const client = context.data.client;
 			if (!client)
 			{
 				return Div({ class: "text-center" }, "Client not found.");

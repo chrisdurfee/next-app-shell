@@ -13,16 +13,19 @@ import { Sidebar } from "./sidebar.js";
 const props =
 {
 	/**
-	 * Sets up the state and loading simulation for the page.
+	 * Sets the context data for the user page.
 	 *
+	 * @param {object|null} context
 	 * @returns {object}
 	 */
-	setData()
+	setContext(context)
 	{
-		return new Data({
-			loaded: false,
-			client: null
-		});
+		return {
+			data: new Data({
+				client: null,
+				loaded: false
+			})
+		};
 	},
 
 	/**
@@ -36,7 +39,7 @@ const props =
 		const client = getClientById(route.clientId);
 
 		const DELAY = 500;
-		setTimeout(() => this.data.set({ client, loaded: true }), DELAY);
+		setTimeout(() => this.context.data.set({ client, loaded: true }), DELAY);
 	},
 
 	/**
@@ -46,8 +49,8 @@ const props =
 	 */
 	beforeDestroy()
 	{
-		this.data.delete();
-		this.data.loaded = false;
+		this.context.data.delete();
+		this.context.data.loaded = false;
 	}
 };
 
