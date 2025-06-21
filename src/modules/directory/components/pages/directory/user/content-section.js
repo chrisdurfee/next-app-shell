@@ -22,6 +22,7 @@ const ContentPage = () => (
 		class: 'flex flex-auto flex-col p-4 lg:p-6',
 		switch: [
 			Page(`/directory/user/:userId`, () => import('./profile/sections/profile-page.js')),
+			Page(`/directory/user/:userId/notes`, () => import('./notes/notes-page.js')),
 			Page(`/directory/user/:userId/documents/:documentId?`, () => import('./documents/documents-page.js')),
 			Page(`/directory/user/:userId/one-on-one/:meetingId?`, () => import('./one-on-one/meetings-page.js')),
 		]
