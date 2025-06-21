@@ -1,7 +1,6 @@
-import { Div, On } from "@base-framework/atoms";
+import { Div, H1, On } from "@base-framework/atoms";
 import { Button, Tooltip } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { Breadcrumb } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
 import { EmployeeModal } from "../../../../../organisms/modals/employee-modal.js";
 import UserSkeleton from "../../user-skeleton.js";
@@ -32,15 +31,16 @@ export const ProfilePage = () => (
 
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
 				Div({ class: 'flex flex-row justify-between gap-4' }, [
-					Div({ class: 'hidden md:flex flex-col' }, [
-						new Breadcrumb({
-							class: 'hidden lg:inline-flex',
-							items: [
-								{ href: "/directory", label: "Directory" },
-								{ href: `/directory/user/${user.id}`, label: "Profile" },
-								{ label: `${user.firstName} ${user.lastName}` },
-							]
-						})
+					Div({ class: 'flex flex-col' }, [
+						H1({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, 'Profile'),
+						// new Breadcrumb({
+						// 	class: 'hidden lg:inline-flex',
+						// 	items: [
+						// 		{ href: "/directory", label: "Directory" },
+						// 		{ href: `/directory/user/${user.id}`, label: "Profile" },
+						// 		{ label: `${user.firstName} ${user.lastName}` },
+						// 	]
+						// })
 					]),
 					Div({ class: 'flex flex-row space-x-2' }, [
 						Div({ class: 'hidden lg:inline-flex' }, [

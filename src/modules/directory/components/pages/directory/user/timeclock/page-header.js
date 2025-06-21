@@ -13,7 +13,7 @@ export const PageHeader = () => (
 			H1({ class: 'text-3xl font-bold' }, 'Timeclock'),
 			Div({ class: 'flex items-center gap-2' }, [
 				Div({ class: 'hidden lg:flex' }, [
-					Button({ variant: 'withIcon', class: 'text-muted-foreground', icon: Icons.circlePlus, click: () => null }, 'Add Entry')
+					Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.circlePlus, click: () => null }, 'Add Entry')
 				]),
 				Div({ class: 'flex lg:hidden mr-0' }, [
 					Tooltip({ content: 'Add Entry', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: () => null }))
