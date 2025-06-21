@@ -7,30 +7,26 @@ import { Avatar } from "@base-framework/ui/molecules";
  *
  * @returns {Array<object>}
  */
-const UserDetails = () => (
-	[
-		Avatar({ src: '[[user.image]]', alt: '[[user.firstName]] [[user.lastName]]', watcherFallback: '[[user.firstName]] [[user.lastName]]', size: "sm" }),
-		Div({ class: "flex flex-auto flex-col" }, [
-			Span({ class: "text-sm truncate" }, '[[user.firstName]]'),
-			Span({ class: "text-xs truncate text-muted-foreground" }, '[[user.lastName]]'),
-		])
-	]
-);
+const UserDetails = () => [
+	Avatar({ src: '[[user.image]]', alt: '[[user.firstName]] [[user.lastName]]', watcherFallback: '[[user.firstName]] [[user.lastName]]', size: "sm" }),
+	Div({ class: "flex flex-auto flex-col" }, [
+		Span({ class: "text-sm truncate" }, '[[user.firstName]]'),
+		Span({ class: "text-xs truncate text-muted-foreground" }, '[[user.lastName]]'),
+	])
+];
 
 /**
  * Displays a skeleton loader for user details.
  *
  *  @returns {Array<object>}
  */
-const UserDetailsSkeleton = () => (
-	[
-		Skeleton({ width: "w-9", height: "h-9", shape: "circle" }),
-		Div({ class: "flex flex-auto flex-col space-y-1" }, [
-			Skeleton({ width: "w-32", height: "h-3" }),
-			Skeleton({ width: "w-40", height: "h-3" }),
-		])
-	]
-);
+const UserDetailsSkeleton = () => [
+	Skeleton({ width: "w-9", height: "h-9", shape: "circle" }),
+	Div({ class: "flex flex-auto flex-col space-y-1" }, [
+		Skeleton({ width: "w-32", height: "h-3" }),
+		Skeleton({ width: "w-40", height: "h-3" }),
+	])
+];
 
 /**
  * Displays the user's avatar and name in a styled container.

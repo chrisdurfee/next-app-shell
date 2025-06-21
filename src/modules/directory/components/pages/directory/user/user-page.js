@@ -61,9 +61,8 @@ const Props =
  *
  * @returns {object}
  */
-export const UserPage = () =>
-{
-	return new Overlay(Props, [
+export const UserPage = () => (
+	new Overlay(Props, [
 		Div({ class: "flex flex-auto flex-col w-full" }, [
 			Div({ class: "flex flex-auto flex-col gap-6 w-full" }, [
 				Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row h-full' }, [
@@ -74,7 +73,7 @@ export const UserPage = () =>
 				])
 			])
 		])
-	]);
-};
+	])
+);
 
 export default UserPage;

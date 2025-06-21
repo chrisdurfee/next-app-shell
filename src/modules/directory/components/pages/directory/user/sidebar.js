@@ -37,7 +37,7 @@ export const Sidebar = ({ userId }) => (
 		topNav: Toolbar(),
 		options: [
 			{ label: 'Profile', href: `directory/user/${userId}`, icon: Icons.identification, exact: true },
-			{ label: 'Timecard', href: `directory/user/${userId}/timecard`, icon: Icons.calendar.default },
+			{ label: 'Timeclock', href: `directory/user/${userId}/timeclock`, icon: Icons.calendar.default },
 			{
 				group: 'Resources',
 				options: [
