@@ -15,7 +15,7 @@ import UserHeader from "../user-header.js";
  * @returns {object}
  */
 export const ProfilePage = () => (
-    new Page({ class: 'flex flex-auto flex-col' }, [
+	new Page({ class: 'flex flex-auto flex-col' }, [
 		On("loaded", (loaded, ele, { context }) =>
 		{
 			if (!loaded)
@@ -32,7 +32,7 @@ export const ProfilePage = () => (
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
 				Div({ class: 'flex flex-row justify-between gap-4' }, [
 					Div({ class: 'flex flex-col' }, [
-						H1({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, 'Profile'),
+						H1({ class: 'text-2xl md:text-2xl font-bold tracking-tight' }, 'Profile'),
 						// new Breadcrumb({
 						// 	class: 'hidden lg:inline-flex',
 						// 	items: [
@@ -61,7 +61,7 @@ export const ProfilePage = () => (
 				])
 			]);
 		})
-    ])
+	])
 );
 
 export default ProfilePage;
