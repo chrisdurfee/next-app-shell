@@ -7,3 +7,7 @@
 export const BackButton: Function;
 export function DocumentPage(): object;
 export default DocumentPage;
+/**
+ * Props
+ */
+export type Props = object;
