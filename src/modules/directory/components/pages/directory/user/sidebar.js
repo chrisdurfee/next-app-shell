@@ -12,14 +12,14 @@ import { UserAvatar } from "./user-avatar.js";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-2 pl-2" }, [
+	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-4 md:mt-0 pl-2" }, [
 		Div({ class: "flex items-center justify-between" }, [
 			Header({ class: 'flex space-x-4 items-center' }, [
 				BackButton({
 					margin: 'm-0 ml-0',
 					backUrl: '/directory'
 				}),
-				H1({ class: 'scroll-m-20 text-2xl lg:text-lg font-bold tracking-tight' }, 'User Profile'),
+				H1({ class: 'scroll-m-20 text-lg lg:text-lg font-bold tracking-tight' }, '[[user.firstName]] [[user.lastName]]'),
 			])
 		]),
 		UserAvatar()

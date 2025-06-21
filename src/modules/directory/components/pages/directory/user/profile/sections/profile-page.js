@@ -32,13 +32,16 @@ export const ProfilePage = () => (
 
 			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
 				Div({ class: 'flex flex-row justify-between gap-4' }, [
-					new Breadcrumb({
-						items: [
-							{ href: "/directory", label: "Directory" },
-							{ href: `/directory/user/${user.id}`, label: "Profile" },
-							{ label: `${user.firstName} ${user.lastName}` },
-						],
-					}),
+					Div({ class: 'hidden md:flex flex-col' }, [
+						new Breadcrumb({
+							class: 'hidden lg:inline-flex',
+							items: [
+								{ href: "/directory", label: "Directory" },
+								{ href: `/directory/user/${user.id}`, label: "Profile" },
+								{ label: `${user.firstName} ${user.lastName}` },
+							]
+						})
+					]),
 					Div({ class: 'flex flex-row space-x-2' }, [
 						Div({ class: 'hidden lg:inline-flex' }, [
 							Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: EmployeeModal }, 'Edit'),
