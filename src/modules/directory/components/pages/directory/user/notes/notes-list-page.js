@@ -34,10 +34,10 @@ const Header = () =>
 const NoteItem = (note) =>
 (
 	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/10 rounded" }, [
-		Avatar({ src: note.avatar, alt: note.userName, fallbackText: note.userName, size: "sm" }),
+		Avatar({ src: note.avatar, alt: note.user, fallbackText: note.user, size: "md" }),
 		Div({ class: "flex-1 space-y-1" }, [
-			P({ class: "text-sm font-medium" }, note.userName),
-			P({ class: "text-sm text-foreground" }, note.text),
+			P({ class: "text-base font-medium" }, note.user),
+			P({ class: "text-sm text-muted-foreground" }, note.text),
 			note.attachments &&
 				Div({ class: "flex space-x-2 mt-2" }, [
 					note.attachments.map((att) =>

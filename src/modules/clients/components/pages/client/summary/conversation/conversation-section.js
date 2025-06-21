@@ -33,7 +33,7 @@ const ConversationListItem = Atom((msg) =>
 		Avatar({ src: msg.avatar, alt: msg.user, fallbackText: msg.user, size: "sm" }),
 		Div({ class: "flex-1 space-y-1" }, [
 			P({ class: "text-sm font-medium" }, msg.user),
-			P({ class: "text-sm text-foreground" }, msg.text),
+			P({ class: "text-sm text-muted-foreground" }, msg.text),
 			msg.attachments &&
 				Div({ class: "flex space-x-2 mt-2" }, [
 					msg.attachments.map((att) =>
