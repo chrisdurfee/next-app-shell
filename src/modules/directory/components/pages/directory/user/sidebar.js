@@ -19,7 +19,7 @@ const Toolbar = () => (
 					margin: 'm-0 ml-0',
 					backUrl: '/directory'
 				}),
-				H1({ class: 'scroll-m-20 text-lg lg:text-lg font-bold tracking-tight' }, '[[user.firstName]] [[user.lastName]]'),
+				H1({ class: 'scroll-m-20 text-lg lg:text-lg font-bold tracking-tight truncate' }, '[[user.firstName]] [[user.lastName]]'),
 			])
 		]),
 		UserAvatar()
