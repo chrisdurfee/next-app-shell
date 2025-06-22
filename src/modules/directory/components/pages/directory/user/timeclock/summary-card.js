@@ -17,7 +17,7 @@ export const SummaryCard = ({ title, value, change, icon }) => (
 	Card({ class: 'flex flex-col w-72 max-w-sm hover:bg-muted/50 transition-colors', margin: 'm-0' }, [
 		Div({ class: 'flex justify-between items-center mb-2' }, [
 			H2({ class: 'text-base font-medium text-muted-foreground' }, title),
-			Icon(icon, { class: 'text-xl' })
+			Icon(icon)
 		]),
 		Div({ class: 'flex flex-col' }, [
 			P({ class: 'text-2xl font-bold leading-tight' }, value),

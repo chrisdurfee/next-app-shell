@@ -1,83 +1,96 @@
 /**
- * Mock time data.
+ * Mock timeclock data.
  *
- * @type {Array<object>}
+ * @typedef {Object} TimeEntry
+ * @property {number} id - The unique identifier for the time entry
+ * @property {string} employeeName - The name of the employee
+ * @property {string} employeeImage - URL to employee's avatar image
+ * @property {string} email - Employee's email address
+ * @property {string} date - The date of the time entry
+ * @property {string} clockIn - Time the employee clocked in
+ * @property {string} clockOut - Time the employee clocked out (if applicable)
+ * @property {number} hoursWorked - Total hours worked
+ * @property {string} status - Current status of the entry (Complete/Incomplete)
+ * @property {string} department - Employee's department
+ * @property {number} hourlyRate - Employee's hourly rate
+ *
+ * @type {Array<TimeEntry>}
  */
-export const TIMES = Array.from({ length: 20 }, (_, i) => {
+export const TIMES = Array.from({ length: 20 }, (_, i) =>
+{
 	const id = i + 1;
-	const isActive = id % 2 === 0;
-	const pkg = id % 3 === 0
-		? "Elite"
-		: id % 3 === 1
-			? "Standard"
-			: "Basic";
+	const employeeId = Math.floor(Math.random() * 10) + 1; // 1-10 employees
+	const employeeName = [
+		"John Smith",
+		"Maria Rodriguez",
+		"David Johnson",
+		"Sarah Williams",
+		"Michael Brown",
+		"Jennifer Davis",
+		"Robert Miller",
+		"Lisa Garcia",
+		"James Wilson",
+		"Emily Martinez"
+	][employeeId - 1];
 
-	// Two sample tickets per client
-	const tickets = [1, 2].map((n) => {
-		const tid = id * 10 + n;
-		return {
-			id: tid,
-			priority: n % 2 === 0 ? "down" : "up",
-			subject: `Issue #${tid}`,
-			owner: `User ${tid}`,
-			status: n % 2 === 0 ? "Closed" : "Open"
-		};
-	});
+	// Generate a date within the past 14 days
+	const today = new Date();
+	const daysAgo = Math.floor(Math.random() * 14);
+	const entryDate = new Date(today);
+	entryDate.setDate(today.getDate() - daysAgo);
 
-	// Shared conversation thread for all clients
-	const conversation = [
-		{
-			id: 1,
-			date: "2025-06-01T09:15:00Z",
-			user: "Alice Johnson",
-			avatar: `https://i.pravatar.cc/150?img=47`,
-			text: "Hi team, just checking in on the recent performance report.",
-			attachments: []
-		},
-		{
-			id: 2,
-			date: "2025-06-01T10:00:00Z",
-			user: "Bob Smith",
-			avatar: `https://i.pravatar.cc/150?img=48`,
-			text: "Looks good to me! No further changes needed.",
-			attachments: []
-		},
-		{
-			id: 3,
-			date: "2025-06-02T08:30:00Z",
-			user: "Alice Johnson",
-			avatar: `https://i.pravatar.cc/150?img=47`,
-			text: "Here is the updated file with the latest metrics.",
-			attachments: [
-				{
-					name: "report.pdf",
-					src: "https://via.placeholder.com/64"
-				}
-			]
-		}
-	];
+	// Format date as YYYY-MM-DD
+	const date = entryDate.toISOString().split('T')[0];
+
+	// Random clock in time between 7 AM and 10 AM
+	const clockInHour = Math.floor(Math.random() * 3) + 7;
+	const clockInMinute = Math.floor(Math.random() * 60);
+	const clockIn = `${clockInHour.toString().padStart(2, '0')}:${clockInMinute.toString().padStart(2, '0')} AM`;
+
+	// Determine if the entry is complete
+	const isComplete = Math.random() > 0.2; // 80% chance of being complete
+
+	// If complete, set clock out time between 3 PM and 7 PM
+	let clockOut = "";
+	let hoursWorked = 0;
+
+	if (isComplete)
+	{
+		const clockOutHour = Math.floor(Math.random() * 5) + 3;
+		const clockOutMinute = Math.floor(Math.random() * 60);
+		clockOut = `${clockOutHour.toString().padStart(2, '0')}:${clockOutMinute.toString().padStart(2, '0')} PM`;
+
+		// Calculate hours worked (approximate)
+		hoursWorked = (clockOutHour + 12) - clockInHour - (clockOutMinute < clockInMinute ? 0.5 : 0);
+	}
+
+	// Departments
+	const departments = ["Engineering", "Sales", "Marketing", "Support", "HR", "Finance"];
+	const department = departments[employeeId % departments.length];
+
+	// Hourly rate based on department
+	const baseRate = 20;
+	const departmentMultiplier = {
+		"Engineering": 1.5,
+		"Sales": 1.3,
+		"Marketing": 1.2,
+		"Support": 1.0,
+		"HR": 1.1,
+		"Finance": 1.4
+	};
+	const hourlyRate = baseRate * (departmentMultiplier[department] || 1);
 
 	return {
 		id,
-		name: `Client Name ${id}`,
-		code: `#${3000 + id}`,
-		//avatar: `https://i.pravatar.cc/150?img=${(i % 70) + 1}`,
-		status: isActive ? "Active" : "Inactive",
-		email: `client${id}@example.com`,
-		about: `This is a brief description of client and what they do so our team can understand their needs and how we can assist them. This text is a placeholder and can be replaced with actual client information.`,
-
-		payment: (Math.random() * 1000 + 50).toFixed(2),
-		package: pkg,
-		nextDue: "May 1, 2024",
-		passphrase: `pass-${Math.random().toString(36).slice(2, 8)}`,
-		since: `Jan ${((i % 28) + 1)}, 2023`,
-		contactName: `Example Contact`,
-
-		contractExpires: `Jan ${((i % 12) + 1)}, 2025`,
-		contractStatus: "In Contract",
-		addOns: ["Boosting", "Sponsored Posts"],
-
-		tickets,
-		conversation
+		employeeName,
+		employeeImage: `https://i.pravatar.cc/150?img=${(employeeId % 70) + 1}`,
+		email: `${employeeName.toLowerCase().replace(' ', '.')}@example.com`,
+		date,
+		clockIn,
+		clockOut: isComplete ? clockOut : "Active",
+		hoursWorked: isComplete ? hoursWorked : (new Date().getHours() - clockInHour),
+		status: isComplete ? "Complete" : "Active",
+		department,
+		hourlyRate
 	};
 });
