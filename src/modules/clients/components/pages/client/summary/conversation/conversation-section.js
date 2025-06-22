@@ -29,7 +29,7 @@ const DateDivider = (date) =>
  * @returns {object}
  */
 const ConversationListItem = Atom((msg) =>
-	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/10 rounded" }, [
+	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
 		Avatar({ src: msg.avatar, alt: msg.user, fallbackText: msg.user, size: "sm" }),
 		Div({ class: "flex-1 space-y-1" }, [
 			P({ class: "text-sm font-medium" }, msg.user),

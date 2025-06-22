@@ -33,7 +33,7 @@ const Header = () =>
  */
 const NoteItem = (note) =>
 (
-	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/10 rounded" }, [
+	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
 		Avatar({ src: note.avatar, alt: note.user, fallbackText: note.user, size: "md" }),
 		Div({ class: "flex-1 space-y-1" }, [
 			P({ class: "text-base font-medium" }, note.user),
