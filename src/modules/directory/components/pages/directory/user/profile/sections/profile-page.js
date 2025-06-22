@@ -29,7 +29,7 @@ export const ProfilePage = () => (
 				return Div({ class: "text-center" }, "User not found.");
 			}
 
-			return Div({ class: 'p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
+			return Div({ class: 'md:p-6 md:pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px]' }, [
 				Div({ class: 'flex flex-row justify-between gap-4' }, [
 					Div({ class: 'flex flex-col' }, [
 						H1({ class: 'text-2xl md:text-2xl font-bold tracking-tight' }, 'Profile'),

@@ -12,7 +12,7 @@ import { UserAvatar } from "./user-avatar.js";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-4 md:mt-0 pl-2" }, [
+	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-4 md:mt-0 md:pl-2" }, [
 		Div({ class: "flex items-center justify-between" }, [
 			Header({ class: 'flex space-x-4 items-center' }, [
 				BackButton({
