@@ -1,2 +1,4 @@
 export function TimeclockRow(row: object, onSelect: Function): object;
-export function TimeclockTable({ times }: object): object;
+export function TimeclockTable({ times }: {
+    times: Array<object>;
+}): object;
