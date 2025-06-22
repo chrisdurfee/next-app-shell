@@ -1,6 +1,1 @@
-/**
- * Header for the invoice page.
- *
- * @returns {object}
- */
-export const PageHeader: Function;
+export function PageHeader(): object;
