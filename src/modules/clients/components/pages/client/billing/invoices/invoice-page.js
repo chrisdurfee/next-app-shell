@@ -1,80 +1,30 @@
-import { Div, On } from "@base-framework/atoms";
-import { Data } from "@base-framework/base";
-import { Page } from "@base-framework/ui/pages";
-import { FakeInvoices } from "./fake-invoices.js";
-import { InvoiceList } from "./invoice-list.js";
-import InvoiceSkeleton from "./invoice-skeleton.js";
+import { Div } from "@base-framework/atoms";
+import { BlankPage } from "@base-framework/ui/pages";
+import { InvoiceTable } from "./invoice-table.js";
+import { INVOICES } from "./invoices.js";
 import { PageHeader } from "./page-header.js";
-
-/**
- * props for InvoicePage
- *
- * @type {object} props
- */
-const props =
-{
-    class: "flex flex-auto flex-col w-full",
-
-    /**
-     * setData
-     *
-     * Initializes component state.
-     *
-     * @returns {object} Data instance with loaded and invoices.
-     */
-    setData()
-    {
-        return new Data({ loaded: false, invoices: [] });
-    },
-
-    /**
-     * afterSetup
-     *
-     * Fetches invoice data after mount.
-     *
-     * @returns {void}
-     */
-    afterSetup()
-    {
-        const DELAY = 500;
-        setTimeout(() => this.data.set({ invoices: FakeInvoices, loaded: true }), DELAY);
-    },
-
-    /**
-     * beforeDestroy
-     *
-     * Cleans up component state.
-     *
-     * @returns {void}
-     */
-    beforeDestroy()
-    {
-        this.data.delete();
-        this.data.loaded = false;
-    }
-};
+import { SummaryCards } from "./summary-cards.js";
 
 /**
  * InvoicePage
  *
  * Page showing a client's invoice list.
  *
- * @returns {object} A Page component.
+ * @returns {object} A BlankPage component.
  */
 export const InvoicePage = () =>
-    new Page(props, [
-        On("loaded", (loaded, ele, { data }) =>
-        {
-            if (!loaded)
-            {
-                return InvoiceSkeleton();
-            }
-
-            return Div({ class: "p-6 2xl:mx-auto w-full contained" }, [
-                PageHeader(),
-                InvoiceList({ invoices: data.invoices })
-            ]);
-        })
-    ]);
+	new BlankPage([
+		Div({ class: 'grid grid-cols-1' }, [
+			Div({ class: 'flex flex-auto flex-col pt-0 lg:space-y-12 w-full mx-auto 2xl:max-w-[1600px]' }, [
+				PageHeader(),
+				Div({ class: 'flex flex-auto flex-col space-y-4 lg:space-y-2' }, [
+					SummaryCards({ invoices: INVOICES }),
+					Div({ class: 'flex flex-col overflow-x-auto' }, [
+						InvoiceTable({ invoices: INVOICES })
+					])
+				])
+			])
+		])
+	]);
 
 export default InvoicePage;

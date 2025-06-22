@@ -3,7 +3,7 @@
  *
  * @type {Array<object>}
  */
-export const FakeInvoices = [
+export const INVOICES = [
     {
         id: 1001,
         invoiceNumber: "INV-2025-001",
