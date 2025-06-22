@@ -16,10 +16,10 @@ const Header = () =>
 		Div({ class: "flex flex-auto justify-between items-center space-x-4" }, [
 			H2({ class: "text-2xl font-semibold" }, `Notes`),
 			Button({
-                variant: "withIcon",
+				variant: "withIcon",
 				class: "primary",
 				onClick: () => console.log("New note clicked"),
-                icon: Icons.circlePlus
+				icon: Icons.circlePlus
 			}, "New note")
 		])
 	])
