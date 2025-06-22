@@ -68,35 +68,47 @@ export const ClientAvatarSection = Atom(({ client }) =>
  * @returns {object}
  */
 export const ClientSummaryCardsSection = Atom(({ client }) =>
-	Div({ class: "overflow-x-auto -mx-6 pl-6" },
-		Div({ class: "flex space-x-4 pb-4 max-w-xs mr-6" }, [
-			ClientSummaryCard({
-				title: "Payment Amount",
-				value: `$${client.payment}`,
-				icon: Icons.creditCard
-			}),
-			ClientSummaryCard({
-				title: "Package",
-				value: client.package,
-				icon: Icons.cube
-			}),
-			ClientSummaryCard({
-				title: "Next Due Date",
-				value: client.nextDue,
-				icon: Icons.calendar.default
-			}),
-			ClientSummaryCard({
-				title: "Secret Passphrase",
-				value: client.passphrase,
-				icon: Icons.locked
-			}),
-			ClientSummaryCard({
-				title: "Client Since",
-				value: client.since,
-				icon: Icons.clock
-			})
-		])
-	)
+	Div({ class: "relative -mx-6 pl-6" }, [
+		Div({
+			class:
+				"pointer-events-none absolute top-0 left-0 h-full w-6 " +
+				"bg-gradient-to-r from-background to-transparent"
+		}),
+		Div({ class: "flex flex-auto overflow-x-auto -ml-6 mr-0 px-6" }, [
+			Div({ class: "flex space-x-4 pb-4 max-w-xs" }, [
+				ClientSummaryCard({
+					title: "Payment Amount",
+					value: `$${client.payment}`,
+					icon: Icons.creditCard
+				}),
+				ClientSummaryCard({
+					title: "Package",
+					value: client.package,
+					icon: Icons.cube
+				}),
+				ClientSummaryCard({
+					title: "Next Due Date",
+					value: client.nextDue,
+					icon: Icons.calendar.default
+				}),
+				ClientSummaryCard({
+					title: "Secret Passphrase",
+					value: client.passphrase,
+					icon: Icons.locked
+				}),
+				ClientSummaryCard({
+					title: "Client Since",
+					value: client.since,
+					icon: Icons.clock
+				})
+			])
+		]),
+		Div({
+			class:
+				"pointer-events-none absolute top-0 right-0 h-full w-16 " +
+				"bg-gradient-to-l from-background to-transparent"
+		})
+	])
 );
 
 /**
