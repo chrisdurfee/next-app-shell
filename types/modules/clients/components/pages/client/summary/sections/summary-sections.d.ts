@@ -46,6 +46,8 @@ export const TicketsSection: Function;
  *
  * Displays a list of previous invoices.
  *
+ * @param {object} props
+ * @param {object} props.client - The client object containing invoice data.
  * @returns {object}
  */
 export const InvoicesSection: Function;
