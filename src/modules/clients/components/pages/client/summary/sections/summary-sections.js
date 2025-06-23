@@ -1,4 +1,4 @@
-import { Div, H2, Header, P } from "@base-framework/atoms";
+import { A, Div, H2, Header, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { List } from "@base-framework/organisms";
 import { Card, Icon } from "@base-framework/ui";
@@ -240,23 +240,27 @@ export const TicketsSection = Atom(({ client }) =>
  *
  * Renders a single invoice as a row in the list.
  *
- * @param {object} invoice
- * @returns {object}
+ * @param {object} client
+ * @returns {function}
  */
-const InvoiceListItem = Atom(invoice =>
-	Card({ class: "flex items-center justify-between cursor-pointer p-4", margin: "m-2", hover: true }, [
-		Div({ class: "flex items-center space-x-4" }, [
-			Icon(Icons.document.default),
-			Div({ class: "flex flex-col" }, [
-				P({ class: "font-medium" }, invoice.number),
-				P({ class: "text-sm text-muted-foreground" }, invoice.date)
+const InvoiceListItem = (client) => (
+	Atom((invoice) =>
+		A({ href: `clients/client/${client.id}/billing/invoices/${invoice.id}` }, [
+			Card({ class: "flex items-center justify-between cursor-pointer p-4", margin: "m-2", hover: true }, [
+				Div({ class: "flex items-center space-x-4" }, [
+					Icon(Icons.document.default),
+					Div({ class: "flex flex-col" }, [
+						P({ class: "font-medium" }, invoice.number),
+						P({ class: "text-sm text-muted-foreground" }, invoice.date)
+					])
+				]),
+				Div({ class: "flex items-center space-x-4" }, [
+					P({ class: "font-medium text-foreground" }, invoice.amount),
+					Badge({ variant: invoice.status === "Paid" ? "secondary" : "outline" }, invoice.status)
+				])
 			])
-		]),
-		Div({ class: "flex items-center space-x-4" }, [
-			P({ class: "font-medium text-foreground" }, invoice.amount),
-			Badge({ variant: invoice.status === "Paid" ? "secondary" : "outline" }, invoice.status)
 		])
-	])
+	)
 );
 
 /**
@@ -264,9 +268,11 @@ const InvoiceListItem = Atom(invoice =>
  *
  * Displays a list of previous invoices.
  *
+ * @param {object} props
+ * @param {object} props.client - The client object containing invoice data.
  * @returns {object}
  */
-export const InvoicesSection = Atom(() =>
+export const InvoicesSection = Atom(({ client }) =>
 	ProfileSection({ title: "Previous Invoices" }, [
 		new List({
 			cache: "invoices",
@@ -277,7 +283,7 @@ export const InvoicesSection = Atom(() =>
 				{ id: 3, number: "INV-1003", date: "Jul 1, 2024", amount: "$175.00", status: "Paid" }
 			],
 			role: "list",
-			rowItem: InvoiceListItem
+			rowItem: InvoiceListItem(client)
 		})
 	])
 );

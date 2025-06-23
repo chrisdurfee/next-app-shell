@@ -13,7 +13,7 @@ import { Card, Icon } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 export const ClientSummaryCard = ({ title, value, icon }) =>
-	Card({ class: "bg-card border border-border rounded-lg p-4 min-w-[250px] min-h-32 hover:bg-muted/50 transition-colors", margin: "m-0" },
+	Card({ class: "bg-card border border-border rounded-lg p-4 min-w-[250px] min-h-32 transition-colors", margin: "m-0", hover: true },
 		Div({ class: "flex flex-col space-y-2" }, [
 			Div({ class: "flex items-center space-x-2 text-muted-foreground" }, [
 				Icon(icon, { class: "text-lg" }),

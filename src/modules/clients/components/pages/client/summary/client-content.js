@@ -37,6 +37,6 @@ export const ClientContent = ({ client }) => (
 		AboutSection(client),
 		ContractSection({ client }),
 		TicketsSection({ client }),
-		InvoicesSection()
+		InvoicesSection({ client })
 	])
 );
