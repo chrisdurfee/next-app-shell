@@ -41,7 +41,7 @@ const CallIcon = (status) =>
  * @returns {object}
  */
 const CallItem = Atom(call =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
 		Div({ class: "flex items-center space-x-4" }, [
 			Avatar({ src: call.avatar, alt: call.contactName, fallbackText: call.contactName, size: "sm" }),
 			Div({ class: "flex flex-col" }, [

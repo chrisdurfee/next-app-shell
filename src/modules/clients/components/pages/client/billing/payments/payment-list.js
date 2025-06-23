@@ -49,7 +49,7 @@ const formatCurrency = (amount) =>
  * @returns {object}
  */
 const PaymentItem = Atom((payment) =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
 		Div({ class: "flex flex-1 flex-col md:flex-row md:items-center md:justify-between" }, [
 			// Left column - Payment number and date
 			Div({ class: "flex flex-col mb-2 md:mb-0" }, [

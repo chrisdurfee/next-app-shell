@@ -17,7 +17,7 @@ import { Avatar } from "@base-framework/ui/molecules";
  * @returns {object}
  */
 const ContactItem = Atom(contact =>
-	Card({ class: "flex items-center justify-between p-4 hover:bg-muted/10", margin: "m-2" }, [
+	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
 		Div({ class: "flex items-center space-x-4" }, [
 			Avatar({ src: contact.avatar, alt: contact.name, fallbackText: contact.name, size: "sm" }),
 			Div({ class: "flex flex-col" }, [
