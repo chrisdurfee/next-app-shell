@@ -164,12 +164,12 @@ export const ContractSection = Atom(({client}) =>
 					Div({ class: "space-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Upgrades"),
 						Div({ class: "flex flex-wrap gap-2" },
-							client.addOns.map(a => Badge({ variant: "outline" }, a))
+							client.addOns && client.addOns.map(a => Badge({ variant: "outline" }, a))
 						)
 					]),
 					Div({ class: "space-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Sales Agent"),
-						P({ class: "font-medium text-foreground" }, client.salesAgent)
+						P({ class: "font-medium text-foreground" }, client.salesAgent || "Not Assigned")
 					])
 				])
 			])
