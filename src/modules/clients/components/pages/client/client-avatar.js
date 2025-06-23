@@ -38,12 +38,11 @@ const ClientDetailsSkeleton = () => (
  * @returns {object}
  */
 export const ClientAvatar = () => (
-	On('loaded', (value =>
-	{
-		return Div({ class: "flex items-center space-x-4 border rounded-md p-2 hover:bg-muted/50" },
+	On('loaded', (value => (
+		Div({ class: "flex items-center space-x-4 border rounded-md p-2 hover:bg-muted/50" },
 			(!value)
 			? ClientDetailsSkeleton()
 			: ClientDetails()
-		);
-	}))
+		)
+	)))
 );
