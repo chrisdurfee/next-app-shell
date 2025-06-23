@@ -79,17 +79,20 @@ export const ClientSummaryCardsSection = Atom(({ client }) =>
 				ClientSummaryCard({
 					title: "Payment Amount",
 					value: `$${client.payment}`,
-					icon: Icons.creditCard
+					icon: Icons.creditCard,
+					url: `clients/client/${client.id}/billing/payments`
 				}),
 				ClientSummaryCard({
 					title: "Package",
 					value: client.package,
-					icon: Icons.cube
+					icon: Icons.cube,
+					url: `clients/client/${client.id}/billing/orders`
 				}),
 				ClientSummaryCard({
 					title: "Next Due Date",
 					value: client.nextDue,
-					icon: Icons.calendar.default
+					icon: Icons.calendar.default,
+					url: `clients/client/${client.id}/billing/payments`
 				}),
 				ClientSummaryCard({
 					title: "Secret Passphrase",
