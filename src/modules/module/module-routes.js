@@ -78,7 +78,7 @@ export class ModuleRoutes
 			uri,
 			import: {
 				src: loader.src,
-                callBack
+				callBack
 			},
 			title,
 			preventScroll,

@@ -1,4 +1,5 @@
 import { Div } from "@base-framework/atoms";
+import { ColumnRow } from "@base-framework/ui";
 import { Button, Fieldset, Input, Select, Textarea } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Confirmation, DatePicker, DetailBody, DetailSection, DropdownMenu, FormField, Modal, SplitRow } from "@base-framework/ui/molecules";
@@ -182,6 +183,9 @@ const DemoDetailModal = () =>
                 SplitRow('Date', '2024-11-02'),
                 Div({ class: 'my-2 border-t' }),
                 SplitRow('Status', 'Pending')
+            ]),
+            DetailSection({ title: 'Details' }, [
+                ColumnRow('Label text', 'Value')
             ]),
             DetailSection({ title: 'More Info' }, [
                 SplitRow('Description', 'This is a multi-line snippet.'),

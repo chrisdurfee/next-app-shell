@@ -55,7 +55,8 @@ export const AppShell = Jot(
 						import: () => import('./onboarding/onboarding-page.js')
 					},
 					{
-						import: () => import('./app-content.js')
+						import: () => import('./app-content.js'),
+						preventScroll: true
 					}
 				]
 			})
