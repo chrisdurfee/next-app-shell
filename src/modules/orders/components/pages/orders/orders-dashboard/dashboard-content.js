@@ -23,13 +23,13 @@ export const DashboardHeader = () => (
 				{ label: 'Recent' }
 			]
 		}),
-        Div({ class: 'hidden sm:flex gap-2'}, [
-            Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus, click: OrderModal }, 'Add Order'),
-        ]),
-        Div({ class: 'flex sm:hidden mr-4' }, [
-            Tooltip({ content: 'Add Order', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: OrderModal }))
-        ])
-])
+		Div({ class: 'hidden sm:flex gap-2'}, [
+			Button({ variant: 'withIcon', class: 'primary', icon: Icons.circlePlus, click: OrderModal }, 'Add Order'),
+		]),
+		Div({ class: 'flex sm:hidden mr-4' }, [
+			Tooltip({ content: 'Add Order', position: 'left' }, Button({ variant: 'icon', class: 'outline', icon: Icons.circlePlus, click: OrderModal }))
+		])
+	])
 );
 
 /**
@@ -38,28 +38,28 @@ export const DashboardHeader = () => (
  * @returns {object}
  */
 export const DashboardContent = () => (
-    Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 sm:p-6' }, [
-        DashboardHeader(),
-        Div({ class: 'space-y-4' }, [
+	Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 sm:p-6' }, [
+		DashboardHeader(),
+		Div({ class: 'space-y-4' }, [
 
-            DashboardCards(),
+			DashboardCards(),
 			OrderOptions(),
 
-            Div({ class: 'border rounded-md bg-card shadow-md p-4 md:p-6' }, [
-                Header({ class: 'flex flex-auto flex-col pl-4 md:pl-0' }, [
+			Div({ class: 'border rounded-md bg-card shadow-md p-4 md:p-6' }, [
+				Header({ class: 'flex flex-auto flex-col pl-4 md:pl-0' }, [
 					H1({ class: 'text-lg font-semibold' }, 'Orders'),
-                	P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
+					P({ class: 'text-sm text-muted-foreground mb-6' }, 'Recent orders from your store.'),
 				]),
 
-                RecentOrdersTable({ orders }),
-                Div({
-                    route: {
-                        uri: 'orders/orders-dashboard/:orderId*',
-                        component: OrderDetailsModal,
-                        preventScroll: true
-                    }
-                })
-            ])
-        ])
-    ])
+				RecentOrdersTable({ orders }),
+				Div({
+					route: {
+						uri: 'orders/orders-dashboard/:orderId*',
+						component: OrderDetailsModal,
+						preventScroll: true
+					}
+				})
+			])
+		])
+	])
 );
