@@ -95,11 +95,9 @@ export const DocumentPage = () => (
 					}),
 					OnState('editing', (state) =>
 					{
-						if (state)
-						{
-							return Div({ class: "text-red-500" }, "Editing mode is ON");
-						}
-						return Pre({ class: 'text-muted-foreground whitespace-pre-line font-sans' }, document.content);
+						return (state)
+						? Div({ class: "text-red-500" }, "Editing mode is ON")
+						: Pre({ class: 'text-muted-foreground whitespace-pre-line font-sans' }, document.content);
 					}),
 				]);
 			})

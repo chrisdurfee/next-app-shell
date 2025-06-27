@@ -82,7 +82,7 @@ export class ModuleRoutes
 			},
 			title,
 			preventScroll,
-			persist: false
+			persist: true
 		};
 	}
 }

@@ -13,7 +13,7 @@ import { Page } from "@base-framework/ui/pages";
 const DashboardHeader = () => (
 	Header({ class: 'flex items-center justify-between' }, [
 		H1({ class: 'text-3xl font-bold' }, 'Dashboard'),
-		Div({ class: 'flex items-center gap-2' }, [
+		Div({ class: 'flex items-center gap-2', debug: true }, [
 			new DatePicker({ label: 'Pick a date', icon: Icons.calendar }),
 			Div({ class: 'hidden md:flex items-center gap-2' }, [
 				Button({ variant: 'default' }, 'Download')
