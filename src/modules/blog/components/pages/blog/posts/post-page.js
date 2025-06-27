@@ -26,7 +26,8 @@ const Toolbar = () => (
 		Div({ class: 'flex' }, [
 			BackButton({
 				margin: 'm-0 ml-0',
-				backUrl: '/blog'
+				backUrl: '/blog',
+				allowHistory: true
 			})
 		])
 	])

@@ -25,7 +25,8 @@ const AlbumPageContent = () => (
 					Div({ class: 'w-full lg:w-1/3' }, [
 						Header({ class: 'flex flex-auto items-center mb-2' }, [
 							BackButton({
-								backUrl: 'music'
+								backUrl: 'music',
+								allowHistory: true
 							}),
 							H2({ class: 'text-lg md:text-2xl font-bold tracking-tight' }, album.artist),
 						]),
