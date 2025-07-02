@@ -49,7 +49,7 @@ export const Sidebar = ({ userId }) => (
 			{
 				group: 'Performance',
 				options: [
-					{ label: '1-on-1', href: `directory/user/${userId}/one-on-one`, icon: Icons.user.multiple, exact: false },
+					{ label: '1-on-1', href: `directory/user/${userId}/one-on-one`, icon: Icons.user.multiple },
 					{ label: 'Analytics', href: `directory/user/${userId}/analytics`, icon: Icons.barChart },
 					{ label: 'Reviews', href: `directory/user/${userId}/reviews`, icon: Icons.folder.default },
 				]
