@@ -1,5 +1,6 @@
-import { Div, Form, Span } from '@base-framework/atoms';
+import { Div, Span } from '@base-framework/atoms';
 import { Button, Input } from "@base-framework/ui/atoms";
+import { Form } from '@base-framework/ui/molecules';
 import { STEPS } from '../steps.js';
 
 /**
