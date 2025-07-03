@@ -15,10 +15,10 @@ const Header = () =>
 		Div({ class: "flex flex-auto justify-between items-center space-x-4" }, [
 			H2({ class: "text-2xl font-semibold" }, `Documents`),
 			Button({
-                variant: "withIcon",
+				variant: "withIcon",
 				class: "primary",
-				onClick: () => console.log("New document clicked"),
-                icon: Icons.circlePlus
+				click: () => console.log("New document clicked"),
+				icon: Icons.circlePlus
 			}, "New document")
 		])
 	])
