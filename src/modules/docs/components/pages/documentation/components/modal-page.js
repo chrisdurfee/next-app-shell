@@ -10,12 +10,12 @@ import { DocPage } from '../../doc-page.js';
  * Basic modal size/type combos for demonstration.
  */
 const Modals = [
-    { label: 'Large',  buttonStyle: 'primary',    size: 'lg'   },
-    { label: 'Small',  buttonStyle: 'secondary',  size: 'sm'   },
-    { label: 'Medium', buttonStyle: 'destructive',size: 'md'   },
-    { label: 'XL',     buttonStyle: 'primary',    size: 'xl'   },
-    { label: 'Right',  buttonStyle: 'ghost',      type: 'right'},
-    { label: 'Left',   buttonStyle: 'link',       type: 'left' }
+    { label: 'Large', buttonStyle: 'primary', size: 'lg'},
+    { label: 'Small', buttonStyle: 'secondary', size: 'sm'},
+    { label: 'Medium', buttonStyle: 'destructive', size: 'md'},
+    { label: 'XL', buttonStyle: 'primary', size: 'xl'},
+    { label: 'Right', buttonStyle: 'ghost', type: 'right'},
+    { label: 'Left', buttonStyle: 'link', type: 'left'}
 ];
 
 /**
@@ -227,9 +227,9 @@ export const ModalPage = () =>
             ],
             code: `
 // detail-modal-example.js
-import {  DetailBody, DetailSection, SplitRow  } from "@base-framework/ui/molecules";
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Icons  } from "@base-framework/ui/icons";
+import { DetailBody, DetailSection, SplitRow } from "@base-framework/ui/molecules";
+import { Modal } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
 
 const DemoDetailModal = () =>
     new Modal({
@@ -255,7 +255,7 @@ const DemoDetailModal = () =>
         // A doc section specifically describing "headerOptions"
         DocSection({
             title: 'Header Options',
-            description: 'You can pass `headerOptions` as an array of atoms for the modal’s top-right actions. Below is an example with a DropdownMenu in the modal header.',
+            description: 'You can pass `headerOptions` as an array of atoms for the modal\'s top-right actions. Below is an example with a DropdownMenu in the modal header.',
             preview: [
                 Button({
                     text: 'Open Modal with Header Options',
@@ -274,9 +274,9 @@ const DemoDetailModal = () =>
             ],
             code: `
 // header-options-example.js
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  DropdownMenu  } from "@base-framework/ui/molecules";
-import {  Icons  } from "@base-framework/ui/icons";
+import { Modal } from "@base-framework/ui/molecules";
+import { DropdownMenu } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
 
 // Example header options
 const DemoHeaderOptions = () => [
@@ -314,8 +314,8 @@ new Modal({
                 ModalButton(Modals[3])
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
 
 /**
  * This creates a button that opens an XL modal.
@@ -335,8 +335,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[0])
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, size }) => Button({
     text: label,
@@ -353,8 +353,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[2])
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, size }) => Button({
     text: label,
@@ -371,8 +371,8 @@ const ModalButton = ({ label, size }) => Button({
                 ModalButton(Modals[4])
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
 
 const ModalButton = ({ label, type }) => Button({
     text: label,
@@ -393,12 +393,12 @@ const ModalButton = ({ label, type }) => Button({
                 })
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
-import {  Fieldset  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
+import { Fieldset } from "@base-framework/ui/atoms";
 import { Div } from "@base-framework/atoms";
-import {  Input, Textarea  } from "@base-framework/ui/atoms";
-import {  FormField  } from "@base-framework/ui/molecules";
+import { Input, Textarea } from "@base-framework/ui/atoms";
+import { FormField } from "@base-framework/ui/molecules";
 
 const ModalForm = ({ size = 'lg', type = 'center' }) => (
     new Modal({
@@ -424,8 +424,8 @@ const ModalForm = ({ size = 'lg', type = 'center' }) => (
                 })
             ],
             code: `
-import {  Modal  } from "@base-framework/ui/molecules";
-import {  Button  } from "@base-framework/ui/atoms";
+import { Modal } from "@base-framework/ui/molecules";
+import { Button } from "@base-framework/ui/atoms";
 
 const ModalForm = ({ type = 'right', size = 'md' }) => (
     new Modal({

@@ -3,6 +3,7 @@ import { Atom } from '@base-framework/base';
 import { Button, Input } from "@base-framework/ui/atoms";
 import { Icons } from '@base-framework/ui/icons';
 import { Form } from '@base-framework/ui/molecules';
+import { Configs } from '../../../configs.js';
 import { PasswordValidator } from '../utils/password-validator.js';
 
 /**
@@ -87,7 +88,7 @@ const ChangePasswordForm = () => (
 				type: 'success'
 			});
 
-			app.navigate('/');
+			app.navigate(Configs.router.baseUrl);
 		},
 		role: 'form'
 	}, [
