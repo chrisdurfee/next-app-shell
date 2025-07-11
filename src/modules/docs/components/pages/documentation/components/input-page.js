@@ -1,8 +1,9 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
 import { Counter, DatePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
-import { SearchDropdown, SignaturePanel } from "@base-framework/ui/organisms";
+import { SearchDropdown, SearchInput, SignaturePanel } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -125,6 +126,30 @@ const options = [
 ];
 
 new SearchDropdown({ options, onSelect: (item) => console.log(item) })
+`
+            }),
+
+            DocSection({
+                title: 'Search Input',
+                description: 'This is a search input.',
+                preview: [
+                    Div({ class: 'relative w-full max-w-md' }, [
+                        SearchInput({
+                            placeholder: 'Search...',
+                            bind: '',
+                            keyup: (e, parent) => {},
+                            icon: Icons.magnifyingGlass.default,
+                        })
+                    ])
+                ],
+                code: `import {  SearchInput  } from "@base-framework/ui/organisms";
+
+SearchInput({
+    placeholder: 'Search...',
+    bind: '',
+    keyup: (e, parent) => {},
+    icon: Icons.magnifyingGlass.default,
+})
 `
             }),
 
@@ -595,13 +620,11 @@ new Counter({
                     ])
                 ],
                 code: `
-import {  RangeSlider  } from "@base-framework/ui/atoms";
+import {  RangeSlider  } from "@base-framework/ui/molecules";
 
-new RangeSlider({
-    min: 0,
-    max: 100,
-    value: 50,
-    change: (value) => console.log(value)
+new Toggle({
+    active: true,
+    change: (active) => console.log(active)
 })`
             }),
 

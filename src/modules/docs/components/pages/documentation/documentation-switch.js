@@ -44,6 +44,7 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/skeletons*`, 'Skeletons', () => import('./components/skeleton-page.js')),
 	Page(`${basePath}/components/tooltips*`, 'Tooltips', () => import('./components/tooltip-page.js')),
 	Page(`${basePath}/components/dropdown-menus*`, 'Dropdown Menus', () => import('./components/dropdown-menu-page.js')),
+	Page(`${basePath}/components/empty-states*`, 'Empty States', () => import('./components/empty-state-page.js')),
 ]);
 
 export default DocumentationSwitch;
