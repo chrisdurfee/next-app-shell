@@ -120,7 +120,7 @@ export const EmailDetail = Jot(
 						EmailHeader(message),
 
 						// Content Section
-						Div({ class: 'flex flex-grow flex-col overflow-y-auto' }, [
+						Div({ class: 'flex flex-auto flex-col overflow-y-auto' }, [
 							Pre({ class: "text-sm text-foreground mt-2 pb-40 whitespace-pre-line font-sans" }, message.content),
 						]),
 
