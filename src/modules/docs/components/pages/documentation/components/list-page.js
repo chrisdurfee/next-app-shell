@@ -1,5 +1,7 @@
 import { Div, H4, P, Section, Span } from "@base-framework/atoms";
 import { List, ScrollableList } from "@base-framework/organisms";
+import { Icons } from "@base-framework/ui/icons";
+import { EmptyState } from "@base-framework/ui/molecules";
 import { UserList, UserListItem } from "@base-framework/ui/organisms";
 import { CodeCard } from "../../../molecules/cards.js";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -80,6 +82,62 @@ const UserList = Atom((props) =>
 		role: 'list',
 		class: 'divide-y divide-border',
 		rowItem: UserListItem  // A function that returns a row for each user
+	});
+});`
+		}),
+
+		DocSection(
+		{
+			title: 'Empty State',
+			description: 'The List component can display an empty state when there are no items to show. You can customize the empty state message and layout.',
+			preview: [
+				new List(
+				{
+					cache: 'list',
+					key: 'name',
+					items: [],
+					role: 'list',
+					class: 'divide-y divide-border',
+					rowItem: UserListItem,
+					emptyState: () => EmptyState({
+                        title: 'No Data Available',
+                        description: 'There is no data to display at the moment.',
+                        icon: Icons.photo
+                    })
+				})
+			],
+			code: `import { List } from "@base-framework/organisms";
+import { Atom } from "@base-framework/base";
+import { List } from "@base-framework/organisms";
+import { EmptyState } from "@base-framework/ui/molecules";
+
+/**
+ * A simple UserList that displays user data via a rowItem function.
+ *
+ * @param {object} props
+ * @returns {object}
+ */
+const UserList = Atom((props) =>
+{
+	return new List(
+	{
+		cache: 'list',
+		key: 'name',
+		items: [
+			{
+				name: 'Leslie Alexander',
+				email: 'leslie.alexander@example.com'
+				// ...
+			}
+		],
+		role: 'list',
+		class: 'divide-y divide-border',
+		rowItem: UserListItem,  // A function that returns a row for each user
+		emptyState: () => EmptyState({
+			title: 'No Data Available',
+			description: 'There is no data to display at the moment.',
+			icon: Icons.photo
+		})
 	});
 });`
 		}),
@@ -229,17 +287,9 @@ scrollableList.refresh();`
 		}),
 
 		// Advanced list operations
-		Section(
-		{ class: 'space-y-4 mt-8' },
-		[
-			H4(
-			{ class: 'text-lg font-bold' },
-			'Removing Items'
-			),
-			P(
-			{ class: 'text-muted-foreground' },
-			'Use remove() to delete items by their key. You can pass an array of items.'
-			),
+		Section({ class: 'space-y-4 mt-8' }, [
+			H4({ class: 'text-lg font-bold' }, 'Removing Items'),
+			P({ class: 'text-muted-foreground' }, 'Use remove() to delete items by their key. You can pass an array of items.'),
 			CodeCard(`// Suppose 'list' is an instance of the List component.
 
 // Removing a single item:
@@ -247,8 +297,7 @@ list.remove([ item ]);
 
 // Removing multiple items:
 list.remove([ item1, item2 ]);`)
-		]
-		),
+		]),
 
 		Section(
 		{ class: 'space-y-4 mt-8' },

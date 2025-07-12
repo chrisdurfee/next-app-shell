@@ -139,7 +139,8 @@ const ConversationHeader = (thread) =>
 			Div({ class: 'flex lg:hidden' }, [
 				BackButton({
 					margin: 'm-0 ml-0',
-					backUrl: 'messages',
+					backUrl: '/messages',
+					allowHistory: true
 				})
 			]),
 			Div({ class: "relative" }, [
@@ -197,7 +198,7 @@ const DateDivider = (date) => (
  */
 const ConversationMessages = (thread) =>
 	Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
-		Div({ class: "flex flex-col w-full h-full max-w-none lg:max-w-5xl m-auto pt-24" }, [
+		Div({ class: "flex flex-auto flex-col w-full max-w-none lg:max-w-5xl mx-auto pt-24" }, [
 			new List({
 				cache: 'thread',
 				key: 'id',
