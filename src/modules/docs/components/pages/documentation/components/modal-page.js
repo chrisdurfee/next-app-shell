@@ -1,8 +1,7 @@
 import { Div } from "@base-framework/atoms";
-import { ColumnRow } from "@base-framework/ui";
 import { Button, Fieldset, Input, Select, Textarea } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { Confirmation, DatePicker, DetailBody, DetailSection, DropdownMenu, FormField, Modal, SplitRow } from "@base-framework/ui/molecules";
+import { ColumnRow, Confirmation, DatePicker, DetailBody, DetailSection, DropdownMenu, FormField, Modal, SplitRow } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
