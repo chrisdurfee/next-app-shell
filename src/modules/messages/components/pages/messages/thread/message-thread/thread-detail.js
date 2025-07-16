@@ -80,7 +80,7 @@ export const ThreadDetail = Jot(
 		// @ts-ignore
 		setTimeout(() => (this.state.loaded = true), LOADING_DELAY);
 
-		return Div({ class: "flex flex-auto flex-col w-full max-h-screen bg-background" },
+		return Div({ class: "flex flex-auto flex-col w-full bg-background" },
 		[
 			OnState("loaded", (loaded, ele, parent) =>
 			{

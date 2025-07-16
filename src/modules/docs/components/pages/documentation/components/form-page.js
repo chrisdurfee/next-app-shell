@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { Button, Checkbox, EmailInput, Fieldset, Input, RangeSlider, Select, TelInput, Textarea } from "@base-framework/ui/atoms";
+import { Button, Checkbox, EmailInput, Fieldset, FormGroup, Input, RangeSlider, Select, TelInput, Textarea } from "@base-framework/ui/atoms";
 import { Combobox, Form, FormField, Toggle } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -150,6 +150,56 @@ export const SettingsForm = () => (
 );
 
 /**
+ * MyFormSection
+ *
+ * @param {Object} props - The props for the component.
+ * @param {array} children - The children to render inside the form section.
+ * @returns {object}
+ */
+export const MyFormSection = Atom((props, children) =>
+{
+	return Fieldset({ legend: 'Configuration', class: 'space-y-8' }, [
+		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
+			new FormField({
+                name: "cloud",
+                label: "Cloud Provider",
+                description: "Select your cloud provider."
+            }, [
+                Input({ placeholder: "e.g. AWS", required: true })
+            ]),
+            new FormField({
+                name: "region",
+                label: "Region",
+                description: "Select your cloud region."
+            }, [
+                Input({ placeholder: "e.g. us-east-1", required: true })
+            ])
+		]),
+		FormGroup({ label: 'Postgres' }, [
+			new FormField({
+                name: "version",
+                label: "Postgres Version",
+                description: "Select your Postgres version."
+            }, [
+                Input({ placeholder: "e.g. 15.1.0.103", required: true })
+            ])
+		])
+	]);
+});
+
+/**
+ * MyForm
+ *
+ * @returns {object}
+ */
+export const MyForm = () => (
+    Form({ submit: (e) => { console.log("Settings Form submitted"); } }, [
+        MyFormSection()
+    ])
+);
+
+
+/**
  * FormPage
  *
  * This will create a form page with various form examples.
@@ -235,6 +285,48 @@ Form({ submit: (e) => { console.log("Preferences Form submitted"); } }, [
         Button({ type: "submit" }, "Save Preferences")
     ])
 ])`
+            }),
+
+            DocSection({
+                title: 'Form Group',
+                description: 'A form group that groups related fields together.',
+                preview: [
+                    MyForm()
+                ],
+                code: `import { Input, Form, FormField, FormGorup } from "@base-framework/ui/atoms";
+import { Div } from "@base-framework/atoms";
+import { Atom } from "@base-framework/base";
+
+export const MyFormSection = Atom((props, children) =>
+{
+	return Fieldset({ legend: 'Configuration', class: 'space-y-8' }, [
+		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
+			new FormField({
+                name: "cloud",
+                label: "Cloud Provider",
+                description: "Select your cloud provider."
+            }, [
+                Input({ placeholder: "e.g. AWS", required: true })
+            ]),
+            new FormField({
+                name: "region",
+                label: "Region",
+                description: "Select your cloud region."
+            }, [
+                Input({ placeholder: "e.g. us-east-1", required: true })
+            ])
+		]),
+		FormGroup({ label: 'Postgres' }, [
+			new FormField({
+                name: "version",
+                label: "Postgres Version",
+                description: "Select your Postgres version."
+            }, [
+                Input({ placeholder: "e.g. 15.1.0.103", required: true })
+            ])
+		])
+	]);
+});`
             }),
 
             DocSection({
