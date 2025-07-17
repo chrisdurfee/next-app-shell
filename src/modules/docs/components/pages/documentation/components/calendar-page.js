@@ -1,7 +1,7 @@
 import { DateTime } from "@base-framework/base";
 import { DynamicTime } from "@base-framework/organisms";
 import { TimeFrame } from "@base-framework/ui/molecules";
-import { Calendar, WeekCalendar } from "@base-framework/ui/organisms";
+import { Calendar, RangeCalendar, WeekCalendar } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -46,6 +46,17 @@ new Calendar()`
                 code: `@base-framework/ui/organisms;
 
 new Calendar()`
+            }),
+
+            DocSection({
+                title: 'Range Calendar',
+                description: 'This is how you can use the range calendar component.',
+                preview: [
+                    new RangeCalendar()
+                ],
+                code: `@base-framework/ui/organisms;
+
+new RangeCalendar()`
             }),
 
             DocSection({
