@@ -1,7 +1,7 @@
 import { Div, H1, Header } from "@base-framework/atoms";
+import { DateRangePicker } from "@base-framework/ui";
 import { Button } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { DatePicker } from "@base-framework/ui/molecules";
 import { TabNavigation } from "@base-framework/ui/organisms";
 import { Page } from "@base-framework/ui/pages";
 
@@ -14,7 +14,7 @@ const DashboardHeader = () => (
 	Header({ class: 'flex items-center justify-between' }, [
 		H1({ class: 'text-3xl font-bold' }, 'Dashboard'),
 		Div({ class: 'flex items-center gap-2' }, [
-			new DatePicker({ label: 'Pick a date', icon: Icons.calendar }),
+			new DateRangePicker({ label: 'Pick a date', icon: Icons.calendar }),
 			Div({ class: 'hidden md:flex items-center gap-2' }, [
 				Button({ variant: 'default' }, 'Download')
 			])
