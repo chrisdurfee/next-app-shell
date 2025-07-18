@@ -18,14 +18,14 @@ const getDate = (type = 'start') =>
 	{
 		date.setDate(1);
 		date.setHours(0, 0, 0, 0);
-		return date.toISOString().slice(0, 10);
 	}
 	else
 	{
 		date.setMonth(date.getMonth() + 1);
 		date.setDate(0);
-		return date.toISOString().slice(0, 10);
 	}
+
+	return date.toISOString().slice(0, 10);
 };
 
 /**
