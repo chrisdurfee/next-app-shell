@@ -14,7 +14,7 @@ const DashboardHeader = () => (
 	Header({ class: 'flex items-center justify-between' }, [
 		H1({ class: 'text-3xl font-bold' }, 'Dashboard'),
 		Div({ class: 'flex items-center gap-2' }, [
-			new DateRangePicker({ label: 'Pick a date', icon: Icons.calendar }),
+			new DateRangePicker({ icon: Icons.calendar }),
 			Div({ class: 'hidden md:flex items-center gap-2' }, [
 				Button({ variant: 'default' }, 'Download')
 			])

@@ -2,7 +2,7 @@ import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { Counter, DatePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
+import { Counter, DatePicker, DateRangePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
 import { SearchDropdown, SearchInput, SignaturePanel } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
@@ -542,6 +542,7 @@ new TimePicker({
                         new DatePicker({
                             blockPriorDates: false,
                             selectedDate: '2022-01-01',
+                            onChange: (date) => console.log(date)
                         })
                     ])
                 ],
@@ -551,6 +552,31 @@ import DatePicker from "@base-framework/ui/molecules/date-time/date-picker.js";
 new DatePicker({
     blockPriorDates: false,
     selectedDate: '2022-01-01',
+    onChange: (date) => console.log(date)
+})`
+            }),
+
+            DocSection({
+                title: 'Date Range Picker',
+                description: 'This is a date range picker input.',
+                preview: [
+                    InputPreview([
+                        new DateRangePicker({
+                            blockPriorDates: false,
+                            start: '2022-01-01',
+                            end: '2022-01-31',
+                            onChange: (range) => console.log(range)
+                        })
+                    ])
+                ],
+                code: `
+import DateRangePicker from "@base-framework/ui/molecules/date-time/date-picker.js";
+
+new DateRangePicker({
+    blockPriorDates: false,
+    start: '2022-01-01',
+    end: '2022-01-31',
+    onChange: (range) => console.log(range)
 })`
             }),
 
