@@ -293,7 +293,7 @@ Form({ submit: (e) => { console.log("Preferences Form submitted"); } }, [
                 preview: [
                     MyForm()
                 ],
-                code: `import { Input, Form, FormField, FormGorup } from "@base-framework/ui/atoms";
+                code: `import { Input, Form, FormField, FormGroup } from "@base-framework/ui/atoms";
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 

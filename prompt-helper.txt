@@ -1,0 +1,12 @@
+- Do not use vertical alignment for variables, arrays, objects, doc block comments anywhere in the code.
+- Use tabs for spacing
+- Opening brackets should go on the next line.
+- Use doc block for all objects, methods, classes, and properties. Add params and return properties.
+- Do not use react or typescript.
+- Always use semi colons where they should be.
+
+- props objects should be on the same line if the props are one line including the opening bracket for the children array.
+here is an example of that:
+Card({ class: "flex items-center", margin: "m-2" }, [
+
+]);

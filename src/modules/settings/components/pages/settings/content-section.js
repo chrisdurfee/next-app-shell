@@ -38,7 +38,7 @@ const DockablePage = () => (
 	new DockableOverlay({ class: 'px-2' }, [
 		PageToolbar(),
 		Div({
-			class: 'flex flex-auto flex-col contained p-4 lg:p-6',
+			class: 'flex flex-auto flex-col p-4 lg:p-6',
 			switch: [
 				Page('/settings/profile', () => import('./sections/profile-settings.js')),
 				Page('/settings/account', () => import('./sections/account-settings.js')),

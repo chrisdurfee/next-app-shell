@@ -1,5 +1,6 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
+import { LogoUploader } from "@base-framework/ui";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Counter, DatePicker, DateRangePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
@@ -713,6 +714,26 @@ Div({ class: 'p-4' }, [
         class: 'mt-4'
     })
 ]);`
+            }),
+
+            DocSection({
+                title: 'Logo Uploader',
+                description: 'This is a logo uploader.',
+                preview: [
+                    InputPreview([
+                        new LogoUploader({
+                            src: '',
+                            onChange: (file, parent) => console.log(file, parent)
+                        })
+                    ])
+                ],
+                code: `
+import {  LogoUploader  } from "@base-framework/ui/molecules";
+
+new LogoUploader({
+    src: '',
+    onChange: (file, parent) => console.log(file, parent)
+})`
             }),
 
             DocSection({
