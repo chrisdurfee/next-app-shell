@@ -9,7 +9,7 @@ import { Skeleton } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 const SkeletonPost = () => (
-	Div({ class: "flex flex-col bg-card rounded-md shadow-md" }, [
+	Div({ class: "flex flex-col rounded-md shadow-md" }, [
 		Skeleton({
 			width: "w-full",
 			height: "h-[128px]",

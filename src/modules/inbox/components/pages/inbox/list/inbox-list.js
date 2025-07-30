@@ -3,7 +3,7 @@ import { List } from "@base-framework/organisms";
 import { INBOX_MESSAGES } from "../inbox-messages.js";
 import { InboxMessageItem } from "./inbox-message-item.js";
 import { ListEmptyState } from "./list-empty-state.js";
-import { ListHeaer } from "./list-header.js";
+import { ListHeader } from "./list-header.js";
 
 /**
  * This will filter messages based on the list.
@@ -29,7 +29,7 @@ const filterMessages = (messages, list) =>
  */
 export const InboxList = () => (
 	Div({ class: "w-full pt-0 lg:pt-2 space-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
-		ListHeaer(),
+		ListHeader(),
 		Div([
 			OnRoute('page', (page, ele, { data, state }) =>
 			{
