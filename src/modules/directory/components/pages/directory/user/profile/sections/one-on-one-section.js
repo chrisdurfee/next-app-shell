@@ -31,7 +31,7 @@ export const OneOnOneSection = ({ userId }) =>
 					Button({
 						variant: 'withIcon',
 						click: () => app.navigate(`/directory/user/${userId}/one-on-one`),
-						class: "inline-flex items-center button outline",
+						class: "inline-flex items-center outline",
 						icon: Icons.circlePlus
 					}, "Schedule first meeting")
 				])

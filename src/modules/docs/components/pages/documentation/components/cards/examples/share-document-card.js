@@ -18,7 +18,7 @@ const ShareLink = ({ link }) => (
 			type: "text",
 			value: link,
 			readOnly: true,
-			class: "border p-2 rounded-md w-full bg-background text-foreground"
+			class: "border p-2 rounded-md w-full bg-input text-foreground"
 		}),
 		Button({
 			variant: 'secondary',

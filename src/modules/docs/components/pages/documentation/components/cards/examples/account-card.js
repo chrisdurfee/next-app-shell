@@ -52,7 +52,7 @@ const AccountForm = () => (
 				type: "email",
 				placeholder: "m@example.com",
 				required: true,
-				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+				class: "border p-2 rounded-md w-full bg-input placeholder-muted-foreground text-foreground"
 			})
 		]),
 
@@ -65,7 +65,7 @@ const AccountForm = () => (
 				type: "password",
 				placeholder: "Your password",
 				required: true,
-				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+				class: "border p-2 rounded-md w-full bg-input placeholder-muted-foreground text-foreground"
 			})
 		]),
 
