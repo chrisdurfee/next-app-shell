@@ -35,7 +35,7 @@
 
 	@media (prefers-color-scheme: dark) {
 		:root:not(.light) {
-			--background: 240 10% 3.9%;
+			--background: 240 10% 0%;
 			--foreground: 0 0% 98%;
 			--card: 240 10% 3.9%;
 			--card-foreground: 0 0% 98%;
@@ -54,7 +54,7 @@
 			--warning: 38 92% 50%;
 			--warning-foreground: 0 0% 98%;
 			--border: 240 3.7% 15.9%;
-			--input: 240 3.7% 15.9%;
+			--input: 240 10% 3.9%;
 			--ring: 240 4.9% 83.9%;
 			--chart-1: 220 70% 50%;
 			--chart-2: 160 60% 45%;

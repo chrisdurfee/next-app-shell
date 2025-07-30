@@ -92,7 +92,7 @@ const PaymentForm = () => (
 				type: "text",
 				placeholder: "First Last",
 				required: true,
-				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+				class: "border p-2 rounded-md w-full placeholder-muted-foreground text-foreground"
 			})
 		]),
 
@@ -105,7 +105,7 @@ const PaymentForm = () => (
 				type: "text",
 				placeholder: "1234 5678 9012 3456",
 				required: true,
-				class: "border p-2 rounded-md w-full bg-background placeholder-muted-foreground text-foreground"
+				class: "border p-2 rounded-md w-full placeholder-muted-foreground text-foreground"
 			})
 		]),
 
@@ -115,7 +115,7 @@ const PaymentForm = () => (
 			new FormField({ name: "month", label: "Expires" }, [
 				Select({
 					required: true,
-					class: "border p-2 rounded-md w-full bg-background text-foreground",
+					class: "border p-2 rounded-md w-full text-foreground",
 					options: [
 						{ value: "", label: "Month", disabled: true },
 						...Array.from({ length: 12 }, (_, i) => ({
