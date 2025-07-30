@@ -98,7 +98,7 @@ export const AccountCard = () => (
 				Span({ class: "flex-grow border-t" })
 			]),
 			Div({ class: 'relative flex justify-center text-xs uppercase' }, [
-				Span({ class: 'bg-background px-2 text-muted-foreground' }, "or continue with")
+				Span({ class: 'bg-card px-2 text-muted-foreground' }, "or continue with")
 			]),
 		]),
 
