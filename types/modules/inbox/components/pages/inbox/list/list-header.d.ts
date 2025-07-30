@@ -1,2 +1,2 @@
-export function ListHeaer(): object;
-export default ListHeaer;
+export function ListHeader(): object;
+export default ListHeader;
