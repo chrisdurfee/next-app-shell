@@ -13,6 +13,7 @@ export const Sidebar = () =>(
 		options: [
 			{ label: 'Profile', href: 'settings/profile', icon: Icons.user.default, exact: true },
 			{ label: 'Account', href: 'settings/account', icon: Icons.locked },
+			{ label: 'API', href: 'settings/api', icon: Icons.square.stack },
 			{ label: 'Appearance', href: 'settings/appearance', icon: Icons.sun },
 			{ label: 'Notifications', href: 'settings/notifications', icon: Icons.bell.default },
 			{ label: 'Display', href: 'settings/display', icon: Icons.window },

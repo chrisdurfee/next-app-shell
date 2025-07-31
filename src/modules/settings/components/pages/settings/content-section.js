@@ -42,6 +42,7 @@ const DockablePage = () => (
 			switch: [
 				Page('/settings/profile', () => import('./sections/profile-settings.js')),
 				Page('/settings/account', () => import('./sections/account-settings.js')),
+				Page('/settings/api', () => import('./sections/api-settings.js')),
 				Page('/settings/appearance', () => import('./sections/appearance-settings.js')),
 				Page('/settings/notifications', () => import('./sections/notification-settings.js')),
 				Page('/settings/display', () => import('./sections/display-settings.js')),
