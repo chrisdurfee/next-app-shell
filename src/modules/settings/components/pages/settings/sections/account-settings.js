@@ -1,5 +1,6 @@
 import { Div, H2, H3, P, Td, Tr } from "@base-framework/atoms";
-import { Button, Input } from "@base-framework/ui/atoms";
+import { FormCardContent } from "@base-framework/ui";
+import { Button, Icon, Input } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { FormCard, FormCardGroup, FormField } from "@base-framework/ui/molecules";
 import { DataTable } from "@base-framework/ui/organisms";
@@ -87,7 +88,57 @@ export const AccountSettings = () => (
                         Input({ type: 'email', placeholder: 'e.g. jane.doe@example.com', required: true })
                     ])
                 ])
-            ])
+            ]),
+
+            // Site URL
+            FormCard({ title: 'Site URL' }, [
+                FormCardContent([
+                    P({ class: 'text-sm text-muted-foreground mb-2' },
+                        'Configure the URL of your site. This is used for password reset emails and other links.'
+                    ),
+                ]),
+                FormCardGroup({ label: 'Site URL', description: '', border: true }, [
+                    new FormField({
+                        name: 'siteUrl',
+                        label: '',
+                        description: 'The base URL of your website. Used as an allow-list for redirects and for constructing URLs used in emails.'
+                    }, [
+                        Div({ class: 'flex flex-auto space-x-2' }, [
+                            Input({ type: 'url', placeholder: 'http://localhost:3000', required: true }),
+                        ])
+                    ])
+                ]),
+                FormCardContent({ border: true }, [
+                    Div({ class: 'mt-4 flex justify-end space-x-2' }, [
+                        Button({ variant: 'outline' }, 'Cancel'),
+                        Button({ variant: 'primary' }, 'Save')
+                    ])
+                ])
+            ]),
+
+            // Redirect URLs
+            FormCard({ title: 'Redirect URLs', description: 'URLs that auth providers are permitted to redirect to post authentication. Wildcards are allowed, for example, https://*.domain.com' }, [
+                FormCardGroup({ label: '', description: '', border: true }, [
+                    new FormField({
+                        name: 'redirectUrls',
+                        label: '',
+                        description: ''
+                    }, [
+                        Div({ class: 'flex items-center justify-between px-4 py-2' }, [
+                            Div({ class: 'flex items-center space-x-2' }, [
+                                Icon(Icons.global),
+                                P('https://mobbin.com/')
+                            ]),
+                            Button({ variant: 'icon', icon: Icons.trash.default })
+                        ])
+                    ])
+                ]),
+                FormCardContent({ border: true }, [
+                    Div({ class: 'mt-4 flex justify-end' }, [
+                        Button({ variant: 'primary', icon: Icons.plus.default }, 'Add URL')
+                    ])
+                ])
+            ]),
 
         ])
     ])
