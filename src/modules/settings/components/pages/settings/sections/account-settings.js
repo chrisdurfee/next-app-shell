@@ -140,6 +140,44 @@ export const AccountSettings = () => (
                 ])
             ]),
 
+            // Custom Domains
+            FormCard({ title: 'Custom Domains', description: 'Present a branded experience to your users.' }, [
+                FormCardContent({ class: 'flex items-center justify-between bg-muted p-4 rounded-md' }, [
+                    Div({ class: 'flex flex-auto justify-center' }, [
+                        Div({ class: 'flex items-start space-x-3' }, [
+                            Icon(Icons.information),
+                            Div([
+                                P({ class: 'font-medium' }, 'Custom domains are a Pro plan add-on'),
+                                P({ class: 'text-sm text-muted-foreground mt-1 pr-8' },
+                                    'To configure a custom domain for your project, please upgrade to the Pro plan with the custom domains add-on selected.'
+                                )
+                            ])
+                        ]),
+                        Button({ variant: 'primary' }, 'Upgrade to Pro')
+                    ])
+                ])
+            ]),
+
+            // Delete Project
+            FormCard({ title: 'Delete Project' }, [
+                FormCardContent({ class: 'bg-destructive/10 border border-destructive rounded-md p-4' }, [
+                    Div({ class: 'flex flex-auto' }, [
+                        Div({ class: 'flex flex-auto space-x-3' }, [
+                            Icon({ class: 'text-destructive' }, Icons.warning),
+                            Div([
+                                P({ class: 'font-medium text-destructive' }, 'Deleting this project will also remove your database.'),
+                                P({ class: 'text-sm text-destructive-foreground mt-1' },
+                                    'Make sure you have made a backup if you want to keep your data.'
+                                )
+                            ])
+                        ]),
+                        Div({ class: 'mt-4' }, [
+                            Button({ variant: 'destructive' }, 'Delete project')
+                        ])
+                    ])
+                ])
+            ])
+
         ])
     ])
 );
