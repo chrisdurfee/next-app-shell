@@ -85,29 +85,32 @@ export const ProfileSettings = () => (
                         Input({ placeholder: "e.g. Apt 4B", required: true })
                     ]),
 
-                    new FormField({
-                        name: "city",
-                        label: "City",
-                        description: "This is your public city."
-                    }, [
-                        Input({ placeholder: "e.g. Springfield", required: true })
-                    ]),
+                    Div({ class: 'grid grid-cols-1 sm:grid-cols-3 gap-4' }, [
 
-                    new FormField({
-                        name: "state",
-                        label: "State",
-                        description: "This is your public state."
-                    }, [
-                        Input({ placeholder: "e.g. CA", required: true })
-                    ]),
+                        new FormField({
+                            name: "city",
+                            label: "City",
+                            description: "This is your public city."
+                        }, [
+                            Input({ placeholder: "e.g. Springfield", required: true })
+                        ]),
 
-                    new FormField({
-                        name: "postalCode",
-                        label: "Postal Code",
-                        description: "This is your public postal code."
-                    }, [
-                        NumberInput({ placeholder: "e.g. 12345", required: true })
-                    ]),
+                        new FormField({
+                            name: "state",
+                            label: "State",
+                            description: "This is your public state."
+                        }, [
+                            Input({ placeholder: "e.g. CA", required: true })
+                        ]),
+
+                        new FormField({
+                            name: "postalCode",
+                            label: "Postal Code",
+                            description: "This is your public postal code."
+                        }, [
+                            NumberInput({ placeholder: "e.g. 12345", required: true })
+                        ]),
+                    ])
 				])
 			])
         ])
