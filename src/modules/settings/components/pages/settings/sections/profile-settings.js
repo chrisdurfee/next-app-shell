@@ -1,4 +1,5 @@
 import { Div } from "@base-framework/atoms";
+import { DatePicker } from "@base-framework/ui";
 import { Button, Input, NumberInput, Select, Textarea } from "@base-framework/ui/atoms";
 import {
     FormCard,
@@ -100,7 +101,7 @@ export const ProfileSettings = () => (
                         label: "",
                         description: "Your birth date."
                     }, [
-                        Input({ type: "date", required: true })
+                        new DatePicker({ type: "date", required: true })
                     ])
                 ]),
                 FormCardGroup({ label: "Gender", description: "", border: true }, [
@@ -202,7 +203,7 @@ export const ProfileSettings = () => (
                     }, [
                         Select({
                             options: [
-                                { value: "UTC−08:00", label: "Pacific Time (US & Canada)" },
+                                { value: "UTC-08:00", label: "Pacific Time (US & Canada)" },
                                 { value: "UTC+00:00", label: "UTC" }
                                 // add more timezones...
                             ]
