@@ -1,1 +1,0 @@
-import{e as s,J as i,g as l,_ as c,W as a}from"./index-XyKGYbvb.js";const n=t=>l({class:"scroll-m-20 text-3xl font-bold tracking-tight"},t.title),m=s((t,e)=>i({class:`${t.class||""}`},[t.title&&n({title:t.title}),t.description&&c({class:"text-base text-muted-foreground py-2 max-w-[700px]"},t.description),a({class:"space-y-6 py-10",submit:t.submit},e)]));export{m as S};
