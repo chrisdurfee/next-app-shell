@@ -1,7 +1,7 @@
 import { Div } from "@base-framework/atoms";
 import { Button, Input, NumberInput } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { FormCard, FormCardGroup, FormField } from "@base-framework/ui/molecules";
+import { FormCard, FormCardGroup, FormField, LogoUploader } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
 import { SettingsSection } from "../atoms/settings-section.js";
 
@@ -32,7 +32,21 @@ export const ProfileSettings = () => (
 								Button({ variant: 'icon', class: 'outline', icon: Icons.clipboard.document.default })
 						])
 					])
-				])
+				]),
+                FormCardGroup({ label: 'Image', description: '', border: true }, [
+					new FormField({
+							name: "image",
+							label: "",
+							description: "This is your public profile image."
+						}, [
+							Div({ class: 'flex flex-auto space-x-2' }, [
+								new LogoUploader({
+									src: '',
+									onChange: (file, parent) => console.log(file, parent)
+								})
+							])
+						])
+				]),
 			]),
             FormCard({ title: 'User Settings' }, [
 				FormCardGroup({ label: 'Contact Settings', description: 'Manage the way we contact you.', border: true }, [

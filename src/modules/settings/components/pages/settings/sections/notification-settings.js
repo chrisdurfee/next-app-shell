@@ -1,29 +1,8 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Button } from "@base-framework/ui/atoms";
-import { Toggle } from "@base-framework/ui/molecules";
+import { FormCard, FormCardContent, FormCardGroup, Toggle } from "@base-framework/ui/molecules";
 import { Page } from "@base-framework/ui/pages";
 import { SettingsSection } from "../atoms/settings-section.js";
-
-/**
- * NotificationToggle
- *
- * A component for rendering a toggle switch with a label and description.
- *
- * @param {object} props
- * @returns {object}
- */
-const NotificationToggle = ({ label, description, active, onChange }) => (
-    Div({ class: 'flex items-center justify-between p-4 border rounded-md bg-muted/10 border-muted-foreground/20 mb-4' }, [
-        Div({ class: 'flex flex-col pr-8' }, [
-            H4({ class: 'font-semibold' }, label),
-            P({ class: 'text-sm text-muted-foreground' }, description)
-        ]),
-        new Toggle({
-            active,
-            change: onChange
-        })
-    ])
-);
 
 /**
  * NotificationSettings
@@ -37,36 +16,65 @@ export const NotificationSettings = () => (
         SettingsSection({
             title: 'Notifications',
             description: 'Manage your notification preferences.',
-            submit: (data) => console.log("Notification Settings:", data),
-        },
-        [
-            Div({ class: 'space-y-4' }, [
-                // Email Notifications
-                NotificationToggle({
-                    label: 'Email Notifications',
-                    description: 'Receive email notifications for important updates.',
-                    active: true,
-                    onChange: (active) => console.log("Email Notifications:", active)
-                }),
+            class: 'max-w-5xl mx-auto',
+            submit: (data) => console.log("Notification Settings:", data)
+        }, [
 
-                // Push Notifications
-                NotificationToggle({
-                    label: 'Push Notifications',
-                    description: 'Receive push notifications for important updates.',
-                    active: false,
-                    onChange: (active) => console.log("Push Notifications:", active)
-                }),
+            // Notification toggles wrapped in a FormCard
+            FormCard({ title: 'Notification Preferences' }, [
 
-                // SMS Notifications
-                NotificationToggle({
-                    label: 'SMS Notifications',
-                    description: 'Receive SMS notifications for important updates.',
-                    active: true,
-                    onChange: (active) => console.log("SMS Notifications:", active)
-                })
-            ]),
+                // Each toggle in its own FormCardGroup for consistent spacing/border
+                FormCardGroup({ label: 'Allowed Notifications', description: '', border: true }, [
+                    Div({ class: 'space-y-4' }, [
 
-            Button({ class: "mt-4" }, "Save Preferences")
+                        // Email Notifications
+                        Div({ class: 'flex items-center justify-between p-4 bg-muted/10 border border-muted-foreground/20 rounded-md' }, [
+                            Div({ class: 'flex flex-col pr-8' }, [
+                                H4({ class: 'font-semibold' }, 'Email Notifications'),
+                                P({ class: 'text-sm text-muted-foreground' }, 'Receive email notifications for important updates.')
+                            ]),
+                            new Toggle({
+                                active: true,
+                                change: (active) => console.log("Email Notifications:", active)
+                            })
+                        ]),
+
+                        // Push Notifications
+                        Div({ class: 'flex items-center justify-between p-4 bg-muted/10 border border-muted-foreground/20 rounded-md' }, [
+                            Div({ class: 'flex flex-col pr-8' }, [
+                                H4({ class: 'font-semibold' }, 'Push Notifications'),
+                                P({ class: 'text-sm text-muted-foreground' }, 'Receive push notifications for important updates.')
+                            ]),
+                            new Toggle({
+                                active: false,
+                                change: (active) => console.log("Push Notifications:", active)
+                            })
+                        ]),
+
+                        // SMS Notifications
+                        Div({ class: 'flex items-center justify-between p-4 bg-muted/10 border border-muted-foreground/20 rounded-md' }, [
+                            Div({ class: 'flex flex-col pr-8' }, [
+                                H4({ class: 'font-semibold' }, 'SMS Notifications'),
+                                P({ class: 'text-sm text-muted-foreground' }, 'Receive SMS notifications for important updates.')
+                            ]),
+                            new Toggle({
+                                active: true,
+                                change: (active) => console.log("SMS Notifications:", active)
+                            })
+                        ])
+
+                    ])
+                ]),
+
+                // Save button
+                FormCardContent({ border: true }, [
+                    Div({ class: 'mt-4 flex justify-end' }, [
+                        Button({ variant: 'primary' }, 'Save Preferences')
+                    ])
+                ])
+
+            ])
+
         ])
     ])
 );
