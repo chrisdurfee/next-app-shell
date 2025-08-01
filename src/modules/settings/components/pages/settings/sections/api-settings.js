@@ -19,6 +19,7 @@ import { SettingsSection } from "../atoms/settings-section.js";
 export const FormCard = Atom((props, children = []) => (
 	Card({ class: 'space-y-0', margin: 'm-0', padding: 'p-0' }, [
 		props.title && H2({ class: 'text-lg font-semibold py-4 px-6' }, props.title),
+		props.description && P({ class: 'text-sm text-muted-foreground pb-4 px-6 max-w-[700px]' }, props.description),
 		...children
 	])
 ));
@@ -48,7 +49,7 @@ export const FormCardGroup = Atom((props, children = []) => (
  * @returns {object} The rendered form card group component.
  */
 export const FormCardContent = Atom((props, children = []) => (
-	Div({ ...props, class: 'py-4 px-6' }, children)
+	Div({ ...props, class: `pb-4 px-6 space-y-4 ${props.class || ''}` }, children)
 ));
 
 /**
