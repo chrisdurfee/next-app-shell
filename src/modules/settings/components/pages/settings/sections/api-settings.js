@@ -43,7 +43,9 @@ export const ApiSettings = () => (
 					P({ class: 'text-sm text-muted-foreground max-w-[700px]' },
 						'Your API is secured behind an API gateway which requires an API Key for every request. You can use the keys below in the Supabase client libraries.'
 					),
-					Button({ variant: 'withIcon', class: 'outline', icon: Icons.bookOpen }, 'View Docs'),
+					Div({ class: 'flex-none' }, [
+						Button({ variant: 'withIcon', class: 'outline', icon: Icons.bookOpen }, 'View Docs'),
+					])
 				]),
 
 				// Public anon key

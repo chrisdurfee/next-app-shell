@@ -1,7 +1,7 @@
-import { Div, H2, P, Td, Tr } from "@base-framework/atoms";
+import { Div, H2, H3, P, Td, Tr } from "@base-framework/atoms";
 import { Button, Input } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
-import { FormCard, FormCardContent, FormCardGroup, FormField } from "@base-framework/ui/molecules";
+import { FormCard, FormCardGroup, FormField } from "@base-framework/ui/molecules";
 import { DataTable } from "@base-framework/ui/organisms";
 import { Page } from "@base-framework/ui/pages";
 import { SettingsSection } from "../atoms/settings-section.js";
@@ -43,39 +43,40 @@ export const AccountSettings = () => (
         }, [
 
             // Projects at a glance
-            H2({ class: 'text-xl mt-0' }, 'Projects at a glance'),
-            FormCard([
-                // Table header
-                new DataTable({
-                    key: 'id',
-                    headers: projectHeaders,
-                    border: false,
-                    rows: projectRows,
-                    rowItem: projectRowItem
-                })
+            Div({ class: 'flex flex-auto flex-col' }, [
+                H2({ class: 'text-xl pb-4' }, 'Projects at a glance'),
+                FormCard([
+                    // Table header
+                    new DataTable({
+                        key: 'id',
+                        headers: projectHeaders,
+                        border: false,
+                        rows: projectRows,
+                        rowItem: projectRowItem
+                    })
+                ])
             ]),
 
             // Credit balance
-            FormCard({ title: 'Credit balance' }, [
-                FormCardContent([
-                    Div({ class: 'flex items-center justify-between' }, [
-                        P({ class: 'text-sm text-muted-foreground' }, 'Charges will be deducted from your balance first'),
-                        P({ class: 'text-xl font-semibold' }, '$0')
-                    ])
+            Div({ class: 'flex flex-auto flex-col' }, [
+                H3({ class: 'text-lg font-semibold mb-2' }, 'Credit balance'),
+                Div({ class: 'flex items-center justify-between' }, [
+                    P({ class: 'text-sm text-muted-foreground' }, 'Charges will be deducted from your balance first'),
+                    P({ class: 'text-xl font-semibold' }, '$0')
+                ])
+            ]),
+
+            Div({ class: 'flex flex-auto flex-col' }, [
+                H3({ class: 'text-lg font-semibold mb-2' }, 'Payment methods'),
+                Div({ class: 'flex items-center justify-between' }, [
+                    P({ class: 'text-sm text-muted-foreground' }, 'When adding a new payment method, either remove the old one or go to your projects\' subscription to explicitly update the payment method. Marking a payment method as “default” is only relevant for new projects or if there are no other payment methods on your account.')
                 ])
             ]),
 
             // Payment methods
-            FormCard({ title: 'Payment methods' }, [
-                FormCardContent([
-                    P({ class: 'text-sm text-muted-foreground max-w-[700px]' },
-                        'When adding a new payment method, either remove the old one or go to your projects\' subscription to explicitly update the payment method. Marking a payment method as “default” is only relevant for new projects or if there are no other payment methods on your account.'
-                    )
-                ]),
-                FormCardGroup({ description: 'No payment methods', border: true }, [
-                    Div({ class: 'flex flex-auto justify-end' }, [
-                        Button({ variant: 'withIcon', icon: Icons.plus }, 'Add new card')
-                    ])
+            FormCard({ title: '' }, [
+                Div({ class: 'flex flex-auto justify-center p-6' }, [
+                    Button({ variant: 'withIcon', icon: Icons.plus }, 'Add new card')
                 ])
             ]),
 

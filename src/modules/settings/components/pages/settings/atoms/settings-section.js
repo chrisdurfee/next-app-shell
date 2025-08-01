@@ -27,7 +27,7 @@ export const SettingsSection = Atom((props, children) => (
         props.title && Title({ title: props.title }),
         props.description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, props.description),
 
-        Form({ class: 'space-y-6 py-10', submit: props.submit }, children)
+        Form({ class: 'space-y-12 py-10', submit: props.submit }, children)
     ])
 ));
 
