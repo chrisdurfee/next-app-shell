@@ -3,7 +3,6 @@ import { DatePicker } from "@base-framework/ui";
 import { Button, Input, NumberInput, Select, Textarea } from "@base-framework/ui/atoms";
 import {
     FormCard,
-    FormCardContent,
     FormCardGroup,
     FormField,
     LogoUploader,
@@ -242,10 +241,8 @@ export const ProfileSettings = () => (
             ]),
 
             // Save button
-            FormCardContent({ border: true }, [
-                Div({ class: "mt-4 flex justify-end" }, [
-                    Button({ variant: "primary" }, "Save Profile")
-                ])
+            Div({ class: "mt-4 flex justify-end" }, [
+                Button({ variant: "primary" }, "Save Profile")
             ])
 
         ])
