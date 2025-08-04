@@ -53,18 +53,18 @@ export const ProfileSettings = () => (
                         })
                     ])
                 ]),
-                FormCardGroup({ label: "Cover Image", description: "", border: true }, [
-                    new FormField({
-                        name: "coverImageUrl",
-                        label: "",
-                        description: "A banner image for your profile."
-                    }, [
-                        new LogoUploader({
-                            src: "",
-                            onChange: (file, parent) => console.log("Cover image file:", file, parent)
-                        })
-                    ])
-                ]),
+                // FormCardGroup({ label: "Cover Image", description: "", border: true }, [
+                //     new FormField({
+                //         name: "coverImageUrl",
+                //         label: "",
+                //         description: "A banner image for your profile."
+                //     }, [
+                //         new LogoUploader({
+                //             src: "",
+                //             onChange: (file, parent) => console.log("Cover image file:", file, parent)
+                //         })
+                //     ])
+                // ]),
                 FormCardGroup({ label: "Bio", description: "", border: true }, [
                     new FormField({
                         name: "bio",
