@@ -1,5 +1,5 @@
 import { H4, P, Section, Span, Td, Tr } from '@base-framework/atoms';
-import { Checkbox } from "@base-framework/ui/atoms";
+import { Checkbox, Skeleton } from "@base-framework/ui/atoms";
 import { DataTable, ScrollableDataTable } from "@base-framework/ui/organisms";
 import { CodeCard } from "../../../../molecules/cards.js";
 import { DocSection } from "../../../../molecules/doc-section.js";
@@ -45,6 +45,26 @@ const rowItem = (row, onSelect) =>
 		]),
 		Td({ class: 'p-4 ' }, row.email),
 		Td({ class: 'p-4 text-right' }, `$${row.amount.toFixed(2)}`)
+	]);
+};
+
+/**
+ * Custom skeleton row for demonstration
+ */
+const customSkeletonRow = (index, columnCount) => {
+	return Tr({ class: 'border-b hover:bg-muted/50' }, [
+		Td({ class: 'p-4' }, [
+			Skeleton({ shape: 'circle', width: 'w-4', height: 'h-4' })
+		]),
+		Td({ class: 'p-4' }, [
+			Skeleton({ width: 'w-20', height: 'h-4' })
+		]),
+		Td({ class: 'p-4' }, [
+			Skeleton({ width: 'w-32', height: 'h-4' })
+		]),
+		Td({ class: 'p-4' }, [
+			Skeleton({ width: 'w-16', height: 'h-4' })
+		])
 	]);
 };
 
@@ -143,7 +163,7 @@ export const CustomHeaderTable = () => {
 					headers,
 					rows,
 					rowItem,
-					loadMoreItems: (offset, limit, callback) =>
+					loadMoreItems: (tracker, callback) =>
 					{
 						// Simulate asynchronous data fetching.
 						setTimeout(() =>
@@ -175,7 +195,7 @@ const scrollableTable = ScrollableDataTable({
 	headers,
 	rows,
 	rowItem,
-	loadMoreItems: (offset, limit, callback) => {
+	loadMoreItems: (tracker, callback) => {
 		// Replace with asynchronous data fetching logic.
 		setTimeout(() => {
 			callback([
@@ -190,6 +210,183 @@ const scrollableTable = ScrollableDataTable({
 // To refresh the table data:
 scrollableTable.refresh();`
 		}),
+
+		// 2) Skeleton Loading States section
+		DocSection({
+			title: 'Skeleton Loading States',
+			description: 'DataTable supports skeleton loading states that automatically show when data is loading and disappear when real content arrives. Perfect for improving perceived performance and user experience.',
+			preview: [
+				new DataTable({
+					headers,
+					skeleton: true, // Show 5 skeleton rows by default
+					key: 'id'
+				}),
+			],
+			code: `import { DataTable } from "@base-framework/ui/organisms";
+import { Skeleton } from "@base-framework/ui/atoms";
+
+// Basic skeleton - shows 5 skeleton rows by default
+new DataTable({
+	headers,
+	skeleton: true,
+	rowItem,
+	key: 'id'
+});
+
+// Custom skeleton count
+new DataTable({
+	headers,
+	skeleton: { number: 10 }, // Show 10 skeleton rows
+	rowItem,
+	key: 'id'
+});
+
+// Custom skeleton row with advanced styling
+const customSkeletonRow = (index, columnCount) => {
+	return Tr({ class: 'border-b' }, [
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({ shape: 'circle', width: 'w-8', height: 'h-8' })
+		]),
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({ width: 'w-3/4', height: 'h-4' })
+		]),
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({ width: 'w-1/2', height: 'h-4' })
+		])
+	]);
+};
+
+new DataTable({
+	headers,
+	skeleton: {
+		number: 8,
+		row: customSkeletonRow
+	},
+	rowItem,
+	key: 'id'
+});
+
+// Skeleton automatically removes when data is loaded
+const table = new DataTable({ skeleton: true, headers, rowItem, key: 'id' });
+
+// Load data asynchronously - skeleton disappears automatically
+fetchData().then(data => {
+	table.setRows(data); // Skeleton automatically removed
+});`
+		}),
+
+		// 3) Advanced skeleton examples
+		DocSection({
+			title: 'Advanced Skeleton Examples',
+			description: 'Create sophisticated skeleton loading states that match your actual content layout for seamless transitions.',
+			preview: [
+				new DataTable({
+					headers: [
+						{ label: 'User', key: 'user' },
+						{ label: 'Email', key: 'email' },
+						{ label: 'Role', key: 'role' },
+						{ label: 'Status', key: 'status' }
+					],
+					skeleton: {
+						number: 6,
+						row: customSkeletonRow
+					},
+					key: 'id'
+				}),
+			],
+			code: `// Advanced skeleton with avatars, badges, and actions
+const userTableSkeleton = (index, columnCount) => {
+	return Tr({ class: 'border-b hover:bg-muted/50' }, [
+		// User column with avatar
+		Td({ class: 'px-6 py-4' }, [
+			Div({ class: 'flex items-center space-x-3' }, [
+				Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10' }),
+				Div([
+					Skeleton({ width: 'w-24', height: 'h-4' }),
+					Div({ class: 'mt-1' }, [
+						Skeleton({ width: 'w-16', height: 'h-3' })
+					])
+				])
+			])
+		]),
+		// Email column
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({ width: 'w-32', height: 'h-4' })
+		]),
+		// Role badge column
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({
+				width: 'w-20',
+				height: 'h-6',
+				class: 'rounded-full'
+			})
+		]),
+		// Status column
+		Td({ class: 'px-6 py-4' }, [
+			Skeleton({
+				width: 'w-16',
+				height: 'h-6',
+				class: 'rounded-full'
+			})
+		])
+	]);
+};
+
+new DataTable({
+	headers: [
+		{ label: 'User', key: 'user' },
+		{ label: 'Email', key: 'email' },
+		{ label: 'Role', key: 'role' },
+		{ label: 'Status', key: 'status' }
+	],
+	skeleton: {
+		number: 8,
+		row: userTableSkeleton
+	},
+	rowItem: userRowItem,
+	key: 'id'
+});`
+		}),
+
+		// 6) Skeleton API and Control
+		Section({ class: 'space-y-4 mt-8' }, [
+			H4({ class: 'text-lg font-bold' }, 'Skeleton API and Control'),
+			P({ class: 'text-muted-foreground' }, 'The skeleton system provides automatic and manual control methods for managing loading states.'),
+			CodeCard(`// Skeleton configuration options
+const table = new DataTable({
+	headers,
+	rowItem,
+
+	// Basic skeleton (5 rows)
+	skeleton: true,
+
+	// Custom count
+	skeleton: { number: 10 },
+
+	// Custom skeleton row function
+	skeleton: {
+		number: 8,
+		row: (index, columnCount) => CustomSkeletonRow({ index, columnCount })
+	}
+});
+
+// Manual skeleton control
+table.removeSkeleton(); // Manually remove skeleton
+const isShowing = table.data.get('showSkeleton'); // Check skeleton state
+
+// Automatic skeleton removal (happens automatically with these methods)
+table.setRows(data);    // Replace all rows
+table.append(newData);  // Add rows to end
+table.prepend(newData); // Add rows to beginning
+table.mingle(data);     // Merge/update rows
+
+// Skeleton properties
+// - Automatically counts columns from headers
+// - Shows realistic varying widths for cells
+// - Integrates with existing table styling
+// - Prevents empty state from showing while loading
+`)
+		]),
 
 		// 4) Selecting & resetting
 		Section({ class: 'space-y-4 mt-8' }, [
