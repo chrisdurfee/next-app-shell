@@ -211,6 +211,125 @@ const scrollableTable = ScrollableDataTable({
 scrollableTable.refresh();`
 		}),
 
+		// 4) Dynamic Data Table section
+		DocSection({
+			title: 'Dynamic Data Table',
+			description: 'The DynamicDataTable component automatically fetches data using a model when created and updates the list dynamically. It provides seamless integration with data models for real-time data management.',
+			preview: [
+				// Note: This is a conceptual preview since we don't have an actual model to use
+				P({ class: 'text-muted-foreground italic' }, 'Dynamic data table example requires a data model. See code example below for implementation.')
+			],
+			code: `import { DynamicDataTable } from "@base-framework/ui/organisms";
+import { Badge } from "@base-framework/ui/atoms";
+import { Tr, Td, P } from "@base-framework/atoms";
+import { UserAuthedDeviceModel } from "../models/user-authed-device-model.js";
+import { EmptyState } from "@base-framework/ui/molecules";
+
+// Example with user authenticated devices
+DynamicDataTable({
+	key: 'id',
+	data: new UserAuthedDeviceModel({
+		userId: user.id,
+		orderBy: {
+			createdAt: 'DESC'
+		}
+	}),
+	headers: [
+		{ label: 'Platform', key: 'platform' },
+		{ label: 'Brand', key: 'brand' },
+		{ label: 'Version', key: 'version' }
+	],
+	rows: [],
+	limit: 10,
+	rowItem: (device) => Tr({ class: "items-center px-4 py-2 hover:bg-muted/50" }, [
+		Td({ class: "p-4" }, P(device.platform)),
+		Td({ class: "p-4 text-muted-foreground" }, P(device.brand)),
+		Td({ class: "p-4" }, Badge({ variant: "primary" }, device.version))
+	]),
+	emptyState: () => EmptyState({
+		title: 'No Authenticated Devices',
+		description: 'The user has not authenticated any devices yet.',
+		icon: 'device'
+	})
+});
+
+// Example with custom model and pagination
+DynamicDataTable({
+	key: 'id',
+	data: new OrdersModel({
+		clientId: client.id,
+		status: 'active',
+		orderBy: {
+			createdAt: 'DESC'
+		}
+	}),
+	headers: [
+		{ label: 'Order #', key: 'orderNumber' },
+		{ label: 'Date', key: 'date' },
+		{ label: 'Amount', key: 'amount', align: 'justify-end' },
+		{ label: 'Status', key: 'status' }
+	],
+	limit: 25,
+	rowItem: (order) => Tr({ class: "items-center px-4 py-2 hover:bg-muted/50" }, [
+		Td({ class: "p-4" }, P(order.orderNumber)),
+		Td({ class: "p-4" }, P(new Date(order.date).toLocaleDateString())),
+		Td({ class: "p-4 text-right" }, P(\`$\${order.amount.toFixed(2)}\`)),
+		Td({ class: "p-4" }, Badge({
+			variant: order.status === 'completed' ? 'success' : 'warning'
+		}, order.status))
+	]),
+	emptyState: () => EmptyState({
+		title: 'No Orders Found',
+		description: 'This client has no orders matching the current filters.',
+		action: {
+			label: 'Create Order',
+			onClick: () => createNewOrder()
+		}
+	})
+});`
+		}),
+
+		// 5) Dynamic Data Table Features
+		Section({ class: 'space-y-4 mt-8' }, [
+			H4({ class: 'text-lg font-bold' }, 'Dynamic Data Table Features'),
+			P({ class: 'text-muted-foreground' }, 'DynamicDataTable provides automatic data management with built-in loading states, error handling, and model integration.'),
+			CodeCard(`// Key features of DynamicDataTable:
+
+// 1. Automatic data fetching on creation
+const table = DynamicDataTable({
+	data: new MyModel({ userId: 123 }),
+	// ... other props
+});
+// Data is automatically fetched when the table is created
+
+// 2. Model integration with real-time updates
+// The table automatically updates when the model data changes
+model.on('update', () => {
+	// Table automatically re-renders with new data
+});
+
+// 3. Built-in pagination and loading states
+// The table handles loading states during data fetching
+// Shows skeleton rows while loading
+// Automatically manages pagination with limit parameter
+
+// 4. Error handling
+// Built-in error states when data fetching fails
+// Customizable error messages and retry actions
+
+// 5. Empty state management
+// Shows custom empty state when no data is available
+// Supports actions for creating new items
+
+// 6. Automatic refresh capabilities
+table.refresh(); // Manually refresh data from model
+
+// 7. Real-time data synchronization
+// Updates automatically when underlying model changes
+// Maintains selection state during updates
+// Preserves scroll position when possible`)
+		]),
+
 		// 2) Skeleton Loading States section
 		DocSection({
 			title: 'Skeleton Loading States',
