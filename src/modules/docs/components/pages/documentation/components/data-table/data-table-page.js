@@ -11,7 +11,7 @@ const headers = [
 	{ label: 'checkbox', key: '' },
 	{ label: 'Status', key: 'status' },
 	{ label: 'Email', key: 'email' },
-	{ label: 'Amount', key: 'amount', align: 'justify-end' }
+	{ label: 'Amount', key: 'amount', align: 'justify-end' },
 ];
 
 /** Example row data */
