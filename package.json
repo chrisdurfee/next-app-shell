@@ -33,14 +33,14 @@
 		"tailwindcss": "^3.4.13"
 	},
 	"dependencies": {
-		"@base-framework/atoms": "^1.0.41",
+		"@base-framework/atoms": "^1.0.63",
 		"@base-framework/base": "^3.0.295",
 		"@base-framework/organisms": "^1.0.69",
 		"@base-framework/ui": "^1.0.54",
 		"d3": "^7.9.0",
 		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.3",
-		"vite": "^6.1.1"
+		"vite": "^7.1.3"
 	},
 	"files": [
 		"package.json",
