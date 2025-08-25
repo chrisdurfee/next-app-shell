@@ -13,7 +13,7 @@ const Shell = Atom((props, children) =>
 {
 	return Div({
 			...props,
-			class: 'shell flex flex-auto relative z-10'
+			class: 'shell flex flex-auto border-0 ring-0 relative z-10'
 		}, [
 			/**
 			 * This will set up the notification container so that it can be used

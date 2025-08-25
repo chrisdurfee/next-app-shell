@@ -27,10 +27,9 @@
 		"url": "https://github.com/chrisdurfee/next-app-shell/issues"
 	},
 	"devDependencies": {
-		"autoprefixer": "^10.4.20",
+		"@tailwindcss/vite": "^4.1.12",
 		"esbuild": "^0.25.0",
-		"postcss": "^8.5.3",
-		"tailwindcss": "^3.4.13"
+		"tailwindcss": "^4.1.12"
 	},
 	"dependencies": {
 		"@base-framework/atoms": "^1.0.63",
@@ -38,7 +37,6 @@
 		"@base-framework/organisms": "^1.0.69",
 		"@base-framework/ui": "^1.0.54",
 		"d3": "^7.9.0",
-		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.7.3",
 		"vite": "^7.1.3"
 	},
