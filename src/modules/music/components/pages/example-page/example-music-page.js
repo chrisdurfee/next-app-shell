@@ -55,7 +55,7 @@ const SidebarMenu = () => (
 const LargeAlbumCard = ({ src, title, artist }) => (
     Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
-            Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-[3/4]' }),
+            Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-3/4' }),
         ]),
         Div({ class: 'space-y-1 text-sm' }, [
             H3({ class: 'font-medium leading-none' }, title),

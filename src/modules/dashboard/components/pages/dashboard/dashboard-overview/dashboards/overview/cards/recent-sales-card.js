@@ -13,7 +13,7 @@ import { Avatar } from "@base-framework/ui/molecules";
 const RecentSalesItem = ({ name, image, email, amount }) => (
 	Div({ class: 'flex items-center hover:bg-muted/50 rounded-md p-2' }, [
 		Div({ class: 'flex items-center gap-3' }, [
-			Span({ class: 'relative flex shrink-0 overflow-hidden rounded-full h-9 w-9' }, [
+			Span({ class: 'relative flex overflow-hidden rounded-full h-9 w-9' }, [
 				Avatar({ src: image, name }), // Assuming the Avatar component supports name for fallback
 			]),
 			Div({ class: 'space-y-1' }, [

@@ -12,7 +12,7 @@ const SalesByLocationItem = ({ country, percent, change, isPositive }) =>
 
 		Div({ class: "flex flex-auto space-x-4 justify-between" }, [
 			// Country name + change badge
-			Div({ class: "flex space-x-2 w-32 shrink-0" }, [
+			Div({ class: "flex space-x-2 w-32" }, [
 				Span({ class: "text-sm font-medium" }, country),
 				Span({
 					class: [

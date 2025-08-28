@@ -47,7 +47,7 @@ const CustomNavLink = ({ label, count, icon, href }) => (
 			exact: false
 		}, [
 		Div({ class: "flex items-center space-x-2" }, [
-			icon && Icon({ class: "flex-shrink-0 w-5 h-5" }, icon),
+			icon && Icon({ class: "w-5 h-5" }, icon),
 			Span({ class: "text-sm font-medium text-foreground" }, label),
 		]),
 		Span({ class: "text-xs text-muted-foreground" }, count.toString()),

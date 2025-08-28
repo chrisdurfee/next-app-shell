@@ -90,7 +90,7 @@ const props =
  */
 export const SettingsPage = () => (
 	new BlankPage(props, [
-		Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row max-w-[100vw] h-full' }, [
+		Div({ class: 'flex flex-auto flex-col pt-0 sm:pt-2 lg:pt-0 lg:flex-row max-w-screen h-full' }, [
 			Sidebar(),
 			ContentSection()
 		])

@@ -197,7 +197,7 @@ const DateDivider = (date) => (
  * @returns {object}
  */
 const ConversationMessages = (thread) =>
-	Div({ class: "flex flex-col flex-grow overflow-y-auto p-4" }, [
+	Div({ class: "flex flex-col grow overflow-y-auto p-4" }, [
 		Div({ class: "flex flex-auto flex-col w-full max-w-none lg:max-w-5xl mx-auto pt-24" }, [
 			new List({
 				cache: 'thread',

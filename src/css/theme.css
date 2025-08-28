@@ -1,0 +1,62 @@
+/* Tell Tailwind where to look for class names (paths are relative to this file) */
+@source "../../index.html";
+@source "../**/*.{html,js,jsx,ts,tsx,mjs,cjs,md,mdx,vue,svelte}";
+@source "../../node_modules/@base-framework/**/*.{js,ts,jsx,tsx}";
+@source "../../node_modules/@base-framework/atoms/dist/**/*.{js,ts,jsx,tsx}";
+@source "../../node_modules/@base-framework/organisms/dist/**/*.{js,ts,jsx,tsx}";
+@source "../../node_modules/@base-framework/ui/dist/**/*.{js,ts,jsx,tsx}";
+
+@import "tailwindcss";
+
+@theme {
+    --color-background: hsl(0 0% 92%);
+    --color-foreground: hsl(240 10% 3.9%);
+    --color-card: hsl(0 0% 95%);
+    --color-card-foreground: hsl(240 10% 3.9%);
+    --color-popover: hsl(0 0% 95%);
+    --color-popover-foreground: hsl(240 10% 3.9%);
+    --color-primary: hsl(240 5.9% 10%);
+    --color-primary-foreground: hsl(0 0% 98%);
+    --color-secondary: hsl(240 4.8% 85%);
+    --color-secondary-foreground: hsl(240 5.9% 10%);
+    --color-muted: hsl(240 4.8% 85%);
+    --color-muted-foreground: hsl(240 3.8% 46.1%);
+    --color-accent: hsl(240 4.8% 100%);
+    --color-accent-foreground: hsl(240 5.9% 10%);
+    --color-destructive: hsl(0 72.22% 50.59%);
+    --color-destructive-foreground: hsl(0 0% 98%);
+    --color-warning: hsl(38 92% 50%);
+    --color-warning-foreground: hsl(0 85.7% 97.3%);
+    --color-border: hsl(240 5.9% 80%);
+    --color-input: hsl(240 5.9% 95%);
+    --color-ring: hsl(240 5% 64.9%);
+    --radius: 0.5rem;
+}
+
+/* 2) System dark mode */
+@media (prefers-color-scheme: dark) {
+    :root:not(.light) {
+        --color-background: hsl(240 10% 2.5%);
+        --color-foreground: hsl(0 0% 98%);
+        --color-card: hsl(240 10% 4%);
+        --color-card-foreground: hsl(0 0% 98%);
+        --color-popover: hsl(240 10% 4%);
+        --color-popover-foreground: hsl(0 0% 98%);
+        --color-primary: hsl(0 0% 98%);
+        --color-primary-foreground: hsl(240 5.9% 10%);
+        --color-secondary: hsl(240 3.7% 15.9%);
+        --color-secondary-foreground: hsl(0 0% 98%);
+        --color-muted: hsl(240 3.7% 15.9%);
+        --color-muted-foreground: hsl(240 5% 64.9%);
+        --color-accent: hsl(240 3.7% 15.9%);
+        --color-accent-foreground: hsl(0 0% 98%);
+        --color-destructive: hsl(0 62.8% 30.6%);
+        --color-destructive-foreground: hsl(0 85.7% 97.3%);
+        --color-warning: hsl(38 92% 50%);
+        --color-warning-foreground: hsl(0 0% 98%);
+        --color-border: hsl(240 3.7% 15.9%);
+        --color-input: hsl(240 10% 4%);
+        --color-ring: hsl(240 4.9% 83.9%);
+        color-scheme: dark;
+    }
+}

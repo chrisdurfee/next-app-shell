@@ -22,6 +22,8 @@
 		<meta name="keywords" content="">
 
 		<!-- styles -->
+		<link rel="preload" href="./src/css/theme.css" as="style">
+		<link rel="stylesheet" type="text/css" href="./src/css/theme.css">
 		<link rel="preload" href="./src/css/proto.css" as="style">
 		<link rel="stylesheet" type="text/css" href="./src/css/proto.css">
 
@@ -47,7 +49,7 @@
 
 		<base href="./">
 	</head>
-	<body class="app-container bg-background relative flex flex-auto flex-col min-h-screen max-w-full will-change-contents z-10">
+	<body class="app-container bg-background text-foreground relative flex flex-auto flex-col min-h-screen max-w-full will-change-contents z-10 focus:outline-none">
 		<!-- alert js error -->
 		<noscript>You need to enable JavaScript to run this app.</noscript>
 

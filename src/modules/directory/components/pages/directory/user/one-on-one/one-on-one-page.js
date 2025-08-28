@@ -59,12 +59,12 @@ const Goals = ({ meeting }) =>
 		meeting.goals.map(goal =>
 			Card({ class: "p-4", margin: "mb-3", hover: true }, [
 				Div({ class: "flex items-start" }, [
-					Div({ class: "flex-shrink-0 p-2 mr-4" }, [
+					Div({ class: "p-2 mr-4" }, [
                         Div({ class: "w-12 h-12 bg-accent rounded-full p-3" }, [
                             Icon({ size: 'sm' }, Icons.document.default)
                         ])
 					]),
-					Div({ class: "flex-grow" }, [
+					Div({ class: "grow" }, [
 						Div({ class: "flex items-center justify-between" }, [
 							P({ class: "font-medium" }, goal.title),
 							Span({ class: `text-sm ${goal.progress >= 100 ? "text-green-600" : "text-muted-foreground"}` },

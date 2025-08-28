@@ -22,7 +22,7 @@ export const VideoContainer = Atom(({ name, isMuted, isMainParticipant = false }
 		Div({ class: "w-full h-full" }),
 
 		// Gradient overlay with name
-		Div({ class: "absolute bottom-0 left-0 right-0 p-2 bg-gradient-to-t from-black/50 to-transparent" }, [
+		Div({ class: "absolute bottom-0 left-0 right-0 p-2 bg-linear-to-t from-black/50 to-transparent" }, [
 			Div({ class: "flex items-center justify-between" }, [
 				Span({ class: "text-sm font-medium" }, name),
 				isMuted && Span({ class: "flex items-center" }, [

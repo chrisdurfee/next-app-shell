@@ -65,7 +65,7 @@ export const InboxPage = () =>
 	return new BlankPage(Props, [
 		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
 			InboxSidebarMenu(),
-			Div({ class: "flex flex-[2] lg:max-w-[550px] lg:border-r" }, [
+			Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
 				InboxList()
 			]),
 			UseParent((parent) => (

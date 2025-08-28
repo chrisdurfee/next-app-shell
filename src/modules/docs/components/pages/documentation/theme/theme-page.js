@@ -11,7 +11,7 @@ import { DocPage } from "../../doc-page.js";
  */
 const ColorCard = (color) =>
 {
-    return Div({ class: 'flex flex-auto flex-col items-center gap-2 max-w-[150px] h-[8.5rem] cursor-pointer' }, [
+    return Div({ class: 'flex flex-auto flex-col items-center gap-2 max-w-[150px] h-34 cursor-pointer' }, [
         Div({ class: `flex flex-auto w-full h-full min-h-[136px] justify-center items-center flex-wrap rounded-lg border text-base shadow-sm ${color.class}`,
             click: () =>
             {

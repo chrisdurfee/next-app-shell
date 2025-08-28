@@ -43,13 +43,13 @@ export const SmallAlbumSkeleton = () => (
 export const LargeAlbumCard = ({ src, title, artist }) => (
 	Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
 		Div({
-			class: 'overflow-hidden rounded-md aspect-[3/4] w-full'
+			class: 'overflow-hidden rounded-md aspect-3/4 w-full'
 		}, [
 			A({ href: `${PAGE_URL}/album/${title.replace(/\s+/g, '-').toLowerCase()}` }, [
 				Img({
 					src,
 					alt: title,
-					class: 'w-auto object-cover transition-all hover:scale-105 aspect-[3/4]'
+					class: 'w-auto object-cover transition-all hover:scale-105 aspect-3/4'
 				})
 			])
 		]),

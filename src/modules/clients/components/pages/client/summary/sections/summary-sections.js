@@ -72,7 +72,7 @@ export const ClientSummaryCardsSection = Atom(({ client }) =>
 		Div({
 			class:
 				"pointer-events-none absolute top-0 left-0 h-full w-6 " +
-				"bg-gradient-to-r from-background to-transparent"
+				"bg-linear-to-r from-background to-transparent"
 		}),
 		Div({ class: "flex flex-auto overflow-x-auto -ml-6 mr-0 px-6" }, [
 			Div({ class: "flex space-x-4 pb-4 max-w-xs" }, [
@@ -109,7 +109,7 @@ export const ClientSummaryCardsSection = Atom(({ client }) =>
 		Div({
 			class:
 				"pointer-events-none absolute top-0 right-0 h-full w-16 " +
-				"bg-gradient-to-l from-background to-transparent"
+				"bg-linear-to-l from-background to-transparent"
 		})
 	])
 );

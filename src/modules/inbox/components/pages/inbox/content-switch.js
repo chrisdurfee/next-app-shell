@@ -44,7 +44,7 @@ const EmptyEmail = () => (
  */
 export const ContentSwitch = (props) => (
 	Div({
-		class: 'flex-[4] flex-col w-full h-full hidden lg:flex justify-center',
+		class: 'flex-4 flex-col w-full h-full hidden lg:flex justify-center',
 		switch: [
 			{
 				uri: 'inbox/:page/:messageId*',

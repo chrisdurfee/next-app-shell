@@ -95,7 +95,7 @@ export const AccountCard = () => (
 		// Divider for "OR CONTINUE WITH"
 		Div({ class: "relative" }, [
 			Div({ class: "absolute inset-0 flex items-center" }, [
-				Span({ class: "flex-grow border-t" })
+				Span({ class: "grow border-t" })
 			]),
 			Div({ class: 'relative flex justify-center text-xs uppercase' }, [
 				Span({ class: 'bg-card px-2 text-muted-foreground' }, "or continue with")
