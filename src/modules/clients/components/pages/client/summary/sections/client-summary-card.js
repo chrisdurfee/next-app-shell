@@ -16,8 +16,8 @@ import { Card, Icon } from "@base-framework/ui/atoms";
 export const ClientSummaryCard = ({ title, value, icon, url = null }) =>
 	A({ href: url }, [
 		Card({ class: "bg-card border border-border rounded-lg p-4 min-w-[250px] min-h-32 transition-colors", margin: "m-0", hover: true },
-			Div({ class: "flex flex-col space-y-2" }, [
-				Div({ class: "flex items-center space-x-2 text-muted-foreground" }, [
+			Div({ class: "flex flex-col gap-y-2" }, [
+				Div({ class: "flex items-center gap-x-2 text-muted-foreground" }, [
 					Icon(icon, { class: "text-lg" }),
 					H2({ class: "text-sm font-medium" }, title)
 				]),

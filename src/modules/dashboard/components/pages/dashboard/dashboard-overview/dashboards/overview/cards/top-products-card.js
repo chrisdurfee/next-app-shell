@@ -106,7 +106,7 @@ export const TopProductsCard = () =>
 		margin: 'm-0',
 		class: 'col-span-3'
 	}, [
-		Header({ class: 'flex flex-col space-y-1.5 mb-4' }, [
+		Header({ class: 'flex flex-col gap-y-1.5 mb-4' }, [
 			H3({ class: 'font-semibold leading-none tracking-tight' }, 'Top Products'),
 			P({ class: 'text-sm text-muted-foreground' }, 'Top selling products by revenue.'),
 		]),

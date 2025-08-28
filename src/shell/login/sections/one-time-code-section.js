@@ -14,7 +14,7 @@ import { Form } from '@base-framework/ui/molecules';
  * @returns {object} A virtual DOM element representing the header.
  */
 const OneTimeCodeHeader = Atom(({ title, description }) => (
-	Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
+	Header({ class: 'flex flex-col gap-y-1.5 p-6' }, [
 		H1({ class: 'scroll-m-20 text-3xl font-bold tracking-tight' }, title),
 		description && P({ class: 'text-base text-muted-foreground py-2 max-w-[700px]' }, description)
 	])

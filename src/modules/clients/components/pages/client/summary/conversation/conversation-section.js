@@ -29,13 +29,13 @@ const DateDivider = (date) =>
  * @returns {object}
  */
 const ConversationListItem = Atom((msg) =>
-	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
+	Div({ class: "flex gap-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
 		Avatar({ src: msg.avatar, alt: msg.user, fallbackText: msg.user, size: "sm" }),
-		Div({ class: "flex-1 space-y-1" }, [
+		Div({ class: "flex-1 gap-y-1" }, [
 			P({ class: "text-sm font-medium" }, msg.user),
 			P({ class: "text-sm text-muted-foreground" }, msg.text),
 			msg.attachments &&
-				Div({ class: "flex space-x-2 mt-2" }, [
+				Div({ class: "flex gap-x-2 mt-2" }, [
 					msg.attachments.map((att) =>
 						Img({ src: att.src, alt: att.name, class: "w-16 h-16 rounded" })
 					)
@@ -54,11 +54,11 @@ const ConversationListItem = Atom((msg) =>
  * @returns {object}
  */
 export const ConversationSection = Atom(({ client }) =>
-	Div({ class: "flex flex-auto flex-col h-full space-y-4 p-0" }, [
-		Header({ class: "flex flex-col space-y-2 p-6" }, [
+	Div({ class: "flex flex-auto flex-col h-full gap-y-4 p-0" }, [
+		Header({ class: "flex flex-col gap-y-2 p-6" }, [
 			H2({ class: "text-lg text-muted-foreground" }, "Conversation")
 		]),
-		Div({ class: "flex-1 overflow-y-auto space-y-2" }, [
+		Div({ class: "flex-1 overflow-y-auto gap-y-2" }, [
 			new List({
 				cache: "conversation",
 				key: "id",

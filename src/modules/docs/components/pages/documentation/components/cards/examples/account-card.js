@@ -42,7 +42,7 @@ const SocialSignIn = () => (
  * @returns {object}
  */
 const AccountForm = () => (
-	Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
+	Form({ class: 'gap-y-4', submit: (e) => { e.preventDefault(); console.log("Account created"); } }, [
 		// Email field
 		new FormField({
 			name: "email",
@@ -85,7 +85,7 @@ const AccountForm = () => (
  * @returns {object}
  */
 export const AccountCard = () => (
-	Card({ class: "w-full max-w-md mx-auto p-8 bg-card space-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-8 bg-card gap-y-6" }, [
 		// Header with title and description
 		CardHeader({ title: "Create an account", description: "Enter your email below to create your account" }),
 

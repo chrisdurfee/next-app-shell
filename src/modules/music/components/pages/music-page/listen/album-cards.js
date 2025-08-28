@@ -12,7 +12,7 @@ const PAGE_URL = 'music';
  * @returns {object}
  */
 export const LargeAlbumSkeleton = () => (
-	Div({ class: 'space-y-2 w-[180px] md:w-[250px]' }, [
+	Div({ class: 'gap-y-2 w-[180px] md:w-[250px]' }, [
 		Skeleton({ width: 'w-full', height: 'h-[240px] md:h-[333.33px]', shape: 'rectangle', class: 'rounded-md' }),
 		Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }),
 		Skeleton({ width: 'w-1/2', height: 'h-[14px]' })
@@ -27,7 +27,7 @@ export const LargeAlbumSkeleton = () => (
  * @returns {object}
  */
 export const SmallAlbumSkeleton = () => (
-	Div({ class: 'space-y-2 w-[150px]' }, [
+	Div({ class: 'gap-y-2 w-[150px]' }, [
 		Skeleton({ width: 'w-full', height: 'h-[150px]', shape: 'square', class: 'rounded-md' }),
 		Skeleton({ width: 'w-3/4', height: 'h-4', class: 'mt-2' }),
 		Skeleton({ width: 'w-1/2', height: 'h-[14px]' })
@@ -41,7 +41,7 @@ export const SmallAlbumSkeleton = () => (
  * @returns {object}
  */
 export const LargeAlbumCard = ({ src, title, artist }) => (
-	Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
+	Div({ class: 'gap-y-3 w-[180px] md:w-[250px]' }, [
 		Div({
 			class: 'overflow-hidden rounded-md aspect-3/4 w-full'
 		}, [
@@ -53,7 +53,7 @@ export const LargeAlbumCard = ({ src, title, artist }) => (
 				})
 			])
 		]),
-		Div({ class: 'space-y-1 text-sm' }, [
+		Div({ class: 'gap-y-1 text-sm' }, [
 			H3({ class: 'font-medium leading-none' }, title),
 			P({ class: 'text-xs text-muted-foreground' }, artist)
 		])
@@ -67,7 +67,7 @@ export const LargeAlbumCard = ({ src, title, artist }) => (
  * @returns {object}
  */
 export const SmallAlbumCard = ({ src, title, artist }) => (
-	Div({ class: 'space-y-3 w-[150px]' }, [
+	Div({ class: 'gap-y-3 w-[150px]' }, [
 		Div({
 			class: 'overflow-hidden rounded-md w-full aspect-square'
 		}, [
@@ -79,7 +79,7 @@ export const SmallAlbumCard = ({ src, title, artist }) => (
 				})
 			])
 		]),
-		Div({ class: 'space-y-1 text-sm' }, [
+		Div({ class: 'gap-y-1 text-sm' }, [
 			H3({ class: 'font-medium leading-none' }, title),
 			P({ class: 'text-xs text-muted-foreground' }, artist)
 		])

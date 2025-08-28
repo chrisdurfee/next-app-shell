@@ -12,9 +12,9 @@ import { SidebarMenu } from "./sidebar-menu.js";
  * @returns {object}
  */
 const Toolbar = () => (
-	Div({ class: "flex w-full flex-col space-y-8 pb-8 mt-2 md:pl-2" }, [
+	Div({ class: "flex w-full flex-col gap-y-8 pb-8 mt-2 md:pl-2" }, [
 		Div({ class: "flex items-center justify-between" }, [
-			Header({ class: 'flex space-x-4 items-center' }, [
+			Header({ class: 'flex gap-x-4 items-center' }, [
 				BackButton({
 					margin: 'm-0 ml-0',
 					backUrl: '/clients'

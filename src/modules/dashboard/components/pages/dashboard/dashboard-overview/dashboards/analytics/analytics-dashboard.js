@@ -13,7 +13,7 @@ import { Page } from "@base-framework/ui/pages";
 export const AnalyticsEmptyState = () => (
 	new Page([
 		Div({
-				class: "flex flex-col items-center justify-center text-center p-6 space-y-4 bg-background border rounded-lg min-h-96",
+				class: "flex flex-col items-center justify-center text-center p-6 gap-y-4 bg-background border rounded-lg min-h-96",
 			},
 			[
 				Icon({ size: "xl" }, Icons.chart),

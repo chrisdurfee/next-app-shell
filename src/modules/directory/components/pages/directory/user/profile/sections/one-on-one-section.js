@@ -44,7 +44,7 @@ export const OneOnOneSection = ({ userId }) =>
 		title: "1:1 Meetings",
 	}, [
 		Card({ class: "p-6", margin: 'm-0', hover: true }, [
-			Div({ class: "space-y-4" }, [
+			Div({ class: "gap-y-4" }, [
 				// Last meeting info
 				Div({ class: "flex items-center justify-between" }, [
 					P({ class: "text-sm" }, "Last meeting"),
@@ -54,10 +54,10 @@ export const OneOnOneSection = ({ userId }) =>
 				]),
 
 				// Goals summary
-				Div({ class: "space-y-2" }, [
+				Div({ class: "gap-y-2" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Goals"),
 					goals.map(goal =>
-						Div({ class: "flex items-center space-x-2 py-1 border-b last:border-0" }, [
+						Div({ class: "flex items-center gap-x-2 py-1 border-b last:border-0" }, [
 							Icon(Icons.check),
 							P({ class: "text-sm truncate" }, goal.title)
 						])

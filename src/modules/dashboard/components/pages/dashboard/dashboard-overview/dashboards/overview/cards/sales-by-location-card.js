@@ -8,11 +8,11 @@ import { Card } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 const SalesByLocationItem = ({ country, percent, change, isPositive }) =>
-	Div({ class: "flex flex-auto flex-col space-y-4" }, [
+	Div({ class: "flex flex-auto flex-col gap-y-4" }, [
 
-		Div({ class: "flex flex-auto space-x-4 justify-between" }, [
+		Div({ class: "flex flex-auto gap-x-4 justify-between" }, [
 			// Country name + change badge
-			Div({ class: "flex space-x-2 w-32" }, [
+			Div({ class: "flex gap-x-2 w-32" }, [
 				Span({ class: "text-sm font-medium" }, country),
 				Span({
 					class: [
@@ -47,7 +47,7 @@ const SalesByLocationItem = ({ country, percent, change, isPositive }) =>
 export const SalesByLocationCard = () =>
 	Card({ padding: "p-0", margin: "m-0", class: "col-span-3" }, [
 			// Header
-			Header({ class: "flex flex-auto flex-col space-y-1.5 p-6" }, [
+			Header({ class: "flex flex-auto flex-col gap-y-1.5 p-6" }, [
 				H3(
 					{ class: "font-semibold leading-none tracking-tight" },
 					"Sales by Location"
@@ -59,7 +59,7 @@ export const SalesByLocationCard = () =>
 			]),
 
 			// Rows
-			Div({ class: "flex flex-auto flex-col space-y-4 px-6 pb-6" }, [
+			Div({ class: "flex flex-auto flex-col gap-y-4 px-6 pb-6" }, [
 				SalesByLocationItem({
 					country: "Canada",
 					percent: 85,

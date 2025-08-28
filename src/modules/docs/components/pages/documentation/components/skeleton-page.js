@@ -72,9 +72,9 @@ export const SkeletonPage = () => (
                 title: 'Usage',
                 description: 'The skeleton component is used to show a placeholder for content that is loading.',
                 preview: [
-                    Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
+                    Div({ class: 'flex flex-auto gap-x-4 w-full max-w-64' }, [
                         Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10' }), // Circle skeleton for avatar
-                        Div({ class: 'flex flex-auto flex-col space-y-2' }, [
+                        Div({ class: 'flex flex-auto flex-col gap-y-2' }, [
                             Skeleton({ width: 'w-3/4', height: 'h-4' }), // Long rectangle for main text
                             Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter rectangle for subtext
                         ])
@@ -83,9 +83,9 @@ export const SkeletonPage = () => (
                 code: `import {  Skeleton  } from "@base-framework/ui/atoms";
 import { Div } from '@base-framework/atoms';
 
-Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
+Div({ class: 'flex flex-auto gap-x-4 w-full max-w-64' }, [
     Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10' }), // Circle skeleton for avatar
-    Div({ class: 'flex flex-auto flex-col space-y-2' }, [
+    Div({ class: 'flex flex-auto flex-col gap-y-2' }, [
         Skeleton({ width: 'w-3/4', height: 'h-4' }), // Long rectangle for main text
         Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter rectangle for subtext
     ])
@@ -96,12 +96,12 @@ Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
                 title: 'Skeleton Post',
                 description: 'This is a skeleton post.',
                 preview: [
-                    Div({ class: 'space-y-4 flex flex-auto flex-col w-full max-w-64' }, [
+                    Div({ class: 'gap-y-4 flex flex-auto flex-col w-full max-w-64' }, [
                         // Large rectangle for image or main content
                         Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
                         // Text line placeholders
-                        Div({ class: 'space-y-2' }, [
+                        Div({ class: 'gap-y-2' }, [
                             Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
                             Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
                         ])
@@ -110,12 +110,12 @@ Div({ class: 'flex flex-auto space-x-4 w-full max-w-64' }, [
                 code: `import {  Skeleton  } from "@base-framework/ui/atoms";
 import { Div } from '@base-framework/atoms';
 
-Div({ class: 'space-y-4 flex flex-auto flex-col space-x-4 w-full max-w-64' }, [
+Div({ class: 'gap-y-4 flex flex-auto flex-col gap-x-4 w-full max-w-64' }, [
     // Large rectangle for image or main content
     Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
     // Text line placeholders
-    Div({ class: 'space-y-2' }, [
+    Div({ class: 'gap-y-2' }, [
         Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
         Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
     ])

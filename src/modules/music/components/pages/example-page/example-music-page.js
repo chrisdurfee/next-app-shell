@@ -53,11 +53,11 @@ const SidebarMenu = () => (
  * @returns {object}
  */
 const LargeAlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'space-y-3 w-[180px] md:w-[250px]' }, [
+    Div({ class: 'gap-y-3 w-[180px] md:w-[250px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
             Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-3/4' }),
         ]),
-        Div({ class: 'space-y-1 text-sm' }, [
+        Div({ class: 'gap-y-1 text-sm' }, [
             H3({ class: 'font-medium leading-none' }, title),
             P({ class: 'text-xs text-muted-foreground' }, artist)
         ])
@@ -73,11 +73,11 @@ const LargeAlbumCard = ({ src, title, artist }) => (
  * @returns {object}
  */
 const SmallAlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'space-y-3 w-[150px]' }, [
+    Div({ class: 'gap-y-3 w-[150px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
             Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
         ]),
-        Div({ class: 'space-y-1 text-sm' }, [
+        Div({ class: 'gap-y-1 text-sm' }, [
             H3({ class: 'font-medium leading-none' }, title),
             P({ class: 'text-xs text-muted-foreground' }, artist)
         ])
@@ -97,7 +97,7 @@ const MusicSection = ({ title, description, albums, card = LargeAlbumCard }) => 
         H2({ class: 'text-2xl font-semibold tracking-tight' }, title),
         P({ class: 'text-sm text-muted-foreground mb-4' }, description),
         Div({ class: 'overflow-x-auto lg:overflow-x-none' }, [
-            Div({ class: 'inline-flex space-x-4 pb-4' }, // Adjusted gap for spacing consistency
+            Div({ class: 'inline-flex gap-x-4 pb-4' }, // Adjusted gap for spacing consistency
                 albums.map(album => card(album))
             )
         ])

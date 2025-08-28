@@ -10,7 +10,7 @@ import { Card } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 const MetricItem = ({ label, value, change, isPositive = true }) => (
-	Div({ class: 'flex flex-col space-y-1' }, [
+	Div({ class: 'flex flex-col gap-y-1' }, [
 		Span({ class: 'text-sm font-medium text-muted-foreground' }, label),
 		Div({ class: 'flex items-center' }, [
 			Span({ class: 'text-2xl font-bold' }, value),
@@ -31,7 +31,7 @@ const MetricItem = ({ label, value, change, isPositive = true }) => (
  */
 export const MetricsCard = () => (
 	Card({ padding: 'p-6', margin: 'm-0', class: 'col-span-4' }, [
-		Header({ class: 'flex flex-col space-y-1.5 mb-4' }, [
+		Header({ class: 'flex flex-col gap-y-1.5 mb-4' }, [
 			H3({ class: 'font-semibold leading-none tracking-tight' }, 'Business Metrics'),
 			P({ class: 'text-sm text-muted-foreground' }, 'Key performance indicators for this period.'),
 		]),

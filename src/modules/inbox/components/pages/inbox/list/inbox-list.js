@@ -28,7 +28,7 @@ const filterMessages = (messages, list) =>
  * @returns {object}
  */
 export const InboxList = () => (
-	Div({ class: "w-full pt-0 lg:pt-2 space-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
+	Div({ class: "w-full pt-0 lg:pt-2 flex flex-auto flex-col gap-y-2 lg:overflow-y-auto lg:max-h-screen" }, [
 		ListHeader(),
 		Div([
 			OnRoute('page', (page, ele, { data, state }) =>
@@ -74,7 +74,7 @@ export const InboxList = () => (
 					key: 'id',
 					items,
 					role: 'list',
-					class: 'space-y-2 px-4 pb-4',
+					class: 'flex flex-col gap-y-2 px-4 pb-4',
 					rowItem: (message) => new InboxMessageItem({ message })
 				});
 			})

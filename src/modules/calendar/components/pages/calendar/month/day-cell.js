@@ -123,7 +123,7 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
 				for: [`events._${removeHyphens(date)}`, Event]
 			}),
 			Div({
-				class: 'hidden lg:flex flex-auto flex-col space-y-1',
+				class: 'hidden lg:flex flex-auto flex-col gap-y-1',
 				for: [`events._${removeHyphens(date)}`, DesktopEvent]
 			})
 		]

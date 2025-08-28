@@ -28,7 +28,7 @@ const props =
 const PageHeader = (client) => (
 	Div({ class: 'flex flex-row justify-between gap-4 py-4 lg:py-2' }, [
 		H2({ class: 'text-2xl font-medium' }, 'Client Summary'),
-		Div({ class: 'flex flex-row space-x-2' }, [
+		Div({ class: 'flex flex-row gap-x-2' }, [
 			Div({ class: 'hidden lg:inline-flex' }, [
 				Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: ClientModal }, 'Edit'),
 			]),

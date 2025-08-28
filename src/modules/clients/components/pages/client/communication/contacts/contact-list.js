@@ -18,7 +18,7 @@ import { Avatar } from "@base-framework/ui/molecules";
  */
 const ContactItem = Atom(contact =>
 	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
-		Div({ class: "flex items-center space-x-4" }, [
+		Div({ class: "flex items-center gap-x-4" }, [
 			Avatar({ src: contact.avatar, alt: contact.name, fallbackText: contact.name, size: "sm" }),
 			Div({ class: "flex flex-col" }, [
 				P({ class: "font-medium" }, contact.name),
@@ -40,7 +40,7 @@ const ContactItem = Atom(contact =>
  * @returns {object}
  */
 export const ContactList = Atom(({ contacts }) =>
-	Div({ class: "space-y-6 mt-12" }, [
+	Div({ class: "gap-y-6 mt-12" }, [
 		new List({
 			cache: "contacts",
 			key: "id",

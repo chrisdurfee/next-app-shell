@@ -40,7 +40,7 @@ export const DashboardHeader = () => (
 export const DashboardContent = () => (
 	Div({ class: 'flex flex-auto flex-col pt-0 px-6 pb-6 sm:p-6' }, [
 		DashboardHeader(),
-		Div({ class: 'space-y-4' }, [
+		Div({ class: 'flex flex-auto flex-col gap-y-4' }, [
 
 			DashboardCards(),
 			OrderOptions(),

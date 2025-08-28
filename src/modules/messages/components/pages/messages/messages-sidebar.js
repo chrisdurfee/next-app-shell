@@ -58,7 +58,7 @@ export const MessagesSidebar = () =>
 			new List({
 				key: 'id',
 				items: MESSAGES_THREADS,
-				class: "flex flex-col space-y-1 mt-4",
+				class: "flex flex-col gap-y-1 mt-4",
 				rowItem: SidebarRowItem(route)
 			})
 		))

@@ -72,7 +72,7 @@ const DashboardTabs = () => (
  */
 export const DashboardOverview = () => (
 	new Page([
-		Div({ class: 'grid grid-cols-1 p-6 pt-0 sm:pt-6 lg:p-8 space-y-4' }, [
+		Div({ class: 'grid grid-cols-1 p-6 pt-0 sm:pt-6 lg:p-8 gap-y-4' }, [
 
 			DashboardHeader(),
 			DashboardTabs(),

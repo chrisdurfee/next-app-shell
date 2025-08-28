@@ -20,11 +20,11 @@ export const UserSkeleton = () =>
 	const deptSkeleton = Skeleton({ width: "w-1/4", height: "h-5", class: "mx-auto" });
 	const emailSkeleton = Skeleton({ width: "w-2/3", height: "h-4", class: "mx-auto mt-2" });
 	const phoneSkeleton = Skeleton({ width: "w-1/3", height: "h-4", class: "mx-auto" });
-	const iconButtonsSkeleton = Div({ class: "flex justify-center space-x-4 mt-4" },
+	const iconButtonsSkeleton = Div({ class: "flex justify-center gap-x-4 mt-4" },
 		Array(4).fill().map(() => Skeleton({ shape: "circle", width: "w-8", height: "h-8" }))
 	);
 
-	const sidebarSkeleton = Div({ class: "w-full lg:w-1/3 space-y-4" }, [
+	const sidebarSkeleton = Div({ class: "w-full lg:w-1/3 gap-y-4" }, [
 		avatarSkeleton,
 		nameSkeleton,
 		roleSkeleton,
@@ -35,19 +35,19 @@ export const UserSkeleton = () =>
 	]);
 
 	// About section
-	const aboutSectionSkeleton = Div({ class: "space-y-6" }, [
+	const aboutSectionSkeleton = Div({ class: "gap-y-6" }, [
 		Skeleton({ width: "w-24", height: "h-6", class: "rounded-md" }),
 		Skeleton({ width: "w-full", height: "h-24", class: "rounded-md" })
 	]);
 
 	// Work Progress section
-	const workProgressSectionSkeleton = Div({ class: "space-y-4" }, [
+	const workProgressSectionSkeleton = Div({ class: "gap-y-4" }, [
 		Skeleton({ width: "w-32", height: "h-6", class: "rounded-md" }),
-		Div({ class: "pl-6 space-y-6" },
+		Div({ class: "pl-6 gap-y-6" },
 			[0, 1].map(() =>
-				Div({ class: "flex items-center space-x-4" }, [
+				Div({ class: "flex items-center gap-x-4" }, [
 					Skeleton({ width: "w-5", height: "h-5", class: "rounded-full" }),
-					Div({ class: "space-y-1" }, [
+					Div({ class: "gap-y-1" }, [
 						Skeleton({ width: "w-1/3", height: "h-4", class: "rounded-md" }),
 						Skeleton({ width: "w-1/4", height: "h-3", class: "rounded-md" })
 					])
@@ -57,7 +57,7 @@ export const UserSkeleton = () =>
 	]);
 
 	// Projects section
-	const projectsSectionSkeleton = Div({ class: "space-y-4" }, [
+	const projectsSectionSkeleton = Div({ class: "gap-y-4" }, [
 		Skeleton({ width: "w-36", height: "h-6", class: "rounded-md" }),
 		Div({ class: "overflow-x-auto" }, [
 			Div({ class: "min-w-full divide-y divide-muted-200" }, [
@@ -76,7 +76,7 @@ export const UserSkeleton = () =>
 	]);
 
 	// Skills section
-	const skillsSectionSkeleton = Div({ class: "space-y-4" }, [
+	const skillsSectionSkeleton = Div({ class: "gap-y-4" }, [
 		Skeleton({ width: "w-20", height: "h-6", class: "rounded-md" }),
 		Div({ class: "flex flex-wrap gap-2" },
 			Array(5).fill().map(() => Skeleton({ width: "w-20", height: "h-6", class: "rounded-full" }))
@@ -84,7 +84,7 @@ export const UserSkeleton = () =>
 	]);
 
 	// Reviews section
-	const reviewsSectionSkeleton = Div({ class: "space-y-4" }, [
+	const reviewsSectionSkeleton = Div({ class: "gap-y-4" }, [
 		Skeleton({ width: "w-40", height: "h-6", class: "rounded-md" }),
 		Skeleton({ width: "w-1/3", height: "h-4", class: "rounded-md" }),
 		Div({ class: "overflow-x-auto" }, [
@@ -104,7 +104,7 @@ export const UserSkeleton = () =>
 	]);
 
 	// main content
-	const mainContentSkeleton = Div({ class: "flex-1 space-y-12 mt-6 px-6" }, [
+	const mainContentSkeleton = Div({ class: "flex-1 gap-y-12 mt-6 px-6" }, [
 		aboutSectionSkeleton,
 		workProgressSectionSkeleton,
 		projectsSectionSkeleton,
@@ -113,9 +113,9 @@ export const UserSkeleton = () =>
 	]);
 
 	// full layout
-	return Div({ class: "p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px] space-y-8" }, [
+	return Div({ class: "p-6 pt-0 2xl:mx-auto w-full 2xl:max-w-[1600px] gap-y-8" }, [
 		Skeleton({ width: "w-20", height: "h-6", class: "rounded-md" }),
-		Div({ class: "flex flex-col lg:flex-row lg:space-x-8" }, [
+		Div({ class: "flex flex-col lg:flex-row lg:gap-x-8" }, [
 			sidebarSkeleton,
 			mainContentSkeleton
 		])

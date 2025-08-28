@@ -13,7 +13,7 @@ import { NOTES } from "./notes.js";
 const Header = () =>
 (
 	Div({ class: "flex items-center justify-between mb-6 py-2" }, [
-		Div({ class: "flex flex-auto justify-between items-center space-x-4" }, [
+		Div({ class: "flex flex-auto justify-between items-center gap-x-4" }, [
 			H2({ class: "text-2xl font-semibold" }, `Notes`),
 			Button({
                 variant: "withIcon",
@@ -33,13 +33,13 @@ const Header = () =>
  */
 const NoteItem = (note) =>
 (
-	Div({ class: "flex space-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
+	Div({ class: "flex gap-x-3 px-6 py-4 hover:bg-muted/50 rounded" }, [
 		Avatar({ src: note.avatar, alt: note.user, fallbackText: note.user, size: "md" }),
-		Div({ class: "flex-1 space-y-1" }, [
+		Div({ class: "flex-1 gap-y-1" }, [
 			P({ class: "text-base font-medium" }, note.user),
 			P({ class: "text-sm text-muted-foreground" }, note.text),
 			note.attachments &&
-				Div({ class: "flex space-x-2 mt-2" }, [
+				Div({ class: "flex gap-x-2 mt-2" }, [
 					note.attachments.map((att) =>
 						Img({ src: att.src, alt: att.name, class: "w-16 h-16 rounded" })
 					)

@@ -52,10 +52,10 @@
 	a:active {
 		text-decoration: none;
 	}
+}
 
-	i.icon-size svg {
-		@apply w-auto h-auto;
-	}
+i.icon-size svg {
+	@apply w-auto h-auto;
 }
 
 /*

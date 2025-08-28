@@ -8,7 +8,7 @@ import { Card } from "@base-framework/ui/atoms";
  * @returns {object}
  */
 const ReviewItem = ({ stars, count, maxCount, colorClass }) =>
-    Div({ class: "flex items-center space-x-4" }, [
+    Div({ class: "flex items-center gap-x-4" }, [
         // “5★” label
         Span({ class: "w-10 text-sm font-medium" }, `${stars}★`),
 
@@ -47,8 +47,8 @@ export const ReviewsCard = ({
 
     return Card({ padding: "p-0", margin: "m-0", class: "col-span-4" }, [
         // Header row
-        Div({ class: "flex flex-col md:flex-row md:justify-between md:items-end space-y-1.5 md:space-y-0 p-6" }, [
-                Div({ class: "flex flex-col space-y-1" }, [
+        Div({ class: "flex flex-col md:flex-row md:justify-between md:items-end gap-y-1.5 md:gap-y-0 p-6" }, [
+                Div({ class: "flex flex-col gap-y-1" }, [
                     H3({ class: "font-semibold leading-none tracking-tight" }, "Customer Reviews"),
                     P({ class: "text-sm text-muted-foreground" }, `Based on ${total.toLocaleString()} verified purchases`),
                 ])
@@ -56,12 +56,12 @@ export const ReviewsCard = ({
         ),
 
         // Content: average + breakdown
-        Div({ class: "flex flex-col lg:flex-row px-6 pb-6 space-y-6 lg:space-y-0 lg:space-x-8" },
+        Div({ class: "flex flex-col lg:flex-row px-6 pb-6 gap-y-6 lg:gap-y-0 lg:gap-x-8" },
             [
                 // Average summary
-                Div({ class: "flex flex-col items-center lg:items-start space-y-2 w-full lg:w-1/3" }, [
+                Div({ class: "flex flex-col items-center lg:items-start gap-y-2 w-full lg:w-1/3" }, [
                     // Stars
-                    Div({ class: "flex space-x-1" },
+                    Div({ class: "flex gap-x-1" },
                         Array.from({ length: 5 }).map((_, i) =>
                                 Span({ class: i < Math.floor(average) ? "text-yellow-400" : "text-yellow-200" }, "★")
                             )
@@ -73,7 +73,7 @@ export const ReviewsCard = ({
                 ),
 
                 // Breakdown bars
-                Div({ class: "flex-1 flex flex-col space-y-4" },
+                Div({ class: "flex-1 flex flex-col gap-y-4" },
                     breakdown.map((item) =>
                         ReviewItem({ ...item, maxCount })
                     )

@@ -64,7 +64,7 @@ export const WeekHeader = (props) =>
 			H2({ class: 'scroll-m-20 text-3xl font-bold tracking-tight md:pl-4' }, weekRangeString),
 			Span({ class: 'text-muted-foreground text-base ml-2 font-bold' }, String(year))
 		]),
-		Div({ class: 'flex items-center space-x-2' }, [
+		Div({ class: 'flex items-center gap-x-2' }, [
 			Button({ variant: 'icon', icon: Icons.chevron.single.left, click: props.previous }),
 			Button({ variant: 'icon', icon: Icons.chevron.single.right, click: props.next }),
 			Tooltip({ content: 'Add Event', position: 'left' }, Button({ variant: 'icon', class: 'lg:mr-4', icon: Icons.circlePlus }))

@@ -107,7 +107,7 @@ const DateDivider = (date) =>
  * @returns {object}
  */
 export const PaymentList = Atom(({ payments }) =>
-	Div({ class: "space-y-6 mt-12" }, [
+	Div({ class: "gap-y-6 mt-12" }, [
 		new List({
 			cache: "payments",
 			key: "id",

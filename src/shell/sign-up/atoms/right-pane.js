@@ -44,7 +44,7 @@ const Logo = Atom((props) => (
 const SignInNavigation = Atom(({ src }) =>
 (
 	Div({ class: 'p-4 flex justify-between' }, [
-		Div({ class: 'flex items-center space-x-2' }, [
+		Div({ class: 'flex items-center gap-x-2' }, [
 			Logo({
 				src: src || '/images/logo.svg'
 			})

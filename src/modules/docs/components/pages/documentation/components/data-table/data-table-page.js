@@ -290,7 +290,7 @@ DynamicDataTable({
 		}),
 
 		// 5) Dynamic Data Table Features
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Dynamic Data Table Features'),
 			P({ class: 'text-muted-foreground' }, 'DynamicDataTable provides automatic data management with built-in loading states, error handling, and model integration.'),
 			CodeCard(`// Key features of DynamicDataTable:
@@ -418,7 +418,7 @@ const userTableSkeleton = (index, columnCount) => {
 	return Tr({ class: 'border-b hover:bg-muted/50' }, [
 		// User column with avatar
 		Td({ class: 'px-6 py-4' }, [
-			Div({ class: 'flex items-center space-x-3' }, [
+			Div({ class: 'flex items-center gap-x-3' }, [
 				Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10' }),
 				Div([
 					Skeleton({ width: 'w-24', height: 'h-4' }),
@@ -468,7 +468,7 @@ new DataTable({
 		}),
 
 		// 6) Skeleton API and Control
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Skeleton API and Control'),
 			P({ class: 'text-muted-foreground' }, 'The skeleton system provides automatic and manual control methods for managing loading states.'),
 			CodeCard(`// Skeleton configuration options
@@ -508,7 +508,7 @@ table.mingle(data);     // Merge/update rows
 		]),
 
 		// 4) Selecting & resetting
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Selecting and Resetting Rows'),
 			P({ class: 'text-muted-foreground' }, 'DataTable supports toggling all rows, clearing selections, and retrieving selected rows.'),
 			CodeCard(`// Suppose 'dt' is your DataTable instance
@@ -527,7 +527,7 @@ dt.updateSelected(); // updates the internal 'selected' boolean
 		]),
 
 		// 5) Removing items
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Removing Items'),
 			P({ class: 'text-muted-foreground' }, 'Use remove() to delete rows by passing an array of items (or a single item).'),
 			CodeCard(`// dt is your DataTable instance
@@ -541,7 +541,7 @@ dt.remove(selectedItems); // e.g. dt.getSelectedRows()
 		]),
 
 		// 6) Appending items
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Appending Items'),
 			P({ class: 'text-muted-foreground' }, 'Use append() to add rows at the end of the list. Accepts an array or single object.'),
 			CodeCard(`// dt is your DataTable instance
@@ -557,7 +557,7 @@ dt.append([
 		]),
 
 		// 7) Mingling items
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Mingling Items'),
 			P({ class: 'text-muted-foreground' }, 'Mingle merges new items with existing items by matching keys. If withDelete = true, items not in newItems are removed.'),
 			CodeCard(`// dt is your DataTable instance
@@ -572,7 +572,7 @@ dt.mingle(newItems, true);
 		]),
 
 		// 8) Prepending items
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Prepending Items'),
 			P({ class: 'text-muted-foreground' }, 'Use prepend() to add new rows at the beginning of the list, shifting existing rows down.'),
 			CodeCard(`// dt is your DataTable instance

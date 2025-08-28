@@ -12,7 +12,7 @@ import { DOCUMENTS } from "./documents.js";
 const Header = () =>
 (
 	Div({ class: "flex items-center justify-between mb-6 py-2" }, [
-		Div({ class: "flex flex-auto justify-between items-center space-x-4" }, [
+		Div({ class: "flex flex-auto justify-between items-center gap-x-4" }, [
 			H2({ class: "text-2xl font-semibold" }, `Documents`),
 			Button({
 				variant: "withIcon",
@@ -50,7 +50,7 @@ const DocumentItem = (document) =>
 		[
 			Icon({ size: 'lg' }, Icons.document.text)
 		]),
-		Div({ class: "p-4 flex flex-col space-y-1" }, [
+		Div({ class: "p-4 flex flex-col gap-y-1" }, [
 			P({ class: "text-sm font-medium truncate" }, document.title),
 			P({ class: "text-xs text-muted-foreground truncate" }, document.subtitle),
 			//P({ class: "text-sm font-semibold" }, document.price)

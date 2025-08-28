@@ -49,7 +49,7 @@ export const CookieConsentBar = Jot(
                 ),
 
                 // Action Buttons
-                Div({ class: 'flex flex-auto md:flex-none w-full md:w-auto space-x-4' }, [
+                Div({ class: 'flex flex-auto md:flex-none w-full md:w-auto gap-x-4' }, [
                     // Accept Cookies Button
                     Button({
                         variant: 'primary',

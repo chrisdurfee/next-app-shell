@@ -67,7 +67,7 @@ const SignUpWithGoogleButton = Atom(() =>
  * @returns {object}
  */
 export const CardHeader = ({ title, description }) => (
-	Header({ class: 'text-center py-6 flex flex-auto flex-col space-y-1' }, [
+	Header({ class: 'text-center py-6 flex flex-auto flex-col gap-y-1' }, [
 		H2({ class: "font-semibold tracking-tight text-2xl" }, title),
 		P({ class: "text-sm text-muted-foreground" }, description)
 	])

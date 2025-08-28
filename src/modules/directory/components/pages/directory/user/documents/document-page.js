@@ -29,7 +29,7 @@ export const BackButton = Atom((props) =>
 const Header = ({ document, editing, toggle }) =>
 (
 	Div({ class: "flex items-center justify-between mb-6 py-2" }, [
-		Div({ class: "flex items-center space-x-2" }, [
+		Div({ class: "flex items-center gap-x-2" }, [
 			BackButton({ backUrl: `/directory/user/${document.userId}/documents` }),
 			H2({ class: "text-2xl font-semibold" }, `${document.title} / ${document.date}`)
 		]),

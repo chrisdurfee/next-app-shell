@@ -25,24 +25,24 @@ export const IntroPage = () => (
 		},
 		[
 			// About the App Shell
-			Section({ class: 'space-y-4' }, [
+			Section({ class: 'gap-y-4' }, [
 				H4({ class: 'text-lg font-bold' }, 'The App Shell'),
 				P({ class: 'text-muted-foreground' }, `The App Shell is the core that sets up the Configs, router, Service Worker, ENV, global "app" variable, and renders the "shell" that is used to add the additional pages.`),
 				P({ class: 'text-muted-foreground' }, `As a modular and scalable PWA (Progressive Web App), it offers easy installation across devices, making it suitable as a foundational framework for new projects. The project comes with PWA installation prompts for all devices.`),
 				P({ class: 'text-muted-foreground' }, `Designed with accessibility, customization, and ease of use in mind, the App Shell accelerates setup, allowing developers to focus on creating functionality without reinventing the wheel.`)
 			]),
 
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Base UI'),
 				P({ class: 'text-muted-foreground' }, { html: `The <a class="underline" href="https://github.com/chrisdurfee/ui" target="_blank">@base-framework/ui</a> npm package is a collection of atoms and components that are designed to be used by the app shell. This package has atoms, molecules, organisms, icons, templates, and pages. This package is open source and can be used by any project.` }),
 			]),
 
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
 				P(`The shell supports auth flows and has a "signed in" and signed out" mode. It has a few default page types including a login page. The implentation of the auth flow is up to the developer.`),
 			]),
 
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold mt-12' }, 'Examples'),
 				P({ class: 'text-muted-foreground' }, `The following examples demonstrate the use of various components and atoms within the App Shell framework that are designs from Shadcn.`),
 			]),
@@ -117,7 +117,7 @@ export const IntroPage = () => (
 			]),
 
 			// About the Theme
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Theme and Styling'),
 				P({ class: 'text-muted-foreground' }, [
 					Span(`This project is powered by Tailwind CSS, providing a highly customizable, utility-first approach to styling. Additionally, the theme draws inspiration from `),
@@ -127,7 +127,7 @@ export const IntroPage = () => (
 			]),
 
 			// About the Icons
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Icons'),
 				P({ class: 'text-muted-foreground' }, [
 					Span(`This project utilizes Heroicons, a comprehensive icon set provided by the Tailwind Labs team. These icons are fully customizable and designed to fit seamlessly within Tailwind-based applications.`)
@@ -140,7 +140,7 @@ export const IntroPage = () => (
 			]),
 
 			// About the Components and Atoms
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Components and Atoms'),
 				P({ class: 'text-muted-foreground' }, [
 					Span(`Leveraging the Base framework, this project provides a comprehensive set of reusable components and atoms. Inspired by projects like `),
@@ -159,7 +159,7 @@ export const IntroPage = () => (
 			]),
 
 			// About the Contributors
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Contributors and Community'),
 				P({ class: 'text-muted-foreground' }, [
 					Span(`The App Shell is an open-source project, and contributions from the community are welcome. The project is maintained by a dedicated developer who aims to continuously enhance its functionality.`)

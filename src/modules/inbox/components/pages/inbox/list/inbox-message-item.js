@@ -9,11 +9,11 @@ import { TimeFrame } from "@base-framework/ui/molecules";
  * @returns {object}
  */
 const InboxMessageSkeleton = () => (
-	Div({ class: "flex flex-col flex-auto w-full rounded-md space-y-3" }, [
+	Div({ class: "flex flex-col flex-auto w-full rounded-md gap-y-3" }, [
 		Skeleton({ width: "w-3/4", height: "h-6", class: "rounded" }), // Skeleton for name
 		Skeleton({ width: "w-1/2", height: "h-5", class: "rounded" }), // Skeleton for subject
 		Skeleton({ width: "w-full", height: "h-8", class: "rounded" }), // Skeleton for content
-		Div({ class: "flex space-x-2 mt-4 pb-[1.5px]" }, [
+		Div({ class: "flex gap-x-2 mt-0 pb-[1.5px]" }, [
 			Skeleton({ width: "w-12", height: "h-5", class: "rounded" }), // Tag 1 skeleton
 			Skeleton({ width: "w-14", height: "h-5", class: "rounded" }), // Tag 2 skeleton
 		])

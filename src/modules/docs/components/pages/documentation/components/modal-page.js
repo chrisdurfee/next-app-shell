@@ -32,7 +32,7 @@ const ModalButton = ({ label, buttonStyle, size, type }) => Button({
         type
     },
     [
-        Div({ class: 'flex flex-col max-w-lg lg:p-4 space-y-8' }, [
+        Div({ class: 'flex flex-col max-w-lg lg:p-4 gap-y-8' }, [
             new FormField({
                 name: "popover-test",
                 label: "Popover Test",
@@ -84,7 +84,7 @@ const ModalForm = ({ size = 'md', type = 'center' }) =>
         onSubmit: () => console.log('Form submitted')
     },
     [
-        Div({ class: 'flex flex-col lg:p-4 space-y-8' }, [
+        Div({ class: 'flex flex-col lg:p-4 gap-y-8' }, [
             Fieldset({ legend: 'Issue Details' }, [
                 Div({ class: "flex flex-auto w-full gap-4" }, [
                     new FormField({ name: "area", label: "Area" }, [

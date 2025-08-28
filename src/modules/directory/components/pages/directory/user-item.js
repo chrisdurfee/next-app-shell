@@ -10,7 +10,7 @@ import { Avatar, StaticStatusIndicator } from "@base-framework/ui/molecules";
  * @returns {object}
  */
 const SkeletonUser = () => (
-	Div({ class: "flex flex-row md:flex-col rounded-md shadow-md p-2 sm:p-0 space-x-4 sm:space-x-0 sm:space-y-4" }, [
+	Div({ class: "flex flex-row md:flex-col rounded-md shadow-md p-2 sm:p-0 gap-x-4 sm:gap-x-0 sm:gap-y-4" }, [
 		// Avatar placeholder
 		Div({ class: "flex-none flex items-center justify-center" }, [
 			/* small screens: 40px circle, md+: 64px */
@@ -22,8 +22,8 @@ const SkeletonUser = () => (
 		]),
 
 		// Text placeholders
-		Div({ class: "flex flex-col flex-auto sm:space-y-4" }, [
-			Div({ class: "flex flex-col space-y-2 sm:pb-2" }, [
+		Div({ class: "flex flex-col flex-auto sm:gap-y-4" }, [
+			Div({ class: "flex flex-col gap-y-2 sm:pb-2" }, [
 				// Name line
 				Skeleton({ width: "w-3/4", height: "h-5", class: "rounded-md" }),
 
@@ -110,7 +110,7 @@ export const UserItem = Jot(
 			// @ts-ignore
 			const { user } = this;
 
-			return Card({ class: "w-full sm:max-w-sm mx-auto bg-card space-y-4 hover:bg-muted/50 transition", margin: 'mb-1 md:mb-2', padding: 'p-4 md:p-6' }, [
+			return Card({ class: "w-full sm:max-w-sm mx-auto bg-card gap-y-4 hover:bg-muted/50 transition", margin: 'mb-1 md:mb-2', padding: 'p-4 md:p-6' }, [
 				Div({ class: "transition" }, [
 					On('loaded', (loaded) => (!loaded)
 						? SkeletonUser()

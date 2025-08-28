@@ -13,7 +13,7 @@ import { DocPage } from '../../doc-page.js';
  * @returns {object}
  */
 const FormPreview = Atom((props, children) => (
-    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full py-4 space-y-8 max-w-[450px]' }, children)
+    Div({ ...props, class: 'flex flex-auto items-center justify-center w-full py-4 gap-y-8 max-w-[450px]' }, children)
 ));
 
 const frameworks = [
@@ -158,7 +158,7 @@ export const SettingsForm = () => (
  */
 export const MyFormSection = Atom((props, children) =>
 {
-	return Fieldset({ legend: 'Configuration', class: 'space-y-8' }, [
+	return Fieldset({ legend: 'Configuration', class: 'gap-y-8' }, [
 		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
 			new FormField({
                 name: "cloud",
@@ -299,7 +299,7 @@ import { Atom } from "@base-framework/base";
 
 export const MyFormSection = Atom((props, children) =>
 {
-	return Fieldset({ legend: 'Configuration', class: 'space-y-8' }, [
+	return Fieldset({ legend: 'Configuration', class: 'gap-y-8' }, [
 		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
 			new FormField({
                 name: "cloud",

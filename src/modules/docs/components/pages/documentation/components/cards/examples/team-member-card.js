@@ -56,7 +56,7 @@ const TeamMember = ({ name, email, role, image }) => (
  * @returns {object} - List of team members.
  */
 const TeamMemberList = ({ members }) => (
-	Div({ class: "space-y-3" },
+	Div({ class: "gap-y-3" },
 		members.map(member => TeamMember(member))
 	)
 );
@@ -69,7 +69,7 @@ const TeamMemberList = ({ members }) => (
  * @returns {object} - The complete team members card.
  */
 export const TeamMemberCard = ({ members }) => (
-	Card({ class: "w-full max-w-md mx-auto p-6 bg-card space-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
 		CardHeader({ title: "Team Member", description: "Invite your team members to collaborate." }),
 
 		TeamMemberList({ members })

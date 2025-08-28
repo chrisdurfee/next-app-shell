@@ -14,7 +14,7 @@ import { CardHeader } from "./card-atoms.js";
 const CookieToggle = ({ title, description, defaultState, onChange }) => (
 	Div({ class: "flex items-start justify-between gap-2" }, [
 		// Cookie Information
-		Div({ class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col space-y-1" }, [
+		Div({ class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col gap-y-1" }, [
 			Span({ class: "font-medium text-foreground" }, title),
 			Span({ class: "font-normal leading-snug text-muted-foreground" }, description),
 		]),
@@ -34,7 +34,7 @@ const CookieToggle = ({ title, description, defaultState, onChange }) => (
  * @returns {object} - The complete cookie settings card.
  */
 export const CookieSettingsCard = () => (
-	Card({ class: "w-full max-w-md mx-auto p-6 bg-card space-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
 		CardHeader({ title: "Cookie Settings", description: "Manage your cookie settings here." }),
 
 		Div({ class: 'pt-0 grid gap-6' }, [

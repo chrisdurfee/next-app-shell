@@ -17,7 +17,7 @@ import { WeekHeader } from "./week-header.js";
  */
 export const WeekCalendar = (props) =>
 {
-	return Div({ class: 'flex flex-auto flex-col w-full space-y-1' }, [
+	return Div({ class: 'flex flex-auto flex-col w-full gap-y-1' }, [
 		WeekHeader({
 			current: props.current,
 			today: props.today,

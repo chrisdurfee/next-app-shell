@@ -11,7 +11,7 @@ import { getOrderById } from "../orders.js";
  */
 const ItemLines = () =>
     Div({
-        class: 'fex flex-auto flex-col space-y-3',
+        class: 'fex flex-auto flex-col gap-y-3',
         for: ['items', (item) =>
             SplitRow(item.label, `$${item.price.toFixed(2)}`)
         ]
@@ -23,7 +23,7 @@ const ItemLines = () =>
  * @returns {object}
  */
 const CostBreakdown = () =>
-    Div({ class: 'flex flex-auto flex-col space-y-3' }, [
+    Div({ class: 'flex flex-auto flex-col gap-y-3' }, [
         SplitRow('Subtotal', `$[[subtotal]]`),
         SplitRow('Shipping', `$[[shipping]]`),
         SplitRow('Tax', `$[[tax]]`),
@@ -62,7 +62,7 @@ const ShippingBilling = () =>
 const CustomerInfo = () =>
     Div({ class: 'pb-4' }, [
         H3({ class: 'text-sm font-semibold mb-3 pt-6' }, 'Customer Information'),
-        Div({ class: 'text-sm space-y-3' }, [
+        Div({ class: 'text-sm gap-y-3' }, [
             SplitRow('Customer ID', '[[orderId]]'),
             SplitRow('Date', '[[date]]'),
             SplitRow('Customer', '[[customerInfo.name]]'),

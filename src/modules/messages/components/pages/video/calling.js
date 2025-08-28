@@ -13,7 +13,7 @@ import { STATES } from "./states.js";
  */
 export const Calling = ({ onCancel }) => (
 	Div({
-		class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95',
+		class: 'flex flex-auto flex-col items-center justify-center gap-y-6 bg-background/95',
 
 		/**
 		 * This will chnage the state to connected
@@ -40,7 +40,7 @@ export const Calling = ({ onCancel }) => (
 		]),
 
 		// Status text
-		Div({ class: 'space-y-2 text-center' }, [
+		Div({ class: 'gap-y-2 text-center' }, [
 			Span({ class: 'text-xl font-semibold' }, 'Calling...'),
 			Span({ class: 'text-sm text-muted-foreground block' }, 'Waiting for others to join')
 		]),

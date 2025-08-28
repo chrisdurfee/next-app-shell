@@ -13,7 +13,7 @@ import { Icons } from "@base-framework/ui/icons";
  */
 export const Error = ({ errorMessage, onRetry, onExit }) => (
 	Div({
-		class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95'
+		class: 'flex flex-auto flex-col items-center justify-center gap-y-6 bg-background/95'
 	}, [
 		// Error icon
 		Div({
@@ -23,13 +23,13 @@ export const Error = ({ errorMessage, onRetry, onExit }) => (
 		]),
 
 		// Error message
-		Div({ class: 'space-y-2 text-center max-w-md' }, [
+		Div({ class: 'gap-y-2 text-center max-w-md' }, [
 			Span({ class: 'text-xl font-semibold text-red-500' }, 'Connection Error'),
 			Span({ class: 'text-sm text-muted-foreground block' }, errorMessage)
 		]),
 
 		// Action buttons
-		Div({ class: 'flex space-x-4' }, [
+		Div({ class: 'flex gap-x-4' }, [
 			Button({
 				class: 'w-12 h-12 rounded-full bg-primary hover:bg-primary text-primary-foreground flex items-center justify-center mt-8',
 				click: onRetry

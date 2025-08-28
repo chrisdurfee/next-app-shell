@@ -13,7 +13,7 @@ import { Dialog, Toggle } from "@base-framework/ui/molecules";
 const CookieToggle = ({ title, description, defaultState, onChange }) => (
     Div({ class: "flex items-start justify-between gap-2" }, [
         // Cookie Information
-        Div({ class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col space-y-1" }, [
+        Div({ class: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 flex flex-col gap-y-1" }, [
             Span({ class: "font-medium text-foreground" }, title),
             Span({ class: "font-normal leading-snug text-muted-foreground" }, description),
         ]),
@@ -50,7 +50,7 @@ const onSubmit = (props) =>
  * @returns {object}
  */
 const CookieForm = (props) => (
-    Form({ class: 'flex flex-auto flex-col space-y-8 mt-8', submit: onSubmit(props) }, [
+    Form({ class: 'flex flex-auto flex-col gap-y-8 mt-8', submit: onSubmit(props) }, [
         Div({ class: 'pt-0 grid gap-6' }, [
             // Cookie Settings Options
             CookieToggle({

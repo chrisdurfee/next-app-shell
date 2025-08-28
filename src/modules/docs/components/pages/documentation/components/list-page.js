@@ -287,7 +287,7 @@ scrollableList.refresh();`
 		}),
 
 		// Advanced list operations
-		Section({ class: 'space-y-4 mt-8' }, [
+		Section({ class: 'gap-y-4 mt-8' }, [
 			H4({ class: 'text-lg font-bold' }, 'Removing Items'),
 			P({ class: 'text-muted-foreground' }, 'Use remove() to delete items by their key. You can pass an array of items.'),
 			CodeCard(`// Suppose 'list' is an instance of the List component.
@@ -300,7 +300,7 @@ list.remove([ item1, item2 ]);`)
 		]),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },
@@ -320,7 +320,7 @@ list.setRows(newData); // Replaces entire list with newData
 		),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },
@@ -337,7 +337,7 @@ console.log('Current list items:', currentItems);
 		),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },
@@ -353,7 +353,7 @@ console.log('Current list items:', currentItems);
 		),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },
@@ -376,7 +376,7 @@ list.append([
 		),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },
@@ -398,7 +398,7 @@ list.mingle(newItems, true);
 		),
 
 		Section(
-		{ class: 'space-y-4 mt-8' },
+		{ class: 'gap-y-4 mt-8' },
 		[
 			H4(
 			{ class: 'text-lg font-bold' },

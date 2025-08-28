@@ -41,7 +41,7 @@ export const LeftPane = Atom((props) =>
 (
 	Div({ class: 'hidden md:flex flex-auto flex-col justify-between bg-accent p-8' }, [
 		// Top Logo
-		Div({ class: 'flex items-center space-x-2' }, [
+		Div({ class: 'flex items-center gap-x-2' }, [
 			Logo({ src: props.src || '/images/logo.svg' }),
 			Div({ class: 'text-lg font-bold' }, Configs.APP_NAME),
 		]),

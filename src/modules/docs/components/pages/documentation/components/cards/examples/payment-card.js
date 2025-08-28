@@ -82,7 +82,7 @@ const PaymentMethodSelector = () => (
  * @returns {object}
  */
 const PaymentForm = () => (
-	Form({ class: 'space-y-4', submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
+	Form({ class: 'gap-y-4', submit: (e) => { e.preventDefault(); console.log("Payment method added"); } }, [
 		// Name on Card field
 		new FormField({
 			name: "name",
@@ -168,11 +168,11 @@ const PaymentForm = () => (
  * @returns {object}
  */
 export const PaymentCard = () => (
-	Card({ class: "w-full max-w-md mx-auto p-8 bg-card space-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-8 bg-card gap-y-6" }, [
 		CardHeader({ title: "Payment Method", description: "Add a new payment method to your account." }),
 		PaymentMethodSelector(),
 
-		Div({ class: "space-y-4" }, [
+		Div({ class: "gap-y-4" }, [
 			PaymentForm()
 		])
 	])

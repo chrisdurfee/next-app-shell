@@ -24,7 +24,7 @@ export const DisplaySettings = () => (
 
                 // Group of toggles/checkboxes
                 FormCardGroup({ label: "Viewable Items", description: "Select which items are visible in the sidebar.", border: true }, [
-                    Div({ class: "flex flex-col space-y-2" }, [
+                    Div({ class: "flex flex-col gap-y-2" }, [
                         new Checkbox({
                             label: "Recents",
                             checked: true,

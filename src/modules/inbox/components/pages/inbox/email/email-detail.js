@@ -91,7 +91,7 @@ export const EmailDetail = Jot(
 		setTimeout(() => (this.state.loaded = true), DELAY);
 
 		return Div({
-			class: "w-full flex flex-auto flex-col space-y-4",
+			class: "w-full flex flex-auto flex-col gap-y-4",
 
 			/**
 			 * This will render the skeleton and message item after
@@ -108,7 +108,7 @@ export const EmailDetail = Jot(
 
 					return !loaded
 					? EmailDetailSkeleton()
-					: Div({ class: "flex flex-auto flex-col space-y-4 max-h-screen p-4" }, [
+					: Div({ class: "flex flex-auto flex-col gap-y-4 max-h-screen p-4" }, [
 
 						EmailToolbar({
 							message,

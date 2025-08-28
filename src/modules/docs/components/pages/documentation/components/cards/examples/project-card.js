@@ -20,7 +20,7 @@ const ProjectRow = ({ name, description, stars, language, lastUpdated }) => (
 			Span({ class: "text-sm text-muted-foreground" }, description),
 
 			// Project Metadata
-			Div({ class: "flex space-x-4 text-sm text-muted-foreground mt-3" }, [
+			Div({ class: "flex gap-x-4 text-sm text-muted-foreground mt-3" }, [
 				Div({ class: 'flex items-center gap-2' }, [
 					Icon({ class: " text-blue-500" }, Icons.document.text),
 					Span(` ${language}`)
@@ -54,7 +54,7 @@ const ProjectRow = ({ name, description, stars, language, lastUpdated }) => (
  * @returns {object} - List of projects.
  */
 const ProjectList = ({ projects }) => (
-	Div({ class: "space-y-3" }, projects.map(project => ProjectRow(project)))
+	Div({ class: "gap-y-3" }, projects.map(project => ProjectRow(project)))
 );
 
 const projects = [
@@ -82,7 +82,7 @@ const projects = [
  * @returns {object} - The complete project card.
  */
 export const ProjectCard = () => {
-	return Card({ class: "w-full max-w-md mx-auto p-6 bg-card space-y-6" }, [
+	return Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
 		Div({ class: "font-semibold text-lg text-foreground" }, "Projects"),
 		ProjectList({ projects })
 	]);

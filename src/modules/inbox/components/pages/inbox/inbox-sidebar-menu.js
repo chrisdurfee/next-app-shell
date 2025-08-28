@@ -46,7 +46,7 @@ const CustomNavLink = ({ label, count, icon, href }) => (
 			href,
 			exact: false
 		}, [
-		Div({ class: "flex items-center space-x-2" }, [
+		Div({ class: "flex items-center gap-x-2" }, [
 			icon && Icon({ class: "w-5 h-5" }, icon),
 			Span({ class: "text-sm font-medium text-foreground" }, label),
 		]),
@@ -66,11 +66,11 @@ export const InboxSidebarMenu = () => (
 		]),
 		Div({ class: 'flex flex-auto flex-col divide-y divide-border' }, [
 			Div({
-				class: "space-y-2 mb-4",
+				class: "flex flex-col gap-y-2 pb-4",
 				map: [ PRIUMARY_BUTTONS, CustomNavLink]
 			}),
 			Div({
-				class: "space-y-2 pt-4",
+				class: "flex flex-col gap-y-2 pt-4",
 				map: [ OTHER_BUTTONS, CustomNavLink]
 			})
 		]),

@@ -103,13 +103,13 @@ export const AccountSettings = () => (
                         label: '',
                         description: 'The base URL of your website. Used as an allow-list for redirects and for constructing URLs used in emails.'
                     }, [
-                        Div({ class: 'flex flex-auto space-x-2' }, [
+                        Div({ class: 'flex flex-auto gap-x-2' }, [
                             Input({ type: 'url', placeholder: 'http://localhost:3000', required: true }),
                         ])
                     ])
                 ]),
                 FormCardContent({ border: true }, [
-                    Div({ class: 'mt-4 flex justify-end space-x-2' }, [
+                    Div({ class: 'mt-4 flex justify-end gap-x-2' }, [
                         Button({ variant: 'outline' }, 'Cancel'),
                         Button({ variant: 'primary' }, 'Save')
                     ])
@@ -125,7 +125,7 @@ export const AccountSettings = () => (
                         description: ''
                     }, [
                         Div({ class: 'flex items-center justify-between px-4 py-2' }, [
-                            Div({ class: 'flex items-center space-x-2' }, [
+                            Div({ class: 'flex items-center gap-x-2' }, [
                                 Icon(Icons.global),
                                 P('https://mobbin.com/')
                             ]),
@@ -144,7 +144,7 @@ export const AccountSettings = () => (
             FormCard({ title: 'Custom Domains', description: 'Present a branded experience to your users.' }, [
                 FormCardContent({ class: 'flex items-center justify-between bg-muted p-4 rounded-md' }, [
                     Div({ class: 'flex flex-auto justify-center' }, [
-                        Div({ class: 'flex items-start space-x-3' }, [
+                        Div({ class: 'flex items-start gap-x-3' }, [
                             Icon(Icons.information),
                             Div([
                                 P({ class: 'font-medium' }, 'Custom domains are a Pro plan add-on'),
@@ -162,7 +162,7 @@ export const AccountSettings = () => (
             FormCard({ title: 'Delete Project' }, [
                 FormCardContent({ class: 'bg-destructive/10 border border-destructive rounded-md p-4' }, [
                     Div({ class: 'flex flex-auto' }, [
-                        Div({ class: 'flex flex-auto space-x-3' }, [
+                        Div({ class: 'flex flex-auto gap-x-3' }, [
                             Icon({ class: 'text-destructive' }, Icons.warning),
                             Div([
                                 P({ class: 'font-medium text-destructive' }, 'Deleting this project will also remove your database.'),

@@ -16,8 +16,8 @@ import { DataTable } from "@base-framework/ui/organisms";
  * @returns {object}
  */
 export const ProfileSection = Atom((props, children) => (
-	Div({ class: "space-y-6" }, [
-		Header({ class: "flex flex-col space-y-2" }, [
+	Div({ class: "gap-y-6" }, [
+		Header({ class: "flex flex-col gap-y-2" }, [
 			H2({ class: "text-xl font-semibold" }, props.title),
 			props.description && P({ class: "text-sm text-muted-foreground" }, props.description)
 		]),
@@ -45,49 +45,49 @@ export const OrgDetailsSection = () =>
 		Card({ class: "p-6", margin: "m-0", hover: true }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" }, [
 				// Employee ID
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Employee ID"),
 					P({ class: "font-medium text-foreground" }, "EMP-000123")
 				]),
 
 				// Date Started
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Date Started"),
 					P({ class: "font-medium text-foreground" }, "Jan. 1, 2020")
 				]),
 
 				// Time-to-Hire
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Time-to-Hire"),
 					P({ class: "font-medium text-foreground" }, "45 days")
 				]),
 
 				// Years at Company
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Years at Company"),
 					P({ class: "font-medium text-foreground" }, "3 years")
 				]),
 
 				// Last Promotion Date
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Last Promotion Date"),
 					P({ class: "font-medium text-foreground" }, "Jun. 15, 2022")
 				]),
 
 				// Department
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Department"),
 					P({ class: "font-medium text-foreground" }, "Engineering")
 				]),
 
 				// Reporting Manager
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Reporting Manager"),
 					P({ class: "font-medium text-foreground" }, "Jordan Smith")
 				]),
 
 				// Office / Time Zone
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Office / Time Zone"),
 					P({ class: "font-medium text-foreground" }, "Dubai / GST")
 				])
@@ -110,20 +110,20 @@ export const PersonalDetailsSection = () =>
 		Div([
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" }, [
 				// Work Style
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Work Style"),
 					P({ class: "font-medium text-foreground" }, "Hybrid")
 				]),
 
 				// Emergency Contact
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Emergency Contact"),
 					P({ class: "font-medium text-foreground" }, "Alex Doe"),
 					P({ class: "text-sm text-muted-foreground" }, "(555) 123-4567")
 				]),
 
 				// Birthday
-				Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, "Birthday"),
 					P({ class: "font-medium text-foreground" }, "Jun. 7th")
 				])
@@ -146,11 +146,11 @@ export const ScheduleSection = () => {
 			Div({ class: "grid grid-cols-7 text-sm text-muted-foreground divide-x divide-border" },
 				days.map((day) =>
 					(day == 'Sat' || day == 'Sun')
-					? Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded" }, [
+					? Div({ class: "flex flex-col items-center gap-y-1 p-2 bg-card rounded" }, [
 						P({ class: "font-medium text-foreground" }, day),
 						P("-")
 					])
-					: Div({ class: "flex flex-col items-center space-y-1 p-2 bg-card rounded hover:bg-muted/50" }, [
+					: Div({ class: "flex flex-col items-center gap-y-1 p-2 bg-card rounded hover:bg-muted/50" }, [
 						P({ class: "font-medium text-foreground flex-col" }, day),
 						P("9:00 am"),
 						P("5:00 pm")
@@ -209,9 +209,9 @@ export const ContactSection = ({ user }) =>
  */
 export const PositionHistorySection = ({ history }) =>
 	ProfileSection({ title: "Position History" }, [
-		Div({ class: "relative pl-6 space-y-6" }, [
+		Div({ class: "relative pl-6 gap-y-6" }, [
 			history.map((position, index) => (
-				Div({ class: "flex flex-auto flex-row space-x-4" }, [
+				Div({ class: "flex flex-auto flex-row gap-x-4" }, [
 					Div({ class: 'flex flex-col relative items-center' }, [
 						Icon(Icons.breifcase),
 						// vertical line
@@ -268,7 +268,7 @@ export const ProjectsSection = ({ projects }) =>
  */
 export const SkillsSection = ({ skills }) =>
 	ProfileSection({ title: "Skills" }, [
-		Div({ class: "space-y-4" }, [
+		Div({ class: "gap-y-4" }, [
 			Div({ class: "flex flex-wrap gap-2" }, skills.map(skill => Badge({ variant: "outline" }, skill)))
 		])
 	]);
@@ -319,7 +319,7 @@ export const ReviewsSection = ({ reviews }) =>
  */
 export const CancelledRequestItem = Atom((props) =>
 	Card({ class: "flex items-center justify-between p-4 bg-card rounded-lg", margin: 'm-0', hover: true }, [
-		Div({ class: "flex items-center space-x-4" }, [
+		Div({ class: "flex items-center gap-x-4" }, [
 			Div({ class: "flex items-center bg-muted rounded-full p-4" }, [
 				Icon(props.icon)
 			]),
@@ -351,9 +351,9 @@ export const CancelledRequestItem = Atom((props) =>
  * @returns {object}
  */
 export const PendingRequestItem = Atom((props) =>
-	Card({ class: "flex flex-col space-y-2 p-4 bg-card rounded-lg", margin: 'm-0', hover: true }, [
+	Card({ class: "flex flex-col gap-y-2 p-4 bg-card rounded-lg", margin: 'm-0', hover: true }, [
 		Div({ class: "flex items-center justify-between" }, [
-			Div({ class: "flex items-center space-x-4" }, [
+			Div({ class: "flex items-center gap-x-4" }, [
 				Div({ class: "flex items-center bg-muted rounded-full p-4" }, [
 					Icon(props.icon)
 				]),
@@ -365,7 +365,7 @@ export const PendingRequestItem = Atom((props) =>
 					)
 				])
 			]),
-			Div({ class: "flex items-center space-x-2" }, [
+			Div({ class: "flex items-center gap-x-2" }, [
 				Badge({ variant: "secondary" }, props.status),
 				Button({ variant: "icon", class: 'outline', icon: Icons.check, label: "Approve" }),
 				Button({ variant: "icon", class: 'outline', icon: Icons.x, label: "Decline" })
@@ -389,7 +389,7 @@ export const TimeOffRequestsSection = () =>
 			onAction: () => Button({ variant: "outline", icon: Icons.plus.default, label: "Register time-off" })
 		},
 		[
-			Div({ class: "space-y-3", margin: "m-0" }, [
+			Div({ class: "gap-y-3", margin: "m-0" }, [
 				CancelledRequestItem({
 					icon: Icons.airplane,
 					typeLabel: "Vacation",

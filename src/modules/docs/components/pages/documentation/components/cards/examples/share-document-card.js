@@ -79,7 +79,7 @@ const PersonWithAccess = ({ name, email, access, image }) => (
  * @returns {object} - List of people with access.
  */
 const PeopleWithAccessList = ({ people }) => (
-	Div({ class: "space-y-3" },
+	Div({ class: "gap-y-3" },
 		people.map(person => PersonWithAccess(person))
 	)
 );
@@ -92,7 +92,7 @@ const PeopleWithAccessList = ({ people }) => (
  * @returns {object} - The complete share document card.
  */
 export const ShareDocumentCard = ({ link, people }) => (
-	Card({ class: "w-full max-w-md mx-auto p-6 bg-card space-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
 		CardHeader({ title: "Share this document", description: "Anyone with the link can view this document." }),
 
 		// Shareable Link Section

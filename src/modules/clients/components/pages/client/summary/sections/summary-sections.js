@@ -16,8 +16,8 @@ import { ClientSummaryCard } from "./client-summary-card.js";
  * @returns {object}
  */
 const ProfileSection = Atom((props, children) =>
-	Div({ class: "space-y-6" }, [
-		Header({ class: "flex flex-col space-y-2" }, [
+	Div({ class: "gap-y-6" }, [
+		Header({ class: "flex flex-col gap-y-2" }, [
 			H2({ class: "text-xl font-semibold" }, props.title),
 			props.description && P({ class: "text-sm text-muted-foreground" }, props.description)
 		]),
@@ -36,19 +36,19 @@ const ProfileSection = Atom((props, children) =>
  * @returns {object}
  */
 export const ClientAvatarSection = Atom(({ client }) =>
-	Div({ class: "flex items-center space-x-4 my-0" }, [
+	Div({ class: "flex items-center gap-x-4 my-0" }, [
 		Avatar({
 			src: client.avatar,
 			alt: client.name,
 			fallbackText: client.name,
 			size: "lg"
 		}),
-		Div({ class: "flex flex-col space-y-1" }, [
-			Div({ class: "flex items-baseline space-x-2" }, [
+		Div({ class: "flex flex-col gap-y-1" }, [
+			Div({ class: "flex items-baseline gap-x-2" }, [
 				H2({ class: "text-2xl font-semibold text-foreground" }, client.name),
 				P({ class: "text-sm text-muted-foreground" }, client.code)
 			]),
-			Div({ class: "flex items-center space-x-2" }, [
+			Div({ class: "flex items-center gap-x-2" }, [
 				P({ class: "text-sm text-muted-foreground" }, client.contactName),
 				Badge({
 					variant: client.status === "Active" ? "primary" : "secondary"
@@ -75,7 +75,7 @@ export const ClientSummaryCardsSection = Atom(({ client }) =>
 				"bg-linear-to-r from-background to-transparent"
 		}),
 		Div({ class: "flex flex-auto overflow-x-auto -ml-6 mr-0 px-6" }, [
-			Div({ class: "flex space-x-4 pb-4 max-w-xs" }, [
+			Div({ class: "flex gap-x-4 pb-4 max-w-xs" }, [
 				ClientSummaryCard({
 					title: "Payment Amount",
 					value: `$${client.payment}`,
@@ -142,17 +142,17 @@ export const ContractSection = Atom(({client}) =>
 		Card({ class: "p-6", margin: "m-0", hover: true }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 gap-6" }, [
 				// left side
-				Div({ class: "space-y-12" }, [
+				Div({ class: "gap-y-12" }, [
 					// expiration row
-					Div({ class: "space-y-1" }, [
+					Div({ class: "gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Contract expiration in 8 months"),
-						Div({ class: "flex items-center space-x-2" }, [
+						Div({ class: "flex items-center gap-x-2" }, [
 							P({ class: "font-medium text-foreground" }, client.contractExpires),
 							Badge({ variant: "secondary" }, client.contractStatus)
 						])
 					]),
 					// billing row
-					Div({ class: "space-y-1" }, [
+					Div({ class: "gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Billing"),
 						P({ class: "font-medium text-foreground" },
 							`${client.package} (ID: ${client.contractId}), $${client.payment} monthly`
@@ -160,14 +160,14 @@ export const ContractSection = Atom(({client}) =>
 					])
 				]),
 				// right side
-				Div({ class: "space-y-12" }, [
-					Div({ class: "space-y-1" }, [
+				Div({ class: "gap-y-12" }, [
+					Div({ class: "gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Upgrades"),
 						Div({ class: "flex flex-wrap gap-2" },
 							client.addOns && client.addOns.map(a => Badge({ variant: "outline" }, a))
 						)
 					]),
-					Div({ class: "space-y-1" }, [
+					Div({ class: "gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Sales Agent"),
 						P({ class: "font-medium text-foreground" }, client.salesAgent || "Not Assigned")
 					])
@@ -206,7 +206,7 @@ const TicketIcon = (priority) =>
  */
 const TicketListItem = Atom(ticket =>
 	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
-		Div({ class: "flex items-center space-x-4" }, [
+		Div({ class: "flex items-center gap-x-4" }, [
 			Icon(TicketIcon(ticket.priority)),
 			Div({ class: "flex flex-col" }, [
 				P({ class: "font-medium" }, ticket.subject),
@@ -250,14 +250,14 @@ const InvoiceListItem = (client) => (
 	Atom((invoice) =>
 		A({ href: `clients/client/${client.id}/billing/invoices/${invoice.id}` }, [
 			Card({ class: "flex items-center justify-between cursor-pointer p-4", margin: "m-2", hover: true }, [
-				Div({ class: "flex items-center space-x-4" }, [
+				Div({ class: "flex items-center gap-x-4" }, [
 					Icon(Icons.document.default),
 					Div({ class: "flex flex-col" }, [
 						P({ class: "font-medium" }, invoice.number),
 						P({ class: "text-sm text-muted-foreground" }, invoice.date)
 					])
 				]),
-				Div({ class: "flex items-center space-x-4" }, [
+				Div({ class: "flex items-center gap-x-4" }, [
 					P({ class: "font-medium text-foreground" }, invoice.amount),
 					Badge({ variant: invoice.status === "Paid" ? "secondary" : "outline" }, invoice.status)
 				])

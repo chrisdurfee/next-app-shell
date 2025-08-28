@@ -10,5 +10,5 @@ import { Div } from "@base-framework/atoms";
  * @returns {object}
  */
 export const PostContent = ({ post }) => (
-	Div({ class: "text-base text-foreground leading-relaxed space-y-4" }, post.description)
+	Div({ class: "text-base text-foreground leading-relaxed gap-y-4" }, post.description)
 );

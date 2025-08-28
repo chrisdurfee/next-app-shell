@@ -8,7 +8,7 @@ import { Atom } from '@base-framework/base';
  * @returns {object}
  */
 export const StepHeader = ({ title, description }) => (
-	Header({ class: 'text-left flex flex-auto flex-col space-y-1 mb-4' }, [
+	Header({ class: 'text-left flex flex-auto flex-col gap-y-1 mb-4' }, [
 		H2({ class: "font-semibold tracking-tight text-2xl" }, title),
 		P({ class: "text-base text-muted-foreground" }, description)
 	])

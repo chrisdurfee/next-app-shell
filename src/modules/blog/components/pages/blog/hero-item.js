@@ -29,14 +29,14 @@ const SkeletonHero = () => (
  */
 const HeroPost = (post) => ([
 	A({ href: `blog/posts/${post.id}` }, [
-		Div({ class: "relative w-full h-56 overflow-hidden rounded-lg mb-4" }, [
+		Div({ class: "relative w-full h-56 overflow-hidden rounded-lg mb-0 md:mb-4" }, [
 			Img({
 				src: post.image,
 				alt: post.title,
 				class: "w-full h-full object-cover"
 			}),
 		]),
-		Div({ class: "absolute bottom-8 left-4 bg-background/80 p-2 rounded-md" }, [
+		Div({ class: "absolute bottom-0 md:bottom-8 left-4 bg-background/80 p-2 rounded-md backdrop-blur-md" }, [
 			H2({ class: "text-xl font-bold" }, post.title),
 			P({ class: "text-sm" }, post.description),
 		])

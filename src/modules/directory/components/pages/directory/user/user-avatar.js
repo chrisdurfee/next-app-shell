@@ -22,7 +22,7 @@ const UserDetails = () => [
  */
 const UserDetailsSkeleton = () => [
 	Skeleton({ width: "w-9", height: "h-9", shape: "circle" }),
-	Div({ class: "flex flex-auto flex-col space-y-1" }, [
+	Div({ class: "flex flex-auto flex-col gap-y-1" }, [
 		Skeleton({ width: "w-32", height: "h-3" }),
 		Skeleton({ width: "w-40", height: "h-3" }),
 	])
@@ -36,7 +36,7 @@ const UserDetailsSkeleton = () => [
 export const UserAvatar = () => (
 	On('loaded', (value =>
 	{
-		return Div({ class: "flex items-center space-x-4 border rounded-md p-2 hover:bg-muted/50" },
+		return Div({ class: "flex items-center gap-x-4 border rounded-md p-2 hover:bg-muted/50" },
 			(!value)
 			? UserDetailsSkeleton()
 			: UserDetails()

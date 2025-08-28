@@ -24,7 +24,7 @@ export const MusicModal = (props) => (
 			icon: Icons.check
 		})
 	}, [
-		Div({ class: 'flex flex-col lg:p-4 space-y-8' }, [
+		Div({ class: 'flex flex-col lg:p-4 gap-y-8' }, [
 			// Row for Area and Security Level
 			Div({ class: "flex flex-auto flex-col w-full gap-4" }, [
 				Fieldset({ legend: "Artist Settings" }, [

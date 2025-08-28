@@ -29,7 +29,7 @@ export const ApiSettings = () => (
 							label: "",
 							description: "A RESTful endpoint for querying and managing your database."
 						}, [
-							Div({ class: 'flex flex-auto space-x-2' }, [
+							Div({ class: 'flex flex-auto gap-x-2' }, [
 								Input({ placeholder: "e.g. https://example.supabase.co", required: true, value: 'https://fnvapfpqjfkb...supabase.co' }),
 								Button({ variant: 'icon', class: 'outline', icon: Icons.clipboard.document.default })
 						])
@@ -55,7 +55,7 @@ export const ApiSettings = () => (
 						label: "",
 						description: "This key is safe to use in a browser if you have enabled Row Level Security for your tables and configured policies."
 					}, [
-						Div({ class: 'flex flex-auto space-x-2' }, [
+						Div({ class: 'flex flex-auto gap-x-2' }, [
 							Input({ value: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...', readOnly: true }),
 							Button({ variant: 'icon', class: 'outline', icon: Icons.clipboard.document.default })
 						])
@@ -69,7 +69,7 @@ export const ApiSettings = () => (
 						label: "",
 						description: "This key has the ability to bypass Row Level Security. Never share it publicly."
 					}, [
-						Div({ class: 'flex flex-auto space-x-2' }, [
+						Div({ class: 'flex flex-auto gap-x-2' }, [
 							Input({ value: '**** **** **** ****', readOnly: true }),
 							Button({ variant: 'icon', class: 'outline', icon: Icons.eye.default })
 						])
@@ -85,7 +85,7 @@ export const ApiSettings = () => (
 						label: "",
 						description: "Used to decode your JWTs. You can also use this to mint your own JWTs."
 					}, [
-						Div({ class: 'flex flex-auto space-x-2' }, [
+						Div({ class: 'flex flex-auto gap-x-2' }, [
 							Input({ value: '**** **** **** ****', readOnly: true }),
 							Button({ variant: 'icon', class: 'outline', icon: Icons.eye.default })
 						])

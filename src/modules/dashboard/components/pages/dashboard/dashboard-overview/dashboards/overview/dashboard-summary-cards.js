@@ -9,7 +9,7 @@ import { DashboardCard } from "./cards/dashboard-card.js";
  */
 export const DashboardSummaryCards = () => (
 	Div({ class: 'flex flex-auto overflow-x-auto -mx-6 px-6' }, [
-		Div({ class: 'inline-flex flex-auto space-x-4 ml-[-24px] pl-6 mr-6 lg:mr-0' }, [
+		Div({ class: 'inline-flex flex-auto gap-x-4 ml-[-24px] pl-6 mr-6 lg:mr-0' }, [
 			DashboardCard({
 				title: 'Total Revenue',
 				value: '$45,231.89',

@@ -46,7 +46,7 @@ const ListTabs = () => (
  */
 export const ListPage = () => (
 	new BlankPage([
-		Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 space-y-4' }, [
+		Div({ class: 'grid grid-cols-1 p-6 pt-0 md:pt-6 lg:p-8 gap-y-4' }, [
 
 			PageHeader({ title: 'List'}),
 			ListTabs(),

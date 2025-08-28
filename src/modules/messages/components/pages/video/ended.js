@@ -12,7 +12,7 @@ import { Icons } from "@base-framework/ui/icons";
  */
 export const Ended = ({ onRedial, onExit }) => (
 	Div({
-		class: 'flex flex-auto flex-col items-center justify-center space-y-6 bg-background/95',
+		class: 'flex flex-auto flex-col items-center justify-center gap-y-6 bg-background/95',
 
 		/**
 		 * This will close the overlay after 3 seconds
@@ -35,13 +35,13 @@ export const Ended = ({ onRedial, onExit }) => (
 		]),
 
 		// Status text
-		Div({ class: 'space-y-2 text-center' }, [
+		Div({ class: 'gap-y-2 text-center' }, [
 			Span({ class: 'text-xl font-semibold' }, 'Call Ended'),
 			Span({ class: 'text-sm text-muted-foreground block' }, 'Duration: 45:23')
 		]),
 
 		// Action buttons
-		Div({ class: 'flex space-x-4' }, [
+		Div({ class: 'flex gap-x-4' }, [
 			Button({
 				class: 'w-12 h-12 rounded-full bg-primary hover:bg-primary text-primary-foreground flex items-center justify-center mt-8',
 				click: onRedial

@@ -94,7 +94,7 @@ const TopicItem = ({ topic }) =>
 					Span({ class: "w-2 h-2 bg-accent rounded-full mr-2" }),
 					P({ class: "font-medium" }, topic.title)
 				]),
-				Div({ class: "flex items-center space-x-2" }, [
+				Div({ class: "flex items-center gap-x-2" }, [
                     Button({
                         variant: 'icon',
                         icon: Icons.ellipsis.horizontal
@@ -104,7 +104,7 @@ const TopicItem = ({ topic }) =>
 		]),
 		Div({ class: "px-4 pb-4" }, [
 			...topic.tasks.map(task =>
-				Div({ class: "flex items-center space-x-2 py-1" }, [
+				Div({ class: "flex items-center gap-x-2 py-1" }, [
 					P({ class: "text-sm text-muted-foreground" }, `- ${task}`)
 				])
 			),

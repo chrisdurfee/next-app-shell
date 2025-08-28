@@ -42,7 +42,7 @@ export const ProfilePage = () => (
 						// 	]
 						// })
 					]),
-					Div({ class: 'flex flex-row space-x-2' }, [
+					Div({ class: 'flex flex-row gap-x-2' }, [
 						Div({ class: 'hidden lg:inline-flex' }, [
 							Button({ variant: 'withIcon', class: 'text-muted-foreground outline', icon: Icons.pencil.square, click: EmployeeModal }, 'Edit'),
 						]),
@@ -51,7 +51,7 @@ export const ProfilePage = () => (
 						])
 					])
 				]),
-				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:space-x-8'}, [
+				Div({ class: 'flex flex-auto flex-col lg:flex-row lg:gap-x-8'}, [
 					Div({ class: 'w-full lg:w-1/3' }, [
 						UserHeader({ user })
 					]),

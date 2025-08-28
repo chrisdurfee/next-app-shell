@@ -86,7 +86,7 @@ const donutData = [
  */
 export const VisitorsCard = () => (
 	Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-2 flex flex-auto flex-col' }, [
-		Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
+		Header({ class: 'flex flex-col gap-y-1.5 p-6' }, [
 			H3({ class: 'font-semibold leading-none tracking-tight' }, 'Visitors Overview')
 		]),
 		Div({ class: 'flex flex-auto flex-col p-6 pt-0' }, [

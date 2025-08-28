@@ -128,7 +128,7 @@ const chartData = [
  */
 export const OverviewCard = () => (
 	Card({ padding: 'p-0', margin: 'm-0', class: 'col-span-4 flex flex-auto flex-col' }, [
-		Header({ class: 'flex flex-col space-y-1.5 p-6' }, [
+		Header({ class: 'flex flex-col gap-y-1.5 p-6' }, [
 			H3({ class: 'font-semibold leading-none tracking-tight' }, 'Overview')
 		]),
 		Div({ class: 'flex flex-auto flex-col p-6 pt-0' }, [

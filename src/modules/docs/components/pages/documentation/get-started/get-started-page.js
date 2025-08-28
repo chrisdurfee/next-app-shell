@@ -55,7 +55,7 @@ export const GetStartedPage = () =>
 		},
 		[
 			// 1) About the Project
-			Section({ class: 'space-y-4' }, [
+			Section({ class: 'gap-y-4' }, [
 				H4({ class: 'text-lg font-bold' }, 'About the Project'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -68,7 +68,7 @@ export const GetStartedPage = () =>
 			]),
 
 			// 2) Prerequisites & Installation
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Prerequisites & Installation'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -93,7 +93,7 @@ yarn install`
 			]),
 
 			// 3) Project Structure & Package Setup
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Project Structure & Package Setup'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -135,7 +135,7 @@ yarn install`
 			]),
 
 			// 4) Running the App
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Running the App'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -160,7 +160,7 @@ npm run preview`
 			]),
 
 			// 5) Vite Configuration
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Vite Configuration'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -206,7 +206,7 @@ import { Div } from "@components/atoms/inputs.js";`
 			]),
 
 			// 6) Theme Setup
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Theme Setup'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -319,7 +319,7 @@ import { Div } from "@components/atoms/inputs.js";`
 			]),
 
 			// 7) Authentication
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -332,7 +332,7 @@ import { Div } from "@components/atoms/inputs.js";`
 			]),
 
 			// 8) Development Guidelines & Module System
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Development Guidelines'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -411,7 +411,7 @@ Module.create({
 			]),
 
 			// 9) Global Configs
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Global Configs'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -470,7 +470,7 @@ export const Configs = {
 			]),
 
 			// 10) Service Worker & Push Notifications
-			Section({ class: 'space-y-4 mt-12' }, [
+			Section({ class: 'gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Service Worker & Push Notifications'),
 				P(
 					{ class: 'text-muted-foreground' },

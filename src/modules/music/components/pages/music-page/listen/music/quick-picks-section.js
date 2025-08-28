@@ -14,7 +14,7 @@ const PAGE_URL = 'music';
  */
 const TrackItem = (track) => (
 	Div({ class: "flex items-center min-w-[380px] pr-8" }, [
-		A({ class: 'flex flex-auto space-x-4', href: `${PAGE_URL}/album/${track.albumTitle.replace(/\s+/g, '-').toLowerCase()}`}, [
+		A({ class: 'flex flex-auto gap-x-4', href: `${PAGE_URL}/album/${track.albumTitle.replace(/\s+/g, '-').toLowerCase()}`}, [
 			Img({
 				src: track.src,
 				alt: track.albumTitle,
@@ -49,7 +49,7 @@ const QuickPickGrid = () =>
 			// Map tracks into columns
 			...Array.from({ length: columnNumber }).map((_, columnIndex) => {
 				const columnTracks = tracks.slice(columnIndex * rowNumber, (columnIndex + 1) * rowNumber);
-				return Div({ class: "space-y-4", map: [columnTracks, TrackItem] });
+				return Div({ class: "gap-y-4", map: [columnTracks, TrackItem] });
 			}),
 		]
 	);

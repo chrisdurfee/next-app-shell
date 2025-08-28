@@ -42,7 +42,7 @@ const CallIcon = (status) =>
  */
 const CallItem = Atom(call =>
 	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
-		Div({ class: "flex items-center space-x-4" }, [
+		Div({ class: "flex items-center gap-x-4" }, [
 			Avatar({ src: call.avatar, alt: call.contactName, fallbackText: call.contactName, size: "sm" }),
 			Div({ class: "flex flex-col" }, [
 				P({ class: "font-medium" }, call.contactName),
@@ -80,7 +80,7 @@ const DateDivider = (date) =>
  * @returns {object}
  */
 export const CallList = Atom(({ calls }) =>
-	Div({ class: "space-y-6 mt-12" }, [
+	Div({ class: "gap-y-6 mt-12" }, [
 		new List({
 			cache: "calls",
 			key: "id",

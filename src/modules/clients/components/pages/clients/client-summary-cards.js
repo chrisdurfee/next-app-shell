@@ -11,7 +11,7 @@ import { ClientSummaryCard } from "./client-summary-card.js";
  */
 export const ClientSummaryCards = () => (
 	Div({ class: 'hidden md:flex flex-auto overflow-x-auto -mx-6 px-6 pb-2' }, [
-		Div({ class: 'inline-flex flex-auto space-x-4 ml-[-24px] pl-6' }, [
+		Div({ class: 'inline-flex flex-auto gap-x-4 ml-[-24px] pl-6' }, [
 			ClientSummaryCard({
 				title: 'Total Clients',
 				value: '1,200',
