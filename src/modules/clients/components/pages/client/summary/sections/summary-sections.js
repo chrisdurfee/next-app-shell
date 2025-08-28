@@ -16,7 +16,7 @@ import { ClientSummaryCard } from "./client-summary-card.js";
  * @returns {object}
  */
 const ProfileSection = Atom((props, children) =>
-	Div({ class: "gap-y-6" }, [
+	Div({ class: "flex flex-col gap-y-6" }, [
 		Header({ class: "flex flex-col gap-y-2" }, [
 			H2({ class: "text-xl font-semibold" }, props.title),
 			props.description && P({ class: "text-sm text-muted-foreground" }, props.description)
@@ -142,9 +142,9 @@ export const ContractSection = Atom(({client}) =>
 		Card({ class: "p-6", margin: "m-0", hover: true }, [
 			Div({ class: "grid grid-cols-1 sm:grid-cols-2 gap-6" }, [
 				// left side
-				Div({ class: "gap-y-12" }, [
+				Div({ class: "flex flex-col gap-y-12" }, [
 					// expiration row
-					Div({ class: "gap-y-1" }, [
+					Div({ class: "flex flex-col gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Contract expiration in 8 months"),
 						Div({ class: "flex items-center gap-x-2" }, [
 							P({ class: "font-medium text-foreground" }, client.contractExpires),
@@ -152,7 +152,7 @@ export const ContractSection = Atom(({client}) =>
 						])
 					]),
 					// billing row
-					Div({ class: "gap-y-1" }, [
+					Div({ class: "flex flex-col gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Billing"),
 						P({ class: "font-medium text-foreground" },
 							`${client.package} (ID: ${client.contractId}), $${client.payment} monthly`
@@ -160,14 +160,14 @@ export const ContractSection = Atom(({client}) =>
 					])
 				]),
 				// right side
-				Div({ class: "gap-y-12" }, [
-					Div({ class: "gap-y-1" }, [
+				Div({ class: "flex flex-col gap-y-12" }, [
+					Div({ class: "flex flex-col gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Upgrades"),
 						Div({ class: "flex flex-wrap gap-2" },
 							client.addOns && client.addOns.map(a => Badge({ variant: "outline" }, a))
 						)
 					]),
-					Div({ class: "gap-y-1" }, [
+					Div({ class: "flex flex-col gap-y-1" }, [
 						P({ class: "text-sm text-muted-foreground" }, "Sales Agent"),
 						P({ class: "font-medium text-foreground" }, client.salesAgent || "Not Assigned")
 					])
@@ -205,7 +205,7 @@ const TicketIcon = (priority) =>
  * @returns {object}
  */
 const TicketListItem = Atom(ticket =>
-	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "m-2", hover: true }, [
+	Card({ class: "flex items-center justify-between p-4 cursor-pointer", margin: "my-2", hover: true }, [
 		Div({ class: "flex items-center gap-x-4" }, [
 			Icon(TicketIcon(ticket.priority)),
 			Div({ class: "flex flex-col" }, [

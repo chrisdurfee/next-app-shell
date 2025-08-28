@@ -14,19 +14,19 @@ import { Skeleton } from "@base-framework/ui/atoms";
 export const ClientSkeleton = () =>
 {
 	// About section
-	const aboutSectionSkeleton = Div({ class: "gap-y-4" }, [
+	const aboutSectionSkeleton = Div({ class: "flex flex-col gap-y-4" }, [
 		Skeleton({ width: "w-24", height: "h-6", class: "rounded-md" }),
 		Skeleton({ width: "w-full", height: "h-24", class: "rounded-md" })
 	]);
 
 	// Work Progress section
-	const workProgressSectionSkeleton = Div({ class: "gap-y-4" }, [
+	const workProgressSectionSkeleton = Div({ class: "flex flex-col gap-y-4" }, [
 		Skeleton({ width: "w-32", height: "h-6", class: "rounded-md" }),
-		Div({ class: "pl-6 gap-y-6" },
+		Div({ class: "flex flex-col pl-6 gap-y-6" },
 			[0, 1].map(() =>
 				Div({ class: "flex items-center gap-x-4" }, [
 					Skeleton({ width: "w-5", height: "h-5", class: "rounded-full" }),
-					Div({ class: "gap-y-1" }, [
+					Div({ class: "flex flex-col gap-y-1" }, [
 						Skeleton({ width: "w-1/3", height: "h-4", class: "rounded-md" }),
 						Skeleton({ width: "w-1/4", height: "h-3", class: "rounded-md" })
 					])
@@ -36,7 +36,7 @@ export const ClientSkeleton = () =>
 	]);
 
 	// Projects section
-	const projectsSectionSkeleton = Div({ class: "gap-y-4" }, [
+	const projectsSectionSkeleton = Div({ class: "flex flex-col gap-y-4" }, [
 		Skeleton({ width: "w-36", height: "h-6", class: "rounded-md" }),
 		Div({ class: "overflow-x-auto" }, [
 			Div({ class: "min-w-full divide-y divide-muted-200" }, [
@@ -55,7 +55,7 @@ export const ClientSkeleton = () =>
 	]);
 
 	// Skills section
-	const skillsSectionSkeleton = Div({ class: "gap-y-4" }, [
+	const skillsSectionSkeleton = Div({ class: "flex flex-col gap-y-4" }, [
 		Skeleton({ width: "w-20", height: "h-6", class: "rounded-md" }),
 		Div({ class: "flex flex-wrap gap-2" },
 			Array(5).fill().map(() => Skeleton({ width: "w-20", height: "h-6", class: "rounded-full" }))
@@ -63,7 +63,7 @@ export const ClientSkeleton = () =>
 	]);
 
 	// Reviews section
-	const reviewsSectionSkeleton = Div({ class: "gap-y-4" }, [
+	const reviewsSectionSkeleton = Div({ class: "flex flex-col gap-y-4" }, [
 		Skeleton({ width: "w-40", height: "h-6", class: "rounded-md" }),
 		Skeleton({ width: "w-1/3", height: "h-4", class: "rounded-md" }),
 		Div({ class: "overflow-x-auto" }, [
@@ -83,7 +83,7 @@ export const ClientSkeleton = () =>
 	]);
 
 	// main content
-	const mainContentSkeleton = Div({ class: "flex-1 gap-y-12 mt-6 px-6" }, [
+	const mainContentSkeleton = Div({ class: "flex flex-auto flex-col gap-y-12 mt-6 px-6" }, [
 		aboutSectionSkeleton,
 		workProgressSectionSkeleton,
 		projectsSectionSkeleton,
