@@ -1,64 +1,61 @@
 @reference "./theme.css";
-@reference "tailwindcss";
 
-@theme {
-    --color-background: hsl(0 0% 92%);
-}
+@layer base {
+  * {
+		@apply border-border;
+	}
 
-* {
-	@apply border-border;
-}
+	body {
+		font-feature-settings: "rlig" 1, "calt" 1;
+	}
 
-body {
-	font-feature-settings: "rlig" 1, "calt" 1;
-}
+	::backdrop {
+		animation: shadowIn .2s ease forwards;
+		@apply bg-black/40;
+	}
 
-::backdrop {
-	animation: shadowIn .2s ease forwards;
-	@apply bg-black/40;
-}
+	html {
+		-webkit-overflow-scrolling: touch;
+	}
 
-html {
-	-webkit-overflow-scrolling: touch;
-}
+	* {
+		/* overscroll-behavior: none; */
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		-ms-overflow-style: -ms-autohiding-scrollbar;
+		box-sizing: border-box;
+	}
 
-* {
-	/* overscroll-behavior: none; */
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-ms-overflow-style: -ms-autohiding-scrollbar;
-	box-sizing: border-box;
-}
+	*:focus-visible {
+		@apply ring-3 ring-ring outline-none;
+	}
 
-*:focus-visible {
-	@apply ring-3 ring-ring outline-none;
-}
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+	}
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-}
+	input[type="number"] {
+		-moz-appearance: textfield;
+		appearance: none;
+	}
 
-input[type="number"] {
-	-moz-appearance: textfield;
-	appearance: none;
-}
+	/**
+	* Reset the default styles
+	*/
+	a,
+	button {
+		outline: 0;
+		text-decoration: none;
+	}
 
-/**
- * Reset the default styles
- */
-a,
-button {
-	outline: 0;
-	text-decoration: none;
-}
+	a:hover,
+	a:active {
+		text-decoration: none;
+	}
 
-a:hover,
-a:active {
-	text-decoration: none;
-}
-
-i.icon-size svg {
-	@apply w-auto h-auto;
+	i.icon-size svg {
+		@apply w-auto h-auto;
+	}
 }
 
 /*
