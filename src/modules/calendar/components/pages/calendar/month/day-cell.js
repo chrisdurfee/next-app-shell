@@ -119,11 +119,11 @@ export const DayCell = ({ day, currentDate, date, isToday, isOutsideMonth, selec
 				P({ class: `p-2 rounded-lg text-sm font-medium ${getClasses(isToday, currentDate, isOutsideMonth, date)}` }, String(day))
 			]),
 			Div({
-				class: 'flex lg:hidden flex-auto flex-row flex-wrap',
+				class: 'flex lg:hidden flex-row flex-wrap mt-[8px]',
 				for: [`events._${removeHyphens(date)}`, Event]
 			}),
 			Div({
-				class: 'hidden lg:flex flex-auto flex-col gap-y-1',
+				class: 'hidden lg:flex flex-col gap-y-1',
 				for: [`events._${removeHyphens(date)}`, DesktopEvent]
 			})
 		]
