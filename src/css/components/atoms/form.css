@@ -1,3 +1,5 @@
-input, select, textarea {
-	@apply border bg-input rounded-sm p-2;
+@layer base {
+	input, select, textarea {
+		@apply border bg-input rounded-sm p-2;
+	}
 }

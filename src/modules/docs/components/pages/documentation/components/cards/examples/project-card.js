@@ -54,7 +54,7 @@ const ProjectRow = ({ name, description, stars, language, lastUpdated }) => (
  * @returns {object} - List of projects.
  */
 const ProjectList = ({ projects }) => (
-	Div({ class: "gap-y-3" }, projects.map(project => ProjectRow(project)))
+	Div({ class: "flex flex-col gap-y-3" }, projects.map(project => ProjectRow(project)))
 );
 
 const projects = [
@@ -82,7 +82,7 @@ const projects = [
  * @returns {object} - The complete project card.
  */
 export const ProjectCard = () => {
-	return Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
+	return Card({ class: "w-full max-w-md mx-auto p-6 bg-card flex flex-col gap-y-6" }, [
 		Div({ class: "font-semibold text-lg text-foreground" }, "Projects"),
 		ProjectList({ projects })
 	]);

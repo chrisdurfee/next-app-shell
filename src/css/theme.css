@@ -31,6 +31,10 @@
     --color-input: hsl(240 5.9% 95%);
     --color-ring: hsl(240 5% 64.9%);
     --radius: 0.5rem;
+    /* map Tailwind sizes to your formula */
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
 }
 
 /* 2) System dark mode */

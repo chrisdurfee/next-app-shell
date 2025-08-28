@@ -55,7 +55,7 @@ export const GetStartedPage = () =>
 		},
 		[
 			// 1) About the Project
-			Section({ class: 'gap-y-4' }, [
+			Section({ class: 'flex flex-col gap-y-4' }, [
 				H4({ class: 'text-lg font-bold' }, 'About the Project'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -68,7 +68,7 @@ export const GetStartedPage = () =>
 			]),
 
 			// 2) Prerequisites & Installation
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Prerequisites & Installation'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -93,7 +93,7 @@ yarn install`
 			]),
 
 			// 3) Project Structure & Package Setup
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Project Structure & Package Setup'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -135,7 +135,7 @@ yarn install`
 			]),
 
 			// 4) Running the App
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Running the App'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -160,7 +160,7 @@ npm run preview`
 			]),
 
 			// 5) Vite Configuration
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Vite Configuration'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -206,7 +206,7 @@ import { Div } from "@components/atoms/inputs.js";`
 			]),
 
 			// 6) Theme Setup
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Theme Setup'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -319,26 +319,26 @@ import { Div } from "@components/atoms/inputs.js";`
 			]),
 
 			// 7) Authentication
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold mt-12' }, 'Authentication'),
 				P(
 					{ class: 'text-muted-foreground' },
 					`The shell supports authentication flows with "signed in" and "signed out"
 					modes. The "src/shell" folder includes a login page you can customize
-					to meet your app’s needs. The "models" folder within "src/shell" includes
+					to meet your app's needs. The "models" folder within "src/shell" includes
 					a "UserData" model you can extend with application-specific methods
 					and properties.`
 				)
 			]),
 
 			// 8) Development Guidelines & Module System
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Development Guidelines'),
 				P(
 					{ class: 'text-muted-foreground' },
 					[
 						Span(
-							`Modules are central to the App Shell’s extensibility. You can add new
+							`Modules are central to the App Shell's extensibility. You can add new
 							features by creating modules in the "src/modules" folder and registering
 							them in the "src/modules/imported-modules.js" file. This promotes better
 							maintainability and scalability of your codebase.`
@@ -411,7 +411,7 @@ Module.create({
 			]),
 
 			// 9) Global Configs
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Global Configs'),
 				P(
 					{ class: 'text-muted-foreground' },
@@ -470,7 +470,7 @@ export const Configs = {
 			]),
 
 			// 10) Service Worker & Push Notifications
-			Section({ class: 'gap-y-4 mt-12' }, [
+			Section({ class: 'flex flex-col gap-y-4 mt-12' }, [
 				H4({ class: 'text-lg font-bold' }, 'Service Worker & Push Notifications'),
 				P(
 					{ class: 'text-muted-foreground' },

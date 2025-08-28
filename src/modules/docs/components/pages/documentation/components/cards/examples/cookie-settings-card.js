@@ -34,7 +34,7 @@ const CookieToggle = ({ title, description, defaultState, onChange }) => (
  * @returns {object} - The complete cookie settings card.
  */
 export const CookieSettingsCard = () => (
-	Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-6 bg-card flex flex-col gap-y-6" }, [
 		CardHeader({ title: "Cookie Settings", description: "Manage your cookie settings here." }),
 
 		Div({ class: 'pt-0 grid gap-6' }, [

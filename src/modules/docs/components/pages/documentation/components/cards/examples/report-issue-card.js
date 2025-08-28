@@ -11,7 +11,7 @@ import { CardHeader } from "./card-atoms.js";
  * @returns {object} - The report issue form.
  */
 const ReportIssueForm = () => (
-	Form({ class: 'gap-y-4', submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
+	Form({ class: 'flex flex-col gap-y-4', submit: (e) => { e.preventDefault(); console.log("Issue reported"); } }, [
 		// Row for Area and Security Level
 		Div({ class: "flex flex-auto w-full gap-4" }, [
 			// Area field
@@ -95,7 +95,7 @@ const ReportIssueForm = () => (
  * @returns {object} - The complete report issue card.
  */
 export const ReportIssueCard = () => (
-	Card({ class: "w-full max-w-md mx-auto p-6 bg-card gap-y-6" }, [
+	Card({ class: "w-full max-w-md mx-auto p-6 bg-card flex flex-col gap-y-6" }, [
 		CardHeader({ title: "Report an issue", description: "What area are you having problems with?" }),
 
 		ReportIssueForm()
