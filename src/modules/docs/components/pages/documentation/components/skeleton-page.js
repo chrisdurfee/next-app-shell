@@ -101,7 +101,7 @@ Div({ class: 'flex flex-auto gap-x-4 w-full max-w-64' }, [
                         Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
                         // Text line placeholders
-                        Div({ class: 'gap-y-2' }, [
+                        Div({ class: 'flex flex-col gap-y-2' }, [
                             Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
                             Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
                         ])
@@ -115,7 +115,7 @@ Div({ class: 'gap-y-4 flex flex-auto flex-col gap-x-4 w-full max-w-64' }, [
     Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
     // Text line placeholders
-    Div({ class: 'gap-y-2' }, [
+    Div({ class: 'flex flex-col gap-y-2' }, [
         Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
         Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
     ])

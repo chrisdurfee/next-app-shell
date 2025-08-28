@@ -158,7 +158,7 @@ export const SettingsForm = () => (
  */
 export const MyFormSection = Atom((props, children) =>
 {
-	return Fieldset({ legend: 'Configuration', class: 'gap-y-8' }, [
+	return Fieldset({ legend: 'Configuration', class: 'flex flex-col gap-y-8' }, [
 		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
 			new FormField({
                 name: "cloud",
@@ -299,7 +299,7 @@ import { Atom } from "@base-framework/base";
 
 export const MyFormSection = Atom((props, children) =>
 {
-	return Fieldset({ legend: 'Configuration', class: 'gap-y-8' }, [
+	return Fieldset({ legend: 'Configuration', class: 'flex flex-col gap-y-8' }, [
 		FormGroup({ label: 'Cloud Provider', description: "Select your cloud provider settings to create your new cloud instance." }, [
 			new FormField({
                 name: "cloud",
