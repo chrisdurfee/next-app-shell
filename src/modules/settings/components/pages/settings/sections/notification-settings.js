@@ -25,7 +25,7 @@ export const NotificationSettings = () => (
 
                 // Each toggle in its own FormCardGroup for consistent spacing/border
                 FormCardGroup({ label: 'Allowed Notifications', description: '', border: true }, [
-                    Div({ class: 'gap-y-4' }, [
+                    Div({ class: 'flex flex-col gap-y-4' }, [
 
                         // Email Notifications
                         Div({ class: 'flex items-center justify-between p-4 bg-muted/10 border border-muted-foreground/20 rounded-md' }, [

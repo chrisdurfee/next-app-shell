@@ -23,7 +23,7 @@ export const ProfileSettings = () => (
         SettingsSection({
             title: "Profile",
             description: "Update your personal and contact information. Some fields are managed by the platform and cannot be changed here.",
-            class: "max-w-5xl mx-auto gap-y-6",
+            class: "flex flex-col max-w-5xl mx-auto gap-y-6",
             submit: (data) => console.log("Profile Settings:", data)
         }, [
 
