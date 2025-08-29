@@ -38,13 +38,13 @@ const PaymentSkeleton = Atom(() => {
 
     return Div({ class: "p-6 2xl:mx-auto w-full contained" }, [
         // Header skeleton
-        Div({ class: "gap-y-2 mb-8" }, [
+        Div({ class: "flex flex-col gap-y-2 mb-8" }, [
             Skeleton({ class: "h-8 w-48 mb-2" }),
             Skeleton({ class: "h-4 w-72" })
         ]),
 
         // Payment list skeletons
-        Div({ class: "gap-y-6 mt-12" }, skeletonItems)
+        Div({ class: "flex flex-col gap-y-6 mt-12" }, skeletonItems)
     ]);
 });
 

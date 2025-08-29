@@ -29,7 +29,7 @@ export const EmptyState = () => (
 			}),
 			H2({ class: 'text-2xl font-bold tracking-tight' }, 'Hmmm?'),
 		]),
-		Div({ class: 'gap-y-4 mt-4' }, [
+		Div({ class: 'flex flex-col gap-y-4 mt-4' }, [
 			H2({ class: 'text-xl font-semibold text-muted-foreground' }, 'I\'m searching but that album does not exist.'),
 			Div({ class: 'flex flex-auto flex-col items-center justify-center' }, [
 				P('Let\'s get you back to the music. Here is something you might like.')

@@ -23,7 +23,7 @@ export const Error = ({ errorMessage, onRetry, onExit }) => (
 		]),
 
 		// Error message
-		Div({ class: 'gap-y-2 text-center max-w-md' }, [
+		Div({ class: 'flex flex-col gap-y-2 text-center max-w-md' }, [
 			Span({ class: 'text-xl font-semibold text-red-500' }, 'Connection Error'),
 			Span({ class: 'text-sm text-muted-foreground block' }, errorMessage)
 		]),

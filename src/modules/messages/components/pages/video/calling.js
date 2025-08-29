@@ -40,7 +40,7 @@ export const Calling = ({ onCancel }) => (
 		]),
 
 		// Status text
-		Div({ class: 'gap-y-2 text-center' }, [
+		Div({ class: 'flex flex-col gap-y-2 text-center' }, [
 			Span({ class: 'text-xl font-semibold' }, 'Calling...'),
 			Span({ class: 'text-sm text-muted-foreground block' }, 'Waiting for others to join')
 		]),

@@ -40,7 +40,7 @@ const ContactItem = Atom(contact =>
  * @returns {object}
  */
 export const ContactList = Atom(({ contacts }) =>
-	Div({ class: "gap-y-6 mt-12" }, [
+	Div({ class: "flex flex-col gap-y-6 mt-12" }, [
 		new List({
 			cache: "contacts",
 			key: "id",

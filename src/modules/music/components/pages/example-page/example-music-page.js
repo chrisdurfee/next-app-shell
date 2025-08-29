@@ -53,11 +53,11 @@ const SidebarMenu = () => (
  * @returns {object}
  */
 const LargeAlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'gap-y-3 w-[180px] md:w-[250px]' }, [
+    Div({ class: 'flex flex-col gap-y-3 w-[180px] md:w-[250px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
             Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-3/4' }),
         ]),
-        Div({ class: 'gap-y-1 text-sm' }, [
+        Div({ class: 'flex flex-col gap-y-1 text-sm' }, [
             H3({ class: 'font-medium leading-none' }, title),
             P({ class: 'text-xs text-muted-foreground' }, artist)
         ])
@@ -73,11 +73,11 @@ const LargeAlbumCard = ({ src, title, artist }) => (
  * @returns {object}
  */
 const SmallAlbumCard = ({ src, title, artist }) => (
-    Div({ class: 'gap-y-3 w-[150px]' }, [
+    Div({ class: 'flex flex-col gap-y-3 w-[150px]' }, [
         Div({ class: 'overflow-hidden rounded-md' }, [
             Img({ src, alt: title, class: 'h-auto w-auto object-cover transition-all hover:scale-105 aspect-square' }),
         ]),
-        Div({ class: 'gap-y-1 text-sm' }, [
+        Div({ class: 'flex flex-col gap-y-1 text-sm' }, [
             H3({ class: 'font-medium leading-none' }, title),
             P({ class: 'text-xs text-muted-foreground' }, artist)
         ])

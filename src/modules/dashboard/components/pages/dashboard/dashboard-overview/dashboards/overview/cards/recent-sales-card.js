@@ -16,7 +16,7 @@ const RecentSalesItem = ({ name, image, email, amount }) => (
 			Span({ class: 'relative flex overflow-hidden rounded-full h-9 w-9' }, [
 				Avatar({ src: image, name }), // Assuming the Avatar component supports name for fallback
 			]),
-			Div({ class: 'gap-y-1' }, [
+			Div({ class: 'flex flex-col gap-y-1' }, [
 				Span({ class: 'text-sm font-medium leading-none' }, name),
 				P({ class: 'text-sm text-muted-foreground' }, email),
 			])
@@ -37,7 +37,7 @@ export const RecentSalesCard = () => (
 			P({ class: 'text-sm text-muted-foreground' }, 'You made 265 sales this month.'),
 		]),
 		Div({ class: 'p-6 pt-0' }, [
-			Div({ class: 'gap-y-4' }, [
+			Div({ class: 'flex flex-col gap-y-4' }, [
 				RecentSalesItem({
 					name: 'Olivia Martin',
 					image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',

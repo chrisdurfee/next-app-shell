@@ -49,7 +49,7 @@ const QuickPickGrid = () =>
 			// Map tracks into columns
 			...Array.from({ length: columnNumber }).map((_, columnIndex) => {
 				const columnTracks = tracks.slice(columnIndex * rowNumber, (columnIndex + 1) * rowNumber);
-				return Div({ class: "gap-y-4", map: [columnTracks, TrackItem] });
+				return Div({ class: "flex flex-col gap-y-4", map: [columnTracks, TrackItem] });
 			}),
 		]
 	);

@@ -12,7 +12,7 @@ import { Icons } from "@base-framework/ui/icons";
  * @returns {object}
  */
 export const AlbumDetails = ({ album }) => (
-	Div({ class: 'gap-y-2 mt-4' }, [
+	Div({ class: 'flex flex-col gap-y-2 mt-4' }, [
 		H1({ class: 'text-2xl md:text-3xl font-bold text-center' }, album.title),
 		P({ class: 'text-sm text-muted-foreground text-center' }, `Album • ${album.year} • ${album.tracks.length} songs • ${album.duration}`),
 		Div({ class: 'flex flex-auto items-center justify-center' }, [

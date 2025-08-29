@@ -101,7 +101,7 @@ Div({ class: 'flex flex-auto gap-x-4 w-full max-w-64' }, [
                         Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
                         // Text line placeholders
-                        Div({ class: 'flex flex-col gap-y-2' }, [
+                        Div({ class: 'gap-y-2' }, [
                             Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
                             Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
                         ])
@@ -110,12 +110,12 @@ Div({ class: 'flex flex-auto gap-x-4 w-full max-w-64' }, [
                 code: `import {  Skeleton  } from "@base-framework/ui/atoms";
 import { Div } from '@base-framework/atoms';
 
-Div({ class: 'gap-y-4 flex flex-auto flex-col gap-x-4 w-full max-w-64' }, [
+Div({ class: 'gap-y-4 gap-x-4 w-full max-w-64' }, [
     // Large rectangle for image or main content
     Skeleton({ width: 'w-full', height: 'h-32', shape: 'rectangle' }),
 
     // Text line placeholders
-    Div({ class: 'flex flex-col gap-y-2' }, [
+    Div({ class: 'gap-y-2' }, [
         Skeleton({ width: 'w-3/4', height: 'h-4' }), // Longer text line
         Skeleton({ width: 'w-1/2', height: 'h-4' })  // Shorter text line
     ])

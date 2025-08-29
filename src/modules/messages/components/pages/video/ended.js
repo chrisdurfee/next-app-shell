@@ -35,7 +35,7 @@ export const Ended = ({ onRedial, onExit }) => (
 		]),
 
 		// Status text
-		Div({ class: 'gap-y-2 text-center' }, [
+		Div({ class: 'flex flex-col gap-y-2 text-center' }, [
 			Span({ class: 'text-xl font-semibold' }, 'Call Ended'),
 			Span({ class: 'text-sm text-muted-foreground block' }, 'Duration: 45:23')
 		]),
