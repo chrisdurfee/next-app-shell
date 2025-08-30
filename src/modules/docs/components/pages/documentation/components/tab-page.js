@@ -1,6 +1,6 @@
 import { Div } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
-import { ButtonTab, Panel, Tab, TabGroup, TabNavigation } from "@base-framework/ui/organisms";
+import { ButtonTab, Panel, Tab, TabGroup, TabNavigation, UnderlinedButtonTab, UnderlinedTab, UnderlinedTabGroup } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -217,6 +217,243 @@ new TabNavigation({
         }
     ]
 })`,
+            }),
+
+            // NEW UNDERLINED TAB SECTIONS
+            DocSection({
+                title: 'Underlined Tab (Routing)',
+                description: 'This is an underlined tab with routing capability. Features an active bottom border indicator and modern styling.',
+                preview: [
+                    new UnderlinedTab({
+                        class: 'max-w-[400px]',
+                        options: [
+                            {
+                                label: 'Posts',
+                                href: 'docs/components/tabs/posts',
+                                exact: true,
+                                component: new Panel({ class: 'p-8' }, 'This is the Posts tab content.'),
+                            },
+                            {
+                                label: 'Stories',
+                                href: 'docs/components/tabs/stories',
+                                exact: true,
+                                component: new Panel({ class: 'p-8' }, 'This is the Stories tab content.'),
+                            },
+                            {
+                                label: 'Reels',
+                                href: 'docs/components/tabs/reels',
+                                exact: true,
+                                component: new Panel({ class: 'p-8' }, 'This is the Reels tab content.'),
+                            },
+                            {
+                                label: 'Photos',
+                                href: 'docs/components/tabs/photos',
+                                exact: true,
+                                component: new Panel({ class: 'p-8' }, 'This is the Photos tab content.'),
+                            }
+                        ]
+                    })
+                ],
+                code: `import { UnderlinedTab } from "@base-framework/ui/organisms";
+import { Panel } from "@base-framework/ui/organisms";
+
+/**
+ * UnderlinedRoutingTab
+ *
+ * This will create an underlined tab with routing.
+ *
+ * @returns {object}
+ */
+export const UnderlinedRoutingTab = () => (
+    new UnderlinedTab({
+        class: 'max-w-[400px]',
+        options: [
+            {
+                label: 'Posts',
+                href: '/posts',
+                exact: true,
+                component: new Panel({ class: 'p-8' }, 'Posts content'),
+                uri: 'posts'
+            },
+            {
+                label: 'Stories',
+                href: '/stories',
+                exact: true,
+                component: new Panel({ class: 'p-8' }, 'Stories content'),
+                uri: 'stories'
+            },
+            {
+                label: 'Reels',
+                href: '/reels',
+                exact: true,
+                component: new Panel({ class: 'p-8' }, 'Reels content'),
+                uri: 'reels'
+            },
+            {
+                label: 'Photos',
+                href: '/photos',
+                exact: true,
+                component: new Panel({ class: 'p-8' }, 'Photos content'),
+                uri: 'photos'
+            }
+        ]
+    })
+);`
+            }),
+
+            DocSection({
+                title: 'Underlined Button Tab',
+                description: 'This is an underlined button tab for content switching without routing. Features smooth bottom border animation.',
+                preview: [
+                    new UnderlinedButtonTab({
+                        class: 'max-w-[400px]',
+                        onSelect: (value, index) => {
+                            console.log('Selected tab:', value, 'at index:', index);
+                        },
+                        options: [
+                            {
+                                label: 'Posts',
+                                value: 'posts',
+                                selected: true,
+                                component: TabContent(['Posts content goes here'])
+                            },
+                            {
+                                label: 'Stories',
+                                value: 'stories',
+                                component: TabContent(['Stories content goes here'])
+                            },
+                            {
+                                label: 'Reels',
+                                value: 'reels',
+                                component: TabContent(['Reels content goes here'])
+                            },
+                            {
+                                label: 'Photos',
+                                value: 'photos',
+                                component: TabContent(['Photos content goes here'])
+                            }
+                        ]
+                    })
+                ],
+                code: `import { UnderlinedButtonTab } from "@base-framework/ui/organisms";
+
+/**
+ * This will create a tab content.
+ *
+ * @param {object} props
+ * @param {object} children
+ * @returns {object}
+ */
+const TabContent = Atom((props, children) => (
+    Div({ class: 'py-4' }, children)
+));
+
+/**
+ * UnderlinedContentTab
+ *
+ * This will create an underlined button tab.
+ *
+ * @returns {object}
+ */
+export const UnderlinedContentTab = () => (
+    new UnderlinedButtonTab({
+        class: 'max-w-[400px]',
+        onSelect: (value, index) => {
+            console.log('Selected tab:', value, 'at index:', index);
+        },
+        options: [
+            {
+                label: 'Posts',
+                value: 'posts',
+                selected: true,
+                component: TabContent(['Posts content'])
+            },
+            {
+                label: 'Stories',
+                value: 'stories',
+                component: TabContent(['Stories content'])
+            },
+            {
+                label: 'Reels',
+                value: 'reels',
+                component: TabContent(['Reels content'])
+            },
+            {
+                label: 'Photos',
+                value: 'photos',
+                component: TabContent(['Photos content'])
+            }
+        ]
+    })
+);`
+            }),
+
+            DocSection({
+                title: 'Underlined Tab Group',
+                description: 'This is an underlined tab group for navigation only. No content switching, just visual feedback.',
+                preview: [
+                    new UnderlinedTabGroup({
+                        class: 'max-w-[400px]',
+                        onSelect: (value, index) => {
+                            console.log('Selected tab:', value, 'at index:', index);
+                        },
+                        options: [
+                            {
+                                label: 'Posts',
+                                value: 'posts',
+                                selected: true
+                            },
+                            {
+                                label: 'Stories',
+                                value: 'stories'
+                            },
+                            {
+                                label: 'Reels',
+                                value: 'reels'
+                            },
+                            {
+                                label: 'Photos',
+                                value: 'photos'
+                            }
+                        ]
+                    })
+                ],
+                code: `import { UnderlinedTabGroup } from "@base-framework/ui/organisms";
+
+/**
+ * UnderlinedNavigationTab
+ *
+ * This will create an underlined tab group for navigation.
+ *
+ * @returns {object}
+ */
+export const UnderlinedNavigationTab = () => (
+    new UnderlinedTabGroup({
+        class: 'max-w-[400px]',
+        onSelect: (value, index) => {
+            console.log('Selected tab:', value, 'at index:', index);
+        },
+        options: [
+            {
+                label: 'Posts',
+                value: 'posts',
+                selected: true
+            },
+            {
+                label: 'Stories',
+                value: 'stories'
+            },
+            {
+                label: 'Reels',
+                value: 'reels'
+            },
+            {
+                label: 'Photos',
+                value: 'photos'
+            }
+        ]
+    })
+);`
             }),
         ]
     )
