@@ -236,19 +236,16 @@ new TabNavigation({
                             {
                                 label: 'Stories',
                                 href: 'docs/components/tabs/stories',
-                                exact: true,
                                 component: new Panel({ class: 'p-8' }, 'This is the Stories tab content.'),
                             },
                             {
                                 label: 'Reels',
                                 href: 'docs/components/tabs/reels',
-                                exact: true,
                                 component: new Panel({ class: 'p-8' }, 'This is the Reels tab content.'),
                             },
                             {
                                 label: 'Photos',
                                 href: 'docs/components/tabs/photos',
-                                exact: true,
                                 component: new Panel({ class: 'p-8' }, 'This is the Photos tab content.'),
                             }
                         ]
@@ -270,29 +267,26 @@ export const UnderlinedRoutingTab = () => (
         options: [
             {
                 label: 'Posts',
-                href: '/posts',
+                href: 'posts',
                 exact: true,
                 component: new Panel({ class: 'p-8' }, 'Posts content'),
                 uri: 'posts'
             },
             {
                 label: 'Stories',
-                href: '/stories',
-                exact: true,
+                href: 'stories',
                 component: new Panel({ class: 'p-8' }, 'Stories content'),
                 uri: 'stories'
             },
             {
                 label: 'Reels',
-                href: '/reels',
-                exact: true,
+                href: 'reels',
                 component: new Panel({ class: 'p-8' }, 'Reels content'),
                 uri: 'reels'
             },
             {
                 label: 'Photos',
-                href: '/photos',
-                exact: true,
+                href: 'photos',
                 component: new Panel({ class: 'p-8' }, 'Photos content'),
                 uri: 'photos'
             }
