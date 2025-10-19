@@ -23,7 +23,7 @@ export class UserLoginStatus {
     /**
      * @member {object|null} data
      */
-    state: import("node_modules/@base-framework/base/dist/types/modules/state/state-target.js").StateTarget;
+    state: import("../../../node_modules/@base-framework/base/dist/types/modules/state/state-target.js").StateTarget;
     /**
      * @member {object|null} data
      */
