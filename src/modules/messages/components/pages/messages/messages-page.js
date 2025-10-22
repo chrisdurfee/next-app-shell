@@ -1,4 +1,4 @@
-import { Div, UseParent } from "@base-framework/atoms";
+import { Div, OnRoute, OnXs, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { BlankPage } from "@base-framework/ui/pages";
 import { MessagesSidebar } from "./messages-sidebar.js";
@@ -64,18 +64,36 @@ export const MessagesPage = () =>
 	return new BlankPage(Props, [
 		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
 
-			// Middle: ThreadList
-			Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
-				ThreadList()
-			]),
+			// Left: Thread List
+			OnXs((size) =>
+			{
+				if (size === "sm" || size === "xs")
+				{
+					return OnRoute('messageId', (messageId) =>
+					{
+						if (typeof messageId !== "undefined")
+						{
+							return null;
+						}
+
+						return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
+							ThreadList()
+						]);
+					});
+				}
+
+				return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
+					ThreadList()
+				]);
+			}),
 
 			// Right: Content Switch for actual chat messages
-			UseParent((parent) => (
+			UseParent(({ list, route }) => (
 				ThreadContentSwitch({
 					delete: (id) =>
 					{
-						parent.list.delete(id);
-						app.navigate(`messages/${parent.route.page}`);
+						list.delete(id);
+						app.navigate(`messages/${route.page}`);
 
 						app.notify({
 							type: "success",
@@ -85,7 +103,7 @@ export const MessagesPage = () =>
 					},
 					mingle(row)
 					{
-						parent.list.mingle(row);
+						list.mingle(row);
 					}
 				})
 			)),
