@@ -1,4 +1,4 @@
-import { Div, UseParent } from "@base-framework/atoms";
+import { Div, OnRoute, OnXs, UseParent } from "@base-framework/atoms";
 import { Data } from "@base-framework/base";
 import { Icons } from "@base-framework/ui/icons";
 import { BlankPage } from "@base-framework/ui/pages";
@@ -65,9 +65,29 @@ export const InboxPage = () =>
 	return new BlankPage(Props, [
 		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
 			InboxSidebarMenu(),
-			Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
-				InboxList()
-			]),
+
+			OnXs((size) =>
+			{
+				if (size === "sm" || size === "xs")
+				{
+					return OnRoute('messageId', (messageId) =>
+					{
+						if (typeof messageId !== "undefined")
+						{
+							return null;
+						}
+
+						return Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
+							InboxList()
+						]);
+					});
+				}
+
+				return Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
+					InboxList()
+				]);
+			}),
+
 			UseParent((parent) => (
 				ContentSwitch({
 
