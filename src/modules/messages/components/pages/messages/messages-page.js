@@ -65,28 +65,27 @@ export const MessagesPage = () =>
 		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
 
 			// Left: Thread List
-			OnXs((size) => (
-				/**
-				 * This will render the thread list on small screens.
-				 */
-				(size === "sm" || size === "xs")
+			OnXs((size) =>
+			{
+				if (size === "sm" || size === "xs")
+				{
+					return OnRoute('messageId', (messageId) =>
+					{
+						if (typeof messageId !== "undefined")
+						{
+							return null;
+						}
 
-				/**
-				 * This will update the list when the route changes.
-				 */
-				? OnRoute('messageId', (messageId) => (
-					(typeof messageId !== "undefined") ? null : Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
-						ThreadList()
-					])
-				))
+						return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
+							ThreadList()
+						]);
+					});
+				}
 
-				/**
-				 * This will render the thread list on larger screens.
-				 */
-				: Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
+				return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
 					ThreadList()
-				])
-			)),
+				]);
+			}),
 
 			// Right: Content Switch for actual chat messages
 			UseParent(({ list, route }) => (
