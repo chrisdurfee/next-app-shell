@@ -22,9 +22,9 @@ const isStandalone = () =>
  *
  * @returns {string}
  */
-const getNavHeight = () => isStandalone()
-	? 'h-[calc(56px+env(safe-area-inset-bottom))]'
-	: 'h-[56px]';
+const getNavBottom = () => isStandalone()
+	? 'bottom-[env(safe-area-inset-bottom)] pb-0'
+	: 'bottom-0 pb-[env(safe-area-inset-bottom)]';
 
 /**
  * This will get the hover class.
@@ -42,9 +42,9 @@ const getHoverClass = () => Configs.useShortNav ? '' : 'lg:max-w-[330px] lg:hove
  */
 const AppContainer = Atom((props, children) => ({
 	...props,
-	class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px]
-	${getNavHeight()} sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
-	pb-[env(safe-area-inset-bottom)] sm:pb-0
+	class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 ${getNavBottom()} left-0 w-full lg:w-[64px]
+	sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
+	sm:pb-0
 	${getHoverClass()}`,
 	children
 }));
