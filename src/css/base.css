@@ -1,14 +1,12 @@
 @reference "./theme.css";
 
 @layer base {
-  * {
-		@apply border-border;
+  	html {
+		-webkit-overflow-scrolling: touch;
 	}
 
 	body {
 		font-feature-settings: "rlig" 1, "calt" 1;
-		/* Prevent pull-to-refresh on mobile */
-		overscroll-behavior-y: none;
 		/* Improve font rendering */
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
@@ -23,8 +21,7 @@
 	/* html and body scroll behavior is now handled in index.html with Tailwind classes */
 
 	* {
-		/* Disable pull-to-refresh and overscroll glow */
-		overscroll-behavior: none;
+		@apply border-border;
 		/* Remove tap highlight */
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 		/* Better scrollbar styling */

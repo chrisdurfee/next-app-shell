@@ -167,42 +167,6 @@
 }
 
 /**
- * Loading skeleton with shimmer effect
- */
-@keyframes shimmer {
-	0% {
-		background-position: -1000px 0;
-	}
-	100% {
-		background-position: 1000px 0;
-	}
-}
-
-.skeleton-loading {
-	animation: shimmer 2s infinite linear;
-	background: linear-gradient(
-		to right,
-		#f0f0f0 0%,
-		#e0e0e0 20%,
-		#f0f0f0 40%,
-		#f0f0f0 100%
-	);
-	background-size: 1000px 100%;
-}
-
-@media (prefers-color-scheme: dark) {
-	.skeleton-loading {
-		background: linear-gradient(
-			to right,
-			#1a1a1a 0%,
-			#2a2a2a 20%,
-			#1a1a1a 40%,
-			#1a1a1a 100%
-		);
-	}
-}
-
-/**
  * Haptic feedback simulation (visual only, requires JS for actual haptics)
  */
 .haptic-light:active {
@@ -269,13 +233,6 @@
 		-webkit-user-select: text;
 		user-select: text;
 	}
-}
-
-/**
- * Pull-to-refresh prevention (critical for native feel)
- */
-html, body {
-	overscroll-behavior-y: none;
 }
 
 /**
