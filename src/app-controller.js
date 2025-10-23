@@ -44,6 +44,9 @@ export class AppController
 		this.setupRouter();
 		this.setData();
 
+		// Initialize native-like enhancements
+		//initNativeEnhancements();
+
 		// TODO: remove this if you are setting up the sign in
 		this.setUserData();
 	}

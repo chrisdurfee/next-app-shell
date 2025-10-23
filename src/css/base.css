@@ -7,6 +7,12 @@
 
 	body {
 		font-feature-settings: "rlig" 1, "calt" 1;
+		/* Prevent pull-to-refresh on mobile */
+		overscroll-behavior-y: none;
+		/* Improve font rendering */
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		text-rendering: optimizeLegibility;
 	}
 
 	::backdrop {
@@ -15,12 +21,26 @@
 	}
 
 	html {
+		/* Smooth momentum scrolling on iOS */
 		-webkit-overflow-scrolling: touch;
+		/* Prevent bounce scroll */
+		overflow: hidden;
+		height: 100%;
+	}
+
+	body {
+		/* Enable scrolling on body instead */
+		overflow-y: auto;
+		overflow-x: hidden;
+		height: 100%;
 	}
 
 	* {
-		/* overscroll-behavior: none; */
+		/* Disable pull-to-refresh and overscroll glow */
+		overscroll-behavior: none;
+		/* Remove tap highlight */
 		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		/* Better scrollbar styling */
 		-ms-overflow-style: -ms-autohiding-scrollbar;
 		box-sizing: border-box;
 	}
@@ -40,17 +60,51 @@
 	}
 
 	/**
-	* Reset the default styles
+	* Reset the default styles and improve touch responsiveness
 	*/
 	a,
 	button {
 		outline: 0;
 		text-decoration: none;
+		/* Improve touch responsiveness */
+		touch-action: manipulation;
+		/* Prevent text selection on tap */
+		-webkit-user-select: none;
+		user-select: none;
+		/* Hardware acceleration */
+		transform: translateZ(0);
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
 	}
 
 	a:hover,
 	a:active {
 		text-decoration: none;
+	}
+
+	/* Add active state feedback for touch */
+	button:active,
+	a:active,
+	[role="button"]:active {
+		opacity: 0.7;
+		transition: opacity 0.15s ease;
+	}
+
+	/* Improve input touch targets */
+	input,
+	textarea,
+	select {
+		touch-action: manipulation;
+		/* Allow text selection in inputs */
+		-webkit-user-select: text;
+		user-select: text;
+	}
+
+	/* Better scrolling performance */
+	.scroll-container {
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
+		will-change: scroll-position;
 	}
 }
 
