@@ -18,8 +18,6 @@
 		@apply bg-black/40;
 	}
 
-	/* html and body scroll behavior is now handled in index.html with Tailwind classes */
-
 	* {
 		@apply border-border;
 		/* Remove tap highlight */
