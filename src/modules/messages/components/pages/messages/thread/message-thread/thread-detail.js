@@ -133,7 +133,7 @@ export const ThreadDetail = Jot(
  * @returns {object}
  */
 const ConversationHeader = (thread) =>
-	Div({ class: "flex items-center p-4 bg-background/80 backdrop-blur-md absolute w-full" }, [
+	Div({ class: "flex items-center p-4 bg-background/80 backdrop-blur-md absolute w-full z-10" }, [
 		Div({ class: 'flex flex-auto items-center gap-3 lg:max-w-5xl m-auto' }, [
 			// Left side avatar + status
 			Div({ class: 'flex lg:hidden' }, [
@@ -197,7 +197,7 @@ const DateDivider = (date) => (
  * @returns {object}
  */
 const ConversationMessages = (thread) =>
-	Div({ class: "flex flex-col grow overflow-y-auto p-4" }, [
+	Div({ class: "flex flex-col grow overflow-y-auto p-4 z-0" }, [
 		Div({ class: "flex flex-auto flex-col w-full max-w-none lg:max-w-5xl mx-auto pt-24" }, [
 			new List({
 				cache: 'thread',
