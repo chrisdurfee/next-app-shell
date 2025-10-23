@@ -40,6 +40,10 @@
     --safe-bottom: env(safe-area-inset-bottom, 0px);
     --safe-left: env(safe-area-inset-left, 0px);
     --safe-right: env(safe-area-inset-right, 0px);
+
+    /* Dynamic viewport units for iOS Safari */
+    --vh: 1vh;
+    --dvh: 1dvh;
 }
 
 /* 2) System dark mode */
@@ -96,4 +100,23 @@
 
 @utility p-safe {
     padding: var(--safe-top) var(--safe-right) var(--safe-bottom) var(--safe-left);
+}
+
+/* Dynamic viewport height utilities for iOS Safari */
+@utility h-screen-dynamic {
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height */
+    height: -webkit-fill-available; /* iOS fallback */
+}
+
+@utility min-h-screen-dynamic {
+    min-height: 100vh; /* Fallback */
+    min-height: 100dvh; /* Dynamic viewport height */
+    min-height: -webkit-fill-available; /* iOS fallback */
+}
+
+@utility max-h-screen-dynamic {
+    max-height: 100vh; /* Fallback */
+    max-height: 100dvh; /* Dynamic viewport height */
+    max-height: -webkit-fill-available; /* iOS fallback */
 }

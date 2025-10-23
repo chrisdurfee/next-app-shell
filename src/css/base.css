@@ -20,20 +20,7 @@
 		@apply bg-black/40;
 	}
 
-	html {
-		/* Smooth momentum scrolling on iOS */
-		-webkit-overflow-scrolling: touch;
-		/* Prevent bounce scroll */
-		overflow: hidden;
-		height: 100%;
-	}
-
-	body {
-		/* Enable scrolling on body instead */
-		overflow-y: auto;
-		overflow-x: hidden;
-		height: 100%;
-	}
+	/* html and body scroll behavior is now handled in index.html with Tailwind classes */
 
 	* {
 		/* Disable pull-to-refresh and overscroll glow */

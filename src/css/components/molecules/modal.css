@@ -1,6 +1,8 @@
 .modal {
     animation: popIn .2s;
-    max-height: 100vh;
+    /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100dvh;
+    max-height: -webkit-fill-available;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
     @apply shadow-xl md:rounded-md rounded-md;
 }
@@ -25,7 +27,12 @@
 .modal.xl {
     top: 0;
     bottom: 0;
-    max-height: 100vh;
+    /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100dvh;
+    max-height: -webkit-fill-available;
+    /* Ensure full height on iOS Safari */
+    height: 100dvh;
+    height: -webkit-fill-available;
 }
 .modal .modal-header {
     padding-top: calc(1rem + env(safe-area-inset-top));
@@ -51,7 +58,11 @@
 .modal.left {
     top: 0;
     bottom: 0;
-    max-height: 100vh;
+    /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100dvh;
+    max-height: -webkit-fill-available;
+    height: 100dvh;
+    height: -webkit-fill-available;
     border-radius: 0;
 }
 .modal.right.md,
