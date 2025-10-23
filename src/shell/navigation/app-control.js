@@ -5,6 +5,28 @@ import { getMobileOptions } from "./mobile-options.js";
 import { MobileNavigation } from "./mobile/mobile-navigation.js";
 
 /**
+ * This will detect if the app is running in standalone (PWA) mode.
+ *
+ * @returns {boolean}
+ */
+const isStandalone = () =>
+{
+	// @ts-ignore - standalone is iOS-specific
+	return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+};
+
+/**
+ * This will get the navigation height class based on display mode.
+ * - Browser mode: Fixed 56px (safe area causes floating)
+ * - PWA mode: 56px + safe area (gesture bar needs space)
+ *
+ * @returns {string}
+ */
+const getNavHeight = () => isStandalone()
+	? 'h-[calc(56px+env(safe-area-inset-bottom))]'
+	: 'h-[56px]';
+
+/**
  * This will get the hover class.
  *
  * @returns {string}
@@ -21,7 +43,7 @@ const getHoverClass = () => Configs.useShortNav ? '' : 'lg:max-w-[330px] lg:hove
 const AppContainer = Atom((props, children) => ({
 	...props,
 	class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 bottom-0 left-0 w-full lg:w-[64px]
-	h-[max(56px,calc(env(safe-area-inset-bottom)+56px))] sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
+	${getNavHeight()} sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
 	pb-[env(safe-area-inset-bottom)] sm:pb-0
 	${getHoverClass()}`,
 	children
