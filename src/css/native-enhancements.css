@@ -1,0 +1,290 @@
+/**
+ * Native App Enhancements
+ * These styles improve the native feel of the PWA on iOS and Android
+ */
+
+/**
+ * Touch feedback - adds a subtle press effect
+ */
+.touch-feedback {
+	position: relative;
+	overflow: hidden;
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.touch-feedback::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.1);
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.touch-feedback:active::after {
+	width: 300%;
+	height: 300%;
+	opacity: 1;
+	transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+	.touch-feedback::after {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+/**
+ * Smooth scroll container with momentum
+ */
+.smooth-scroll {
+	-webkit-overflow-scrolling: touch;
+	scroll-behavior: smooth;
+	overscroll-behavior: contain;
+}
+
+/**
+ * No overscroll (prevents pull-to-refresh)
+ */
+.no-overscroll {
+	overscroll-behavior: none;
+}
+
+/**
+ * Hardware accelerated elements
+ */
+.hw-accelerate {
+	transform: translateZ(0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	perspective: 1000px;
+}
+
+/**
+ * Safe area utilities (for notched devices)
+ */
+.safe-area-inset {
+	padding-top: env(safe-area-inset-top);
+	padding-right: env(safe-area-inset-right);
+	padding-bottom: env(safe-area-inset-bottom);
+	padding-left: env(safe-area-inset-left);
+}
+
+/**
+ * Prevent text selection (for app-like feel)
+ */
+.no-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/**
+ * Touch manipulation optimization
+ */
+.touch-optimize {
+	touch-action: manipulation;
+	-webkit-tap-highlight-color: transparent;
+}
+
+/**
+ * Better button/link tap targets (minimum 44x44px for iOS)
+ */
+.tap-target {
+	min-width: 44px;
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/**
+ * Ripple effect (Material Design-like)
+ */
+.ripple {
+	position: relative;
+	overflow: hidden;
+}
+
+.ripple::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: currentColor;
+	opacity: 0.2;
+	transform: translate(-50%, -50%);
+	transition: width 0.6s ease, height 0.6s ease;
+}
+
+.ripple:active::before {
+	width: 200%;
+	height: 200%;
+}
+
+/**
+ * Prevent iOS zoom on double-tap
+ */
+.no-zoom {
+	touch-action: pan-x pan-y;
+}
+
+/**
+ * iOS bounce scroll prevention for specific elements
+ */
+.fixed-scroll {
+	position: fixed;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/**
+ * Smooth page transitions
+ */
+.page-transition {
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.page-transition-enter {
+	opacity: 0;
+	transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/**
+ * Loading skeleton with shimmer effect
+ */
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+.skeleton-loading {
+	animation: shimmer 2s infinite linear;
+	background: linear-gradient(
+		to right,
+		#f0f0f0 0%,
+		#e0e0e0 20%,
+		#f0f0f0 40%,
+		#f0f0f0 100%
+	);
+	background-size: 1000px 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+	.skeleton-loading {
+		background: linear-gradient(
+			to right,
+			#1a1a1a 0%,
+			#2a2a2a 20%,
+			#1a1a1a 40%,
+			#1a1a1a 100%
+		);
+	}
+}
+
+/**
+ * Haptic feedback simulation (visual only, requires JS for actual haptics)
+ */
+.haptic-light:active {
+	transform: scale(0.98);
+	transition: transform 0.05s ease;
+}
+
+.haptic-medium:active {
+	transform: scale(0.96);
+	transition: transform 0.08s ease;
+}
+
+.haptic-heavy:active {
+	transform: scale(0.94);
+	transition: transform 0.1s ease;
+}
+
+/**
+ * Better focus states for accessibility
+ */
+.focus-visible-ring:focus-visible {
+	outline: 2px solid var(--color-ring);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/**
+ * Prevent content shift during loading
+ */
+.aspect-lock {
+	position: relative;
+}
+
+.aspect-lock::before {
+	content: '';
+	display: block;
+	padding-bottom: 100%;
+}
+
+.aspect-lock > * {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/**
+ * iOS-specific fixes
+ */
+@supports (-webkit-touch-callout: none) {
+	/* iOS Safari specific styles */
+	input[type="text"],
+	input[type="email"],
+	input[type="password"],
+	input[type="search"],
+	textarea {
+		font-size: 16px !important; /* Prevent zoom on focus */
+	}
+
+	/* Fix for iOS input focus issues */
+	input:focus,
+	textarea:focus {
+		-webkit-user-select: text;
+		user-select: text;
+	}
+}
+
+/**
+ * Pull-to-refresh prevention (critical for native feel)
+ */
+html, body {
+	overscroll-behavior-y: none;
+}
+
+/**
+ * Improve animation performance
+ */
+.will-animate {
+	will-change: transform, opacity;
+}
+
+.will-animate-complete {
+	will-change: auto;
+}
