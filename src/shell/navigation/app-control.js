@@ -24,7 +24,7 @@ const isStandalone = () =>
  */
 const getNavBottom = () => isStandalone()
 	? 'bottom-0'
-	: 'bottom-[env(safe-area-inset-bottom)]';
+	: 'bottom-[env(safe-area-inset-bottom)] h-[56px]';
 
 /**
  * This will get the hover class.
