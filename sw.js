@@ -15,7 +15,7 @@ const APP_NAME = 'base-example',
  * @const
  * @type {string} version
  */
-version = '0.0.164';
+version = '0.0.165';
 
 /**
  * This will add these files to cache. Add any files you want to
