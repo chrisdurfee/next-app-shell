@@ -31,7 +31,7 @@ export const Ended = ({ onRedial, onExit }) => (
 	}, [
 		// Status icon
 		Div({ class: 'w-24 h-24 rounded-full bg-muted flex items-center justify-center' }, [
-			Icon({ size: 'lg', class: 'text-muted-foreground' }, Icons.phone.missed)
+			//Icon({ size: 'lg', class: 'text-muted-foreground' }, Icons.phone.missed)
 		]),
 
 		// Status text
@@ -46,7 +46,7 @@ export const Ended = ({ onRedial, onExit }) => (
 				class: 'w-12 h-12 rounded-full bg-primary hover:bg-primary text-primary-foreground flex items-center justify-center mt-8',
 				click: onRedial
 			}, [
-				Icon({ size: 'sm' }, Icons.phone.oubound)
+				Icon({ size: 'sm' }, Icons.phone.outbound)
 			]),
 			Button({
 				class: 'w-12 h-12 rounded-full bg-muted hover:bg-muted text-muted-foreground flex items-center justify-center mt-8',
