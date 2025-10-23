@@ -3,12 +3,10 @@
 	pointer-events: none !important;
 }
 
-@media (max-width: 640px) {
-
-	.app-nav-container {
-		height: calc(56px + env(safe-area-inset-bottom));
-	}
-}
+/**
+ * Mobile: Height is now fixed at 56px via Tailwind (h-[56px]) in app-control.js
+ * This prevents the navigation from floating when Safari UI hides/shows on scroll
+ */
 
 @media (min-width: 641px) {
 
