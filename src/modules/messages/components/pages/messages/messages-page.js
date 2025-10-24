@@ -69,6 +69,10 @@ export const MessagesPage = () =>
 			{
 				if (size === "sm" || size === "xs")
 				{
+					/**
+					 * Tracks the route to add or remove the thread list
+					 * based on the selected message on small devices.
+					 */
 					return OnRoute('messageId', (messageId) =>
 					{
 						/**
@@ -82,6 +86,9 @@ export const MessagesPage = () =>
 					});
 				}
 
+				/**
+				 * Large displays always show the thread list.
+				 */
 				return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
 					ThreadList()
 				]);
