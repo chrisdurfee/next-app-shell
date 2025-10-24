@@ -66,20 +66,25 @@ export const InboxPage = () =>
 		Div({ class: "flex w-full flex-col lg:flex-row h-full" }, [
 			InboxSidebarMenu(),
 
+			// Left: Thread List
 			OnXs((size) =>
 			{
 				if (size === "sm" || size === "xs")
 				{
+					/**
+					 * Tracks the route to add or remove the thread list
+					 * based on the selected message on small devices.
+					 */
 					return OnRoute('messageId', (messageId) =>
 					{
-						if (typeof messageId !== "undefined")
-						{
-							return null;
-						}
-
-						return Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
-							InboxList()
-						]);
+						/**
+						 * If a message is selected, remove the thread list.
+						 */
+						return (typeof messageId !== "undefined")
+							? null
+							: Div({ class: "flex flex-2 lg:max-w-[550px] lg:border-r" }, [
+								InboxList()
+							]);
 					});
 				}
 
