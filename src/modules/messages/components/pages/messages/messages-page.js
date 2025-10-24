@@ -71,6 +71,9 @@ export const MessagesPage = () =>
 				{
 					return OnRoute('messageId', (messageId) =>
 					{
+						/**
+						 * If a message is selected, hide the thread list.
+						 */
 						return (typeof messageId !== "undefined")
 							? null
 							: Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
