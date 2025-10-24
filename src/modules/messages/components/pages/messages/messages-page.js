@@ -71,14 +71,11 @@ export const MessagesPage = () =>
 				{
 					return OnRoute('messageId', (messageId) =>
 					{
-						if (typeof messageId !== "undefined")
-						{
-							return null;
-						}
-
-						return Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
-							ThreadList()
-						]);
+						return (typeof messageId !== "undefined")
+							? null
+							: Div({ class: "flex flex-auto w-full lg:max-w-[460px] lg:border-r" }, [
+								ThreadList()
+							]);
 					});
 				}
 
