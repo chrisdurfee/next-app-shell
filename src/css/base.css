@@ -20,17 +20,14 @@
 	* This fixes the mobile navigation issues on iOS when
 	* in the browser and installed as a PWA.
 	*/
+	body.app-container {
+		min-height: 100vh;
+		min-height: 100dvh;
+	}
 	@media (display-mode: standalone)
 	{
 		body.app-container {
 			min-height: 100vh;
-		}
-	}
-	@media (display-mode: browser)
-	{
-		body.app-container {
-			min-height: 100vh;
-			min-height: 100dvh;
 		}
 	}
 
