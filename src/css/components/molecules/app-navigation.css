@@ -3,6 +3,10 @@
 	pointer-events: none !important;
 }
 
+/**
+ * This will add landscape support for small devices
+ * If someone uses that. HaHa
+ */
 @media (min-width: 641px) {
 
 	.app-container {
