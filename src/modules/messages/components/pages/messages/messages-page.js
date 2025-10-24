@@ -72,7 +72,7 @@ export const MessagesPage = () =>
 					return OnRoute('messageId', (messageId) =>
 					{
 						/**
-						 * If a message is selected, hide the thread list.
+						 * If a message is selected, remove the thread list.
 						 */
 						return (typeof messageId !== "undefined")
 							? null
