@@ -1,6 +1,7 @@
 .modal {
     animation: popIn .2s;
     /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100vh;
     max-height: 100dvh;
     max-height: -webkit-fill-available;
     padding: env(safe-area-inset-top) 0 env(safe-area-inset-bottom);
@@ -28,6 +29,7 @@
     top: 0;
     bottom: 0;
     /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100vh;
     max-height: 100dvh;
     max-height: -webkit-fill-available;
     /* Ensure full height on iOS Safari */
@@ -59,6 +61,7 @@
     top: 0;
     bottom: 0;
     /* Use dvh (dynamic viewport height) for iOS Safari */
+    max-height: 100vh;
     max-height: 100dvh;
     max-height: -webkit-fill-available;
     height: 100dvh;
