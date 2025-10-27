@@ -42,7 +42,7 @@ const getHoverClass = () => Configs.useShortNav ? '' : 'lg:max-w-[330px] lg:hove
  */
 const AppContainer = Atom((props, children) => ({
 	...props,
-	class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 ${getNavBottom()} left-0 w-full lg:w-[64px]
+	class: `app-nav-container bg-background/80 backdrop-blur-md fixed sm:top-0 ${getNavBottom()} left-0 w-full lg:w-16
 	sm:h-full z-10 lg:z-20 lg:overflow-y-auto overflow-x-hidden shadow-md border-t sm:border-r sm:border-t-0 lg:border-r
 	sm:pb-0
 	${getHoverClass()}`,
