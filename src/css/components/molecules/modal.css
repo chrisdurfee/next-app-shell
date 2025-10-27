@@ -36,6 +36,14 @@
     height: 100dvh;
     height: -webkit-fill-available;
 }
+@media (display-mode: standalone)
+{
+    .modal,
+    .modal.lg,
+    .modal.xl {
+        max-height: 100vh;
+    }
+}
 .modal .modal-header {
     padding-top: calc(1rem + env(safe-area-inset-top));
     top: calc(-0px - env(safe-area-inset-top));
@@ -51,6 +59,12 @@
         max-height: 80vh;
         padding: 0;
     }
+    @media (display-mode: standalone)
+	{
+		.modal.md {
+			max-height: 100vh;
+		}
+	}
     .modal header button.icon {
         @apply hidden;
     }
@@ -67,6 +81,13 @@
     height: 100dvh;
     height: -webkit-fill-available;
     border-radius: 0;
+}
+@media (display-mode: standalone)
+{
+    .modal.right,
+    .modal.left {
+        max-height: 100vh;
+    }
 }
 .modal.right.md,
 .modal.left.md {
