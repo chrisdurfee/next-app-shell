@@ -52,6 +52,10 @@ export const Links = (path) => ([
 				href: `${path}/components/dialogs`
 			},
 			{
+				label: 'Drawers',
+				href: `${path}/components/drawers`
+			},
+			{
 				label: 'Cards',
 				href: `${path}/components/cards`
 			},

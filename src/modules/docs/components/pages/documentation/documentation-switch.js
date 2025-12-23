@@ -29,6 +29,7 @@ export const DocumentationSwitch = (basePath) => ([
 	Page(`${basePath}/components/modals*`, 'Modals', () => import('./components/modal-page.js')),
 	Page(`${basePath}/components/notifications*`, 'Notifications', () => import('./components/notification-page.js')),
 	Page(`${basePath}/components/dialogs*`, 'Modals', () => import('./components/dialog-page.js')),
+	Page(`${basePath}/components/drawers*`, 'Drawers', () => import('./components/drawer-page.js')),
 	Page(`${basePath}/components/cards*`, 'Cards', () => import('./components/cards/card-page.js')),
 	Page(`${basePath}/components/calendars*`, 'Calendars', () => import('./components/calendar-page.js')),
 	Page(`${basePath}/components/avatars*`, 'Avatars', () => import('./components/avatar-page.js')),
