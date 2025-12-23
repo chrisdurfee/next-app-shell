@@ -149,9 +149,11 @@
 /* Desktop: behave like standard centered modal */
 @media (min-width: 1024px) {
     .modal.drawer {
-        top: auto !important;
+        top: 50% !important;
         bottom: auto !important;
-        margin: auto !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
         max-height: 80vh !important;
         border-radius: 0.5rem;
         animation: popIn 0.2s;
