@@ -274,8 +274,9 @@ export const DrawerPage = () =>
 					text: 'Open Basic Drawer',
 					variant: 'primary',
 					click: () => {
-						const drawer = new FeedbackDrawer();
-						drawer.children = FeedbackDrawerContent();
+                        // @ts-ignore
+						const drawer = new FeedbackDrawer(FeedbackDrawerContent());
+                        // @ts-ignore
 						drawer.open();
 					}
 				})
@@ -317,9 +318,8 @@ const FeedbackDrawerContent = () => [
 	])
 ];
 
-// Open the drawer
-const drawer = new FeedbackDrawer();
-drawer.children = FeedbackDrawerContent();
+// Open the drawer by passing children in constructor
+const drawer = new FeedbackDrawer(FeedbackDrawerContent());
 drawer.open();
 `
 		}),
@@ -333,8 +333,9 @@ drawer.open();
 					text: 'Open Notifications',
 					variant: 'secondary',
 					click: () => {
-						const drawer = new NotificationsDrawer();
-						drawer.children = NotificationsContent();
+                        // @ts-ignore
+						const drawer = new NotificationsDrawer(NotificationsContent());
+                        // @ts-ignore
 						drawer.open();
 					}
 				})
@@ -369,8 +370,7 @@ const NotificationsContent = () => [
 	])
 ];
 
-const drawer = new NotificationsDrawer();
-drawer.children = NotificationsContent();
+const drawer = new NotificationsDrawer(NotificationsContent());
 drawer.open();
 `
 		}),
@@ -384,8 +384,9 @@ drawer.open();
 					text: 'Open Settings',
 					variant: 'outline',
 					click: () => {
-						const drawer = new QuickSettingsDrawer();
-						drawer.children = QuickSettingsContent();
+                        // @ts-ignore
+						const drawer = new QuickSettingsDrawer(QuickSettingsContent());
+                        // @ts-ignore
 						drawer.open();
 					}
 				})
@@ -408,8 +409,7 @@ class QuickSettingsDrawer extends Drawer
 	}
 }
 
-const drawer = new QuickSettingsDrawer();
-drawer.children = QuickSettingsContent();
+const drawer = new QuickSettingsDrawer(QuickSettingsContent());
 drawer.open();
 `
 		}),
@@ -427,10 +427,11 @@ drawer.open();
 						text: 'Default Swipe Behavior',
 						variant: 'primary',
 						click: () => {
-							const drawer = new FeedbackDrawer();
-							drawer.children = [
+                            // @ts-ignore
+							const drawer = new FeedbackDrawer([
 								P({ class: 'p-4' }, 'Swipe down to close this drawer.')
-							];
+							]);
+                            // @ts-ignore
 							drawer.open();
 						}
 					}),
@@ -438,11 +439,13 @@ drawer.open();
 						text: 'Custom Threshold',
 						variant: 'secondary',
 						click: () => {
-							const drawer = new FeedbackDrawer();
-							drawer.closeThreshold = 200; // Requires more drag distance
-							drawer.children = [
+                            // @ts-ignore
+							const drawer = new FeedbackDrawer([
 								P({ class: 'p-4' }, 'This drawer requires a longer swipe to close (200px).')
-							];
+							]);
+                            // @ts-ignore
+							drawer.closeThreshold = 200; // Requires more drag distance
+                            // @ts-ignore
 							drawer.open();
 						}
 					}),
@@ -450,11 +453,13 @@ drawer.open();
 						text: 'Swipe Disabled',
 						variant: 'outline',
 						click: () => {
-							const drawer = new FeedbackDrawer();
-							drawer.swipeToClose = false; // Disable swipe gesture
-							drawer.children = [
+                            // @ts-ignore
+							const drawer = new FeedbackDrawer([
 								P({ class: 'p-4' }, 'Swipe gesture is disabled. Use the buttons to close.')
-							];
+							]);
+                            // @ts-ignore
+							drawer.swipeToClose = false; // Disable swipe gesture
+                            // @ts-ignore
 							drawer.open();
 						}
 					})
@@ -497,8 +502,9 @@ drawer3.open();
 									this.back = true;
 									this.hideFooter = true;
 								}
-							};
-							drawer.children = [P({ class: 'p-4' }, 'This is a small drawer.')];
+                                // @ts-ignore
+							}([P({ class: 'p-4' }, 'This is a small drawer.')]);
+                            // @ts-ignore
 							drawer.open();
 						}
 					}),
@@ -514,8 +520,9 @@ drawer3.open();
 									this.back = true;
 									this.hideFooter = true;
 								}
-							};
-							drawer.children = [P({ class: 'p-4' }, 'This is a medium drawer (default size).')];
+                                // @ts-ignore
+							}([P({ class: 'p-4' }, 'This is a medium drawer (default size).')]);
+                            // @ts-ignore
 							drawer.open();
 						}
 					}),
@@ -531,8 +538,9 @@ drawer3.open();
 									this.back = true;
 									this.hideFooter = true;
 								}
-							};
-							drawer.children = [P({ class: 'p-4' }, 'This is a large drawer.')];
+                                // @ts-ignore
+							}([P({ class: 'p-4' }, 'This is a large drawer.')]);
+                            // @ts-ignore
 							drawer.open();
 						}
 					}),
@@ -548,8 +556,9 @@ drawer3.open();
 									this.back = true;
 									this.hideFooter = true;
 								}
-							};
-							drawer.children = [P({ class: 'p-4' }, 'This is an extra large drawer.')];
+                                // @ts-ignore
+							}([P({ class: 'p-4' }, 'This is an extra large drawer.')]);
+                            // @ts-ignore
 							drawer.open();
 						}
 					})
