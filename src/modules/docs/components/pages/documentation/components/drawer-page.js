@@ -33,7 +33,7 @@ class FeedbackDrawer extends Drawer
 // Content for the feedback drawer
 const FeedbackDrawerContent = () => [
 	Form({ class: 'flex flex-col gap-6 p-6 my-auto' }, [
-		Fieldset([
+		Fieldset({ class: 'flex flex-col gap-6' }, [
 			// Info Alert using Alert component
 			Alert({
 				title: 'We value your input',
@@ -601,7 +601,7 @@ drawer3.open();
 									this.hideFooter = true;
 								}
                                 // @ts-ignore
-							}([P({ class: 'p-4' }, 'This is a small drawer.')]);
+							}([P({ class: 'p-6 my-auto' }, 'This is a small drawer.')]);
                             // @ts-ignore
 							drawer.open();
 						}
