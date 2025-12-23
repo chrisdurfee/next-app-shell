@@ -180,7 +180,7 @@ class QuickSettingsDrawer extends Drawer
 
 // Content for quick settings drawer
 const QuickSettingsContent = () => [
-	Div({ class: 'space-y-6 p-6 my-auto' }, [
+	Div({ class: 'space-y-6 p-6' }, [
 		// Description
 		P({ class: 'text-sm text-muted-foreground' },
 			'Customize your experience with these quick settings. Changes are saved automatically.'
@@ -517,7 +517,7 @@ drawer.open();
 			title: 'Swipe Behavior',
 			description: 'Drawers support swipe-to-close gestures on mobile devices. You can customize the swipe threshold and toggle swipe functionality.',
 			preview: [
-				Div({ class: 'space-y-3' }, [
+				Div({ class: 'flex flex-col gap-y-3' }, [
 					P({ class: 'text-sm text-muted-foreground mb-6' },
 						'On mobile, try swiping down to close the drawer. The gesture requires minimal drag distance to trigger.'
 					),
@@ -619,7 +619,7 @@ drawer3.open();
 									this.hideFooter = true;
 								}
                                 // @ts-ignore
-							}([P({ class: 'p-4' }, 'This is a medium drawer (default size).')]);
+							}([P({ class: 'p-6 my-auto' }, 'This is a medium drawer (default size).')]);
                             // @ts-ignore
 							drawer.open();
 						}
@@ -637,7 +637,7 @@ drawer3.open();
 									this.hideFooter = true;
 								}
                                 // @ts-ignore
-							}([P({ class: 'p-4' }, 'This is a large drawer.')]);
+							}([P({ class: 'p-6 my-auto' }, 'This is a large drawer.')]);
                             // @ts-ignore
 							drawer.open();
 						}
@@ -655,7 +655,7 @@ drawer3.open();
 									this.hideFooter = true;
 								}
                                 // @ts-ignore
-							}([P({ class: 'p-4' }, 'This is an extra large drawer.')]);
+							}([P({ class: 'p-6 my-auto' }, 'This is an extra large drawer.')]);
                             // @ts-ignore
 							drawer.open();
 						}
