@@ -1,6 +1,7 @@
-import { Button as BaseButton, Div, Input, P, Textarea } from "@base-framework/atoms";
-import { Button } from "@base-framework/ui/atoms";
-import { Drawer } from "@base-framework/ui/molecules";
+import { Div, Fieldset, Form, H4, P, Span } from "@base-framework/atoms";
+import { Alert, Icons } from "@base-framework/ui";
+import { Button, EmailInput, Select, Textarea } from "@base-framework/ui/atoms";
+import { Drawer, FormField, Toggle } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -31,68 +32,55 @@ class FeedbackDrawer extends Drawer
 
 // Content for the feedback drawer
 const FeedbackDrawerContent = () => [
-	// Info Alert
-	Div({ class: 'bg-muted/50 border border-muted rounded-lg p-4 mb-4' }, [
-		Div({ class: 'flex items-start gap-2' }, [
-			Div({ class: 'text-blue-500 text-xl' }, '💡'),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'font-semibold text-sm mb-1' }, 'We value your input'),
-				P({ class: 'text-sm text-muted-foreground' },
-					'Your feedback helps us improve. Please be as detailed as possible so we can better understand your experience.'
-				)
+	Form({ class: 'flex flex-col gap-y-4' }, [
+		Fieldset([
+			// Info Alert using Alert component
+			Alert({
+				title: 'We value your input',
+				description: 'Your feedback helps us improve. Please be as detailed as possible so we can better understand your experience.',
+				icon: Icons.information,
+				type: 'info'
+			}),
+
+			// Category Selection
+			new FormField({
+				name: "category",
+				label: "Category",
+				description: "Select the type of feedback you want to share."
+			}, [
+				Select({
+					required: true,
+					options: [
+						{ value: 'bug', label: '🐛 Bug Report' },
+						{ value: 'feature', label: '✨ Feature Request' },
+						{ value: 'general', label: '💬 General' }
+					]
+				})
+			]),
+
+			// Feedback Message
+			new FormField({
+				name: "feedback",
+				label: "Your Feedback",
+				description: "Tell us what you think..."
+			}, [
+				Textarea({
+					placeholder: 'Share your thoughts with us...',
+					rows: 6,
+					required: true
+				})
+			]),
+
+			// Email Input (Optional)
+			new FormField({
+				name: "email",
+				label: "Email (Optional)",
+				description: "We'll use this to follow up if needed."
+			}, [
+				EmailInput({
+					placeholder: 'your.email@example.com'
+				})
 			])
-		])
-	]),
-
-	// Category Selection
-	Div({ class: 'mb-4' }, [
-		Div({ class: 'text-sm font-medium mb-2' }, 'Category'),
-		Div({ class: 'flex gap-2 flex-wrap' }, [
-			BaseButton({
-				type: 'button',
-				class: 'px-4 py-2 rounded-lg border border-border hover:bg-muted/50 text-sm'
-			}, '🐛 Bug Report'),
-			BaseButton({
-				type: 'button',
-				class: 'px-4 py-2 rounded-lg border border-border hover:bg-muted/50 text-sm'
-			}, '✨ Feature Request'),
-			BaseButton({
-				type: 'button',
-				class: 'px-4 py-2 rounded-lg border border-border hover:bg-muted/50 text-sm'
-			}, '💬 General')
-		])
-	]),
-
-	// Feedback Message
-	Div({ class: 'mb-4' }, [
-		Div({ class: 'text-sm font-medium mb-2' }, 'Your Feedback'),
-		Textarea({
-			placeholder: 'Tell us what you think...',
-			rows: 6,
-			class: 'w-full p-4 bg-muted/30 border border-border rounded-lg resize-none'
-		})
-	]),
-
-	// Email Input (Optional)
-	Div({ class: 'mb-4' }, [
-		Div({ class: 'text-sm font-medium mb-2' }, 'Email (Optional)'),
-		Input({
-			type: 'email',
-			placeholder: 'your.email@example.com',
-			class: 'w-full px-4 py-3 bg-muted/30 border border-border rounded-lg'
-		})
-	]),
-
-	// Tips
-	Div({ class: 'bg-blue-500/10 border border-blue-500/20 rounded-lg p-4' }, [
-		Div({ class: 'flex items-start gap-2 mb-3' }, [
-			Div({ class: 'text-blue-500 mt-0.5' }, 'ℹ️'),
-			Div({ class: 'font-semibold text-sm' }, 'Helpful Tips')
-		]),
-		Div({ class: 'space-y-2 text-sm text-muted-foreground ml-6' }, [
-			Div('• Include specific details about your experience'),
-			Div('• Mention what browser or device you\'re using'),
-			Div('• Screenshots are always helpful (attach via email)')
 		])
 	])
 ];
@@ -117,34 +105,55 @@ class NotificationsDrawer extends Drawer
 
 // Content for notifications drawer
 const NotificationsContent = () => [
-	Div({ class: 'space-y-3' }, [
-		// Notification Item 1
-		Div({ class: 'flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg border border-blue-500/20' }, [
-			Div({ class: 'w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold' }, 'JD'),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'text-sm font-semibold mb-1' }, 'John Doe mentioned you'),
-				P({ class: 'text-sm text-muted-foreground mb-2' }, '"Great work on the new feature! @you"'),
-				P({ class: 'text-xs text-muted-foreground' }, '5 minutes ago')
+	Div({ class: 'space-y-2' }, [
+		// Notification Item 1 with Avatar and Badge
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+			Avatar({
+				src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop',
+				alt: 'John Doe',
+				fallbackText: 'JD',
+				size: 'sm'
+			}),
+			Div({ class: 'flex-1 space-y-1' }, [
+				Div({ class: 'flex items-center gap-2' }, [
+					P({ class: 'text-sm font-medium leading-none' }, 'John Doe mentioned you'),
+					Badge({ type: 'blue' }, 'New')
+				]),
+				P({ class: 'text-sm text-muted-foreground' }, '"Great work on the new feature! @you"'),
+				P({ class: 'text-xs text-muted-foreground mt-1' }, '5 minutes ago')
 			])
 		]),
 
-		// Notification Item 2
-		Div({ class: 'flex items-start gap-3 p-4 hover:bg-muted/30 rounded-lg' }, [
-			Div({ class: 'w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold' }, 'SC'),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'text-sm font-semibold mb-1' }, 'Sarah Chen liked your post'),
-				P({ class: 'text-sm text-muted-foreground mb-2' }, 'Your post about best practices'),
-				P({ class: 'text-xs text-muted-foreground' }, '2 hours ago')
+		// Notification Item 2 with Avatar
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+			Avatar({
+				src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
+				alt: 'Sarah Chen',
+				fallbackText: 'SC',
+				size: 'sm'
+			}),
+			Div({ class: 'flex-1 space-y-1' }, [
+				P({ class: 'text-sm font-medium leading-none' }, 'Sarah Chen liked your post'),
+				P({ class: 'text-sm text-muted-foreground' }, 'Your post about best practices'),
+				P({ class: 'text-xs text-muted-foreground mt-1' }, '2 hours ago')
 			])
 		]),
 
-		// Notification Item 3
-		Div({ class: 'flex items-start gap-3 p-4 hover:bg-muted/30 rounded-lg' }, [
-			Div({ class: 'w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-semibold' }, 'MK'),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'text-sm font-semibold mb-1' }, 'Mike Kim started following you'),
-				P({ class: 'text-sm text-muted-foreground mb-2' }, 'Say hello to your new follower!'),
-				P({ class: 'text-xs text-muted-foreground' }, 'Yesterday')
+		// Notification Item 3 with Avatar and Badge
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+			Avatar({
+				src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
+				alt: 'Mike Kim',
+				fallbackText: 'MK',
+				size: 'sm'
+			}),
+			Div({ class: 'flex-1 space-y-1' }, [
+				Div({ class: 'flex items-center gap-2' }, [
+					P({ class: 'text-sm font-medium leading-none' }, 'Mike Kim started following you'),
+					Badge({ type: 'purple' }, 'Follower')
+				]),
+				P({ class: 'text-sm text-muted-foreground' }, 'Say hello to your new follower!'),
+				P({ class: 'text-xs text-muted-foreground mt-1' }, 'Yesterday')
 			])
 		])
 	])
@@ -170,80 +179,85 @@ class QuickSettingsDrawer extends Drawer
 
 // Content for quick settings drawer
 const QuickSettingsContent = () => [
-	// Description
-	P({ class: 'text-sm text-muted-foreground mb-6' },
-		'Customize your experience with these quick settings. Changes are saved automatically.'
-	),
+	Div({ class: 'space-y-6' }, [
+		// Description
+		P({ class: 'text-sm text-muted-foreground' },
+			'Customize your experience with these quick settings. Changes are saved automatically.'
+		),
 
-	// Settings List
-	Div({ class: 'space-y-3 mb-6' }, [
-		// Setting Item 1
-		Div({ class: 'flex items-center justify-between p-4 bg-muted/30 rounded-lg' }, [
-			Div({ class: 'flex items-center gap-3' }, [
-				Div({ class: 'w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white' }, '🔔'),
-				Div([
-					Div({ class: 'font-semibold text-sm' }, 'Push Notifications'),
-					Div({ class: 'text-xs text-muted-foreground' }, 'Receive alerts and updates')
-				])
+		// Settings List
+		Div({ class: 'space-y-4' }, [
+			// Setting Item 1 - Push Notifications
+			Div({ class: 'flex items-center justify-between p-4 rounded-lg border bg-card text-card-foreground shadow-sm' }, [
+				Div({ class: 'flex items-center gap-3 flex-1' }, [
+					Div({ class: 'flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground' }, '🔔'),
+					Div({ class: 'space-y-0.5' }, [
+						H4({ class: 'text-sm font-semibold' }, 'Push Notifications'),
+						P({ class: 'text-xs text-muted-foreground' }, 'Receive alerts and updates')
+					])
+				]),
+				new Toggle({
+					active: true,
+					change: (checked) => console.log('Push notifications:', checked)
+				})
 			]),
-			Div({ class: 'relative inline-block w-12 h-6 bg-primary rounded-full' }, [
-				Div({ class: 'absolute top-1 right-1 w-4 h-4 bg-white rounded-full' })
+
+			// Setting Item 2 - Dark Mode
+			Div({ class: 'flex items-center justify-between p-4 rounded-lg border bg-card text-card-foreground shadow-sm' }, [
+				Div({ class: 'flex items-center gap-3 flex-1' }, [
+					Div({ class: 'flex h-10 w-10 items-center justify-center rounded-lg bg-violet-500 text-white' }, '🌙'),
+					Div({ class: 'space-y-0.5' }, [
+						H4({ class: 'text-sm font-semibold' }, 'Dark Mode'),
+						P({ class: 'text-xs text-muted-foreground' }, 'Use dark theme')
+					])
+				]),
+				new Toggle({
+					active: false,
+					change: (checked) => console.log('Dark mode:', checked)
+				})
+			]),
+
+			// Setting Item 3 - Email Notifications
+			Div({ class: 'flex items-center justify-between p-4 rounded-lg border bg-card text-card-foreground shadow-sm' }, [
+				Div({ class: 'flex items-center gap-3 flex-1' }, [
+					Div({ class: 'flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500 text-white' }, '📧'),
+					Div({ class: 'space-y-0.5' }, [
+						H4({ class: 'text-sm font-semibold' }, 'Email Notifications'),
+						P({ class: 'text-xs text-muted-foreground' }, 'Weekly digest and updates')
+					])
+				]),
+				new Toggle({
+					active: true,
+					change: (checked) => console.log('Email notifications:', checked)
+				})
 			])
 		]),
 
-		// Setting Item 2
-		Div({ class: 'flex items-center justify-between p-4 bg-muted/30 rounded-lg' }, [
-			Div({ class: 'flex items-center gap-3' }, [
-				Div({ class: 'w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center text-white' }, '🌙'),
-				Div([
-					Div({ class: 'font-semibold text-sm' }, 'Dark Mode'),
-					Div({ class: 'text-xs text-muted-foreground' }, 'Use dark theme')
+		// Preferences Section
+		Div({ class: 'space-y-3' }, [
+			H4({ class: 'text-sm font-semibold' }, 'Display Preferences'),
+			Div({ class: 'space-y-1' }, [
+				Div({ class: 'flex items-center justify-between p-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+					P({ class: 'text-sm font-medium' }, 'Font Size'),
+					P({ class: 'text-sm text-muted-foreground' }, 'Medium')
+				]),
+				Div({ class: 'flex items-center justify-between p-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+					P({ class: 'text-sm font-medium' }, 'Language'),
+					P({ class: 'text-sm text-muted-foreground' }, 'English')
 				])
-			]),
-			Div({ class: 'relative inline-block w-12 h-6 bg-muted rounded-full' }, [
-				Div({ class: 'absolute top-1 left-1 w-4 h-4 bg-white rounded-full' })
 			])
 		]),
 
-		// Setting Item 3
-		Div({ class: 'flex items-center justify-between p-4 bg-muted/30 rounded-lg' }, [
-			Div({ class: 'flex items-center gap-3' }, [
-				Div({ class: 'w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center text-white' }, '📧'),
-				Div([
-					Div({ class: 'font-semibold text-sm' }, 'Email Notifications'),
-					Div({ class: 'text-xs text-muted-foreground' }, 'Weekly digest and updates')
+		// Privacy Note
+		Div({ class: 'rounded-lg border bg-muted p-4' }, [
+			Div({ class: 'flex items-start gap-3' }, [
+				Span({ class: 'text-muted-foreground text-lg' }, '🔒'),
+				Div({ class: 'flex-1 space-y-1' }, [
+					P({ class: 'text-sm font-medium leading-none' }, 'Privacy & Security'),
+					P({ class: 'text-xs text-muted-foreground' },
+						'Your preferences are stored securely and never shared with third parties.'
+					)
 				])
-			]),
-			Div({ class: 'relative inline-block w-12 h-6 bg-primary rounded-full' }, [
-				Div({ class: 'absolute top-1 right-1 w-4 h-4 bg-white rounded-full' })
-			])
-		])
-	]),
-
-	// Preferences Section
-	Div({ class: 'mb-6' }, [
-		Div({ class: 'text-sm font-medium mb-3' }, 'Display Preferences'),
-		Div({ class: 'space-y-2' }, [
-			Div({ class: 'flex items-center justify-between p-3 hover:bg-muted/50 rounded-lg' }, [
-				P({ class: 'text-sm' }, 'Font Size'),
-				P({ class: 'text-sm text-muted-foreground' }, 'Medium')
-			]),
-			Div({ class: 'flex items-center justify-between p-3 hover:bg-muted/50 rounded-lg' }, [
-				P({ class: 'text-sm' }, 'Language'),
-				P({ class: 'text-sm text-muted-foreground' }, 'English')
-			])
-		])
-	]),
-
-	// Privacy Note
-	Div({ class: 'bg-muted/50 border border-muted rounded-lg p-4' }, [
-		Div({ class: 'flex items-start gap-2' }, [
-			Div({ class: 'text-muted-foreground mt-0.5' }, '🔒'),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'text-sm font-semibold mb-1' }, 'Privacy & Security'),
-				P({ class: 'text-xs text-muted-foreground' },
-					'Your preferences are stored securely and never shared with third parties.'
-				)
 			])
 		])
 	])
@@ -283,8 +297,9 @@ export const DrawerPage = () =>
 			],
 			code: `
 import { Drawer } from "@base-framework/ui/molecules";
-import { Button } from "@base-framework/ui/atoms";
-import { Div, P, Textarea, Input } from "@base-framework/atoms";
+import { Button, EmailInput, Select, Textarea } from "@base-framework/ui/atoms";
+import { FormField } from "@base-framework/ui/molecules";
+import { Div, P, Span, Form, Fieldset } from "@base-framework/atoms";
 
 // Define a custom drawer class
 class FeedbackDrawer extends Drawer
@@ -308,13 +323,60 @@ class FeedbackDrawer extends Drawer
 
 // Create content for the drawer
 const FeedbackDrawerContent = () => [
-	Div({ class: 'mb-4' }, [
-		Div({ class: 'text-sm font-medium mb-2' }, 'Your Feedback'),
-		Textarea({
-			placeholder: 'Tell us what you think...',
-			rows: 6,
-			class: 'w-full p-4 bg-muted/30 border border-border rounded-lg'
-		})
+	Form({ class: 'flex flex-col gap-y-4' }, [
+		Fieldset([
+			// Info Alert
+			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm p-4 mb-4' }, [
+				Div({ class: 'flex items-start gap-3' }, [
+					Span({ class: 'text-primary text-xl' }, '💡'),
+					Div({ class: 'flex-1 space-y-1' }, [
+						P({ class: 'text-sm font-medium leading-none' }, 'We value your input'),
+						P({ class: 'text-sm text-muted-foreground' },
+							'Your feedback helps us improve.'
+						)
+					])
+				])
+			]),
+
+			// Category Selection
+			new FormField({
+				name: "category",
+				label: "Category",
+				description: "Select the type of feedback."
+			}, [
+				Select({
+					required: true,
+					options: [
+						{ value: 'bug', label: '🐛 Bug Report' },
+						{ value: 'feature', label: '✨ Feature Request' },
+						{ value: 'general', label: '💬 General' }
+					]
+				})
+			]),
+
+			// Feedback Message
+			new FormField({
+				name: "feedback",
+				label: "Your Feedback",
+				description: "Tell us what you think..."
+			}, [
+				Textarea({
+					placeholder: 'Share your thoughts...',
+					rows: 6,
+					required: true
+				})
+			]),
+
+			// Email Input
+			new FormField({
+				name: "email",
+				label: "Email (Optional)"
+			}, [
+				EmailInput({
+					placeholder: 'your.email@example.com'
+				})
+			])
+		])
 	])
 ];
 
@@ -359,11 +421,11 @@ class NotificationsDrawer extends Drawer
 }
 
 const NotificationsContent = () => [
-	Div({ class: 'space-y-3' }, [
-		Div({ class: 'flex items-start gap-3 p-4 bg-blue-500/10 rounded-lg' }, [
-			Div({ class: 'w-10 h-10 bg-blue-500 rounded-full' }),
-			Div({ class: 'flex-1' }, [
-				P({ class: 'text-sm font-semibold mb-1' }, 'John Doe mentioned you'),
+	Div({ class: 'space-y-2' }, [
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card shadow-sm hover:bg-accent transition-colors' }, [
+			Div({ class: 'w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold text-sm' }, 'JD'),
+			Div({ class: 'flex-1 space-y-1' }, [
+				P({ class: 'text-sm font-medium leading-none' }, 'John Doe mentioned you'),
 				P({ class: 'text-xs text-muted-foreground' }, '5 minutes ago')
 			])
 		])
@@ -394,7 +456,8 @@ drawer.open();
 			code: `
 import { Drawer } from "@base-framework/ui/molecules";
 import { Button } from "@base-framework/ui/atoms";
-import { Div, P } from "@base-framework/atoms";
+import { Toggle } from "@base-framework/ui/molecules";
+import { Div, P, H4, Span } from "@base-framework/atoms";
 
 class QuickSettingsDrawer extends Drawer
 {
@@ -408,6 +471,31 @@ class QuickSettingsDrawer extends Drawer
 		this.hideFooter = true;
 	}
 }
+
+const QuickSettingsContent = () => [
+	Div({ class: 'space-y-6' }, [
+		P({ class: 'text-sm text-muted-foreground' },
+			'Customize your experience. Changes are saved automatically.'
+		),
+
+		Div({ class: 'space-y-4' }, [
+			// Setting with Toggle
+			Div({ class: 'flex items-center justify-between p-4 rounded-lg border bg-card shadow-sm' }, [
+				Div({ class: 'flex items-center gap-3 flex-1' }, [
+					Div({ class: 'flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground' }, '🔔'),
+					Div({ class: 'space-y-0.5' }, [
+						H4({ class: 'text-sm font-semibold' }, 'Push Notifications'),
+						P({ class: 'text-xs text-muted-foreground' }, 'Receive alerts')
+					])
+				]),
+				new Toggle({
+					active: true,
+					change: (checked) => console.log('Toggle:', checked)
+				})
+			])
+		])
+	])
+];
 
 const drawer = new QuickSettingsDrawer(QuickSettingsContent());
 drawer.open();
