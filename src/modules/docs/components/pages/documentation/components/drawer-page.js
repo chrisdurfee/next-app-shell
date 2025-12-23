@@ -293,7 +293,8 @@ export const DrawerPage = () =>
 			code: `
 import { Drawer } from "@base-framework/ui/molecules";
 import { Button, EmailInput, Select, Textarea } from "@base-framework/ui/atoms";
-import { FormField } from "@base-framework/ui/molecules";
+import { Alert, FormField } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
 import { Div, P, Span, Form, Fieldset } from "@base-framework/atoms";
 
 // Define a custom drawer class
@@ -320,18 +321,13 @@ class FeedbackDrawer extends Drawer
 const FeedbackDrawerContent = () => [
 	Form({ class: 'flex flex-col gap-y-4' }, [
 		Fieldset([
-			// Info Alert
-			Div({ class: 'rounded-lg border bg-card text-card-foreground shadow-sm p-4 mb-4' }, [
-				Div({ class: 'flex items-start gap-3' }, [
-					Span({ class: 'text-primary text-xl' }, '💡'),
-					Div({ class: 'flex-1 space-y-1' }, [
-						P({ class: 'text-sm font-medium leading-none' }, 'We value your input'),
-						P({ class: 'text-sm text-muted-foreground' },
-							'Your feedback helps us improve.'
-						)
-					])
-				])
-			]),
+			// Info Alert using Alert component
+			Alert({
+				title: 'We value your input',
+				description: 'Your feedback helps us improve.',
+				icon: Icons.information,
+				type: 'info'
+			}),
 
 			// Category Selection
 			new FormField({
@@ -352,8 +348,7 @@ const FeedbackDrawerContent = () => [
 			// Feedback Message
 			new FormField({
 				name: "feedback",
-				label: "Your Feedback",
-				description: "Tell us what you think..."
+				label: "Your Feedback"
 			}, [
 				Textarea({
 					placeholder: 'Share your thoughts...',
@@ -399,7 +394,8 @@ drawer.open();
 			],
 			code: `
 import { Drawer } from "@base-framework/ui/molecules";
-import { Button } from "@base-framework/ui/atoms";
+import { Badge, Button } from "@base-framework/ui/atoms";
+import { Avatar } from "@base-framework/ui/molecules";
 import { Div, P } from "@base-framework/atoms";
 
 class NotificationsDrawer extends Drawer
@@ -418,9 +414,17 @@ class NotificationsDrawer extends Drawer
 const NotificationsContent = () => [
 	Div({ class: 'space-y-2' }, [
 		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card shadow-sm hover:bg-accent transition-colors' }, [
-			Div({ class: 'w-10 h-10 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-semibold text-sm' }, 'JD'),
+			Avatar({
+				src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
+				alt: 'John Doe',
+				fallbackText: 'JD',
+				size: 'sm'
+			}),
 			Div({ class: 'flex-1 space-y-1' }, [
-				P({ class: 'text-sm font-medium leading-none' }, 'John Doe mentioned you'),
+				Div({ class: 'flex items-center gap-2' }, [
+					P({ class: 'text-sm font-medium' }, 'John Doe mentioned you'),
+					Badge({ type: 'blue' }, 'New')
+				]),
 				P({ class: 'text-xs text-muted-foreground' }, '5 minutes ago')
 			])
 		])
@@ -451,7 +455,8 @@ drawer.open();
 			code: `
 import { Drawer } from "@base-framework/ui/molecules";
 import { Button } from "@base-framework/ui/atoms";
-import { Toggle } from "@base-framework/ui/molecules";
+import { Alert, Toggle } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
 import { Div, P, H4, Span } from "@base-framework/atoms";
 
 class QuickSettingsDrawer extends Drawer
@@ -488,7 +493,15 @@ const QuickSettingsContent = () => [
 					change: (checked) => console.log('Toggle:', checked)
 				})
 			])
-		])
+		]),
+
+		// Privacy Alert
+		Alert({
+			title: 'Privacy & Security',
+			description: 'Your preferences are stored securely.',
+			icon: Icons.lockClosed,
+			type: 'default'
+		})
 	])
 ];
 
