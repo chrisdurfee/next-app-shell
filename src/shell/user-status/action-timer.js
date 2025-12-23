@@ -1,4 +1,4 @@
-import { Events, State } from "@base-framework/base";
+import { Events, Store as State } from "@base-framework/base";
 import { Timer } from "@base-framework/organisms";
 import { APP_STATE, STATES, STATE_ATTR } from "./state.js";
 

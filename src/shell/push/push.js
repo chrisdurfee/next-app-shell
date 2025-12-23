@@ -1,4 +1,4 @@
-import { Ajax, State } from "@base-framework/base";
+import { Ajax, Store as State } from "@base-framework/base";
 import { Env } from "../env.js";
 
 /**
