@@ -38,7 +38,8 @@ const FeedbackDrawerContent = () => [
 			Alert({
 				title: 'We value your input',
 				description: 'Your feedback helps us improve. Please be as detailed as possible so we can better understand your experience.',
-				icon: Icons.information,
+				// @ts-ignore
+                icon: Icons.information,
 				type: 'info'
 			}),
 
