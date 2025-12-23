@@ -32,7 +32,7 @@ class FeedbackDrawer extends Drawer
 
 // Content for the feedback drawer
 const FeedbackDrawerContent = () => [
-	Form({ class: 'flex flex-col gap-y-4' }, [
+	Form({ class: 'flex flex-col gap-6 p-6 my-auto' }, [
 		Fieldset([
 			// Info Alert using Alert component
 			Alert({
@@ -106,7 +106,7 @@ class NotificationsDrawer extends Drawer
 
 // Content for notifications drawer
 const NotificationsContent = () => [
-	Div({ class: 'space-y-2' }, [
+	Div({ class: 'space-y-3 p-6 my-auto' }, [
 		// Notification Item 1 with Avatar and Badge
 		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors' }, [
 			Avatar({
@@ -126,7 +126,7 @@ const NotificationsContent = () => [
 		]),
 
 		// Notification Item 2 with Avatar
-		Div({ class: 'flex items-start gap-3 p-4 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors' }, [
 			Avatar({
 				src: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop',
 				alt: 'Sarah Chen',
@@ -141,7 +141,7 @@ const NotificationsContent = () => [
 		]),
 
 		// Notification Item 3 with Avatar and Badge
-		Div({ class: 'flex items-start gap-3 p-4 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors' }, [
+		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card text-card-foreground shadow-sm hover:bg-accent hover:text-accent-foreground transition-colors' }, [
 			Avatar({
 				src: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop',
 				alt: 'Mike Kim',
@@ -180,7 +180,7 @@ class QuickSettingsDrawer extends Drawer
 
 // Content for quick settings drawer
 const QuickSettingsContent = () => [
-	Div({ class: 'space-y-6' }, [
+	Div({ class: 'space-y-6 p-6 my-auto' }, [
 		// Description
 		P({ class: 'text-sm text-muted-foreground' },
 			'Customize your experience with these quick settings. Changes are saved automatically.'
@@ -235,9 +235,9 @@ const QuickSettingsContent = () => [
 		]),
 
 		// Preferences Section
-		Div({ class: 'space-y-3' }, [
+		Div({ class: 'space-y-4 pt-2' }, [
 			H4({ class: 'text-sm font-semibold' }, 'Display Preferences'),
-			Div({ class: 'space-y-1' }, [
+			Div({ class: 'space-y-2' }, [
 				Div({ class: 'flex items-center justify-between p-3 rounded-md hover:bg-accent hover:text-accent-foreground transition-colors' }, [
 					P({ class: 'text-sm font-medium' }, 'Font Size'),
 					P({ class: 'text-sm text-muted-foreground' }, 'Medium')
@@ -253,7 +253,8 @@ const QuickSettingsContent = () => [
 		Alert({
 			title: 'Privacy & Security',
 			description: 'Your preferences are stored securely and never shared with third parties.',
-			icon: Icons.lockClosed,
+            // @ts-ignore
+			icon: Icons.locked,
 			type: 'default'
 		})
 	])
@@ -320,7 +321,7 @@ class FeedbackDrawer extends Drawer
 
 // Create content for the drawer
 const FeedbackDrawerContent = () => [
-	Form({ class: 'flex flex-col gap-y-4' }, [
+	Form({ class: 'flex flex-col gap-6 p-6 my-auto' }, [
 		Fieldset([
 			// Info Alert using Alert component
 			Alert({
@@ -413,7 +414,7 @@ class NotificationsDrawer extends Drawer
 }
 
 const NotificationsContent = () => [
-	Div({ class: 'space-y-2' }, [
+	Div({ class: 'space-y-3 p-6 my-auto' }, [
 		Div({ class: 'flex items-start gap-3 p-4 rounded-lg border bg-card shadow-sm hover:bg-accent transition-colors' }, [
 			Avatar({
 				src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e',
@@ -474,7 +475,7 @@ class QuickSettingsDrawer extends Drawer
 }
 
 const QuickSettingsContent = () => [
-	Div({ class: 'space-y-6' }, [
+	Div({ class: 'space-y-6 p-6 my-auto' }, [
 		P({ class: 'text-sm text-muted-foreground' },
 			'Customize your experience. Changes are saved automatically.'
 		),
@@ -500,7 +501,7 @@ const QuickSettingsContent = () => [
 		Alert({
 			title: 'Privacy & Security',
 			description: 'Your preferences are stored securely.',
-			icon: Icons.lockClosed,
+			icon: Icons.locked,
 			type: 'default'
 		})
 	])
@@ -516,8 +517,8 @@ drawer.open();
 			title: 'Swipe Behavior',
 			description: 'Drawers support swipe-to-close gestures on mobile devices. You can customize the swipe threshold and toggle swipe functionality.',
 			preview: [
-				Div({ class: 'space-y-2' }, [
-					P({ class: 'text-sm text-muted-foreground mb-4' },
+				Div({ class: 'space-y-3' }, [
+					P({ class: 'text-sm text-muted-foreground mb-6' },
 						'On mobile, try swiping down to close the drawer. The gesture requires minimal drag distance to trigger.'
 					),
 					Button({
@@ -526,7 +527,7 @@ drawer.open();
 						click: () => {
                             // @ts-ignore
 							const drawer = new FeedbackDrawer([
-								P({ class: 'p-4' }, 'Swipe down to close this drawer.')
+								P({ class: 'p-6 my-auto' }, 'Swipe down to close this drawer.')
 							]);
                             // @ts-ignore
 							drawer.open();
@@ -538,7 +539,7 @@ drawer.open();
 						click: () => {
                             // @ts-ignore
 							const drawer = new FeedbackDrawer([
-								P({ class: 'p-4' }, 'This drawer requires a longer swipe to close (200px).')
+								P({ class: 'p-6 my-auto' }, 'This drawer requires a longer swipe to close (200px).')
 							]);
                             // @ts-ignore
 							drawer.closeThreshold = 200; // Requires more drag distance
@@ -552,7 +553,7 @@ drawer.open();
 						click: () => {
                             // @ts-ignore
 							const drawer = new FeedbackDrawer([
-								P({ class: 'p-4' }, 'Swipe gesture is disabled. Use the buttons to close.')
+								P({ class: 'p-6 my-auto' }, 'Swipe gesture is disabled. Use the buttons to close.')
 							]);
                             // @ts-ignore
 							drawer.swipeToClose = false; // Disable swipe gesture
@@ -586,7 +587,7 @@ drawer3.open();
 			title: 'Size Options',
 			description: 'Drawers support multiple sizes: sm, md (default), lg, and xl. The size affects the drawer width on desktop and height on mobile.',
 			preview: [
-				Div({ class: 'flex flex-wrap gap-2' }, [
+				Div({ class: 'flex flex-wrap gap-3' }, [
 					Button({
 						text: 'Small',
 						variant: 'outline',

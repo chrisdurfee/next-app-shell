@@ -721,6 +721,7 @@ Div({ class: 'p-4' }, [
                 description: 'This is a logo uploader.',
                 preview: [
                     InputPreview([
+                        // @ts-ignore
                         new LogoUploader({
                             src: '',
                             onChange: (file, parent) => console.log(file, parent)
