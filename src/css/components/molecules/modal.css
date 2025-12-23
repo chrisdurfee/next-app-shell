@@ -85,12 +85,12 @@
 
 .modal.drawer {
     /* Mobile: slide up from bottom like native app drawer */
-    top: auto;
-    bottom: 0;
-    margin-bottom: 0;
+    top: auto !important;
+    bottom: 0 !important;
+    margin: 0 !important;
     /* Use dvh (dynamic viewport height) for iOS Safari */
-    max-height: 90dvh;
-    max-height: -webkit-fill-available;
+    max-height: 90dvh !important;
+    max-height: -webkit-fill-available !important;
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
     border-bottom-left-radius: 0;
@@ -149,10 +149,10 @@
 /* Desktop: behave like standard centered modal */
 @media (min-width: 1024px) {
     .modal.drawer {
-        top: auto;
-        bottom: auto;
-        margin: auto;
-        max-height: 80vh;
+        top: auto !important;
+        bottom: auto !important;
+        margin: auto !important;
+        max-height: 80vh !important;
         border-radius: 0.5rem;
         animation: popIn 0.2s;
     }
