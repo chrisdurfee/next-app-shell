@@ -1,5 +1,5 @@
-import { Div, Fieldset, Form, H4, P, Span } from "@base-framework/atoms";
-import { Alert, Icons } from "@base-framework/ui";
+import { Div, Fieldset, Form, H4, P } from "@base-framework/atoms";
+import { Alert, Avatar, Badge, Icons } from "@base-framework/ui";
 import { Button, EmailInput, Select, Textarea } from "@base-framework/ui/atoms";
 import { Drawer, FormField, Toggle } from "@base-framework/ui/molecules";
 import { DocSection } from "../../../molecules/doc-section.js";
@@ -248,18 +248,13 @@ const QuickSettingsContent = () => [
 			])
 		]),
 
-		// Privacy Note
-		Div({ class: 'rounded-lg border bg-muted p-4' }, [
-			Div({ class: 'flex items-start gap-3' }, [
-				Span({ class: 'text-muted-foreground text-lg' }, '🔒'),
-				Div({ class: 'flex-1 space-y-1' }, [
-					P({ class: 'text-sm font-medium leading-none' }, 'Privacy & Security'),
-					P({ class: 'text-xs text-muted-foreground' },
-						'Your preferences are stored securely and never shared with third parties.'
-					)
-				])
-			])
-		])
+		// Privacy Note with Alert
+		Alert({
+			title: 'Privacy & Security',
+			description: 'Your preferences are stored securely and never shared with third parties.',
+			icon: Icons.lockClosed,
+			type: 'default'
+		})
 	])
 ];
 
