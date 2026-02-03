@@ -175,6 +175,22 @@ LoadingButton('With Icon')`
                 code: `import {  Button  } from "@base-framework/ui/atoms";
 
 Button({ variant: 'back', class: 'ghost', allowHistory: false })`
+            }),
+
+            DocSection({
+                title: 'Circle Icon Button',
+                description: 'Displays a circular icon button with a semi-transparent background. Supports multiple sizes: xs, sm, md, lg, xl.',
+                preview: [
+                    Button({ variant: 'circleIcon', icon: Icons.home, size: 'md' })
+                ],
+                code: `import { Button } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+
+// Default size (md)
+Button({ variant: 'circleIcon', icon: Icons.home })
+
+// With custom size
+Button({ variant: 'circleIcon', icon: Icons.home, size: 'lg' })`
             })
         ]
     )
