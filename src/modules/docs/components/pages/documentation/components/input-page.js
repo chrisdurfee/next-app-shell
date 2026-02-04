@@ -4,7 +4,7 @@ import { LogoUploader } from "@base-framework/ui";
 import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Counter, DatePicker, DateRangePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
-import { SearchDropdown, SearchInput, SignaturePanel } from "@base-framework/ui/organisms";
+import { SearchDropdown, SearchInput, SignaturePanel, SimpleSearchInput } from "@base-framework/ui/organisms";
 import { DocSection } from "../../../molecules/doc-section.js";
 import { DocPage } from '../../doc-page.js';
 
@@ -150,6 +150,30 @@ SearchInput({
     bind: '',
     keyup: (e, parent) => {},
     icon: Icons.magnifyingGlass.default,
+})
+`
+            }),
+
+            DocSection({
+                title: 'Simple Search Input',
+                description: 'A simple search input with an icon on the left and a pill shape. Supports custom icons, placeholder text, and various input events.',
+                preview: [
+                    Div({ class: 'relative w-full max-w-md' }, [
+                        SimpleSearchInput({
+                            placeholder: 'Search...',
+                            keyup: (e) => console.log(e.target.value)
+                        })
+                    ])
+                ],
+                code: `import { SimpleSearchInput } from "@base-framework/ui/organisms";
+
+SimpleSearchInput({
+    placeholder: 'Search...',
+    icon: Icons.magnifyingGlass.default, // optional, defaults to magnifying glass
+    containerClass: '', // optional class for the container
+    bind: 'searchValue', // optional data binding
+    keyup: (e) => console.log(e.target.value),
+    change: (e) => console.log(e.target.value)
 })
 `
             }),
