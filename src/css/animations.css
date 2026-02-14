@@ -146,3 +146,83 @@
     backface-visibility: hidden;
     will-change: transform, opacity;
 }
+
+@keyframes slideUpIn {
+    0% {
+        transform: translateY(-5%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.slideUpIn {
+    animation: slideUpIn .2s ease-out;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes slideDownOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-5%);
+    }
+}
+
+.slideDownOut {
+    animation: slideDownOut .2s ease-in;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes slideRightIn {
+    0% {
+        transform: translateX(5%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
+
+.slideRightIn {
+    animation: slideRightIn .2s ease;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes slideRightOut {
+    0% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(20%);
+    }
+}
+
+.slideRightOut {
+    animation: slideRightOut .2s ease;
+    animation-fill-mode: forwards;
+
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
