@@ -9,7 +9,7 @@ export function SettingsForm(): any;
  * @param {array} children - The children to render inside the form section.
  * @returns {object}
  */
-export const MyFormSection: Function;
+export const MyFormSection: (...args: any[]) => object;
 export function MyForm(): object;
-export function FormPage(): Function;
+export function FormPage(): object;
 export default FormPage;

@@ -1,2 +1,2 @@
-export function SkeletonPage(): Function;
+export function SkeletonPage(): object;
 export default SkeletonPage;

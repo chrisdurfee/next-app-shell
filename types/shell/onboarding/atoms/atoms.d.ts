@@ -6,7 +6,7 @@ export function StepHeader({ title, description }: object): object;
  * @param {array} children
  * @returns {object}
  */
-export const FormWrapper: Function;
+export const FormWrapper: (...args: any[]) => object;
 /**
  * This will create a step item card.
  *
@@ -14,4 +14,4 @@ export const FormWrapper: Function;
  * @param {array} children
  * @returns {object}
  */
-export const StepItemCard: Function;
+export const StepItemCard: (...args: any[]) => object;

@@ -7,4 +7,4 @@
  * @param {object} props.client
  * @returns {object}
  */
-export const ConversationSection: Function;
+export const ConversationSection: (...args: any[]) => object;

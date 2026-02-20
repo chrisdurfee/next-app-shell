@@ -1,2 +1,2 @@
-export function AlertPage(): Function;
+export function AlertPage(): object;
 export default AlertPage;

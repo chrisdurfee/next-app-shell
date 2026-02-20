@@ -1,0 +1,1 @@
+import{r as e,z as t,v as c}from"./index-CAtlfimY.js";class l extends e{declareProps(){this.class=""}render(){return t({class:`${this.class||""}`},this.children)}}class n extends l{update(a){}}const p=c((s,a)=>(s.class="basic-page pt-[80px] sm:pt-0 flex flex-auto flex-col "+(s.class||""),{tag:"section",...s,children:a}));export{n as d,l as n,p};

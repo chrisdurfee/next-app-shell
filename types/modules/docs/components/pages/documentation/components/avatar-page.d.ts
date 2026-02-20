@@ -1,2 +1,2 @@
-export function AvatarPage(): Function;
+export function AvatarPage(): object;
 export default AvatarPage;

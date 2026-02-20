@@ -1,2 +1,2 @@
-export function EmptyStatePage(): Function;
+export function EmptyStatePage(): object;
 export default EmptyStatePage;

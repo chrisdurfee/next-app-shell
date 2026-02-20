@@ -1,2 +1,2 @@
-export function ListPage(): Function;
+export function ListPage(): object;
 export default ListPage;

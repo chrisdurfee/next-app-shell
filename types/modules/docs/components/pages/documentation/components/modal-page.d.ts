@@ -1,2 +1,2 @@
-export function ModalPage(): Function;
+export function ModalPage(): object;
 export default ModalPage;

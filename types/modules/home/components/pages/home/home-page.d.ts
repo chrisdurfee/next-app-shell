@@ -4,6 +4,6 @@
  * @param {object} props
  * @returns {object}
  */
-export const SectionHeader: Function;
+export const SectionHeader: (...args: any[]) => object;
 export function HomePage(): BlankPage;
 export default HomePage;

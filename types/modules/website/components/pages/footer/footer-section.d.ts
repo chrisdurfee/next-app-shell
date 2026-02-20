@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const FooterSection: Function;
+export const FooterSection: (...args: any[]) => object;

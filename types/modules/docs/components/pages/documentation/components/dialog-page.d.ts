@@ -1,2 +1,2 @@
-export function DialogPage(): Function;
+export function DialogPage(): object;
 export default DialogPage;

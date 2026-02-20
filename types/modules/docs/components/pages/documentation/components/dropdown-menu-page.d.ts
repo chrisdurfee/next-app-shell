@@ -1,2 +1,2 @@
-export function DropdownMenuPage(): Function;
+export function DropdownMenuPage(): object;
 export default DropdownMenuPage;

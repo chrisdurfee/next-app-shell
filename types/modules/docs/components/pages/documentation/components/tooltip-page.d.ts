@@ -1,2 +1,2 @@
-export function TooltipPage(): Function;
+export function TooltipPage(): object;
 export default TooltipPage;

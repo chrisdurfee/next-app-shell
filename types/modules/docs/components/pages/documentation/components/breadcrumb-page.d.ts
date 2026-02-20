@@ -1,2 +1,2 @@
-export function BreadcrumbPage(): Function;
+export function BreadcrumbPage(): object;
 export default BreadcrumbPage;

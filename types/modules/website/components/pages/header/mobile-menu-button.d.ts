@@ -4,5 +4,5 @@
  * @param {object} props
  * @returns {object}
  */
-export const MobileMenuButton: Function;
+export const MobileMenuButton: (...args: any[]) => object;
 export default MobileMenuButton;

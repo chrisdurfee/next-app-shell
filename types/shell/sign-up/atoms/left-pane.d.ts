@@ -5,4 +5,4 @@
  *
  * @returns {object} A Div component for the left panel.
  */
-export const LeftPane: Function;
+export const LeftPane: (...args: any[]) => object;

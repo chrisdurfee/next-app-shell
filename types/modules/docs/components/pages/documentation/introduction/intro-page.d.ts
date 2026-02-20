@@ -1,2 +1,2 @@
-export function IntroPage(): Function;
+export function IntroPage(): object;
 export default IntroPage;

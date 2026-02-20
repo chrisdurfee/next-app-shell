@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const PageHeader: Function;
+export const PageHeader: (...args: any[]) => object;

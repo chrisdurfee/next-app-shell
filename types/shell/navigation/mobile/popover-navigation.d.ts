@@ -21,6 +21,12 @@ export class PopOverNavigation extends Component {
      */
     setupStates(): object;
     /**
+     * Sets up the events.
+     *
+     * @returns {array}
+     */
+    setupEvents(): any[];
+    /**
      * Sets up the container for the popover in the app shell.
      *
      * @param {HTMLElement} container

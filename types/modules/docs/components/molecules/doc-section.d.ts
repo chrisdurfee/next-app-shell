@@ -4,7 +4,7 @@
  * @param {object} props
  * @returns {object}
  */
-export const SectionHeader: Function;
+export const SectionHeader: (...args: any[]) => object;
 /**
  * This will create a document section.
  *
@@ -12,4 +12,4 @@ export const SectionHeader: Function;
  * @param {object} children
  * @returns {object}
  */
-export const DocSection: Function;
+export const DocSection: (...args: any[]) => object;

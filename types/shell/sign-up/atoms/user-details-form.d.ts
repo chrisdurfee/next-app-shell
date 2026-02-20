@@ -5,4 +5,4 @@
  *
  * @returns {object} A Div component containing the user details form.
  */
-export const UserDetailsForm: Function;
+export const UserDetailsForm: (...args: any[]) => object;

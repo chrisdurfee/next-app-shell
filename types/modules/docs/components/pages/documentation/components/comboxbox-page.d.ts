@@ -1,2 +1,2 @@
-export function ComboboxPage(): Function;
+export function ComboboxPage(): object;
 export default ComboboxPage;

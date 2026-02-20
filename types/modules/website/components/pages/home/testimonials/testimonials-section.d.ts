@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const TestimonialsSection: Function;
+export const TestimonialsSection: (...args: any[]) => object;

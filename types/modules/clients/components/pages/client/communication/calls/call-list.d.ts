@@ -7,4 +7,4 @@
  * @param {Array<object>} props.calls
  * @returns {object}
  */
-export const CallList: Function;
+export const CallList: (...args: any[]) => object;

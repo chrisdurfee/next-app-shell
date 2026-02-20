@@ -6,4 +6,4 @@ export function CardHeader({ title, description }: object): object;
  *
  * @returns {object} A Form containing the fields and buttons.
  */
-export const SignUpForm: Function;
+export const SignUpForm: (...args: any[]) => object;

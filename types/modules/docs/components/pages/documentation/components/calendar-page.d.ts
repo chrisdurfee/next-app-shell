@@ -1,2 +1,2 @@
-export function CalendarPage(): Function;
+export function CalendarPage(): object;
 export default CalendarPage;

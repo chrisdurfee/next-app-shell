@@ -6,4 +6,4 @@
  * @param {object} props
  * @returns {object}
  */
-export const VideoContainer: Function;
+export const VideoContainer: (...args: any[]) => object;

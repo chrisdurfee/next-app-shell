@@ -5,5 +5,5 @@
  *
  * @returns {object}
  */
-export const Header: Function;
+export const Header: (...args: any[]) => object;
 export default Header;

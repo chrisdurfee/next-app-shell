@@ -1,2 +1,2 @@
-export function IconPage(): Function;
+export function IconPage(): object;
 export default IconPage;

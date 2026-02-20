@@ -1,2 +1,2 @@
-export function ButtonPage(): Function;
+export function ButtonPage(): object;
 export default ButtonPage;

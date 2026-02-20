@@ -4,5 +4,5 @@
  * @param {object} props
  * @returns {object}
  */
-export const Logo: Function;
+export const Logo: (...args: any[]) => object;
 export default Logo;

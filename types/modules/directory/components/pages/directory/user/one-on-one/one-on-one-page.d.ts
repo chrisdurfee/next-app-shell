@@ -4,6 +4,6 @@
  * @param {object} props
  * @returns {object}
  */
-export const BackButton: Function;
+export const BackButton: (...args: any[]) => object;
 export function OneOnOnePage(): BlankPage;
 export default OneOnOnePage;

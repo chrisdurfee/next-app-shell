@@ -1,2 +1,2 @@
-export function CardPage(): Function;
+export function CardPage(): object;
 export default CardPage;

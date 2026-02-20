@@ -7,4 +7,4 @@
  * @param {Array<object>} props.payments
  * @returns {object}
  */
-export const PaymentList: Function;
+export const PaymentList: (...args: any[]) => object;

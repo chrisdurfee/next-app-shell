@@ -1,0 +1,1 @@
+import{z as e}from"./index-CAtlfimY.js";import{n as t}from"./full-page-CgVI1G7F-DJ0Pcr5g.js";const s=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"404 Not Found")])]);export{s as Error404Page,s as default};

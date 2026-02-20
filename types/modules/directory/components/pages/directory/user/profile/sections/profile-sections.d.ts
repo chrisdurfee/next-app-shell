@@ -8,7 +8,7 @@
  * @param {Array} children - Child components to render within the section.
  * @returns {object}
  */
-export const ProfileSection: Function;
+export const ProfileSection: (...args: any[]) => object;
 export function OrgDetailsSection(): object;
 export function PersonalDetailsSection(): object;
 export function ScheduleSection(): object;
@@ -43,7 +43,7 @@ export function ReviewsSection({ reviews }: {
  * @param {string} props.status
  * @returns {object}
  */
-export const CancelledRequestItem: Function;
+export const CancelledRequestItem: (...args: any[]) => object;
 /**
  * PendingRequestItem
  *
@@ -59,5 +59,5 @@ export const CancelledRequestItem: Function;
  * @param {string} [props.reason]
  * @returns {object}
  */
-export const PendingRequestItem: Function;
+export const PendingRequestItem: (...args: any[]) => object;
 export function TimeOffRequestsSection(): object;

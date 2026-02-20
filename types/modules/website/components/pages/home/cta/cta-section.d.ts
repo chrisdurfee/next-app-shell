@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const CTASection: Function;
+export const CTASection: (...args: any[]) => object;

@@ -1,2 +1,2 @@
-export function NotificationPage(): Function;
+export function NotificationPage(): object;
 export default NotificationPage;

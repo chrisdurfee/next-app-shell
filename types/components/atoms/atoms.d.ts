@@ -5,8 +5,8 @@
  * @param {array} children
  * @returns {object}
  */
-export const Video: Function;
-export const GridPanel: Function;
+export const Video: (...args: any[]) => object;
+export const GridPanel: (...args: any[]) => object;
 import { A } from '@base-framework/atoms';
 import { Br } from '@base-framework/atoms';
 import { Div } from '@base-framework/atoms';

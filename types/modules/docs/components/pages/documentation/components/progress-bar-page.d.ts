@@ -1,2 +1,2 @@
-export function ProgressBarPage(): Function;
+export function ProgressBarPage(): object;
 export default ProgressBarPage;

@@ -1,2 +1,2 @@
-export function ThemePage(): Function;
+export function ThemePage(): object;
 export default ThemePage;

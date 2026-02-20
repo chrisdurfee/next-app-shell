@@ -6,5 +6,5 @@
  * @param {object} props
  * @returns {object}
  */
-export const SettingsSection: Function;
+export const SettingsSection: (...args: any[]) => object;
 export default SettingsSection;

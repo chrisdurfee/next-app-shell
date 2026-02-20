@@ -7,4 +7,4 @@
  * @param {Array} props.contacts
  * @returns {object}
  */
-export const ContactList: Function;
+export const ContactList: (...args: any[]) => object;

@@ -1,2 +1,2 @@
-export function BadgePage(): Function;
+export function BadgePage(): object;
 export default BadgePage;

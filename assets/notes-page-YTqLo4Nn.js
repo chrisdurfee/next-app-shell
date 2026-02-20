@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/notes-list-page-B5rb7nIY.js","assets/index-CAtlfimY.js","assets/index-DShCxDwR.css"])))=>i.map(i=>d[i]);
+import{z as o,e as r}from"./index-CAtlfimY.js";const s=(e,t)=>({uri:e,import:t}),i=()=>o({class:"flex flex-auto flex-col",switch:[s("/directory/user/:userId/notes",()=>r(()=>import("./notes-list-page-B5rb7nIY.js"),__vite__mapDeps([0,1,2])))]});export{i as NotesPage,i as default};

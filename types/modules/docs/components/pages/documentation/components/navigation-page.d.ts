@@ -1,2 +1,2 @@
-export function NavigationPage(): Function;
+export function NavigationPage(): object;
 export default NavigationPage;

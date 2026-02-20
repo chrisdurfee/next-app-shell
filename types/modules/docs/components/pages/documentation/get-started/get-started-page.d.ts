@@ -1,2 +1,2 @@
-export function GetStartedPage(): Function;
+export function GetStartedPage(): object;
 export default GetStartedPage;

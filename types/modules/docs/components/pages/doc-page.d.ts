@@ -7,5 +7,5 @@
  * @param {object} children
  * @returns {CenterPage}
  */
-export const DocPage: Function;
+export const DocPage: (...args: any[]) => object;
 export default DocPage;

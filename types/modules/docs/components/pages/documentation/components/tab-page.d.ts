@@ -1,2 +1,2 @@
-export function TabPage(): Function;
+export function TabPage(): object;
 export default TabPage;

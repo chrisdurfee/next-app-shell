@@ -4,5 +4,5 @@
  * @param {object} props
  * @returns {object}
  */
-export const Navigation: Function;
+export const Navigation: (...args: any[]) => object;
 export default Navigation;

@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const FeaturesSection: Function;
+export const FeaturesSection: (...args: any[]) => object;

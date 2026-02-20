@@ -1,2 +1,2 @@
-export function InputPage(): Function;
+export function InputPage(): object;
 export default InputPage;
