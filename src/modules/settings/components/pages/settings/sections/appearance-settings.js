@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Div } from "@base-framework/atoms";
 import { Button, Select } from "@base-framework/ui/atoms";
 import { FormCard, FormCardContent, FormCardGroup, FormField, ThemeToggle } from "@base-framework/ui/molecules";

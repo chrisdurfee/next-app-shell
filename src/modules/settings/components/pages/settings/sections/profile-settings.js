@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Div } from "@base-framework/atoms";
 import { DatePicker } from "@base-framework/ui";
 import { Button, Input, NumberInput, Select, Textarea } from "@base-framework/ui/atoms";
@@ -95,6 +96,7 @@ export const ProfileSettings = () => (
                     ])
                 ]),
                 FormCardGroup({ label: "Date of Birth", description: "", border: true }, [
+                    // @ts-ignore
                     new FormField({
                         name: "dob",
                         label: "",

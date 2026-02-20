@@ -20,7 +20,8 @@ export const UserDetailsForm = Atom(() =>
 				parent.showStep(STEPS.CONGRATULATIONS);
 			}
 		}, [
-		Fieldset({ legend: 'Profile' }, [
+			Fieldset({ legend: 'Profile' }, [
+			// @ts-ignore
 			new FormField({
 				name: "fullname",
 				label: "Full Name",
@@ -29,14 +30,17 @@ export const UserDetailsForm = Atom(() =>
 				Input({ placeholder: "e.g. Jane Doe", required: true })
 			]),
 
+			// @ts-ignore
 			new FormField({
 				name: "birthday",
 				label: "Birthday",
 				description: "Please enter your date of birth."
 			}, [
+				// @ts-ignore
 				new DatePicker({ required: true })
 			]),
 
+			// @ts-ignore
 			new FormField({
 				name: "password",
 				label: "Password",

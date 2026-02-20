@@ -50,7 +50,7 @@ const ColorRow = (title, colors) =>
  * This will greate the color guide layout.
  *
  * @param {object} obj
- * @returns {array}
+ * @returns {object}
  */
 const ColorGuide = (obj) =>
 {

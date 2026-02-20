@@ -86,7 +86,7 @@ export class AppControl extends Component
 		const storageKey = 'pinned';
 
 		// @ts-ignore
-		const data = this.state;
+		const data = /** @type {any} */ (this.state);
 		data.setKey(storageKey);
 
 		/**

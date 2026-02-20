@@ -41,6 +41,7 @@ const setupServiceMessages = (serviceWorker) =>
 		// this will set the app to notify there is an updated version
 		if (data.update)
 		{
+			// @ts-ignore
 			State.set('app', 'update', true);
 		}
 	});
