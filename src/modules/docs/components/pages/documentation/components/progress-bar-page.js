@@ -7,7 +7,7 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create a dialog page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ProgressBarPage = () => (
 	DocPage(

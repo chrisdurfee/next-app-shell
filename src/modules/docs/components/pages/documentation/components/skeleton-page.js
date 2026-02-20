@@ -59,7 +59,7 @@ const LoadingAvatar = Jot(
  *
  * This will create a dialog page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const SkeletonPage = () => (
 	DocPage(

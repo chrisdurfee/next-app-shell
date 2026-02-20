@@ -18,7 +18,7 @@ const frameworks = [
  *
  * This will create a combobox page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ComboboxPage = () => (
 	DocPage(

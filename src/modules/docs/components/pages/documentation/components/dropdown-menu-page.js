@@ -10,7 +10,7 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create a combobox page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const DropdownMenuPage = () => (
 	DocPage(

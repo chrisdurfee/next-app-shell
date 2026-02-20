@@ -134,7 +134,7 @@ const ColorGuide = (obj) =>
  *
  * This will create an theme page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ThemePage = () => (
     DocPage(

@@ -17,7 +17,7 @@ const getCurrentTime = () => DateTime.formatTime('', 24);
  *
  * This will create a calendar page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const CalendarPage = () => (
 	DocPage(

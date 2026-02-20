@@ -101,7 +101,7 @@ const ShareButton = (props) => Button({
  *
  * This will create a dialog page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const DialogPage = () => (
 	DocPage(

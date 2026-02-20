@@ -8,7 +8,7 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create an avatar page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const AvatarPage = () => (
     DocPage(

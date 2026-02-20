@@ -13,7 +13,7 @@ const items = [
  *
  * This will create a breadcrumb page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const BreadcrumbPage = () => (
 	DocPage(

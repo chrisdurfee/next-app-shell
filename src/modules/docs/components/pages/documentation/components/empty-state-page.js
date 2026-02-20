@@ -9,7 +9,7 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create a badge page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const EmptyStatePage = () => (
 	DocPage(

@@ -45,7 +45,7 @@ const CodeBlock = Atom((props, children) => (
  * This component creates a comprehensive "Get Started" page for the documentation,
  * detailing how to install, configure, and begin developing with the App Shell project.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const GetStartedPage = () =>
 	DocPage(

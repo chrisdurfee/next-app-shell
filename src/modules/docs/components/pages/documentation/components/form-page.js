@@ -204,7 +204,7 @@ export const MyForm = () => (
  *
  * This will create a form page with various form examples.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const FormPage = () => (
     DocPage(

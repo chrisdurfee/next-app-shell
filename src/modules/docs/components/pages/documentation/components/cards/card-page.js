@@ -16,7 +16,7 @@ import TeamMemberCard from "./examples/team-member-card.js";
  *
  * This will create a dialog page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const CardPage = () => (
 	DocPage(

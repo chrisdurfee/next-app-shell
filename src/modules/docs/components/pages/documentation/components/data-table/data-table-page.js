@@ -74,7 +74,7 @@ const customSkeletonRow = (index, columnCount) => {
  * Documents DataTable usage, including advanced row manipulation (selecting, removing, etc.),
  * and now includes a section on the ScrollableDataTable which automatically loads more rows as you scroll.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const DataTablePage = () =>
 	DocPage(

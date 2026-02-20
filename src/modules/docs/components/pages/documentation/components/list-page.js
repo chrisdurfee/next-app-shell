@@ -40,7 +40,7 @@ const users = [
  * Documents how to use the List component, including row dividers, advanced operations,
  * and the new ScrollableList which automatically loads more items as you scroll.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ListPage = () =>
 	DocPage(

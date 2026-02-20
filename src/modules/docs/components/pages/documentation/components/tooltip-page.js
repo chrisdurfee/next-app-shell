@@ -8,7 +8,7 @@ import { DocPage } from '../../doc-page.js';
  *
  * This will create a tooltip page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const TooltipPage = () => (
 	DocPage(

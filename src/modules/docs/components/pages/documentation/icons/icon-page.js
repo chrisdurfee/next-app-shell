@@ -119,7 +119,7 @@ const IconGuide = (obj) =>
  *
  * This will create an icon page..
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const IconPage = () => (
 	DocPage(

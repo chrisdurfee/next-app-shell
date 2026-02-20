@@ -267,7 +267,7 @@ const QuickSettingsContent = () => [
  * Drawers are bottom-up sheets on mobile that become centered modals on desktop.
  * They support swipe-to-close gestures on touch devices.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const DrawerPage = () =>
 	DocPage(

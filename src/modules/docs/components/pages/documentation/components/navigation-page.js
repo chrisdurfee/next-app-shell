@@ -11,7 +11,7 @@ const PAGE_URL = 'music';
  *
  * This will create a navigation page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const NavigationPage = () => (
 	DocPage(

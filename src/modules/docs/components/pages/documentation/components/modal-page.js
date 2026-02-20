@@ -208,7 +208,7 @@ const DetailModalButton = () => Button({
  * Provides documentation and examples for modals,
  * including header options and detail modal atoms.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ModalPage = () =>
     DocPage(

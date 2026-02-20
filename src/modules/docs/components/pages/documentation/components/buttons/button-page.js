@@ -1,5 +1,5 @@
-import { H2, Header } from "@base-framework/atoms";
-import { Button, LoadingButton } from "@base-framework/ui/atoms";
+import { Div, H2, Header } from "@base-framework/atoms";
+import { Button, CircleButton, CircleToggleButton, LoadingButton, ToggleButton } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { DocSection } from "../../../../molecules/doc-section.js";
 import { DocPage } from '../../../doc-page.js';
@@ -9,7 +9,7 @@ import { DocPage } from '../../../doc-page.js';
  *
  * This will create a button page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const ButtonPage = () => (
 	DocPage(
@@ -191,6 +191,89 @@ Button({ variant: 'circleIcon', icon: Icons.home })
 
 // With custom size
 Button({ variant: 'circleIcon', icon: Icons.home, size: 'lg' })`
+            }),
+
+            Header({ class: 'flex flex-col py-8' }, [
+                H2({ class: 'text-3xl font-bold tracking-tight border-b pb-2' }, 'Toggle & Circle Buttons'),
+            ]),
+
+            DocSection({
+                title: 'Toggle Button',
+                description: 'A social-action style button with an active/inactive state, an optional count, and a toggle callback. Use activeIcon to swap the icon when toggled.',
+                preview: [
+                    Div({ class: 'flex gap-4 items-center' }, [
+                        new ToggleButton({ icon: Icons.heart, value: 234 }),
+                        new ToggleButton({ icon: Icons.heart, active: true, value: 234 }),
+                        new ToggleButton({ icon: Icons.thumbsUp, value: 18 }),
+                        new ToggleButton({ icon: Icons.bookmark }),
+                    ])
+                ],
+                code: `import { ToggleButton } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+
+// With a static count
+new ToggleButton({ icon: Icons.heart, value: 234, toggle: (active) => console.log(active) })
+
+// Starts active
+new ToggleButton({ icon: Icons.heart, active: true, value: 234 })
+
+// Swap icon when active
+new ToggleButton({ icon: Icons.bookmark, activeIcon: Icons.bookmarkSolid })
+
+// Reactive count from a parent data key
+new ToggleButton({ icon: Icons.heart, dataKey: 'likeCount', toggle: (active) => {} })`
+            }),
+
+            DocSection({
+                title: 'Circle Button',
+                description: 'A non-toggling circular frosted-glass button for actions like back, share, or menu. Supports sizes: xs, sm, md, lg, xl, 2xl.',
+                preview: [
+                    Div({ class: 'flex gap-3 items-center p-6 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500' }, [
+                        CircleButton({ icon: Icons.arrows.left, size: 'sm' }),
+                        CircleButton({ icon: Icons.arrows.left, size: 'md' }),
+                        CircleButton({ icon: Icons.arrows.left, size: 'lg' }),
+                        CircleButton({ icon: Icons.share, size: 'md' }),
+                        CircleButton({ icon: Icons.ellipsis.horizontal, size: 'md' }),
+                    ])
+                ],
+                code: `import { CircleButton } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+
+CircleButton({ icon: Icons.arrows.left, size: 'sm' })
+CircleButton({ icon: Icons.arrows.left, size: 'md' })
+CircleButton({ icon: Icons.arrows.left, size: 'lg' })
+CircleButton({ icon: Icons.share, size: 'md', click: () => {} })`
+            }),
+
+            DocSection({
+                title: 'Circle Toggle Button',
+                description: 'A circular frosted-glass button with an active/inactive toggle state. Supply activeClass to override the active appearance.',
+                preview: [
+                    Div({ class: 'flex gap-3 items-center p-6 rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500' }, [
+                        new CircleToggleButton({ icon: Icons.heart, size: 'sm' }),
+                        new CircleToggleButton({ icon: Icons.heart, size: 'md', active: true }),
+                        new CircleToggleButton({ icon: Icons.star, size: 'md', activeClass: 'bg-yellow-400 text-white' }),
+                        new CircleToggleButton({ icon: Icons.bookmark, size: 'lg' }),
+                    ])
+                ],
+                code: `import { CircleToggleButton } from "@base-framework/ui/atoms";
+import { Icons } from "@base-framework/ui/icons";
+
+// Default — starts inactive
+new CircleToggleButton({ icon: Icons.heart, size: 'md', toggle: (active) => console.log(active) })
+
+// Starts active
+new CircleToggleButton({ icon: Icons.heart, size: 'md', active: true })
+
+// Custom active appearance
+new CircleToggleButton({
+    icon: Icons.star,
+    size: 'md',
+    activeClass: 'bg-yellow-400 text-white'
+})
+
+// Swap icon on toggle
+new CircleToggleButton({ icon: Icons.bookmark, activeIcon: Icons.bookmarkSolid, size: 'md' })`
             })
         ]
     )

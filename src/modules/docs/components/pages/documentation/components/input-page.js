@@ -64,7 +64,7 @@ const options = [
  *
  * This will create a input page.
  *
- * @returns {DocPage}
+ * @returns {object}
  */
 export const InputPage = () => (
 	DocPage(
