@@ -174,7 +174,7 @@ LoadingButton('With Icon')`
                 ],
                 code: `import {  Button  } from "@base-framework/ui/atoms";
 
-Button({ variant: 'back', class: 'ghost', allowHistory: false })`
+Button({ variant: 'back', class: 'ghost', allowHistory: false });`
             }),
 
             DocSection({
