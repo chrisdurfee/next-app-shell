@@ -1,1 +1,0 @@
-import{p as e,z as t,v as c}from"./index-CJnrX494.js";class l extends e{declareProps(){this.class=""}render(){return t({class:`${this.class||""}`},this.children)}}class p extends l{update(a){}}const n=c((s,a)=>(s.class="basic-page pt-[80px] sm:pt-0 flex flex-auto flex-col "+(s.class||""),{tag:"section",...s,children:a}));export{p as d,l as n,n as p};

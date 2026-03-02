@@ -1,1 +1,0 @@
-import{z as e}from"./index-CJnrX494.js";import{n as t}from"./full-page-CgVI1G7F-CdDt1lPX.js";const s=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"About")])]);export{s as AboutPage,s as default};
