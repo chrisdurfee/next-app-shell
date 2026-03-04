@@ -69,6 +69,9 @@ const ColorGuide = (obj) =>
         ColorRow('Default background color of <body />...etc', [
             { var: '--backround', class: 'bg-backround' },
             { var: '--foreground', class: 'bg-foreground' },
+            { var: '--foreground-secondary', class: 'bg-foreground-secondary' },
+            { var: '--foreground-tertiary', class: 'bg-foreground-tertiary' },
+            { var: '--foreground-quaternary', class: 'bg-foreground-quaternary' }
         ]),
 
         ColorRow('Muted backgrounds such as <TabsList />, <Skeleton /> and <Switch />', [
