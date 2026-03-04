@@ -1,0 +1,1 @@
+import{an as t,z as e}from"./index-Z6J7qLk0.js";const a=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"About")])]);export{a as AboutPage,a as default};

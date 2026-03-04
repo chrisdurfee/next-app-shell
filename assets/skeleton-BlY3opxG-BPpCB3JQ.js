@@ -1,0 +1,1 @@
+import{z as a}from"./index-Z6J7qLk0.js";const o=({class:e,shape:l="rectangle",width:t="w-full",height:s="h-4"})=>a({class:`bg-muted animate-pulse ${t} ${s} ${l==="circle"?"rounded-full":"rounded-md"} ${e||""}`});export{o};
