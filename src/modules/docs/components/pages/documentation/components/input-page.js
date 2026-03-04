@@ -1,7 +1,7 @@
 import { Div, H4, P } from "@base-framework/atoms";
 import { Atom } from "@base-framework/base";
 import { LogoUploader } from "@base-framework/ui";
-import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
+import { Button, Checkbox, ColorInput, DateInput, DateTimeInput, EmailInput, FileInput, FloatingEmailInput, FloatingInput, FloatingNumberInput, FloatingPasswordInput, FloatingSelect, FloatingTelInput, FloatingTextarea, FloatingUrlInput, HiddenInput, Input, MonthInput, NumberInput, PasswordInput, Radio, RangeSlider, Select, TelInput, Textarea, TimeInput, UrlInput, WeekInput } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { Counter, DatePicker, DateRangePicker, TimePicker, Toggle } from "@base-framework/ui/molecules";
 import { SearchDropdown, SearchInput, SignaturePanel, SimpleSearchInput } from "@base-framework/ui/organisms";
@@ -14,6 +14,14 @@ const frameworks = [
     { value: 'nuxt.js', label: 'Nuxt.js' },
     { value: 'remix', label: 'Remix' },
     { value: 'astro', label: 'Astro' },
+];
+
+const countries = [
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' },
+    { value: 'uk', label: 'United Kingdom' },
+    { value: 'au', label: 'Australia' },
+    { value: 'de', label: 'Germany' },
 ];
 
 /**
@@ -102,6 +110,93 @@ TelInput({}),
 Textarea({
     placeholder: 'Enter your text here...'
 })`
+            }),
+
+            DocSection({
+                title: 'Floating Inputs (New)',
+                description: 'Floating inputs provide a label-first form experience with presets for common input types.',
+                preview: [
+                    Div({ class: 'grid gap-3 w-full max-w-[420px]' }, [
+                        FloatingInput({ label: 'First name', name: 'firstName', required: true }),
+                        FloatingTelInput({ label: 'Phone', name: 'phone' }),
+                        FloatingEmailInput({ label: 'Email', name: 'email', required: true }),
+                        FloatingPasswordInput({ label: 'Password', required: true, bind: 'password' }),
+                        FloatingNumberInput({ label: 'Age', name: 'age' }),
+                        FloatingUrlInput({ label: 'Website', name: 'website' }),
+                        FloatingTextarea({ label: 'Bio', name: 'bio' }),
+                        FloatingSelect({ label: 'Country', name: 'country', required: true, options: countries }),
+                    ])
+                ],
+                code: `import {
+    FloatingInput,
+    FloatingTelInput,
+    FloatingEmailInput,
+    FloatingPasswordInput,
+    FloatingNumberInput,
+    FloatingUrlInput,
+    FloatingTextarea,
+    FloatingSelect
+} from '@base-framework/ui/atoms';
+
+const countries = [
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' },
+    { value: 'uk', label: 'United Kingdom' },
+    { value: 'au', label: 'Australia' },
+    { value: 'de', label: 'Germany' },
+];
+
+FloatingInput({ label: 'First name', name: 'firstName', required: true });
+FloatingTelInput({ label: 'Phone', name: 'phone' });
+FloatingEmailInput({ label: 'Email', name: 'email', required: true });
+FloatingPasswordInput({ label: 'Password', required: true, bind: 'password' });
+FloatingNumberInput({ label: 'Age', name: 'age' });
+FloatingUrlInput({ label: 'Website', name: 'website' });
+FloatingTextarea({ label: 'Bio', name: 'bio' });
+FloatingSelect({ label: 'Country', name: 'country', required: true, options: countries });`
+            }),
+
+            DocSection({
+                title: 'Floating Components',
+                description: 'Available floating form components and what each one is used for.',
+                preview: [
+                    Div({ class: 'grid gap-2 w-full max-w-[720px]' }, [
+                        Div({ class: 'grid grid-cols-2 gap-2 p-3 border rounded-md border-muted-foreground/20 text-sm' }, [
+                            H4({ class: 'font-semibold' }, 'FloatingInput'),
+                            P({ class: 'text-muted-foreground' }, 'Base floating label input — pass any type'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingTelInput'),
+                            P({ class: 'text-muted-foreground' }, 'Telephone with auto (XXX) XXX-XXXX formatting'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingEmailInput'),
+                            P({ class: 'text-muted-foreground' }, 'Email preset'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingPasswordInput'),
+                            P({ class: 'text-muted-foreground' }, 'Password preset'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingNumberInput'),
+                            P({ class: 'text-muted-foreground' }, 'Number preset'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingUrlInput'),
+                            P({ class: 'text-muted-foreground' }, 'URL preset'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingTextarea'),
+                            P({ class: 'text-muted-foreground' }, 'Multi-line textarea with floating label'),
+
+                            H4({ class: 'font-semibold' }, 'FloatingSelect'),
+                            P({ class: 'text-muted-foreground' }, 'Select dropdown with floating label + custom chevron arrow'),
+                        ])
+                    ])
+                ],
+                code: `// Component list
+FloatingInput        // Base floating label input — pass any type
+FloatingTelInput     // Telephone with auto (XXX) XXX-XXXX formatting
+FloatingEmailInput   // Email preset
+FloatingPasswordInput// Password preset
+FloatingNumberInput  // Number preset
+FloatingUrlInput     // URL preset
+FloatingTextarea     // Multi-line textarea with floating label
+FloatingSelect       // Select dropdown with floating label + custom chevron arrow`
             }),
 
             // Search Dropdown
