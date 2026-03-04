@@ -1,0 +1,1 @@
+import{an as t,z as e}from"./index-B0D4AD-V.js";const a=()=>new t({class:"flex flex-auto flex-col relative"},[e({class:"flex flex-auto flex-col items-center justify-center"},[e({class:"text-3xl font-semibold"},"404 Not Found")])]);export{a as Error404Page,a as default};
