@@ -1,5 +1,6 @@
 import { Div, H4, P, Section, Span } from "@base-framework/atoms";
-import { List, ScrollableList } from "@base-framework/organisms";
+import { DataList, List, ScrollableList } from "@base-framework/organisms";
+import { Skeleton } from "@base-framework/ui/atoms";
 import { Icons } from "@base-framework/ui/icons";
 import { EmptyState } from "@base-framework/ui/molecules";
 import { UserList, UserListItem } from "@base-framework/ui/organisms";
@@ -285,6 +286,145 @@ const scrollableList = ScrollableList(
 // To refresh the list data:
 scrollableList.refresh();`
 		}),
+
+		// Skeleton rows
+		DocSection(
+		{
+			title: 'Skeleton Rows',
+			description: 'Lists that use data fetching can display skeleton placeholder rows while the data is loading. Pass a skeleton object with number (how many placeholder rows to render) and row (a function returning the skeleton layout for each row). The skeleton rows are automatically removed once real data arrives via setRows(), append(), or prepend().',
+			preview: [
+				new List(
+				{
+					cache: 'skeleton-list',
+					key: 'name',
+					items: [],
+					role: 'list',
+					class: 'flex flex-col gap-3',
+					rowItem: UserListItem,
+					skeleton: {
+						number: 3,
+						row: () => Div({ class: 'flex items-center gap-3 p-4' }, [
+							Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10', class: 'flex-none' }),
+							Div({ class: 'flex flex-col flex-1 gap-1' }, [
+								Skeleton({ width: 'w-1/3', height: 'h-4', class: 'rounded' }),
+								Skeleton({ width: 'w-1/2', height: 'h-3', class: 'rounded' })
+							])
+						])
+					}
+				})
+			],
+			code: `import { Div } from "@base-framework/atoms";
+import { List } from "@base-framework/organisms";
+import { Skeleton } from "@base-framework/ui/atoms";
+
+/**
+ * UserRowSkeleton
+ *
+ * A placeholder row displayed while user data is loading.
+ *
+ * @returns {object}
+ */
+const UserRowSkeleton = () =>
+	Div({ class: 'flex items-center gap-3 p-4' }, [
+		Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10', class: 'flex-none' }),
+		Div({ class: 'flex flex-col flex-1 gap-1' }, [
+			Skeleton({ width: 'w-1/3', height: 'h-4', class: 'rounded' }),
+			Skeleton({ width: 'w-1/2', height: 'h-3', class: 'rounded' })
+		])
+	]);
+
+new List(
+{
+	key: 'name',
+	items: [],
+	role: 'list',
+	class: 'flex flex-col gap-3',
+	rowItem: UserListItem,
+
+	// Skeleton rows render immediately while data loads.
+	// Once real data arrives, they are replaced automatically.
+	skeleton: {
+		number: 3,       // Number of placeholder rows
+		row: UserRowSkeleton  // Function returning a skeleton row layout
+	}
+});`
+		}),
+
+		// DataList with xhrMethod
+		DocSection(
+		{
+			title: 'DataList',
+			description: 'The DataList component wraps a List inside a DataContainer, enabling model-driven data fetching. Pass a data model and an optional xhrMethod to specify which model endpoint to call (e.g. "following", "recent"). It also supports the skeleton prop and emptyState for loading / empty states.',
+			preview: [
+				DataList({
+					key: 'name',
+					items: users,
+					role: 'list',
+					class: 'flex flex-col gap-3',
+					rowItem: UserListItem,
+					emptyState: () => EmptyState({
+						title: 'No Users',
+						description: 'No users to display.',
+						icon: Icons.photo
+					})
+				})
+			],
+			code: `import { Div } from "@base-framework/atoms";
+import { DataList } from "@base-framework/organisms";
+import { Skeleton } from "@base-framework/ui/atoms";
+import { EmptyState } from "@base-framework/ui/molecules";
+import { Icons } from "@base-framework/ui/icons";
+
+/**
+ * Skeleton row for the list loading state.
+ *
+ * @returns {object}
+ */
+const UserRowSkeleton = () =>
+	Div({ class: 'flex items-center gap-3 p-4' }, [
+		Skeleton({ shape: 'circle', width: 'w-10', height: 'h-10' }),
+		Div({ class: 'flex flex-col flex-1 gap-1' }, [
+			Skeleton({ width: 'w-1/3', height: 'h-4' }),
+			Skeleton({ width: 'w-1/2', height: 'h-3' })
+		])
+	]);
+
+DataList({
+	data: new UsersModel(),    // Model with xhr methods for data fetching
+	cache: 'list',
+	key: 'id',
+	role: 'list',
+	class: 'flex flex-col gap-3',
+
+	// Specifies which model xhr method to call (e.g. 'following', 'recent').
+	xhrMethod: 'following',
+
+	// Skeleton rows shown while waiting for the fetch response.
+	skeleton: {
+		number: 3,
+		row: UserRowSkeleton
+	},
+
+	// Row renderer for real data.
+	rowItem: (user) => UserRow(user),
+
+	// Displayed when the fetch returns an empty result set.
+	emptyState: () => EmptyState({
+		title: 'No Users Found',
+		description: 'There are no users to display.',
+		icon: Icons.users
+	})
+});`
+		}),
+
+		H4(
+		{ class: 'text-lg font-bold mt-4' },
+		'Skeleton Behavior'
+		),
+		P(
+		{ class: 'text-muted-foreground' },
+		'When a skeleton is configured and the list has no initial items, the list immediately renders the specified number of placeholder rows. As soon as real data is received (via setRows, append, or prepend), the skeleton is torn down and replaced with actual content. The row() method short-circuits during skeleton mode, returning the skeleton component directly instead of calling rowItem.'
+		),
 
 		// Advanced list operations
 		Section({ class: 'flex flex-col gap-y-4 mt-8' }, [
