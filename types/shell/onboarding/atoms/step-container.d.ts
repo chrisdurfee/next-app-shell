@@ -5,4 +5,4 @@
  * @param {array} children
  * @returns {object}
  */
-export const StepContainer: (...args: any[]) => object;
+export const StepContainer: (...args: any[]) => any;

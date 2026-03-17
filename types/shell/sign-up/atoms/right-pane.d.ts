@@ -5,4 +5,4 @@
  *
  * @returns {object} A Div component for the right panel.
  */
-export const RightPane: (...args: any[]) => object;
+export const RightPane: (...args: any[]) => any;

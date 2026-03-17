@@ -3,5 +3,5 @@
  *
  * @returns {object}
  */
-export const DesktopMenuLinks: (...args: any[]) => object;
+export const DesktopMenuLinks: (...args: any[]) => any;
 export default DesktopMenuLinks;

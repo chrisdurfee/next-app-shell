@@ -5,7 +5,7 @@
  * @param {object} children
  * @returns {object}
  */
-export const CodeCard: (...args: any[]) => object;
+export const CodeCard: (...args: any[]) => any;
 /**
  * This will create a preview card.
  *
@@ -13,4 +13,4 @@ export const CodeCard: (...args: any[]) => object;
  * @param {object} children
  * @returns {object}
  */
-export const PreviewCard: (...args: any[]) => object;
+export const PreviewCard: (...args: any[]) => any;

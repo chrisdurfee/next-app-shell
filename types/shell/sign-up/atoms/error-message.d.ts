@@ -5,4 +5,4 @@
  *
  * @returns {object} A Div component containing the error message.
  */
-export const ErrorMessage: (...args: any[]) => object;
+export const ErrorMessage: (...args: any[]) => any;

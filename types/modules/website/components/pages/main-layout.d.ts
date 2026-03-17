@@ -3,5 +3,5 @@
  *
  * @returns {object}
  */
-export const MainLayout: (...args: any[]) => object;
+export const MainLayout: (...args: any[]) => any;
 export default MainLayout;

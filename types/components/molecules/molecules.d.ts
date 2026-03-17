@@ -5,4 +5,4 @@
  * @param {array} children
  * @returns {object}
  */
-export const GridContainer: (...args: any[]) => object;
+export const GridContainer: (...args: any[]) => any;

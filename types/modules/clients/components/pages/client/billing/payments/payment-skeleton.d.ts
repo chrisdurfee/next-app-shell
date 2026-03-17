@@ -6,4 +6,4 @@ export default PaymentSkeleton;
  *
  * @returns {object}
  */
-declare const PaymentSkeleton: (...args: any[]) => object;
+declare const PaymentSkeleton: (...args: any[]) => any;

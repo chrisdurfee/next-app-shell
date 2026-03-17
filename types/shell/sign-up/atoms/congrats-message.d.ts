@@ -5,4 +5,4 @@
  *
  * @returns {object} A Div component containing the congratulations message.
  */
-export const CongratsMessage: (...args: any[]) => object;
+export const CongratsMessage: (...args: any[]) => any;

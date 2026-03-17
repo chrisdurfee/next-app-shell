@@ -8,7 +8,7 @@
  * @param {object} props.client
  * @returns {object}
  */
-export const ClientAvatarSection: (...args: any[]) => object;
+export const ClientAvatarSection: (...args: any[]) => any;
 /**
  * ClientSummaryCardsSection
  *
@@ -18,7 +18,7 @@ export const ClientAvatarSection: (...args: any[]) => object;
  * @param {object} props.client
  * @returns {object}
  */
-export const ClientSummaryCardsSection: (...args: any[]) => object;
+export const ClientSummaryCardsSection: (...args: any[]) => any;
 export function AboutSection({ about }: {
     about: string;
 }): object;
@@ -30,7 +30,7 @@ export function AboutSection({ about }: {
  * @param {object} props - Properties for the section.
  * @returns {object}
  */
-export const ContractSection: (...args: any[]) => object;
+export const ContractSection: (...args: any[]) => any;
 /**
  * TicketsSection
  *
@@ -40,7 +40,7 @@ export const ContractSection: (...args: any[]) => object;
  * @param {object} props.client
  * @returns {object}
  */
-export const TicketsSection: (...args: any[]) => object;
+export const TicketsSection: (...args: any[]) => any;
 /**
  * InvoicesSection
  *
@@ -50,4 +50,4 @@ export const TicketsSection: (...args: any[]) => object;
  * @param {object} props.client - The client object containing invoice data.
  * @returns {object}
  */
-export const InvoicesSection: (...args: any[]) => object;
+export const InvoicesSection: (...args: any[]) => any;

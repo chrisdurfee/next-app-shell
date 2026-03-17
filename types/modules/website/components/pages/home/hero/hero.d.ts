@@ -3,4 +3,4 @@
  *
  * @returns {object}
  */
-export const HeroSection: (...args: any[]) => object;
+export const HeroSection: (...args: any[]) => any;
