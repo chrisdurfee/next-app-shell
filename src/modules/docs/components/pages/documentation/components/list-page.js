@@ -240,7 +240,7 @@ new List(
 					items: users,
 					class: 'divide-y divide-border',
 					rowItem: UserListItem,
-					loadMoreItems: (offset, limit, callback) =>
+					loadMoreItems: (tracker, callback) =>
 					{
 						// Simulate asynchronous data fetching.
 						setTimeout(() =>
@@ -362,6 +362,10 @@ new List(
 					role: 'list',
 					class: 'flex flex-col gap-3',
 					rowItem: UserListItem,
+					loadMoreItems: (tracker, callback) =>
+					{
+						callback(users);
+					},
 					emptyState: () => EmptyState({
 						title: 'No Users',
 						description: 'No users to display.',
